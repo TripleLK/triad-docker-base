@@ -1,5 +1,6 @@
-from scrapers.Selectors import *
+from scrapers.selectors.base import Selector, Selected, SelectedType
 from bs4 import BeautifulSoup
+import requests
 
 class Scraper:
     def __init__(self, filepath):

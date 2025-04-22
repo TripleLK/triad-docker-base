@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from wagtail.models import Page
 from apps.base_site.models import LabEquipmentPage, LabEquipmentGalleryImage, EquipmentModelSpecGroup, EquipmentModel, Spec
-from scrapers.Scrapers import Scraper  # adjust the import based on your project structure
+from scrapers.Scrapers import Scraper  
 
 class Command(BaseCommand):
     help = 'Scrapes a given page and creates/updates Wagtail content'
