@@ -68,7 +68,7 @@ def register_ai_processing_menu():
         ),
         # Move AI-Generated Pages to the bottom and rename to All Pages
         MenuItem(
-            'All Pages',
+            'Review AI-Generated Pages',
             reverse('wagtailadmin_explore', args=[get_homepage_id()]) + '?p_type=ai_generated',
             icon_name='doc-empty',
             order=900
