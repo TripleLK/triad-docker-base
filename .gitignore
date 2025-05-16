@@ -33,11 +33,11 @@ MANIFEST
 *.pyc
 *.pyo
 *.db
-# *.sqlite3
-# db.sqlite3
+ *.sqlite3
+ db.sqlite3
 db.sqlite3.bak
 media/
-# static/
+static/
 # staticfiles/
 # static-old/
 local_settings.py
@@ -102,8 +102,8 @@ static/staticfiles.json
 collected-static/
 /public/
 /private/
-# .env
-# .envs/
+.env
+.envs/
 */settings/local.py
 
 # Frontend build artifacts
