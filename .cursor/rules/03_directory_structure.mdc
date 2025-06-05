@@ -1,0 +1,49 @@
+---
+description: Turns involving file creation, movement, directory setup, or project orientation
+globs: 
+alwaysApply: false
+---
+# Directory Structure Rules
+
+## Directory Structure Compliance
+
+### AI Management Files
+- `.project_management/` - All AI collaboration files
+- `.cursor/rules/` - Cursor IDE behavior rules
+- `.old_temporary_files/` - Archived temporary files
+
+### Django Project Structure  
+- `apps/` - Django applications only
+- `scripts/` - Utility scripts
+- `html_analysis_tools/` - HTML processing utilities
+- `tests/` - Test files
+- `config/` - Configuration files
+
+## Prohibited Actions
+- Creating files outside defined directory structure
+- Making temporary files in root directory
+- Modifying production database files without explicit permission
+- Renaming core Django files without user approval
+
+## Required Actions  
+- Update `triad_project_architecture.org` when adding new files
+- Use proper naming conventions: `YYYY-MM-DD` for dates, descriptive names for scripts
+- Generate cleanup reports when requested in `.project_management/cleanup_reports/`
+- Maintain `ai_communication_notes.org` with current thinking (max 200 lines)
+- Respect Django project structure and conventions
+
+## File Location Guidelines
+
+### Scripts and Utilities
+- Scripts go in `scripts/` directory
+- Tests follow `test_*.py` naming convention
+- Analysis outputs in appropriate dated directories
+- Logs and temporary files in designated locations
+
+### AI Collaboration Files
+- Conversation logs: `.project_management/conversation_logs/[model-name]/`
+- Cleanup reports: `.project_management/cleanup_reports/`
+- Next steps: `.project_management/next_steps/`
+- Architecture documentation: Root level `triad_project_architecture.org`
+
+@triad_project_architecture.org

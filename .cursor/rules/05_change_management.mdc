@@ -1,0 +1,42 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Change Management Rules
+
+## Autonomous Changes (No Approval Needed)
+- Code style improvements
+- Adding docstrings/comments
+- Fixing obvious bugs
+- Refactoring for clarity
+- File organization and cleanup
+- Adding conversation logs and cleanup reports
+
+## Requires Discussion with User
+- Structural changes to Django apps
+- Database schema modifications
+- Major algorithm changes
+- New feature implementations
+- Deleting production data
+- Changing core Django architecture
+
+## Always Document Changes
+- Record rationale for all changes
+- Update relevant architecture files
+- Cross-reference in conversation logs
+- Note in cleanup reports
+
+## When to Ask for Clarification
+- Project goals are undefined and major work is requested
+- Structural changes are needed that aren't defined as "minor changes"
+- User's request conflicts with established Django architecture
+- Database or production system changes are involved
+
+## Architecture Update Requirements
+When creating new files, MUST update `triad_project_architecture.org`:
+- Add file to appropriate section
+- Document purpose and relationships
+- Update file naming conventions if needed
+
+@triad_project_architecture.org

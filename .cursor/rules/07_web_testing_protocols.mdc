@@ -1,0 +1,60 @@
+---
+description: For any turn that will require testing a django server
+globs: 
+alwaysApply: false
+---
+# Web Testing Protocols
+
+## CRITICAL: User Instructions BEFORE Process Start
+
+**ABSOLUTELY REQUIRED**: Any instructions to the user about what they should do must be given **BEFORE** starting any testing process. Do not begin testing procedures until all user instructions are clearly communicated and acknowledged.
+
+## Web Application Testing Protocol
+
+### Browser Testing Limitations
+AI models **DO NOT** have web browser access and cannot:
+- Access localhost URLs or development servers
+- Test admin panels, forms, or user interfaces directly
+- Validate visual layouts or frontend functionality
+- Perform end-to-end user testing
+
+### Required Testing Protocol
+When Django server testing is needed:
+
+1. **Specify Testing Requirements FIRST**
+   - Clearly state what needs to be tested
+   - Define specific functionality to validate
+   - Request specific information to report back
+   - Note any error messages or behaviors to watch for
+
+2. **Server Management Instructions**
+   - Provide complete server startup instructions to user
+   - Specify exact command: `python manage.py runserver 0.0.0.0:8001`
+   - DO NOT use background processes for testing servers
+   - Allow user to control server while it runs
+   - User provides feedback through terminal or chat
+
+3. **Testing Communication Protocol**
+   - Request specific URLs to test (e.g., `/admin/`, `/api/endpoint/`)
+   - Ask for specific form submissions or actions
+   - Request screenshots or error message details when needed
+   - Specify expected vs. actual behavior validation
+
+### Example Testing Request Format
+```
+Testing Steps (to execute after server is running):
+1. Navigate to http://localhost:8001/admin/
+2. Log in with provided credentials
+3. Verify these specific items:
+   - Can access main admin dashboard
+   - All Django apps appear in admin menu
+   - User creation form works correctly
+4. Report back: Any error messages, missing functionality, or unexpected behavior
+```
+
+## Django Server Testing Standards
+- Always provide complete instructions before starting testing process
+- Use non-background server commands for user control
+- Specify exact URLs and testing procedures
+- Request specific feedback on functionality and errors
+- Never assume user is ready - always confirm before proceeding

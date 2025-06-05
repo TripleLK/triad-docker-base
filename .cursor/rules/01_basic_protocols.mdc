@@ -3,9 +3,33 @@ description:
 globs: 
 alwaysApply: true
 ---
-# Code Name Protocol for AI Models
+# Basic AI Protocols
 
-## CRITICAL: First Action Required
+## CRITICAL: Mandatory Turn Completion Marker
+
+**ABSOLUTELY REQUIRED**: Every model response MUST end with the exact text:
+```
+[SUCCESSFULLY COMPLETED MODEL TURN]
+```
+
+This allows the next model to automatically detect interruptions by checking if this marker is present at the end of the previous response.
+
+## CRITICAL: Automatic Interruption Detection
+
+**BEFORE starting any work**, check if the previous model's response ended with `[SUCCESSFULLY COMPLETED MODEL TURN]`:
+
+- **If marker is MISSING**: The previous model was interrupted
+  - **IMMEDIATELY** create a conversation log for the interrupted turn
+  - Mark it clearly: "**INTERRUPTED - INCOMPLETE TURN**"
+  - Document what was accomplished before interruption
+  - Then proceed with assigned tasks
+
+- **If marker is PRESENT**: Previous model completed normally
+  - Proceed with normal workflow
+
+## Code Name Protocol
+
+### CRITICAL: First Action Required
 
 At the beginning of every conversation, you MUST:
 
@@ -21,7 +45,7 @@ At the beginning of every conversation, you MUST:
    - Update ALL relevant files with the new identifier
    - Reference the new name in all subsequent work
 
-## Code Name Usage
+### Code Name Usage
 
 Your code name will be used in:
 - Conversation log directories: `conversation_logs/[your-code-name]/`
@@ -30,7 +54,7 @@ Your code name will be used in:
 - Model tracking document updates
 - All file references and signatures
 
-## Examples of Good Code Names
+### Examples of Good Code Names
 - Silver Mongoose
 - Rapid Falcon  
 - Quiet River
@@ -38,7 +62,7 @@ Your code name will be used in:
 - Golden Hamster
 - Swift Penguin
 
-## Update Model Tracking
+### Always Update Model Tracking
 Always update `.project_management/model_name_tracking.org` with your entry when you start work.
 
 @.project_management/model_name_tracking.org

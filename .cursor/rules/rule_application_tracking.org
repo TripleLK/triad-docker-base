@@ -1,0 +1,105 @@
+#+TITLE: Cursor Rules Application Tracking
+#+AUTHOR: Crimson Phoenix
+#+DATE: 2025-01-19
+#+FILETAGS: :cursor:rules:tracking:application:
+
+* Rule Application Strategy Overview
+
+This document tracks all cursor rule files and defines when they should be applied. Rules are categorized as "Always Applied" vs "Agent Requested" based on actual IDE configuration.
+
+** Always Applied Rules (Core Behavior)
+Rules that every AI model needs regardless of task:
+- Basic turn completion and interruption handling
+- Conversation logging requirements
+
+** Agent Requested Rules (Conditional)
+Rules that apply only to specific contexts or tasks on a turn-by-turn basis:
+- Django-specific development rules
+- File organization and cleanup procedures  
+- Testing protocols
+- Project-specific naming conventions
+
+* Rule Files Classification
+
+** ALWAYS APPLIED
+
+*** 00_rules_index.mdc
+- **Application**: Always
+- **Purpose**: Navigation and overview of rule system
+- **Contains**: Rule file descriptions, critical requirements summary, organization rationale
+- **IDE Status**: Always included
+
+*** 01_basic_protocols.mdc
+- **Application**: Always
+- **Purpose**: Core AI behavior protocols that ensure proper handoffs and communication
+- **Contains**: Turn completion markers, code names, interruption detection
+- **IDE Status**: Always included
+
+*** 02_conversation_logging.mdc  
+- **Application**: Always
+- **Purpose**: Mandatory documentation of all AI actions for continuity
+- **Contains**: Logging requirements, log structure, maintenance standards
+- **IDE Status**: Always included
+
+*** 04_naming_conventions.mdc
+- **Application**: Always
+- **Purpose**: Consistent naming and documentation standards
+- **Contains**: File naming patterns, code headers, documentation requirements
+- **IDE Status**: Always included
+
+*** 05_change_management.mdc
+- **Application**: Always
+- **Purpose**: Change approval workflow and documentation requirements
+- **Contains**: Autonomous vs discussion-required changes, architecture updates
+- **IDE Status**: Always included
+
+** AGENT REQUESTED
+
+*** 03_cleanup_protocol.mdc
+- **Application Trigger**: When Cleanup is requested
+- **Purpose**: Standardized cleanup procedures and reporting
+- **Contains**: Cleanup steps, report generation, next steps creation
+- **IDE Status**: Applied when cleanup is requested
+
+*** 03_directory_structure.mdc
+- **Application Trigger**: Turns involving file creation, movement, directory setup, or project orientation
+- **Purpose**: Directory compliance and file location standards
+- **Contains**: AI management file locations, Django structure, prohibited actions
+- **IDE Status**: Applied for file creation, movement, directory setup, or project orientation
+
+*** 06_django_specific.mdc
+- **Application Trigger**: Use for any tasks that involve django coding
+- **Purpose**: Django project context and protection rules
+- **Contains**: Django architecture principles, structure protection, development guidelines
+- **IDE Status**: Applied for any tasks involving django coding
+
+*** 07_web_testing_protocols.mdc
+- **Application Trigger**: For any turn that will require testing a django server
+- **Purpose**: Web testing procedures and AI limitations around server testing
+- **Contains**: Web testing limitations, server testing protocols, user instruction requirements
+- **IDE Status**: Applied for any turn requiring django server testing
+
+*** 08_rule_maintenance.mdc
+- **Application Trigger**: For any turns that involve modifying cursor rules
+- **Purpose**: Maintenance protocols for rule system integrity and tracking
+- **Contains**: Rule tracking index updates, creation standards, maintenance workflow
+- **IDE Status**: Applied for turns involving cursor rule modifications
+
+* Rule Maintenance Protocol
+
+** When Adding New Rules
+1. **Create rule file** with focused scope and clear content
+2. **Update this tracking file** - Add new rule with complete classification
+3. **Define IDE directive** - Specify exact trigger criteria for conditional application
+4. **Update `00_rules_index.mdc`** with new rule description
+5. **Inform user of directive** - Provide clear instruction for IDE configuration
+
+** Success Metrics
+
+** Effective Conditional Application
+- Models only receive rules relevant to their current turn
+- Reduced cognitive load from irrelevant rules
+- Clear criteria for IDE to apply appropriate rules
+- Smooth workflow without missing essential rules
+
+This tracking system ensures cursor rules enhance AI productivity without overwhelming models with irrelevant information. 

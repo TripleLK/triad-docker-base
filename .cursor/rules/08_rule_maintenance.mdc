@@ -1,0 +1,76 @@
+---
+description: For any turns that involve modifying cursor rules
+globs: 
+alwaysApply: false
+---
+# Rule System Maintenance
+
+## CRITICAL: Rule Tracking Index Updates
+
+**ABSOLUTELY REQUIRED**: When creating or modifying any cursor rule file, you MUST update the rule application tracking index:
+
+### Required Updates to `rule_application_tracking.org`
+1. **Add new rule entry** with complete classification information
+2. **Define application criteria** - Always Applied vs Agent Requested  
+3. **Specify trigger keywords** - Clear criteria for when rule applies
+4. **Update rule combinations** - Add to relevant task-based rule sets
+5. **Document purpose and rationale** - Why this rule exists and when it's needed
+
+## Rule Creation Standards
+
+### Before Creating New Rules
+- **Verify necessity**: Ensure the rule addresses a real workflow need
+- **Check for overlap**: Avoid duplicating existing rule functionality
+- **Define scope clearly**: Specify exact situations where rule applies
+- **Plan conditional application**: Determine if always applied or agent requested
+
+### Rule File Requirements
+- **Focused scope**: Each rule file should cover one functional area
+- **Clear purpose**: Obvious from filename and content what the rule addresses
+- **Conditional criteria**: Well-defined triggers for when rule should be applied
+- **Integration planning**: How rule fits with existing rule combinations
+
+## Rule Maintenance Workflow
+
+### Adding New Rules
+1. **Create rule file** with focused scope and clear content
+2. **Update `rule_application_tracking.org`** with complete classification
+3. **Update `00_rules_index.mdc`** with new rule description
+4. **Test rule application** to ensure conditional triggers work
+5. **Document in conversation log** with rationale for rule creation
+
+### Modifying Existing Rules
+1. **Update rule content** with clear rationale for changes
+2. **Review tracking classification** - update if application criteria changed
+3. **Update combinations** if rule scope or triggers changed
+4. **Document modifications** in conversation log with reasoning
+
+### Removing Obsolete Rules
+1. **Archive rule file** rather than deleting (move to `.old_rules/`)
+2. **Remove from tracking index** with note about archival
+3. **Update rule combinations** to remove references
+4. **Document removal rationale** in conversation log
+
+## Quality Standards
+
+### Rule Effectiveness Review
+- **Regular assessment** of whether rules improve AI workflow
+- **User feedback integration** about rule utility and burden
+- **Overlap elimination** when multiple rules cover similar areas
+- **Clarity improvements** based on AI model confusion or questions
+
+### Rule System Health
+- **All rules have clear purpose** and defined application criteria
+- **No orphaned rules** without tracking index entries
+- **Balanced cognitive load** - not overwhelming but comprehensive
+- **Easy navigation** through rule index and combinations
+
+## Rule Application Testing
+
+### Verification Process
+- **Test conditional requests** to ensure proper rule activation
+- **Verify rule combinations** work smoothly for common task types
+- **Check rule clarity** - can AI models understand when to apply them?
+- **Validate effectiveness** - do rules actually improve workflow?
+
+This maintenance protocol ensures the cursor rule system remains effective, well-organized, and properly documented.

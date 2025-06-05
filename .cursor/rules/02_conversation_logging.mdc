@@ -5,25 +5,18 @@ alwaysApply: true
 ---
 # Conversation Logging Protocol
 
-## CRITICAL: End-of-Turn Requirement
+## CRITICAL: Mandatory Logging After EVERY Model Action
 
-At the END of every turn/response, you MUST create or update a conversation log.
+**ABSOLUTELY REQUIRED**: You MUST create or update a conversation log **AFTER EVERY SINGLE TURN** where you take any action, regardless of how small.
 
-## CRITICAL: Premature Cutoff Recovery
+This includes:
+- Every code edit or file creation
+- Every search or analysis task
+- Every response to user questions
+- Every cleanup or organizational task
+- Even simple clarification responses
 
-AI models **cannot detect** when they have been interrupted. If the user indicates an interruption occurred (via "[After interrupt]" tag or explicit mention), your FIRST ACTION must be:
-
-1. **Create a conversation log for the previous turn** - Document what the interrupted turn accomplished
-2. **Note the interruption** - Mark clearly that the previous turn was cut off before completion
-3. **Assess incomplete work** - Identify what was left unfinished based on user feedback
-4. **Then proceed** with your assigned tasks
-
-**User Signals for Interruptions:**
-- "[After interrupt]" tag at start of message
-- Explicit mention of stopping/interrupting previous model
-- References to incomplete work or missing conversation logs
-
-This ensures no work is lost and maintains conversation continuity when users interrupt AI models mid-response.
+**NO EXCEPTIONS**: If you performed any action or provided any response, you MUST log it before control returns to the user.
 
 ## Log File Location and Naming
 - Directory: `.project_management/conversation_logs/[your-code-name]/`
@@ -91,9 +84,10 @@ This ensures no work is lost and maintains conversation continuity when users in
 ```
 
 ## Log Maintenance
-- Always append to existing daily log
-- Never overwrite previous entries
+- **ALWAYS append** to existing daily log after every action
+- **NEVER skip logging** regardless of action size
 - Include timestamp for each turn
 - Update session metadata as needed
+- If you forget to log a turn, create the log entry immediately when you realize
 
 @.project_management/conversation_logs/
