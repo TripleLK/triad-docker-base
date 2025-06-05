@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Code Name Protocol for AI Models
+
+## CRITICAL: First Action Required
+
+At the beginning of every conversation, you MUST:
+
+1. **Establish your code name**: Choose two words (adjective + noun) unrelated to the current task
+   - Format: Like an Xbox gamertag (e.g., "Silver Mongoose", "Blue Thunder", "Quiet River")
+   - Should be memorable and easy to reference
+   - Must be unique within this project
+
+2. **Announce your code name**: State it clearly at the start of your first response
+
+3. **If user requests change**: 
+   - Immediately acknowledge and adopt the new name
+   - Update ALL relevant files with the new identifier
+   - Reference the new name in all subsequent work
+
+## Code Name Usage
+
+Your code name will be used in:
+- Conversation log directories: `conversation_logs/[your-code-name]/`
+- Cleanup reports: `[your-code-name]_cleanup.org`
+- Next steps files: `[your-code-name]_next_steps.org`
+- Model tracking document updates
+- All file references and signatures
+
+## Examples of Good Code Names
+- Silver Mongoose
+- Rapid Falcon  
+- Quiet River
+- Blue Thunder
+- Golden Hamster
+- Swift Penguin
+
+## Update Model Tracking
+Always update `.project_management/model_name_tracking.org` with your entry when you start work.
+
+@.project_management/model_name_tracking.org

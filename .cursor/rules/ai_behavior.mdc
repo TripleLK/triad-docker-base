@@ -1,0 +1,127 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# AI Behavior Rules for Triad Docker Base
+
+## CRITICAL: First Actions Required
+
+1. **ALWAYS read `project_architecture.org` first** - This contains the complete system structure and guidelines
+2. **Check the Current Master Goal** - Project goals are pending user definition
+3. **Review `ai_communication_notes.org`** - Get current context and recent decisions
+4. **Follow the established file patterns** - Never create files outside the defined structure
+
+## Project Context
+
+This is a **Django web application** with HTML analysis and web scraping capabilities. The project includes equipment-related functionality and API interactions.
+
+### Key Architectural Principles
+- **Respect existing Django structure** - Don't disrupt the established development patterns
+- **AI collaboration layer** - Management files in `.project_management/`
+- **Code separation** - Keep AI tracking separate from application code
+- **Goal-driven development** - Wait for user-defined objectives before major work
+
+## File System Rules
+
+### Prohibited Actions
+- Creating files outside the defined directory structure
+- Renaming or moving `project_architecture.org` or core Django files without permission
+- Making temporary/scratch files in the root directory
+- Modifying production database files
+- Ignoring the Current Master Goal (when defined) without checking with user
+
+### Required Actions  
+- Update `project_architecture.org` when adding new files
+- Use proper naming conventions: `YYYY-MM-DD` for dates, descriptive names for scripts
+- Generate cleanup reports when requested in `.project_management/cleanup_reports/`
+- Maintain `ai_communication_notes.org` with current thinking (max 200 lines)
+- Respect Django project structure and conventions
+
+## Communication Standards
+
+### Current vs Historical Information
+- **ai_communication_notes.org**: Keep current, overwrite old thinking with new (lean and focused)
+- **conversation_logs/**: Complete historical record (append-only, never delete)
+- **cleanup_reports/**: Detailed documentation of all changes made during cleanup operations
+
+### When to Ask for Clarification
+- Project goals are undefined and major work is requested
+- Structural changes are needed that aren't defined as "minor changes"
+- User's request conflicts with established Django architecture
+- Database or production system changes are involved
+
+## Django Project Context
+
+### Technology Stack
+- Django web framework
+- Python-based development
+- SQLite database (example provided)
+- HTML analysis and processing tools
+- Web scraping capabilities
+
+### Existing Structure
+- `apps/` - Django applications
+- `scripts/` - Utility scripts  
+- `html_analysis_tools/` - HTML processing utilities
+- `tests/` - Test files
+- Multiple analysis output directories
+
+### Development Patterns
+- Test-driven development (multiple test files present)
+- API integration and verification
+- Equipment/product data processing
+- HTML analysis and comparison tools
+
+## Clean Up Protocol
+
+When asked to "Clean Up":
+
+1. **Generate detailed report** in `.project_management/cleanup_reports/YYYY-MM-DD_HHMMSS_cleanup_report.org`
+2. **Include MDC conversation context** - Document everything from MDC files discussion onward
+3. **Update Current Master Goal** if scope has changed (or defined for first time)
+4. **Create Next Steps file** if requested (in `.project_management/next_steps/`)
+5. **Update ai_communication_notes.org** with current status
+6. **Verify file system integrity** using the architecture checklist
+
+### Cleanup Report Structure
+```
+* Summary of Changes Made
+* Files Modified/Created/Deleted  
+* Reasoning for Each Change
+* Updated Architecture (if applicable)
+* Potential Issues or Warnings
+* Verification Steps Completed
+* Project Context (for triad-docker-base: include from MDC discussion)
+```
+
+## Success Criteria for AI Interactions
+
+- Django project structure remains intact and functional
+- Current thinking documents stay lean and actionable
+- Historical information is preserved in appropriate logs
+- User's development momentum is maintained
+- Technical decisions align with web development best practices
+- Code changes are properly tested when applicable
+
+## Development Guidelines
+
+### Code Quality
+- Follow Python/Django best practices
+- Write tests for new functionality
+- Document complex logic
+- Maintain separation of concerns
+
+### File Management
+- Scripts go in `scripts/` directory
+- Tests follow `test_*.py` naming convention
+- Analysis outputs in appropriate dated directories
+- Logs and temporary files in designated locations
+
+---
+
+**Remember**: This is a DJANGO WEB APPLICATION under active development. Respect the existing codebase while adding AI collaboration capabilities. Project goals are pending user definition - focus on infrastructure and organization until objectives are clarified.
+
+
+
+

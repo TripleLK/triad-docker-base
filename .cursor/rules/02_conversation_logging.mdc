@@ -1,0 +1,99 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Conversation Logging Protocol
+
+## CRITICAL: End-of-Turn Requirement
+
+At the END of every turn/response, you MUST create or update a conversation log.
+
+## CRITICAL: Premature Cutoff Recovery
+
+AI models **cannot detect** when they have been interrupted. If the user indicates an interruption occurred (via "[After interrupt]" tag or explicit mention), your FIRST ACTION must be:
+
+1. **Create a conversation log for the previous turn** - Document what the interrupted turn accomplished
+2. **Note the interruption** - Mark clearly that the previous turn was cut off before completion
+3. **Assess incomplete work** - Identify what was left unfinished based on user feedback
+4. **Then proceed** with your assigned tasks
+
+**User Signals for Interruptions:**
+- "[After interrupt]" tag at start of message
+- Explicit mention of stopping/interrupting previous model
+- References to incomplete work or missing conversation logs
+
+This ensures no work is lost and maintains conversation continuity when users interrupt AI models mid-response.
+
+## Log File Location and Naming
+- Directory: `.project_management/conversation_logs/[your-code-name]/`
+- Filename: `[YYYY-MM-DD]_session_log.org`
+- Create directory if it doesn't exist
+
+## Required Log Content
+
+### Header Information
+```org
+#+TITLE: Conversation Log - [Your Code Name]
+#+DATE: [YYYY-MM-DD]
+#+MODEL: [Your Code Name]
+#+SESSION_START: [timestamp]
+#+FILETAGS: :conversation:log:[your-code-name]:
+```
+
+### Mandatory Sections
+
+#### Discussion Summary
+- Main topics covered in this turn
+- Key decisions made
+- User requests and responses
+
+#### Changes Made
+- List ALL files modified/created/deleted
+- Include line numbers when possible
+- Brief description of each change
+
+#### Rationale
+- Explain WHY each change was made
+- Connect decisions to project goals
+- Note any alternative approaches considered
+
+#### Cross-References
+- Link to related cleanup reports
+- Reference architecture updates
+- Note connections to previous conversation logs
+
+## Format Example
+```org
+* Turn [N]: [Brief Description]
+  :PROPERTIES:
+  :TIMESTAMP: [HH:MM:SS]
+  :END:
+
+** Discussion Summary
+   - User requested X
+   - Discussed approach Y
+   - Decided on solution Z
+
+** Changes Made
+   - Modified file.py:42-45 - Updated function signature
+   - Created new_file.org - Documentation for feature
+   - Deleted temp_file.json - No longer needed
+
+** Rationale
+   - Changed function signature to improve type safety
+   - Created documentation to support future AI handoffs
+   - Removed temporary file to clean up workspace
+
+** Next Steps Identified
+   - Need to test new function
+   - Should update related documentation
+```
+
+## Log Maintenance
+- Always append to existing daily log
+- Never overwrite previous entries
+- Include timestamp for each turn
+- Update session metadata as needed
+
+@.project_management/conversation_logs/
