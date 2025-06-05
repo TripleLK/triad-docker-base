@@ -18,6 +18,31 @@ This includes:
 
 **NO EXCEPTIONS**: If you performed any action or provided any response, you MUST log it before control returns to the user.
 
+## CRITICAL: Mandatory Active Work Tracking Maintenance
+
+**ABSOLUTELY REQUIRED**: You MUST review and update `.project_management/active_work_tracking.org` during EVERY work session.
+
+### When to Update Active Work Tracking
+- **At session start**: Review current objectives and status
+- **During significant work**: Update progress on current phases/goals
+- **When strategy changes**: Document new approaches or discoveries
+- **At session end**: Mark completed tasks and update current status
+
+### Required Updates Include
+- Mark completed tasks as [X] 
+- Update phase status and progress
+- Add new insights or decisions made
+- Update success criteria based on work completed
+- Document any strategy changes or approach modifications
+
+### Active Work Tracking Integration
+- Reference active work goals in conversation logs
+- Align all work with documented project objectives
+- Update tracking BEFORE creating cleanup reports
+- Ensure next steps align with active work priorities
+
+**NOTE**: Active work tracking serves as the master project roadmap - all model work should connect to and advance these documented objectives.
+
 ## Log File Location and Naming
 - Directory: `.project_management/conversation_logs/[your-code-name]/`
 - Filename: `[YYYY-MM-DD]_session_log.org`

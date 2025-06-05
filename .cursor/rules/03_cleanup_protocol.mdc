@@ -78,6 +78,29 @@ Create: `.project_management/next_steps/[your-code-name]_next_steps.org`
 - What was left intentionally incomplete
 - Resources and references for continuation
 
+## Step 4: Execute Git Automation (FINAL STEP)
+**CRITICAL**: Always execute git automation as the FINAL cleanup step
+
+### Git Push Requirements
+- Execute: `python triad-reorganized/scripts/git_cleanup_push.py` (without --dry-run flag)
+- Commit and push ALL cleanup work to ai-work branch
+- Verify successful push to remote repository
+- Document git commit hash and push success in conversation log
+
+### Git Automation Benefits
+- Preserves all cleanup work with proper model attribution
+- Enables seamless handoff to next AI model
+- Maintains comprehensive git history for project continuity
+- Prevents loss of work due to session interruptions
+
+### Verification Steps
+- Confirm commit includes all cleanup files (reports, next steps, conversation logs)
+- Verify push completed successfully to origin/ai-work
+- Check that git status shows clean working directory after push
+- Document any git-related issues or conflicts in cleanup report
+
+**NOTE**: Do NOT consider cleanup complete until git automation has successfully executed and pushed all changes to the remote repository.
+
 ## File Format Standards
 - All files in org-mode format
 - Use proper org-mode headers and metadata
