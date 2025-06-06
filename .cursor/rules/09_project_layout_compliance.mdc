@@ -1,0 +1,107 @@
+---
+description: Anything involving the creation or moving of files.
+globs: 
+alwaysApply: false
+---
+# Project Layout Compliance Rules
+
+## CRITICAL: Project Layout Must Be Respected
+
+**ABSOLUTELY REQUIRED**: ALL changes to project structure MUST be validated against documented layout standards before implementation.
+
+## Mandatory Pre-Change Validation
+
+**BEFORE making ANY structural changes**, you MUST:
+
+1. **Review Layout Documentation**: Check `docs/project_layout_standards.org` for current structure requirements
+2. **Validate Current State**: Verify the project currently matches documented structure  
+3. **Assess Impact**: Determine if changes affect protected directories or core Django functionality
+4. **Check Dependencies**: Verify Django imports and configurations won't break
+
+## Protected Directory Rules
+
+### NEVER Touch Without Explicit Approval
+- `.project_management/` - AI collaboration framework (conversation logs, tracking, cleanup reports)
+- `.cursor/` - AI behavior rules and project context
+- `apps/` - Django applications (requires Django migration considerations)
+- `config/` - Django configuration (CRITICAL for functionality)
+
+### Functional Organization Requirements
+- `scripts/` - MUST be organized by function (equipment_scrapers, data_import, analysis, tools)
+- `docs/` - MUST be organized by purpose (api, development, equipment_integration)
+- `data/` - MUST follow categorization (reference, sample_payloads)
+- `analysis_outputs/` - MUST use archive system (current, archived)
+
+## Required Structure Validation Commands
+
+**ALWAYS run these after structural changes**:
+```bash
+python manage.py check --settings=config.settings.dev
+```
+
+If Django checks fail after your changes, you MUST immediately restore the previous structure.
+
+## Change Classification
+
+### Minor Changes (Autonomous)
+- Adding files within existing functional directories
+- Creating new files following established naming conventions
+- Adding content to existing documentation structure
+
+### Major Changes (Approval Required)  
+- Moving or renaming directories
+- Creating new root-level directories
+- Restructuring functional organization within scripts/ or docs/
+- Any changes affecting Django import paths
+
+### Critical Changes (Explicit User Approval)
+- Touching protected directories (.project_management/, .cursor/, apps/, config/)
+- Moving or renaming core Django files
+- Changing fundamental project organization
+- Any changes that could break Django functionality
+
+## Mandatory Post-Change Actions
+
+**AFTER making any structural changes**, you MUST:
+
+1. **Update Documentation**: Modify `docs/project_layout_standards.org` to reflect changes
+2. **Test Django Functionality**: Run system checks and verify application still works
+3. **Update References**: Correct any documentation referencing changed paths
+4. **Log Changes**: Document structural changes in conversation logs
+
+## Layout Violation Recovery
+
+**If you realize the layout has been violated**:
+
+1. **STOP immediately** and assess the damage
+2. **Check git tags** for backup points (e.g., `phase-a-complete`)
+3. **Test Django functionality** with system checks
+4. **Restore from backup** if functionality is broken
+5. **Document the incident** in conversation logs
+
+## Structure Validation Checklist
+
+Before ending your turn, verify:
+- [ ] All directories match `docs/project_layout_standards.org`
+- [ ] Functional organization principles followed
+- [ ] No files in incorrect locations  
+- [ ] Django system checks pass
+- [ ] Documentation updated for any changes
+- [ ] Changes logged appropriately
+
+## Reference Documentation
+
+**Primary Layout Reference**: `docs/project_layout_standards.org`
+**System Architecture**: `docs/triad_project_architecture.org`  
+**AI Collaboration Rules**: `.cursor/rules/` directory
+
+## Emergency Contacts
+
+If you're unsure about a structural change:
+- **STOP** and ask the user for clarification
+- **DO NOT** proceed with changes that could violate layout integrity
+- **REFERENCE** the layout standards documentation for guidance
+
+The project layout is SACRED - it ensures Django functionality, development continuity, and AI collaboration effectiveness. Respect it absolutely.
+
+@docs/project_layout_standards.org

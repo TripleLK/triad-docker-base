@@ -1,6 +1,0 @@
----
-# Extract the full product description
-- css_selector:
-    css_selector: "div.col-12.col-sm-12.col-lg-12.col-xl-9 > p"
-    index: 0
-- html_selector 

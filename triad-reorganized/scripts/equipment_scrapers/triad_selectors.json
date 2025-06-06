@@ -1,1 +1,0 @@
-[{"name": "Product Images", "note": "Product images with full HTML preserved to maintain image URLs.", "selector": ".carousel", "preserve_html": true}, {"name": "Product Information", "note": "Additional product details, specifications, and features.", "selector": ".centered-content.items"}]

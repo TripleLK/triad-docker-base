@@ -1,7 +1,0 @@
-[
-  "body > section",
-  "div[id^=\"Div\"]",
-  "div[id^=\"Div\"][id$=\"Top\"]",
-  "div[id^=\"content-\"]",
-  "div[id^=\"tab\"]"
-]
