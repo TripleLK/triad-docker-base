@@ -1,0 +1,9 @@
+---
+# Extract the first ~200 characters as a short description
+- css_selector:
+    css_selector: "div.col-12.col-sm-12.col-lg-12.col-xl-9 > p"
+    index: 0
+- text_selector
+- regex_selector:
+    pattern: "^(.{20,200}?)(?:\\.|$).*"
+    group: 1 

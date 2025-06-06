@@ -1,0 +1,21 @@
+{% load static %}
+<input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% for name, value in widget.attrs.items %}{% if value != False %} {{ name }}{% if value != True %}="{{ value|stringformat:'s' }}"{% endif %}{% endif %}{% endfor %} />
+
+<link rel="stylesheet" href="{% static 'css/spectrum.css' %}">
+<script src="{% static 'js/spectrum.js' %}"></script>
+
+<script>
+$(function() {
+    $('.color-picker').spectrum({
+        showInput: true,
+        showInitial: true,
+        preferredFormat: "hsl",
+        showPalette: true,
+        palette: [
+            ["hsl(0, 65%, 75%)", "hsl(30, 65%, 75%)", "hsl(60, 65%, 75%)", "hsl(90, 65%, 75%)", "hsl(120, 65%, 75%)"],
+            ["hsl(150, 65%, 75%)", "hsl(180, 65%, 75%)", "hsl(210, 65%, 75%)", "hsl(240, 65%, 75%)", "hsl(270, 65%, 75%)"],
+            ["hsl(300, 65%, 75%)", "hsl(330, 65%, 75%)"]
+        ]
+    });
+});
+</script> 

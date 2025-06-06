@@ -1,0 +1,116 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+db.sqlite3
+db.sqlite3.bak
+media/
+static/
+# staticfiles/
+# static-old/
+local_settings.py
+staticfiles.json
+
+# If using Django's default static file storage
+#   /static/
+
+#   # Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Python virtualenv
+venv/
+ENV/
+env/
+.venv/
+.wagtail-venv/
+wagtail-venv/
+
+# Test and coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Misc
+*.swp
+*.bak
+*.tmp
+
+# Project-specific
+apps/categorized_tags/node_modules/
+apps/categorized_tags/package-lock.json
+client/node_modules/
+client/package-lock.json
+static/staticfiles.json
+
+# Wagtail specific
+.wagtail/
+collected-static/
+/public/
+/private/
+.env
+.envs/
+*/settings/local.py
+
+# Frontend build artifacts
+frontend/build/
+frontend/dist/
+
+# Sensitive environment files
+envs/*.env
+*.env
+.env*

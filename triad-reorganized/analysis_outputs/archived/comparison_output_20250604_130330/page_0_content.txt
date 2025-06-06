@@ -1,0 +1,216 @@
+Content Selected by Different Elements
+Page 0: https://www.airscience.com/product-category-page?brandname=safeswab-swab-dryers&brand=30
+Title: Safeswab Drying Cabinets | Air Science
+============================================================
+
+1. Selector: div#content-5
+----------------------------------------
+Tag: <div class="expandable-content" id="content-5" style="display: none;">
+Text: Airflow:HorizontalMain Filter:HEPA / ULPA
+HTML: <div class="expandable-content" id="content-5" style="display: none;">
+<p>
+<strong>Airflow:</strong> Horizontal<br/> <strong>Main Filter:</strong> HEPA / ULPA<br/> </p>
+</div>
+
+============================================================
+
+2. Selector: div#image-wrapper
+----------------------------------------
+Tag: <div class="image-wrapper" id="image-wrapper" style="transform: translateX(0px); transition: none;">
+Text: 
+HTML: <div class="image-wrapper" id="image-wrapper" style="transform: translateX(0px); transition: none;">
+<img alt="" decoding="async" src="/wp-content/uploads/2021/12/PDT_FDC-001_Left.png"/>
+<img alt="" decoding="async" src="/wp-content/uploads/2021/12/PDT_FDC-001_Left.png"/>
+</div>
+
+============================================================
+
+3. Selector: div#content-7
+----------------------------------------
+Tag: <div class="expandable-content" id="content-7" style="display: none;">
+Text: Environmental:ISO 14001 : 2015 ; ENERGY STAR® PartnerQuality:ISO 9001 : 2015
+HTML: <div class="expandable-content" id="content-7" style="display: none;">
+<p>
+<strong>Environmental:</strong> ISO 14001 : 2015 ; ENERGY STAR® Partner<br/> <strong>Quality:</strong> ISO 9001 : 2015<br/> </p>
+</div>
+
+============================================================
+
+4. Selector: div#content-2
+----------------------------------------
+Tag: <div class="expandable-content" id="content-2" style="display: none;">
+Text: Cabinet Lighting*: LIGHT-FDCUV lamp: UV-FDCWindowless Doors: SDOOR-FDC* Factory installed; specify when ordering
+HTML: <div class="expandable-content" id="content-2" style="display: none;">
+<p>
+<strong>Cabinet Lighting*</strong>: LIGHT-FDC<br/>
+<strong>UV lamp</strong>: UV-FDC<br/>
+<strong>Windowless Doors</strong>: SDOOR-FDC<br/>
+            							* Factory installed; specify when ordering
+				</p>
+</div>
+
+============================================================
+
+5. Selector: script#elementor-frontend-js-before
+----------------------------------------
+Tag: <script type="text/javascript" id="elementor-frontend-js-before">
+Text: /* <![CDATA[ */
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.27.6","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_swiper_latest":true,"e_optimized_markup":true,"e_onboarding":true,"e_local_google_fonts":true,"theme_builder_v2":true,"home_screen":true,"landing-pages":true,"nested-elements":true,"editor_v2":true,"e_element_cache":true,"link-in-bio":true,"floating-buttons":true,"page-transitions":true,"notes":true,"loop":true,"form-submissions":true,"e_scroll_snap":true,"mega-menu":true},"urls":{"assets":"https:\/\/www.airscience.com\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/www.airscience.com\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/www.airscience.com\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"4ede7394d8"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":7926,"title":"Safeswab%20Drying%20Cabinets%20%7C%20Air%20Science","excerpt":"","featuredImage":false}};
+/* ]]> */
+HTML: <script id="elementor-frontend-js-before" type="text/javascript">
+/* <![CDATA[ */
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselPrevSlideMessa...
+
+============================================================
+
+6. Selector: div#tab4
+----------------------------------------
+Tag: <div id="tab4" class="tab-content">
+Text: Using innovative filtration technology, the Safeswab drying cabinet creates a safe work environment over the widest range of applications in the industry.State and Federal Crime Laboratories \ Medical Examiners and Coroners \ Law Enforcement Agencies \ Hospital Emergency Rooms \ Drug Agencies
+HTML: <div class="tab-content" id="tab4">
+<p>Using innovative filtration technology, the Safeswab drying cabinet creates a safe work environment over the widest range of applications in the industry.</p>
+<p>State and Federal Crime Laboratories \ Medical Examiners and Coroners \ Law Enforcement Agencies \ Hospital Emergency Rooms \ Drug Agencies</p> </div>
+
+============================================================
+
+7. Selector: body > img.ywa-10000
+----------------------------------------
+Tag: <img class="ywa-10000" src="https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Wed%2C%2004%20Jun%202025%2017%3A02%3A36%20GMT&n=4d&b=Safeswab%20Drying%20Cabinets%20%7C%20Air%20Science&.yp=10110647&f=https%3A%2F%2Fwww.airscience.com%2Fproduct-category-page%3Fbrandname%3Dsafeswab-swab-dryers%26brand%3D30&enc=UTF-8&yv=1.16.6&tagmgr=gtm" alt="dot image pixel" style="display: none;">
+Text: 
+HTML: <img alt="dot image pixel" class="ywa-10000" src="https://sp.analytics.yahoo.com/sp.pl?a=10000&amp;d=Wed%2C%2004%20Jun%202025%2017%3A02%3A36%20GMT&amp;n=4d&amp;b=Safeswab%20Drying%20Cabinets%20%7C%20Air%20Science&amp;.yp=10110647&amp;f=https%3A%2F%2Fwww.airscience.com%2Fproduct-category-page%3Fbrandname%3Dsafeswab-swab-dryers%26brand%3D30&amp;enc=UTF-8&amp;yv=1.16.6&amp;tagmgr=gtm" style="display: none;"/>
+
+============================================================
+
+8. Selector: body > section:nth-of-type(7) > div.rowodd > div.blockcontainer2 > div.mobiletabs:nth-of-type(3)
+----------------------------------------
+Content: No elements found
+
+============================================================
+
+9. Selector: body > section:nth-of-type(2) > div.roweven > div > h1
+----------------------------------------
+Tag: <h1>
+Text: SafeSWAB® Swab Drying Cabinets
+HTML: <h1>SafeSWAB® Swab Drying Cabinets</h1>
+
+============================================================
+
+10. Selector: body > section:nth-of-type(3) > div.rowodd > div.blockcontainer > div.rightblock2
+----------------------------------------
+Tag: <div class="rightblock2">
+Text: DescriptionWith a HEPA main filter formulated to contain any particulates or biological material that might be present on swabs, SafeSWAB® is used to safely dry evidence swabs while protecting them from cross-contamination.
+HTML: <div class="rightblock2">
+<div class="descriptioncontainer">
+<h1>Description</h1>
+<p>
+</p><div>With a HEPA main filter formulated to contain any particulates or biological material that might be present on swabs, SafeSWAB® is used to safely dry evidence swabs while protecting them from cross-contamination.</div>
+<p></p>
+</div>
+</div>
+
+============================================================
+
+11. Selector: body > section:nth-of-type(4) > div.roweven > div.blockcontainer2 > form.elementor-form > script[type="text/javascript"]
+----------------------------------------
+Tag: <script type="text/javascript">
+Text: var divs = ["Div1", "Div2"];
+    var visibleDivId = null;
+    function divVisibility(divId) {
+      if(visibleDivId === divId) {
+        visibleDivId = null;
+      } else {
+        visibleDivId = divId;
+      }
+      hideNonVisibleDivs();
+    }
+    function hideNonVisibleDivs() {
+      var i, divId, div;
+      for(i = 0; i < divs.length; i++) {
+        divId = divs[i];
+        div = document.getElementById(divId);
+        if(visibleDivId === divId) {
+          div.style.display = "flex";
+        } else {
+          div.style.display = "none";
+        }
+      }
+    }
+
+ var divs2 = ["Div1Top", "Div2Top"];
+    var visibleDivId2 = null;
+    function divVisibility2(divId) {
+	let adddivword = "Top";
+	divId = divId.concat(adddivword);
+	
+      if(visibleDivId2 === divId) {
+        visibleDivId2 = null;
+
+      } else {
+        visibleDivId2 = divId;
+      }
+      hideNonVisibleDivs2();
+    }
+    function hideNonVisibleDivs2() {
+      var i, divId, div;
+      for(i = 0; i < divs2.length; i++) {
+        divId = divs2[i];
+        div = document.getElementById(divId);
+        if(visibleDivId2 === divId) {
+          div.style.display = "block";
+        } else {
+          div.style.display = "none";
+        }
+      }
+    }
+HTML: <script type="text/javascript">
+ var divs = ["Div1", "Div2"];
+    var visibleDivId = null;
+    function divVisibility(divId) {
+      if(visibleDivId === divId) {
+        visibleDivId = null;
+      } else {
+        visibleDivId = divId;
+      }
+      hideNonVisibleDivs();
+    }
+    function hideNonVisibleDivs() {
+      var i, divId, div;
+      for(i = 0; i < divs.length; i++) {
+        divId = divs[i];
+        div = document.getElementById(divId);
+        if(visibleDivId === divId) {
+          di...
+
+============================================================
+
+12. Selector: body > section:nth-of-type(4) > div.roweven > div.blockcontainer2 > form.elementor-form > select.elementor-field-textual.elementor-size-sm > select#form-field-field_2400c42
+----------------------------------------
+Content: No elements found
+
+============================================================
+
+13. Selector: body > section:nth-of-type(3) > div.rowodd > div.blockcontainer > div.leftblock2 > div > div.descbrochure
+----------------------------------------
+Tag: <div class="descbrochure">
+Text: Product Brochure
+HTML: <div class="descbrochure">
+<div><img alt="" class="brochimg" decoding="async" loading="lazy" sizes="(max-width: 792px) 100vw, 792px" src="/wp-content/uploads/2024/01/11963_3_AIR_Safe_SWAB_Brochure_vf-1.jpg" srcset="/wp-content/uploads/2024/01/11963_3_AIR_Safe_SWAB_Brochure_vf-1.jpg 792w, /wp-content/uploads/2024/01/11963_3_AIR_Safe_SWAB_Brochure_vf-1.jpg 300w, /wp-content/uploads/2024/01/11963_3_AIR_Safe_SWAB_Brochure_vf-1.jpg 768w"/></div>
+<div> </div>
+<p class="downloadpdf"><img alt="Download ...
+
+============================================================
+
+14. Selector: body > section:nth-of-type(2) > div.roweven > div > div.blockcontainer > div.leftblock > div.introprodtext > ul
+----------------------------------------
+Tag: <ul>
+Text: Horizontal airflow geometry.Effective protection to personnel from particulate hazards.Controlled airflow to dry items of evidence in the cabinet.Lockable doors for security.Safe and easy to changeHEPA/ULPA filters.
+HTML: <ul>
+<li>Horizontal airflow geometry.</li>
+<li>Effective protection to personnel from particulate hazards.</li>
+<li>Controlled airflow to dry items of evidence in the cabinet. </li>
+<li>Lockable doors for security.</li>
+<li>Safe and easy to change <a href="https://www.airscience.com/hepa-ulpa-filtration">HEPA/ULPA filters</a>. </li>
+</ul>
+
+============================================================
+

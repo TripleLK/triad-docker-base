@@ -1,0 +1,171 @@
+{% extends "base_site/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+<style>
+  .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .contact-header {
+    margin-bottom: 30px;
+  }
+  
+  .info-box {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-left: 4px solid #007bff;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .form-field {
+    margin-bottom: 20px;
+  }
+  
+  .form-field.full-width {
+    grid-column: span 2;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Override search bar styles to ensure proper styling in form */
+  .search-view input {
+    border: none !important;
+  }
+  
+  textarea {
+    min-height: 150px;
+  }
+  
+  .required {
+    color: #cc0000;
+  }
+  
+  .submit-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Hide the spinner buttons on number inputs */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="contact-container">
+  <div class="contact-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.intro_text %}
+      {{ page.intro_text|richtext }}
+    {% else %}
+      <p>Please use the form below to contact us with any questions or inquiries.</p>
+    {% endif %}
+  </div>
+  
+  <div class="info-box">
+    <h3>Looking for lab equipment?</h3>
+    <p>To request a quote for lab equipment, you have a few options:</p>
+    <ul>
+      <li>Browse our products and add items to your <a href="{% url 'cart_view' %}">quote cart</a>, then submit a request for all items at once.</li>
+      <li>Find a specific model you're interested in and click the "Request Quote" button on that product page.</li>
+      <li>Contact us directly using the form below with details about what you're looking for.</li>
+    </ul>
+  </div>
+  
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  <!-- Contact Form -->
+  <form method="post">
+    {% csrf_token %}
+    
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="name">Name <span class="required">*</span></label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      
+      <div class="form-field">
+        <label for="email">Email <span class="required">*</span></label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-field">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      
+      <div class="form-field">
+        <label for="company">Company/Organization</label>
+        <input type="text" id="company" name="company">
+      </div>
+      
+      <div class="form-field">
+        <label for="inquiry_type">Inquiry Type</label>
+        <select id="inquiry_type" name="inquiry_type">
+          <option value="general">General Inquiry</option>
+          <option value="pricing">Pricing Request</option>
+          <option value="support">Technical Support</option>
+          <option value="sales">Sales Inquiry</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      
+      <div class="form-field full-width">
+        <label for="message">Message <span class="required">*</span></label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="submit-btn">Submit</button>
+    </div>
+  </form>
+</div>
+{% endblock %} 

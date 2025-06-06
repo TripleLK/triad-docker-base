@@ -1,0 +1,5 @@
+---
+- css_selector:
+    css_selector: "h1"
+    index: 0
+- text_selector

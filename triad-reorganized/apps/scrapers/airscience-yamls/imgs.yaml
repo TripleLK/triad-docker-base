@@ -1,0 +1,12 @@
+---
+- css_selector:
+    css_selector: "img[src*='PDT_']"
+- for_each_selector:
+    selector:
+      - concat_selector:
+          first:
+            plain_text_selector:
+              text: https://www.airscience.com
+          second:
+            attr_selector:
+              attr: src

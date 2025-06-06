@@ -1,0 +1,357 @@
+{% extends "base_site/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+<style>
+  .quote-cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .cart-header {
+    margin-bottom: 30px;
+  }
+
+  .cart-icon img {
+      transition: filter 0.3s ease;
+      filter:grayscale(0%);
+  }
+  
+  .cart-items {
+    margin-bottom: 30px;
+  }
+  
+  .cart-item {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .cart-item:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .cart-item-image {
+    flex: 0 0 100px;
+    margin-right: 20px;
+  }
+  
+  .cart-item-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .cart-item-details {
+    flex: 1;
+  }
+  
+  .cart-item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2b2610;
+  }
+  
+  .cart-item-model {
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .cart-item-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    padding: 2px;
+    border: 1px solid #ddd;
+  }
+  
+  .quantity-input {
+    width: 50px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    padding: 4px 0;
+    margin: 0 5px;
+    font-family: 'Afacad', sans-serif;
+    -moz-appearance: textfield;
+  }
+  
+  .quantity-input::-webkit-inner-spin-button,
+  .quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .quantity-input:focus {
+    outline: none;
+  }
+  
+  .quantity-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: #ffffff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #2b2610;
+    transition: background-color 0.2s;
+  }
+  
+  .quantity-btn:hover {
+    background-color: #eeeeee;
+  }
+  
+  .remove-btn {
+    color: #cc0000;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  
+  .trash-icon {
+    color: #cc0000;
+  }
+  
+  .cart-empty {
+    text-align: center;
+    padding: 40px 0;
+  }
+  
+  .cart-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  .continue-shopping {
+    background: #f5f5f5;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .request-quote-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="quote-cart-container">
+  <div class="cart-header">
+    <h1>Quote Cart</h1>
+    {{ page.intro_text|richtext }}
+  </div>
+  
+  {% if cart_items %}
+  <div class="cart-items">
+    {% for item in cart_items %}
+    <div class="cart-item" data-item-id="{{ item.id }}" data-equipment-id="{{ item.equipment_page_id }}" data-slug="{{ item.equipment_page.slug }}">
+      <div class="cart-item-image">
+        {% if item.equipment_page.main_image %}
+        {% with img_url=item.equipment_page.main_image %}
+        <img src="{{ img_url }}" alt="{{ item.model_name }}" onerror="this.src='{% static 'img/default-image.jpg' %}'">
+        {% endwith %}
+        {% else %}
+        <img src="{% static 'img/default-image.jpg' %}" alt="{{ item.model_name }}">
+        {% endif %}
+      </div>
+      
+      <div class="cart-item-details">
+        <div class="cart-item-name">{{ item.equipment_page.title }}</div>
+        <div class="cart-item-model">{{ item.model_name }}</div>
+      </div>
+      
+      <div class="cart-item-actions" onclick="event.stopPropagation();">
+        <div class="cart-item-quantity">
+          <button class="quantity-btn decrease-btn" data-action="decrease" data-quantity="{{ item.quantity }}">
+            {% if item.quantity == 1 %}
+            <i class="fas fa-trash-alt trash-icon"></i>
+            {% else %}
+            -
+            {% endif %}
+          </button>
+          <input type="number" min="1" class="quantity-input" value="{{ item.quantity }}">
+          <button class="quantity-btn increase-btn" data-action="increase">+</button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+  <div class="cart-actions">
+    <a href="/" class="continue-shopping">Continue Shopping</a>
+    <a href="{% url 'quote_request_form' %}" class="request-quote-btn">Request Quote</a>
+  </div>
+  
+  {% else %}
+  <div class="cart-empty">
+    {{ page.empty_cart_text|richtext }}
+    <div class="cart-actions">
+      <a href="/search/" class="continue-shopping">Browse Products</a>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Make cart items clickable to go to product page
+  const cartItems = document.querySelectorAll('.cart-item');
+  
+  cartItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      if (!e.target.closest('.cart-item-actions')) {
+        const slug = this.getAttribute('data-slug');
+        if (slug) {
+          // Navigate to the equipment page using slug
+          window.location.href = `/${slug}/`;
+        }
+      }
+    });
+  });
+
+  // Quantity buttons
+  const quantityBtns = document.querySelectorAll('.quantity-btn');
+  const quantityInputs = document.querySelectorAll('.quantity-input');
+  
+  quantityBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const action = this.getAttribute('data-action');
+      const itemContainer = this.closest('.cart-item');
+      const itemId = itemContainer.getAttribute('data-item-id');
+      const quantityInput = itemContainer.querySelector('.quantity-input');
+      let currentValue = parseInt(quantityInput.value);
+      
+      if (action === 'increase') {
+        currentValue++;
+        quantityInput.value = currentValue;
+        updateCartItem(itemId, currentValue);
+      } else if (action === 'decrease') {
+        if (currentValue > 1) {
+          currentValue--;
+          quantityInput.value = currentValue;
+          updateCartItem(itemId, currentValue);
+          
+          // Update the button appearance
+          if (currentValue === 1) {
+            this.innerHTML = '<i class="fas fa-trash-alt trash-icon"></i>';
+          }
+        } else {
+          // Remove the item
+          removeCartItem(itemId);
+        }
+      }
+    });
+  });
+  
+  // Update on input change
+  quantityInputs.forEach(input => {
+    input.addEventListener('change', function() {
+      const itemContainer = this.closest('.cart-item');
+      const itemId = itemContainer.getAttribute('data-item-id');
+      let newValue = parseInt(this.value);
+      
+      // Validate value
+      if (isNaN(newValue) || newValue < 1) {
+        newValue = 1;
+        this.value = 1;
+      }
+      
+      updateCartItem(itemId, newValue);
+      
+      // Update the decrease button appearance
+      const decreaseBtn = itemContainer.querySelector('.decrease-btn');
+      if (newValue === 1) {
+        decreaseBtn.innerHTML = '<i class="fas fa-trash-alt trash-icon"></i>';
+      } else {
+        decreaseBtn.textContent = '-';
+      }
+    });
+  });
+  
+  // Function to send update request
+  function updateCartItem(itemId, quantity) {
+    const formData = new FormData();
+    formData.append('item_id', itemId);
+    formData.append('quantity', quantity);
+    
+    fetch('{% url "cart_update" %}', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken')
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Update cart count in header
+        updateCartCountDisplay(data.cart_count);
+      } else {
+        alert(data.error || 'An error occurred while updating the cart');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred while updating the cart');
+    });
+  }
+  
+  // Function to remove cart item
+  function removeCartItem(itemId) {
+    // Redirect to remove URL
+    window.location.href = `{% url 'cart_remove' 0 %}`.replace('0', itemId);
+  }
+  
+  function updateCartCountDisplay(count) {
+    // Update cart count in header if present
+    const cartCountElements = document.querySelectorAll('.cart-count');
+    if (cartCountElements.length > 0) {
+      cartCountElements.forEach(el => {
+        el.textContent = count;
+        el.style.display = count > 0 ? 'flex' : 'none';
+      });
+    }
+  }
+  
+  // Helper function to get csrf token
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+});
+</script>
+{% endblock %} 

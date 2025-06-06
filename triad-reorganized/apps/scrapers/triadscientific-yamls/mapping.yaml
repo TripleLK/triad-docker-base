@@ -1,0 +1,22 @@
+---
+# Main mapping file for Triad Scientific product information extraction
+mapping_selector:
+  mapping:
+    name:
+      - file_selector:
+          file_path: apps/scrapers/triadscientific-yamls/name.yaml
+    short_description:
+      - file_selector:
+          file_path: apps/scrapers/triadscientific-yamls/short_description.yaml
+    full_description:
+      - file_selector:
+          file_path: apps/scrapers/triadscientific-yamls/full_description.yaml
+    imgs:
+      - file_selector:
+          file_path: apps/scrapers/triadscientific-yamls/imgs.yaml
+    models:
+      - file_selector:
+          file_path: apps/scrapers/triadscientific-yamls/models.yaml
+    specs_groups:
+      - file_selector:
+          file_path: apps/scrapers/triadscientific-yamls/specs_groups.yaml 

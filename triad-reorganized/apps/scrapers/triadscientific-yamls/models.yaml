@@ -1,0 +1,13 @@
+---
+# Most Triad Scientific products don't have distinct models like AirScience
+# This is a placeholder that returns a single model with the same name as the product
+mapping_selector:
+  mapping:
+    model_name:
+      - css_selector:
+          css_selector: "h1"
+          index: 0
+      - text_selector
+    model_specs:
+      - file_selector:
+          file_path: apps/scrapers/triadscientific-yamls/specs_groups.yaml 

@@ -1,0 +1,439 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags i18n %}
+
+{% block titletag %}{% trans "AI Processing Dashboard" %}{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <style>
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .status-pending {
+            background-color: #f3f4f6;
+            color: #71717a;
+        }
+        .status-processing {
+            background-color: #eff6ff;
+            color: #3b82f6;
+        }
+        .status-completed {
+            background-color: #ecfdf5;
+            color: #10b981;
+        }
+        .status-failed {
+            background-color: #fef2f2;
+            color: #ef4444;
+        }
+        .status-partial {
+            background-color: #fcf8e3;
+            color: #8a6d3b;
+        }
+        .filter-count {
+            background-color: #f3f4f6;
+            border-radius: 9999px;
+            padding: 2px 8px;
+            margin-left: 4px;
+            font-size: 0.8em;
+        }
+        .filter-count.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .action-buttons form {
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .view-toggle {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .view-toggle a {
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .view-toggle a.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            height: 10px;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            background-color: #337ab7;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .custom-button {
+            background-color: #2d7474;
+            color: white;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: normal;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .custom-button:hover {
+            background-color: #1f5e5e;
+            color: white;
+        }
+        .custom-button svg {
+            margin-right: 8px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <header class="w-header">
+        <div class="row">
+            <div class="left">
+                <div class="col">
+                    <h1 class="w-header__title">
+                        {% trans "AI Processing Dashboard" %}
+                    </h1>
+                </div>
+            </div>
+            <div class="right">
+                <div class="col">
+                    <a href="{% url 'ai_processing:process_url' %}" class="custom-button">
+                        <svg class="icon icon-plus" aria-hidden="true" width="16" height="16">
+                            <use href="#icon-plus"></use>
+                        </svg>
+                        {% trans "Process New URL" %}
+                    </a>
+                    <a href="{% url 'ai_processing:batch_process' %}" class="custom-button">
+                        <svg class="icon icon-plus" aria-hidden="true" width="16" height="16">
+                            <use href="#icon-plus"></use>
+                        </svg>
+                        {% trans "Process Batch of URLs" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="nice-padding">
+        <!-- View toggle -->
+        <div class="view-toggle">
+            <a href="{% url 'ai_processing:dashboard' %}?view=individual{% if status_filter %}&status={{ status_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
+               class="{% if view_type == 'individual' %}active{% endif %}">
+                {% trans "Individual URLs" %}
+            </a>
+            <a href="{% url 'ai_processing:dashboard' %}?view=batch{% if status_filter %}&status={{ status_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" 
+               class="{% if view_type == 'batch' %}active{% endif %}">
+                {% trans "Batch Requests" %}
+            </a>
+        </div>
+
+        <!-- Status filters -->
+        <div class="w-filter w-panel w-panel--nested" style="margin-bottom: 20px;">
+            <div class="w-panel__wrapper">
+                <h3 class="w-panel__heading">{% trans "Filter by status" %}</h3>
+                <div class="w-panel__content">
+                    <div class="w-filter__filters" style="display: flex; gap: 10px;">
+                        <a href="{% url 'ai_processing:dashboard' %}?view={{ view_type }}&search={{ search_query }}" 
+                           class="w-filter__optionset-option {% if not status_filter %}w-filter__optionset-option--active{% endif %}">
+                            {% trans "All" %} <span class="filter-count {% if not status_filter %}active{% endif %}">{{ total_count }}</span>
+                        </a>
+                        <a href="{% url 'ai_processing:dashboard' %}?view={{ view_type }}&status=pending&search={{ search_query }}" 
+                           class="w-filter__optionset-option {% if status_filter == 'pending' %}w-filter__optionset-option--active{% endif %}">
+                            {% trans "Pending" %} <span class="filter-count {% if status_filter == 'pending' %}active{% endif %}">{{ pending_count }}</span>
+                        </a>
+                        <a href="{% url 'ai_processing:dashboard' %}?view={{ view_type }}&status=processing&search={{ search_query }}" 
+                           class="w-filter__optionset-option {% if status_filter == 'processing' %}w-filter__optionset-option--active{% endif %}">
+                            {% trans "Processing" %} <span class="filter-count {% if status_filter == 'processing' %}active{% endif %}">{{ processing_count }}</span>
+                        </a>
+                        <a href="{% url 'ai_processing:dashboard' %}?view={{ view_type }}&status=completed&search={{ search_query }}" 
+                           class="w-filter__optionset-option {% if status_filter == 'completed' %}w-filter__optionset-option--active{% endif %}">
+                            {% trans "Completed" %} <span class="filter-count {% if status_filter == 'completed' %}active{% endif %}">{{ completed_count }}</span>
+                        </a>
+                        <a href="{% url 'ai_processing:dashboard' %}?view={{ view_type }}&status=failed&search={{ search_query }}" 
+                           class="w-filter__optionset-option {% if status_filter == 'failed' %}w-filter__optionset-option--active{% endif %}">
+                            {% trans "Failed" %} <span class="filter-count {% if status_filter == 'failed' %}active{% endif %}">{{ failed_count }}</span>
+                        </a>
+                        {% if view_type == 'batch' %}
+                        <a href="{% url 'ai_processing:dashboard' %}?view=batch&status=partial&search={{ search_query }}" 
+                           class="w-filter__optionset-option {% if status_filter == 'partial' %}w-filter__optionset-option--active{% endif %}">
+                            {% trans "Partial" %} <span class="filter-count {% if status_filter == 'partial' %}active{% endif %}">{{ partial_count }}</span>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search box -->
+        <div class="w-field__wrapper" style="margin-bottom: 20px;">
+            <form method="GET" action="{% url 'ai_processing:dashboard' %}">
+                <input type="hidden" name="view" value="{{ view_type }}">
+                {% if status_filter %}
+                <input type="hidden" name="status" value="{{ status_filter }}">
+                {% endif %}
+                <div class="w-field w-field--text_input w-field--text_input--with_clear_button" data-field>
+                    <div class="w-field__help" id="id_q-helptext">
+                        {% if view_type == 'batch' %}
+                        {% trans "Search by batch name" %}
+                        {% else %}
+                        {% trans "Search by URL" %}
+                        {% endif %}
+                    </div>
+                    <div class="w-field__input" data-input-wrapper>
+                        <input type="text" name="search" id="id_search" value="{{ search_query }}" 
+                               placeholder="{% if view_type == 'batch' %}{% trans 'Search batches...' %}{% else %}{% trans 'Search URLs...' %}{% endif %}" class="w-field__input" style="width: 100%;">
+                        {% if search_query %}
+                        <button type="button" class="button button-small button--icon text-replace w-field__clear-button" data-clear-button>
+                            <svg class="icon icon-cross" aria-hidden="true"><use href="#icon-cross"></use></svg>
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+                <button type="submit" class="button">{% trans "Search" %}</button>
+                {% if search_query %}
+                <a href="{% url 'ai_processing:dashboard' %}?view={{ view_type }}{% if status_filter %}&status={{ status_filter }}{% endif %}" class="button button-secondary">
+                    {% trans "Clear" %}
+                </a>
+                {% endif %}
+            </form>
+        </div>
+
+        <!-- Results table - Individual requests -->
+        {% if view_type == 'individual' and requests %}
+            <div class="w-panel">
+                <div class="w-panel__header">
+                    <h2 class="w-panel__heading">{% trans "URL Processing Requests" %}</h2>
+                    <p class="w-panel__subtitle">
+                        {% blocktrans with count=requests.paginator.count %}
+                            Displaying {{ count }} result{{ count|pluralize }}
+                        {% endblocktrans %}
+                    </p>
+                </div>
+
+                <div class="w-panel__content">
+                    <table class="w-table">
+                        <thead>
+                            <tr>
+                                <th>{% trans "ID" %}</th>
+                                <th>{% trans "URL" %}</th>
+                                <th>{% trans "Name" %}</th>
+                                <th>{% trans "Status" %}</th>
+                                <th>{% trans "Created" %}</th>
+                                <th>{% trans "Processed" %}</th>
+                                <th>{% trans "Actions" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for request in requests %}
+                                <tr>
+                                    <td>{{ request.id }}</td>
+                                    <td>
+                                        <a href="{{ request.url }}" target="_blank" rel="noopener noreferrer">
+                                            {{ request.url|truncatechars:50 }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {% if request.name %}
+                                            {{ request.name }}
+                                        {% elif request.status == 'completed' and request.response_data.title %}
+                                            {{ request.response_data.title|truncatechars:40 }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-{{ request.status }}">
+                                            {{ request.get_status_display }}
+                                        </span>
+                                    </td>
+                                    <td>{{ request.created_at|date:"M d, Y H:i" }}</td>
+                                    <td>
+                                        {% if request.processed_at %}
+                                            {{ request.processed_at|date:"M d, Y H:i" }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td class="action-buttons">
+                                        {% if request.status == 'completed' and request.created_page_id %}
+                                            <a href="{% url 'wagtailadmin_pages:edit' request.created_page_id %}" class="button button-small button-secondary">
+                                                {% trans "View" %}
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'ai_processing:processing_status' request.id %}" class="button button-small button-secondary">
+                                                {% trans "View" %}
+                                            </a>
+                                        {% endif %}
+                                        {% if request.status == 'failed' or request.status == 'processing' %}
+                                            <form method="POST" action="{% url 'ai_processing:retry_request' request.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="button button-small">
+                                                    {% trans "Retry" %}
+                                                </button>
+                                            </form>
+                                        {% endif %}
+                                        <form method="POST" action="{% url 'ai_processing:delete_request' request.id %}" 
+                                              onsubmit="return confirm('{% trans "Are you sure you want to delete this request?" %}');">
+                                            {% csrf_token %}
+                                            <button type="submit" class="button button-small button-secondary no">
+                                                {% trans "Delete" %}
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                {% if requests.paginator.num_pages > 1 %}
+                    <div class="w-panel__footer">
+                        <div class="pagination">
+                            <p>{% blocktrans with page_num=requests.number total_pages=requests.paginator.num_pages %}Page {{ page_num }} of {{ total_pages }}.{% endblocktrans %}</p>
+                            <ul>
+                                {% if requests.has_previous %}
+                                    <li class="prev">
+                                        <a href="?view={{ view_type }}&page={{ requests.previous_page_number }}{% if status_filter %}&status={{ status_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                            {% trans "Previous" %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if requests.has_next %}
+                                    <li class="next">
+                                        <a href="?view={{ view_type }}&page={{ requests.next_page_number }}{% if status_filter %}&status={{ status_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                            {% trans "Next" %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% elif view_type == 'batch' and batches %}
+            <!-- Batch Requests Table -->
+            <div class="w-panel">
+                <div class="w-panel__header">
+                    <h2 class="w-panel__heading">{% trans "Batch Processing Requests" %}</h2>
+                    <p class="w-panel__subtitle">
+                        {% blocktrans with count=batches.paginator.count %}
+                            Displaying {{ count }} result{{ count|pluralize }}
+                        {% endblocktrans %}
+                    </p>
+                </div>
+
+                <div class="w-panel__content">
+                    <table class="w-table">
+                        <thead>
+                            <tr>
+                                <th>{% trans "ID" %}</th>
+                                <th>{% trans "Name" %}</th>
+                                <th>{% trans "Status" %}</th>
+                                <th>{% trans "Progress" %}</th>
+                                <th>{% trans "Created" %}</th>
+                                <th>{% trans "Completed" %}</th>
+                                <th>{% trans "Actions" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for batch in batches %}
+                                <tr>
+                                    <td>{{ batch.id }}</td>
+                                    <td>{{ batch.name }}</td>
+                                    <td>
+                                        <span class="status-badge status-{{ batch.status }}">
+                                            {{ batch.get_status_display }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="progress-container">
+                                            <div class="progress-bar" style="width: {{ batch.progress_percentage }}%"></div>
+                                        </div>
+                                        {{ batch.progress_percentage }}% ({{ batch.processed_urls }}/{{ batch.total_urls }})
+                                    </td>
+                                    <td>{{ batch.created_at|date:"M d, Y H:i" }}</td>
+                                    <td>
+                                        {% if batch.completed_at %}
+                                            {{ batch.completed_at|date:"M d, Y H:i" }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td class="action-buttons">
+                                        <a href="{% url 'ai_processing:batch_status' batch.id %}" class="button button-small button-secondary">
+                                            {% trans "View" %}
+                                        </a>
+                                        {% if batch.status == 'failed' or batch.status == 'partial' %}
+                                            <form method="POST" action="{% url 'ai_processing:retry_batch' batch.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="button button-small">
+                                                    {% trans "Retry" %}
+                                                </button>
+                                            </form>
+                                        {% endif %}
+                                        <form method="POST" action="{% url 'ai_processing:delete_batch' batch.id %}" 
+                                              onsubmit="return confirm('{% trans "Are you sure you want to delete this batch and all its requests?" %}');">
+                                            {% csrf_token %}
+                                            <button type="submit" class="button button-small button-secondary no">
+                                                {% trans "Delete" %}
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                {% if batches.paginator.num_pages > 1 %}
+                    <div class="w-panel__footer">
+                        <div class="pagination">
+                            <p>{% blocktrans with page_num=batches.number total_pages=batches.paginator.num_pages %}Page {{ page_num }} of {{ total_pages }}.{% endblocktrans %}</p>
+                            <ul>
+                                {% if batches.has_previous %}
+                                    <li class="prev">
+                                        <a href="?view=batch&page={{ batches.previous_page_number }}{% if status_filter %}&status={{ status_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                            {% trans "Previous" %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if batches.has_next %}
+                                    <li class="next">
+                                        <a href="?view=batch&page={{ batches.next_page_number }}{% if status_filter %}&status={{ status_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">
+                                            {% trans "Next" %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="w-panel">
+                <div class="w-panel__content">
+                    <p>{% trans "No requests found." %}</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %} 

@@ -1,0 +1,26 @@
+---
+# Extract specs from the product description text - SIMPLIFIED VERSION
+# This is an extremely simplified approach that focuses only on the most common specs
+mapping_selector:
+  mapping:
+    section_title:
+      # Default section title since specs are mixed in description
+      - plain_text_selector:
+          text: "Technical Specifications"
+    vals:
+      # Return a list with a single placeholder item - returns MULTIPLE format
+      - plain_text_selector:
+          text: "placeholder"
+      - split_selector:
+          delimiter: "placeholder"
+      - for_each_selector:
+          selector:
+            - value_to_single_selector
+            - mapping_selector:
+                mapping:
+                  spec_name:
+                    - plain_text_selector:
+                        text: "Specifications"
+                  spec_value:
+                    - plain_text_selector:
+                        text: "See full product description for detailed specifications" 

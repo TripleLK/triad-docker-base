@@ -1,0 +1,70 @@
+Content Selected by Different Elements
+Page 1: https://www.airscience.com/product-category-page?brandname=mobile-evidence-transporters&brand=27
+Title: Mobile Evidence Transporter | Air Science
+============================================================
+
+1. Selector: div#tab4
+----------------------------------------
+Tag: <div id="tab4" class="tab-content">
+Text: Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science® ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents. Using innovative filtration technology, the forensic evidence drying cabinet creates a safe work environment over the widest range of applications in the industry.State and Federal Crime Laboratories \ Medical Examiners and Coroners \ Law Enforcement Agencies \ Hospital Emergency Rooms \ Drug Agencies
+HTML: <div class="tab-content" id="tab4">
+<p>Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science® ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents. Using innovative filtration technology, the forensic evidence drying cabinet creates a safe work environment over the widest range of applications in the industry.</p>
+<p>State and Federal ...
+
+============================================================
+
+2. Selector: div#image-wrapper
+----------------------------------------
+Tag: <div class="image-wrapper" id="image-wrapper">
+Text: 
+HTML: <div class="image-wrapper" id="image-wrapper">
+<img alt="" decoding="async" src="/wp-content/uploads/2021/12/PDT_FDC-BASIC_Right.png"/>
+<img alt="" decoding="async" src="/wp-content/uploads/2021/12/PDT_FDC-BASIC_Right.png"/>
+</div>
+
+============================================================
+
+3. Selector: select#form-field-field_2400c42
+----------------------------------------
+Tag: <select name="form_fields[field_2400c42]" id="form-field-field_2400c42" class="product-select" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+Text: Select CategoryBalance EnclosuresBiological Safety CabinetsCeiling Filtration UnitsClassroom DemonstrationCustom EnclosuresDownflow WorkstationsDucted Fume HoodsDuctless Fume HoodsFiltered / Vented Storage CabinetsForensic and Crime Lab EquipmentGlove BagsLaminar Flow HoodsPCR Laminar Flow Cabinets
+HTML: <select class="product-select" id="form-field-field_2400c42" name="form_fields[field_2400c42]" onchange="this.options[this.selectedIndex].value &amp;&amp; (window.location = this.options[this.selectedIndex].value);">
+<option value="Select Category">Select Category</option>
+<option value="/application-category?cat=balance-enclosures">Balance Enclosures</option>
+<option value="/application-category?cat=biological-safety-cabinets">Biological Safety Cabinets</option>
+<option value="/application-cate...
+
+============================================================
+
+4. Selector: body > section:nth-of-type(2) > div.roweven > div > h1
+----------------------------------------
+Tag: <h1>
+Text: Mobile Evidence Transporters
+HTML: <h1>Mobile Evidence Transporters</h1>
+
+============================================================
+
+5. Selector: body > section:nth-of-type(3) > div.rowodd > div.blockcontainer > div.rightblock2:nth-of-type(2) > div.descriptioncontainer
+----------------------------------------
+Tag: <div class="descriptioncontainer">
+Text: DescriptionThe Evidence Transporter is a special-purpose basic evidence transporter and storage cabinet designed to maintain the chain of custody in transport from the field to the laboratory, while allowing effective air-drying prior to evidence processing.
+HTML: <div class="descriptioncontainer">
+<h1>Description</h1>
+<p>
+<div>The Evidence Transporter is a special-purpose basic evidence transporter and storage cabinet designed to maintain the chain of custody in transport from the field to the laboratory, while allowing effective air-drying prior to evidence processing.</div>
+</p>
+</div>
+
+============================================================
+
+6. Selector: body > section:nth-of-type(3) > div.rowodd > div.blockcontainer > div.leftblock2:nth-of-type(1) > div > div.descbrochure
+----------------------------------------
+Tag: <div class="descbrochure">
+Text: Product Brochure
+HTML: <div class="descbrochure">
+<div><img alt="" class="brochimg" decoding="async" loading="lazy" sizes="(max-width: 792px) 100vw, 792px" src="/wp-content/uploads/2021/11/11971_1_AIR_Safekeeper_Brochure_vf3-1.jpg" srcset="/wp-content/uploads/2021/11/11971_1_AIR_Safekeeper_Brochure_vf3-1.jpg 792w, /wp-content/uploads/2021/11/11971_1_AIR_Safekeeper_Brochure_vf3-1.jpg 300w, /wp-content/uploads/2021/11/11971_1_AIR_Safekeeper_Brochure_vf3-1.jpg 768w"/></div>
+<div> </div>
+<p class="downloadpdf"><img alt="D...
+
+============================================================
+

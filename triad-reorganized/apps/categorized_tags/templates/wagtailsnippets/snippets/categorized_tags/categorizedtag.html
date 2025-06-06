@@ -1,0 +1,47 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags %}
+{% load i18n %}
+
+{% block titletag %}{% trans "Tag:" %} {{ object.category }}: {{ object.name }}{% endblock %}
+
+{% block content %}
+    <header class="nice-padding">
+        <div class="row">
+            <div class="left">
+                <div class="col">
+                    <h1 class="icon icon-tag">
+                        <span style="background-color: {{ object.category_color }}; padding: 5px 8px; border-radius: 3px; margin-right: 5px;">
+                            <span style="font-weight: bold;">{{ object.category }}:</span> {{ object.name }}
+                        </span>
+                    </h1>
+                </div>
+            </div>
+            <div class="right">
+                <div class="col">
+                    <a href="{% url 'wagtailsnippets_categorized_tags_2_categorizedtag:edit' object.id %}" class="button button-secondary">
+                        {% trans "Edit" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="nice-padding">
+        <dl>
+            <dt>{% trans "Category" %}</dt>
+            <dd>{{ object.category }}</dd>
+            
+            <dt>{% trans "Name" %}</dt>
+            <dd>{{ object.name }}</dd>
+            
+            <dt>{% trans "Slug" %}</dt>
+            <dd>{{ object.slug }}</dd>
+            
+            <dt>{% trans "Color" %}</dt>
+            <dd>
+                <div style="display: inline-block; width: 20px; height: 20px; background-color: {{ object.category_color }}; border-radius: 3px; vertical-align: middle;"></div>
+                {{ object.category_color }}
+            </dd>
+        </dl>
+    </div>
+{% endblock %} 

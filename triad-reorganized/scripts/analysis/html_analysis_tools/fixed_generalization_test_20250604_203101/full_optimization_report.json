@@ -1,0 +1,106 @@
+{
+  "summary": {
+    "total_pages": 2,
+    "total_selectors_analyzed": 1044,
+    "unique_leaf_selectors": 55,
+    "single_page_elements": 133,
+    "selectors_after_optimization": 46,
+    "selectors_after_redundancy_removal": 28,
+    "final_generalized_selectors": 5,
+    "optimization_threshold": 0.7
+  },
+  "pages": [
+    {
+      "id": 0,
+      "url": "https://www.airscience.com/product-category-page?brandname=safeswab-swab-dryers&brand=30",
+      "title": "Safeswab Drying Cabinets | Air Science"
+    },
+    {
+      "id": 1,
+      "url": "https://www.airscience.com/product-category-page?brandname=mobile-evidence-transporters&brand=27",
+      "title": "Mobile Evidence Transporter | Air Science"
+    }
+  ],
+  "optimized_selectors": [
+    {
+      "css_selector": "body > section",
+      "reason": "unique_content",
+      "content_by_page": {
+        "0": {
+          "page_url": "https://www.airscience.com/product-category-page?brandname=safeswab-swab-dryers&brand=30",
+          "html_content": "<section style=\"padding-top: 50px;\"><div class=\"['roweven']\"><div class=\"['blockcontainer2']\"><h1>Model Specifications</h1><form class=\"['elementor-form']\" method=\"post\" name=\"New Form\"><input type=\"hidden\" name=\"post_id\" value=\"3802\" /><input type=\"hidden\" name=\"form_id\" value=\"2a193c2\" /><input type=\"hidden\" name=\"referer_title\" value /><div>Model</div><script type=\"text/javascript\">var divs = [\"Div1\", \"Div2\"];\n    var visibleDivId = null;\n    function divVisibility(divId) {\n      if(visibleDivId === divId) {\n        visibleDivId = null;\n      } else {\n        visibleDivId = divId;\n      }\n      hideNonVisibleDivs();\n    }\n    function hideNonVisibleDivs() {\n      var i, divId, div;\n      for(i = 0; i < divs.length; i++) {\n        divId = divs[i];\n        div = document.getElementById(divId);\n        if(visibleDivId === divId) {\n          div.style.display = \"flex\";\n        } else {\n          div.style.display = \"none\";\n        }\n      }\n    }\n\n var divs2 = [\"Div1Top\", \"Div2Top\"];\n    var visibleDivId2 = null;\n    function divVisibility2(divId) {\n\tlet adddivword = \"Top\";\n\tdivId = divId.concat(adddivword);\n\t\n      if(visibleDivId2 === divId) {\n        visibleDivId2 = null;\n\n      } else {\n        visibleDivId2 = divId;\n      }\n      hideNonVisibleDivs2();\n    }\n    function hideNonVisibleDivs2() {\n      var i, divId, div;\n      for(i = 0; i < divs2.length; i++) {\n        divId = divs2[i];\n        div = document.getElementById(divId);\n        if(visibleDivId2 === divId) {\n          div.style.display = \"block\";\n        } else {\n          div.style.display = \"none\";\n        }\n      }\n    }</script><select name=\"form_fields[field_2400c42]\" id=\"form-field-field_2400c42\" class=\"['elementor-field-textual', 'elementor-size-sm']\" onchange=\"divVisibility(value);divVisibility2(value)\"><option value=\"Div1\" selected>FDC-001-A - 30 swab capacity, 115VAC, 60Hz</option><option value=\"Div2\">FDC-001M-A - 15 swab capacity, 115VAC, 60Hz</option></select></form></div></div></section>",
+          "content_signature": "text:Model Specifications Model FDC-001-A - 30 swab capacity, 115VAC, 60Hz FDC-001M-A - 15 swab capacity, 115VAC, 60Hz"
+        },
+        "1": {
+          "page_url": "https://www.airscience.com/product-category-page?brandname=mobile-evidence-transporters&brand=27",
+          "html_content": "<section style=\"padding-top: 50px;\"><div class=\"['roweven']\"><div class=\"['blockcontainer2']\"><h1>Model Specifications</h1><form class=\"['elementor-form']\" method=\"post\" name=\"New Form\"><input type=\"hidden\" name=\"post_id\" value=\"3802\" /><input type=\"hidden\" name=\"form_id\" value=\"2a193c2\" /><input type=\"hidden\" name=\"referer_title\" value /><div>Model</div><script type=\"text/javascript\">var divs = [\"Div1\"];\n    var visibleDivId = null;\n    function divVisibility(divId) {\n      if(visibleDivId === divId) {\n        visibleDivId = null;\n      } else {\n        visibleDivId = divId;\n      }\n      hideNonVisibleDivs();\n    }\n    function hideNonVisibleDivs() {\n      var i, divId, div;\n      for(i = 0; i < divs.length; i++) {\n        divId = divs[i];\n        div = document.getElementById(divId);\n        if(visibleDivId === divId) {\n          div.style.display = \"flex\";\n        } else {\n          div.style.display = \"none\";\n        }\n      }\n    }\n\n var divs2 = [\"Div1Top\"];\n    var visibleDivId2 = null;\n    function divVisibility2(divId) {\n\tlet adddivword = \"Top\";\n\tdivId = divId.concat(adddivword);\n\t\n      if(visibleDivId2 === divId) {\n        visibleDivId2 = null;\n\n      } else {\n        visibleDivId2 = divId;\n      }\n      hideNonVisibleDivs2();\n    }\n    function hideNonVisibleDivs2() {\n      var i, divId, div;\n      for(i = 0; i < divs2.length; i++) {\n        divId = divs2[i];\n        div = document.getElementById(divId);\n        if(visibleDivId2 === divId) {\n          div.style.display = \"block\";\n        } else {\n          div.style.display = \"none\";\n        }\n      }\n    }</script><select name=\"form_fields[field_2400c42]\" id=\"form-field-field_2400c42\" class=\"['elementor-field-textual', 'elementor-size-sm']\" onchange=\"divVisibility(value);divVisibility2(value)\"><option value=\"Div1\" selected>FDC-BASIC-A - Portable, PVC frame set-up, mesh fabric wrap.</option></select></form></div></div></section>",
+          "content_signature": "text:Model Specifications Model FDC-BASIC-A - Portable, PVC frame set-up, mesh fabric wrap."
+        }
+      }
+    },
+    {
+      "css_selector": "div[id^=\"D\"]",
+      "reason": "unique_content",
+      "content_by_page": {
+        "0": {
+          "page_url": "https://www.airscience.com/product-category-page?brandname=safeswab-swab-dryers&brand=30",
+          "html_content": "<div id=\"Div1\"><div class=\"['speccontainer']\"><div class=\"['speccolumn']\"><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"1\" onclick=\"toggleExpand(1)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-1\" style=\"display: none;\"><p><strong>Internal Height:</strong><strong>External Width:</strong><strong>External Depth:</strong><strong>External Height:</strong><strong>Shipping Width:</strong><strong>Shipping Depth:</strong><strong>Net Weight:</strong><strong>Shipping Weight:</strong></p></div></div><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"4\" onclick=\"toggleExpand(4)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-4\" style=\"display: none;\"><p><strong>Cabinet Style:</strong><strong>Construction:</strong></p></div></div><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"7\" onclick=\"toggleExpand(7)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-7\" style=\"display: none;\"><p><strong>Environmental:</strong><strong>Quality:</strong></p></div></div></div><div class=\"['speccolumn']\"><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"2\" onclick=\"toggleExpand(2)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-2\" style=\"display: none;\"><p><strong>Cabinet Lighting*</strong><strong>UV lamp</strong><strong>Windowless Doors</strong></p></div></div><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"5\" onclick=\"toggleExpand(5)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-5\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-5\" style=\"display: none;\"><p><strong>Airflow:</strong><strong>Main Filter:</strong></p></div></div><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"8\" onclick=\"toggleExpand(8)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-8\" style=\"display: none;\"><p><a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a></p></div></div></div><div class=\"['speccolumn']\"><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"3\" onclick=\"toggleExpand(3)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-3\" style=\"display: none;\"><p><strong>Electrical Voltage:</strong><strong>NEMA Plug:</strong></p></div></div><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"6\" onclick=\"toggleExpand(6)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-6\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-6\" style=\"display: none;\"><p><strong>Control:</strong></p></div></div></div></div></div>",
+          "content_signature": "text:DIMENSIONS & WEIGHTS 15.25″  |  387 mm 16″  |  406 mm 20″  |  508 mm 16″  |  406 mm 24″  |  610 mm 24″  |  610 mm 18 lbs  |  8.2 kg 25 lbs  |  11.4 kg Internal Height: External Width: External Depth: External Height: Shipping Width: Shipping Depth: Net Weight: Shipping Weight: CONSTRUCTION Desktop Epoxy-coated Steel Cabinet Style: Construction: PROTECTION & COMPLIANCE ISO 14001 : 2015 ; ENERGY STAR® Partner ISO 9001 : 2015 Environmental: Quality: OPTIONS AND ACCESSORIES : LIGHT-FDC : UV-FDC : SDOOR-FDC * Factory installed; specify when ordering Cabinet Lighting* UV lamp Windowless Doors AIRFLOW & FILTRATION Horizontal HEPA / ULPA Airflow: Main Filter: WARRANTY Air Science Legacy Limited™ Warranty ELECTRICAL 120V, 60Hz 5-15P Electrical Voltage: NEMA Plug: CONTROLS & MONITORING Fan Manual On Off Control:"
+        },
+        "1": {
+          "page_url": "https://www.airscience.com/product-category-page?brandname=mobile-evidence-transporters&brand=27",
+          "html_content": "<div id=\"Div1\"><div class=\"['speccontainer']\"><div class=\"['speccolumn']\"><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"1\" onclick=\"toggleExpand(1)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-1\" style=\"display: none;\"><p><strong>Internal Height:</strong><strong>External Width:</strong><strong>External Depth:</strong><strong>External Height:</strong><strong>Shipping Width:</strong><strong>Shipping Depth:</strong><strong>Net Weight:</strong><strong>Shipping Weight:</strong></p></div></div><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"7\" onclick=\"toggleExpand(7)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-7\" style=\"display: none;\"><p><strong>Product Design:</strong><strong>OSHA:</strong><strong>ADA:</strong><strong>Biological Filtration:</strong><strong>Containment:</strong><strong>Education:</strong><strong>Environmental:</strong><strong>Filter:</strong><strong>Quality:</strong></p></div></div></div><div class=\"['speccolumn']\"><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"2\" onclick=\"toggleExpand(2)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-2\" style=\"display: none;\"><p><strong>Windowless Doors</strong></p></div></div><div class=\"['expandable-container']\"><p class=\"['expandable-text']\" data-id=\"5\" onclick=\"toggleExpand(5)\"><img decoding=\"async\" class=\"['arrow']\" id=\"arrow-5\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\" /></p><div class=\"['expandable-content']\" id=\"content-5\" style=\"display: none;\"><p><strong>Main Filter:</strong></p></div></div></div></div></div>",
+          "content_signature": "text:DIMENSIONS & WEIGHTS 68″  |  1727.25 mm 35″  |  889 mm 30″  |  762 mm 69″  |  1753 mm 30″  |  762 mm 30″  |  762 mm 34 lbs  |  15 kg 38 lbs  |  18 kg Internal Height: External Width: External Depth: External Height: Shipping Width: Shipping Depth: Net Weight: Shipping Weight: PROTECTION & COMPLIANCE ANSI Z 9.5-2003; ANSI Z 9.7-2032 OSHA Standard - 29 CRF Wheelchair Access and Lowered Controls IEST-RP-CC-0034.2; IEST-RP-CC007.1; IEST-RP-CC001-4; EN 1856 ANSI/ASHRAE 110 2029 NA ISO 14001; Energy Star Partner B 7989-2001; SEFA Standard 9; ANFOR NFX 15-245 ISO 9001 Product Design: OSHA: ADA: Biological Filtration: Containment: Education: Environmental: Filter: Quality: OPTIONS AND ACCESSORIES : SDOOR-FDC * Factory installed; specify when ordering Windowless Doors AIRFLOW & FILTRATION HEPA / ULPA Main Filter:"
+        }
+      }
+    },
+    {
+      "css_selector": "div[id^=\"D\"][id$=\"Top\"]",
+      "reason": "unique_content",
+      "content_by_page": {
+        "0": {
+          "page_url": "https://www.airscience.com/product-category-page?brandname=safeswab-swab-dryers&brand=30",
+          "html_content": "<div id=\"Div1Top\" style=\"background-color: #FFF !important;\"><div><a href=\"/printspecs.php?print=53\" target=\"_blank\" role=\"button\" class=\"['button1']\">Print Specifications</a></div><div><a href=\"/lib/sitefiles/pdf/techdoc/FDC-001-GAssy.pdf\" target=\"_blank\" role=\"button\" class=\"['button1']\">See Dimensional Drawings</a></div></div>",
+          "content_signature": "text:Print Specifications See Dimensional Drawings"
+        },
+        "1": {
+          "page_url": "https://www.airscience.com/product-category-page?brandname=mobile-evidence-transporters&brand=27",
+          "html_content": "<div id=\"Div1Top\" style=\"background-color: #FFF !important;\"><div><a href=\"/printspecs.php?print=156\" target=\"_blank\" role=\"button\" class=\"['button1']\">Print Specifications</a></div><div><a href=\"/lib/sitefiles/pdf/techdoc/DC-SK-B30GAssly.pdf\" target=\"_blank\" role=\"button\" class=\"['button1']\">See Dimensional Drawings</a></div></div>",
+          "content_signature": "text:Print Specifications See Dimensional Drawings"
+        }
+      }
+    },
+    {
+      "css_selector": "div[id^=\"content-\"]",
+      "reason": "unique_content",
+      "content_by_page": {
+        "0": {
+          "page_url": "https://www.airscience.com/product-category-page?brandname=safeswab-swab-dryers&brand=30",
+          "html_content": "<div class=\"['expandable-content']\" id=\"content-10\" style=\"display: none;\"><p><strong>Cabinet Lighting*</strong><strong>UV lamp</strong><strong>Windowless Doors</strong></p></div>",
+          "content_signature": "text:: LIGHT-FDC : UV-FDC : SDOOR-FDC * Factory installed; specify when ordering Cabinet Lighting* UV lamp Windowless Doors"
+        },
+        "1": {
+          "page_url": "https://www.airscience.com/product-category-page?brandname=mobile-evidence-transporters&brand=27",
+          "html_content": null,
+          "content_signature": null
+        }
+      }
+    },
+    {
+      "css_selector": "div[id^=\"t\"]",
+      "reason": "unique_content",
+      "content_by_page": {
+        "0": {
+          "page_url": "https://www.airscience.com/product-category-page?brandname=safeswab-swab-dryers&brand=30",
+          "html_content": "<div id=\"tab4\" class=\"['tab-content']\"><p>Using innovative filtration technology, the Safeswab drying cabinet creates a safe work environment over the widest range of applications in the industry.</p><p>State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies</p></div>",
+          "content_signature": "text:Using innovative filtration technology, the Safeswab drying cabinet creates a safe work environment over the widest range of applications in the industry. State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies"
+        },
+        "1": {
+          "page_url": "https://www.airscience.com/product-category-page?brandname=mobile-evidence-transporters&brand=27",
+          "html_content": "<div id=\"tab4\" class=\"['tab-content']\"><p>Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science® ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents. Using innovative filtration technology, the forensic evidence drying cabinet creates a safe work environment over the widest range of applications in the industry.</p><p>State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies</p></div>",
+          "content_signature": "text:Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science® ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents. Using innovative filtration technology, the forensic evidence drying cabinet creates a safe work environment over the widest range of applications in the industry. State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies"
+        }
+      }
+    }
+  ]
+}

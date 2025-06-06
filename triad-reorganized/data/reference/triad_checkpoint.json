@@ -1,0 +1,16 @@
+{
+  "last_updated": "2025-05-14T16:54:06.496540",
+  "stats": {
+    "total": 1,
+    "processed": 1,
+    "successful": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "all_urls": [
+    "http://www.triadscientific.com/en/products/hplc-complete-systems/1099/agilent-technologies-1200-series-used-agilent/262322"
+  ],
+  "processed_urls": [
+    "http://www.triadscientific.com/en/products/hplc-complete-systems/1099/agilent-technologies-1200-series-used-agilent/262322"
+  ]
+}

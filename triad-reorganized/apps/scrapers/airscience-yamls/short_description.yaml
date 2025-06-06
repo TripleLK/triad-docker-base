@@ -1,0 +1,6 @@
+---
+# Select the product description paragraph
+- css_selector:
+    css_selector: "div.descriptioncontainer p"
+    index: 0
+- text_selector
