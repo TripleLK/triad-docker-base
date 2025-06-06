@@ -1,0 +1,192 @@
+#+TITLE: Next Steps - Silver Phoenix
+#+AUTHOR: Silver Phoenix  
+#+DATE: 2025-01-19
+#+FILETAGS: :next:steps:silver-phoenix:documentation:readme:phase-b:
+
+* CRITICAL PRIORITY: README.md Complete Rewrite
+
+** Immediate Action Required
+The current `triad-reorganized/README.md` is **completely obsolete** and describes old directory structures, scripts, and workflows that no longer exist after the Phase A reorganization. This is a **critical blocker** that must be addressed before any further development.
+
+### Current README Problems
+- **Obsolete directory references**: References `envs/`, `apps/shared/`, `lllk-wagtail-base/` that don't match current structure
+- **Non-existent scripts**: Documents `run.sh`, `switch_env.sh`, `create_db.sh` that aren't in current organization
+- **Wrong structure description**: Shows old wagtail-docker-base structure completely different from triad-reorganized/
+- **Outdated instructions**: All setup and usage instructions incorrect for current project state
+
+### Required README Rewrite Scope
+- **Document current structure**: Reflect actual triad-reorganized/ directory organization
+- **Update setup instructions**: Accurate environment setup for current Django configuration  
+- **Correct script references**: Document actual scripts in `scripts/` subdirectories
+- **Reflect reorganization**: Explain the organized structure with functional categorization
+- **Accurate usage**: Update all commands and instructions for current file locations
+
+* Immediate Priorities
+
+** Priority 1: Documentation Foundation (CRITICAL)
+Complete README.md rewrite is essential before any other work:
+
+### README.md Rewrite Requirements
+- **Structure Documentation**: Document actual triad-reorganized/ directory structure
+  * `apps/` - Django applications (ai_processing, base_site, categorized_tags, etc.)
+  * `config/` - Django configuration with environments in `config/environments/`
+  * `scripts/` - Organized by function (equipment_scrapers, data_import, analysis, tools)
+  * `docs/` - Documentation (api, development, equipment_integration)
+  * `data/` - Reference data and sample payloads
+  * `archive/` - Development artifacts and historical files
+  * `analysis_outputs/` - Analysis results (archived, current)
+
+- **Setup Instructions**: Update for current Django configuration
+  * Environment configuration location: `config/environments/`
+  * Django settings: `config.settings.dev` and `config.settings.prod`
+  * Database setup: Reflect actual db.sqlite3 location and create_admin.py usage
+  * Requirements: Update for actual requirements.txt location
+
+- **Script Documentation**: Document actual script categories and usage
+  * Equipment scrapers: `scripts/equipment_scrapers/` with selector files and analysis tools
+  * Data import: `scripts/data_import/` with migration and processing tools
+  * Analysis tools: `scripts/analysis/` with HTML analysis and demonstration scripts
+  * Utilities: `scripts/tools/` and main `scripts/git_cleanup_push.py`
+
+- **Development Workflow**: Document current project workflow
+  * AI collaboration framework with `.project_management/` and `.cursor/rules/`
+  * Git automation with `scripts/git_cleanup_push.py`
+  * Archive system for development artifacts vs active files
+
+** Priority 2: Phase B Execution Decision
+After documentation is current, decide on Phase B timing:
+
+### Phase B Considerations
+- **Current state**: All functionality validated within triad-reorganized/ structure
+- **Documentation dependency**: Should complete README before bulk move to avoid confusion
+- **User preference**: Confirm whether to execute Phase B bulk move back to root
+- **Testing requirements**: Any additional validation needed before bulk move
+
+### Phase B Execution Plan (if chosen)
+- **Backup strategy**: Create git tag or comprehensive backup before bulk move
+- **Move methodology**: Systematic approach to move all triad-reorganized/ contents to root
+- **Path updates**: Update any remaining import paths or script references for root-level structure
+- **Final validation**: Confirm Django functionality after bulk move completion
+
+** Priority 3: Layout Documentation Rules
+Create cursor rule for project structure respect:
+
+### Rule Creation Requirements  
+- **Structure validation**: Rule requiring checks against current project layout before changes
+- **Documentation compliance**: Ensure changes align with documented organization patterns
+- **Architecture updates**: Requirements for updating documentation when structure changes
+- **Change approval**: Process for validating structural modifications against established standards
+
+** Priority 4: Frontend Application Testing (Conditional)
+If Phase B is executed, validate frontend integration:
+
+### Client Application Testing
+- **React/JS functionality**: Test `client/` application builds and serves correctly
+- **Backend integration**: Verify frontend-backend communication after structural changes  
+- **Static file serving**: Confirm CSS, JS, and media files accessible from frontend
+- **Development workflow**: Ensure Node.js dependencies and build processes functional
+
+* Essential Context from Silver Phoenix's Work
+
+** Phase A Validation Success
+- **Django functionality**: 100% confirmed working within triad-reorganized/ structure
+- **Testing complete**: System checks, deployment checks, admin panel, web server all functional
+- **Import paths**: All Django apps and configurations load correctly without issues
+- **User validation**: Web server functionality confirmed by user testing
+
+** Clean Project Structure Achieved
+- **Unnecessary files removed**: Cache files, debug artifacts, and system files eliminated
+- **Logical organization**: Archive system properly separating development vs active files
+- **Database integrity**: Both database versions preserved (confirmed different content)
+- **Functional categorization**: Scripts, data, docs organized by purpose from Thunder Hawk's work
+
+** Documentation Assessment Complete
+- **Obsolete README identified**: Current version completely out of sync with project structure  
+- **Architecture foundation**: Comprehensive documentation exists in `triad_project_architecture.org`
+- **Established standards**: Naming conventions and directory rules documented in cursor rules
+- **Update requirements**: Clear scope defined for README rewrite and architecture updates
+
+* Current Project State Excellence
+
+** Validated Organization Structure
+- **triad-reorganized/**: Complete functional Django project with organized subdirectories
+- **Root separation**: Only `.git/`, `.project_management/`, `.cursor/`, `triad-reorganized/` at root
+- **Functional categorization**: Scripts by purpose, data by type, archives by development status
+- **Enhanced AI framework**: Git automation, active work tracking, comprehensive documentation
+
+** Ready for Next Development Phase
+- **Phase A complete**: All files systematically organized with validated functionality
+- **Testing validated**: Django core functionality confirmed working in reorganized structure
+- **Cleanup complete**: Unnecessary files removed while preserving all essential content
+- **Documentation scoped**: Clear requirements for README rewrite and structure updates
+
+* Recommended Approach for Next Model
+
+** Start with README Rewrite (CRITICAL)
+1. **Analyze current structure**: Review actual triad-reorganized/ organization thoroughly
+2. **Document accurately**: Create comprehensive README reflecting current state
+3. **Update instructions**: Ensure all setup and usage instructions work with current structure
+4. **Test documentation**: Verify all documented commands and paths are correct
+
+** Consider Phase B Timing
+1. **Documentation first**: Complete README before considering bulk move
+2. **User consultation**: Confirm Phase B execution preference and timing
+3. **Backup preparation**: Create comprehensive backup strategy before bulk move
+4. **Validation planning**: Define post-Phase B testing requirements
+
+* Decision Points for Next Model
+
+** Documentation Scope and Detail
+- **Comprehensive rewrite**: Complete README overhaul vs incremental updates
+- **Technical depth**: How detailed to make the structure and script documentation
+- **User audience**: Balance developer technical details with general project usage
+
+** Phase B Execution Strategy
+- **Immediate execution**: Proceed with bulk move after README completion
+- **Delayed execution**: Focus on documentation and rule creation first
+- **User preference**: Confirm actual preference for Phase B timing and approach
+
+** Development Priorities
+- **Documentation focus**: Prioritize current, accurate documentation over new features
+- **Structure stability**: Maintain current organization vs further optimization
+- **Rule creation**: How comprehensive to make project layout compliance rules
+
+* Resources and References
+
+** Key Files for README Documentation
+- **Current structure**: `triad-reorganized/` - actual directory organization to document
+- **Django configuration**: `triad-reorganized/config/` - settings and environment configuration
+- **Script organization**: `triad-reorganized/scripts/` - functional categorization to document
+- **Documentation assets**: `triad-reorganized/docs/` - existing documentation to reference
+
+** Architecture Documentation Assets
+- **Architecture file**: `triad-reorganized/docs/triad_project_architecture.org` - comprehensive architecture
+- **Cursor rules**: `.cursor/rules/` - established naming conventions and directory standards
+- **Active work tracking**: `.project_management/active_work_tracking.org` - project objectives and progress
+
+** Testing and Validation Tools
+- **Django commands**: System checks, deployment checks, development server startup
+- **Script testing**: Execute tools from organized script directories
+- **Import validation**: Python import verification for all relocated modules
+
+* Success Criteria
+
+** README Documentation Complete
+- Accurate documentation of current triad-reorganized/ structure and organization
+- Updated setup instructions that work with current Django configuration
+- Correct script references reflecting actual organized script categories
+- Clear development workflow documentation including AI collaboration framework
+
+** Phase B Decision and Execution
+- Informed decision on Phase B timing with user consultation and backup strategy
+- If executed: successful bulk move with preserved functionality and organization
+- Updated documentation reflecting final project structure
+- Validated Django and frontend functionality after any structural changes
+
+** Project Layout Standards Established
+- Cursor rule created for respecting documented project structure
+- Change management integration with layout validation requirements  
+- Architecture documentation updated to reflect current organization
+- Future development aligned with established organizational principles
+
+The foundation is excellent - Phase A validation complete with Django functionality confirmed and project structure cleaned. Next model should prioritize README rewrite as critical blocker, then proceed with Phase B decision and layout documentation standards. 
