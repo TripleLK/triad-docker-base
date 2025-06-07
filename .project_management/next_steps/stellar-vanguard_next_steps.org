@@ -1,0 +1,118 @@
+#+TITLE: Next Steps for Interactive Selector - Stellar Vanguard Handoff
+#+AUTHOR: Stellar Vanguard
+#+DATE: 2025-01-08
+#+FILETAGS: :handoff:interactive-selector:javascript:
+
+* CRITICAL Issues to Address
+
+** 1. Fix UI Element Selection Protection
+***Problem***: Users can still select injected UI elements despite protection code
+***Location***: `apps/content_extractor/selectors/js_injection.py` lines ~545-600
+***Details***: 
+- Current protection checks for element IDs and `content-extractor-ui` class
+- Protection may not be working due to event capturing/bubbling issues
+- Need to strengthen the element detection logic
+
+***Suggested Fix***:
+- Add more robust parent traversal checking
+- Consider using `event.stopImmediatePropagation()` for UI elements
+- Add data attributes to UI elements as additional protection layer
+
+** 2. Selection Management Menu Persistence
+***Problem***: Selection menu should stay open after making selections
+***Location***: `apps/content_extractor/selectors/js_injection.py` `handleElementClick()` function
+***Details***:
+- Currently menu behavior may close or refresh unexpectedly
+- User wants continuous selection workflow with menu remaining visible
+- Menu should update in real-time without closing
+
+***Suggested Fix***:
+- Ensure `updateSelectionManager()` doesn't cause menu to close
+- Remove any code that auto-closes the selection manager during selection
+- Test multi-value field selection workflow
+
+** 3. JavaScript Code Organization
+***Problem***: JavaScript embedded in Python strings is hard to maintain
+***Location***: `apps/content_extractor/selectors/js_injection.py` (entire file)
+***Suggested Solution***:
+- Create `apps/content_extractor/static/js/` directory
+- Extract JavaScript sections to separate `.js` files:
+  - `content_extractor_core.js` - Core functions and utilities
+  - `content_extractor_ui.js` - UI components and menus
+  - `content_extractor_events.js` - Event handlers
+  - `content_extractor_selection.js` - Selection management
+- Modify Python to load and concatenate JavaScript files
+- Maintain template variable injection capability
+
+** 4. File Cleanup Required
+***Problem***: Old interactive selector files need removal
+***Files to investigate and potentially remove***:
+- Check for any old `interactive_selector.py` variants
+- Look for deprecated selector-related files in the project
+- Clean up any unused imports or references
+
+***Action Required***:
+- Use `find` command to locate old selector files
+- Review project structure for deprecated components
+- Update imports and references as needed
+
+** 5. Architecture Documentation Update
+***Problem***: `triad_project_architecture.org` needs updating
+***Location***: Root directory `triad_project_architecture.org`
+***Required Updates***:
+- Document new JavaScript file structure
+- Update content extractor selector section
+- Add information about UI component architecture
+- Document the interaction between Python and JavaScript components
+
+* Technical Context
+
+** Current Architecture
+- Interactive selector uses JavaScript injection via Python
+- UI components created dynamically in browser
+- Selection data stored in `window.contentExtractorData`
+- Functions attached to `window` object for persistence
+
+** Key Functions Status
+- `window.showFieldMenu()` - Working
+- `window.createFieldMenu()` - Working 
+- `window.createSelectionManager()` - Added but needs persistence fix
+- `window.removeSelection()` - Added
+- `window.clearAllSelections()` - Added
+
+** File Structure Context
+```
+apps/content_extractor/selectors/
+├── js_injection.py (main file with embedded JavaScript)
+├── selection_context.py (field definitions)
+└── interactive_selector.py (may need cleanup)
+```
+
+** Recommended New Structure
+```
+apps/content_extractor/
+├── selectors/
+│   ├── js_injection.py (simplified, loads external JS)
+│   └── selection_context.py
+└── static/js/
+    ├── content_extractor_core.js
+    ├── content_extractor_ui.js
+    ├── content_extractor_events.js
+    └── content_extractor_selection.js
+```
+
+* Testing Requirements
+
+After implementing fixes:
+1. Test UI element protection - ensure selector UI cannot be selected
+2. Test selection persistence - verify management menu stays open
+3. Test JavaScript extraction - ensure functionality remains intact
+4. Test file cleanup - verify no broken imports or references
+5. Verify architecture documentation is accurate and complete
+
+* Priority Order
+1. Fix UI element selection protection (critical user experience issue)
+2. Fix selection menu persistence (workflow interruption)
+3. Extract JavaScript to separate files (maintainability)
+4. Clean up old files (code hygiene)
+5. Update architecture documentation (documentation) 
