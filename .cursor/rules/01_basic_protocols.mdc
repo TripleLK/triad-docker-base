@@ -5,64 +5,25 @@ alwaysApply: true
 ---
 # Basic AI Protocols
 
-## CRITICAL: Mandatory Turn Completion Marker
+## CRITICAL: Turn Completion Marker
+Every model response MUST end with: `[SUCCESSFULLY COMPLETED MODEL TURN]`
 
-**ABSOLUTELY REQUIRED**: Every model response MUST end with the exact text:
-```
-[SUCCESSFULLY COMPLETED MODEL TURN]
-```
+## CRITICAL: Conversation Type Detection
+**New Conversation**: If user provides handoff message, cleanup reports, references multiple models, or mentions "handoff"/"transition" → Proceed directly with tasks
 
-This allows the next model to automatically detect interruptions by checking if this marker is present at the end of the previous response.
-
-## CRITICAL: Automatic Interruption Detection
-
-**BEFORE starting any work**, check if the previous model's response ended with `[SUCCESSFULLY COMPLETED MODEL TURN]`:
-
-- **If marker is MISSING**: The previous model was interrupted
-  - **IMMEDIATELY** create a conversation log for the interrupted turn
-  - Mark it clearly: "**INTERRUPTED - INCOMPLETE TURN**"
-  - Document what was accomplished before interruption
-  - Then proceed with assigned tasks
-
-- **If marker is PRESENT**: Previous model completed normally
-  - Proceed with normal workflow
+**Continuing Conversation**: Check for completion marker in previous response
+- Missing marker → Create interruption log marked "**INTERRUPTED - INCOMPLETE TURN**"
+- Present marker → Proceed normally
 
 ## Code Name Protocol
+1. **Establish code name**: Two words (adjective + noun), Xbox gamertag style
+2. **Announce clearly** at start of first response
+3. **Must be unique** - neither word can reuse previous model components
+4. **Update model tracking**: `.project_management/model_name_tracking.org`
 
-### CRITICAL: First Action Required
-
-At the beginning of every conversation, you MUST:
-
-1. **Establish your code name**: Choose two words (adjective + noun) unrelated to the current task
-   - Format: Like an Xbox gamertag (e.g., "Silver Mongoose", "Blue Thunder", "Quiet River")
-   - Should be memorable and easy to reference
-   - Must be unique within this project
-
-2. **Announce your code name**: State it clearly at the start of your first response
-
-3. **If user requests change**: 
-   - Immediately acknowledge and adopt the new name
-   - Update ALL relevant files with the new identifier
-   - Reference the new name in all subsequent work
-
-### Code Name Usage
-
-Your code name will be used in:
-- Conversation log directories: `conversation_logs/[your-code-name]/`
-- Cleanup reports: `[your-code-name]_cleanup.org`
-- Next steps files: `[your-code-name]_next_steps.org`
-- Model tracking document updates
-- All file references and signatures
-
-### Examples of Good Code Names
-- Silver Mongoose
-- Rapid Falcon  
-- Quiet River
-- Blue Thunder
-- Golden Hamster
-- Swift Penguin
-
-### Always Update Model Tracking
-Always update `.project_management/model_name_tracking.org` with your entry when you start work.
+### Usage
+- Log directories: `conversation_logs/[code-name]/`
+- Cleanup reports: `[code-name]_cleanup.org`
+- Next steps: `[code-name]_next_steps.org`
 
 @.project_management/model_name_tracking.org

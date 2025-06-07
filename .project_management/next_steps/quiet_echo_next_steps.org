@@ -1,0 +1,201 @@
+#+TITLE: Next Steps - Quiet Echo Handoff
+#+AUTHOR: Quiet Echo
+#+DATE: 2025-01-08
+#+FILETAGS: :handoff:quiet-echo:django-ninja:migration:
+
+* Handoff Summary
+** From: Quiet Echo
+** To: Next Model
+** Status: DRF → Django Ninja Migration Plan Complete
+** Priority: HIGH - Final API test failure resolution
+
+* Current State Assessment
+** ✅ Research Completed: DRF + Wagtail compatibility issues thoroughly investigated
+** ✅ Root Cause Identified: page_ptr_id vs id field incompatibility between DRF and Wagtail
+** ✅ Solution Validated: Django Ninja has official Wagtail support, resolves compatibility issue
+** ✅ Migration Plan Created: Comprehensive 6-phase implementation strategy documented
+** ⚠️ Implementation Pending: Awaiting user approval to begin Django Ninja migration
+
+* Immediate Next Actions (Priority Order)
+
+** 1. BEGIN PHASE 1: Django Ninja Environment Setup [URGENT]
+   - Install django-ninja: `pip install django-ninja`
+   - Add 'ninja' to INSTALLED_APPS in config/settings/base.py
+   - Create new api.py module in project root
+   - Verify basic Django Ninja setup with simple endpoint
+
+** 2. Create Proof-of-Concept Schema [HIGH]
+   - Implement basic Wagtail Page ModelSchema using Django Ninja
+   - Test page_ptr_id compatibility with simple LabEquipmentPage endpoint
+   - Verify that page_ptr_id issue is resolved in new implementation
+   - Document schema pattern for team reference
+
+** 3. Parallel API Implementation [HIGH]
+   - Create Django Ninja API at /api/v3/ (parallel to existing DRF)
+   - Implement core endpoints: health, stats, basic equipment list
+   - Maintain existing DRF API during transition period
+   - Ensure no conflicts between implementations
+
+* Phase-by-Phase Implementation Guide
+
+** Phase 1: Environment Setup (1-2 hours)
+   *** Files to Create:
+       - api.py (main Django Ninja router)
+       - apps/lab_equipment_api/ninja_schemas.py (Pydantic schemas)
+       - apps/lab_equipment_api/ninja_auth.py (authentication)
+
+   *** Files to Modify:
+       - config/settings/base.py (add Django Ninja, keep DRF temporarily)
+       - config/urls.py (add new API route at /api/v3/)
+
+   *** Success Criteria:
+       - Django Ninja installed and configured
+       - Basic API router accessible at /api/v3/docs
+       - No conflicts with existing DRF API
+
+** Phase 2: Schema Migration (4-6 hours)
+   *** Critical Schemas to Implement:
+       - LabEquipmentPageSchema (with page_ptr_id resolution)
+       - EquipmentModelSchema
+       - CategorizedTagSchema
+       - BulkOperationSchema
+
+   *** Key Implementation Notes:
+       - Use ModelSchema with Config.orm_mode = True for Wagtail compatibility
+       - Implement resolver methods for computed fields
+       - Add field aliases for URL generation
+       - Test each schema individually
+
+** Phase 3: Core Endpoint Migration (6-8 hours)
+   *** Priority Endpoints:
+       1. GET /api/v3/health (replace HealthCheckView)
+       2. GET /api/v3/equipment (replace LabEquipmentViewSet.list)
+       3. GET /api/v3/equipment/{id} (replace LabEquipmentViewSet.retrieve)
+       4. GET /api/v3/equipment/{id}/related (THE FAILING ENDPOINT - test this!)
+
+   *** Testing Strategy:
+       - Test Related Equipment endpoint immediately to verify page_ptr_id fix
+       - Compare response format with existing DRF endpoints
+       - Ensure full feature parity before proceeding
+
+** Phase 4: Authentication Migration (2-3 hours)
+   *** Implementation:
+       - HttpBearer token authentication
+       - Permission dependency injection
+       - Rate limiting configuration
+
+** Phase 5: Complete Migration (1-6 hours)
+   *** Remaining Endpoints:
+       - Bulk operations (create, update)
+       - Search functionality
+       - Cart management
+       - System stats
+
+** Phase 6: Cleanup and Testing (3-4 hours)
+   *** Final Steps:
+       - Update all tests to use Django Ninja TestClient
+       - Remove DRF dependencies from settings.py
+       - Delete old DRF files
+       - Update API documentation
+
+* Critical Success Metrics
+
+** Primary Goal: Fix Related Equipment Test
+   - The get_related_equipment endpoint MUST work without page_ptr_id errors
+   - Test: `python manage.py test apps.lab_equipment_api.tests.test_views.TestLabEquipmentViewSet.test_get_related_equipment`
+   - Expected Result: PASS (currently failing with OperationalError)
+
+** Secondary Goals:
+   - All existing API functionality preserved
+   - Performance equal or better than DRF implementation
+   - Interactive API documentation at /api/v3/docs
+   - Zero breaking changes for API consumers
+
+* Risk Mitigation
+
+** Parallel Implementation Strategy:
+   - Keep existing DRF API running during migration
+   - Use different URL prefix (/api/v3/) for Django Ninja
+   - Test each endpoint thoroughly before switching traffic
+   - Maintain rollback capability throughout process
+
+** Testing Protocol:
+   - Run existing test suite after each phase
+   - Create new Django Ninja-specific tests
+   - Performance testing on key endpoints
+   - Manual verification of Related Equipment functionality
+
+* Key Files Reference
+
+** Documentation:
+   - Migration Plan: .project_management/cleanup_reports/quiet_echo_cleanup.org
+   - Research Notes: .project_management/conversation_logs/quiet_echo/2025-01-08_session_log.org
+
+** Current DRF Implementation (for reference):
+   - apps/lab_equipment_api/views.py (ViewSets to migrate)
+   - apps/lab_equipment_api/serializers.py (Serializers to replace)
+   - apps/lab_equipment_api/urls.py (URL patterns to update)
+
+** Configuration:
+   - config/settings/base.py (DRF config to replace)
+   - config/urls.py (URL routing to update)
+
+* Implementation Notes for Next Model
+
+** Django Ninja Advantages:
+   - Type hints provide better IDE support
+   - Automatic OpenAPI schema generation
+   - Simpler code structure (no ViewSets/Routers)
+   - Native async support for better performance
+
+** Wagtail Integration:
+   - Use ModelSchema with Wagtail Page models
+   - Leverage field aliases for computed properties
+   - Implement resolver methods for complex fields
+   - Official documentation: https://docs.wagtail.org/en/latest/advanced_topics/api/django-ninja.html
+
+** Common Patterns:
+   ```python
+   from ninja import ModelSchema, Field
+   from wagtail.models import Page
+   
+   class BasePageSchema(ModelSchema):
+       url: str = Field(None, alias="get_url")
+       
+       class Config:
+           model = Page
+           model_fields = ["id", "title", "slug"]
+   ```
+
+* Completion Criteria
+
+** Phase 1 Complete When:
+   - Django Ninja installed and basic API responding
+   - /api/v3/docs accessible with interactive documentation
+   - No conflicts with existing DRF API
+
+** Migration Complete When:
+   - Related Equipment test passes (page_ptr_id issue resolved)
+   - All API endpoints migrated with feature parity
+   - Performance equal or better than DRF
+   - DRF dependencies removed from codebase
+
+** Project Success When:
+   - Zero API test failures
+   - Wagtail + API integration fully functional
+   - Codebase simplified and more maintainable
+   - Team ready for continued development
+
+* Emergency Contacts & Resources
+
+** Critical Research:
+   - Wagtail Django Ninja docs: https://docs.wagtail.org/en/latest/advanced_topics/api/django-ninja.html
+   - Django Ninja tutorial: https://django-ninja.dev/tutorial/
+   - Ancient Storm's debugging work: .project_management/cleanup_reports/ancient_storm_cleanup.org
+
+** Rollback Plan:
+   - If issues arise, keep DRF API as fallback
+   - Remove Django Ninja implementation cleanly
+   - Return to debugging DRF + Wagtail compatibility issue
+
+**CRITICAL**: The Related Equipment API test is the primary success metric. If Django Ninja resolves the page_ptr_id issue (as research indicates), this migration will solve the final blocking test failure. 

@@ -5,8 +5,7 @@ alwaysApply: false
 ---
 # Directory Structure Rules
 
-## Directory Structure Compliance
-
+## Structure Compliance
 ### AI Management Files
 - `.project_management/` - All AI collaboration files
 - `.cursor/rules/` - Cursor IDE behavior rules
@@ -20,30 +19,27 @@ alwaysApply: false
 - `config/` - Configuration files
 
 ## Prohibited Actions
-- Creating files outside defined directory structure
+- Creating files outside defined structure
 - Making temporary files in root directory
-- Modifying production database files without explicit permission
-- Renaming core Django files without user approval
+- Modifying production database without permission
+- Renaming core Django files without approval
 
 ## Required Actions  
-- Update `triad_project_architecture.org` when adding new files
-- Use proper naming conventions: `YYYY-MM-DD` for dates, descriptive names for scripts
-- Generate cleanup reports when requested in `.project_management/cleanup_reports/`
-- Maintain `ai_communication_notes.org` with current thinking (max 200 lines)
-- Respect Django project structure and conventions
+- Update `triad_project_architecture.org` when adding files
+- Use naming conventions: `YYYY-MM-DD` for dates
+- Generate cleanup reports in `.project_management/cleanup_reports/`
+- Respect Django project structure
 
-## File Location Guidelines
-
+## File Locations
 ### Scripts and Utilities
-- Scripts go in `scripts/` directory
-- Tests follow `test_*.py` naming convention
-- Analysis outputs in appropriate dated directories
-- Logs and temporary files in designated locations
+- Scripts: `scripts/` directory
+- Tests: `test_*.py` naming
+- Analysis outputs: dated directories
+- Logs: designated locations
 
-### AI Collaboration Files
+### AI Files
 - Conversation logs: `.project_management/conversation_logs/[model-name]/`
 - Cleanup reports: `.project_management/cleanup_reports/`
 - Next steps: `.project_management/next_steps/`
-- Architecture documentation: Root level `triad_project_architecture.org`
 
 @triad_project_architecture.org

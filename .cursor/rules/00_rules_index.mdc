@@ -6,47 +6,24 @@ alwaysApply: true
 # Cursor Rules Index
 
 ## CRITICAL Requirements
-All AI models must follow these essential protocols:
 - **Turn Completion Marker**: End every response with `[SUCCESSFULLY COMPLETED MODEL TURN]`
 - **Conversation Logging**: Document ALL actions in daily conversation logs
-- **Code Name Protocol**: Establish unique code name for tracking and organization
+- **Code Name Protocol**: Establish unique code name for tracking
 
-## Rule Files Overview
-
-### Always Applied Rules
-These rules apply to every AI turn regardless of task:
-
+## Always Applied Rules
 - **01_basic_protocols.mdc** - Turn completion, code names, interruption detection
 - **02_conversation_logging.mdc** - Mandatory action logging and documentation
 - **04_naming_conventions.mdc** - File naming and documentation standards
-- **05_change_management.mdc** - Change approval workflow and requirements
+- **05_change_management.mdc** - Change approval workflow
 
-### Conditionally Applied Rules
-These rules apply only to specific task types:
-
+## Conditionally Applied Rules
 - **03_cleanup_protocol.mdc** - Applied when cleanup is requested
-- **03_directory_structure.mdc** - Applied for turns involving file creation, movement, directory setup, or project orientation
-- **06_django_specific.mdc** - Applied for any tasks that involve django coding
-- **07_web_testing_protocols.mdc** - Applied for any turn that will require testing a django server
-- **08_rule_maintenance.mdc** - Applied for any turns that involve modifying cursor rules
+- **03_directory_structure.mdc** - File creation, movement, directory setup
+- **06_django_specific.mdc** - Django coding tasks
+- **07_web_testing_protocols.mdc** - Django server testing
+- **08_rule_maintenance.mdc** - Modifying cursor rules
+- **09_project_layout_compliance.mdc** - File creation/movement compliance
 
-## Rule Organization Rationale
-
-### Functional Separation
-- **Basic Protocols**: Core AI behavior that must be consistent across all interactions
-- **Conversation Management**: Documentation and logging requirements for continuity
-- **Project Standards**: Naming, change management, and quality requirements  
-- **Domain-Specific**: Django development, web testing, directory management
-- **System Maintenance**: Rule system integrity and cursor configuration
-
-### Size and Focus
-Each rule file focuses on a specific functional area to:
-- Improve readability and maintenance
-- Reduce cognitive load for models
-- Enable conditional application based on task type
-- Allow independent updates without affecting other rules
-
-## Tracking and Maintenance
-- **rule_application_tracking.org** - Complete rule classification and IDE configuration status
-- **08_rule_maintenance.mdc** - Protocols for adding, modifying, and maintaining rules
-- All rule changes must update tracking index to prevent orphaned rules
+## Tracking
+- **rule_application_tracking.org** - Rule classification and IDE status
+- All rule changes must update tracking index

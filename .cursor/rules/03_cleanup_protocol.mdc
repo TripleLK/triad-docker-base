@@ -6,116 +6,58 @@ alwaysApply: false
 # Cleanup Protocol
 
 ## When User Says "Clean Up"
-
-Execute ALL of the following steps in order:
+Execute ALL steps in order:
 
 ## Step 1: Archive Temporary Files
-- Move any temporary files you created to: `.old_temporary_files/[your-code-name]/`
-- Include timestamp in directory name if multiple cleanup sessions
-- Create archive directory structure if it doesn't exist
-- Document what was moved in cleanup report
+- Move temp files to: `.old_temporary_files/[code-name]/`
+- Create directory if needed
+- Document in cleanup report
 
 ## Step 2: Generate Cleanup Report
-Create: `.project_management/cleanup_reports/[your-code-name]_cleanup.org`
+Create: `.project_management/cleanup_reports/[code-name]_cleanup.org`
 
-### Required Report Sections:
-
-#### Summary of Changes Made
-- High-level overview of what was accomplished
-- Major decisions and outcomes
-
-#### Files Modified/Created/Deleted
-- Complete list with line numbers when applicable
-- Reason for each change
-- Location of archived files
-
-#### Reasoning for Each Change
-- Connect changes to project goals
-- Explain decision-making process
-- Note alternative approaches considered
-
-#### Updated Architecture
-- Document any structural changes
-- Update file location references
-- Note new patterns established
-
-#### Potential Issues or Warnings
-- Identify any concerns for future work
-- Flag incomplete tasks
-- Note dependencies or risks
-
-#### Verification Steps Completed
-- List any testing or validation performed
-- Confirm file system integrity
-- Verify no broken references
-
-#### Conversation Context References
-- Link to relevant conversation logs
-- Include session dates and key decisions
-- Cross-reference to related cleanup reports
+### Required Sections:
+- **Summary**: What was accomplished, major decisions
+- **Files**: Complete list modified/created/deleted with line numbers
+- **Reasoning**: Why changes were made, alternatives considered
+- **Architecture**: Structural changes, new patterns
+- **Issues**: Concerns, incomplete tasks, risks
+- **Verification**: Testing performed, integrity checks
+- **Context**: Links to conversation logs, related reports
 
 ## Step 3: Create Next Steps File
-Create: `.project_management/next_steps/[your-code-name]_next_steps.org`
+Create: `.project_management/next_steps/[code-name]_next_steps.org`
 
-### Required Next Steps Content:
+### Required Content:
+- **Immediate Priorities**: First tasks, critical blockers
+- **Approach**: Strategy for next model, key files to review
+- **Decisions**: Questions needing user input, choice points
+- **Handoff**: Current state, incomplete work, resources
 
-#### Immediate Priorities
-- Tasks that should be tackled first
-- Critical blockers or dependencies
+## Step 4: Write Handoff Message
+Create markdown code block in chat (max 200 words):
 
-#### Recommended Approach
-- Suggested strategy for next AI model
-- Key files to review first
-- Important context to understand
+```
+**[Code Name] → Next Model Handoff**
 
-#### Decision Points for User
-- Questions that need user input
-- Choices between different approaches
-- Clarifications needed
+✅ **COMPLETED**: [Brief summary]
+🎯 **NEXT PRIORITY**: [Critical task]
+📁 **KEY FILES**: [Essential files]
+⚠️ **IMPORTANT**: [Warnings/context]
 
-#### Handoff Information
-- Current state of work
-- What was left intentionally incomplete
-- Resources and references for continuation
+📋 **DOCUMENTATION**: 
+- Cleanup: `.project_management/cleanup_reports/[code-name]_cleanup.org`
+- Next Steps: `.project_management/next_steps/[code-name]_next_steps.org`
+- Conversation Log: `.project_management/conversation_logs/[code-name]/[date]_session_log.org`
 
-## Step 4: Execute Git Automation (FINAL STEP)
-**CRITICAL**: Always execute git automation as the FINAL cleanup step
+Ready for seamless handoff! 🚀
+```
 
-### Git Push Requirements
-- Execute: `python triad-reorganized/scripts/git_cleanup_push.py` (without --dry-run flag)
+## Step 5: Git Automation (FINAL)
+- Execute: `python triad-reorganized/scripts/git_cleanup_push.py`
 - Commit and push ALL cleanup work to ai-work branch
-- Verify successful push to remote repository
-- Document git commit hash and push success in conversation log
-
-### Git Automation Benefits
-- Preserves all cleanup work with proper model attribution
-- Enables seamless handoff to next AI model
-- Maintains comprehensive git history for project continuity
-- Prevents loss of work due to session interruptions
-
-### Verification Steps
-- Confirm commit includes all cleanup files (reports, next steps, conversation logs)
-- Verify push completed successfully to origin/ai-work
-- Check that git status shows clean working directory after push
-- Document any git-related issues or conflicts in cleanup report
-
-**NOTE**: Do NOT consider cleanup complete until git automation has successfully executed and pushed all changes to the remote repository.
-
-## File Format Standards
-- All files in org-mode format
-- Use proper org-mode headers and metadata
-- Include timestamps and code name references
-- Cross-reference related files
-
-## Archive Organization
-```
-.old_temporary_files/
-├── [model-code-name]/
-│   ├── [timestamp]/
-│   │   ├── temp_file_1
-│   │   └── temp_file_2
-│   └── archive_manifest.org
-```
+- Verify successful push
+- Document commit hash in conversation log
 
 @.project_management/cleanup_reports/
 @.project_management/next_steps/

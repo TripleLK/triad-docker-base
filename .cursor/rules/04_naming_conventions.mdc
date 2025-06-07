@@ -3,61 +3,44 @@ description:
 globs: 
 alwaysApply: true
 ---
-# Naming Conventions and Documentation Standards
+# Naming Conventions
 
-## File Naming Conventions
-- Dates: `YYYY-MM-DD` format
-- Times: `HHMMSS` format (24-hour)
+## File Naming
+- Dates: `YYYY-MM-DD`
+- Times: `HHMMSS` (24-hour)
 - Scripts: `descriptive_name.py`
-- Config: `config_name.json` or `config_name.py`  
+- Config: `config_name.json|.py`
 - Tests: `test_*.py`
 - Logs: `*.log`
 - Org files: `descriptive_name.org`
 
-## Code Documentation Requirements
-
-### Python File Headers
-All new .py files should include:
+## Python Documentation
+### File Headers
 ```python
 """
 Brief description of file purpose.
 
-Created by: [Your Code Name]
+Created by: [Code Name]
 Date: [YYYY-MM-DD]
 Project: Triad Docker Base
 """
 ```
 
-### Python Documentation Standards
-- Use Google-style docstrings
-- Inline comments: Explain WHY, not what
-- Complex logic: Add detailed comments
-- Functions: Document parameters and return values
+### Standards
+- Google-style docstrings
+- Comments explain WHY, not what
+- Document function parameters and returns
 
-### Org File Headers
+## Org File Headers
 ```org
 #+TITLE: [Descriptive Title]
-#+AUTHOR: [Your Code Name]  
+#+AUTHOR: [Code Name]  
 #+DATE: [YYYY-MM-DD]
 #+FILETAGS: :relevant:tags:
 ```
 
-## Quality Standards
-
-### Before Creating Files
-- Verify necessity and location
-- Check naming convention compliance
-- Ensure proper documentation
-- Plan for maintenance and updates
-
-### Before Modifying Files
-- Understand current functionality
-- Consider impact on other components
-- Plan testing approach
-- Document expected changes
-
-### Documentation Requirements
-- Record rationale for all changes
-- Update relevant architecture files
-- Cross-reference in conversation logs
-- Note in cleanup reports
+## Requirements
+- Verify necessity and location before creating files
+- Check naming compliance
+- Update architecture files when creating new files
+- Document rationale in conversation logs

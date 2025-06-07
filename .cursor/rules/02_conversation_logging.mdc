@@ -5,83 +5,36 @@ alwaysApply: true
 ---
 # Conversation Logging Protocol
 
-## CRITICAL: Mandatory Logging After EVERY Model Action
+## CRITICAL: Mandatory Logging
+Create/update conversation log AFTER EVERY TURN with any action.
 
-**ABSOLUTELY REQUIRED**: You MUST create or update a conversation log **AFTER EVERY SINGLE TURN** where you take any action, regardless of how small.
+## CRITICAL: Active Work Tracking
+Review and update `.project_management/active_work_tracking.org` every session:
+- At start: Review objectives
+- During work: Update progress
+- At end: Mark completed tasks
 
-This includes:
-- Every code edit or file creation
-- Every search or analysis task
-- Every response to user questions
-- Every cleanup or organizational task
-- Even simple clarification responses
-
-**NO EXCEPTIONS**: If you performed any action or provided any response, you MUST log it before control returns to the user.
-
-## CRITICAL: Mandatory Active Work Tracking Maintenance
-
-**ABSOLUTELY REQUIRED**: You MUST review and update `.project_management/active_work_tracking.org` during EVERY work session.
-
-### When to Update Active Work Tracking
-- **At session start**: Review current objectives and status
-- **During significant work**: Update progress on current phases/goals
-- **When strategy changes**: Document new approaches or discoveries
-- **At session end**: Mark completed tasks and update current status
-
-### Required Updates Include
-- Mark completed tasks as [X] 
-- Update phase status and progress
-- Add new insights or decisions made
-- Update success criteria based on work completed
-- Document any strategy changes or approach modifications
-
-### Active Work Tracking Integration
-- Reference active work goals in conversation logs
-- Align all work with documented project objectives
-- Update tracking BEFORE creating cleanup reports
-- Ensure next steps align with active work priorities
-
-**NOTE**: Active work tracking serves as the master project roadmap - all model work should connect to and advance these documented objectives.
-
-## Log File Location and Naming
-- Directory: `.project_management/conversation_logs/[your-code-name]/`
+## Log Location
+- Directory: `.project_management/conversation_logs/[code-name]/`
 - Filename: `[YYYY-MM-DD]_session_log.org`
-- Create directory if it doesn't exist
 
 ## Required Log Content
-
-### Header Information
+### Header
 ```org
-#+TITLE: Conversation Log - [Your Code Name]
+#+TITLE: Conversation Log - [Code Name]
 #+DATE: [YYYY-MM-DD]
-#+MODEL: [Your Code Name]
+#+MODEL: [Code Name]
 #+SESSION_START: [timestamp]
-#+FILETAGS: :conversation:log:[your-code-name]:
+#+FILETAGS: :conversation:log:[code-name]:
 ```
 
-### Mandatory Sections
+### Sections
+- **Discussion Summary**: Topics, decisions, requests
+- **Changes Made**: Files modified/created/deleted with line numbers
+- **Rationale**: Why changes were made
+- **Cross-References**: Links to cleanup reports, architecture updates
 
-#### Discussion Summary
-- Main topics covered in this turn
-- Key decisions made
-- User requests and responses
-
-#### Changes Made
-- List ALL files modified/created/deleted
-- Include line numbers when possible
-- Brief description of each change
-
-#### Rationale
-- Explain WHY each change was made
-- Connect decisions to project goals
-- Note any alternative approaches considered
-
-#### Cross-References
-- Link to related cleanup reports
-- Reference architecture updates
-- Note connections to previous conversation logs
-
-## Format Example
+## Format
 ```org
 * Turn [N]: [Brief Description]
   :PROPERTIES:
@@ -89,30 +42,9 @@ This includes:
   :END:
 
 ** Discussion Summary
-   - User requested X
-   - Discussed approach Y
-   - Decided on solution Z
-
 ** Changes Made
-   - Modified file.py:42-45 - Updated function signature
-   - Created new_file.org - Documentation for feature
-   - Deleted temp_file.json - No longer needed
-
 ** Rationale
-   - Changed function signature to improve type safety
-   - Created documentation to support future AI handoffs
-   - Removed temporary file to clean up workspace
-
 ** Next Steps Identified
-   - Need to test new function
-   - Should update related documentation
 ```
-
-## Log Maintenance
-- **ALWAYS append** to existing daily log after every action
-- **NEVER skip logging** regardless of action size
-- Include timestamp for each turn
-- Update session metadata as needed
-- If you forget to log a turn, create the log entry immediately when you realize
 
 @.project_management/conversation_logs/

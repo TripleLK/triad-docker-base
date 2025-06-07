@@ -3,50 +3,25 @@ description: Use for any tasks that involve django coding.
 globs: 
 alwaysApply: false
 ---
-# Django Project Specific Rules
+# Django Project Rules
 
-## Project Context
-
-This is a **Django web application** with HTML analysis and web scraping capabilities. The project includes equipment-related functionality and API interactions.
-
-### Technology Stack
+## Technology Stack
 - Django web framework
-- Python-based development
-- SQLite database (example provided)
-- HTML analysis and processing tools
-- Web scraping capabilities
+- SQLite database
+- HTML analysis and web scraping
+- API interactions
 
-### Existing Structure
+## Structure
 - `apps/` - Django applications
 - `scripts/` - Utility scripts  
-- `html_analysis_tools/` - HTML processing utilities
+- `html_analysis_tools/` - HTML processing
 - `tests/` - Test files
-- Multiple analysis output directories
 
-### Development Patterns
-- Test-driven development (multiple test files present)
-- API integration and verification
-- Equipment/product data processing
-- HTML analysis and comparison tools
-
-## Key Architectural Principles
-- **Respect existing Django structure** - Don't disrupt the established development patterns
-- **AI collaboration layer** - Management files in `.project_management/`
-- **Code separation** - Keep AI tracking separate from application code
-- **Goal-driven development** - Wait for user-defined objectives before major work
-
-## Django Development Guidelines
-
-### Code Quality
-- Follow Python/Django best practices
+## Development Guidelines
+- Follow Django best practices
 - Write tests for new functionality
 - Document complex logic
 - Maintain separation of concerns
-
-### Django Structure Protection
-- Django project structure remains intact and functional
-- Don't move core Django files (manage.py, settings.py, etc.) without permission
-- Respect Django app organization patterns
-- Test Django functionality after file movements
-
-**Remember**: This is a DJANGO WEB APPLICATION under active development. Respect the existing codebase while adding AI collaboration capabilities.
+- Respect existing Django structure
+- Don't move core Django files without permission
+- Test Django functionality after changes
