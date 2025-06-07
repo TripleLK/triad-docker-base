@@ -1,0 +1,168 @@
+#+TITLE: Stellar Beacon Next Steps
+#+DATE: 2025-01-08
+#+MODEL: Stellar Beacon
+#+FILETAGS: :next-steps:stellar-beacon:
+
+* Immediate Priorities
+
+** 1. Django App Integration (CRITICAL FIRST TASK)
+   **BEFORE starting implementation**, integrate the new app into Django:
+
+*** Django Settings Configuration
+    - Add `'apps.content_extractor'` to `INSTALLED_APPS` in Django settings
+    - Verify no conflicts with existing app configurations
+    - Ensure proper app discovery and loading
+
+*** Database Migration
+    - Run `python manage.py makemigrations content_extractor`
+    - Review generated migration file for model relationships
+    - Run `python manage.py migrate` to create database tables
+    - Verify all models created correctly in Django admin
+
+** 2. Phase 1 Implementation - HTML Processing Foundation
+   Start with HTML to JSON conversion system:
+
+*** Phase 1.1: HTML Processor (`apps/content_extractor/extractors/html_processor.py`)
+    **Objective**: Convert HTML pages to simplified JSON DOM representation
+    
+    **Key Functions to Implement**:
+    - `fetch_html(url)`: Download HTML with proper headers/user-agents
+    - `process_html(html_content)`: Strip unnecessary elements, retain semantic content
+    - `to_json_dom(soup)`: Convert BeautifulSoup to simplified JSON structure
+    - `generate_content_hash(json_dom)`: Create hash for change detection
+    
+    **JSON Structure Example**:
+    ```json
+    {
+      "tag": "div",
+      "id": "main-content", 
+      "class": ["content", "product-page"],
+      "text": "Product title here",
+      "attributes": {"data-product-id": "123"},
+      "children": [...]
+    }
+    ```
+
+*** Phase 1.2: Page Analyzer (`apps/content_extractor/utils/page_analyzer.py`)
+    **Objective**: Orchestrate HTML fetching, processing, and Django model storage
+    
+    **Integration Requirements**:
+    - Use ExtractionProject and AnalyzedPage models
+    - Handle URL validation and error cases
+    - Batch processing for multiple URLs
+    - Progress tracking and logging
+
+* Technical Implementation Guide
+
+** Required Dependencies
+   Add to Django project:
+   ```bash
+   pip install selenium beautifulsoup4 lxml webdriver-manager requests
+   ```
+
+** Development Approach
+*** Start Small and Test Early
+   1. **Single Page Test**: Get one HTML page converted to JSON successfully
+   2. **Model Integration**: Store in Django models with proper validation
+   3. **Batch Processing**: Handle multiple pages from same domain
+   4. **Error Handling**: Robust error handling for various HTML structures
+
+*** Testing Strategy
+   - Use real websites for testing (e.g., e-commerce product pages)
+   - Test edge cases: malformed HTML, missing elements, large pages
+   - Validate JSON structure consistency across different page types
+   - Verify content hash generation detects changes correctly
+
+** File Structure Guidance
+   ```
+   apps/content_extractor/
+   ├── extractors/
+   │   ├── html_processor.py     ← START HERE (Phase 1.1)
+   │   └── __init__.py
+   ├── utils/
+   │   ├── page_analyzer.py      ← THEN HERE (Phase 1.2)
+   │   └── __init__.py
+   ├── models.py                 ← READY (create migrations)
+   └── admin.py                  ← READY (test in Django admin)
+   ```
+
+* Next Phase Preview
+
+** Phase 2: Human-in-the-Loop Selection (AFTER Phase 1)
+   Once HTML processing is working:
+   - **Selenium Interface**: Load pages with custom JavaScript injection
+   - **Selection UI**: Right-click context menus and element highlighting
+   - **XPath Generation**: Convert user selections to robust selectors
+   - **Cross-page Validation**: Test selectors across multiple pages
+
+** Key Design Decisions for Next Model
+
+*** HTML Processing Scope
+   - **Question**: How much preprocessing should be done vs. preserving original structure?
+   - **Recommendation**: Start conservative (keep more elements), then optimize based on testing
+   - **Consideration**: Balance between token reduction and content loss
+
+*** Content Representation
+   - **Question**: Store original HTML + processed JSON, or just processed JSON?
+   - **Recommendation**: Store both initially for debugging and comparison
+   - **Consideration**: Database storage vs. analysis flexibility trade-off
+
+*** Error Handling Strategy
+   - **Question**: How to handle sites with anti-scraping measures?
+   - **Recommendation**: Start with basic requests, add sophistication as needed
+   - **Consideration**: Respect robots.txt and rate limiting
+
+* Resources for Implementation
+
+** Key Files to Review
+   - `apps/content_extractor/models.py` - Complete data model design
+   - `.project_management/active_work_tracking.org` - Full implementation plan
+   - Django admin interface - Test model relationships and validation
+
+** External Resources
+   - BeautifulSoup4 documentation for HTML parsing best practices
+   - lxml XPath tutorials for future selector generation
+   - Selenium documentation for human interface planning
+
+** Testing Targets
+   - E-commerce sites (product pages with structured data)
+   - News websites (article pages with consistent layouts)
+   - Directory sites (listing pages with repeated elements)
+
+* Critical Success Factors
+
+** Phase 1 Success Criteria
+   - [  ] Django app integrated and migrations completed
+   - [  ] Single HTML page successfully converted to clean JSON
+   - [  ] JSON structure is consistent and useful for content analysis
+   - [  ] Content stored in Django models with proper relationships
+   - [  ] Batch processing works for multiple pages from same domain
+
+** Foundation Quality Markers
+   - [  ] Code is well-documented and testable
+   - [  ] Error handling is robust for various HTML structures
+   - [  ] JSON output is significantly smaller than original HTML
+   - [  ] Content hash accurately detects page changes
+   - [  ] Performance suitable for processing 10+ pages quickly
+
+* Handoff Context
+
+** What Stellar Beacon Completed
+   - ✅ Complete Django app skeleton with models, admin, directory structure
+   - ✅ Comprehensive 5-phase implementation plan (20-30 model sessions total)
+   - ✅ Archive of 14 historical models for clean workspace
+   - ✅ Updated active work tracking focused on Content Extractor system
+
+** Current State
+   - **Status**: Skeleton complete, ready for Phase 1 implementation
+   - **Next Critical Path**: Django integration → HTML processing → human interface
+   - **Resources**: Detailed implementation plan, clear file structure, defined models
+
+** Future Vision
+   System will enable automated content extraction from any website through:
+   1. **Human trains system** by selecting content on 3-5 sample pages
+   2. **Algorithm generates selectors** that work across all similar pages
+   3. **Pattern generalization** extends selectors to handle variations
+   4. **Reliable extraction** of just the unique content for AI processing
+
+Ready for focused implementation with clear direction and strong foundation! 🚀 

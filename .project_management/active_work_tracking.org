@@ -1,81 +1,227 @@
 #+TITLE: Active Work Tracking
-#+DATE: [2025-01-19]
-#+AUTHOR: Various Models
+#+DATE: [2025-01-08]
+#+AUTHOR: Stellar Beacon
 #+FILETAGS: :project:management:tracking:
 
 * COMPLETED MILESTONES ✅
 
-** [X] Django Ninja API v3 Testing - COMPLETE ✅ 
-   CLOSED: [2025-01-19 Sun 15:00] 
+** [X] Historical Model File Archiving - COMPLETE ✅ 
+   CLOSED: [2025-01-08] 
    :PROPERTIES:
-   :COMPLETED_BY: Ancient Harbor
-   :COMPLETION_DATE: 2025-01-19
-   :FINAL_STATUS: 100% test coverage (35/35 tests passing)
+   :COMPLETED_BY: Stellar Beacon
+   :COMPLETION_DATE: 2025-01-08
+   :FINAL_STATUS: All 14 historical models archived successfully
    :END:
    
-   - [X] Unit test validation (22/22 passing)
-   - [X] Integration test setup and execution (13/13 passing)  
-   - [X] API parameter validation and error handling
-   - [X] Wagtail compatibility verification
-   - [X] Production readiness confirmation
+   - [X] Created .old_model_files/ archive structure
+   - [X] Moved 41 files (14 conversation logs + 14 cleanup reports + 13 next steps)
+   - [X] Preserved chronological organization and historical context
+   - [X] Cleaned active workspace for new development
    
-   **RESULT**: Django Ninja API v3 migration is COMPLETE and production-ready
+   **RESULT**: Clean workspace ready with streamlined cursor rules for optimal performance
 
 * CURRENT HIGH PRIORITY WORK 🎯
 
-** [NEXT] Cursor Rules Simplification - PRIORITY 1
-   SCHEDULED: <2025-01-19>
+** Content Extractor System - Human-in-the-Loop HTML Analysis
+   SCHEDULED: <2025-01-08>
    :PROPERTIES:
-   :ASSIGNED_TO: Next Model
+   :ASSIGNED_TO: Future Models
    :PRIORITY: HIGH
-   :USER_REQUEST: Explicit user requirement
+   :PROJECT_TYPE: New Sub-Project
+   :STATUS: Setup Complete - Implementation Ready
    :END:
    
-   **Objective**: Make cursor rules much shorter and smaller
-   **Approach**: Eliminate context/reasoning text, keep only actual rules
-   **Files**: Review `.cursor-rules/` directory and related rule files
-   **User Guidance**: "eliminating the context/reasoning and just leaving the actual rules"
+   **Objective**: Build system for analyzing HTML pages, identifying unique content through human selection, and generating robust selectors for content extraction across similar pages.
 
-* PROJECT PHASE STATUS
+* IMPLEMENTATION PLAN - CONTENT EXTRACTOR SYSTEM
 
-** Phase 1: API Development ✅ COMPLETE
-   - Django Ninja API v3 implementation: ✅ Complete
-   - Comprehensive test suite: ✅ Complete  
-   - Production validation: ✅ Complete
+** Phase 1: HTML Processing Foundation 📋 READY
+*** 1.1 HTML to JSON Converter
+    - **File**: `apps/content_extractor/extractors/html_processor.py`
+    - **Scope**: Convert HTML pages to simplified JSON DOM representation
+    - **Requirements**:
+      - Strip scripts, styles, and non-content elements
+      - Retain: tag names, IDs, classes, text content, image src, link href, data-* attributes
+      - Generate content hashes for change detection
+      - Handle dynamic content loading considerations
+    - **Dependencies**: BeautifulSoup4, lxml, hashlib
+    - **Estimated Effort**: 2-3 model sessions
 
-** Phase 2: Rules Optimization 🔄 IN PROGRESS  
-   - Cursor rules simplification: 📋 Ready to start
-   - Documentation streamlining: 🔄 Pending
+*** 1.2 Page Analysis Pipeline
+    - **File**: `apps/content_extractor/utils/page_analyzer.py`
+    - **Scope**: Orchestrate HTML fetching, processing, and storage
+    - **Requirements**:
+      - URL fetching with proper headers/user agents
+      - Content validation and error handling
+      - Integration with Django models for persistence
+      - Batch processing capabilities
+    - **Dependencies**: requests, urllib3
+    - **Estimated Effort**: 1-2 model sessions
 
-** Phase 3: Production Deployment 📋 READY
-   - API ready for deployment: ✅ Confirmed
-   - Infrastructure setup: 📋 Pending
-   - Monitoring implementation: 📋 Pending
+** Phase 2: Human-in-the-Loop Selection System 📋 READY
+*** 2.1 Interactive Selenium Interface
+    - **File**: `apps/content_extractor/selectors/interactive_selector.py`
+    - **Scope**: Web interface for human content selection
+    - **Requirements**:
+      - Load pages in Selenium WebDriver with custom JavaScript injection
+      - Custom right-click context menu for element selection
+      - Ancestor tree navigation and selection UI
+      - Visual highlighting of selected elements across pages
+      - Real-time preview of content extraction
+    - **Dependencies**: selenium, webdriver-manager
+    - **Estimated Effort**: 4-5 model sessions
 
-* SUCCESS CRITERIA ACHIEVED
+*** 2.2 JavaScript Selection Interface
+    - **File**: `apps/content_extractor/templates/content_extractor/selection_interface.js`
+    - **Scope**: Client-side selection and navigation logic
+    - **Requirements**:
+      - Element highlighting on hover with ancestor display
+      - XPath generation for selected elements
+      - Cross-page validation visualization
+      - Session state management
+      - Communication bridge with Python backend
+    - **Dependencies**: Vanilla JavaScript (no external libs)
+    - **Estimated Effort**: 3-4 model sessions
 
-** Django Ninja API v3 Migration ✅
-- [X] All unit tests passing (22/22)
-- [X] All integration tests passing (13/13) 
-- [X] Parameter validation implemented
-- [X] Error handling robust
-- [X] Wagtail compatibility confirmed
-- [X] Production readiness validated
+*** 2.3 XPath Selector Generation
+    - **File**: `apps/content_extractor/utils/xpath_generator.py`
+    - **Scope**: Generate robust XPath selectors from selected elements
+    - **Requirements**:
+      - Prefer ID-based selectors when available
+      - Fallback to class-based with minimal position dependence
+      - Generate multiple selector candidates with confidence scoring
+      - Cross-page validation and refinement
+    - **Dependencies**: lxml, regex
+    - **Estimated Effort**: 2-3 model sessions
 
-** Current Quality Metrics
-- Test Coverage: 100% (35/35 tests passing)
-- API Endpoints: All functional and validated
-- Error Handling: Comprehensive and graceful
-- Performance: Optimized and stable
+** Phase 3: Pattern Analysis and Generalization 📋 READY
+*** 3.1 Selector Pattern Detection
+    - **File**: `apps/content_extractor/selectors/pattern_generalizer.py`
+    - **Scope**: Identify common patterns in collected selectors
+    - **Requirements**:
+      - Pattern matching for numbered elements (e.g., item[1], item[2], etc.)
+      - Structural similarity analysis
+      - Generate generalized selectors from patterns
+      - Confidence scoring and validation against holdout data
+    - **Dependencies**: regex, difflib
+    - **Estimated Effort**: 3-4 model sessions
 
-* NEXT MODEL PRIORITIES
+*** 3.2 Selector Validation Framework
+    - **File**: `apps/content_extractor/utils/selector_validator.py`
+    - **Scope**: Test selectors against pages and score reliability
+    - **Requirements**:
+      - Cross-page validation of selectors
+      - Content consistency checking
+      - False positive/negative detection
+      - Automated confidence scoring
+      - Fallback selector chains
+    - **Dependencies**: selenium, statistical analysis tools
+    - **Estimated Effort**: 2-3 model sessions
 
-1. **IMMEDIATE**: Cursor rules simplification (user explicit request)
-2. **SECONDARY**: Documentation review and updates  
-3. **FUTURE**: Production deployment planning
+** Phase 4: Django Integration and Management 📋 READY
+*** 4.1 Django Management Commands
+    - **File**: `apps/content_extractor/management/commands/`
+    - **Scope**: CLI tools for project management
+    - **Commands**:
+      - `start_extraction_project`: Initialize new project with URLs
+      - `analyze_pages`: Process HTML and generate simplified JSON
+      - `launch_selection_session`: Start human selection interface
+      - `generate_selectors`: Analyze selections and create final selectors
+      - `validate_selectors`: Test selectors against new pages
+    - **Estimated Effort**: 2-3 model sessions
+
+*** 4.2 Web Interface (Optional)
+    - **File**: `apps/content_extractor/views.py` and templates
+    - **Scope**: Web-based project management interface
+    - **Requirements**:
+      - Project creation and management
+      - Progress tracking and session resumption
+      - Selector preview and testing
+      - Export functionality for selectors
+    - **Dependencies**: Django forms, templates
+    - **Estimated Effort**: 3-4 model sessions
+
+** Phase 5: Testing and Optimization 📋 READY
+*** 5.1 Comprehensive Test Suite
+    - **File**: `apps/content_extractor/tests/`
+    - **Scope**: Unit and integration testing
+    - **Requirements**:
+      - Model validation tests
+      - HTML processing accuracy tests
+      - Selector generation and validation tests
+      - End-to-end workflow testing
+    - **Dependencies**: Django test framework, factory_boy
+    - **Estimated Effort**: 2-3 model sessions
+
+*** 5.2 Performance Optimization
+    - **Scope**: Optimize for larger-scale usage
+    - **Requirements**:
+      - Async processing for multiple pages
+      - Caching strategies for processed content
+      - Database query optimization
+      - Memory usage optimization for large HTML content
+    - **Estimated Effort**: 1-2 model sessions
+
+* TECHNICAL ARCHITECTURE
+
+** Database Schema ✅ COMPLETE
+   - ExtractionProject: Groups related pages and analysis
+   - AnalyzedPage: Stores original HTML and processed JSON
+   - ContentSelector: Generated selectors with validation data
+   - SelectionSession: Tracks human selection progress
+
+** Key Dependencies to Add
+   - selenium: Web automation for human interface
+   - beautifulsoup4: HTML parsing and processing
+   - lxml: XPath generation and processing
+   - webdriver-manager: Automatic browser driver management
+   - requests: HTTP client for page fetching
+
+** Integration Points
+   - Django Admin: Project and selector management
+   - Management Commands: CLI automation
+   - JSON API: Potential future API for selector export
+   - Existing Wagtail CMS: Could integrate for content import
+
+* SUCCESS CRITERIA
+
+** Phase 1 Complete When:
+   - [  ] HTML pages converted to clean JSON representation
+   - [  ] Content hashing and change detection working
+   - [  ] Batch processing pipeline functional
+
+** Phase 2 Complete When:
+   - [  ] Human can select content areas across multiple pages
+   - [  ] XPath selectors generated automatically
+   - [  ] Cross-page validation shows selected content
+   - [  ] Session can be saved and resumed
+
+** Phase 3 Complete When:
+   - [  ] Patterns detected in collected selectors
+   - [  ] Generalized selectors work on unseen pages
+   - [  ] Confidence scoring accurately predicts reliability
+
+** Complete System When:
+   - [  ] End-to-end workflow from URLs to validated selectors
+   - [  ] Selectors work reliably across similar pages
+   - [  ] System handles edge cases gracefully
+   - [  ] Performance suitable for production use
+
+* CURRENT STATUS: SKELETON READY
+
+** App Structure Created ✅
+   - Django app: `apps/content_extractor/`
+   - Models defined and ready for migration
+   - Admin configuration complete
+   - Placeholder files created for all major components
+
+** Next Model Priority
+   1. **IMMEDIATE**: Add app to Django settings and create migrations
+   2. **PHASE 1**: Implement HTML to JSON converter
+   3. **PHASE 2**: Build Selenium-based selection interface
 
 ---
 
-**Last Updated**: 2025-01-19 by Ancient Harbor
-**Project Status**: 🟢 EXCELLENT PROGRESS
-**API Status**: ✅ PRODUCTION READY 
+**Last Updated**: 2025-01-08 by Stellar Beacon
+**Project Status**: 🟢 SKELETON COMPLETE - READY FOR IMPLEMENTATION
+**Estimated Total Effort**: 20-30 model sessions across all phases 
