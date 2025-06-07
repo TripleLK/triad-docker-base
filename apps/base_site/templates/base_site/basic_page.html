@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-basicpage{% endblock %}
+
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+    <p class="intro" >{{ page.intro }}</p>
+
+    {{ page.body|richtext }}
+
+{% endblock %}

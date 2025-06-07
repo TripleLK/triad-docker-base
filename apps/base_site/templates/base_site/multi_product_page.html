@@ -1,0 +1,295 @@
+{% extends "base_site/base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags base_site_tags %}
+
+{% block body_class %}multi-product-page{% endblock %}
+
+{% block title %}
+    {% if is_search_results %}
+        {% if is_category_page %}
+            {{ category_page_title }} | Triad Scientific
+        {% else %}
+            {% if search_query %}Search Results for "{{ search_query }}"{% else %}All Products{% endif %} | Triad Scientific
+        {% endif %}
+    {% else %}
+        {{ page.intro_title|default:page.title }} | Triad Scientific
+    {% endif %}
+{% endblock %}
+
+{% block extra_meta %}
+    {% if is_category_page %}
+    <meta name="description" content="Browse our collection of {{ category_page_title }} equipment at Triad Scientific. High-quality lab equipment and scientific supplies.">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- Search Results Header -->
+<section class="search-results-parts">
+    <div class="products-gallery">
+        <div class="search-results-header">
+            {% if is_search_results %}
+                {% if is_category_page %}
+                    <h2 class="product-title-2">{{ category_page_title }}</h2>
+                {% else %}
+                    <h2 class="product-title-2">{% if search_query %}Search Results: "{{ search_query }}"{% else %}All Products{% endif %}</h2>
+                {% endif %}
+            {% else %}
+                <h2 class="product-title-2">{{ page.intro_title|default:page.title }}</h2>
+            {% endif %}
+            <div class="filter-container">
+                <img src="{% static 'img/filter.svg' %}" alt="Filter Icon" class="filter-icon-2" id="filter-toggle" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="content-container">
+    {% if not is_search_results and page.intro_text %}
+        <div class="mb-6">
+            {{ page.intro_text|richtext }}
+        </div>
+    {% endif %}
+
+    <!-- Filter Panel (hidden by default) -->
+    <div class="filter-panel" id="filter-panel">
+        <div class="filter-header">
+            <h3>Filter Results</h3>
+            {% if applied_filters %}
+            <a href="{% if search_query %}?query={{ search_query }}{% else %}?{% endif %}" class="clear-all">Clear All</a>
+            {% endif %}
+        </div>
+        
+        <form id="filter-form" method="get" action="{% url 'search' %}">
+            {% if search_query %}
+            <input type="hidden" name="query" value="{{ search_query }}">
+            {% endif %}
+            
+            <!-- Categories/tabs selector -->
+            <div class="filter-tabs">
+                {% for category in tag_categories %}
+                    <div class="filter-tab {% if forloop.first %}active{% endif %}" data-category="{{ category.name|slugify }}">
+                        {{ category.name }}
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Filter options by category -->
+            {% for category in tag_categories %}
+                {% if category.name in available_filters %}
+                <div class="filter-options-container" id="category-{{ category.name|slugify }}" {% if not forloop.first %}style="display: none;"{% endif %}>
+                    <div class="filter-options">
+                        {% for tag in available_filters|get_item:category.name %}
+                            <div class="filter-option">
+                                <label for="filter-{{ category.name|lower }}-{{ tag.name|slugify }}">
+                                    <input type="checkbox" 
+                                           id="filter-{{ category.name|lower }}-{{ tag.name|slugify }}" 
+                                           name="{{ category.name|lower }}" 
+                                           value="{{ tag.name }}"
+                                           {% if category.name in applied_filters and tag.name in applied_filters|get_item:category.name %}checked{% endif %}
+                                           class="filter-checkbox">
+                                    <span class="filter-label">{{ tag.name }}</span>
+                                    <span class="filter-count">({{ tag.page_count }})</span>
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+            
+            <div class="filter-actions">
+                <button type="submit" class="apply-filters-btn">Apply Filters</button>
+                <button type="button" class="close-filters-btn" id="close-filters">Close</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Products Grid -->
+    <section class="products-grid">
+        {% for result in search_results %}
+            <article class="product-card">
+                <a href="{% pageurl result %}" class="product-link">
+                    {% if is_search_results %}
+                        {% if result.main_image_url %}
+                            <div class="product-image">
+                                <img src="{{ result.main_image_url }}" alt="{{ result.title }}" style="max-height: 100%; max-width: 100%;" onerror="this.src='{% static 'img/default-image.jpg' %}'">
+                            </div>
+                        {% else %}
+                            <div class="product-image no-image">
+                                <span>No image available</span>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        {% with main_image=result.main_image %}
+                            {% if main_image %}
+                                <div class="product-image">
+                                    <img src="{{ main_image }}" alt="{{ result.title }}" style="max-height: 100%; max-width: 100%;" onerror="this.src='{% static 'img/default-image.jpg' %}'">
+                                </div>
+                            {% else %}
+                                <div class="product-image no-image">
+                                    <span>No image available</span>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    {% endif %}
+                    <div class="product-text-container">
+                        <!-- Product Tags -->
+                        <div class="product-tags">
+                            {% for tag in result.categorized_tags.all|slice:":3" %}
+                                <span class="product-tag" 
+                                      style="background-color: {{ tag.category_color }}">
+                                    {{ tag.name }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                        <h3 class="product-title">{{ result.title }}</h3>
+                        
+                        
+                        {% if result.short_description %}
+                            <p class="description">
+                                {{ result.short_description|richtext|striptags|truncatewords:20 }}
+                            </p>
+                        {% endif %}
+                    </div>
+                </a>
+            </article>
+        {% empty %}
+            <div class="no-results">
+                {% if is_search_results %}
+                    <h3>No results found</h3>
+                    {% if applied_filters %}
+                        <p>Try removing some filters or using different search terms</p>
+                        <div class="applied-filters">
+                            <h4>Applied Filters:</h4>
+                            <ul>
+                                {% for category, values in applied_filters.items %}
+                                    <li><strong>{{ category }}:</strong> {{ values|join:", " }}</li>
+                                {% endfor %}
+                            </ul>
+                            <a href="{% if search_query %}?query={{ search_query }}{% else %}?{% endif %}" class="btn clear-filters">Clear Filters</a>
+                        </div>
+                    {% else %}
+                        <p>Try using different search terms or browse our categories</p>
+                    {% endif %}
+                {% else %}
+                    <h3>No products available</h3>
+                    <p>Check back later for new products</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </section>
+
+    <!-- Pagination -->
+    {% if search_results.paginator.num_pages > 1 %}
+    <div class="pagination-container">
+        <div class="pagination">
+            {% if search_results.has_previous %}
+                <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ search_results.previous_page_number }}" class="pagination-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            {% endif %}
+            
+            {% for p in search_results.paginator.page_range %}
+                {% if p == search_results.number %}
+                    <span class="pagination-link active">{{ p }}</span>
+                {% elif p > search_results.number|add:"-3" and p < search_results.number|add:"3" %}
+                    <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ p }}" class="pagination-link">{{ p }}</a>
+                {% endif %}
+            {% endfor %}
+            
+            {% if search_results.has_next %}
+                <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ search_results.next_page_number }}" class="pagination-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/product_grid.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/product_filters.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Filter panel toggle
+        const filterToggle = document.getElementById('filter-toggle');
+        const filterPanel = document.getElementById('filter-panel');
+        const closeFilters = document.getElementById('close-filters');
+        
+        if (filterToggle && filterPanel) {
+            filterToggle.addEventListener('click', function() {
+                filterPanel.style.display = filterPanel.style.display === 'none' ? 'block' : 'none';
+            });
+        }
+        
+        if (closeFilters && filterPanel) {
+            closeFilters.addEventListener('click', function() {
+                filterPanel.style.display = 'none';
+            });
+        }
+        
+        // Filter tabs functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                filterTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all filter option containers
+                const optionContainers = document.querySelectorAll('.filter-options-container');
+                optionContainers.forEach(container => {
+                    container.style.display = 'none';
+                });
+                
+                // Show the corresponding filter options
+                const categorySlug = this.getAttribute('data-category');
+                const targetContainer = document.getElementById('category-' + categorySlug);
+                if (targetContainer) {
+                    targetContainer.style.display = 'block';
+                }
+            });
+        });
+        
+        // Function to update URL with current filters
+        function updateUrlWithFilters(form) {
+            const formData = new FormData(form);
+            let searchParams = new URLSearchParams();
+            
+            // Add search query if exists
+            const searchQuery = formData.get('query');
+            if (searchQuery) {
+                searchParams.append('query', searchQuery);
+            }
+            
+            // Add all checkbox filters
+            const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+            checkboxes.forEach(checkbox => {
+                searchParams.append(checkbox.name, checkbox.value);
+            });
+            
+            // Update URL
+            window.location.href = window.location.pathname + '?' + searchParams.toString();
+            
+            return false; // Prevent form submission
+        }
+        
+        // Handle form submission
+        const filterForm = document.getElementById('filter-form');
+        if (filterForm) {
+            filterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                return updateUrlWithFilters(this);
+            });
+        }
+    });
+</script>
+{% endblock %} 

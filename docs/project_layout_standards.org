@@ -1,0 +1,206 @@
+#+TITLE: Project Layout Standards - Triad Docker Base
+#+AUTHOR: Crimson Forge
+#+DATE: 2025-01-19
+#+FILETAGS: :architecture:layout:standards:structure:
+
+* CRITICAL: Project Layout Integrity
+
+** Sacred Directory Structure
+The project layout is SACRED and must be preserved. Any changes to this structure require explicit approval and documentation updates.
+
+** Layout Validation Requirement
+ALL AI models and developers MUST validate their changes against this documented structure before implementation.
+
+* Root Directory Structure
+
+** REQUIRED Root Layout
+```
+triad-docker-base/
+├── apps/                    # Django Applications - PROTECTED
+├── config/                  # Django Configuration - PROTECTED  
+├── scripts/                 # Utility Scripts - ORGANIZED BY FUNCTION
+├── docs/                    # Documentation - COMPREHENSIVE
+├── data/                    # Reference Data - CATEGORIZED
+├── analysis_outputs/        # Analysis Results - ARCHIVED SYSTEM
+├── archive/                 # Development Artifacts - HISTORICAL
+├── static/                  # Static Files - DJANGO STANDARD
+├── media/                   # User-uploaded Files - DJANGO STANDARD
+├── templates/               # Django Templates - DJANGO STANDARD
+├── tests/                   # Test Files - DJANGO STANDARD
+├── logs/                    # Application Logs - ARCHIVED SYSTEM
+├── manage.py               # Django Management - CORE FILE
+├── requirements.txt        # Dependencies - CORE FILE
+├── create_admin.py         # Admin Creation - UTILITY
+├── db.sqlite3             # Development Database - CORE FILE
+├── db.sqlite3.example     # Example Database - REFERENCE
+├── README.md              # Project Documentation - CORE FILE
+├── .gitignore             # Git Ignore Rules - CORE FILE
+├── .project_management/   # AI Collaboration Framework - PROTECTED
+└── .cursor/               # AI Development Rules - PROTECTED
+```
+
+** Protected Directories
+These directories have special significance and CANNOT be modified without explicit approval:
+
+*** `.project_management/` - AI Collaboration Framework
+- Contains conversation logs, cleanup reports, active work tracking
+- NEVER delete or move files from this directory
+- Essential for AI model continuity and project management
+
+*** `.cursor/` - AI Development Rules  
+- Contains behavior rules and project context for AI models
+- NEVER modify without following rule maintenance protocols
+- Critical for consistent AI behavior across development sessions
+
+*** `apps/` - Django Applications
+- Core Django application structure
+- Each subdirectory is a Django app with specific functionality
+- NEVER move or rename without Django migration considerations
+
+*** `config/` - Django Configuration
+- Contains Django settings, WSGI, ASGI configuration
+- Environment-specific settings in `config/environments/`
+- CRITICAL for Django functionality - handle with extreme care
+
+* Functional Organization Principles
+
+** Scripts Organization (`scripts/`)
+Scripts MUST be organized by functional category:
+
+*** `equipment_scrapers/` - Equipment Data Collection
+- Scientific equipment manufacturer data scrapers
+- Selector files and analysis tools for equipment data
+- Specialized tools for equipment integration
+
+*** `data_import/` - Data Import and Migration
+- Database migration utilities
+- Data import processing tools
+- ETL pipeline components
+
+*** `analysis/` - Data Analysis and Processing
+- HTML analysis and processing utilities
+- Data analysis scripts and demonstration tools
+- Report generation and data visualization
+
+*** `tools/` - General Development Utilities
+- General development helper scripts
+- Project maintenance utilities
+- Non-specific utility functions
+
+*** Root Level Scripts
+- `git_cleanup_push.py` - Git automation for AI collaboration
+- Core project automation scripts that apply globally
+
+** Documentation Organization (`docs/`)
+Documentation MUST be organized by purpose:
+
+*** `api/` - API Documentation
+- Technical API specifications
+- Integration documentation for external systems
+- API reference materials
+
+*** `development/` - Development Guides
+- Development setup and workflow documentation
+- Developer onboarding materials
+- Best practices and coding standards
+
+*** `equipment_integration/` - Equipment Integration
+- Equipment-specific integration guides
+- Hardware interface documentation
+- Vendor-specific integration procedures
+
+*** Root Level Documentation
+- `triad_project_architecture.org` - System architecture overview
+- `project_layout_standards.org` - This file
+
+** Data Organization Principles
+
+*** `data/` - Reference Data
+- `reference/` - Core reference datasets required for application functionality
+- `sample_payloads/` - Example data structures for development and testing
+
+*** `analysis_outputs/` - Analysis Results  
+- `current/` - Active analysis results and outputs
+- `archived/` - Historical analysis results for reference
+
+*** `archive/` - Development Artifacts
+- `temporary_files/` - Temporary development artifacts
+- `historical/` - Historical development files and deprecated code
+
+*** `logs/` - Application Logs
+- Active log files for application debugging
+- `archived/` - Historical log files for reference
+
+* Layout Validation Requirements
+
+** Before Making Changes
+1. **Review Current Structure**: Verify current layout matches this documentation
+2. **Identify Impact**: Determine if changes affect protected directories
+3. **Check Dependencies**: Verify no Django imports or configurations will break
+4. **Plan Updates**: Identify what documentation needs updating
+
+** Change Approval Process
+1. **Minor Changes** (Autonomous): Adding files within existing structure
+2. **Major Changes** (Approval Required): Moving, renaming, or restructuring directories
+3. **Critical Changes** (Explicit Approval): Touching protected directories or core Django files
+
+** Post-Change Requirements
+1. **Update Documentation**: Update this file to reflect any structural changes
+2. **Test Functionality**: Verify Django functionality still works
+3. **Update References**: Update any documentation that references changed paths
+4. **Log Changes**: Document changes in conversation logs and cleanup reports
+
+* Structure Compliance Rules
+
+** NEVER Do These Things
+- Move or rename core Django files without explicit approval
+- Delete files from `.project_management/` or `.cursor/` directories
+- Reorganize `apps/` structure without considering Django implications
+- Create new root-level directories without following naming conventions
+- Place files outside the established functional organization
+
+** ALWAYS Do These Things
+- Validate changes against this documentation before implementation
+- Update this file when making any structural changes
+- Test Django functionality after any directory changes
+- Follow functional organization principles for script and data placement
+- Document rationale for any structural modifications
+
+** Required Validations
+- Django system checks pass after any structural changes
+- All import paths remain functional after moves or renames
+- Configuration files still reference correct paths
+- Documentation reflects actual current structure
+
+* Emergency Recovery Procedures
+
+** If Layout Integrity is Compromised
+1. **Stop Immediately**: Halt any further changes
+2. **Assess Damage**: Identify what was moved, deleted, or renamed
+3. **Check Git Tags**: Use `phase-a-complete` or other backup tags for recovery
+4. **Test Django**: Run `python manage.py check --settings=config.settings.dev`
+5. **Restore from Backup**: Use git reset or manual restoration if needed
+6. **Document Recovery**: Log the incident and recovery process
+
+** Backup and Recovery Strategy
+- Git tags mark major structural milestones (e.g., `phase-a-complete`)
+- Regular commits on `ai-work` branch preserve incremental changes
+- `.project_management/` contains complete development history
+- Architecture documentation serves as authoritative structure reference
+
+* Success Criteria for Layout Compliance
+
+** Structure Validation Checklist
+- [ ] All directories match documented layout
+- [ ] Functional organization principles followed
+- [ ] No files in incorrect locations
+- [ ] Django functionality preserved
+- [ ] Documentation current and accurate
+
+** Ongoing Maintenance Requirements
+- Update this file for any approved structural changes
+- Regular validation of actual structure against documentation
+- Immediate correction of any compliance violations
+- Clear communication of layout requirements to all developers
+
+This layout standard ensures project integrity, development continuity, and reliable Django functionality across all development activities. 

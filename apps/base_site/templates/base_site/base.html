@@ -1,0 +1,271 @@
+{% load static wagtailcore_tags wagtailuserbar %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            {% block title %}
+            {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+            {% wagtail_site as current_site %}
+            {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+            {% endblock %}
+        </title>
+        {% if page.search_description %}
+        <meta name="description" content="{{ page.search_description }}" />
+        {% endif %}
+
+        {# Force all links in the live preview panel to be opened in a new tab #}
+        {% if request.in_preview_panel %}
+        <base target="_blank">
+        {% endif %}
+
+        <!-- Favicon -->
+        <link rel="icon" href="{% static 'img/Triad_Logo_Red.svg' %}" type="image/svg+xml">
+        <link rel="shortcut icon" href="{% static 'img/Triad_Logo_Red.svg' %}" type="image/svg+xml">
+
+        {% block extra_meta %}{% endblock %}
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base_site.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        
+        <!-- Import fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;600;700;800&family=Afacad:wght@400;500;600;700&display=swap" rel="stylesheet">
+        
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Afacad', sans-serif;
+                background-color: #fff;
+            }
+            
+            /* Navigation Bar */
+            .nav-bar {
+                justify-content: space-between;
+                align-items: center;
+                background-color: #fff3ef;
+                display: flex;
+                width: 100%;
+                padding: 10px 20px;
+                font-family: 'Advent Pro', sans-serif;
+                font-size: 23px;
+                color: #2b2610;
+                font-weight: 500;
+                white-space: nowrap;
+                text-align: center;
+                flex-wrap: wrap;
+            }
+            
+            .nav-bar-items {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            .logo-image {
+                aspect-ratio: 1;
+                object-fit: contain;
+                object-position: center;
+                width: 8vw;
+                max-height: 80%;
+                align-self: stretch;
+                margin: auto 0;
+                flex-shrink: 0;
+            }
+            
+            .products, .contact {
+                align-self: stretch;
+                margin: auto 0;
+                cursor: pointer;
+                padding: 5px 8px;
+                transition: transform 0.3s;
+                position: relative;
+            }
+            
+            .products:hover, .contact:hover {
+                transform: translateY(-3px);
+            }
+            
+            /* Add padding to navigation links to prevent cutoff */
+            .nav-bar-items a {
+                display: inline-block;
+                padding: 5px 0;
+                text-decoration: none;
+                color: inherit;
+            }
+            
+            .cart-icon-container {
+                position: relative;
+                text-decoration: none;
+                padding: 5px;
+                display: inline-block;
+                transition: transform 0.3s;
+            }
+            
+            .cart-icon-container:hover {
+                transform: translateY(-3px);
+            }
+            
+            .cart-icon {
+                position: relative;
+                display: inline-block;
+            }
+            
+            .cart-count {
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background-color: #cc0000;
+                color: white;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                font-weight: bold;
+            }
+            
+            /* Search Bar */
+            .search-bar {
+                display: flex;
+                width: 100%;
+                padding: 15px 147px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: #f5f5f5;
+            }
+            
+            .search-view {
+                border: 2px solid #2B2610;
+                border-radius: 20px;
+                display: flex;
+                flex-direction: row;
+                padding: 7px 10px;
+                width: 100%;
+                gap: 10px;
+                max-width: 100%;
+                background-color: #ffffff;
+            }
+            
+            .search-view .content {
+                flex: 1;
+            }
+            
+            .search-view input,
+            .search-view .input-text {
+                width: 100%;
+                border: none;
+                outline: none;
+                font-family: 'Afacad', sans-serif;
+                font-size: 16px;
+                color: #2b2610;
+                background: transparent;
+            }
+            
+            /* Common content container */
+            .content-container {
+                max-width: 1200px;
+                margin: 40px auto;
+                padding: 0 20px;
+            }
+            
+            /* Responsive styles */
+            @media (max-width: 991px) {
+                .nav-bar {
+                    padding: 10px;
+                }
+                
+                .logo-image {
+                    width: 15vw;
+                }
+                
+                .search-bar {
+                    padding: 20px;
+                }
+            }
+            
+            @media (max-width: 500px) {
+                .nav-bar {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                
+                .nav-bar-items {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                
+                .logo-image {
+                    width: 30vw;
+                }
+                
+                .search-bar {
+                    padding: 10px;
+                }
+                
+                .search-view {
+                    padding: 5px;
+                }
+            }
+        </style>
+
+        {% block extra_css %}
+        {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %}
+        
+        <!-- Navigation Bar -->
+        <header class="nav-bar">
+            <div class="nav-bar-items">
+                <a href="/">
+                    <img class="logo-image" src="{% static 'img/Triad_Logo_Red.svg' %}" alt="Triad Logo"/>
+                </a>
+                <a href="/search/" style="text-decoration: none; color: inherit;">
+                    <nav class="contact">Products</nav>
+                </a>
+                <a href="/contact/" style="text-decoration: none; color: inherit;">
+                    <nav class="contact">Contact</nav>
+                </a>
+            </div>
+            <a href="{% url 'cart_view' %}" class="cart-icon-container">
+                <div class="cart-icon">
+                    <img width="30" height="30" src="{% static 'img/shopping-cart-icon.svg' %}" alt="shopping-cart--v1"/>
+                    {% if cart_count and cart_count > 0 %}
+                    <span class="cart-count">{{ cart_count }}</span>
+                    {% endif %}
+                </div>
+            </a>
+        </header>
+
+        <!-- Search Bar -->
+        <section class="search-bar">
+            <div class="search-view">
+                <div class="content">
+                    <form action="{% url 'search' %}" method="get">
+                        <input type="text" name="query" placeholder="Search..." {% if search_query %}value="{{ search_query }}"{% endif %}>
+                    </form>
+                </div>
+                <img width="30" height="30" src="https://img.icons8.com/ios/50/search--v1.png" alt="Search Icon"/>
+            </div>
+        </section>
+
+        {% block content %}{% endblock %}
+
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/base_site.js' %}"></script>
+
+        {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

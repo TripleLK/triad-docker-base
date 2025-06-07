@@ -1,0 +1,11 @@
+Optimized CSS Selectors
+========================================
+
+1. body > section (unique_content)
+2. div[id^="D"] (unique_content)
+3. div[id^="D"][id$="Top"] (unique_content)
+4. div[id^="content-"] (unique_content)
+5. div[id^="t"] (unique_content)
+
+Total: 5 selectors
+Optimization threshold: 70.0%

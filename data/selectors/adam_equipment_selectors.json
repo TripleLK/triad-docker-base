@@ -1,0 +1,152 @@
+[
+  {
+    "selector": "h1",
+    "name": "Product Title",
+    "note": "Main product title at the top of the page."
+  },
+  {
+    "selector": ".product-short-description",
+    "name": "Short Description",
+    "note": "Brief product description displayed below the title."
+  },
+  {
+    "selector": ".product-long-description",
+    "name": "Full Description",
+    "note": "Detailed product description section with features and benefits."
+  },
+  {
+    "selector": ".features-and-benefits",
+    "name": "Features and Benefits",
+    "note": "Bullet points of product features and benefits."
+  },
+  {
+    "selector": "img.img-responsive",
+    "name": "Product Images",
+    "note": "Main product images and gallery images."
+  },
+  {
+    "selector": ".product-image-gallery img",
+    "name": "Main Product Image",
+    "note": "The main product image displayed at the top of the page."
+  },
+  {
+    "selector": ".product-gallery-thumbnails img",
+    "name": "Gallery Images",
+    "note": "Additional product images in the thumbnail gallery."
+  },
+  {
+    "selector": ".product-price .price",
+    "name": "Current Price",
+    "note": "Current price displayed on the product page."
+  },
+  {
+    "selector": ".product-sku",
+    "name": "Product SKU",
+    "note": "The unique product identification code."
+  },
+  {
+    "selector": ".tech-spec-section",
+    "name": "Technical Specifications Section",
+    "note": "Section containing detailed technical specifications."
+  },
+  {
+    "selector": ".tech-spec-section table",
+    "name": "Technical Specifications Table",
+    "note": "Table with technical specifications details."
+  },
+  {
+    "selector": ".key-specifications",
+    "name": "Key Specifications",
+    "note": "Summary of key product specifications like capacity and readability."
+  },
+  {
+    "selector": ".capacity",
+    "name": "Capacity",
+    "note": "The maximum weight capacity of the product."
+  },
+  {
+    "selector": ".readability",
+    "name": "Readability",
+    "note": "The smallest weight increment the scale can measure."
+  },
+  {
+    "selector": ".pan-size",
+    "name": "Pan Size",
+    "note": "Dimensions of the weighing platform."
+  },
+  {
+    "selector": ".applications",
+    "name": "Applications",
+    "note": "List of suitable applications for the product."
+  },
+  {
+    "selector": ".features",
+    "name": "Features",
+    "note": "Icons and descriptions of product features."
+  },
+  {
+    "selector": ".product-documents a",
+    "name": "Product Documents",
+    "note": "Links to manuals, datasheets and other documents."
+  },
+  {
+    "selector": ".product-accessories",
+    "name": "Accessories",
+    "note": "Compatible accessories for the product."
+  },
+  {
+    "selector": ".product-models-table",
+    "name": "Models Table",
+    "note": "Table showing different models with their specifications."
+  },
+  {
+    "selector": ".product-models-table tr",
+    "name": "Model Row",
+    "note": "Individual model information in the models table."
+  },
+  {
+    "selector": ".related-products",
+    "name": "Related Products",
+    "note": "List of related products shown at the bottom of the page."
+  },
+  {
+    "selector": ".warranties",
+    "name": "Warranty Information",
+    "note": "Details about product warranty."
+  },
+  {
+    "selector": ".product-specifications table tr",
+    "name": "Specification Rows",
+    "note": "Individual rows in the specification table with property and value."
+  },
+  {
+    "selector": "#tech-spec-section h3",
+    "name": "Specification Category",
+    "note": "Category headers in the specifications section."
+  },
+  {
+    "selector": ".downloads-section a",
+    "name": "Downloads",
+    "note": "Links to downloadable files like manuals and datasheets."
+  },
+  {
+    "selector": ".tech-specs, .technical-specification",
+    "name": "Technical Information",
+    "note": "Technical specification section containing detailed information about the product."
+  },
+  {
+    "selector": ".model-name, .model",
+    "name": "Model Name",
+    "note": "Model name or number of the product."
+  },
+  {
+    "selector": ".upc",
+    "name": "UPC Code",
+    "note": "Universal Product Code for the item."
+  },
+  {
+    "selector": ".weighing-units",
+    "name": "Weighing Units",
+    "note": "Available measurement units for the scale or balance."
+  }
+] 

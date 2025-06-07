@@ -1,0 +1,19 @@
+CSS Selectors of Different Elements
+========================================
+
+1. div#content-5
+2. div#image-wrapper
+3. div#content-7
+4. div#content-2
+5. script#elementor-frontend-js-before
+6. div#tab4
+7. body > img.ywa-10000
+8. body > section:nth-of-type(7) > div.rowodd > div.blockcontainer2 > div.mobiletabs:nth-of-type(3)
+9. body > section:nth-of-type(2) > div.roweven > div > h1
+10. body > section:nth-of-type(3) > div.rowodd > div.blockcontainer > div.rightblock2
+11. body > section:nth-of-type(4) > div.roweven > div.blockcontainer2 > form.elementor-form > script[type="text/javascript"]
+12. body > section:nth-of-type(4) > div.roweven > div.blockcontainer2 > form.elementor-form > select.elementor-field-textual.elementor-size-sm > select#form-field-field_2400c42
+13. body > section:nth-of-type(3) > div.rowodd > div.blockcontainer > div.leftblock2 > div > div.descbrochure
+14. body > section:nth-of-type(2) > div.roweven > div > div.blockcontainer > div.leftblock > div.introprodtext > ul
+
+Total: 14 selectors

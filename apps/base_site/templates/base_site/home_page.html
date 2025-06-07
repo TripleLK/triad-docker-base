@@ -1,0 +1,449 @@
+{% extends "base_site/base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    {% if page.hero_image %}
+        {% image page.hero_image fill-2000x800 as hero_img %}
+        <img src="{{ hero_img.url }}" alt="Hero Background" class="hero-background" />
+    {% else %}
+        <img src="{% static 'img/hero.jpg' %}" alt="Hero Background" class="hero-background" />
+    {% endif %}
+    <article class="title-box">
+        <div class="title-content">
+            <h1 class="welcome-title">{{ page.hero_title|default:"Welcome to Triad" }}</h1>
+            <p class="welcome-description">{{ page.hero_subtitle|default:"Your hub for viewing premier medical equipment." }}</p>
+        </div>
+    </article>
+</section>
+
+<!-- Categories Section -->
+<section class="categories">
+    <h2 class="shop-equipment-for">Shop Equipment For All Your Needs</h2>
+    <!--
+    <h2 class="shop-equipment-for">Shop Equipment For:</h2>
+    <div class="segmented-controls">
+        <div class="content-2">
+            <a href="{% url 'category_view' category_slug='type' value_slug='lab' %}" class="tab">
+                <div class="tab-pattern-hugcontentline">
+                    <div class="surface">
+                        <div class="content-3">
+                            <div class="elements">Lab</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'category_view' category_slug='type' value_slug='processing' %}" class="tab-2">
+                <div class="tab-pattern-hugcontentline-2">
+                    <div class="surface-2">
+                        <div class="content-4">
+                            <div class="elements-2">Processing</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'category_view' category_slug='type' value_slug='packaging' %}" class="tab-3">
+                <div class="tab-pattern-hugcontentline-3">
+                    <div class="surface-3">
+                        <div class="content-5">
+                            <div class="elements-3">Packaging</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'category_view' category_slug='type' value_slug='medical' %}" class="tab-4">
+                <div class="tab-pattern-hugcontentline-4">
+                    <div class="surface-4">
+                        <div class="content-6">
+                            <div class="elements-4">Medical</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'category_view' category_slug='type' value_slug='refurbished' %}" class="tab-5">
+                <div class="tab-pattern-hugcontentline-5">
+                    <div class="surface-5">
+                        <div class="content-7">
+                            <div class="elements-5">Refurbished</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'category_view' category_slug='type' value_slug='new-arrivals' %}" class="tab-6">
+                <div class="tab-pattern-hugcontentline-6">
+                    <div class="surface-6">
+                        <div class="content-8">
+                            <div class="elements-6">New Arrivals</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'category_view' category_slug='manufacturer' value_slug='all' %}" class="tab-7">
+                <div class="tab-pattern-hugcontentline-7">
+                    <div class="surface-7">
+                        <div class="content-9">
+                            <div class="elements-7">Manufacturers</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    -->
+</section>
+
+<!-- Featured Products Section -->
+<section class="products-grid">
+    {% for product in featured_products %}
+        <article class="product-card">
+            <a href="{% pageurl product %}" class="product-link">
+                {% with main_image=product.main_image %}
+                    {% if main_image %}
+                        <div class="product-image">
+                            <img src="{{ main_image }}" alt="{{ product.title }}" style="max-height: 100%; max-width: 100%;" onerror="this.src='{% static 'img/default-image.jpg' %}'">
+                        </div>
+                    {% else %}
+                        <div class="product-image no-image">
+                            <span>No image available</span>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <div class="product-text-container">
+                    <!-- Product Tags -->
+                    <div class="product-tags">
+                        {% for tag in product.categorized_tags.all|slice:":3" %}
+                            <span class="product-tag" 
+                                  style="background-color: {{ tag.category_color }}">
+                                {{ tag.name }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                    <h3 class="product-title">{{ product.title }}</h3>
+                    {% if product.short_description %}
+                        <p class="description">
+                            {{ product.short_description|richtext|striptags|truncatewords:20 }}
+                        </p>
+                    {% endif %}
+                </div>
+            </a>
+        </article>
+    {% empty %}
+        <!-- Fallback content if no featured products -->
+        <p class="no-products">No featured products available at this time.</p>
+    {% endfor %}
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+    <div class="content-container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="section-title">{{ page.about_title }}</h2>
+                {{ page.about_content|richtext }}
+                <a href="/contact/" class="btn primary">Contact Us</a>
+            </div>
+            <div class="about-image">
+                {% if page.about_image %}
+                    {% image page.about_image fill-600x400 as about_img %}
+                    <img src="{{ about_img.url }}" alt="About {{ page.title }}">
+                {% else %}
+                    <img src="{% static 'img/default-image.jpg' %}" alt="About {{ page.title }}">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/product_grid.css' %}">
+<style>
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        min-height: 400px;
+        overflow: hidden;
+    }
+    
+    .hero-background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    .title-box {
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 500px;
+    }
+    
+    .welcome-title {
+        font-family: 'Advent Pro', sans-serif;
+        font-size: 42px;
+        font-weight: 600;
+        color: #2b2610;
+        margin: 0 0 15px 0;
+    }
+    
+    .welcome-description {
+        font-family: 'Afacad', sans-serif;
+        font-size: 18px;
+        color: #2b2610;
+        margin: 0;
+    }
+    
+    /* Categories Section */
+    .categories {
+        padding: 30px 20px;
+        background-color: #fff3ef;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .shop-equipment-for {
+        font-family: 'Advent Pro', sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+        text-align: center;
+        color: #2b2610;
+        margin-bottom: 25px;
+    }
+    
+    .segmented-controls {
+        display: flex;
+        justify-content: center;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .segmented-controls::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+    }
+    
+    .content-2 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .tab, .tab-2, .tab-3, .tab-4, .tab-5, .tab-6, .tab-7 {
+        padding: 12px 20px;
+        background-color: #f7b9a9;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+    
+    .tab:hover, .tab-2:hover, .tab-3:hover, .tab-4:hover, .tab-5:hover, .tab-6:hover, .tab-7:hover {
+        background-color: #c47d6a;
+        transform: translateY(-3px);
+    }
+    
+    .elements, .elements-2, .elements-3, .elements-4, .elements-5, .elements-6, .elements-7 {
+        font-family: 'Afacad', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: #2b2610;
+        text-align: center;
+    }
+    
+    /* Products Grid - using existing styles */
+    .products-grid {
+        margin-top: 40px;
+        width: 100%;
+    }
+    
+    .no-products {
+        text-align: center;
+        font-family: 'Afacad', sans-serif;
+        font-size: 18px;
+        color: #666;
+        grid-column: 1 / -1;
+        padding: 40px;
+    }
+    
+    /* About Section */
+    .about-section {
+        padding: 80px 20px;
+        background-color: #fff;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .about-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .about-text {
+        flex: 1;
+        min-width: 300px;
+        box-sizing: border-box;
+    }
+    
+    .about-image {
+        flex: 1;
+        min-width: 300px;
+        box-sizing: border-box;
+    }
+    
+    .about-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        max-width: 100%;
+    }
+    
+    .section-title {
+        font-family: 'Advent Pro', sans-serif;
+        font-size: 36px;
+        font-weight: 600;
+        color: #2b2610;
+        margin-bottom: 20px;
+    }
+    
+    .btn.primary {
+        display: inline-block;
+        background-color: #c47d6a;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-family: 'Afacad', sans-serif;
+        font-weight: 500;
+        margin-top: 20px;
+        transition: all 0.3s;
+    }
+    
+    .btn.primary:hover {
+        background-color: #a56959;
+        transform: translateY(-3px);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .title-box {
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            padding: 20px;
+        }
+        
+        .welcome-title {
+            font-size: 32px;
+        }
+        
+        .welcome-description {
+            font-size: 16px;
+        }
+        
+        .shop-equipment-for {
+            font-size: 28px;
+        }
+        
+        .segmented-controls {
+            justify-content: flex-start;
+        }
+        
+        .section-title {
+            font-size: 28px;
+        }
+        
+        .about-content {
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .about-text, .about-image {
+            width: 100%;
+            min-width: 0;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero-section {
+            height: 50vh;
+            min-height: 300px;
+        }
+        
+        .title-box {
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            padding: 15px;
+        }
+        
+        .welcome-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .welcome-description {
+            font-size: 14px;
+        }
+        
+        .content-2 {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            justify-content: flex-start;
+            padding-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .tab, .tab-2, .tab-3, .tab-4, .tab-5, .tab-6, .tab-7 {
+            flex: 0 0 auto;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Disable the Wagtail admin bar if it exists
+        if (window.wagtail && window.wagtail.userbar) {
+            window.wagtail.userbar.trigger('close');
+        }
+        
+        const wagtailUserbar = document.getElementById('wagtail-userbar');
+        if (wagtailUserbar) {
+            wagtailUserbar.style.display = 'none';
+        }
+    });
+</script>
+{% endblock %} 

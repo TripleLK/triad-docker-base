@@ -1,0 +1,11 @@
+CSS Selectors of Different Elements
+========================================
+
+1. div#tab4
+2. div#image-wrapper
+3. select#form-field-field_2400c42
+4. body > section:nth-of-type(2) > div.roweven > div > h1
+5. body > section:nth-of-type(3) > div.rowodd > div.blockcontainer > div.rightblock2:nth-of-type(2) > div.descriptioncontainer
+6. body > section:nth-of-type(3) > div.rowodd > div.blockcontainer > div.leftblock2:nth-of-type(1) > div > div.descbrochure
+
+Total: 6 selectors

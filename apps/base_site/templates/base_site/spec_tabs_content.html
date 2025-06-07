@@ -1,0 +1,30 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+<div class="detail-tabs-contents" id="{{name|slugify}}-tab-contents">
+    <!-- Full Description Tab Content -->
+    <div  class="detail-tab-content tab-spec-full-description full-description">
+        {{ full_description|richtext }}
+    </div>
+    <!-- Specification Groups as Tables -->
+    {% for group in spec_groups %}
+    {% if group.specs %}
+    <div class="detail-tab-content tab-spec-{{ group.name|slugify }}" style="display: inline-block;">
+        <table class="spec-table">
+            <thead>
+                <tr>
+                    <th>Specification</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for spec in group.specs %}
+                <tr>
+                    <td>{{ spec.key }}</td>
+                    <td>{{ spec.value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

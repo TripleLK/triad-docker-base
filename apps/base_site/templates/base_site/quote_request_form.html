@@ -1,0 +1,256 @@
+{% extends "base_site/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+<style>
+  .quote-request-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .quote-header {
+    margin-bottom: 30px;
+  }
+  
+  .cart-summary {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f5f5f5;
+  }
+  
+  .cart-items {
+    margin-top: 15px;
+  }
+  
+  .cart-item {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+  
+  .cart-item-name {
+    flex: 1;
+  }
+  
+  .cart-item-quantity {
+    width: 100px;
+    text-align: right;
+  }
+  
+  .single-product-summary {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+  }
+  
+  .single-product-image {
+    flex: 0 0 120px;
+    margin-right: 20px;
+  }
+  
+  .single-product-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .single-product-details {
+    flex: 1;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .form-field {
+    margin-bottom: 20px;
+  }
+  
+  .form-field.full-width {
+    grid-column: span 2;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Override search bar styles to ensure proper styling in form */
+  .search-view input {
+    border: none !important;
+  }
+  
+  textarea {
+    min-height: 150px;
+  }
+  
+  .required {
+    color: #cc0000;
+  }
+  
+  .submit-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .cancel-btn {
+    background: #f5f5f5;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Hide the spinner buttons on number inputs */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="quote-request-container">
+  <div class="quote-header">
+    <h1>Request a Quote</h1>
+    {% if page.quote_request_text %}
+      {{ page.quote_request_text|richtext }}
+    {% else %}
+      <p>Please fill out the form below to request a quote for the items you're interested in.</p>
+    {% endif %}
+  </div>
+  
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    {% if 'success' in message.tags and 'removed' not in message|lower %}
+    <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  {% if cart_items %}
+  <!-- Cart summary -->
+  <div class="cart-summary">
+    <h2>Items in Your Quote Cart</h2>
+    <div class="cart-items">
+      {% for item in cart_items %}
+      <div class="cart-item">
+        <div class="cart-item-name">{{ item.equipment_page.title }}</div>
+        <div class="cart-item-model">{{ item.model_name }} (Qty: {{ item.quantity }})</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% elif single_product %}
+  <!-- Single product summary -->
+  <div class="single-product-summary">
+    <div class="single-product-image">
+      {% if single_product.main_image %}
+      {% with img_url=single_product.main_image %}
+      <img src="{{ img_url }}" alt="{{ single_product.title }}" onerror="this.src='{% static 'img/default-image.jpg' %}'">
+      {% endwith %}
+      {% else %}
+      <img src="{% static 'img/default-image.jpg' %}" alt="{{ single_product.title }}">
+      {% endif %}
+    </div>
+    <div class="single-product-details">
+      <h3>{{ single_product.title }}</h3>
+      {% if single_model %}
+      <div>{{ single_model.name }}</div>
+      {% endif %}
+      <div>{{ single_product.short_description|richtext }}</div>
+    </div>
+  </div>
+  {% endif %}
+  
+  <!-- Quote Request Form -->
+  <form method="post">
+    {% csrf_token %}
+    
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="name">Name <span class="required">*</span></label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      
+      <div class="form-field">
+        <label for="email">Email <span class="required">*</span></label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-field">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      
+      <div class="form-field">
+        <label for="company">Company/Organization</label>
+        <input type="text" id="company" name="company">
+      </div>
+      
+      <div class="form-field">
+        <label for="inquiry_type">Inquiry Type</label>
+        <select id="inquiry_type" name="inquiry_type">
+          <option value="pricing">Pricing Request</option>
+          <option value="availability">Availability Check</option>
+          <option value="customization">Customization Options</option>
+          <option value="general">General Inquiry</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      
+      <div class="form-field full-width">
+        <label for="message">Message <span class="required">*</span></label>
+        <textarea id="message" name="message" required>{% if cart_items %}I'm interested in getting a quote for the items in my cart.{% elif single_product %}I'm interested in getting a quote for the {{ single_product.title }}{% if single_model %} - {{ single_model.name }} ({{ single_model.model_number }}){% endif %}.{% endif %}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      {% if cart_items %}
+      <a href="{% url 'cart_view' %}" class="cancel-btn">Back to Cart</a>
+      {% else %}
+      <a href="javascript:history.back()" class="cancel-btn">Cancel</a>
+      {% endif %}
+      <button type="submit" class="submit-btn">Submit Quote Request</button>
+    </div>
+  </form>
+</div>
+{% endblock %} 

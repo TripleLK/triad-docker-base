@@ -1,0 +1,111 @@
+#+TITLE: Quiet Forge Next Steps
+#+DATE: 2025-01-08
+#+MODEL: Quiet Forge
+#+FILETAGS: :next-steps:quiet-forge:
+
+* Immediate Priorities
+
+** 1. Archive Historical Model Files (CRITICAL FIRST TASK)
+   **BEFORE starting new sub project work**, archive all model files before "Quiet Echo":
+
+*** Models to Archive (14 total):
+    1. Silver Mongoose
+    2. Rapid Falcon
+    3. Swift Penguin
+    4. Electric Shark
+    5. Crimson Phoenix
+    6. Stellar Raven
+    7. Thunder Hawk
+    8. Silver Phoenix
+    9. Crimson Forge
+    10. Quantum Gecko
+    11. Noble Harbor
+    12. Crimson Tiger
+    13. Ancient Storm
+    14. Quiet Forge
+
+*** Archive Structure to Create:
+    ```
+    .old_model_files/
+    ├── conversation_logs/
+    │   ├── silver-mongoose/
+    │   ├── rapid-falcon/
+    │   ├── [etc...]
+    │   └── quiet-forge/
+    ├── cleanup_reports/
+    │   ├── silver-mongoose_cleanup.org
+    │   ├── rapid-falcon_cleanup.org
+    │   ├── [etc...]
+    │   └── quiet-forge_cleanup.org
+    └── next_steps/
+        ├── silver-mongoose_next_steps.org
+        ├── rapid-falcon_next_steps.org
+        ├── [etc...]
+        └── quiet-forge_next_steps.org
+    ```
+
+*** Files to Move:
+    - **Conversation Logs**: All directories in `.project_management/conversation_logs/` for the 14 models
+    - **Cleanup Reports**: All files in `.project_management/cleanup_reports/` for the 14 models
+    - **Next Steps**: All files in `.project_management/next_steps/` for the 14 models
+
+*** Files to PRESERVE (Do NOT Archive):
+    - Keep "Quiet Echo" and any subsequent models in their current locations
+    - Maintain `.project_management/model_name_tracking.org` (update but don't archive)
+    - Keep all cursor rules files (they've been streamlined and are current)
+
+** 2. New Sub Project Setup
+   After archiving is complete, focus on new sub project infrastructure:
+   - Clean workspace ready for fresh development
+   - Utilize streamlined cursor rules for optimal performance
+   - Follow established project layout compliance rules
+
+* Recommended Approach
+
+** Archive Process
+   1. Create `.old_model_files/` directory structure
+   2. Move files systematically by model (oldest to newest)
+   3. Verify all files moved correctly
+   4. Update references in documentation if needed
+   5. Test that current workspace is clean and functional
+
+** Verification Steps
+   - Confirm historical files are preserved in archive
+   - Verify current working directories only contain active models
+   - Check that cursor rules and tracking systems still function
+   - Validate project layout compliance
+
+* Decision Points for User
+
+** Archive Scope Confirmation
+   - Confirm the 14 models listed should be archived
+   - Verify "Quiet Echo" should be the earliest preserved model
+   - Clarify if any specific historical files should remain accessible
+
+** New Sub Project Direction
+   - What type of sub project will be implemented?
+   - Any specific requirements for the new development phase?
+   - Should additional setup or configuration be done?
+
+* Handoff Information
+
+** Current State
+   - Cursor rules system fully streamlined and operational
+   - Model tracking system up to date
+   - Clean codebase ready for new development
+   - Historical context preserved but needs archiving
+
+** What Was Completed
+   - Complete overhaul of cursor rules (60% size reduction)
+   - All essential protocols maintained
+   - Enhanced model performance optimization
+   - Comprehensive documentation of changes
+
+** Resources for Continuation
+   - Streamlined cursor rules in `.cursor/rules/`
+   - Complete cleanup report: `.project_management/cleanup_reports/quiet_forge_cleanup.org`
+   - Model tracking: `.project_management/model_name_tracking.org`
+   - All essential project infrastructure intact
+
+** Critical Context
+   The cursor rules have been significantly streamlined to improve model performance. The next model should benefit from reduced cognitive load while maintaining all essential protocols and requirements. 

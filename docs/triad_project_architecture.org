@@ -1,0 +1,251 @@
+#+TITLE: Triad Docker Base - System Architecture
+#+AUTHOR: Triad Docker Base Team
+#+DATE: [2025-01-19]
+#+FILETAGS: :architecture:core:
+
+* CRITICAL: READ THIS FIRST - AI Model Guidelines
+
+** Core Rules for All AI Models Working on This Project
+   
+*** 1. ALWAYS check this architecture file first
+    - Read the Current Master Goal before starting any work
+    - Understand the file system structure
+    - Follow the established patterns and locations
+    
+*** 2. File System Integrity is SACRED
+    - NEVER create files outside the defined structure
+    - NEVER rename or move architectural files without explicit permission
+    - ALWAYS update this architecture file when making structural changes
+    
+*** 3. Clean Up Protocol
+    - When asked to "Clean Up", generate detailed reports in designated locations
+    - Use the specified org format for all reports
+    - Update Current Master Goal if scope has changed
+    - Create Next Steps file if requested in clean up message
+
+*** 4. Communication Standards
+    - Keep current thinking documents updated, not historical
+    - Log all detailed changes in conversation logs
+    - Balance "too much" vs "not enough" information
+    - Always reference file locations using this architecture
+
+* Current Master Goal
+  :PROPERTIES:
+  :LAST_UPDATED: [2025-01-19]
+  :UPDATED_BY: Stellar Raven (correcting from Quantum Gecko)
+  :PRIORITY: High
+  :STATUS: Phase 1.2 - Enhanced Authentication and Permissions
+  :END:
+
+** Primary Objective
+   Comprehensive API Revamp Project - Extract and modernize lab equipment API to dedicated Django app with enhanced flexibility, batch operations, and single-call equipment setup capabilities
+
+** Current Focus Areas
+   - **Phase 1.2**: Enhanced authentication and permissions system for Lab Equipment API v2
+   - Custom permission classes for different access levels
+   - Advanced rate limiting with user-specific quotas
+   - Comprehensive audit logging middleware
+   - Token authentication enhancement with expiration/refresh
+
+** Success Criteria
+   - Complete Lab Equipment API v2 with modern REST framework
+   - Single-call equipment setup with tags, specifications, and models
+   - Batch operations for efficient equipment management
+   - Migration-friendly transition from v1 to v2 API
+   - Comprehensive validation and conflict resolution
+
+** Alignment Status
+   ✅ **Phase 1.1 COMPLETED**: Django app foundation implemented by Quantum Gecko
+   🚧 **Phase 1.2 IN PROGRESS**: Authentication and permissions enhancement (current phase)
+
+* Project File System Architecture
+
+** Root Structure
+   :PROPERTIES:
+   :BASE_PATH: /Users/lucypatton/LLLK/triad-docker-base
+   :LAST_VERIFIED: [2025-01-19]
+   :PROJECT_TYPE: Django Web Application
+   :END:
+
+*** Core Management Files (ROOT LEVEL)
+    - =triad_project_architecture.org= :: This file - system structure and AI guidelines
+    - =triad_ai_communication_notes.org= :: Current thinking and decisions
+    - =README.md= :: Existing project documentation
+    - =manage.py= :: Django management script
+
+*** Existing Django Structure
+**** Core Application Files
+     - =wsgi.py= :: WSGI configuration
+     - =requirements.txt= :: Python dependencies
+     - =db.sqlite3.example= :: Example database
+     
+**** Application Directories
+     - =apps/= :: Django applications
+       - =apps/lab_equipment_api/= :: Lab Equipment API v2 - Modern REST API for lab equipment management
+         - Core models: APIRequest, BatchOperation, ValidationResult, APIConfiguration, ErrorLog
+         - API endpoints: /api/v2/system/health/, /stats/, /auth/token/, /dev/test/
+         - Admin interfaces with progress tracking and comprehensive filtering
+         - Django REST Framework integration with authentication and throttling
+       - =apps/base_site/= :: Existing base site functionality (contains legacy API v1)
+       - =apps/ai_processing/= :: AI processing and batch operations
+       - =apps/categorized_tags/= :: Tag management and categorization system
+     - =config/= :: Configuration files
+     - =static/= :: Static assets
+     - =media/= :: Media files
+     - =templates/= :: Template files (if any)
+
+**** Development & Tools
+     - =scripts/= :: Utility scripts
+     - =tools/= :: Development tools
+     - =tests/= :: Test files
+     - =html_analysis_tools/= :: HTML processing utilities
+
+*** Project Management & Logs
+**** =.project_management/=
+***** =cleanup_reports/=
+      - Detailed reports from AI model cleanup operations
+      - Format: =YYYY-MM-DD_HHMMSS_cleanup_report.org=
+      
+***** =next_steps/=
+      - Files describing next actions for subsequent models
+      - Format: =YYYY-MM-DD_HHMMSS_next_steps.org=
+      
+***** =conversation_logs/=
+      - Detailed logs of all AI model interactions
+      - Format: =YYYY-MM-DD_conversation_log.org=
+
+**** =.cursor/= (Cursor IDE specific)
+***** =rules/=
+      - =ai_behavior.mdc= :: Cursor-specific AI behavior rules
+      - =project_context.mdc= :: Project-specific context for AI models
+
+* File Naming Conventions
+
+** Dates and Times
+   - Dates: =YYYY-MM-DD= format
+   - Times: =HHMMSS= format (24-hour)
+   - Combined: =YYYY-MM-DD_HHMMSS=
+
+** File Types by Purpose
+   - =.org= :: Structured content, reports, documentation
+   - =.mdc= :: AI behavior rules, Cursor configurations
+   - =.py= :: Python source code
+   - =.json= :: Data interchange, configuration
+   - =.md= :: Documentation
+   - =.html= :: HTML templates and test files
+
+** Standard Naming Patterns
+   - Scripts: =descriptive_name.py=
+   - Config files: =config_name.json= or =config_name.py=
+   - Test files: =test_*.py=
+   - Log files: =*.log=
+
+* Communication File Patterns
+
+** Current Thinking Documents
+   - =triad_ai_communication_notes.org= :: Updated with current decisions and thoughts
+   - Keep this lean and current - overwrite old thinking with new
+   - Maximum 200 lines to prevent information overload
+
+** Historical Conversation Logs
+   - =.project_management/conversation_logs/YYYY-MM-DD_conversation_log.org=
+   - Complete record of all discussions and decisions
+   - Never delete or truncate - append only
+   - Use for reference when current thinking seems incomplete
+
+** Clean Up Report Format
+   When performing cleanup operations, create:
+   #+BEGIN_EXAMPLE
+   .project_management/cleanup_reports/YYYY-MM-DD_HHMMSS_cleanup_report.org
+   
+   Structure:
+   * Summary of Changes Made
+   * Files Modified/Created/Deleted
+   * Reasoning for Each Change
+   * Updated Architecture (if applicable)
+   * Potential Issues or Warnings
+   * Verification Steps Completed
+   #+END_EXAMPLE
+
+* Prohibited Actions for AI Models
+
+** Never Do These Things
+   - Create files outside the defined structure
+   - Rename =triad_project_architecture.org= or core Django files without permission
+   - Delete files from =.project_management/= without explicit permission
+   - Create temporary or scratch files in the root directory
+   - Ignore the Current Master Goal without checking with user
+   - Make structural changes without updating this architecture file
+   - Modify production database files
+
+** Always Do These Things
+   - Read this file and Current Master Goal before starting work
+   - Update file locations in this architecture when creating new files
+   - Use proper file naming conventions
+   - Generate cleanup reports when requested
+   - Ask for clarification when the goal seems misaligned
+   - Maintain the balance between current thinking and historical logs
+   - Respect existing Django project structure
+
+* Architecture Change Protocol
+
+** Minor Changes (AI models can make)
+   - Adding new utility scripts within existing directories
+   - Updating file location lists in this document
+   - Adding new naming conventions that follow established patterns
+   - Creating new analysis or test files
+
+** Major Changes (Require user approval)
+   - Creating new top-level directories
+   - Changing core Django configuration
+   - Modifying the fundamental file organization system
+   - Altering the communication file patterns
+   - Changes affecting database or production systems
+
+** Documentation Requirement
+   ALL architecture changes must be documented in:
+   1. This file (updated structure)
+   2. Next cleanup report (reasoning and impact)
+   3. triad_ai_communication_notes.org (current status)
+
+* Verification Checklist for AI Models
+
+** Before Starting Work
+   - [ ] Read Current Master Goal (when defined)
+   - [ ] Understand requested changes
+   - [ ] Check alignment with master goal
+   - [ ] Identify required file locations using this architecture
+
+** During Work
+   - [ ] Follow established file naming conventions
+   - [ ] Create files only in designated locations
+   - [ ] Update architecture if adding new files
+   - [ ] Maintain communication notes with current thinking
+   - [ ] Respect Django project structure
+
+** Before Completing Work
+   - [ ] Verify all new files are documented in architecture
+   - [ ] Update current master goal if scope changed
+   - [ ] Create cleanup report if requested
+   - [ ] Ensure file system integrity is maintained
+   - [ ] Test any code changes appropriately
+
+* Project Context Notes
+
+** Technology Stack
+   - Django web framework
+   - Python-based development
+   - SQLite database (example)
+   - HTML analysis and processing tools
+   - Web scraping capabilities
+
+** Key Observations
+   - Active development with HTML analysis tools
+   - Multiple comparison output directories
+   - Equipment and API-related functionality
+   - Test and verification scripts present
+
+* Last Updated: [2025-01-19]
+  - Updated by: Initial Architecture Setup
+  - Next review: When project goals are defined
+  - Status: Active structure established, awaiting project goal definition 

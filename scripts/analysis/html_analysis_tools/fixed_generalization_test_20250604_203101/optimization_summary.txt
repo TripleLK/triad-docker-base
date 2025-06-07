@@ -1,0 +1,23 @@
+CSS Selector Optimization Summary
+========================================
+
+Pages compared: 2
+Total selectors analyzed: 1044
+Unique leaf selectors: 55
+Single-page elements: 133
+Optimized selectors: 5
+Optimization threshold: 70.0%
+
+Pages:
+  0. https://www.airscience.com/product-category-page?brandname=safeswab-swab-dryers&brand=30
+     Title: Safeswab Drying Cabinets | Air Science
+
+  1. https://www.airscience.com/product-category-page?brandname=mobile-evidence-transporters&brand=27
+     Title: Mobile Evidence Transporter | Air Science
+
+Optimized CSS Selectors:
+  1. body > section (unique_content)
+  2. div[id^="D"] (unique_content)
+  3. div[id^="D"][id$="Top"] (unique_content)
+  4. div[id^="content-"] (unique_content)
+  5. div[id^="t"] (unique_content)
