@@ -1,0 +1,97 @@
+#+TITLE: Thunder Apex - Next Steps for Sub-menu Navigation Fix
+#+AUTHOR: Thunder Apex  
+#+DATE: 2025-01-08
+#+FILETAGS: :next-steps:priority:sub-menu:
+
+* IMMEDIATE PRIORITY: Fix Sub-menu Navigation
+
+** Issue Summary
+- Draggable functionality ✅ WORKING PERFECTLY (user confirmed)
+- Field menu display ✅ WORKING 
+- Selection exclusion ✅ WORKING
+- **Sub-menus NOT opening** ⚠️ CRITICAL ISSUE
+
+** Root Cause Analysis
+The JavaScript correctly detects nested fields and sets pending actions, but the Python backend isn't processing these actions to switch contexts and refresh the UI.
+
+** Technical Details
+
+*** JavaScript Behavior (Working)
+```javascript
+// In startFieldSelection() - this works correctly
+if (field && field.has_sub_fields) {
+    window.contentExtractorData.pendingAction = {
+        type: 'enter_nested_field',
+        fieldName: fieldName,
+        instanceIndex: 0,
+        timestamp: Date.now()
+    };
+    showTemporaryNotification(`🔄 Entering nested context: ${fieldName}`, 'info');
+}
+```
+
+*** Python Backend (Needs Investigation)
+```python
+# These methods exist but connection unclear:
+def poll_for_nested_actions(self, timeout: float = 30.0) -> bool  # Line 3119
+def check_for_nested_actions(self) -> bool                       # Line 2938  
+def enter_nested_field(self, field_name: str, instance_index: int = 0) -> bool  # Line 2837
+```
+
+** Debugging Steps for Next Model
+
+*** Step 1: Verify Polling is Active
+- Check if `poll_for_nested_actions()` is being called during field menu display
+- Add debug logging to see if pending actions are detected
+- Verify JavaScript `pendingAction` is being read by Python
+
+*** Step 2: Test Action Processing  
+- Manually trigger `enter_nested_field()` to confirm it works
+- Check if context switching updates `self.context_stack`
+- Verify breadcrumb data is properly updated
+
+*** Step 3: Fix UI Refresh Chain
+- Ensure `enter_nested_field()` calls JavaScript `refreshNestedInterface()`  
+- Confirm new field options are loaded for sub-context
+- Test that menu rebuilds with sub-fields
+
+*** Step 4: End-to-End Testing
+- Click nested field in menu
+- Verify console shows "Field has sub-fields, entering nested context"
+- Confirm Python detects the action
+- Test that sub-menu appears with nested fields
+- Validate breadcrumb navigation
+
+** Expected Flow
+1. User clicks nested field (🏗️) → JavaScript sets `pendingAction`
+2. Python polling detects action → calls `enter_nested_field()`
+3. Context switches → `refreshNestedInterface()` called  
+4. New menu displays → sub-fields shown with breadcrumbs
+
+** Files to Focus On
+- **Primary**: `apps/content_extractor/selectors/interactive_selector.py`
+  - Lines 2837-2869: `enter_nested_field()` method
+  - Lines 2938-2972: `check_for_nested_actions()` method  
+  - Lines 3119-3151: `poll_for_nested_actions()` method
+
+** Test Cases Needed
+- [ ] Nested field detection and action setting
+- [ ] Python polling and action processing  
+- [ ] Context switching and state management
+- [ ] UI refresh and sub-menu display
+- [ ] Breadcrumb navigation functionality
+
+** Success Criteria
+- Clicking nested fields opens sub-menus
+- Breadcrumb navigation appears and functions
+- Context depth tracking works correctly
+- Can navigate back to parent contexts
+- No regression in existing functionality
+
+** Current Status Context
+- System is 95% complete and highly functional
+- All major UX features working (dragging, selection, scrolling)
+- Only this isolated navigation issue remains
+- Clean codebase with no technical debt
+
+This is a well-defined debugging task focused on connecting existing JavaScript and Python components. 

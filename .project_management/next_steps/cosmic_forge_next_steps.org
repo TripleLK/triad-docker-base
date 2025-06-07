@@ -1,0 +1,117 @@
+#+TITLE: Cosmic Forge Next Steps - 3-Level Menu Hierarchy
+#+AUTHOR: Cosmic Forge  
+#+DATE: 2025-01-08
+#+FILETAGS: :next-steps:cosmic-forge:architecture:
+
+* 🎯 PRIMARY OBJECTIVE
+Implement a 3-level menu hierarchy for better nested field management:
+**Root → objects → objects[0]** (instead of current Root → objects[0])
+
+* 🏗️ REQUIRED ARCHITECTURE CHANGES
+
+** Level 1: Standard Fields Menu (✅ Already Working)
+- Current field selection menu is working correctly
+- Keep existing functionality unchanged
+- Fields with 🏗️ icon should trigger Level 2 menu
+
+** Level 2: NEW - Instance Management Menu  
+This is the **main task** - create a new intermediate menu that shows:
+
+*** Visual Layout
+```
+┌─────────────────────────────────────┐
+│ 📋 Nested Field: models             │
+│ ───────────────────────────────────  │
+│                                     │
+│ [models[0]] [models[1]] [+ Add New] │
+│                                     │
+│ Breadcrumb: Root → models           │
+│ [⬆️ Parent] [Close Menu]            │
+└─────────────────────────────────────┘
+```
+
+*** Required Functionality
+- Show existing instances as clickable buttons: `[models[0]]`, `[models[1]]`, etc.
+- `[+ Add New]` button to create new instances
+- Breadcrumb shows: `Root → objects` (not `Root → objects[0]`)
+- Click instance button → go to Level 3 (individual editing)
+
+** Level 3: Instance Detail Menu (✅ Foundation Exists)  
+- Current sub-menu structure can be reused
+- Shows individual field editing interface
+- Breadcrumb shows: `Root → objects → objects[0]`
+
+* 🔧 IMPLEMENTATION STEPS
+
+** Step 1: Create Instance Management Menu Function
+- Add new JavaScript function: `showInstanceManagementMenu(fieldName)`
+- Generate HTML for instance buttons and + Add button
+- Handle breadcrumb navigation: `Root → fieldName`
+
+** Step 2: Update Field Menu Click Handlers
+- When clicking nested field (🏗️), call `showInstanceManagementMenu()` instead of direct entry
+- Modify existing `enterNestedField()` to go through instance management
+
+** Step 3: Update Instance Management Logic
+- `[+ Add New]` button → determines next available index and creates new instance
+- `[models[0]]` button → enters that specific instance (current Level 3 functionality)
+
+** Step 4: Fix Breadcrumb Navigation
+- Update `navigate_to_parent()` to handle 3-level hierarchy
+- Root → objects → objects[0] navigation should work correctly
+
+* 📂 KEY FILES TO MODIFY
+
+** `apps/content_extractor/selectors/interactive_selector.py`
+- **Lines ~710-720**: Update `enterNestedField()` function
+- **Lines ~600-650**: Add instance management menu HTML
+- **Lines ~2944-2980**: Update action handling for new hierarchy
+- **Add new method**: `show_instance_management_menu(field_name)`
+
+** Priority Functions to Add:
+1. `showInstanceManagementMenu(fieldName)` - JavaScript
+2. `show_instance_management_menu(field_name)` - Python  
+3. Update breadcrumb navigation logic
+4. Handle instance button clicks
+
+* 🧪 TESTING APPROACH
+
+** Test Sequence
+1. Load test page: `https://www.airscience.com/product-category-page?brandname=safefume-fuming-chambers&brand=14`
+2. Click field menu → Click nested field (🏗️)
+3. **Expected**: See instance management menu with `[models[0]]` and `[+ Add]`
+4. Click `[+ Add]` → Should create `[models[1]]` button
+5. Click `[models[1]]` → Should enter detailed editing mode
+6. **Breadcrumb should show**: `Root → models → models[1]`
+
+** Success Criteria
+- ✅ Three-level navigation working smoothly
+- ✅ Instance management intuitive and clear  
+- ✅ + Add button creates new instances correctly
+- ✅ Breadcrumb navigation accurate at all levels
+
+* ⚠️ CRITICAL NOTES
+
+** Current Issues to Address
+- Sub-menu reliability problems in normal usage
+- Direct Root → objects[0] approach is confusing
+- Instance management is not intuitive
+
+** Don't Break
+- Level 1 standard field menu (working correctly)
+- Draggable functionality (fixed by Thunder Apex)
+- Field selection and saving (core functionality)
+
+** Architecture Principle
+Each level should have a **clear, single purpose**:
+- Level 1: Choose field type
+- Level 2: Manage instances of that field  
+- Level 3: Edit individual instance details
+
+* 🚀 EXPECTED OUTCOME
+Users can easily:
+1. Select a nested field type
+2. See and manage all instances of that field
+3. Add new instances intuitively
+4. Edit individual instances in detail
+5. Navigate back through clear breadcrumb hierarchy 

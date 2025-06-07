@@ -1,0 +1,202 @@
+#+TITLE: Next Steps - Stellar Phoenix Handoff
+#+AUTHOR: Stellar Phoenix
+#+DATE: 2025-01-08
+#+FILETAGS: :next-steps:handoff:stellar-phoenix:
+
+* Immediate Priorities
+** PRIORITY 1: Draggable Menu System [HIGH]
+*** Objective
+Implement drag-and-drop functionality for all field selection menus to improve user workflow and screen real estate management.
+
+*** Requirements
+- **Starting Position**: Menus should appear in current default positions (as they do now)
+- **Drag Functionality**: Users should be able to click and drag menus to any position on screen
+- **No Persistence**: Don't maintain positions between menu appearances - always start in default locations
+- **All Menus**: Apply to field selection menu, instruction boxes, control panels
+- **User Control**: Allow repositioning for better workflow without permanent changes
+
+*** Technical Approach
+- Add drag event handlers to menu elements in JavaScript injection
+- Implement CSS transforms for smooth movement
+- Ensure dragging doesn't interfere with existing click functionality
+- Test across different nested contexts to ensure consistency
+
+** PRIORITY 2: Un-select Functionality [HIGH]
+*** Objective
+Allow users to deselect previously selected elements at any nested level, providing flexibility to correct mistakes or change selections.
+
+*** Requirements
+- **Visual Indication**: Clear way to identify selected elements for un-selection
+- **All Levels**: Must work in root context and all nested contexts
+- **State Consistency**: Maintain accurate selection state across navigation
+- **User Feedback**: Clear indication when elements are deselected
+
+*** Technical Approach
+- Add click handler for selected elements (possibly with modifier key)
+- Update visual styling to indicate deselectable state
+- Modify selection tracking in fieldSelections arrays
+- Ensure nested context navigation preserves selection state
+
+** PRIORITY 3: Field Swapping System [MEDIUM-HIGH]
+*** Objective
+Implement flexible field assignment system allowing any field at any level to be swapped for alternative data sources.
+
+*** Three Swap Options Required
+**** Option A: Generic "Select Whatever" → Miscellaneous Notes
+- **Purpose**: Capture relevant information that doesn't fit the field definition
+- **Storage**: Save to miscellaneous notes (NOT as the field value directly)
+- **AI Usage**: AI can reference this to help fill the actual field later
+- **Use Case**: Edge cases where exact field match isn't available but related info exists
+
+**** Option B: Site Metadata Selection
+- **Data Sources**: URL, page title, other non-HTML metadata
+- **Implementation**: Dropdown or selection interface for metadata options
+- **Use Case**: When field content comes from site properties rather than visible content
+
+**** Option C: Human Text Input
+- **Interface**: Text input field for manual entry
+- **Use Case**: Direct override when automated selection isn't appropriate
+- **Validation**: Consider field type constraints
+
+*** Technical Approach
+- Add right-click or button interface for field swapping
+- Implement three distinct input modes
+- Modify data storage to handle different data sources
+- Update UI to indicate when fields are using alternative sources
+
+* Approach Strategy
+** Key Files to Review
+*** Primary Development Files
+- **apps/content_extractor/selectors/interactive_selector.py** - Core UI logic and JavaScript injection
+- **apps/content_extractor/selectors/selection_context.py** - Nested context management
+- **apps/content_extractor/management/commands/test_nested_selector.py** - Testing infrastructure
+
+*** Supporting Files
+- **apps/content_extractor/models.py** - Data models for field selections
+- **triad_project_architecture.org** - Overall project structure
+- **.project_management/active_work_tracking.org** - Current priorities and status
+
+** Development Strategy
+*** Phase 1: Draggable Menus (Estimated 1-2 sessions)
+1. Research HTML5 drag and drop API or CSS transform approach
+2. Implement basic drag functionality on field selection menu
+3. Test drag behavior doesn't interfere with existing click events
+4. Extend to all UI elements (instruction boxes, control panels)
+5. User testing to ensure smooth experience
+
+*** Phase 2: Un-select Functionality (Estimated 1-2 sessions)
+1. Design visual indicators for selected vs. deselectable elements
+2. Implement click handlers for deselection (consider Ctrl+click or similar)
+3. Update selection state management across nested contexts
+4. Test state consistency during navigation
+5. User feedback and refinement
+
+*** Phase 3: Field Swapping System (Estimated 2-3 sessions)
+1. Design swap interface (right-click menu or button system)
+2. Implement three swap modes with appropriate UIs
+3. Modify data storage and retrieval for different sources
+4. Update visual indicators for swapped fields
+5. Comprehensive testing across nested levels
+6. User testing and iteration
+
+** Testing Approach
+- **Continuous Testing**: Use existing test_nested_selector.py command throughout development
+- **User Validation**: Regular check-ins with user for feedback on each feature
+- **Cross-Browser**: Ensure drag functionality works across browsers
+- **Nested Context Testing**: Verify all features work at every nested level
+
+* Critical Decisions Needed
+** UI Design Choices
+- **Drag Indicator**: How should users know an element is draggable?
+- **Deselection Method**: What input method for un-selecting? (Ctrl+click, right-click, button?)
+- **Swap Interface**: Right-click menu vs. button system for field swapping?
+
+** Data Architecture Decisions
+- **Miscellaneous Storage**: How to structure miscellaneous notes data?
+- **Metadata Access**: What site metadata should be available for selection?
+- **State Management**: How to track and persist different field types across sessions?
+
+** User Experience Decisions
+- **Visual Feedback**: How to clearly indicate different field states (normal, swapped, misc)?
+- **Error Handling**: How to handle invalid swaps or failed operations?
+- **Mobile Compatibility**: Should drag functionality work on touch devices?
+
+* Handoff Context
+** Current State
+- ✅ **Core Architecture**: Nested object selection fully functional and validated
+- ✅ **Testing Infrastructure**: Comprehensive test suite with user validation
+- ✅ **User Satisfaction**: "nested menus worked very well!"
+- ✅ **Production Ready**: System confirmed working in real user scenarios
+
+** What's Working Perfectly
+- **Nested Navigation**: All nested field contexts work correctly
+- **Background Polling**: Real-time detection of user interactions
+- **Event System**: JavaScript-to-Python communication fully functional
+- **Visual Hierarchy**: Breadcrumbs and depth indicators working
+- **Test Commands**: All test modes functional (--demo, --interactive, visual)
+
+** No Blockers
+- All critical issues resolved in this session
+- User testing successful and architecture validated
+- Clear requirements provided for next features
+- Strong foundation for UI enhancements
+
+** User Requirements Clarity
+All priorities have been clearly defined by user with specific requirements:
+- Draggable menus with clear starting behavior
+- Un-select functionality across all levels
+- Three-part field swapping system with distinct use cases
+
+** Resources Available
+- **Working Test System**: Use `python manage.py test_nested_selector` for development testing
+- **Valid Test URLs**: `.project_management/test_urls/airscience_working_urls.txt`
+- **Complete Documentation**: Architecture, conversation logs, cleanup reports all current
+- **User Availability**: User actively engaged and providing feedback
+
+* Success Metrics
+** Draggable Menus Success
+- [ ] User can drag field menu to different screen positions
+- [ ] Drag doesn't interfere with existing menu functionality
+- [ ] All UI elements (menus, instructions, control panels) are draggable
+- [ ] Menus start in consistent default positions
+
+** Un-select Success
+- [ ] Users can deselect previously selected elements
+- [ ] Visual feedback clearly indicates deselectable elements
+- [ ] Selection state remains consistent across nested navigation
+- [ ] Works at all nested levels (root, models, spec_groups, etc.)
+
+** Field Swapping Success
+- [ ] Right-click or button interface accessible on all fields
+- [ ] Generic "miscellaneous" option captures and stores information correctly
+- [ ] Site metadata options (URL, title) accessible and functional
+- [ ] Human text input works for manual overrides
+- [ ] Visual indicators show when fields are using alternative sources
+- [ ] AI can access miscellaneous notes for field assistance
+
+** Overall Success
+- [ ] User testing validates all three priority features working correctly
+- [ ] No regression in existing nested selection functionality
+- [ ] Clear user documentation for new features
+- [ ] Production-ready implementation of all enhancements
+
+* Risk Mitigation
+** Technical Risks
+- **Event Conflicts**: Drag handlers might interfere with existing click events
+  * Mitigation: Careful event handling and testing
+- **State Management**: Complex selection state across multiple input types
+  * Mitigation: Clear data models and comprehensive testing
+- **Performance**: Additional UI elements might slow interface
+  * Mitigation: Efficient event handling and minimal DOM manipulation
+
+** User Experience Risks
+- **Complexity**: Too many options might confuse users
+  * Mitigation: Clear visual indicators and progressive disclosure
+- **Consistency**: Different interaction patterns might feel disjointed
+  * Mitigation: Consistent design language and user testing
+
+** Project Risks
+- **Scope Creep**: Features might expand beyond defined requirements
+  * Mitigation: Stick to user-defined priorities and requirements
+- **Testing Gaps**: New features might break existing functionality
+  * Mitigation: Comprehensive testing with existing test infrastructure 

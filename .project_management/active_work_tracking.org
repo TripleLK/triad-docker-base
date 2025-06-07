@@ -1,6 +1,6 @@
 #+TITLE: Active Work Tracking
 #+DATE: [2025-01-08]
-#+AUTHOR: Phoenix Velocity
+#+AUTHOR: Velocity Compass (Updated from Phoenix Velocity)
 #+FILETAGS: :project:management:tracking:
 
 * COMPLETED MILESTONES ✅
@@ -104,6 +104,47 @@
    - ✅ Complete end-to-end workflow tested and verified
 
 * CURRENT HIGH PRIORITY WORK 🎯
+
+** CRITICAL: Interactive Selector Architectural Refactoring - QUANTUM RIDGE HANDOFF
+   SCHEDULED: <2025-01-08>
+   :PROPERTIES:
+   :ASSIGNED_TO: Velocity Compass
+   :PRIORITY: CRITICAL
+   :PROJECT_TYPE: Code Architecture & Maintainability
+   :STATUS: Ready for Implementation
+   :HANDOFF_FROM: Quantum Ridge
+   :ISSUE: Monolithic file (4000+ lines) blocking development
+   :END:
+
+   **CRITICAL ARCHITECTURAL DISCOVERY**: The interactive_selector.py file has grown to 4000+ lines and has become a development bottleneck, containing JavaScript injection, selection logic, navigation, UI management, and database operations all mixed together.
+
+   **QUANTUM RIDGE ACCOMPLISHED**:
+   ✅ Fixed JavaScript brace escaping issues in f-strings
+   ✅ Started implementing 3-level hierarchy (showInstanceManagementMenu, createNewInstance functions)
+   ✅ Added instanceData support to window.contentExtractorData
+   ⚠️ PARTIALLY IMPLEMENTED: 3-level hierarchy components are incomplete and should be disabled first
+
+   **IMMEDIATE TASKS**:
+
+   *** PHASE 1: Disable Partial Implementation (1-2 hours)
+   - [ ] Comment out new functions (lines 712-820, 905-920, 3101-3111)
+   - [ ] Remove instanceData from window object
+   - [ ] Verify existing functionality still works
+   - [ ] Backup file: ✅ apps/content_extractor/selectors/interactive_selector_backup_quantum_ridge.py
+
+   *** PHASE 2: Split Monolithic File (4-6 hours)
+   - [ ] **javascript/templates.py** - JavaScript injection
+   - [ ] **navigation/nested_navigator.py** - Navigation logic  
+   - [ ] **ui/menu_builder.py** - Menu and control panels
+   - [ ] **core/selection_engine.py** - Core selection logic
+   - [ ] **persistence/field_session_manager.py** - Database operations
+
+   *** PHASE 3: Re-implement 3-level Hierarchy Cleanly (3-4 hours)
+   - [ ] Clean implementation after modular architecture
+   - [ ] Proper separation of concerns
+   - [ ] Maintainable code structure
+
+   **FOUNDATION STATUS**: Solid, but code structure needs improvement before feature development can continue efficiently.
 
 ** LabEquipmentPage Field Selector System - MAJOR DIRECTION CHANGE
    SCHEDULED: <2025-01-08>
@@ -306,3 +347,133 @@
 **Approach**: 🧑‍💻 PURE HUMAN FIELD SELECTION (Zero AI Processing)
 **Target Model**: LabEquipmentPage with full field coverage
 **Estimated Total Effort**: 15-20 model sessions for complete field selection system 
+
+** [✅] Nested Object Selection Architecture - COMPLETE & VALIDATED ✅
+   CLOSED: [2025-01-08]
+   :PROPERTIES:
+   :COMPLETED_BY: Quantum Horizon & Stellar Phoenix
+   :COMPLETION_DATE: 2025-01-08
+   :VALIDATION_DATE: 2025-01-08
+   :FINAL_STATUS: Fully implemented, tested, and user-validated
+   :HANDOFF_TO: Next Model
+   :USER_VALIDATION: SUCCESSFUL - "nested menus worked very well!"
+   :END:
+   
+   **COMPLETED FEATURES**:
+   - ✅ Recursive context system with nested field definitions
+   - ✅ Visual hierarchy indicators and breadcrumb navigation
+   - ✅ Interactive selector enhanced with 6 new methods
+   - ✅ Comprehensive testing suite with multiple modes
+   - ✅ Event-driven communication between JS UI and Python backend
+   - ✅ Backward compatibility with legacy field options
+   - ✅ Background polling for real-time nested navigation
+   - ✅ User testing validation - all functionality working correctly
+   
+   **TESTING INFRASTRUCTURE**:
+   - ✅ Automated demo test (--demo --headless)
+   - ✅ Interactive test mode (--interactive)
+   - ✅ Visual interactive test with background polling
+   - ✅ Real-time feedback and context updates
+   - ✅ User validation successful
+   
+   **PRODUCTION READY**: System is fully functional and validated by user testing
+
+** [🎯] UI Enhancement & Field Flexibility - NEXT PRIORITIES
+   OPENED: [2025-01-08]
+   :PROPERTIES:
+   :ASSIGNED_TO: Next Model (TBD)
+   :PRIORITY: High
+   :DEPENDENCIES: Nested Selection Architecture (Complete)
+   :USER_REQUIREMENTS: Clearly defined
+   :END:
+   
+   **PRIORITY 1: Draggable Menu System**
+   - Allow users to drag field menus around the screen
+   - Menus should start in current default positions
+   - No need to maintain positions between menu appearances
+   - User can reposition for better workflow
+   
+   **PRIORITY 2: Un-select Functionality**
+   - Allow users to deselect previously selected elements
+   - Should work at all nested levels
+   - Maintain selection state consistency
+   
+   **PRIORITY 3: Field Swapping System** 
+   Implement ability to swap any field (at any nested level) for:
+   - a) **Generic "select whatever"**: 
+     * Goes to miscellaneous notes (not saved as field directly)
+     * AI can use this info to help fill the actual field
+     * Provides flexibility for edge cases
+   - b) **Site metadata selection**:
+     * URL, page title, other non-HTML data
+     * Useful for context that's not in visible content
+   - c) **Human text input**:
+     * Allow direct text entry for any field
+     * Manual override option
+
+** [📋] Miscellaneous Field Implementation - DEFERRED
+   DEFERRED: [2025-01-08]
+   :PROPERTIES:
+   :REASON: User prioritized UI enhancements and field flexibility first
+   :DEPENDENCIES: Field swapping system may partially address this need
+   :STATUS: Will be revisited after current priorities
+   :END:
+   
+   This was the original next priority but user feedback shifted focus to more immediate UX improvements.
+
+** [🚨] User Testing Validation - CRITICAL PRIORITY
+   SCHEDULED: <2025-01-08>
+   :PROPERTIES:
+   :ASSIGNED_TO: Stellar Phoenix
+   :PRIORITY: CRITICAL - BLOCKING
+   :PROJECT_TYPE: User Validation
+   :STATUS: Required Before Any Further Development
+   :BLOCKING: Miscellaneous Field Implementation
+   :END:
+   
+   **CRITICAL REQUIREMENT**: User must test the nested selection system before any enhancements.
+   
+   **USER TESTING REQUIREMENTS**:
+   - 🚨 **MANDATORY**: Allow user to test the nested selection interface
+   - 🚨 **NO DEVELOPMENT**: Do not proceed with miscellaneous field until testing complete
+   - 🚨 **USER VALIDATION**: Wait for user feedback on functionality
+   - 🚨 **FIX ISSUES**: Address any problems found during testing first
+   
+   **AVAILABLE TEST MODES**:
+   - Automated demo: `python manage.py test_nested_selector --demo --headless`
+   - Interactive mode: `python manage.py test_nested_selector --interactive` 
+   - Visual mode: `python manage.py test_nested_selector --demo`
+   
+   **TESTING CHECKLIST FOR USER**:
+   - [ ] Test nested navigation (Root → models → spec_groups)
+   - [ ] Test breadcrumb navigation
+   - [ ] Test visual hierarchy indicators  
+   - [ ] Test context switching and field selection
+   - [ ] Verify user interface responsiveness
+   - [ ] Check for any bugs or unexpected behavior
+
+** [⏳] Miscellaneous Field Implementation - WAITING FOR USER VALIDATION
+   SCHEDULED: <After User Testing>  
+   :PROPERTIES:
+   :ASSIGNED_TO: Stellar Phoenix
+   :PRIORITY: HIGH (after testing)
+   :PROJECT_TYPE: Field Enhancement
+   :STATUS: Ready for Implementation After User Testing
+   :BLOCKED_BY: User Testing Validation
+   :END:
+   
+   **OBJECTIVE**: Add "miscellaneous" field for useful information that won't display on models page
+   
+   **REQUIREMENTS**:
+   - **Field Definition**: Add "miscellaneous" as selectable field option
+   - **Non-Display**: Field won't be displayed on models page but contains useful information
+   - **Storage**: Determine appropriate storage mechanism for supplementary data
+   - **Field Type**: Likely multi-value field based on "useful information" requirement
+   
+   **IMPLEMENTATION PLAN** (After User Testing):
+   1. **Update Selection Context**: Add miscellaneous field to field definitions
+   2. **Update Interactive Selector**: Add field to selection options
+   3. **Storage Considerations**: Implement appropriate storage with non-display flag
+   4. **Testing**: Verify miscellaneous field functionality
+   
+   **ARCHITECTURE READY**: Existing nested selection system designed to easily accommodate new field types 

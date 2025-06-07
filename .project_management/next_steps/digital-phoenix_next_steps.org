@@ -1,0 +1,81 @@
+#+TITLE: Next Steps for Interactive Selector JavaScript Issues
+#+AUTHOR: Digital Phoenix
+#+DATE: 2025-01-08
+#+FILETAGS: :next-steps:interactive-selector:javascript:
+
+* IMMEDIATE PRIORITIES
+
+** 1. Fix Python Syntax Errors (CRITICAL)
+The interactive_selector.py has linter errors that prevent proper execution:
+- Line 110: Malformed try statement indentation
+- Line 205: Incorrect return statement indentation
+
+** 2. Resolve JavaScript Injection Timing
+The core issue is that our JavaScript functions are not available when buttons are clicked.
+
+*** Root Problem
+- Control panel appears correctly (HTML injection works)
+- But clicking "Select Fields" button gives error: "showFieldMenu is not defined"
+- This indicates JavaScript code is not persisting or not being injected at right time
+
+*** Investigation Strategy
+1. Test on simpler webpage (like google.com) to isolate if it's site-specific
+2. Add console.log statements to verify JavaScript execution
+3. Use setTimeout/setInterval to re-inject periodically if needed
+4. Consider injecting JavaScript AFTER page's own JS finishes loading
+
+** 3. Enhanced JavaScript Persistence
+Consider these approaches:
+- MutationObserver to detect if our elements get removed
+- Periodic re-injection every few seconds
+- Event listeners for page changes that trigger re-injection
+- Injection at different page lifecycle events (DOMContentLoaded, load, etc.)
+
+* TECHNICAL APPROACH
+
+** Current Architecture Status
+Thunder Apex successfully modularized the code into:
+- js_injection.py (657 lines) - JavaScript generation
+- database_operations.py (429 lines) - Database persistence  
+- navigation_manager.py (392 lines) - Navigation logic
+- interactive_selector.py (442 lines) - Main orchestrator
+
+The modular design is solid, but the JavaScript injection mechanism needs work.
+
+** Recommended Fix Strategy
+1. Fix syntax errors first (blocking issue)
+2. Add JavaScript console debugging to injection process
+3. Test with multiple injection strategies:
+   - Immediate injection after page load
+   - Delayed injection (setTimeout)
+   - Periodic re-injection
+   - Event-based re-injection
+
+** Testing Protocol
+1. Start with simple test page to verify injection works
+2. Test on target airscience.com page
+3. Verify both control panel appearance AND button functionality
+4. Test nested navigation once basic injection works
+
+* CURRENT STATE ASSESSMENT
+
+** What Works
+- Page loading and basic setup
+- Modular component architecture
+- Control panel HTML appears correctly
+- Nested selection context system design
+
+** What's Broken
+- JavaScript function definitions not persisting
+- Button click handlers not working
+- Field menu not displaying when requested
+
+** Quick Win Opportunities
+- Fix syntax errors (should be < 5 minutes)
+- Add better error logging to identify injection failure point
+- Test injection timing with setTimeout delays
+
+* FILES TO FOCUS ON
+1. apps/content_extractor/selectors/interactive_selector.py (fix syntax)
+2. apps/content_extractor/selectors/js_injection.py (injection timing)
+3. Test with: python manage.py test_nested_selector --interactive 
