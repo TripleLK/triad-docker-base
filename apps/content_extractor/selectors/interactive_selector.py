@@ -5,12 +5,15 @@ Uses Selenium to display web pages and capture user selections
 for generating robust content selectors with field-specific assignment.
 Enhanced with floating field selection menu for LabEquipmentPage model.
 Now includes site-specific selector storage and cross-page testing.
+Enhanced with nested object selection architecture for recursive hierarchical data.
 
 Created by: Phoenix Velocity
 Date: 2025-01-08
 Enhanced by: Quantum Catalyst  
 Date: 2025-01-08
 Enhanced by: Crimson Phoenix
+Date: 2025-01-08
+Enhanced by: Quantum Horizon (Nested Selection Architecture)
 Date: 2025-01-08
 Project: Triad Docker Base
 """
@@ -33,13 +36,16 @@ import logging
 from django.utils import timezone
 from apps.content_extractor.models import SiteFieldSelector, SelectorTestResult, FieldSelectionSession
 
+# Import nested selection architecture
+from .selection_context import NestedSelectionManager, SelectionField
+
 logger = logging.getLogger(__name__)
 
 
 class InteractiveSelector:
-    """Manages Selenium-based interactive element selection with field-specific assignment and site-specific storage"""
+    """Manages Selenium-based interactive element selection with field-specific assignment, site-specific storage, and nested object selection"""
     
-    # LabEquipmentPage fields available for selection
+    # Legacy field options for backward compatibility
     FIELD_OPTIONS = [
         {'name': 'title', 'label': 'Title', 'type': 'single', 'description': 'Equipment main title'},
         {'name': 'short_description', 'label': 'Short Description', 'type': 'single', 'description': 'Brief equipment summary'},
@@ -69,7 +75,10 @@ class InteractiveSelector:
         self.current_domain = None
         self.session_name = session_name or f"Session_{int(time.time())}"
         
-        # Selection session data
+        # Initialize nested selection manager
+        self.nested_manager = NestedSelectionManager()
+        
+        # Legacy selection session data for backward compatibility
         self.selection_session_data = {
             'active_field': None,
             'field_selections': {},  # field_name -> [selections]
@@ -113,9 +122,25 @@ class InteractiveSelector:
             return False
     
     def _inject_selection_js(self):
-        """Inject enhanced JavaScript for field-specific element selection"""
-        # Create field options JavaScript array
-        field_options_js = json.dumps(self.FIELD_OPTIONS)
+        """Inject enhanced JavaScript for nested object selection with recursive contexts"""
+        # Get current fields from nested manager
+        current_fields = self.nested_manager.get_current_fields()
+        field_options_js = json.dumps([
+            {
+                'name': field.name,
+                'label': field.label,
+                'type': field.type,
+                'description': field.description,
+                'color': field.color,
+                'has_sub_fields': field.sub_fields is not None
+            }
+            for field in current_fields
+        ])
+        
+        # Get current context information
+        current_depth = self.nested_manager.get_current_depth()
+        depth_color = self.nested_manager.get_depth_color()
+        breadcrumbs = self.nested_manager.get_breadcrumbs()
         
         selection_js = f"""
         window.contentExtractorData = {{
@@ -126,10 +151,31 @@ class InteractiveSelector:
             activeField: null,
             fieldSelections: {{}},
             multiValueExamples: {{}},
-            fieldOptions: {field_options_js}
+            fieldOptions: {field_options_js},
+            // Nested selection state
+            currentDepth: {current_depth},
+            depthColor: '{depth_color}',
+            breadcrumbs: {json.dumps(breadcrumbs)},
+            contextPath: '',
+            nestedContexts: {{}}
         }};
         
-        // Field-specific highlight colors
+        // Depth-based colors for visual hierarchy
+        const DEPTH_COLORS = [
+            '#3498db',  // Blue - root level
+            '#e74c3c',  // Red - first nesting  
+            '#f39c12',  // Orange - second nesting
+            '#27ae60',  // Green - third nesting
+            '#9b59b6',  // Purple - fourth nesting
+            '#34495e'   // Dark gray - deeper nesting
+        ];
+        
+        // Get depth color
+        function getDepthColor(depth) {{
+            return DEPTH_COLORS[Math.min(depth, DEPTH_COLORS.length - 1)];
+        }}
+        
+        // Field-specific highlight colors (legacy support)
         const FIELD_COLORS = {{
             'title': '#ff6b6b',
             'short_description': '#4ecdc4', 
@@ -144,20 +190,32 @@ class InteractiveSelector:
             'spec_groups': '#aed6f1'
         }};
         
-        // Get field color or default
+        // Get field color with depth override
         function getFieldColor(fieldName) {{
+            if (window.contentExtractorData.currentDepth > 0) {{
+                // Use depth color for nested contexts
+                return getDepthColor(window.contentExtractorData.currentDepth);
+            }}
             return FIELD_COLORS[fieldName] || '#007bff';
         }}
         
-        // Highlight element on hover (enhanced visibility)
+        // Enhanced highlight element with depth indication
         function highlightElement(element) {{
             if (!window.contentExtractorData.selectedDOMElements.has(element)) {{
                 const color = getFieldColor(window.contentExtractorData.activeField);
-                element.style.outline = `4px solid ${{color}}`;
+                const depth = window.contentExtractorData.currentDepth;
+                const borderWidth = 2 + (depth * 2); // Increase border width with depth
+                
+                element.style.outline = `${{borderWidth}}px solid ${{color}}`;
                 element.style.backgroundColor = `${{color}}44`;
-                element.style.boxShadow = `0 0 8px ${{color}}88`;
-                element.style.zIndex = '9999';
+                element.style.boxShadow = `0 0 ${{8 + depth * 4}}px ${{color}}88`;
+                element.style.zIndex = `${{9999 + depth}}`;
                 element.style.position = 'relative';
+                
+                // Add depth pattern for visual hierarchy
+                if (depth > 0) {{
+                    element.style.borderStyle = depth === 1 ? 'dashed' : depth === 2 ? 'dotted' : 'solid';
+                }}
             }}
         }}
         
@@ -169,45 +227,55 @@ class InteractiveSelector:
                 element.style.boxShadow = '';
                 element.style.zIndex = '';
                 element.style.position = '';
+                element.style.borderStyle = '';
             }}
         }}
         
-        // Mark element as selected with enhanced persistent styling
+        // Mark element as selected with enhanced depth styling
         function markAsSelected(element, fieldName) {{
             window.contentExtractorData.selectedDOMElements.add(element);
             const color = getFieldColor(fieldName);
-            element.style.outline = `4px solid ${{color}}`;
+            const depth = window.contentExtractorData.currentDepth;
+            const borderWidth = 3 + (depth * 2);
+            
+            element.style.outline = `${{borderWidth}}px solid ${{color}}`;
             element.style.backgroundColor = `${{color}}66`;
-            element.style.boxShadow = `0 0 12px ${{color}}aa`;
+            element.style.boxShadow = `0 0 ${{12 + depth * 4}}px ${{color}}aa`;
             element.style.position = 'relative';
-            element.style.zIndex = '9998';
+            element.style.zIndex = `${{9998 + depth}}`;
             element.setAttribute('data-content-extractor-selected', 'true');
             element.setAttribute('data-field-name', fieldName);
+            element.setAttribute('data-selection-depth', depth);
             
-            // Add a small indicator badge
+            // Enhanced depth styling
+            if (depth > 0) {{
+                element.style.borderStyle = depth === 1 ? 'dashed' : depth === 2 ? 'dotted' : 'solid';
+            }}
+            
+            // Add enhanced indicator badge with depth info
             const badge = document.createElement('div');
             badge.setAttribute('data-selection-badge', fieldName);
             badge.setAttribute('data-content-extractor-ui', 'true');
             badge.style.cssText = `
                 position: absolute !important;
-                top: -8px !important;
-                right: -8px !important;
+                top: -${{8 + depth * 2}}px !important;
+                right: -${{8 + depth * 2}}px !important;
                 background: ${{color}} !important;
                 color: white !important;
                 border-radius: 50% !important;
-                width: 20px !important;
-                height: 20px !important;
-                font-size: 10px !important;
+                width: ${{20 + depth * 4}}px !important;
+                height: ${{20 + depth * 4}}px !important;
+                font-size: ${{10 + depth}}px !important;
                 font-weight: bold !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-                z-index: 10000 !important;
+                z-index: ${{10000 + depth}} !important;
                 border: 2px solid white !important;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
                 font-family: 'Segoe UI', Arial, sans-serif !important;
             `;
-            badge.textContent = '✓';
+            badge.textContent = depth > 0 ? depth : '✓';
             element.appendChild(badge);
         }}
         
@@ -268,11 +336,73 @@ class InteractiveSelector:
             return path;
         }}
         
-        // Create floating field selection menu
+        // Create breadcrumb navigation
+        function createBreadcrumbNavigation() {{
+            const breadcrumbs = window.contentExtractorData.breadcrumbs || ['Root'];
+            const currentDepth = window.contentExtractorData.currentDepth;
+            
+            let breadcrumbHTML = `
+                <div style="
+                    background: rgba(52,73,94,0.95) !important;
+                    padding: 8px 12px !important;
+                    border-radius: 6px !important;
+                    margin-bottom: 12px !important;
+                    border-left: 4px solid ${{getDepthColor(currentDepth)}} !important;
+                ">
+                    <div style="font-size: 11px !important; color: #bdc3c7 !important; margin-bottom: 4px !important;">Navigation Path (Depth: ${{currentDepth}})</div>
+                    <div style="display: flex !important; align-items: center !important; gap: 4px !important; flex-wrap: wrap !important;">
+            `;
+            
+            breadcrumbs.forEach((crumb, index) => {{
+                const isLast = index === breadcrumbs.length - 1;
+                const isClickable = index < breadcrumbs.length - 1;
+                
+                breadcrumbHTML += `
+                    <span style="
+                        color: ${{isLast ? '#3498db' : '#ecf0f1'}} !important;
+                        font-weight: ${{isLast ? '600' : '400'}} !important;
+                        font-size: 12px !important;
+                        cursor: ${{isClickable ? 'pointer' : 'default'}} !important;
+                        padding: 2px 6px !important;
+                        border-radius: 3px !important;
+                        background: ${{isLast ? 'rgba(52,152,219,0.2)' : 'transparent'}} !important;
+                        transition: all 0.2s !important;
+                    " 
+                    ${{isClickable ? `onclick="navigateToDepth(${{index}})" onmouseover="this.style.backgroundColor='rgba(52,152,219,0.3)'" onmouseout="this.style.backgroundColor='transparent'"` : ''}}
+                    >${{crumb}}</span>
+                `;
+                
+                if (!isLast) {{
+                    breadcrumbHTML += `<span style="color: #7f8c8d !important; font-size: 10px !important;">→</span>`;
+                }}
+            }});
+            
+            breadcrumbHTML += `
+                    </div>
+                </div>
+            `;
+            
+            return breadcrumbHTML;
+        }}
+        
+        // Navigate to specific depth level
+        window.navigateToDepth = function(targetDepth) {{
+            // This would trigger Python callback to navigate to specific depth
+            const event = new CustomEvent('nestedNavigate', {{ 
+                detail: {{ targetDepth: targetDepth }}
+            }});
+            document.dispatchEvent(event);
+        }};
+        
+        // Create enhanced field selection menu with nested context support
         function createFieldSelectionMenu() {{
             const menu = document.createElement('div');
             menu.id = 'field-selection-menu';
             menu.setAttribute('data-content-extractor-ui', 'true');
+            
+            const currentDepth = window.contentExtractorData.currentDepth;
+            const depthColor = getDepthColor(currentDepth);
+            
             menu.style.cssText = `
                 position: fixed !important;
                 top: 20px !important;
@@ -281,20 +411,27 @@ class InteractiveSelector:
                 color: white !important;
                 padding: 25px !important;
                 border-radius: 12px !important;
-                z-index: 10001 !important;
+                z-index: ${{10001 + currentDepth}} !important;
                 font-family: 'Segoe UI', Arial, sans-serif !important;
                 font-size: 14px !important;
-                max-width: 380px !important;
+                max-width: 420px !important;
                 box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
                 max-height: 85vh !important;
                 overflow-y: auto !important;
-                border: 2px solid #3498db !important;
+                border: 3px solid ${{depthColor}} !important;
             `;
             
-            let menuHTML = `
-                <div style="border-bottom: 2px solid #3498db !important; padding-bottom: 18px !important; margin-bottom: 18px !important;">
-                    <h3 style="margin: 0 !important; color: #ecf0f1 !important; font-size: 18px !important; font-weight: 600 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">🎯 Field Selection</h3>
-                    <p style="margin: 8px 0 0 0 !important; font-size: 13px !important; color: #bdc3c7 !important; line-height: 1.4 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">Choose which LabEquipmentPage field you want to select content for:</p>
+            let menuHTML = createBreadcrumbNavigation();
+            
+            menuHTML += `
+                <div style="border-bottom: 2px solid ${{depthColor}} !important; padding-bottom: 18px !important; margin-bottom: 18px !important;">
+                    <h3 style="margin: 0 !important; color: #ecf0f1 !important; font-size: 18px !important; font-weight: 600 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">
+                        🎯 Field Selection
+                        <span style="font-size: 14px !important; color: ${{depthColor}} !important; margin-left: 8px !important;">(Depth ${{currentDepth}})</span>
+                    </h3>
+                    <p style="margin: 8px 0 0 0 !important; font-size: 13px !important; color: #bdc3c7 !important; line-height: 1.4 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">
+                        Choose field for current context level:
+                    </p>
                 </div>
                 <div id="field-options">
             `;
@@ -305,110 +442,180 @@ class InteractiveSelector:
             // Group fields by type
             const singleFields = window.contentExtractorData.fieldOptions.filter(f => f.type === 'single');
             const multiFields = window.contentExtractorData.fieldOptions.filter(f => f.type === 'multi-value');
+            const nestedFields = window.contentExtractorData.fieldOptions.filter(f => f.type === 'nested');
             
             // Single value fields
-            menuHTML += `<div style="margin-bottom: 25px !important;">
-                <h4 style="margin: 0 0 12px 0 !important; color: #3498db !important; font-size: 15px !important; font-weight: 600 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">📄 Single Value Fields</h4>
-            `;
-            singleFields.forEach(field => {{
-                const color = getFieldColor(field.name);
-                const selectionCount = (currentSelections[field.name] || []).length;
-                const isComplete = selectionCount > 0;
-                const statusIcon = isComplete ? '✅' : '⭕';
-                const completionText = isComplete ? `(${{selectionCount}} selected)` : '(none)';
-                
-                menuHTML += `
-                    <button class="field-option" data-field="${{field.name}}" style="
-                        display: block !important;
-                        width: 100% !important;
-                        margin: 6px 0 !important;
-                        padding: 12px 15px !important;
-                        background: ${{isComplete ? color + '44' : color + '22'}} !important;
-                        border: 2px solid ${{color}} !important;
-                        border-radius: 8px !important;
-                        color: white !important;
-                        cursor: pointer !important;
-                        text-align: left !important;
-                        font-size: 13px !important;
-                        font-family: 'Segoe UI', Arial, sans-serif !important;
-                        transition: all 0.3s ease !important;
-                        position: relative !important;
-                        ${{isComplete ? 'box-shadow: 0 0 8px ' + color + '66 !important;' : ''}}
-                    " onmouseover="this.style.backgroundColor='${{color}}66'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'" 
-                       onmouseout="this.style.backgroundColor='${{isComplete ? color + '44' : color + '22'}}'; this.style.transform='translateY(0)'; this.style.boxShadow='${{isComplete ? '0 0 8px ' + color + '66' : 'none'}}'">
-                        <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
-                            <div style="font-weight: 600 !important; color: white !important;">${{field.label}}</div>
-                            <div style="font-size: 16px !important;">${{statusIcon}}</div>
-                        </div>
-                        <div style="font-size: 11px !important; opacity: 0.9 !important; margin-top: 4px !important; color: white !important;">${{field.description}}</div>
-                        <div style="font-size: 10px !important; opacity: 0.7 !important; margin-top: 2px !important; color: #ecf0f1 !important;">${{completionText}}</div>
-                    </button>
+            if (singleFields.length > 0) {{
+                menuHTML += `<div style="margin-bottom: 25px !important;">
+                    <h4 style="margin: 0 0 12px 0 !important; color: #3498db !important; font-size: 15px !important; font-weight: 600 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">📄 Single Value Fields</h4>
                 `;
-            }});
-            menuHTML += `</div>`;
+                
+                singleFields.forEach(field => {{
+                    const color = field.color;
+                    const selectionCount = (currentSelections[field.name] || []).length;
+                    const isComplete = selectionCount > 0;
+                    const statusIcon = isComplete ? '✅' : '⭕';
+                    const completionText = isComplete ? `(${{selectionCount}} selected)` : '(none)';
+                    
+                    menuHTML += `
+                        <button class="field-option" data-field="${{field.name}}" style="
+                            display: block !important;
+                            width: 100% !important;
+                            margin: 6px 0 !important;
+                            padding: 12px 15px !important;
+                            background: ${{isComplete ? color + '44' : color + '22'}} !important;
+                            border: 2px solid ${{color}} !important;
+                            border-radius: 8px !important;
+                            color: white !important;
+                            cursor: pointer !important;
+                            text-align: left !important;
+                            font-size: 13px !important;
+                            font-family: 'Segoe UI', Arial, sans-serif !important;
+                            transition: all 0.3s ease !important;
+                            position: relative !important;
+                            ${{isComplete ? 'box-shadow: 0 0 8px ' + color + '66 !important;' : ''}}
+                        " onmouseover="this.style.backgroundColor='${{color}}66'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'" 
+                           onmouseout="this.style.backgroundColor='${{isComplete ? color + '44' : color + '22'}}'; this.style.transform='translateY(0)'; this.style.boxShadow='${{isComplete ? '0 0 8px ' + color + '66' : 'none'}}'">
+                            <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
+                                <div style="font-weight: 600 !important; color: white !important;">${{field.label}}</div>
+                                <div style="font-size: 16px !important;">${{statusIcon}}</div>
+                            </div>
+                            <div style="font-size: 11px !important; opacity: 0.9 !important; margin-top: 4px !important; color: white !important;">${{field.description}}</div>
+                            <div style="font-size: 10px !important; opacity: 0.7 !important; margin-top: 2px !important; color: #ecf0f1 !important;">${{completionText}}</div>
+                        </button>
+                    `;
+                }});
+                menuHTML += `</div>`;
+            }}
             
             // Multi-value fields
-            menuHTML += `<div>
-                <h4 style="margin: 0 0 12px 0 !important; color: #e74c3c !important; font-size: 15px !important; font-weight: 600 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">📋 Multi-Value Fields</h4>
-                <p style="font-size: 11px !important; color: #95a5a6 !important; margin: 0 0 12px 0 !important; padding: 8px !important; background: rgba(231,76,60,0.1) !important; border-radius: 6px !important; border-left: 3px solid #e74c3c !important; font-family: 'Segoe UI', Arial, sans-serif !important;">💡 Select 2+ examples for pattern generation</p>
-            `;
-            multiFields.forEach(field => {{
-                const color = getFieldColor(field.name);
-                const selectionCount = (currentSelections[field.name] || []).length;
-                const isComplete = selectionCount > 0;
-                const readyForGeneration = selectionCount >= 2;
-                let statusIcon = '⭕';
-                let statusText = '(none)';
-                
-                if (readyForGeneration) {{
-                    statusIcon = '🎯';
-                    statusText = `(${{selectionCount}} - ready for pattern)`;
-                }} else if (isComplete) {{
-                    statusIcon = '⚠️';
-                    statusText = `(${{selectionCount}} - need more examples)`;
-                }}
-                
-                menuHTML += `
-                    <button class="field-option" data-field="${{field.name}}" style="
-                        display: block !important;
-                        width: 100% !important;
-                        margin: 6px 0 !important;
-                        padding: 12px 15px !important;
-                        background: ${{isComplete ? color + '44' : color + '22'}} !important;
-                        border: 2px solid ${{color}} !important;
-                        border-radius: 8px !important;
-                        color: white !important;
-                        cursor: pointer !important;
-                        text-align: left !important;
-                        font-size: 13px !important;
-                        font-family: 'Segoe UI', Arial, sans-serif !important;
-                        transition: all 0.3s ease !important;
-                        position: relative !important;
-                        ${{readyForGeneration ? 'box-shadow: 0 0 12px ' + color + '88 !important;' : isComplete ? 'box-shadow: 0 0 6px ' + color + '44 !important;' : ''}}
-                    " onmouseover="this.style.backgroundColor='${{color}}66'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'" 
-                       onmouseout="this.style.backgroundColor='${{isComplete ? color + '44' : color + '22'}}'; this.style.transform='translateY(0)'; this.style.boxShadow='${{readyForGeneration ? '0 0 12px ' + color + '88' : isComplete ? '0 0 6px ' + color + '44' : 'none'}}'">
-                        <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
-                            <div style="font-weight: 600 !important; color: white !important;">${{field.label}}</div>
-                            <div style="font-size: 16px !important;">${{statusIcon}}</div>
-                        </div>
-                        <div style="font-size: 11px !important; opacity: 0.9 !important; margin-top: 4px !important; color: white !important;">${{field.description}}</div>
-                        <div style="font-size: 10px !important; opacity: 0.7 !important; margin-top: 2px !important; color: #ecf0f1 !important;">${{statusText}}</div>
-                    </button>
+            if (multiFields.length > 0) {{
+                menuHTML += `<div style="margin-bottom: 25px !important;">
+                    <h4 style="margin: 0 0 12px 0 !important; color: #e74c3c !important; font-size: 15px !important; font-weight: 600 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">📋 Multi-Value Fields</h4>
+                    <p style="font-size: 11px !important; color: #95a5a6 !important; margin: 0 0 12px 0 !important; padding: 8px !important; background: rgba(231,76,60,0.1) !important; border-radius: 6px !important; border-left: 3px solid #e74c3c !important; font-family: 'Segoe UI', Arial, sans-serif !important;">💡 Select 2+ examples for pattern generation</p>
                 `;
-            }});
-            menuHTML += `</div>`;
+                
+                multiFields.forEach(field => {{
+                    const color = field.color;
+                    const selectionCount = (currentSelections[field.name] || []).length;
+                    const isComplete = selectionCount > 0;
+                    const readyForGeneration = selectionCount >= 2;
+                    let statusIcon = '⭕';
+                    let statusText = '(none)';
+                    
+                    if (readyForGeneration) {{
+                        statusIcon = '🎯';
+                        statusText = `(${{selectionCount}} - ready for pattern)`;
+                    }} else if (isComplete) {{
+                        statusIcon = '⚠️';
+                        statusText = `(${{selectionCount}} - need more examples)`;
+                    }}
+                    
+                    menuHTML += `
+                        <button class="field-option" data-field="${{field.name}}" style="
+                            display: block !important;
+                            width: 100% !important;
+                            margin: 6px 0 !important;
+                            padding: 12px 15px !important;
+                            background: ${{isComplete ? color + '44' : color + '22'}} !important;
+                            border: 2px solid ${{color}} !important;
+                            border-radius: 8px !important;
+                            color: white !important;
+                            cursor: pointer !important;
+                            text-align: left !important;
+                            font-size: 13px !important;
+                            font-family: 'Segoe UI', Arial, sans-serif !important;
+                            transition: all 0.3s ease !important;
+                            position: relative !important;
+                            ${{readyForGeneration ? 'box-shadow: 0 0 12px ' + color + '88 !important;' : isComplete ? 'box-shadow: 0 0 6px ' + color + '44 !important;' : ''}}
+                        " onmouseover="this.style.backgroundColor='${{color}}66'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'" 
+                           onmouseout="this.style.backgroundColor='${{isComplete ? color + '44' : color + '22'}}'; this.style.transform='translateY(0)'; this.style.boxShadow='${{readyForGeneration ? '0 0 12px ' + color + '88' : isComplete ? '0 0 6px ' + color + '44' : 'none'}}'">
+                            <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
+                                <div style="font-weight: 600 !important; color: white !important;">${{field.label}}</div>
+                                <div style="font-size: 16px !important;">${{statusIcon}}</div>
+                            </div>
+                            <div style="font-size: 11px !important; opacity: 0.9 !important; margin-top: 4px !important; color: white !important;">${{field.description}}</div>
+                            <div style="font-size: 10px !important; opacity: 0.7 !important; margin-top: 2px !important; color: #ecf0f1 !important;">${{statusText}}</div>
+                        </button>
+                    `;
+                }});
+                menuHTML += `</div>`;
+            }}
             
-            // Summary section
-            const completedCount = Object.keys(currentSelections).filter(k => currentSelections[k].length > 0).length;
-            const totalFields = window.contentExtractorData.fieldOptions.length;
+            // Nested fields (NEW)
+            if (nestedFields.length > 0) {{
+                menuHTML += `<div style="margin-bottom: 25px !important;">
+                    <h4 style="margin: 0 0 12px 0 !important; color: #9b59b6 !important; font-size: 15px !important; font-weight: 600 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">🏗️ Nested Object Fields</h4>
+                    <p style="font-size: 11px !important; color: #95a5a6 !important; margin: 0 0 12px 0 !important; padding: 8px !important; background: rgba(155,89,182,0.1) !important; border-radius: 6px !important; border-left: 3px solid #9b59b6 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">🔗 Select to enter nested context with sub-fields</p>
+                `;
+                
+                nestedFields.forEach(field => {{
+                    const color = field.color;
+                    const selectionCount = (currentSelections[field.name] || []).length;
+                    const hasSubContexts = Object.keys(window.contentExtractorData.nestedContexts).some(key => key.startsWith(field.name));
+                    const statusIcon = hasSubContexts ? '🔗' : '📂';
+                    const statusText = hasSubContexts ? '(has nested contexts)' : '(click to enter)';
+                    
+                    menuHTML += `
+                        <button class="field-option nested-field" data-field="${{field.name}}" style="
+                            display: block !important;
+                            width: 100% !important;
+                            margin: 6px 0 !important;
+                            padding: 12px 15px !important;
+                            background: ${{color}}33 !important;
+                            border: 2px solid ${{color}} !important;
+                            border-style: dashed !important;
+                            border-radius: 8px !important;
+                            color: white !important;
+                            cursor: pointer !important;
+                            text-align: left !important;
+                            font-size: 13px !important;
+                            font-family: 'Segoe UI', Arial, sans-serif !important;
+                            transition: all 0.3s ease !important;
+                            position: relative !important;
+                            ${{hasSubContexts ? 'box-shadow: 0 0 8px ' + color + '66 !important;' : ''}}
+                        " onmouseover="this.style.backgroundColor='${{color}}55'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(155,89,182,0.4)'" 
+                           onmouseout="this.style.backgroundColor='${{color}}33'; this.style.transform='translateY(0)'; this.style.boxShadow='${{hasSubContexts ? '0 0 8px ' + color + '66' : 'none'}}'">
+                            <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
+                                <div style="font-weight: 600 !important; color: white !important;">${{field.label}}</div>
+                                <div style="font-size: 16px !important;">${{statusIcon}}</div>
+                            </div>
+                            <div style="font-size: 11px !important; opacity: 0.9 !important; margin-top: 4px !important; color: white !important;">${{field.description}}</div>
+                            <div style="font-size: 10px !important; opacity: 0.7 !important; margin-top: 2px !important; color: #ecf0f1 !important;">${{statusText}}</div>
+                        </button>
+                    `;
+                }});
+                menuHTML += `</div>`;
+            }}
+            
+            // Summary and controls
+            const allFields = [...singleFields, ...multiFields, ...nestedFields];
+            const completedCount = Object.keys(currentSelections).filter(k => currentSelections[k] && currentSelections[k].length > 0).length;
+            const totalFields = allFields.length;
             
             menuHTML += `</div>
                 <div style="margin-top: 25px !important; border-top: 2px solid #34495e !important; padding-top: 18px !important;">
-                    <div style="background: rgba(52,152,219,0.1) !important; padding: 12px !important; border-radius: 8px !important; margin-bottom: 15px !important; border-left: 4px solid #3498db !important;">
-                        <div style="font-size: 13px !important; font-weight: 600 !important; color: #3498db !important;">Progress: ${{completedCount}}/${{totalFields}} fields completed</div>
-                        <div style="font-size: 11px !important; color: #bdc3c7 !important; margin-top: 4px !important;">Fields with at least one selection</div>
+                    <div style="background: rgba(52,152,219,0.1) !important; padding: 12px !important; border-radius: 8px !important; margin-bottom: 15px !important; border-left: 4px solid ${{depthColor}} !important;">
+                        <div style="font-size: 13px !important; font-weight: 600 !important; color: ${{depthColor}} !important;">Context: ${{window.contentExtractorData.breadcrumbs[window.contentExtractorData.breadcrumbs.length - 1]}}</div>
+                        <div style="font-size: 11px !important; color: #bdc3c7 !important; margin-top: 4px !important;">Depth ${{currentDepth}} • ${{completedCount}}/${{totalFields}} fields with selections</div>
                     </div>
                     <div style="display: flex !important; gap: 10px !important;">
+                        ${{currentDepth > 0 ? 
+                            `<button id="navigate-parent" style="
+                                background: #95a5a6 !important;
+                                color: white !important;
+                                border: none !important;
+                                padding: 10px 18px !important;
+                                border-radius: 6px !important;
+                                cursor: pointer !important;
+                                font-size: 13px !important;
+                                font-weight: 600 !important;
+                                font-family: 'Segoe UI', Arial, sans-serif !important;
+                                transition: all 0.2s !important;
+                                flex: 1 !important;
+                            " onmouseover="this.style.backgroundColor='#7f8c8d'" onmouseout="this.style.backgroundColor='#95a5a6'">⬆️ Parent</button>` 
+                            : ''
+                        }}
                         <button id="close-field-menu" style="
                             background: #e74c3c !important;
                             color: white !important;
@@ -422,19 +629,6 @@ class InteractiveSelector:
                             transition: all 0.2s !important;
                             flex: 1 !important;
                         " onmouseover="this.style.backgroundColor='#c0392b'" onmouseout="this.style.backgroundColor='#e74c3c'">Close Menu</button>
-                        <button id="clear-all-selections" style="
-                            background: #95a5a6 !important;
-                            color: white !important;
-                            border: none !important;
-                            padding: 10px 18px !important;
-                            border-radius: 6px !important;
-                            cursor: pointer !important;
-                            font-size: 13px !important;
-                            font-weight: 600 !important;
-                            font-family: 'Segoe UI', Arial, sans-serif !important;
-                            transition: all 0.2s !important;
-                            flex: 1 !important;
-                        " onmouseover="this.style.backgroundColor='#7f8c8d'" onmouseout="this.style.backgroundColor='#95a5a6'">Clear All</button>
                     </div>
                 </div>
             `;
@@ -443,7 +637,7 @@ class InteractiveSelector:
             return menu;
         }}
         
-        // Show field selection menu
+        // Show enhanced field selection menu
         window.showFieldMenu = function() {{
             // Remove existing menu if present
             const existingMenu = document.getElementById('field-selection-menu');
@@ -463,43 +657,48 @@ class InteractiveSelector:
             menu.querySelectorAll('.field-option').forEach(button => {{
                 button.addEventListener('click', function() {{
                     const fieldName = this.getAttribute('data-field');
-                    selectField(fieldName);
+                    const isNested = this.classList.contains('nested-field');
+                    
+                    if (isNested) {{
+                        enterNestedField(fieldName);
+                    }} else {{
+                        selectField(fieldName);
+                    }}
                 }});
             }});
+            
+            // Parent navigation button
+            const parentBtn = document.getElementById('navigate-parent');
+            if (parentBtn) {{
+                parentBtn.addEventListener('click', function() {{
+                    navigateToParent();
+                }});
+            }}
             
             // Close menu button
             document.getElementById('close-field-menu').addEventListener('click', function() {{
                 menu.remove();
             }});
-            
-            // Clear all selections button
-            document.getElementById('clear-all-selections').addEventListener('click', function() {{
-                if (confirm('Clear all field selections? This cannot be undone.')) {{
-                    window.clearSelections();
-                    menu.remove();
-                    window.showFieldMenu(); // Refresh menu to show updated status
-                }}
-            }});
         }};
         
-        // Select a field and start content selection
+        // Enter nested field context
+        function enterNestedField(fieldName) {{
+            // Trigger Python callback to enter nested context
+            const event = new CustomEvent('enterNestedField', {{ 
+                detail: {{ fieldName: fieldName, instanceIndex: 0 }}
+            }});
+            document.dispatchEvent(event);
+        }}
+        
+        // Navigate to parent context
+        function navigateToParent() {{
+            // Trigger Python callback to navigate to parent
+            const event = new CustomEvent('navigateToParent', {{}});
+            document.dispatchEvent(event);
+        }}
+        
+        // Select a field and start content selection (enhanced for nested contexts)
         function selectField(fieldName) {{
-            // Check if this field has sub-menu options
-            const fieldsWithSubMenus = ['models', 'categorized_tags', 'spec_groups', 'features', 'accessories'];
-            
-            if (fieldsWithSubMenus.includes(fieldName)) {{
-                // Remove field menu first
-                const menu = document.getElementById('field-selection-menu');
-                if (menu) {{
-                    menu.remove();
-                }}
-                
-                // Show sub-menu for this field
-                showFieldSubMenu(fieldName);
-                return;
-            }}
-            
-            // For simple fields, proceed with regular selection
             window.contentExtractorData.activeField = fieldName;
             
             // Remove field menu
@@ -513,7 +712,7 @@ class InteractiveSelector:
                 window.contentExtractorData.fieldSelections[fieldName] = [];
             }}
             
-            // Create floating menu toggle button
+            // Create floating menu toggle
             createFloatingMenuToggle();
             
             // Start selection mode for this field
@@ -1909,10 +2108,236 @@ class InteractiveSelector:
                 }}
             }}
         }}
+        
+        // Set up event listeners for nested navigation
+        document.addEventListener('enterNestedField', function(event) {{
+            const {{ fieldName, instanceIndex }} = event.detail;
+            console.log(`Entering nested field: ${{fieldName}} at index ${{instanceIndex}}`);
+            
+            // This would trigger Python callback through Selenium
+            window.pendingNestedAction = {{
+                action: 'enter_nested',
+                fieldName: fieldName,
+                instanceIndex: instanceIndex
+            }};
+        }});
+        
+        document.addEventListener('navigateToParent', function(event) {{
+            console.log('Navigating to parent context');
+            
+            // This would trigger Python callback through Selenium
+            window.pendingNestedAction = {{
+                action: 'navigate_parent'
+            }};
+        }});
+        
+        document.addEventListener('nestedNavigate', function(event) {{
+            const {{ targetDepth }} = event.detail;
+            console.log(`Navigating to depth: ${{targetDepth}}`);
+            
+            // This would trigger Python callback through Selenium
+            window.pendingNestedAction = {{
+                action: 'navigate_to_depth',
+                targetDepth: targetDepth
+            }};
+        }});
+        
+        // Refresh interface after nested context change
+        window.refreshNestedInterface = function() {{
+            // Remove existing field menu
+            const existingMenu = document.getElementById('field-selection-menu');
+            if (existingMenu) {{
+                existingMenu.remove();
+            }}
+            
+            // Show updated field menu with new context
+            window.showFieldMenu();
+        }};
     """
         
-        self.driver.execute_script(selection_js)
-    
+        try:
+            self.driver.execute_script(selection_js)
+            logger.info("Enhanced nested selection JavaScript injected successfully")
+        except Exception as e:
+            logger.error(f"Failed to inject JavaScript: {e}")
+            raise
+
+    def enter_nested_field(self, field_name: str, instance_index: int = 0) -> bool:
+        """
+        Enter a nested field context and refresh the interface.
+        
+        Args:
+            field_name: Name of the nested field to enter
+            instance_index: Index for multi-value fields
+            
+        Returns:
+            True if successfully entered nested context
+        """
+        try:
+            # Use nested manager to enter nested context
+            success = self.nested_manager.enter_nested_field(field_name, instance_index)
+            
+            if success:
+                logger.info(f"Entered nested field '{field_name}' at index {instance_index}")
+                
+                # Re-inject JavaScript with updated context
+                self._inject_selection_js()
+                
+                # Refresh the field menu interface
+                self.driver.execute_script("window.refreshNestedInterface();")
+                
+                return True
+            else:
+                logger.warning(f"Failed to enter nested field '{field_name}' - field may not support nesting")
+                return False
+                
+        except Exception as e:
+            logger.error(f"Error entering nested field '{field_name}': {e}")
+            return False
+
+    def navigate_to_parent(self) -> bool:
+        """
+        Navigate back to parent context and refresh the interface.
+        
+        Returns:
+            True if successfully navigated to parent
+        """
+        try:
+            # Use nested manager to navigate to parent
+            success = self.nested_manager.navigate_to_parent()
+            
+            if success:
+                logger.info("Navigated to parent context")
+                
+                # Re-inject JavaScript with updated context
+                self._inject_selection_js()
+                
+                # Refresh the field menu interface
+                self.driver.execute_script("window.refreshNestedInterface();")
+                
+                return True
+            else:
+                logger.warning("Failed to navigate to parent - already at root level")
+                return False
+                
+        except Exception as e:
+            logger.error(f"Error navigating to parent: {e}")
+            return False
+
+    def navigate_to_depth(self, target_depth: int) -> bool:
+        """
+        Navigate to specific depth level in nested hierarchy.
+        
+        Args:
+            target_depth: Target depth level (0 = root)
+            
+        Returns:
+            True if successfully navigated to target depth
+        """
+        try:
+            current_depth = self.nested_manager.get_current_depth()
+            
+            if target_depth == current_depth:
+                return True  # Already at target depth
+                
+            if target_depth > current_depth:
+                logger.warning(f"Cannot navigate to deeper level {target_depth} from current depth {current_depth}")
+                return False
+                
+            # Navigate up to target depth
+            while self.nested_manager.get_current_depth() > target_depth:
+                if not self.nested_manager.navigate_to_parent():
+                    break
+                    
+            logger.info(f"Navigated to depth {target_depth}")
+            
+            # Re-inject JavaScript with updated context
+            self._inject_selection_js()
+            
+            # Refresh the field menu interface
+            self.driver.execute_script("window.refreshNestedInterface();")
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error navigating to depth {target_depth}: {e}")
+            return False
+
+    def check_for_nested_actions(self) -> bool:
+        """
+        Check for pending nested navigation actions from JavaScript and handle them.
+        
+        Returns:
+            True if action was handled
+        """
+        try:
+            # Check for pending nested actions
+            pending_action = self.driver.execute_script("return window.pendingNestedAction;")
+            
+            if pending_action:
+                # Clear the pending action
+                self.driver.execute_script("window.pendingNestedAction = null;")
+                
+                action_type = pending_action.get('action')
+                
+                if action_type == 'enter_nested':
+                    field_name = pending_action.get('fieldName')
+                    instance_index = pending_action.get('instanceIndex', 0)
+                    return self.enter_nested_field(field_name, instance_index)
+                    
+                elif action_type == 'navigate_parent':
+                    return self.navigate_to_parent()
+                    
+                elif action_type == 'navigate_to_depth':
+                    target_depth = pending_action.get('targetDepth', 0)
+                    return self.navigate_to_depth(target_depth)
+                    
+            return False
+            
+        except Exception as e:
+            logger.error(f"Error checking for nested actions: {e}")
+            return False
+
+    def get_nested_selection_hierarchy(self) -> Dict:
+        """
+        Get the complete nested selection hierarchy.
+        
+        Returns:
+            Dictionary containing the full selection hierarchy
+        """
+        try:
+            return self.nested_manager.export_all_selections()
+        except Exception as e:
+            logger.error(f"Error exporting nested selection hierarchy: {e}")
+            return {}
+
+    def get_current_context_info(self) -> Dict:
+        """
+        Get information about the current selection context.
+        
+        Returns:
+            Dictionary with current context information
+        """
+        try:
+            return {
+                'depth': self.nested_manager.get_current_depth(),
+                'breadcrumbs': self.nested_manager.get_breadcrumbs(),
+                'depth_color': self.nested_manager.get_depth_color(),
+                'available_fields': [
+                    {
+                        'name': field.name,
+                        'label': field.label,
+                        'type': field.type,
+                        'description': field.description,
+                        'has_sub_fields': field.sub_fields is not None
+                    }
+                    for field in self.nested_manager.get_current_fields()
+                ]
+            }
+        except Exception as e:
+            logger.error(f"Error getting current context info: {e}")
+            return {}
+
     def load_page(self, url: str, wait_time: int = 10) -> bool:
         """
         Load a web page and wait for it to be ready.
@@ -1957,6 +2382,7 @@ class InteractiveSelector:
     def show_field_menu(self) -> bool:
         """
         Display the floating field selection menu for LabEquipmentPage fields.
+        Enhanced with nested context support.
         
         Returns:
             True if menu displayed successfully
@@ -1966,8 +2392,11 @@ class InteractiveSelector:
             return False
         
         try:
+            # Check for pending nested actions before showing menu
+            self.check_for_nested_actions()
+            
             self.driver.execute_script("window.showFieldMenu();")
-            logger.info("Field selection menu displayed")
+            logger.info(f"Field selection menu displayed for depth {self.nested_manager.get_current_depth()}")
             return True
         except WebDriverException as e:
             logger.error(f"Failed to show field menu: {e}")
@@ -1976,6 +2405,7 @@ class InteractiveSelector:
     def start_field_selection(self, field_name: str) -> bool:
         """
         Start field-specific selection mode for a LabEquipmentPage field.
+        Enhanced with nested context support.
         
         Args:
             field_name: Name of the field to select content for
@@ -1987,19 +2417,64 @@ class InteractiveSelector:
             logger.error("Driver not initialized")
             return False
         
-        # Validate field name
-        valid_fields = [field['name'] for field in self.FIELD_OPTIONS]
-        if field_name not in valid_fields:
-            logger.error(f"Invalid field name: {field_name}. Valid fields: {valid_fields}")
+        # Get current available fields (may be different in nested context)
+        current_fields = self.nested_manager.get_current_fields()
+        valid_field_names = [field.name for field in current_fields]
+        
+        if field_name not in valid_field_names:
+            logger.error(f"Invalid field name: {field_name} for current context. Valid fields: {valid_field_names}")
             return False
         
         try:
-            self.driver.execute_script(f"window.startFieldSelection('{field_name}');")
-            self.selection_session_data['active_field'] = field_name
-            logger.info(f"Started field selection for: {field_name}")
-            return True
+            # Check for nested field type
+            field_obj = next((f for f in current_fields if f.name == field_name), None)
+            
+            if field_obj and field_obj.type == 'nested':
+                # This is a nested field - enter nested context instead of starting selection
+                logger.info(f"Entering nested context for field: {field_name}")
+                return self.enter_nested_field(field_name, 0)
+            else:
+                # Regular field selection
+                self.driver.execute_script(f"window.startFieldSelection('{field_name}');")
+                self.selection_session_data['active_field'] = field_name
+                logger.info(f"Started field selection for: {field_name} at depth {self.nested_manager.get_current_depth()}")
+                return True
+                
         except WebDriverException as e:
             logger.error(f"Failed to start field selection: {e}")
+            return False
+
+    def poll_for_nested_actions(self, timeout: float = 30.0) -> bool:
+        """
+        Poll for nested navigation actions from the JavaScript interface.
+        
+        Args:
+            timeout: Maximum time to poll in seconds
+            
+        Returns:
+            True if action was handled, False if timeout reached
+        """
+        if not self.driver:
+            return False
+            
+        start_time = time.time()
+        
+        try:
+            while time.time() - start_time < timeout:
+                # Check for nested actions
+                action_handled = self.check_for_nested_actions()
+                
+                if action_handled:
+                    return True
+                    
+                # Small delay to avoid excessive polling
+                time.sleep(0.1)
+                
+            logger.debug("Nested action polling timeout reached")
+            return False
+            
+        except Exception as e:
+            logger.error(f"Error during nested action polling: {e}")
             return False
 
     def start_selection(self, label: str) -> bool:
@@ -2727,4 +3202,5 @@ class InteractiveSelector:
             
         except Exception as e:
             logger.error(f"Failed to update control panel progress: {e}")
+            return False
             return False

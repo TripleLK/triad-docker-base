@@ -1,0 +1,173 @@
+#+TITLE: Next Steps - Azure Phoenix
+#+AUTHOR: Azure Phoenix
+#+DATE: 2025-01-08
+#+FILETAGS: :next-steps:azure-phoenix:nested-selection-phase2:
+
+* IMMEDIATE PRIORITY: Nested Selection Architecture Phase 2 🏗️
+
+** Context Summary
+- ✅ API issues resolved (16/16 tests passing)
+- ✅ Stellar Horizon's Phase 1 UI fixes are stable
+- 🎯 Ready to implement user's original request: nested selection architecture
+- 📋 User wants "models" selection to open models-specific context with sub-field menus
+
+** Core Requirements (FROM USER FEEDBACK)
+1. **Recursive Interface**: When selecting "models", enter models-specific input mode
+2. **Sub-Field Menus**: Within models context, show menu of model fields (model_name, model_number, etc.)
+3. **Modular Design**: Same selection interface components work at any nesting level
+4. **Visual Depth Indicators**: Border colors to indicate current selection depth
+5. **Context Preservation**: Maintain parent context while navigating sub-selections
+
+* Phase 2A: Component Modularization (IMMEDIATE NEXT STEP) 🔧
+
+** Analyze Current Code Structure
+1. **Review Interactive Selector Logic**
+   - Examine `apps/content_extractor/selectors/interactive_selector.py`
+   - Map current field selection workflow 
+   - Identify components that can be extracted and modularized
+
+2. **Design Base Selection Context Class**
+   ```python
+   class SelectionContext:
+       def __init__(self, depth=0, parent_context=None):
+           self.depth = depth
+           self.parent_context = parent_context
+           self.visual_style = self.get_depth_styling()
+       
+       def show_field_menu(self):
+           # Reusable field menu logic
+       
+       def get_depth_styling(self):
+           # Border color based on depth level
+   ```
+
+3. **Extract Reusable Components**
+   - Field menu display logic
+   - Selection validation and processing
+   - UI element creation and styling
+   - Context switching and navigation
+
+** Technical Implementation Plan
+1. Create `SelectionContext` base class with depth tracking
+2. Extract current field menu logic into modular methods
+3. Implement visual depth indicators (border colors)
+4. Test basic two-level nesting (field -> sub-field)
+
+* Phase 2B: Recursive Interface Implementation 🔄
+
+** Nested Context System
+1. **Context Switching Logic**
+   - When user selects "models", create new SelectionContext(depth=1)
+   - Show models-specific sub-field menu
+   - Preserve parent field context
+
+2. **Sub-Field Menu Implementation**
+   - Reuse existing field menu components within nested context
+   - Display model-specific fields: model_name, model_number, specifications
+   - Allow further nesting if sub-fields have their own sub-structures
+
+3. **Visual Feedback System**
+   - Depth 0: Default border color
+   - Depth 1: Different border color (e.g., blue)
+   - Depth 2+: Additional color variations
+   - Breadcrumb navigation or context indicators
+
+** User Experience Flow
+```
+1. User opens field selector → Shows main fields (title, models, etc.)
+2. User selects "models" → Enters models context (depth 1)
+3. Shows models sub-menu → model_name, model_number, specifications
+4. User selects "model_name" → Can input/select model name values
+5. Navigation back to parent context preserves all selections
+```
+
+* Technical Requirements 🛠️
+
+** Code Organization
+1. **Extract from interactive_selector.py**:
+   - `SelectionContext` class (base for all selection interfaces)
+   - `FieldMenuManager` (handles menu display and interaction)
+   - `DepthStyleManager` (manages visual indicators)
+   - `ContextNavigator` (handles context switching)
+
+2. **Maintain Existing Functionality**:
+   - Keep Stellar Horizon's stable custom modal system
+   - Preserve auto-fill functionality 
+   - Retain enhanced error handling and logging
+
+** Implementation Strategy
+1. **Start Small**: Implement basic two-level nesting first
+2. **Test Incrementally**: Validate each component before building further
+3. **Preserve Stability**: Don't break existing Phase 1 functionality
+4. **User Testing**: Validate approach with user feedback before deep implementation
+
+* Success Criteria 📊
+
+** Phase 2A Completion (Modularization)
+- [ ] `SelectionContext` class extracted and working
+- [ ] Existing field menu logic modularized  
+- [ ] Basic depth tracking implemented
+- [ ] Visual depth indicators (border colors) working
+- [ ] Two-level nesting prototype functional
+
+** Phase 2B Completion (Recursive Interface)
+- [ ] "models" selection opens models-specific context
+- [ ] Models sub-field menu displays correctly
+- [ ] Context preservation working (can navigate back)
+- [ ] Visual feedback system complete
+- [ ] User testing validates improved workflow
+
+* Resources Available 🎯
+
+** Stable Foundation (From Stellar Horizon)
+- ✅ Custom modal system (no disappearing prompts)
+- ✅ Auto-fill functionality
+- ✅ Enhanced error handling and logging
+- ✅ Comprehensive test harness (`test_interactive_selector.py`)
+- ✅ Validated test URLs for development
+
+** Documentation and Insights
+- Stellar Horizon cleanup report with architectural insights
+- User feedback on nested selection requirements
+- Clear understanding of what NOT to do (compound field names)
+- Working examples of depth indicators and visual feedback
+
+** Technical Infrastructure
+- Chrome WebDriver setup with comprehensive logging
+- Error tracking and debugging capabilities  
+- Django backend integration working correctly
+- API foundation stable (16/16 tests passing)
+
+* Critical Reminders for Next Model 💡
+
+1. **User Priority**: Functionality over aesthetics - admin panel can be "ugly" but functional
+2. **Architecture First**: Design modular components before diving into implementation
+3. **Recursive Design**: Same selection interface should work at ANY nesting level
+4. **Visual Feedback**: Border colors for depth indication are important UX element
+5. **Don't Break Phase 1**: Stellar Horizon's fixes are stable - preserve them
+6. **Test Early**: Validate modular approach with simple two-level nesting first
+
+* Quick Start Guide for Next Model 🚀
+
+** Hour 1: Analysis and Planning
+1. Read this document and Stellar Horizon's documentation
+2. Examine current `interactive_selector.py` structure
+3. Identify extraction points for modular components
+4. Design `SelectionContext` class interface
+
+** Hour 2-3: Modularization Implementation  
+1. Create `SelectionContext` base class
+2. Extract field menu logic into reusable methods
+3. Implement basic depth tracking and visual indicators
+4. Test basic functionality preservation
+
+** Hour 4: Recursive Prototype
+1. Implement "models" context switching
+2. Create models sub-field menu
+3. Test two-level nesting workflow
+4. Validate with user feedback
+
+---
+**Prepared by: Azure Phoenix**
+**API Mission Accomplished - Ready for Nested Selection Phase 2** 
+**Next Model: Focus on Modular Architecture and Recursive Design** 
