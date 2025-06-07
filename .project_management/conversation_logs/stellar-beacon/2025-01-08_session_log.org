@@ -122,6 +122,42 @@
    2. **PHASE 1**: HTML processing foundation implementation
    3. **PHASE 2**: Human-in-the-loop Selenium interface development
 
+* Turn 6: Approach Clarification and Documentation Update
+  :PROPERTIES:
+  :TIMESTAMP: [Session continuation]
+  :END:
+
+** Discussion Summary
+   - User requested clarification in documentation to emphasize human-in-the-loop approach
+   - Noted that some references still sounded like automatic tree detection system
+   - Asked to update active work tracking and other files to clearly reflect current methodology
+   - Confirmed we are NOT doing automatic content detection - humans manually select elements
+
+** Changes Made
+   - **Updated `.project_management/active_work_tracking.org`**: Comprehensive revision throughout
+     - Changed title from "Human-in-the-Loop HTML Analysis" to "Human-Guided Content Selection"  
+     - Added explicit ":APPROACH: Human-in-the-Loop (No Automatic Detection)" property
+     - Added "Core Methodology" section clearly stating no automatic detection
+     - Updated all phase descriptions to emphasize human role vs system role
+     - Added notes throughout clarifying "NO automatic analysis" and "NO content identification"
+     - Updated success criteria to reflect human-driven workflow
+
+** Rationale
+   - Essential to be crystal clear about methodology to avoid confusion for future models
+   - Previous language could be misinterpreted as having automatic components
+   - Human-in-the-loop is fundamentally different approach requiring different implementation
+   - Clear role separation (human selects, system learns) guides proper implementation
+
+** Key Clarifications Made
+   - **Human Role**: Manually select content elements through interactive interface
+   - **System Role**: Provide selection tools, capture selections, generate selectors from human input
+   - **No Automatic Detection**: System does not attempt to identify content regions algorithmically
+   - **Pattern Learning**: System learns patterns from consistent human selections, not content analysis
+
+** Cross-References
+  - Updated documentation: `.project_management/active_work_tracking.org`
+  - Session context: This conversation log entry
+
 * Cross-References
   - Cleanup Report: `.project_management/cleanup_reports/stellar_beacon_cleanup.org`
   - Next Steps: `.project_management/next_steps/stellar_beacon_next_steps.org`
@@ -129,7 +165,9 @@
   - Content Extractor Models: `apps/content_extractor/models.py`
 
 * Session Outcome
-  **SKELETON SETUP COMPLETE**: Created comprehensive foundation for Content Extractor system with clear implementation roadmap for future models. System designed for human-in-the-loop HTML content analysis and robust selector generation across similar pages.
+  **SKELETON SETUP COMPLETE**: Created comprehensive foundation for Content Extractor system with clear implementation roadmap for future models. System designed for human-guided HTML content selection and robust selector generation across similar pages.
+
+  **APPROACH CLARIFIED**: Documentation now explicitly emphasizes human-in-the-loop methodology with no automatic content detection components.
 
   **Status**: Ready for Phase 1 implementation with Django integration and HTML processing foundation.
 

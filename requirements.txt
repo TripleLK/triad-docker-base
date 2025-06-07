@@ -11,3 +11,4 @@ django-filter>=24.1
 beautifulsoup4>=4.9.3
 lxml>=4.6.3
 selenium>=4.0.0
+webdriver-manager>=4.0.0

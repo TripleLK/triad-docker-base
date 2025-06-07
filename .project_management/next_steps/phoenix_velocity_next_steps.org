@@ -1,0 +1,188 @@
+#+TITLE: Phoenix Velocity - Next Steps
+#+AUTHOR: Phoenix Velocity
+#+DATE: 2025-01-08
+#+FILETAGS: :next-steps:phoenix-velocity:field-selection:
+
+* IMMEDIATE PRIORITY 🚨
+
+** Floating Field Selection Menu Implementation
+**Target File**: `apps/content_extractor/selectors/interactive_selector.py` (EXPAND EXISTING)
+**Estimated Effort**: 2-3 model sessions
+**Status**: Foundation ready - enhancement required
+
+### Requirements:
+1. **Pre-Selection Field Choice**: User selects field before selecting content
+2. **Floating Menu UI**: Visual menu with all LabEquipmentPage fields
+3. **Field Visual Indication**: Show which field is currently being selected for
+4. **Session State Management**: Track field completion progress
+
+### LabEquipmentPage Fields to Include:
+```python
+FIELD_OPTIONS = [
+    'title',
+    'short_description', 
+    'full_description',
+    'specification_confidence',
+    'needs_review',
+    'spec_groups',  # Multi-value with nested specs
+    'models',       # Multi-value
+    'features',     # Multi-value
+    'accessories',  # Multi-value
+    'categorized_tags',  # Multi-value
+    'gallery_images',    # Multi-value
+    'source_url',
+    'source_type',
+    'data_completeness'
+]
+```
+
+### Implementation Approach:
+1. **JavaScript Menu**: Inject floating field selection menu
+2. **Field State Tracking**: Store active field in session/database
+3. **Visual Feedback**: Different colors/indicators per field type
+4. **Selection Association**: Link each content selection to chosen field
+
+* PHASE 1 OBJECTIVES 📋
+
+** 1.1 Enhanced Interactive Selector Interface
+- [  ] Add floating field selection menu to existing selector
+- [  ] Implement field-first selection workflow
+- [  ] Visual indication of active field selection
+- [  ] Field-specific selection storage
+
+** 1.2 Multi-Value Field Generalization System
+**New File**: `apps/content_extractor/utils/multi_value_generalizer.py`
+**Estimated Effort**: 3-4 model sessions
+
+### Requirements:
+1. **Two-Example Selection**: User selects 2 examples of multi-value field
+2. **XPath Generalization**: System generates selector covering both
+3. **User Modification**: Present generated selector for user approval/editing
+4. **Pattern Recognition**: Handle lists, grids, repeated structures
+
+### Target Multi-Value Fields:
+- `models` - Product model variations
+- `features` - Feature lists/bullet points  
+- `accessories` - Related accessories/parts
+- `categorized_tags` - Category and tag assignments
+- `gallery_images` - Product image galleries
+- `spec_groups` - Specification groups with nested specs
+
+** 1.3 Field-Specific Storage Enhancement
+**Target File**: `apps/content_extractor/models.py` (EXPAND EXISTING)
+**Estimated Effort**: 1-2 model sessions
+
+### Database Schema Updates:
+```python
+class ContentSelector:
+    # Existing fields...
+    field_name = models.CharField(max_length=100)  # ADD
+    field_type = models.CharField(max_length=50)   # ADD ('single', 'multi-value')
+    completion_status = models.CharField(max_length=20)  # ADD
+    generalized_selector = models.TextField()      # ADD (for multi-value)
+```
+
+### Progress Tracking:
+- Field completion per page tracking
+- Cross-page field progress visualization
+- Export functionality by field type
+
+* TESTING STRATEGY 🧪
+
+** Existing Framework Extension
+**Current**: `apps/content_extractor/management/commands/test_selector.py` (WORKING)
+**Enhancement**: Add field-specific testing capabilities
+
+### Test Scenarios:
+1. **Field Selection Workflow**: Test field → content selection flow
+2. **Multi-Value Generalization**: Test 2-example → generalized selector
+3. **Cross-Page Validation**: Test field selectors on multiple pages
+4. **Progress Tracking**: Test field completion status
+
+### Test Sites (Proven Working):
+- ✅ example.com (simple structure)
+- ✅ httpbin.org/html (controlled content)
+- ✅ AirScience SafeFUME page (real equipment page)
+
+* TECHNICAL IMPLEMENTATION DETAILS
+
+** JavaScript Menu Implementation
+```javascript
+// Inject floating field selection menu
+const fieldMenu = createFieldSelectionMenu();
+const activeField = getActiveFieldSelection();
+const fieldIndicator = showActiveFieldIndicator(activeField);
+```
+
+** XPath Generalization Algorithm
+```python
+def generalize_xpath_from_examples(xpath1, xpath2):
+    # Analyze common patterns between two XPaths
+    # Generate selector that matches both examples
+    # Return generalized XPath with confidence score
+```
+
+** Field Progress Tracking
+```python
+class FieldProgressTracker:
+    def get_field_completion_status(self, page, field_name)
+    def mark_field_complete(self, page, field_name, selector)
+    def get_incomplete_fields(self, page)
+```
+
+* SUCCESS CRITERIA ✅
+
+** Phase 1 Complete When:
+- [  ] Floating menu allows field selection before content selection
+- [  ] All LabEquipmentPage fields available as selection options
+- [  ] Multi-value fields support 2-example generalization workflow
+- [  ] Field-specific selections stored with progress tracking
+- [  ] Testing validates field selection workflow end-to-end
+
+** Ready for Phase 2 When:
+- [  ] Field completion tracking visible and functional
+- [  ] Management commands support field-specific operations
+- [  ] Export system provides field-organized selector libraries
+
+* IMPLEMENTATION ORDER 📝
+
+### Session 1: Floating Field Menu
+1. Modify `interactive_selector.py` to add field selection menu
+2. Implement field-first selection workflow
+3. Add visual indication of active field
+4. Test field selection with existing content selection
+
+### Session 2: Multi-Value Field Handling
+1. Create `multi_value_generalizer.py` utility
+2. Implement 2-example generalization algorithm
+3. Add user approval/modification interface
+4. Test with multi-value fields (models, features, accessories)
+
+### Session 3: Storage and Progress Tracking
+1. Enhance database models for field-specific storage
+2. Implement field completion tracking
+3. Add progress visualization
+4. Create field-specific export functionality
+
+* HANDOFF CHECKLIST 📋
+
+** Foundation Status ✅
+- [x] Interactive selector working with persistent visual feedback
+- [x] XPath generation and validation functional
+- [x] Database integration complete
+- [x] Testing framework operational
+- [x] Direction clarified and documented
+
+** Next Model Should:
+- [  ] Review existing `interactive_selector.py` implementation
+- [  ] Understand LabEquipmentPage model field structure
+- [  ] Implement floating field selection menu as Priority #1
+- [x] Use existing testing framework for validation
+- [x] Build on solid foundation rather than starting from scratch
+
+---
+
+**Priority Order**: Field Menu → Multi-Value Generalization → Progress Tracking  
+**Expected Timeline**: 6-8 model sessions for complete Phase 1  
+**Foundation Quality**: 🟢 SOLID - Ready for enhancement  
+**Documentation Status**: ✅ COMPLETE - Clear implementation path 

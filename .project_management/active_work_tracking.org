@@ -1,6 +1,6 @@
 #+TITLE: Active Work Tracking
 #+DATE: [2025-01-08]
-#+AUTHOR: Stellar Beacon
+#+AUTHOR: Phoenix Velocity
 #+FILETAGS: :project:management:tracking:
 
 * COMPLETED MILESTONES ✅
@@ -20,208 +20,228 @@
    
    **RESULT**: Clean workspace ready with streamlined cursor rules for optimal performance
 
+** [X] Interactive Content Selector Foundation - COMPLETE ✅
+   CLOSED: [2025-01-08]
+   :PROPERTIES:
+   :COMPLETED_BY: Phoenix Velocity
+   :COMPLETION_DATE: 2025-01-08
+   :FINAL_STATUS: Functional selector with persistent visual feedback
+   :END:
+   
+   - [X] Built `apps/content_extractor/selectors/interactive_selector.py` with Selenium integration
+   - [X] JavaScript injection for visual element selection (blue hover, green selection)
+   - [X] XPath generation and validation system
+   - [X] Persistent visual feedback for selected elements
+   - [X] Database storage integration working
+   - [X] Testing framework with management command
+   - [X] Added webdriver-manager dependency
+   
+   **TESTING COMPLETED**:
+   - ✅ Headless mode on httpbin.org/html
+   - ✅ Visual mode on example.com (8 selections captured)
+   - ✅ AirScience SafeFUME page with improved persistence
+   - ✅ XPath generation and database storage verified
+
 * CURRENT HIGH PRIORITY WORK 🎯
 
-** Content Extractor System - Human-in-the-Loop HTML Analysis
+** LabEquipmentPage Field Selector System - MAJOR DIRECTION CHANGE
    SCHEDULED: <2025-01-08>
    :PROPERTIES:
    :ASSIGNED_TO: Future Models
    :PRIORITY: HIGH
-   :PROJECT_TYPE: New Sub-Project
-   :STATUS: Setup Complete - Implementation Ready
+   :PROJECT_TYPE: Field-Specific Content Selection
+   :STATUS: Foundation Ready - Implementation Required
+   :APPROACH: Pure Human Selection (Zero AI Processing)
+   :TARGET_MODEL: LabEquipmentPage
    :END:
    
-   **Objective**: Build system for analyzing HTML pages, identifying unique content through human selection, and generating robust selectors for content extraction across similar pages.
+   **NEW OBJECTIVE**: Build system where humans manually select content for each specific field in the LabEquipmentPage model. Eliminate all AI processing - pure human-driven field assignment.
 
-* IMPLEMENTATION PLAN - CONTENT EXTRACTOR SYSTEM
+   **CORE METHODOLOGY**: 
+   - **Field-Specific Selection**: Floating menu allows users to specify which LabEquipmentPage field they're selecting
+   - **Pure Human Assignment**: Users manually select content and assign it to model fields
+   - **Multi-Value Field Handling**: For fields with multiple values, users select 2 examples, system generates generalized selector for user modification
+   - **Zero AI Processing**: No algorithmic content detection or automatic field assignment
 
-** Phase 1: HTML Processing Foundation 📋 READY
-*** 1.1 HTML to JSON Converter
-    - **File**: `apps/content_extractor/extractors/html_processor.py`
-    - **Scope**: Convert HTML pages to simplified JSON DOM representation
-    - **Requirements**:
-      - Strip scripts, styles, and non-content elements
-      - Retain: tag names, IDs, classes, text content, image src, link href, data-* attributes
-      - Generate content hashes for change detection
-      - Handle dynamic content loading considerations
-    - **Dependencies**: BeautifulSoup4, lxml, hashlib
+* IMPLEMENTATION PLAN - LABEQUIPMENTPAGE FIELD SELECTOR
+
+** Phase 1: Enhanced Interactive Selector ⏳ IN PROGRESS
+*** 1.1 Floating Field Selection Menu 
+    - **File**: `apps/content_extractor/selectors/interactive_selector.py` (EXPAND EXISTING)
+    - **Scope**: Add field-specific selection capability to existing selector
+    - **NEW Requirements**:
+      - Floating menu with all LabEquipmentPage fields as options
+      - Field selection before content selection (user chooses field first)
+      - Visual indication of which field is being selected for
+      - Field-specific selection tracking and storage
+      - Session management for field completion tracking
+    - **LabEquipmentPage Fields to Support**:
+      - title, short_description, full_description
+      - specification_confidence, needs_review
+      - spec_groups (with nested specs) 
+      - models, features, accessories
+      - categorized_tags, gallery_images
+      - source_url, source_type, data_completeness
+    - **Dependencies**: Existing selenium setup
     - **Estimated Effort**: 2-3 model sessions
 
-*** 1.2 Page Analysis Pipeline
-    - **File**: `apps/content_extractor/utils/page_analyzer.py`
-    - **Scope**: Orchestrate HTML fetching, processing, and storage
+*** 1.2 Multi-Value Field Generalization
+    - **File**: `apps/content_extractor/utils/multi_value_generalizer.py` (NEW)
+    - **Scope**: Generate generalized selectors for multi-value fields
     - **Requirements**:
-      - URL fetching with proper headers/user agents
-      - Content validation and error handling
-      - Integration with Django models for persistence
-      - Batch processing capabilities
-    - **Dependencies**: requests, urllib3
+      - Accept 2 human-selected examples for multi-value fields
+      - Generate generalized XPath selector covering both examples
+      - Present selector to user for modification/approval
+      - Handle common patterns: lists, grids, repeated structures
+      - Fallback to manual selection if generalization fails
+    - **Target Fields**: models, features, accessories, categorized_tags, gallery_images
+    - **Dependencies**: lxml, xpath analysis
+    - **Estimated Effort**: 3-4 model sessions
+
+*** 1.3 Field-Specific Validation and Storage
+    - **File**: `apps/content_extractor/models.py` (EXPAND EXISTING)
+    - **Scope**: Enhanced storage for field-specific selections
+    - **Requirements**:
+      - Store field name with each selection
+      - Track completion status per field per page
+      - Validation for field data types and constraints
+      - Progress tracking across multiple pages
+      - Export functionality for field-specific selectors
+    - **Storage Structure**: field_name → selector → extracted_content
+    - **Dependencies**: Django models, JSON fields
     - **Estimated Effort**: 1-2 model sessions
 
-** Phase 2: Human-in-the-Loop Selection System 📋 READY
-*** 2.1 Interactive Selenium Interface
-    - **File**: `apps/content_extractor/selectors/interactive_selector.py`
-    - **Scope**: Web interface for human content selection
+** Phase 2: Field Management and Workflow ⏳ PENDING
+*** 2.1 Field Completion Tracking
+    - **File**: `apps/content_extractor/utils/field_tracker.py` (NEW)
+    - **Scope**: Track which fields are complete across pages
     - **Requirements**:
-      - Load pages in Selenium WebDriver with custom JavaScript injection
-      - Custom right-click context menu for element selection
-      - Ancestor tree navigation and selection UI
-      - Visual highlighting of selected elements across pages
-      - Real-time preview of content extraction
-    - **Dependencies**: selenium, webdriver-manager
-    - **Estimated Effort**: 4-5 model sessions
-
-*** 2.2 JavaScript Selection Interface
-    - **File**: `apps/content_extractor/templates/content_extractor/selection_interface.js`
-    - **Scope**: Client-side selection and navigation logic
-    - **Requirements**:
-      - Element highlighting on hover with ancestor display
-      - XPath generation for selected elements
-      - Cross-page validation visualization
-      - Session state management
-      - Communication bridge with Python backend
-    - **Dependencies**: Vanilla JavaScript (no external libs)
-    - **Estimated Effort**: 3-4 model sessions
-
-*** 2.3 XPath Selector Generation
-    - **File**: `apps/content_extractor/utils/xpath_generator.py`
-    - **Scope**: Generate robust XPath selectors from selected elements
-    - **Requirements**:
-      - Prefer ID-based selectors when available
-      - Fallback to class-based with minimal position dependence
-      - Generate multiple selector candidates with confidence scoring
-      - Cross-page validation and refinement
-    - **Dependencies**: lxml, regex
+      - Visual progress indicators per field
+      - Incomplete field highlighting
+      - Batch completion reporting
+      - Field priority recommendations
+      - Resume incomplete field selection sessions
+    - **Dependencies**: Django models, progress tracking
     - **Estimated Effort**: 2-3 model sessions
 
-** Phase 3: Pattern Analysis and Generalization 📋 READY
-*** 3.1 Selector Pattern Detection
-    - **File**: `apps/content_extractor/selectors/pattern_generalizer.py`
-    - **Scope**: Identify common patterns in collected selectors
-    - **Requirements**:
-      - Pattern matching for numbered elements (e.g., item[1], item[2], etc.)
-      - Structural similarity analysis
-      - Generate generalized selectors from patterns
-      - Confidence scoring and validation against holdout data
-    - **Dependencies**: regex, difflib
-    - **Estimated Effort**: 3-4 model sessions
-
-*** 3.2 Selector Validation Framework
-    - **File**: `apps/content_extractor/utils/selector_validator.py`
-    - **Scope**: Test selectors against pages and score reliability
-    - **Requirements**:
-      - Cross-page validation of selectors
-      - Content consistency checking
-      - False positive/negative detection
-      - Automated confidence scoring
-      - Fallback selector chains
-    - **Dependencies**: selenium, statistical analysis tools
-    - **Estimated Effort**: 2-3 model sessions
-
-** Phase 4: Django Integration and Management 📋 READY
-*** 4.1 Django Management Commands
-    - **File**: `apps/content_extractor/management/commands/`
-    - **Scope**: CLI tools for project management
-    - **Commands**:
-      - `start_extraction_project`: Initialize new project with URLs
-      - `analyze_pages`: Process HTML and generate simplified JSON
-      - `launch_selection_session`: Start human selection interface
-      - `generate_selectors`: Analyze selections and create final selectors
-      - `validate_selectors`: Test selectors against new pages
-    - **Estimated Effort**: 2-3 model sessions
-
-*** 4.2 Web Interface (Optional)
-    - **File**: `apps/content_extractor/views.py` and templates
-    - **Scope**: Web-based project management interface
-    - **Requirements**:
-      - Project creation and management
-      - Progress tracking and session resumption
-      - Selector preview and testing
-      - Export functionality for selectors
-    - **Dependencies**: Django forms, templates
-    - **Estimated Effort**: 3-4 model sessions
-
-** Phase 5: Testing and Optimization 📋 READY
-*** 5.1 Comprehensive Test Suite
-    - **File**: `apps/content_extractor/tests/`
-    - **Scope**: Unit and integration testing
-    - **Requirements**:
-      - Model validation tests
-      - HTML processing accuracy tests
-      - Selector generation and validation tests
-      - End-to-end workflow testing
-    - **Dependencies**: Django test framework, factory_boy
-    - **Estimated Effort**: 2-3 model sessions
-
-*** 5.2 Performance Optimization
-    - **Scope**: Optimize for larger-scale usage
-    - **Requirements**:
-      - Async processing for multiple pages
-      - Caching strategies for processed content
-      - Database query optimization
-      - Memory usage optimization for large HTML content
+*** 2.2 Enhanced Management Commands
+    - **File**: `apps/content_extractor/management/commands/` (EXPAND EXISTING)
+    - **Scope**: CLI tools for field-specific selection
+    - **NEW Commands**:
+      - `select_lab_equipment_fields`: Launch field-specific selection session
+      - `show_field_progress`: Display completion status by field
+      - `export_field_selectors`: Export selectors organized by field
+      - `validate_field_selections`: Test field selectors on new pages
     - **Estimated Effort**: 1-2 model sessions
 
-* TECHNICAL ARCHITECTURE
+*** 2.3 Field-Specific Testing Framework
+    - **File**: `apps/content_extractor/tests/test_field_selection.py` (NEW)
+    - **Scope**: Test field-specific selection and validation
+    - **Requirements**:
+      - Test each LabEquipmentPage field selection
+      - Validate field data type compliance
+      - Test multi-value field generalization
+      - End-to-end field completion workflow tests
+    - **Dependencies**: Django test framework
+    - **Estimated Effort**: 2-3 model sessions
+
+** Phase 3: Advanced Field Features ⏳ PENDING
+*** 3.1 Field Relationship Mapping
+    - **File**: `apps/content_extractor/utils/field_relationships.py` (NEW)
+    - **Scope**: Handle related field selection patterns
+    - **Requirements**:
+      - Detect when fields are commonly found together
+      - Suggest related field selection after completing one field
+      - Handle nested field structures (spec_groups with nested specs)
+      - Cross-field validation and consistency checking
+    - **Dependencies**: Pattern analysis, Django models
+    - **Estimated Effort**: 3-4 model sessions
+
+*** 3.2 Selector Export and Reuse
+    - **File**: `apps/content_extractor/utils/selector_exporter.py` (NEW)
+    - **Scope**: Export and import field-specific selectors
+    - **Requirements**:
+      - Export selectors grouped by field and site
+      - Import selectors for new sites with similar structure
+      - Selector library management
+      - Cross-site selector validation
+    - **Dependencies**: JSON export, file management
+    - **Estimated Effort**: 2-3 model sessions
+
+* FUTURE CONSIDERATIONS (SAVE FOR LATER) 🔮
+
+** Multi-Page Product Handling
+   **Example**: adamequipment.com with category pages linking to individual product pages
+   **Scope**: Handle sites where products have dedicated detail pages
+   **Approach**: Two-phase selection (category page + product page selectors)
+   **Status**: Deferred until core field selection is complete
+
+** Dynamic Content Loading
+   **Scope**: Handle JavaScript-rendered content in field selection
+   **Approach**: Enhanced wait strategies and dynamic content detection
+   **Status**: Deferred until core functionality complete
+
+** Bulk Field Operations
+   **Scope**: Select multiple fields simultaneously or copy field selections across pages
+   **Status**: Enhancement for future implementation
+
+* TECHNICAL ARCHITECTURE - UPDATED
 
 ** Database Schema ✅ COMPLETE
    - ExtractionProject: Groups related pages and analysis
-   - AnalyzedPage: Stores original HTML and processed JSON
-   - ContentSelector: Generated selectors with validation data
-   - SelectionSession: Tracks human selection progress
+   - AnalyzedPage: Stores original HTML and processed JSON  
+   - ContentSelector: NOW EXPANDED with field_name tracking
+   - SelectionSession: NOW ENHANCED with field completion tracking
 
-** Key Dependencies to Add
-   - selenium: Web automation for human interface
-   - beautifulsoup4: HTML parsing and processing
-   - lxml: XPath generation and processing
+** Key Dependencies ✅ COMPLETE
+   - selenium: Web automation for field selection interface
    - webdriver-manager: Automatic browser driver management
-   - requests: HTTP client for page fetching
+   - lxml: XPath generation and processing
+   - Django: Models and admin interface
 
-** Integration Points
-   - Django Admin: Project and selector management
-   - Management Commands: CLI automation
-   - JSON API: Potential future API for selector export
-   - Existing Wagtail CMS: Could integrate for content import
+** NEW Integration Points
+   - LabEquipmentPage Model: Direct field mapping and validation
+   - Field-Specific Admin Views: Manage selections by field type
+   - Export System: Field-organized selector libraries
+   - Progress Tracking: Field completion across multiple pages
 
-* SUCCESS CRITERIA
+* SUCCESS CRITERIA - UPDATED
 
 ** Phase 1 Complete When:
-   - [  ] HTML pages converted to clean JSON representation
-   - [  ] Content hashing and change detection working
-   - [  ] Batch processing pipeline functional
+   - [  ] Floating menu allows field selection before content selection
+   - [  ] All LabEquipmentPage fields available for selection
+   - [  ] Multi-value fields support 2-example generalization
+   - [  ] Field-specific selections stored and tracked
 
 ** Phase 2 Complete When:
-   - [  ] Human can select content areas across multiple pages
-   - [  ] XPath selectors generated automatically
-   - [  ] Cross-page validation shows selected content
-   - [  ] Session can be saved and resumed
-
-** Phase 3 Complete When:
-   - [  ] Patterns detected in collected selectors
-   - [  ] Generalized selectors work on unseen pages
-   - [  ] Confidence scoring accurately predicts reliability
+   - [  ] Field completion progress visible and tracked
+   - [  ] Management commands support field-specific workflows
+   - [  ] Field selection sessions can be resumed by field
+   - [  ] Testing framework validates field-specific functionality
 
 ** Complete System When:
-   - [  ] End-to-end workflow from URLs to validated selectors
-   - [  ] Selectors work reliably across similar pages
-   - [  ] System handles edge cases gracefully
-   - [  ] Performance suitable for production use
+   - [  ] All LabEquipmentPage fields can be selected from any lab equipment page
+   - [  ] Multi-value field selectors work reliably across similar pages
+   - [  ] Field progress tracking enables efficient field completion
+   - [  ] Export system provides field-organized selector libraries
 
-* CURRENT STATUS: SKELETON READY
+* CURRENT STATUS: FOUNDATION COMPLETE - READY FOR FIELD ENHANCEMENT
 
-** App Structure Created ✅
-   - Django app: `apps/content_extractor/`
-   - Models defined and ready for migration
-   - Admin configuration complete
-   - Placeholder files created for all major components
+** Interactive Selector Foundation ✅ COMPLETE
+   - Selenium-based selection working with persistent visual feedback
+   - XPath generation and database storage functional
+   - Testing framework in place with management commands
+   - Ready for field-specific enhancement
 
 ** Next Model Priority
-   1. **IMMEDIATE**: Add app to Django settings and create migrations
-   2. **PHASE 1**: Implement HTML to JSON converter
-   3. **PHASE 2**: Build Selenium-based selection interface
+   1. **IMMEDIATE**: Implement floating field selection menu
+   2. **PHASE 1**: Add multi-value field generalization capability  
+   3. **PHASE 2**: Build field completion tracking and management
 
 ---
 
-**Last Updated**: 2025-01-08 by Stellar Beacon
-**Project Status**: 🟢 SKELETON COMPLETE - READY FOR IMPLEMENTATION
-**Estimated Total Effort**: 20-30 model sessions across all phases 
+**Last Updated**: 2025-01-08 by Phoenix Velocity
+**Project Status**: 🟢 FOUNDATION COMPLETE - FIELD ENHANCEMENT READY
+**Approach**: 🧑‍💻 PURE HUMAN FIELD SELECTION (Zero AI Processing)
+**Target Model**: LabEquipmentPage with full field coverage
+**Estimated Total Effort**: 15-20 model sessions for complete field selection system 
