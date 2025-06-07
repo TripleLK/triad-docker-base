@@ -1,0 +1,212 @@
+#+TITLE: Next Steps - Stellar Rhino Multi-Selector Enhancements
+#+AUTHOR: Stellar Rhino  
+#+DATE: 2025-01-08
+#+FILETAGS: :next_steps:stellar_rhino:multi_selector:implementation:
+
+* IMMEDIATE PRIORITIES (Start Here)
+
+** 1. Clean Up Field List (CRITICAL - 30 min task)
+File: `apps/content_extractor/selectors/interactive_selector.py`
+Lines: ~44-58 (FIELD_OPTIONS array)
+
+REMOVE these AI-specific fields:
+- `specification_confidence` - AI confidence scoring
+- `needs_review` - AI flagging system  
+- `data_completeness` - AI completeness assessment
+
+UPDATE field descriptions to be user-focused, not AI-focused.
+
+** 2. Implement Ctrl+Click Non-Selecting (HIGH - 2 hours)
+File: `apps/content_extractor/selectors/interactive_selector.py`
+Lines: ~800-850 (handleClick function)
+
+```javascript
+function handleClick(event) {
+  // NEW: Check for modifier keys
+  if (event.ctrlKey || event.metaKey) {
+    // Allow normal page interaction without selecting
+    return; // Don't prevent default, don't select
+  }
+  
+  if (window.contentExtractorData.isSelectionMode) {
+    // Existing selection logic...
+  }
+}
+```
+
+** 3. Add Floating UI Control Panel (HIGH - 4 hours)
+Create new floating panel with buttons:
+- Save Current Field
+- Test Field 
+- Enter Text Value
+- Navigate to New Page
+- Complete Instance (for multi-value)
+
+Location: After line ~700 in interactive_selector.py
+
+** 4. Multi-Instance Selection Logic (CRITICAL - 6 hours)
+Add instance grouping to selection data structure:
+
+```javascript
+window.contentExtractorData = {
+  // NEW: Instance tracking
+  currentInstance: 0,
+  instanceGroups: {}, // field_name -> {instance_0: [selections], instance_1: [selections]}
+  
+  // Existing...
+  selectedElements: [],
+  fieldSelections: {},
+};
+```
+
+* DETAILED IMPLEMENTATION GUIDE
+
+** Multi-Instance Selection Flow
+1. User selects field (e.g., "models")  
+2. User clicks elements for first model instance
+3. User clicks "Complete Instance" button
+4. System groups all selections as instance_0
+5. User continues selecting for instance_1
+6. Repeat until all instances captured
+
+** UI Control Panel Design
+Position: Fixed bottom-right, non-intrusive
+Components needed:
+- Current field indicator
+- Instance counter (for multi-value fields)
+- Action buttons with clear labels
+- Progress indicator
+- Text input toggle
+
+** Text Input Alternative System
+For any field, user should be able to:
+1. Click "Enter Text" button
+2. Modal appears with textarea
+3. User types value directly
+4. System saves as text_input type selector
+5. Field marked as completed
+
+** Modifier Key Event Handling
+Support these interactions:
+- Normal click = select element
+- Ctrl+click = navigate without selecting  
+- Alt+click = preview element info
+- Shift+click = range select (future enhancement)
+
+* TECHNICAL APPROACH
+
+** JavaScript Architecture Changes
+Current: Single event handler for all clicks
+Needed: Layered event system with mode detection
+
+```javascript
+// NEW: Event handling architecture
+const EventModes = {
+  SELECTION: 'selection',
+  NAVIGATION: 'navigation', 
+  PREVIEW: 'preview'
+};
+
+function determineEventMode(event) {
+  if (event.ctrlKey) return EventModes.NAVIGATION;
+  if (event.altKey) return EventModes.PREVIEW;
+  return EventModes.SELECTION;
+}
+```
+
+** Database Schema Considerations
+Current SiteFieldSelector model sufficient for now
+Future: May need InstanceGroup model for complex multi-instance data
+
+** Testing Strategy
+1. Start with AirScience URLs (already validated)
+2. Test multi-instance on "models" field first
+3. Verify Ctrl+click on different browsers
+4. Test UI controls don't interfere with page content
+
+* KEY FILES TO REVIEW
+
+** Primary Implementation File
+`apps/content_extractor/selectors/interactive_selector.py`
+- Lines 44-58: FIELD_OPTIONS (cleanup needed)
+- Lines 200-400: JavaScript injection system
+- Lines 800-900: Event handling (major changes needed)
+- Lines 1000-1200: UI creation functions
+
+** Supporting Files
+`apps/content_extractor/models.py`
+- SiteFieldSelector model (may need field choice updates)
+- Consider new model for instance grouping
+
+`apps/content_extractor/management/commands/site_field_selector.py`  
+- Command interface should be deprecated in favor of UI controls
+- Keep for testing/debugging purposes
+
+* APPROACH STRATEGY
+
+** Phase 1: Foundation (Week 1)
+1. Clean field list ✅
+2. Add Ctrl+click support ✅
+3. Basic UI control panel ✅
+4. Simple text input modal ✅
+
+** Phase 2: Multi-Instance (Week 2)  
+1. Instance grouping logic
+2. Complete instance UI
+3. Visual instance indicators
+4. Multi-instance testing
+
+** Phase 3: Polish (Week 3)
+1. Advanced keyboard shortcuts
+2. Better visual feedback
+3. Cross-browser testing
+4. Performance optimization
+
+* DECISIONS NEEDING USER INPUT
+
+** Multi-Instance UI Design
+- How to visually show instance boundaries?
+- Button placement for "Complete Instance"?
+- Color coding for different instances?
+
+** Text Input vs Selection Priority
+- Which fields should default to text input?
+- Should all fields have both options?
+- How to handle validation for text input?
+
+** Navigation Integration
+- Should Ctrl+click open links in new tabs?
+- How to handle form interactions?
+- What about page scrolling during selection?
+
+* CURRENT STATE CONTEXT
+
+** Working Foundation (Inherit from Crimson Phoenix)
+- Site-specific storage: ✅ Working
+- Cross-page testing: ✅ Working  
+- Field selection menu: ✅ Working
+- Database integration: ✅ Working
+
+** Ready for Enhancement
+- JavaScript architecture: Solid foundation, needs expansion
+- Django models: Support new features with minimal changes
+- UI system: Basic menu working, needs control panel addition
+
+** Test Environment
+- AirScience URLs validated and working
+- Browser interaction system stable
+- Database operations tested
+
+* RESOURCES & REFERENCES
+- Working AirScience test URLs in conversation logs
+- Existing JavaScript functions for UI creation
+- Django model structure already supports enhancements
+- Cross-page testing system ready for new features
+
+* SUCCESS CRITERIA
+✅ User can navigate pages without accidental selection
+✅ Multi-value fields support instance grouping  
+✅ All operations available through UI (no command-line needed)
+✅ Text input alternative for any field
+✅ Clean field list without AI-specific entries
+✅ Backward compatibility with existing selectors 
