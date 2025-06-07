@@ -178,22 +178,23 @@ class InteractiveSelector:
             badge.setAttribute('data-selection-badge', fieldName);
             badge.setAttribute('data-content-extractor-ui', 'true');
             badge.style.cssText = `
-                position: absolute;
-                top: -8px;
-                right: -8px;
-                background: ${{color}};
-                color: white;
-                border-radius: 50%;
-                width: 20px;
-                height: 20px;
-                font-size: 10px;
-                font-weight: bold;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 10000;
-                border: 2px solid white;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                position: absolute !important;
+                top: -8px !important;
+                right: -8px !important;
+                background: ${{color}} !important;
+                color: white !important;
+                border-radius: 50% !important;
+                width: 20px !important;
+                height: 20px !important;
+                font-size: 10px !important;
+                font-weight: bold !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                z-index: 10000 !important;
+                border: 2px solid white !important;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+                font-family: 'Segoe UI', Arial, sans-serif !important;
             `;
             badge.textContent = '✓';
             element.appendChild(badge);
@@ -262,27 +263,27 @@ class InteractiveSelector:
             menu.id = 'field-selection-menu';
             menu.setAttribute('data-content-extractor-ui', 'true');
             menu.style.cssText = `
-                position: fixed;
-                top: 20px;
-                left: 20px;
-                background: linear-gradient(135deg, #2c3e50, #34495e);
-                color: white;
-                padding: 25px;
-                border-radius: 12px;
-                z-index: 10001;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                font-size: 14px;
-                max-width: 380px;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-                max-height: 85vh;
-                overflow-y: auto;
-                border: 2px solid #3498db;
+                position: fixed !important;
+                top: 20px !important;
+                left: 20px !important;
+                background: linear-gradient(135deg, #2c3e50, #34495e) !important;
+                color: white !important;
+                padding: 25px !important;
+                border-radius: 12px !important;
+                z-index: 10001 !important;
+                font-family: 'Segoe UI', Arial, sans-serif !important;
+                font-size: 14px !important;
+                max-width: 380px !important;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
+                max-height: 85vh !important;
+                overflow-y: auto !important;
+                border: 2px solid #3498db !important;
             `;
             
             let menuHTML = `
-                <div style="border-bottom: 2px solid #3498db; padding-bottom: 18px; margin-bottom: 18px;">
-                    <h3 style="margin: 0; color: #ecf0f1; font-size: 18px; font-weight: 600;">🎯 Field Selection</h3>
-                    <p style="margin: 8px 0 0 0; font-size: 13px; color: #bdc3c7; line-height: 1.4;">Choose which LabEquipmentPage field you want to select content for:</p>
+                <div style="border-bottom: 2px solid #3498db !important; padding-bottom: 18px !important; margin-bottom: 18px !important;">
+                    <h3 style="margin: 0 !important; color: #ecf0f1 !important; font-size: 18px !important; font-weight: 600 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">🎯 Field Selection</h3>
+                    <p style="margin: 8px 0 0 0 !important; font-size: 13px !important; color: #bdc3c7 !important; line-height: 1.4 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">Choose which LabEquipmentPage field you want to select content for:</p>
                 </div>
                 <div id="field-options">
             `;
@@ -295,8 +296,8 @@ class InteractiveSelector:
             const multiFields = window.contentExtractorData.fieldOptions.filter(f => f.type === 'multi-value');
             
             // Single value fields
-            menuHTML += `<div style="margin-bottom: 25px;">
-                <h4 style="margin: 0 0 12px 0; color: #3498db; font-size: 15px; font-weight: 600;">📄 Single Value Fields</h4>
+            menuHTML += `<div style="margin-bottom: 25px !important;">
+                <h4 style="margin: 0 0 12px 0 !important; color: #3498db !important; font-size: 15px !important; font-weight: 600 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">📄 Single Value Fields</h4>
             `;
             singleFields.forEach(field => {{
                 const color = getFieldColor(field.name);
@@ -307,28 +308,29 @@ class InteractiveSelector:
                 
                 menuHTML += `
                     <button class="field-option" data-field="${{field.name}}" style="
-                        display: block;
-                        width: 100%;
-                        margin: 6px 0;
-                        padding: 12px 15px;
-                        background: ${{isComplete ? color + '44' : color + '22'}};
-                        border: 2px solid ${{color}};
-                        border-radius: 8px;
-                        color: white;
-                        cursor: pointer;
-                        text-align: left;
-                        font-size: 13px;
-                        transition: all 0.3s ease;
-                        position: relative;
-                        ${{isComplete ? 'box-shadow: 0 0 8px ' + color + '66;' : ''}}
+                        display: block !important;
+                        width: 100% !important;
+                        margin: 6px 0 !important;
+                        padding: 12px 15px !important;
+                        background: ${{isComplete ? color + '44' : color + '22'}} !important;
+                        border: 2px solid ${{color}} !important;
+                        border-radius: 8px !important;
+                        color: white !important;
+                        cursor: pointer !important;
+                        text-align: left !important;
+                        font-size: 13px !important;
+                        font-family: 'Segoe UI', Arial, sans-serif !important;
+                        transition: all 0.3s ease !important;
+                        position: relative !important;
+                        ${{isComplete ? 'box-shadow: 0 0 8px ' + color + '66 !important;' : ''}}
                     " onmouseover="this.style.backgroundColor='${{color}}66'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'" 
                        onmouseout="this.style.backgroundColor='${{isComplete ? color + '44' : color + '22'}}'; this.style.transform='translateY(0)'; this.style.boxShadow='${{isComplete ? '0 0 8px ' + color + '66' : 'none'}}'">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="font-weight: 600;">${{field.label}}</div>
-                            <div style="font-size: 16px;">${{statusIcon}}</div>
+                        <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
+                            <div style="font-weight: 600 !important; color: white !important;">${{field.label}}</div>
+                            <div style="font-size: 16px !important;">${{statusIcon}}</div>
                         </div>
-                        <div style="font-size: 11px; opacity: 0.9; margin-top: 4px;">${{field.description}}</div>
-                        <div style="font-size: 10px; opacity: 0.7; margin-top: 2px; color: #ecf0f1;">${{completionText}}</div>
+                        <div style="font-size: 11px !important; opacity: 0.9 !important; margin-top: 4px !important; color: white !important;">${{field.description}}</div>
+                        <div style="font-size: 10px !important; opacity: 0.7 !important; margin-top: 2px !important; color: #ecf0f1 !important;">${{completionText}}</div>
                     </button>
                 `;
             }});
@@ -336,8 +338,8 @@ class InteractiveSelector:
             
             // Multi-value fields
             menuHTML += `<div>
-                <h4 style="margin: 0 0 12px 0; color: #e74c3c; font-size: 15px; font-weight: 600;">📋 Multi-Value Fields</h4>
-                <p style="font-size: 11px; color: #95a5a6; margin: 0 0 12px 0; padding: 8px; background: rgba(231,76,60,0.1); border-radius: 6px; border-left: 3px solid #e74c3c;">💡 Select 2+ examples for pattern generation</p>
+                <h4 style="margin: 0 0 12px 0 !important; color: #e74c3c !important; font-size: 15px !important; font-weight: 600 !important; font-family: 'Segoe UI', Arial, sans-serif !important;">📋 Multi-Value Fields</h4>
+                <p style="font-size: 11px !important; color: #95a5a6 !important; margin: 0 0 12px 0 !important; padding: 8px !important; background: rgba(231,76,60,0.1) !important; border-radius: 6px !important; border-left: 3px solid #e74c3c !important; font-family: 'Segoe UI', Arial, sans-serif !important;">💡 Select 2+ examples for pattern generation</p>
             `;
             multiFields.forEach(field => {{
                 const color = getFieldColor(field.name);
@@ -357,28 +359,29 @@ class InteractiveSelector:
                 
                 menuHTML += `
                     <button class="field-option" data-field="${{field.name}}" style="
-                        display: block;
-                        width: 100%;
-                        margin: 6px 0;
-                        padding: 12px 15px;
-                        background: ${{isComplete ? color + '44' : color + '22'}};
-                        border: 2px solid ${{color}};
-                        border-radius: 8px;
-                        color: white;
-                        cursor: pointer;
-                        text-align: left;
-                        font-size: 13px;
-                        transition: all 0.3s ease;
-                        position: relative;
-                        ${{readyForGeneration ? 'box-shadow: 0 0 12px ' + color + '88;' : isComplete ? 'box-shadow: 0 0 6px ' + color + '44;' : ''}}
+                        display: block !important;
+                        width: 100% !important;
+                        margin: 6px 0 !important;
+                        padding: 12px 15px !important;
+                        background: ${{isComplete ? color + '44' : color + '22'}} !important;
+                        border: 2px solid ${{color}} !important;
+                        border-radius: 8px !important;
+                        color: white !important;
+                        cursor: pointer !important;
+                        text-align: left !important;
+                        font-size: 13px !important;
+                        font-family: 'Segoe UI', Arial, sans-serif !important;
+                        transition: all 0.3s ease !important;
+                        position: relative !important;
+                        ${{readyForGeneration ? 'box-shadow: 0 0 12px ' + color + '88 !important;' : isComplete ? 'box-shadow: 0 0 6px ' + color + '44 !important;' : ''}}
                     " onmouseover="this.style.backgroundColor='${{color}}66'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'" 
                        onmouseout="this.style.backgroundColor='${{isComplete ? color + '44' : color + '22'}}'; this.style.transform='translateY(0)'; this.style.boxShadow='${{readyForGeneration ? '0 0 12px ' + color + '88' : isComplete ? '0 0 6px ' + color + '44' : 'none'}}'">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="font-weight: 600;">${{field.label}}</div>
-                            <div style="font-size: 16px;">${{statusIcon}}</div>
+                        <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
+                            <div style="font-weight: 600 !important; color: white !important;">${{field.label}}</div>
+                            <div style="font-size: 16px !important;">${{statusIcon}}</div>
                         </div>
-                        <div style="font-size: 11px; opacity: 0.9; margin-top: 4px;">${{field.description}}</div>
-                        <div style="font-size: 10px; opacity: 0.7; margin-top: 2px; color: #ecf0f1;">${{statusText}}</div>
+                        <div style="font-size: 11px !important; opacity: 0.9 !important; margin-top: 4px !important; color: white !important;">${{field.description}}</div>
+                        <div style="font-size: 10px !important; opacity: 0.7 !important; margin-top: 2px !important; color: #ecf0f1 !important;">${{statusText}}</div>
                     </button>
                 `;
             }});
@@ -389,35 +392,37 @@ class InteractiveSelector:
             const totalFields = window.contentExtractorData.fieldOptions.length;
             
             menuHTML += `</div>
-                <div style="margin-top: 25px; border-top: 2px solid #34495e; padding-top: 18px;">
-                    <div style="background: rgba(52,152,219,0.1); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #3498db;">
-                        <div style="font-size: 13px; font-weight: 600; color: #3498db;">Progress: ${{completedCount}}/${{totalFields}} fields completed</div>
-                        <div style="font-size: 11px; color: #bdc3c7; margin-top: 4px;">Fields with at least one selection</div>
+                <div style="margin-top: 25px !important; border-top: 2px solid #34495e !important; padding-top: 18px !important;">
+                    <div style="background: rgba(52,152,219,0.1) !important; padding: 12px !important; border-radius: 8px !important; margin-bottom: 15px !important; border-left: 4px solid #3498db !important;">
+                        <div style="font-size: 13px !important; font-weight: 600 !important; color: #3498db !important;">Progress: ${{completedCount}}/${{totalFields}} fields completed</div>
+                        <div style="font-size: 11px !important; color: #bdc3c7 !important; margin-top: 4px !important;">Fields with at least one selection</div>
                     </div>
-                    <div style="display: flex; gap: 10px;">
+                    <div style="display: flex !important; gap: 10px !important;">
                         <button id="close-field-menu" style="
-                            background: #e74c3c;
-                            color: white;
-                            border: none;
-                            padding: 10px 18px;
-                            border-radius: 6px;
-                            cursor: pointer;
-                            font-size: 13px;
-                            font-weight: 600;
-                            transition: all 0.2s;
-                            flex: 1;
+                            background: #e74c3c !important;
+                            color: white !important;
+                            border: none !important;
+                            padding: 10px 18px !important;
+                            border-radius: 6px !important;
+                            cursor: pointer !important;
+                            font-size: 13px !important;
+                            font-weight: 600 !important;
+                            font-family: 'Segoe UI', Arial, sans-serif !important;
+                            transition: all 0.2s !important;
+                            flex: 1 !important;
                         " onmouseover="this.style.backgroundColor='#c0392b'" onmouseout="this.style.backgroundColor='#e74c3c'">Close Menu</button>
                         <button id="clear-all-selections" style="
-                            background: #95a5a6;
-                            color: white;
-                            border: none;
-                            padding: 10px 18px;
-                            border-radius: 6px;
-                            cursor: pointer;
-                            font-size: 13px;
-                            font-weight: 600;
-                            transition: all 0.2s;
-                            flex: 1;
+                            background: #95a5a6 !important;
+                            color: white !important;
+                            border: none !important;
+                            padding: 10px 18px !important;
+                            border-radius: 6px !important;
+                            cursor: pointer !important;
+                            font-size: 13px !important;
+                            font-weight: 600 !important;
+                            font-family: 'Segoe UI', Arial, sans-serif !important;
+                            transition: all 0.2s !important;
+                            flex: 1 !important;
                         " onmouseover="this.style.backgroundColor='#7f8c8d'" onmouseout="this.style.backgroundColor='#95a5a6'">Clear All</button>
                     </div>
                 </div>
@@ -500,30 +505,30 @@ class InteractiveSelector:
             toggle.id = 'field-menu-toggle';
             toggle.setAttribute('data-content-extractor-ui', 'true');
             toggle.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                left: 20px;
-                background: linear-gradient(135deg, #3498db, #2980b9);
-                color: white;
-                padding: 12px 16px;
-                border-radius: 50px;
-                z-index: 10002;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                font-size: 14px;
-                font-weight: 600;
-                cursor: pointer;
-                box-shadow: 0 4px 12px rgba(52,152,219,0.4);
-                border: 2px solid white;
-                transition: all 0.3s ease;
-                user-select: none;
+                position: fixed !important;
+                bottom: 20px !important;
+                left: 20px !important;
+                background: linear-gradient(135deg, #3498db, #2980b9) !important;
+                color: white !important;
+                padding: 12px 16px !important;
+                border-radius: 50px !important;
+                z-index: 10002 !important;
+                font-family: 'Segoe UI', Arial, sans-serif !important;
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                cursor: pointer !important;
+                box-shadow: 0 4px 12px rgba(52,152,219,0.4) !important;
+                border: 2px solid white !important;
+                transition: all 0.3s ease !important;
+                user-select: none !important;
             `;
             
             toggle.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="display: flex !important; align-items: center !important; gap: 8px !important;">
                     <span>📋</span>
-                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                        <span style="font-size: 12px; opacity: 0.8;">Current Field:</span>
-                        <span style="font-size: 13px; font-weight: 700;">${{window.contentExtractorData.activeField || 'None'}}</span>
+                    <div style="display: flex !important; flex-direction: column !important; align-items: flex-start !important;">
+                        <span style="font-size: 12px !important; opacity: 0.8 !important; color: white !important;">Current Field:</span>
+                        <span style="font-size: 13px !important; font-weight: 700 !important; color: white !important;">${{window.contentExtractorData.activeField || 'None'}}</span>
                     </div>
                 </div>
             `;
@@ -739,73 +744,75 @@ class InteractiveSelector:
             overlay.setAttribute('data-content-extractor-ui', 'true');
             const color = getFieldColor(fieldInfo.name);
             overlay.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(135deg, ${{color}}, ${{color}}dd);
-                color: white;
-                padding: 20px;
-                border-radius: 12px;
-                z-index: 10001;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                font-size: 14px;
-                max-width: 320px;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-                border: 2px solid white;
-                backdrop-filter: blur(10px);
+                position: fixed !important;
+                top: 20px !important;
+                right: 20px !important;
+                background: linear-gradient(135deg, ${{color}}, ${{color}}dd) !important;
+                color: white !important;
+                padding: 20px !important;
+                border-radius: 12px !important;
+                z-index: 10001 !important;
+                font-family: 'Segoe UI', Arial, sans-serif !important;
+                font-size: 14px !important;
+                max-width: 320px !important;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+                border: 2px solid white !important;
+                backdrop-filter: blur(10px) !important;
             `;
             
             const isMultiValue = fieldInfo.type === 'multi-value';
             const multiValueInstructions = isMultiValue ? 
-                '<div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 8px; margin: 10px 0; border-left: 4px solid rgba(255,255,255,0.5);"><strong>💡 Multi-Value Field:</strong><br>Select 2+ examples for best pattern results</div>' : '';
+                '<div style="background: rgba(255,255,255,0.15) !important; padding: 10px !important; border-radius: 8px !important; margin: 10px 0 !important; border-left: 4px solid rgba(255,255,255,0.5) !important;"><strong>💡 Multi-Value Field:</strong><br>Select 2+ examples for best pattern results</div>' : '';
             
             overlay.innerHTML = `
-                <div style="border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 12px; margin-bottom: 12px;">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <strong style="font-size: 16px; font-weight: 600;">🎯 ${{fieldInfo.label}}</strong>
-                        <div style="background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 20px; font-size: 11px; font-weight: 600;">
+                <div style="border-bottom: 2px solid rgba(255,255,255,0.3) !important; padding-bottom: 12px !important; margin-bottom: 12px !important;">
+                    <div style="display: flex !important; align-items: center !important; justify-content: space-between !important;">
+                        <strong style="font-size: 16px !important; font-weight: 600 !important; color: white !important;">🎯 ${{fieldInfo.label}}</strong>
+                        <div style="background: rgba(255,255,255,0.2) !important; padding: 4px 8px !important; border-radius: 20px !important; font-size: 11px !important; font-weight: 600 !important; color: white !important;">
                             ${{fieldInfo.type === 'multi-value' ? 'MULTI' : 'SINGLE'}}
                         </div>
                     </div>
-                    <div style="font-size: 12px; opacity: 0.9; margin-top: 6px; line-height: 1.3;">${{fieldInfo.description}}</div>
+                    <div style="font-size: 12px !important; opacity: 0.9 !important; margin-top: 6px !important; line-height: 1.3 !important; color: white !important;">${{fieldInfo.description}}</div>
                 </div>
-                <div id="selection-count" style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; margin-bottom: 10px; text-align: center;">
-                    <div style="font-weight: 600; font-size: 15px;"><strong>${{fieldInfo.name}}</strong>: 0 selected</div>
-                    <div style="font-size: 11px; opacity: 0.8; margin-top: 2px;">Total across all fields: 0</div>
+                <div id="selection-count" style="background: rgba(255,255,255,0.1) !important; padding: 10px !important; border-radius: 8px !important; margin-bottom: 10px !important; text-align: center !important;">
+                    <div style="font-weight: 600 !important; font-size: 15px !important; color: white !important;"><strong>${{fieldInfo.name}}</strong>: 0 selected</div>
+                    <div style="font-size: 11px !important; opacity: 0.8 !important; margin-top: 2px !important; color: white !important;">Total across all fields: 0</div>
                 </div>
                 ${{multiValueInstructions}}
-                <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; margin: 12px 0; font-size: 12px; line-height: 1.4;">
-                    <div style="font-weight: 600; margin-bottom: 6px;">📍 How to select:</div>
-                    <div>• <strong>Hover</strong> over elements to preview</div>
-                    <div>• <strong>Click</strong> elements to select them</div>
-                    <div>• Selected elements stay highlighted with checkmarks</div>
+                <div style="background: rgba(255,255,255,0.1) !important; padding: 12px !important; border-radius: 8px !important; margin: 12px 0 !important; font-size: 12px !important; line-height: 1.4 !important; color: white !important;">
+                    <div style="font-weight: 600 !important; margin-bottom: 6px !important; color: white !important;">📍 How to select:</div>
+                    <div style="color: white !important;">• <strong>Hover</strong> over elements to preview</div>
+                    <div style="color: white !important;">• <strong>Click</strong> elements to select them</div>
+                    <div style="color: white !important;">• Selected elements stay highlighted with checkmarks</div>
                 </div>
-                <div style="display: flex; gap: 8px; margin-top: 15px;">
+                <div style="display: flex !important; gap: 8px !important; margin-top: 15px !important;">
                     <button onclick="window.stopSelection()" style="
-                        flex: 1;
-                        padding: 10px 12px;
-                        background: rgba(255,255,255,0.2);
-                        border: 1px solid rgba(255,255,255,0.3);
-                        border-radius: 6px;
-                        color: white;
-                        cursor: pointer;
-                        font-size: 12px;
-                        font-weight: 600;
-                        transition: all 0.2s;
+                        flex: 1 !important;
+                        padding: 10px 12px !important;
+                        background: rgba(255,255,255,0.2) !important;
+                        border: 1px solid rgba(255,255,255,0.3) !important;
+                        border-radius: 6px !important;
+                        color: white !important;
+                        cursor: pointer !important;
+                        font-size: 12px !important;
+                        font-weight: 600 !important;
+                        font-family: 'Segoe UI', Arial, sans-serif !important;
+                        transition: all 0.2s !important;
                     " onmouseover="this.style.backgroundColor='rgba(255,255,255,0.3)'" onmouseout="this.style.backgroundColor='rgba(255,255,255,0.2)'">
                         ← Back to Fields
                     </button>
                     <button onclick="window.clearFieldSelections('${{fieldInfo.name}}'); updateSelectionCounter();" style="
-                        flex: 1;
-                        padding: 10px 12px;
-                        background: #e74c3c;
-                        color: white;
-                        border: none;
-                        border-radius: 6px;
-                        cursor: pointer;
-                        font-size: 12px;
-                        font-weight: 600;
-                        transition: all 0.2s;
+                        flex: 1 !important;
+                        padding: 10px 12px !important;
+                        background: #e74c3c !important;
+                        color: white !important;
+                        border: none !important;
+                        border-radius: 6px !important;
+                        cursor: pointer !important;
+                        font-size: 12px !important;
+                        font-weight: 600 !important;
+                        font-family: 'Segoe UI', Arial, sans-serif !important;
+                        transition: all 0.2s !important;
                     " onmouseover="this.style.backgroundColor='#c0392b'" onmouseout="this.style.backgroundColor='#e74c3c'">
                         Clear Field
                     </button>
