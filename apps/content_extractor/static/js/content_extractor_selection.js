@@ -63,11 +63,15 @@ window.closeFieldMenu = function() {
 };
 
 window.closeInstanceMenu = function() {
-    console.log('❌ closeInstanceMenu called');
+    console.log('❌ closeInstanceMenu called - returning to field menu');
     const menu = document.getElementById('content-extractor-instance-menu');
     if (menu) {
         menu.remove();
     }
+    // Return to field menu when instance menu closes
+    setTimeout(() => {
+        window.showFieldMenu();
+    }, 100);
 };
 
 // Control panel integration

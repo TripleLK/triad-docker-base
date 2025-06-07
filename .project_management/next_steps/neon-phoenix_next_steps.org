@@ -1,0 +1,151 @@
+#+TITLE: Next Steps - Neon Phoenix
+#+AUTHOR: Neon Phoenix  
+#+DATE: 2025-01-08
+#+FILETAGS: :next-steps:neon-phoenix:multi-element:subfields:
+
+* Immediate Priorities
+
+** 1. Multi-Element Subfield Management System [CRITICAL]
+The next model must implement the nested instance management system for fields with subfields. This is the core requirement for the next phase.
+
+*** User Workflow Requirements:
+1. User clicks on multi-element field (e.g., "models")
+2. Opens dedicated menu labeled with field name ("Models Management")
+3. Menu starts empty with prominent "+ Add New" button
+4. Clicking "+ Add New" creates numbered instance (e.g., "models[0]")
+5. Clicking instance opens third-level menu with subfields for that instance
+6. Subfields work exactly like top-level fields (page selection, text input, etc.)
+7. User can add multiple instances: models[0], models[1], models[2], etc.
+
+*** Technical Implementation Points:
+- Extend existing field type detection to identify multi-element fields with subfields
+- Create new menu type: Multi-Element Instance Manager
+- Implement instance creation with proper numbering/indexing
+- Extend navigation hierarchy: Field → Instance Manager → Instance Subfields → Method Selection
+- Ensure data structure supports nested field selections with instance indexing
+
+** 2. Test Current Implementation [HIGH]
+Before implementing new features, verify all current functionality works in Django application:
+- Test all 3 resolved priority issues
+- Verify text input with multi-value fields
+- Confirm pause/resume functionality
+- Test menu navigation flows
+
+* Approach
+
+** Phase 1: Analysis and Planning (30 minutes)
+1. **Review Current Architecture**: Study existing field detection and menu creation patterns
+2. **Data Structure Design**: Plan how to store nested selections with instance indexing
+3. **UI Flow Mapping**: Design complete navigation hierarchy for multi-element fields
+
+** Phase 2: Core Implementation (90 minutes)  
+1. **Multi-Element Detection**: Enhance field identification to recognize multi-element fields
+2. **Instance Manager Menu**: Create new menu type with + button and instance list
+3. **Instance Creation Logic**: Implement numbering system and instance tracking
+4. **Subfield Integration**: Connect instance menus to existing field selection system
+
+** Phase 3: Integration and Testing (60 minutes)
+1. **Navigation Integration**: Connect new menus to existing hierarchy  
+2. **Data Structure Integration**: Ensure selections save with proper instance indexing
+3. **UI Polish**: Consistent styling with existing components
+4. **Testing**: Verify complete workflow from field selection to subfield completion
+
+** Strategy for Next Model:
+- **Start with** apps/content_extractor/static/js/content_extractor_ui.js (menu creation)
+- **Focus on** selectField function enhancement for multi-element detection
+- **Build** createMultiElementInstanceMenu function
+- **Extend** data structure in content_extractor_events.js for instance tracking
+- **Test** with existing Django field configurations
+
+* Decisions
+
+** Technical Architecture Decisions Needed:
+
+1. **Instance Data Structure**: How to store selections with instance indexing?
+   - Option A: `fieldSelections['models[0].name'] = [...]` (flat structure)
+   - Option B: `fieldSelections['models'] = [{ instance_index: 0, subfields: {...} }]` (nested)
+   - **Recommendation**: Option B for cleaner data organization
+
+2. **Instance Numbering**: Zero-based or one-based indexing for user display?
+   - Technical: Zero-based for array compatibility
+   - UI Display: One-based for user friendliness (models[1], models[2], etc.)
+
+3. **Instance Deletion**: Should users be able to delete instances?
+   - **Recommendation**: Yes, but implement in Phase 2 after basic functionality
+
+** UI Design Decisions Needed:
+
+1. **Instance Menu Layout**: List view vs. card view for instances?
+   - **Recommendation**: List view consistent with current field menu
+
+2. **Instance Navigation**: Breadcrumb display for deep nesting?
+   - **Recommendation**: Yes, extend existing breadcrumb system
+
+3. **Progress Tracking**: How to show completion status for nested fields?
+   - **Recommendation**: Show completion count per instance in instance list
+
+* Handoff
+
+** Current State:
+- ✅ All 3 priority UI issues resolved and tested  
+- ✅ Extensible input method architecture established
+- ✅ Text input fully implemented for single and multi-value fields
+- ✅ Menu hierarchy and navigation working correctly
+- ⏸️ Multi-element subfield management system pending implementation
+
+** Incomplete Work:
+- Multi-element instance management system (next phase core requirement)
+- File import and AI extraction methods (placeholders only)
+- Django integration testing of recent changes
+- Performance optimization for large field sets
+
+** Resources Available:
+
+*** Key Files to Modify:
+- `apps/content_extractor/static/js/content_extractor_ui.js` - Add multi-element instance menu
+- `apps/content_extractor/static/js/content_extractor_events.js` - Extend selectField function
+- `apps/content_extractor/static/js/content_extractor_selection.js` - Update navigation logic
+
+*** Existing Patterns to Follow:
+- Menu creation pattern from createFieldMenu and createFieldSettingMethodMenu  
+- Data structure pattern from existing fieldSelections handling
+- Navigation pattern from existing breadcrumb and menu hierarchy system
+- Event handling pattern from existing field selection workflow
+
+*** Data Structure References:
+```javascript
+// Current structure to extend:
+contentExtractorData: {
+    fieldSelections: { [fieldName]: [...] },
+    fieldOptions: [...],
+    // Add: instanceData for multi-element tracking
+}
+
+// Proposed extension:
+contentExtractorData: {
+    fieldSelections: { [fieldName]: [...] },  // Simple fields
+    instanceSelections: {                     // Multi-element fields
+        [fieldName]: [
+            { 
+                instance_index: 0, 
+                subfields: { [subfieldName]: [...] } 
+            }
+        ]
+    },
+    fieldOptions: [...],
+}
+```
+
+** Critical Success Factors:
+1. **User Experience**: Multi-element workflow must feel natural and intuitive
+2. **Data Integrity**: Nested selections must save/load correctly with Django backend  
+3. **Navigation Consistency**: New menus must follow established UI patterns
+4. **Performance**: System must handle multiple instances without lag
+
+** Testing Requirements:
+- Test with real Django field configurations having subfields
+- Verify complete workflow: field → instance creation → subfield selection → data save
+- Test multiple instances of same multi-element field
+- Confirm proper navigation back through menu hierarchy
+
+The next model has a clear technical foundation and detailed requirements to implement the multi-element subfield management system successfully. 
