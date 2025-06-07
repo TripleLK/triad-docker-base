@@ -1,0 +1,163 @@
+#+TITLE: Quantum Ridge Next Steps - Phase 1 UX Issues Resolution
+#+DATE: 2025-01-08
+#+MODEL: Quantum Ridge
+#+AUTHOR: Quantum Ridge
+#+FILETAGS: :next-steps:quantum-ridge:ux-fixes:
+
+* URGENT: Phase 1 UX Issues Resolution (BEFORE Phase 2)
+
+** Background
+Phase 1 floating UI control panel implementation was completed but user testing revealed critical UX issues that make the system unusable in its current state. These must be resolved before moving to Phase 2.
+
+** PRIORITY 1: Fix Disappearing Prompt Menus (CRITICAL - 2 hours)
+*** Issue Description
+All prompt menus (Save, Test, Navigate confirmations) immediately disappear upon display, preventing user interaction.
+
+*** Root Cause Analysis Needed
+- JavaScript event propagation may be causing immediate dismissal
+- Promise/async timing issues in prompt display logic
+- Event listeners may be conflicting with existing page JavaScript
+
+*** Specific Fix Requirements
+- Debug JavaScript console for timing/event errors
+- Add event.stopPropagation() to prevent bubble-up dismissal
+- Implement proper modal/prompt persistence until user action
+- Test with setTimeout delays if needed for DOM settling
+
+*** Testing Protocol
+- Test each control panel button (Save, Test, Navigate) individually
+- Ensure prompts stay visible until user clicks OK/Cancel
+- Verify prompts work across different test URLs (AirScience, etc.)
+
+** PRIORITY 2: Implement Auto-Fill for Individual Fields (2 hours)
+*** Issue Description  
+Individual fields, especially URL, should automatically populate when possible rather than requiring manual selection every time.
+
+*** Implementation Requirements
+- **URL Field**: Automatically extract and populate from current page location
+- **Title Field**: Auto-extract from page title or H1 tags
+- **Description Fields**: Use meta description or first paragraph
+- **Image Fields**: Detect primary product images automatically
+- **Price Fields**: Use common price selectors (class="price", data-price, etc.)
+
+*** Auto-Fill Logic
+```javascript
+// Pseudo-code for auto-fill implementation
+function autoFillField(fieldName) {
+    switch(fieldName) {
+        case 'url':
+            return window.location.href;
+        case 'title': 
+            return document.title || document.querySelector('h1')?.textContent;
+        case 'description':
+            return document.querySelector('meta[name="description"]')?.content;
+        // Add more field-specific auto-fill logic
+    }
+}
+```
+
+*** User Experience
+- Show auto-filled values in control panel with "Auto-detected: [value]" label
+- Allow user to accept auto-fill or override with manual selection
+- Provide "Auto-fill all available" button for efficiency
+
+** PRIORITY 3: Sub-Menu Architecture for Complex Fields (3 hours)
+*** Issue Description
+Complex fields like "models" that have multiple sub-components need hierarchical sub-menu system matching the main selection menu style.
+
+*** Architecture Requirements
+- **Models Field Sub-Menu**: Model name, model number, specifications, images
+- **Categories Field Sub-Menu**: Primary category, subcategory, tags
+- **Pricing Field Sub-Menu**: Base price, sale price, currency, availability
+- **Specifications Sub-Menu**: Technical specs, dimensions, weight, materials
+
+*** Implementation Pattern
+```javascript
+// Hierarchical menu structure
+const FIELD_HIERARCHIES = {
+    'models': [
+        'model_name',
+        'model_number', 
+        'specifications',
+        'model_images'
+    ],
+    'categories': [
+        'primary_category',
+        'subcategory',
+        'tags'
+    ]
+    // etc.
+};
+```
+
+*** Visual Design
+- Sub-menus should use same floating style as main field menu
+- Breadcrumb navigation showing current field > sub-field
+- "Back to [Parent Field]" option in each sub-menu
+- Visual indicators showing which sub-fields are completed
+
+** PRIORITY 4: Enhanced Progress Tracking (1 hour)
+*** Requirements
+- Progress indicator should show sub-field completion
+- Display format: "Models: 3/4 sub-fields completed"
+- Overall progress calculation includes sub-field weights
+- Visual progress bar with field-specific color coding
+
+** Secondary Improvements (Future Models)
+
+*** Enhanced Error Handling
+- Better user feedback for failed auto-detection
+- Recovery suggestions when selectors don't work
+- Graceful degradation when JavaScript fails
+
+*** Advanced Navigation
+- "Skip to next incomplete field" button
+- Field-specific validation before moving to next
+- Bulk operations for similar pages
+
+* Technical Implementation Notes
+
+** Files to Modify
+- `apps/content_extractor/selectors/interactive_selector.py` (lines 498-870: prompt handling)
+- JavaScript event handling in createFloatingMenuToggle()
+- Add auto-fill detection methods (lines 1816+)
+- Implement sub-menu architecture in field display logic
+
+** Testing Requirements
+- All prompts must persist until user action
+- Auto-fill must work on AirScience test URLs
+- Sub-menus must maintain same visual style as main menu
+- Progress tracking must accurately reflect sub-field completion
+
+** Backward Compatibility
+- Existing field selection workflow must remain functional
+- Original field menu should still be accessible via Fields button
+- Database schema should support both simple and hierarchical fields
+
+* Handoff Instructions for Next Model
+
+** Immediate Tasks
+1. **Debug prompt dismissal** using browser dev tools and JavaScript console
+2. **Implement URL auto-fill** as proof of concept for other fields
+3. **Create models sub-menu** as template for other complex fields
+
+** Testing Protocol
+- Use AirScience URLs from `.project_management/test_urls/airscience_working_urls.txt`
+- Test each control panel button individually
+- Verify auto-fill accuracy across different page types
+- Validate sub-menu navigation and completion tracking
+
+** Success Criteria
+- All control panel prompts stay visible until user dismisses
+- URL field auto-populates correctly on page load
+- Models field shows sub-menu with at least 3 sub-options
+- Progress indicator accurately reflects hierarchical completion
+
+* Cross-References
+- Azure Falcon foundation work: `.project_management/cleanup_reports/azure-falcon_cleanup.org`
+- Current implementation: `apps/content_extractor/selectors/interactive_selector.py`
+- Test URLs: `.project_management/test_urls/airscience_working_urls.txt`
+- Stellar Rhino original roadmap: Referenced Phase 2 multi-instance selection (6-hour task)
+
+* Phase 2 Multi-Instance Selection (ON HOLD)
+The original Phase 2 task (multi-instance selection logic for product listings) should be deferred until Phase 1 UX issues are resolved. Once the floating UI control panel is fully functional, Phase 2 can focus on handling multiple product instances on listing pages with proper state management and UI indicators. 

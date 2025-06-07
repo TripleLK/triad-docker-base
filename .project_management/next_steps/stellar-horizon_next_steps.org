@@ -1,0 +1,141 @@
+#+TITLE: Next Steps - Stellar Horizon
+#+AUTHOR: Stellar Horizon  
+#+DATE: 2025-01-08
+#+FILETAGS: :next-steps:stellar-horizon:phase2-architecture:
+
+* CRITICAL: Nested Selection Context Architecture 🏗️
+
+** Core Concept (FROM USER INSIGHT)
+When selecting "models", user should enter a models-specific input mode that contains:
+- Sub-field selection menu (model_name, model_number, specifications, etc.)
+- Each sub-field can open its own selection interface
+- Recursive, modular design that reuses selection components
+- Visual depth indicators (border colors) to show nesting level
+
+** Technical Requirements
+1. **Modular Selection Interface**
+   - Extract current selection logic into reusable components
+   - Design components that can be embedded at any depth level
+   - Maintain consistent API across nesting levels
+
+2. **Context Management**
+   - Track current selection depth and parent context
+   - Preserve parent selections while navigating sub-selections
+   - Handle context switching and navigation
+
+3. **Visual Feedback System**
+   - Border color indicators for selection depth
+   - Subtle visual cues for current context
+   - Clear navigation breadcrumbs or indicators
+
+** Implementation Strategy
+1. **Phase 2A: Component Modularization**
+   - Refactor existing selection interface into modular components
+   - Create base SelectionContext class that can be nested
+   - Implement context switching and depth tracking
+
+2. **Phase 2B: Recursive Interface**
+   - Build nested selection context system
+   - Implement sub-field menu within parent field contexts
+   - Add visual depth indicators and navigation aids
+
+3. **Phase 2C: Testing & Polish**
+   - Comprehensive testing of nested selections
+   - Performance optimization for deep nesting
+   - User experience refinement
+
+* Immediate Next Steps (For Next Model) 📋
+
+** HIGH PRIORITY
+1. **Analyze Current Code Structure**
+   - Review interactive_selector.py selection logic
+   - Identify components that can be modularized
+   - Map out current field selection workflow
+
+2. **Design Modular Architecture**
+   - Create SelectionContext base class
+   - Define interfaces for nested selection components
+   - Plan depth tracking and visual feedback system
+
+3. **Prototype Basic Nesting**
+   - Implement simple two-level nesting (field -> sub-field)
+   - Test context switching and preservation
+   - Validate modular component approach
+
+** MEDIUM PRIORITY
+1. **Enhanced Auto-Fill for Nested Contexts**
+   - Extend auto-fill to work within sub-field contexts
+   - Smart detection of sub-field content patterns
+   - Context-aware field population
+
+2. **Advanced Visual Feedback**
+   - Implement border color depth indicators
+   - Add breadcrumb navigation for deep nesting
+   - Context-aware UI element styling
+
+** LOW PRIORITY
+1. **Performance Optimization**
+   - Optimize for deep nesting scenarios
+   - Implement lazy loading for complex hierarchies
+   - Memory management for multiple contexts
+
+2. **Advanced Features**
+   - Cross-context validation and testing
+   - Bulk operations across nested selections
+   - Import/export of complex selection hierarchies
+
+* Technical Debt to Address 🔧
+
+** Current Sub-Menu Implementation
+- Remove incorrect compound field name approach
+- Clean up linear sub-menu selection code
+- Preserve working custom modal system
+
+** Code Organization
+- Better separation of concerns in interactive_selector.py
+- Extract UI components from core selection logic
+- Improve error handling for nested contexts
+
+* Success Metrics 📊
+
+** User Experience Goals
+- Intuitive navigation through nested selections
+- Clear visual feedback for current context
+- Seamless switching between selection depths
+- Preserved context when navigating hierarchies
+
+** Technical Goals
+- Modular, reusable selection components
+- Efficient context management
+- Robust error handling for complex nesting
+- Maintainable and extensible architecture
+
+* Resources Available 🛠️
+
+** Working Foundation
+- Stable custom modal system (no disappearing prompts)
+- Comprehensive test harness (`test_interactive_selector.py`)
+- Enhanced logging and debugging infrastructure
+- Validated test URLs for airscience.com domain
+
+** Documentation
+- Stellar Horizon cleanup report with architectural insights
+- Conversation logs with detailed implementation history
+- User feedback and requirements clarification
+
+** Testing Environment
+- Chrome WebDriver setup with comprehensive logging
+- Test URLs covering various page types
+- Error tracking and debugging capabilities
+
+* Key Reminders for Next Model 💡
+
+1. **User Priority**: Functionality over aesthetics - keep UI simple but powerful
+2. **Architecture First**: Design modular components before implementation
+3. **Visual Feedback**: Border colors for depth indication are important UX element
+4. **Code Reuse**: Same selection interface should work at all nesting levels
+5. **Context Preservation**: Never lose parent selections when navigating sub-selections
+
+---
+**Prepared by: Stellar Horizon**
+**Ready for Phase 2 Architectural Enhancement** 

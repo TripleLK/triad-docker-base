@@ -484,6 +484,22 @@ class InteractiveSelector:
         
         // Select a field and start content selection
         function selectField(fieldName) {{
+            // Check if this field has sub-menu options
+            const fieldsWithSubMenus = ['models', 'categorized_tags', 'spec_groups', 'features', 'accessories'];
+            
+            if (fieldsWithSubMenus.includes(fieldName)) {{
+                // Remove field menu first
+                const menu = document.getElementById('field-selection-menu');
+                if (menu) {{
+                    menu.remove();
+                }}
+                
+                // Show sub-menu for this field
+                showFieldSubMenu(fieldName);
+                return;
+            }}
+            
+            // For simple fields, proceed with regular selection
             window.contentExtractorData.activeField = fieldName;
             
             // Remove field menu
@@ -512,212 +528,680 @@ class InteractiveSelector:
                 existingToggle.remove();
             }}
             
-            const toggle = document.createElement('div');
-            toggle.id = 'field-menu-toggle';
-            toggle.setAttribute('data-content-extractor-ui', 'true');
-            toggle.style.cssText = `
+            // Get current field completion status for progress indicator
+            const currentSelections = window.contentExtractorData.fieldSelections || {{}};
+            const completedCount = Object.keys(currentSelections).filter(k => currentSelections[k] && currentSelections[k].length > 0).length;
+            const totalFields = window.contentExtractorData.fieldOptions.length;
+            const progressPercentage = Math.round((completedCount / totalFields) * 100);
+            
+            const controlPanel = document.createElement('div');
+            controlPanel.id = 'field-menu-toggle';
+            controlPanel.setAttribute('data-content-extractor-ui', 'true');
+            controlPanel.style.cssText = `
                 position: fixed !important;
                 bottom: 20px !important;
                 left: 20px !important;
-                background: linear-gradient(135deg, #3498db, #2980b9) !important;
+                background: linear-gradient(135deg, #2c3e50, #34495e) !important;
                 color: white !important;
-                padding: 12px 16px !important;
-                border-radius: 50px !important;
+                padding: 16px !important;
+                border-radius: 12px !important;
                 z-index: 10002 !important;
                 font-family: 'Segoe UI', Arial, sans-serif !important;
-                font-size: 14px !important;
-                font-weight: 600 !important;
-                cursor: pointer !important;
-                box-shadow: 0 4px 12px rgba(52,152,219,0.4) !important;
-                border: 2px solid white !important;
+                font-size: 13px !important;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.3) !important;
+                border: 2px solid #3498db !important;
                 transition: all 0.3s ease !important;
                 user-select: none !important;
+                min-width: 280px !important;
+                backdrop-filter: blur(10px) !important;
             `;
             
-            toggle.innerHTML = `
-                <div style="display: flex !important; align-items: center !important; gap: 8px !important;">
-                    <span>📋</span>
-                    <div style="display: flex !important; flex-direction: column !important; align-items: flex-start !important;">
-                        <span style="font-size: 12px !important; opacity: 0.8 !important; color: white !important;">Current Field:</span>
-                        <span style="font-size: 13px !important; font-weight: 700 !important; color: white !important;">${{window.contentExtractorData.activeField || 'None'}}</span>
+            controlPanel.innerHTML = `
+                <div style="margin-bottom: 12px !important; padding-bottom: 10px !important; border-bottom: 1px solid rgba(255,255,255,0.2) !important;">
+                    <div style="display: flex !important; align-items: center !important; gap: 8px !important; margin-bottom: 8px !important;">
+                        <span style="font-size: 16px !important;">🎯</span>
+                        <div>
+                            <div style="font-size: 11px !important; opacity: 0.8 !important; color: white !important;">Current Field:</div>
+                            <div style="font-size: 14px !important; font-weight: 700 !important; color: #3498db !important;">${{window.contentExtractorData.activeField || 'None'}}</div>
+                        </div>
                     </div>
+                    <div style="margin-top: 8px !important;">
+                        <div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin-bottom: 4px !important;">
+                            <span style="font-size: 11px !important; color: white !important;">Overall Progress:</span>
+                            <span style="font-size: 11px !important; font-weight: 600 !important; color: #3498db !important;">${{completedCount}}/${{totalFields}} (${{progressPercentage}}%)</span>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2) !important; height: 6px !important; border-radius: 3px !important; overflow: hidden !important;">
+                            <div style="background: linear-gradient(90deg, #27ae60, #2ecc71) !important; height: 100% !important; width: ${{progressPercentage}}% !important; transition: width 0.3s ease !important; border-radius: 3px !important;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; margin-bottom: 12px !important;">
+                    <button id="control-save-btn" style="
+                        background: linear-gradient(135deg, #27ae60, #2ecc71) !important;
+                        color: white !important;
+                        border: none !important;
+                        padding: 10px 12px !important;
+                        border-radius: 6px !important;
+                        cursor: pointer !important;
+                        font-size: 12px !important;
+                        font-weight: 600 !important;
+                        transition: all 0.2s !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        gap: 4px !important;
+                    " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 8px rgba(39,174,96,0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <span>💾</span>
+                        <span>Save</span>
+                    </button>
+                    
+                    <button id="control-test-btn" style="
+                        background: linear-gradient(135deg, #f39c12, #e67e22) !important;
+                        color: white !important;
+                        border: none !important;
+                        padding: 10px 12px !important;
+                        border-radius: 6px !important;
+                        cursor: pointer !important;
+                        font-size: 12px !important;
+                        font-weight: 600 !important;
+                        transition: all 0.2s !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        gap: 4px !important;
+                    " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 8px rgba(243,156,18,0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <span>🧪</span>
+                        <span>Test</span>
+                    </button>
+                </div>
+                
+                <div style="display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; margin-bottom: 12px !important;">
+                    <button id="control-navigate-btn" style="
+                        background: linear-gradient(135deg, #8e44ad, #9b59b6) !important;
+                        color: white !important;
+                        border: none !important;
+                        padding: 10px 12px !important;
+                        border-radius: 6px !important;
+                        cursor: pointer !important;
+                        font-size: 12px !important;
+                        font-weight: 600 !important;
+                        transition: all 0.2s !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        gap: 4px !important;
+                    " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 8px rgba(142,68,173,0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <span>🧭</span>
+                        <span>Navigate</span>
+                    </button>
+                    
+                    <button id="control-fields-btn" style="
+                        background: linear-gradient(135deg, #3498db, #2980b9) !important;
+                        color: white !important;
+                        border: none !important;
+                        padding: 10px 12px !important;
+                        border-radius: 6px !important;
+                        cursor: pointer !important;
+                        font-size: 12px !important;
+                        font-weight: 600 !important;
+                        transition: all 0.2s !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        gap: 4px !important;
+                    " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 8px rgba(52,152,219,0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <span>📋</span>
+                        <span>Fields</span>
+                    </button>
+                </div>
+                
+                <div style="border-top: 1px solid rgba(255,255,255,0.2) !important; padding-top: 10px !important; font-size: 10px !important; color: rgba(255,255,255,0.7) !important; text-align: center !important;">
+                    <div>💡 <strong>Quick Tips:</strong></div>
+                    <div style="margin-top: 4px !important;">Save selections • Test on pages • Navigate URLs</div>
                 </div>
             `;
             
-            // Add click handler to show field menu
-            toggle.addEventListener('click', function(e) {{
+            // Add control panel event handlers
+            
+            // Save button - persist field selections to database
+            controlPanel.querySelector('#control-save-btn').addEventListener('click', function(e) {{
+                e.stopPropagation();
+                handleControlPanelSave();
+            }});
+            
+            // Test button - validate selectors on multiple pages
+            controlPanel.querySelector('#control-test-btn').addEventListener('click', function(e) {{
+                e.stopPropagation();
+                handleControlPanelTest();
+            }});
+            
+            // Navigate button - easy page traversal
+            controlPanel.querySelector('#control-navigate-btn').addEventListener('click', function(e) {{
+                e.stopPropagation();
+                handleControlPanelNavigate();
+            }});
+            
+            // Fields button - show field menu (original functionality)
+            controlPanel.querySelector('#control-fields-btn').addEventListener('click', function(e) {{
                 e.stopPropagation();
                 window.showFieldMenu();
-                // Keep the toggle visible for easy access
             }});
             
-            // Add event listeners to prevent interference
-            toggle.addEventListener('mouseenter', function(e) {{ 
-                e.stopPropagation();
-                this.style.transform = 'translateY(-2px)';
-                this.style.boxShadow = '0 6px 16px rgba(52,152,219,0.6)';
-                this.style.background = 'linear-gradient(135deg, #2980b9, #3498db)';
-            }});
+            // Prevent mouse events from interfering with page interaction
+            controlPanel.addEventListener('mouseenter', function(e) {{ e.stopPropagation(); }});
+            controlPanel.addEventListener('mouseleave', function(e) {{ e.stopPropagation(); }});
+            controlPanel.addEventListener('click', function(e) {{ e.stopPropagation(); }});
             
-            toggle.addEventListener('mouseleave', function(e) {{ 
-                e.stopPropagation();
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = '0 4px 12px rgba(52,152,219,0.4)';
-                this.style.background = 'linear-gradient(135deg, #3498db, #2980b9)';
-            }});
-            
-            document.body.appendChild(toggle);
+            document.body.appendChild(controlPanel);
         }}
         
-        // Remove floating menu toggle
-        function removeFloatingMenuToggle() {{
-            const toggle = document.getElementById('field-menu-toggle');
-            if (toggle) {{
-                toggle.remove();
-            }}
-        }}
-        
-        // Start field-specific selection mode
-        window.startFieldSelection = function(fieldName) {{
-            window.contentExtractorData.isSelectionMode = true;
-            window.contentExtractorData.activeField = fieldName;
+        // Handle Save button functionality
+        function handleControlPanelSave() {{
+            const currentSelections = window.contentExtractorData.fieldSelections || {{}};
+            const activeField = window.contentExtractorData.activeField;
             
-            // Find field info
-            const fieldInfo = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
-            
-            document.addEventListener('mouseover', handleMouseOver);
-            document.addEventListener('mouseout', handleMouseOut);
-            document.addEventListener('click', handleClick);
-            
-            // Show field-specific instructions
-            showFieldInstructions(fieldInfo);
-        }};
-        
-        // Stop selection mode
-        window.stopSelection = function() {{
-            window.contentExtractorData.isSelectionMode = false;
-            
-            document.removeEventListener('mouseover', handleMouseOver);
-            document.removeEventListener('mouseout', handleMouseOut);
-            document.removeEventListener('click', handleClick);
-            
-            hideInstructions();
-            removeFloatingMenuToggle(); // Clean up the toggle button
-            window.showFieldMenu(); // Return to field menu
-        }};
-        
-        function handleMouseOver(event) {{
-            if (window.contentExtractorData.isSelectionMode) {{
-                // Ignore events on content extractor UI elements
-                if (isContentExtractorElement(event.target)) {{
-                    return;
-                }}
-                highlightElement(event.target);
-            }}
-        }}
-        
-        function handleMouseOut(event) {{
-            if (window.contentExtractorData.isSelectionMode) {{
-                // Ignore events on content extractor UI elements
-                if (isContentExtractorElement(event.target)) {{
-                    return;
-                }}
-                removeHighlight(event.target);
-            }}
-        }}
-        
-        function handleClick(event) {{
-            // NEW: Check for modifier keys
-            if (event.ctrlKey || event.metaKey) {{
-                // Allow normal page interaction without selecting
-                console.log('Ctrl/Cmd+Click detected: Allowing normal navigation without selection');
-                return; // Don't prevent default, don't select
-            }}
-            
-            if (event.altKey) {{
-                // Preview mode - show element info without selecting
-                event.preventDefault();
-                event.stopPropagation();
-                
-                if (!isContentExtractorElement(event.target)) {{
-                    let element = event.target;
-                    let xpath = getXPath(element);
-                    let text = element.textContent.trim().substring(0, 100);
-                    
-                    // Show preview info
-                    console.log('Element Preview:', {{
-                        tag: element.tagName.toLowerCase(),
-                        text: text,
-                        xpath: xpath,
-                        classes: element.className
-                    }});
-                    
-                    // Visual feedback for preview
-                    element.style.outline = '2px dashed #ffa500';
-                    setTimeout(() => {{
-                        if (!window.contentExtractorData.selectedDOMElements.has(element)) {{
-                            element.style.outline = '';
-                        }}
-                    }}, 1000);
-                }}
+            if (!activeField) {{
+                showCustomAlert('❌ No active field selected. Please select a field first.');
                 return;
             }}
             
-            if (window.contentExtractorData.isSelectionMode) {{
-                // Ignore clicks on content extractor UI elements
-                if (isContentExtractorElement(event.target)) {{
-                    return;
+            const fieldSelections = currentSelections[activeField] || [];
+            if (fieldSelections.length === 0) {{
+                showCustomAlert(`❌ No selections made for field "${{activeField}}". Please select at least one element.`);
+                return;
+            }}
+            
+            // Show save confirmation with details
+            const selectionCount = fieldSelections.length;
+            const fieldInfo = window.contentExtractorData.fieldOptions.find(f => f.name === activeField);
+            const isMultiValue = fieldInfo && fieldInfo.type === 'multi-value';
+            
+            let saveMessage = `💾 Save ${{selectionCount}} selection(s) for "${{activeField}}"?\\n\\n`;
+            saveMessage += `Field Type: ${{isMultiValue ? 'Multi-value' : 'Single value'}}\\n`;
+            saveMessage += `Domain: ${{window.location.hostname}}\\n`;
+            saveMessage += `Current Page: ${{window.location.pathname}}\\n\\n`;
+            saveMessage += 'This will save the selector patterns to the database for future use.';
+            
+            showCustomConfirm(saveMessage, function(confirmed) {{
+                if (confirmed) {{
+                    // Trigger Python save functionality
+                    console.log('🚀 Triggering save for field:', activeField, fieldSelections);
+                    window.saveFieldSelections = {{
+                        field: activeField,
+                        selections: fieldSelections,
+                        domain: window.location.hostname,
+                        url: window.location.href,
+                        timestamp: new Date().toISOString()
+                    }};
+                    
+                    // Visual feedback
+                    showTemporaryNotification('💾 Selections saved successfully!', 'success');
                 }}
-                
-                event.preventDefault();
-                event.stopPropagation();
-                
-                let element = event.target;
-                const fieldName = window.contentExtractorData.activeField;
-                
-                // Check if already selected
-                if (window.contentExtractorData.selectedDOMElements.has(element)) {{
-                    console.log('Element already selected, skipping...');
-                    return;
+            }});
+        }}
+        
+        // Handle Test button functionality  
+        function handleControlPanelTest() {{
+            const currentSelections = window.contentExtractorData.fieldSelections || {{}};
+            const completedFields = Object.keys(currentSelections).filter(k => currentSelections[k] && currentSelections[k].length > 0);
+            
+            if (completedFields.length === 0) {{
+                showCustomAlert('❌ No field selections to test. Please select elements for at least one field first.');
+                return;
+            }}
+            
+            let testMessage = `🧪 Test ${{completedFields.length}} field(s) on multiple pages?\\n\\n`;
+            testMessage += `Fields to test: ${{completedFields.join(', ')}}\\n`;
+            testMessage += `Current domain: ${{window.location.hostname}}\\n\\n`;
+            testMessage += 'This will validate selectors across different pages to ensure reliability.';
+            
+            showCustomConfirm(testMessage, function(confirmed) {{
+                if (confirmed) {{
+                    // Trigger Python test functionality
+                    console.log('🚀 Triggering cross-page testing for fields:', completedFields);
+                    window.testFieldSelections = {{
+                        fields: completedFields,
+                        domain: window.location.hostname,
+                        baseUrl: window.location.href,
+                        timestamp: new Date().toISOString()
+                    }};
+                    
+                    // Visual feedback
+                    showTemporaryNotification('🧪 Cross-page testing initiated!', 'info');
                 }}
-                
-                let xpath = getXPath(element);
-                let cssSelector = getCSSSelector(element);
-                let text = element.textContent.trim().substring(0, 200);
-                
-                let selection = {{
-                    field_name: fieldName,
-                    label: `${{fieldName}}_selection`,
-                    xpath: xpath,
-                    cssSelector: cssSelector,
-                    text: text,
-                    tagName: element.tagName.toLowerCase(),
-                    attributes: {{}}
-                }};
-                
-                // Capture key attributes
-                for (let attr of element.attributes) {{
-                    selection.attributes[attr.name] = attr.value;
+            }});
+        }}
+        
+        // Handle Navigate button functionality
+        function handleControlPanelNavigate() {{
+            const navigationOptions = [
+                {{id: '1', label: '🔗 New URL', desc: 'Navigate to a different page for testing'}},
+                {{id: '2', label: '🔍 Similar Pages', desc: 'Find similar product pages on this domain'}},
+                {{id: '3', label: '📋 Test URLs', desc: 'Navigate to saved test URLs'}},
+                {{id: '4', label: '⬅️ Back to Previous', desc: 'Return to previous page'}}
+            ];
+            
+            showCustomSelect(
+                '🧭 Navigation Options',
+                'Choose how you want to navigate:',
+                navigationOptions,
+                function(choice) {{
+                    handleNavigationChoice(choice);
                 }}
-                
-                // Add to global and field-specific selections
-                window.contentExtractorData.selectedElements.push(selection);
-                window.contentExtractorData.fieldSelections[fieldName].push(selection);
-                
-                // Mark as selected with field-specific styling
-                markAsSelected(element, fieldName);
-                
-                console.log('Element selected for field:', fieldName, selection);
-                
-                // Update counter in instruction box
-                updateSelectionCounter();
-                
-                // Handle multi-value field logic
-                const fieldInfo = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
-                if (fieldInfo && fieldInfo.type === 'multi-value') {{
-                    handleMultiValueSelection(fieldName, selection);
+            );
+        }}
+        
+        function handleNavigationChoice(choice) {{
+            switch(choice) {{
+                case '1':
+                    // Auto-fill current URL as default
+                    const currentUrl = window.location.href;
+                    showCustomInput(
+                        '🔗 Navigate to URL',
+                        'Enter URL to navigate to:',
+                        currentUrl,
+                        function(newUrl) {{
+                            if (newUrl && newUrl.trim()) {{
+                                const cleanUrl = newUrl.trim();
+                                if (cleanUrl.startsWith('http://') || cleanUrl.startsWith('https://')) {{
+                                    window.navigateToUrl = cleanUrl;
+                                    showTemporaryNotification(`🧭 Navigating to: ${{cleanUrl}}`, 'info');
+                                }} else {{
+                                    showCustomAlert('❌ Please enter a complete URL starting with http:// or https://');
+                                }}
+                            }}
+                        }}
+                    );
+                    break;
+                case '2':
+                    // Find similar pages functionality
+                    console.log('🔍 Finding similar pages on domain:', window.location.hostname);
+                    window.findSimilarPages = {{
+                        domain: window.location.hostname,
+                        currentPath: window.location.pathname,
+                        timestamp: new Date().toISOString()
+                    }};
+                    showTemporaryNotification('🔍 Searching for similar pages...', 'info');
+                    break;
+                case '3':
+                    // Navigate to test URLs
+                    console.log('📋 Loading saved test URLs');
+                    window.loadTestUrls = {{
+                        domain: window.location.hostname,
+                        timestamp: new Date().toISOString()
+                    }};
+                    showTemporaryNotification('📋 Loading test URLs...', 'info');
+                    break;
+                case '4':
+                    // Back to previous page
+                    showCustomConfirm('⬅️ Go back to the previous page?', function(confirmed) {{
+                        if (confirmed) {{
+                            window.history.back();
+                        }}
+                    }});
+                    break;
+            }}
+        }}
+        
+        // Custom Alert Modal (replaces alert())
+        function showCustomAlert(message) {{
+            createModal('Alert', message, [
+                {{text: 'OK', primary: true, callback: null}}
+            ]);
+        }}
+        
+        // Custom Confirm Modal (replaces confirm())
+        function showCustomConfirm(message, callback) {{
+            createModal('Confirm', message, [
+                {{text: 'Cancel', primary: false, callback: () => callback(false)}},
+                {{text: 'OK', primary: true, callback: () => callback(true)}}
+            ]);
+        }}
+        
+        // Custom Input Modal (replaces prompt())
+        function showCustomInput(title, message, defaultValue = '', callback) {{
+            const modalOverlay = document.createElement('div');
+            modalOverlay.setAttribute('data-content-extractor-ui', 'true');
+            modalOverlay.id = 'custom-input-modal';
+            modalOverlay.style.cssText = `
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: rgba(0, 0, 0, 0.6) !important;
+                z-index: 10010 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                backdrop-filter: blur(3px) !important;
+            `;
+            
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                background: white !important;
+                border-radius: 12px !important;
+                padding: 24px !important;
+                max-width: 500px !important;
+                width: 90% !important;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+                font-family: 'Segoe UI', Arial, sans-serif !important;
+                animation: modalSlideIn 0.3s ease-out !important;
+            `;
+            
+            modal.innerHTML = `
+                <div style="margin-bottom: 16px !important;">
+                    <h3 style="margin: 0 0 8px 0 !important; color: #2c3e50 !important; font-size: 18px !important;">${{title}}</h3>
+                    <p style="margin: 0 !important; color: #555 !important; font-size: 14px !important; line-height: 1.4 !important;">${{message}}</p>
+                </div>
+                <div style="margin-bottom: 20px !important;">
+                    <input type="text" id="custom-input-field" value="${{defaultValue}}" style="
+                        width: 100% !important;
+                        padding: 12px !important;
+                        border: 2px solid #ddd !important;
+                        border-radius: 6px !important;
+                        font-size: 14px !important;
+                        font-family: inherit !important;
+                        box-sizing: border-box !important;
+                    " placeholder="Enter value...">
+                </div>
+                <div style="display: flex !important; gap: 12px !important; justify-content: flex-end !important;">
+                    <button id="custom-input-cancel" style="
+                        padding: 10px 20px !important;
+                        border: 2px solid #ddd !important;
+                        background: white !important;
+                        color: #666 !important;
+                        border-radius: 6px !important;
+                        cursor: pointer !important;
+                        font-size: 14px !important;
+                        font-weight: 600 !important;
+                    ">Cancel</button>
+                    <button id="custom-input-ok" style="
+                        padding: 10px 20px !important;
+                        border: none !important;
+                        background: linear-gradient(135deg, #3498db, #2980b9) !important;
+                        color: white !important;
+                        border-radius: 6px !important;
+                        cursor: pointer !important;
+                        font-size: 14px !important;
+                        font-weight: 600 !important;
+                    ">OK</button>
+                </div>
+            `;
+            
+            modalOverlay.appendChild(modal);
+            document.body.appendChild(modalOverlay);
+            
+            // Focus and select the input
+            const inputField = modal.querySelector('#custom-input-field');
+            setTimeout(() => {{
+                inputField.focus();
+                inputField.select();
+            }}, 100);
+            
+            // Event handlers
+            function closeModal() {{
+                if (modalOverlay.parentNode) {{
+                    modalOverlay.remove();
                 }}
             }}
+            
+            modal.querySelector('#custom-input-cancel').addEventListener('click', function(e) {{
+                e.stopPropagation();
+                closeModal();
+                callback(null);
+            }});
+            
+            modal.querySelector('#custom-input-ok').addEventListener('click', function(e) {{
+                e.stopPropagation();
+                const value = inputField.value;
+                closeModal();
+                callback(value);
+            }});
+            
+            // Enter key submits
+            inputField.addEventListener('keypress', function(e) {{
+                if (e.key === 'Enter') {{
+                    const value = inputField.value;
+                    closeModal();
+                    callback(value);
+                }}
+            }});
+            
+            // Escape key cancels
+            modalOverlay.addEventListener('keydown', function(e) {{
+                if (e.key === 'Escape') {{
+                    closeModal();
+                    callback(null);
+                }}
+            }});
+            
+            // Prevent clicks on modal from closing
+            modal.addEventListener('click', function(e) {{
+                e.stopPropagation();
+            }});
+            
+            // Click overlay to close
+            modalOverlay.addEventListener('click', function(e) {{
+                closeModal();
+                callback(null);
+            }});
+        }}
+        
+        // Custom Select Modal (for navigation options)
+        function showCustomSelect(title, message, options, callback) {{
+            const modalOverlay = document.createElement('div');
+            modalOverlay.setAttribute('data-content-extractor-ui', 'true');
+            modalOverlay.id = 'custom-select-modal';
+            modalOverlay.style.cssText = `
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: rgba(0, 0, 0, 0.6) !important;
+                z-index: 10010 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                backdrop-filter: blur(3px) !important;
+            `;
+            
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                background: white !important;
+                border-radius: 12px !important;
+                padding: 24px !important;
+                max-width: 500px !important;
+                width: 90% !important;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+                font-family: 'Segoe UI', Arial, sans-serif !important;
+                animation: modalSlideIn 0.3s ease-out !important;
+            `;
+            
+            let optionsHtml = options.map(opt => `
+                <div class="select-option" data-value="${{opt.id}}" style="
+                    padding: 12px 16px !important;
+                    border: 2px solid #e0e0e0 !important;
+                    border-radius: 8px !important;
+                    margin-bottom: 8px !important;
+                    cursor: pointer !important;
+                    transition: all 0.2s !important;
+                    background: white !important;
+                " onmouseover="this.style.background='#f8f9fa'; this.style.borderColor='#3498db';" 
+                   onmouseout="this.style.background='white'; this.style.borderColor='#e0e0e0';">
+                    <div style="font-size: 14px !important; font-weight: 600 !important; color: #2c3e50 !important; margin-bottom: 4px !important;">${{opt.label}}</div>
+                    <div style="font-size: 12px !important; color: #666 !important;">${{opt.desc}}</div>
+                </div>
+            `).join('');
+            
+            modal.innerHTML = `
+                <div style="margin-bottom: 20px !important;">
+                    <h3 style="margin: 0 0 8px 0 !important; color: #2c3e50 !important; font-size: 18px !important;">${{title}}</h3>
+                    <p style="margin: 0 !important; color: #555 !important; font-size: 14px !important; line-height: 1.4 !important;">${{message}}</p>
+                </div>
+                <div id="select-options" style="margin-bottom: 20px !important;">
+                    ${{optionsHtml}}
+                </div>
+                <div style="display: flex !important; justify-content: flex-end !important;">
+                    <button id="select-cancel" style="
+                        padding: 10px 20px !important;
+                        border: 2px solid #ddd !important;
+                        background: white !important;
+                        color: #666 !important;
+                        border-radius: 6px !important;
+                        cursor: pointer !important;
+                        font-size: 14px !important;
+                        font-weight: 600 !important;
+                    ">Cancel</button>
+                </div>
+            `;
+            
+            modalOverlay.appendChild(modal);
+            document.body.appendChild(modalOverlay);
+            
+            // Event handlers
+            function closeModal() {{
+                if (modalOverlay.parentNode) {{
+                    modalOverlay.remove();
+                }}
+            }}
+            
+            // Handle option clicks
+            modal.querySelectorAll('.select-option').forEach(option => {{
+                option.addEventListener('click', function(e) {{
+                    e.stopPropagation();
+                    const value = this.getAttribute('data-value');
+                    closeModal();
+                    callback(value);
+                }});
+            }});
+            
+            modal.querySelector('#select-cancel').addEventListener('click', function(e) {{
+                e.stopPropagation();
+                closeModal();
+            }});
+            
+            // Escape key cancels
+            modalOverlay.addEventListener('keydown', function(e) {{
+                if (e.key === 'Escape') {{
+                    closeModal();
+                }}
+            }});
+            
+            // Prevent clicks on modal from closing
+            modal.addEventListener('click', function(e) {{
+                e.stopPropagation();
+            }});
+            
+            // Click overlay to close
+            modalOverlay.addEventListener('click', function(e) {{
+                closeModal();
+            }});
+        }}
+        
+        // Generic Modal Creator for Alert/Confirm
+        function createModal(title, message, buttons) {{
+            const modalOverlay = document.createElement('div');
+            modalOverlay.setAttribute('data-content-extractor-ui', 'true');
+            modalOverlay.id = 'custom-modal';
+            modalOverlay.style.cssText = `
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: rgba(0, 0, 0, 0.6) !important;
+                z-index: 10010 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                backdrop-filter: blur(3px) !important;
+            `;
+            
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                background: white !important;
+                border-radius: 12px !important;
+                padding: 24px !important;
+                max-width: 500px !important;  
+                width: 90% !important;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+                font-family: 'Segoe UI', Arial, sans-serif !important;
+                animation: modalSlideIn 0.3s ease-out !important;
+            `;
+            
+            const buttonsHtml = buttons.map((btn, idx) => `
+                <button class="modal-btn" data-index="${{idx}}" style="
+                    padding: 10px 20px !important;
+                    border: ${{btn.primary ? 'none' : '2px solid #ddd'}} !important;
+                    background: ${{btn.primary ? 'linear-gradient(135deg, #3498db, #2980b9)' : 'white'}} !important;
+                    color: ${{btn.primary ? 'white' : '#666'}} !important;
+                    border-radius: 6px !important;
+                    cursor: pointer !important;
+                    font-size: 14px !important;
+                    font-weight: 600 !important;
+                    margin-left: 12px !important;
+                ">${{btn.text}}</button>
+            `).join('');
+            
+            modal.innerHTML = `
+                <div style="margin-bottom: 20px !important;">
+                    <h3 style="margin: 0 0 12px 0 !important; color: #2c3e50 !important; font-size: 18px !important;">${{title}}</h3>
+                    <p style="margin: 0 !important; color: #555 !important; font-size: 14px !important; line-height: 1.5 !important; white-space: pre-line !important;">${{message}}</p>
+                </div>
+                <div style="display: flex !important; justify-content: flex-end !important;">
+                    ${{buttonsHtml}}
+                </div>
+            `;
+            
+            modalOverlay.appendChild(modal);
+            document.body.appendChild(modalOverlay);
+            
+            // Event handlers
+            function closeModal() {{
+                if (modalOverlay.parentNode) {{
+                    modalOverlay.remove();
+                }}
+            }}
+            
+            modal.querySelectorAll('.modal-btn').forEach((btn, idx) => {{
+                btn.addEventListener('click', function(e) {{
+                    e.stopPropagation();
+                    closeModal();
+                    if (buttons[idx].callback) {{
+                        buttons[idx].callback();
+                    }}
+                }});
+            }});
+            
+            // Escape key closes modal (acts like cancel/first button)
+            modalOverlay.addEventListener('keydown', function(e) {{
+                if (e.key === 'Escape') {{
+                    closeModal();
+                    if (buttons[0].callback) {{
+                        buttons[0].callback();
+                    }}
+                }}
+            }});
+            
+            // Prevent clicks on modal from closing
+            modal.addEventListener('click', function(e) {{
+                e.stopPropagation();
+            }});
+            
+            // Click overlay to close (acts like cancel/first button)
+            modalOverlay.addEventListener('click', function(e) {{
+                closeModal();
+                if (buttons[0].callback) {{
+                    buttons[0].callback();
+                }}
+            }});
         }}
         
         // Check if element is part of content extractor UI
@@ -966,7 +1450,466 @@ class InteractiveSelector:
         }};
         
         console.log('Enhanced Field-Specific Content Extractor JavaScript loaded');
-        """
+        
+        // Remove floating menu toggle
+        function removeFloatingMenuToggle() {{
+            const toggle = document.getElementById('field-menu-toggle');
+            if (toggle) {{
+                toggle.remove();
+            }}
+        }}
+        
+        // Show temporary notification (restored function)
+        function showTemporaryNotification(message, type = 'info') {{
+            const notification = document.createElement('div');
+            notification.setAttribute('data-content-extractor-ui', 'true');
+            
+            const colors = {{
+                success: {{bg: "#27ae60", border: "#2ecc71"}},
+                error: {{bg: "#e74c3c", border: "#c0392b"}},
+                info: {{bg: "#3498db", border: "#2980b9"}},
+                warning: {{bg: "#f39c12", border: "#e67e22"}}
+            }};
+            
+            const color = colors[type] || colors.info;
+            
+            notification.style.cssText = `
+                position: fixed !important;
+                top: 20px !important;
+                right: 20px !important;
+                background: ${{color.bg}} !important;
+                color: white !important;
+                padding: 12px 20px !important;
+                border-radius: 8px !important;
+                z-index: 10003 !important;
+                font-family: 'Segoe UI', Arial, sans-serif !important;
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+                border: 2px solid ${{color.border}} !important;
+                max-width: 300px !important;
+            `;
+            
+            notification.innerHTML = message;
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {{
+                if (notification.parentNode) {{
+                    notification.remove();
+                }}
+            }}, 3000);
+        }}
+        
+        // Add basic CSS for modal animations
+        if (!document.getElementById('content-extractor-animations')) {{
+            const style = document.createElement('style');
+            style.id = 'content-extractor-animations';
+            style.textContent = `
+                @keyframes modalSlideIn {{
+                    from {{ opacity: 0; transform: scale(0.9); }}
+                    to {{ opacity: 1; transform: scale(1); }}
+                }}
+            `;
+            document.head.appendChild(style);
+        }}
+        
+        // Auto-fill functionality for individual fields
+        function autoFillCurrentField() {{
+            const activeField = window.contentExtractorData.activeField;
+            if (!activeField) return;
+            
+            let autoFilledValue = null;
+            
+            switch(activeField) {{
+                case 'source_url':
+                    autoFilledValue = window.location.href;
+                    break;
+                case 'title':
+                    autoFilledValue = document.title || document.querySelector('h1')?.textContent?.trim();
+                    break;
+                case 'short_description':
+                    autoFilledValue = document.querySelector('meta[name="description"]')?.content?.trim();
+                    break;
+                case 'full_description':
+                    // Try common description selectors
+                    const descSelectors = [
+                        '.description', '.product-description', '.product-details',
+                        '#description', '[data-description]', '.content'
+                    ];
+                    for (const selector of descSelectors) {{
+                        const elem = document.querySelector(selector);
+                        if (elem && elem.textContent?.trim()) {{
+                            autoFilledValue = elem.textContent.trim();
+                            break;
+                        }}
+                    }}
+                    break;
+                case 'gallery_images':
+                    // Find product images
+                    const imgSelectors = [
+                        '.product-image img', '.gallery img', '.product-gallery img',
+                        '[data-image] img', '.image-gallery img'
+                    ];
+                    for (const selector of imgSelectors) {{
+                        const imgs = document.querySelectorAll(selector);
+                        if (imgs.length > 0) {{
+                            autoFilledValue = `Found ${{imgs.length}} images`;
+                            break;
+                        }}
+                    }}
+                    break;
+            }}
+            
+            if (autoFilledValue) {{
+                showTemporaryNotification(`🎯 Auto-detected for ${{activeField}}: ${{autoFilledValue.substring(0, 50)}}...`, 'info');
+                
+                // Show option to use auto-filled value
+                showCustomConfirm(
+                    `Auto-filled value detected for "${{activeField}}\":\\n\\n${{autoFilledValue.substring(0, 200)}}${{autoFilledValue.length > 200 ? '...' : ''}}\\n\\nUse this auto-detected value?`,
+                    function(confirmed) {{
+                        if (confirmed) {{
+                            // Create a mock selection for the auto-filled value
+                            const mockSelection = {{
+                                field_name: activeField,
+                                label: `${{activeField}}_autofill`,
+                                xpath: '//AUTO_FILLED',
+                                cssSelector: 'AUTO_FILLED',
+                                text: autoFilledValue,
+                                tagName: 'auto',
+                                attributes: {{}},
+                                auto_filled: true
+                            }};
+                            
+                            // Add to selections
+                            if (!window.contentExtractorData.fieldSelections[activeField]) {{
+                                window.contentExtractorData.fieldSelections[activeField] = [];
+                            }}
+                            window.contentExtractorData.fieldSelections[activeField].push(mockSelection);
+                            window.contentExtractorData.selectedElements.push(mockSelection);
+                            
+                            showTemporaryNotification(`✅ Auto-filled value saved for ${{activeField}}!`, 'success');
+                            updateSelectionCounter();
+                        }}
+                    }}
+                );
+            }} else {{
+                showTemporaryNotification(`❌ No auto-fill available for ${{activeField}}`, 'warning');
+            }}
+        }}
+        
+        // Sub-menu functionality for complex fields
+        function showFieldSubMenu(fieldName) {{
+            const fieldHierarchies = {{
+                'models': [
+                    {{id: 'general', label: '📦 All Models', desc: 'Select any model information (recommended)'}},
+                    {{id: 'model_name', label: '🏷️ Model Names', desc: 'Specific model names or identifiers'}},
+                    {{id: 'model_number', label: '🔢 Model Numbers', desc: 'Part numbers or SKUs'}},
+                    {{id: 'specifications', label: '📋 Model Specs', desc: 'Model-specific technical details'}}
+                ],
+                'categorized_tags': [
+                    {{id: 'general', label: '🏷️ All Tags', desc: 'Select any category or tag information (recommended)'}},
+                    {{id: 'primary_category', label: '📁 Primary Category', desc: 'Main product category'}},
+                    {{id: 'subcategory', label: '📂 Subcategory', desc: 'Product subcategory'}},
+                    {{id: 'tags', label: '🏷️ Individual Tags', desc: 'Specific product tags'}}
+                ],
+                'spec_groups': [
+                    {{id: 'general', label: '📊 All Specifications', desc: 'Select any technical specifications (recommended)'}},
+                    {{id: 'dimensions', label: '📏 Dimensions', desc: 'Physical measurements'}},
+                    {{id: 'weight', label: '⚖️ Weight', desc: 'Product weight information'}},
+                    {{id: 'power', label: '⚡ Power Requirements', desc: 'Electrical specifications'}},
+                    {{id: 'materials', label: '🧱 Materials', desc: 'Construction materials'}}
+                ],
+                'features': [
+                    {{id: 'general', label: '✨ All Features', desc: 'Select any feature information (recommended)'}},
+                    {{id: 'key_features', label: '⭐ Key Features', desc: 'Main product features'}},
+                    {{id: 'safety_features', label: '🛡️ Safety Features', desc: 'Safety-related features'}},
+                    {{id: 'optional_features', label: '🔧 Optional Features', desc: 'Additional available features'}}
+                ],
+                'accessories': [
+                    {{id: 'general', label: '🔧 All Accessories', desc: 'Select any accessory information (recommended)'}},
+                    {{id: 'included_accessories', label: '📦 Included', desc: 'Accessories included with purchase'}},
+                    {{id: 'optional_accessories', label: '🛒 Optional', desc: 'Additional available accessories'}},
+                    {{id: 'replacement_parts', label: '🔩 Replacement Parts', desc: 'Available replacement components'}}
+                ]
+            }};
+            
+            const subFields = fieldHierarchies[fieldName];
+            if (!subFields) {{
+                // No sub-menu, use regular field selection
+                selectField(fieldName);
+                return;
+            }}
+            
+            // Show sub-menu selection with enhanced styling
+            const fieldLabel = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName)?.label || fieldName;
+            
+            showCustomSelect(
+                `📋 ${{fieldLabel}} Sub-Categories`,
+                `Choose how you want to approach selecting "${{fieldLabel}}" content:\\n\\n💡 Tip: "General" options work for most cases and are easier to use.`,
+                subFields,
+                function(subFieldId) {{
+                    if (subFieldId === 'general') {{
+                        // User wants to select the parent field generally
+                        handleGeneralFieldSelection(fieldName);
+                    }} else {{
+                        // User wants specific sub-field
+                        handleSubFieldSelection(fieldName, subFieldId, subFields.find(f => f.id === subFieldId));
+                    }}
+                }}
+            );
+        }}
+        
+        function handleGeneralFieldSelection(fieldName) {{
+            // Set active field to the parent field name
+            window.contentExtractorData.activeField = fieldName;
+            
+            // Initialize field selections if not exists
+            if (!window.contentExtractorData.fieldSelections[fieldName]) {{
+                window.contentExtractorData.fieldSelections[fieldName] = [];
+            }}
+            
+            // Create floating menu toggle
+            createFloatingMenuToggle();
+            
+            // Start selection mode for the parent field
+            window.startFieldSelection(fieldName);
+            
+            // Show notification about general selection
+            showTemporaryNotification(`🎯 Now selecting: ${{fieldName}} (general mode)`, 'info');
+        }}
+        
+        function handleSubFieldSelection(parentField, subFieldId, subFieldInfo) {{
+            // Create a compound field name
+            const compoundFieldName = `${{parentField}}.${{subFieldId}}`;
+            
+            // Set active field to the compound name
+            window.contentExtractorData.activeField = compoundFieldName;
+            
+            // Initialize field selections if not exists
+            if (!window.contentExtractorData.fieldSelections[compoundFieldName]) {{
+                window.contentExtractorData.fieldSelections[compoundFieldName] = [];
+            }}
+            
+            // Create floating menu toggle for sub-field
+            createFloatingMenuToggle();
+            
+            // Start selection mode for sub-field
+            window.startFieldSelection(compoundFieldName);
+            
+            // Show notification about sub-field selection
+            showTemporaryNotification(`🎯 Now selecting: ${{subFieldInfo.label}} (${{parentField}})`, 'info');
+        }}
+        
+        // Enhanced control panel with auto-fill button
+        function createEnhancedControlPanel() {{
+            // This function would modify the control panel to add auto-fill button
+            // Called when creating the floating toggle
+            const controlPanel = document.getElementById('field-menu-toggle');
+            if (!controlPanel) return;
+            
+            // Add auto-fill button after the main grid
+            const autoFillSection = document.createElement('div');
+            autoFillSection.style.cssText = `
+                margin: 8px 0 !important;
+                padding: 8px 0 !important;
+                border-top: 1px solid rgba(255,255,255,0.2) !important;
+                border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+            `;
+            
+            autoFillSection.innerHTML = `
+                <button id="control-autofill-btn" style="
+                    width: 100% !important;
+                    background: linear-gradient(135deg, #9b59b6, #8e44ad) !important;
+                    color: white !important;
+                    border: none !important;
+                    padding: 10px 12px !important;
+                    border-radius: 6px !important;
+                    cursor: pointer !important;
+                    font-size: 12px !important;
+                    font-weight: 600 !important;
+                    transition: all 0.2s !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    gap: 6px !important;
+                " onmouseover="this.style.backgroundColor='#8e44ad'" 
+                   onmouseout="this.style.backgroundColor='#9b59b6'">
+                    <span>🎯</span>
+                    <span>Auto-Fill Current Field</span>
+                </button>
+            `;
+            
+            // Insert before the tips section
+            const tipsSection = controlPanel.querySelector('[style*="Quick Tips"]').parentElement;
+            controlPanel.insertBefore(autoFillSection, tipsSection);
+            
+            // Add event handler
+            autoFillSection.querySelector('#control-autofill-btn').addEventListener('click', function(e) {{
+                e.stopPropagation();
+                autoFillCurrentField();
+            }});
+        }}
+        
+        // Start field-specific selection mode
+        window.startFieldSelection = function(fieldName) {{
+            window.contentExtractorData.isSelectionMode = true;
+            window.contentExtractorData.activeField = fieldName;
+            
+            // Check if this is a sub-field (contains dot)
+            let fieldInfo;
+            if (fieldName.includes('.')) {{
+                const [parentField, subField] = fieldName.split('.');
+                fieldInfo = {{
+                    name: fieldName,
+                    label: `${{parentField}} > ${{subField}}`,
+                    type: 'single',
+                    description: `Sub-field of ${{parentField}}`
+                }};
+            }} else {{
+                fieldInfo = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
+            }}
+            
+            document.addEventListener('mouseover', handleMouseOver);
+            document.addEventListener('mouseout', handleMouseOut);
+            document.addEventListener('click', handleClick);
+            
+            // Show field-specific instructions
+            showFieldInstructions(fieldInfo);
+            
+            // Add auto-fill to control panel if it exists
+            setTimeout(createEnhancedControlPanel, 100);
+        }};
+        
+        // Stop selection mode
+        window.stopSelection = function() {{
+            window.contentExtractorData.isSelectionMode = false;
+            
+            document.removeEventListener('mouseover', handleMouseOver);
+            document.removeEventListener('mouseout', handleMouseOut);
+            document.removeEventListener('click', handleClick);
+            
+            hideInstructions();
+            removeFloatingMenuToggle(); // Clean up the toggle button
+            window.showFieldMenu(); // Return to field menu
+        }};
+        
+        function handleMouseOver(event) {{
+            if (window.contentExtractorData.isSelectionMode) {{
+                // Ignore events on content extractor UI elements
+                if (isContentExtractorElement(event.target)) {{
+                    return;
+                }}
+                highlightElement(event.target);
+            }}
+        }}
+        
+        function handleMouseOut(event) {{
+            if (window.contentExtractorData.isSelectionMode) {{
+                // Ignore events on content extractor UI elements
+                if (isContentExtractorElement(event.target)) {{
+                    return;
+                }}
+                removeHighlight(event.target);
+            }}
+        }}
+        
+        function handleClick(event) {{
+            // NEW: Check for modifier keys
+            if (event.ctrlKey || event.metaKey) {{
+                // Allow normal page interaction without selecting
+                console.log('Ctrl/Cmd+Click detected: Allowing normal navigation without selection');
+                return; // Don't prevent default, don't select
+            }}
+            
+            if (event.altKey) {{
+                // Preview mode - show element info without selecting
+                event.preventDefault();
+                event.stopPropagation();
+                
+                if (!isContentExtractorElement(event.target)) {{
+                    let element = event.target;
+                    let xpath = getXPath(element);
+                    let text = element.textContent.trim().substring(0, 100);
+                    
+                    // Show preview info
+                    console.log('Element Preview:', {{
+                        tag: element.tagName.toLowerCase(),
+                        text: text,
+                        xpath: xpath,
+                        classes: element.className
+                    }});
+                    
+                    // Visual feedback for preview
+                    element.style.outline = '2px dashed #ffa500';
+                    setTimeout(() => {{
+                        if (!window.contentExtractorData.selectedDOMElements.has(element)) {{
+                            element.style.outline = '';
+                        }}
+                    }}, 1000);
+                }}
+                return;
+            }}
+            
+            if (window.contentExtractorData.isSelectionMode) {{
+                // Ignore clicks on content extractor UI elements
+                if (isContentExtractorElement(event.target)) {{
+                    return;
+                }}
+                
+                event.preventDefault();
+                event.stopPropagation();
+                
+                let element = event.target;
+                const fieldName = window.contentExtractorData.activeField;
+                
+                // Check if already selected
+                if (window.contentExtractorData.selectedDOMElements.has(element)) {{
+                    console.log('Element already selected, skipping...');
+                    return;
+                }}
+                
+                let xpath = getXPath(element);
+                let cssSelector = getCSSSelector(element);
+                let text = element.textContent.trim().substring(0, 200);
+                
+                let selection = {{
+                    field_name: fieldName,
+                    label: `${{fieldName}}_selection`,
+                    xpath: xpath,
+                    cssSelector: cssSelector,
+                    text: text,
+                    tagName: element.tagName.toLowerCase(),
+                    attributes: {{}}
+                }};
+                
+                // Capture key attributes
+                for (let attr of element.attributes) {{
+                    selection.attributes[attr.name] = attr.value;
+                }}
+                
+                // Add to global and field-specific selections
+                window.contentExtractorData.selectedElements.push(selection);
+                window.contentExtractorData.fieldSelections[fieldName].push(selection);
+                
+                // Mark as selected with field-specific styling
+                markAsSelected(element, fieldName);
+                
+                console.log('Element selected for field:', fieldName, selection);
+                
+                // Update counter in instruction box
+                updateSelectionCounter();
+                
+                // Handle multi-value field logic (only for parent fields, not sub-fields)
+                if (!fieldName.includes('.')) {{
+                    const fieldInfo = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
+                    if (fieldInfo && fieldInfo.type === 'multi-value') {{
+                        handleMultiValueSelection(fieldName, selection);
+                    }}
+                }}
+            }}
+        }}
+    """
         
         self.driver.execute_script(selection_js)
     
@@ -1510,4 +2453,278 @@ class InteractiveSelector:
             
         except Exception as e:
             logger.error(f"Failed to mark field as manual: {e}")
-            return False 
+            return False
+
+    def handle_control_panel_actions(self) -> Dict:
+        """
+        Monitor and handle control panel actions from JavaScript.
+        
+        Returns:
+            Dict: Results of any pending actions
+        """
+        if not self.driver:
+            return {}
+            
+        results = {}
+        
+        try:
+            # Check for save action
+            save_data = self.driver.execute_script("return window.saveFieldSelections;")
+            if save_data:
+                results['save'] = self._handle_save_action(save_data)
+                # Clear the JavaScript variable
+                self.driver.execute_script("window.saveFieldSelections = null;")
+            
+            # Check for test action
+            test_data = self.driver.execute_script("return window.testFieldSelections;")
+            if test_data:
+                results['test'] = self._handle_test_action(test_data)
+                # Clear the JavaScript variable
+                self.driver.execute_script("window.testFieldSelections = null;")
+            
+            # Check for navigation action
+            navigate_url = self.driver.execute_script("return window.navigateToUrl;")
+            if navigate_url:
+                results['navigate'] = self._handle_navigate_action(navigate_url)
+                # Clear the JavaScript variable
+                self.driver.execute_script("window.navigateToUrl = null;")
+            
+            # Check for similar pages search
+            similar_pages_data = self.driver.execute_script("return window.findSimilarPages;")
+            if similar_pages_data:
+                results['similar_pages'] = self._handle_similar_pages_action(similar_pages_data)
+                # Clear the JavaScript variable
+                self.driver.execute_script("window.findSimilarPages = null;")
+            
+            # Check for test URLs loading
+            test_urls_data = self.driver.execute_script("return window.loadTestUrls;")
+            if test_urls_data:
+                results['test_urls'] = self._handle_test_urls_action(test_urls_data)
+                # Clear the JavaScript variable
+                self.driver.execute_script("window.loadTestUrls = null;")
+            
+        except Exception as e:
+            logger.error(f"Failed to handle control panel actions: {e}")
+            results['error'] = str(e)
+        
+        return results
+
+    def _handle_save_action(self, save_data: Dict) -> Dict:
+        """Handle save action from control panel"""
+        try:
+            field_name = save_data.get('field')
+            selections = save_data.get('selections', [])
+            
+            if not field_name or not selections:
+                return {'success': False, 'error': 'Missing field name or selections'}
+            
+            # Save the most robust selector from the selections
+            best_selection = self._choose_best_selector(selections)
+            if not best_selection:
+                return {'success': False, 'error': 'No valid selectors found'}
+            
+            success = self.save_field_selector(
+                field_name=field_name,
+                xpath=best_selection.get('xpath', ''),
+                css_selector=best_selection.get('cssSelector', ''),
+                requires_manual_input=False,
+                manual_input_note=''
+            )
+            
+            return {
+                'success': success,
+                'field': field_name,
+                'selection_count': len(selections),
+                'saved_selector': best_selection.get('xpath', '') if success else None
+            }
+            
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+
+    def _handle_test_action(self, test_data: Dict) -> Dict:
+        """Handle test action from control panel"""
+        try:
+            fields = test_data.get('fields', [])
+            domain = test_data.get('domain', '')
+            
+            if not fields:
+                return {'success': False, 'error': 'No fields specified for testing'}
+            
+            # Get saved selectors for these fields
+            saved_selectors = self.get_saved_selectors(domain)
+            field_selectors = {s.field_name: s for s in saved_selectors if s.field_name in fields}
+            
+            if not field_selectors:
+                return {'success': False, 'error': 'No saved selectors found for specified fields'}
+            
+            # Test on current page
+            test_results = {}
+            for field_name, selector in field_selectors.items():
+                test_results[field_name] = self.test_selector_on_page(selector, self.current_url)
+            
+            return {
+                'success': True,
+                'tested_fields': list(field_selectors.keys()),
+                'results': test_results,
+                'test_url': self.current_url
+            }
+            
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+
+    def _handle_navigate_action(self, navigate_url: str) -> Dict:
+        """Handle navigation action from control panel"""
+        try:
+            if not navigate_url or not navigate_url.strip():
+                return {'success': False, 'error': 'No URL provided'}
+            
+            url = navigate_url.strip()
+            if not (url.startswith('http://') or url.startswith('https://')):
+                return {'success': False, 'error': 'Invalid URL format'}
+            
+            success = self.load_page(url)
+            return {
+                'success': success,
+                'new_url': url,
+                'page_title': self.driver.title if success and self.driver else None
+            }
+            
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+
+    def _handle_similar_pages_action(self, similar_data: Dict) -> Dict:
+        """Handle similar pages search from control panel"""
+        try:
+            domain = similar_data.get('domain', '')
+            current_path = similar_data.get('currentPath', '')
+            
+            # This would typically involve web scraping or sitemap analysis
+            # For now, provide a basic response with common patterns
+            suggested_urls = self._generate_similar_page_suggestions(domain, current_path)
+            
+            return {
+                'success': True,
+                'domain': domain,
+                'current_path': current_path,
+                'suggested_urls': suggested_urls
+            }
+            
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+
+    def _handle_test_urls_action(self, test_urls_data: Dict) -> Dict:
+        """Handle test URLs loading from control panel"""
+        try:
+            domain = test_urls_data.get('domain', '')
+            
+            # Load test URLs from file system or database
+            test_urls = self._load_test_urls_for_domain(domain)
+            
+            return {
+                'success': True,
+                'domain': domain,
+                'test_urls': test_urls
+            }
+            
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+
+    def _choose_best_selector(self, selections: List[Dict]) -> Dict:
+        """Choose the most robust selector from multiple selections"""
+        if not selections:
+            return {}
+        
+        # For now, choose the first selection with valid XPath
+        for selection in selections:
+            if selection.get('xpath') and selection.get('xpath').strip():
+                return selection
+        
+        return selections[0] if selections else {}
+
+    def _generate_similar_page_suggestions(self, domain: str, current_path: str) -> List[str]:
+        """Generate suggestions for similar pages on the same domain"""
+        base_url = f"https://{domain}"
+        suggestions = []
+        
+        # Common e-commerce patterns
+        common_patterns = [
+            "/products",
+            "/category",
+            "/shop",
+            "/catalog",
+            "/equipment",
+            "/instruments",
+            "/search"
+        ]
+        
+        for pattern in common_patterns:
+            if pattern not in current_path:
+                suggestions.append(f"{base_url}{pattern}")
+        
+        # Add numbered variations if current path has numbers
+        import re
+        if re.search(r'\d+', current_path):
+            base_path = re.sub(r'\d+', '', current_path)
+            for i in range(1, 6):
+                suggestions.append(f"{base_url}{base_path}{i}")
+        
+        return suggestions[:10]  # Limit to 10 suggestions
+
+    def _load_test_urls_for_domain(self, domain: str) -> List[str]:
+        """Load test URLs for a specific domain"""
+        test_urls = []
+        
+        try:
+            # Check for domain-specific test URLs in project management
+            import os
+            test_urls_dir = ".project_management/test_urls/"
+            
+            if os.path.exists(test_urls_dir):
+                for filename in os.listdir(test_urls_dir):
+                    if domain.replace('.', '_') in filename and filename.endswith('.txt'):
+                        filepath = os.path.join(test_urls_dir, filename)
+                        with open(filepath, 'r') as f:
+                            for line in f:
+                                line = line.strip()
+                                if line and not line.startswith('#') and domain in line:
+                                    test_urls.append(line)
+        
+        except Exception as e:
+            logger.error(f"Failed to load test URLs: {e}")
+        
+        return test_urls[:20]  # Limit to 20 URLs
+
+    def update_control_panel_progress(self) -> bool:
+        """Update the control panel progress indicator"""
+        if not self.driver:
+            return False
+        
+        try:
+            # Get current completion status
+            completion_status = self.get_field_completion_status()
+            completed_count = sum(1 for status in completion_status.values() if status.get('is_complete', False))
+            total_fields = len(self.FIELD_OPTIONS)
+            progress_percentage = round((completed_count / total_fields) * 100)
+            
+            # Update the control panel if it exists
+            self.driver.execute_script(f"""
+                const controlPanel = document.getElementById('field-menu-toggle');
+                if (controlPanel) {{
+                    const progressText = controlPanel.querySelector('[style*="Overall Progress"]');
+                    const progressBar = controlPanel.querySelector('[style*="background: linear-gradient(90deg, #27ae60, #2ecc71)"]');
+                    
+                    if (progressText && progressText.nextElementSibling) {{
+                        progressText.nextElementSibling.textContent = '{completed_count}/{total_fields} ({progress_percentage}%)';
+                    }}
+                    
+                    if (progressBar) {{
+                        progressBar.style.width = '{progress_percentage}%';
+                    }}
+                }}
+            """)
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to update control panel progress: {e}")
+            return False

@@ -117,21 +117,6 @@ def list_equipment(request, limit: int = 50, offset: int = 0):
     return equipment_list
 
 
-@api.get("/equipment/{equipment_id}", response=LabEquipmentPageDetailSchema, tags=["Equipment"])
-def get_equipment_detail(request, equipment_id: int):
-    """Get detailed information about a specific piece of equipment."""
-    try:
-        # Use id for Wagtail Page model compatibility (page_ptr.id)
-        equipment = LabEquipmentPage.objects.get(id=equipment_id)
-        return equipment
-    except LabEquipmentPage.DoesNotExist:
-        return api.create_response(
-            request,
-            {"error": "Equipment not found", "message": f"Equipment with ID {equipment_id} does not exist"},
-            status=404
-        )
-
-
 @api.get("/equipment/search", response=List[LabEquipmentPageListSchema], tags=["Equipment"])
 def search_equipment(request, q: Optional[str] = None, tags: Optional[str] = None, 
                     specs: Optional[str] = None, min_completeness: Optional[float] = None,
@@ -190,6 +175,21 @@ def search_equipment(request, q: Optional[str] = None, tags: Optional[str] = Non
     equipment_list = list(queryset[offset:offset + limit])
     
     return equipment_list
+
+
+@api.get("/equipment/{equipment_id}", response=LabEquipmentPageDetailSchema, tags=["Equipment"])
+def get_equipment_detail(request, equipment_id: int):
+    """Get detailed information about a specific piece of equipment."""
+    try:
+        # Use id for Wagtail Page model compatibility (page_ptr.id)
+        equipment = LabEquipmentPage.objects.get(id=equipment_id)
+        return equipment
+    except LabEquipmentPage.DoesNotExist:
+        return api.create_response(
+            request,
+            {"error": "Equipment not found", "message": f"Equipment with ID {equipment_id} does not exist"},
+            status=404
+        )
 
 
 @api.get("/equipment/{equipment_id}/related", response=RelatedEquipmentResponseSchema, tags=["Equipment"])

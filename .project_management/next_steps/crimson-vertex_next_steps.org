@@ -1,0 +1,146 @@
+#+TITLE: Next Steps - Crimson Vertex
+#+AUTHOR: Crimson Vertex
+#+DATE: 2025-01-08
+#+FILETAGS: :next-steps:crimson-vertex:api:testing:nested-selection:
+
+* Immediate Priorities
+
+** Priority 1: Fix Failing Search Test (Technical Debt)
+- **Status**: 1/16 API format validation tests failing
+- **Issue**: `django.db.utils.OperationalError: no such column: base_site_labequipmentpage.id`
+- **Impact**: Prevents 100% test coverage for API documentation
+- **Effort**: 30-60 minutes of focused debugging
+
+** Priority 2: Return to Nested Selection Architecture
+- **Context**: User's original request before API documentation interruption
+- **Previous Work**: Stellar Horizon completed Phase 1 UI fixes successfully
+- **Next Phase**: Implement modular selection interface with recursive capability
+- **Foundation**: Ready to build on Stellar Horizon's solid foundation
+
+* Approach for Search Test Fix
+
+** Recommended Solution Sequence
+
+### Step 1: Immediate Database Fix (5-10 minutes)
+```python
+# In api.py search_equipment function, replace line ~160:
+# OLD: queryset = LabEquipmentPage.objects.all()
+# NEW: queryset = LabEquipmentPage.objects.select_related('page_ptr').all()
+
+# This ensures proper field references for Wagtail Page inheritance
+```
+
+### Step 2: Query Optimization (10-15 minutes)
+```python
+# For tag filtering, use proper field relationships:
+if tags:
+    tag_list = [tag.strip() for tag in tags.split(',')]
+    # Use many-to-many relationship properly
+    queryset = queryset.filter(
+        categorizedpagetag__tag__name__in=tag_list
+    ).distinct()
+```
+
+### Step 3: Test Environment Enhancement (10-20 minutes)
+```python
+# In test_api_format_validation.py, add to setUp():
+from django.core.management import call_command
+from django.db import connection
+
+# Ensure proper migration state
+call_command('migrate', verbosity=0, interactive=False)
+
+# Verify table structure before tests
+cursor = connection.cursor()
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+tables = cursor.fetchall()
+```
+
+### Step 4: Verification (5 minutes)
+```bash
+# Run the specific failing test to verify fix
+python manage.py test tests.integration.test_api_format_validation.EquipmentEndpointFormatTest.test_equipment_search_format -v 2
+
+# Then run full suite to ensure no regressions
+python manage.py test tests.integration.test_api_format_validation -v 2
+```
+
+** Expected Outcome
+- Test suite: 16/16 passing ✅
+- API documentation: 100% verified
+- Search endpoint: Fully functional with proper query optimization
+
+* Return to Nested Selection Work
+
+** Review Stellar Horizon's Foundation
+The next model MUST review these key files to understand the context:
+
+### Essential Reading
+1. **Stellar Horizon's Cleanup**: `.project_management/cleanup_reports/stellar-horizon_cleanup.org`
+   - Phase 1 UI fixes completed successfully
+   - Interactive selection components established
+   - Foundation ready for Phase 2 enhancement
+
+2. **Stellar Horizon's Next Steps**: `.project_management/next_steps/stellar-horizon_next_steps.org`
+   - Nested selection architecture roadmap
+   - Modular selection interface design
+   - Visual depth indicators for hierarchical data
+
+3. **Stellar Horizon's Conversation Log**: `.project_management/conversation_logs/stellar-horizon/`
+   - Technical decisions and rationale
+   - User requirements and feedback
+   - Implementation patterns established
+
+### Key Implementation Areas
+- **Recursive Selection**: Multi-level equipment hierarchies
+- **Visual Depth Indicators**: Border colors for nested contexts
+- **Reusable Components**: Modular selection interface design
+- **State Management**: Nested selection state tracking
+
+** Architecture Continuation Strategy
+1. **Build on Foundation**: Don't redesign - enhance existing selection components
+2. **Modular Approach**: Create reusable nested selection widgets
+3. **Visual Hierarchy**: Implement depth indicators as planned
+4. **User Experience**: Maintain intuitive selection patterns
+
+* Decisions Requiring User Input
+
+** Technical Choices
+- **Search Fix Priority**: Should test fix be completed before nested selection work?
+- **Implementation Scope**: How deep should nested selection go (levels)?
+- **Visual Design**: Specific color scheme for depth indicators?
+
+** Approach Validation
+- **Architecture Review**: Should nested selection design be reviewed before implementation?
+- **Testing Strategy**: Integration tests needed for nested selection?
+- **Performance Considerations**: Lazy loading for deep hierarchies?
+
+* Handoff Context
+
+** Current State
+- **API Documentation**: Complete and validated (94% test coverage)
+- **Route Issues**: Fixed Django Ninja route ordering conflict  
+- **Test Infrastructure**: Solid foundation for continued development
+- **Technical Debt**: One failing test with clear solution path
+
+** Incomplete Work
+- **Search Test**: Needs Wagtail Page inheritance fix
+- **Nested Selection**: Phase 2 implementation pending
+- **Integration**: API + UI integration for nested data
+
+** Resources Available
+- **API Schema**: Complete documentation in `triad_api_data_formats.org`
+- **Test Framework**: Comprehensive validation suite
+- **UI Foundation**: Stellar Horizon's Phase 1 selection components
+- **Technical Analysis**: Detailed solution approaches for remaining issues
+
+** Critical Success Factors
+1. **Review Predecessor Work**: Essential for continuity
+2. **Fix Technical Debt**: Complete test coverage builds confidence
+3. **Maintain Architecture**: Build on existing foundation, don't restart
+4. **User-Centric Focus**: Keep nested selection user experience smooth
+
+---
+
+**Prepared by: Crimson Vertex**  
+**Ready for seamless handoff to continue nested selection architecture implementation** 🚀 
