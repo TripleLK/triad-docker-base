@@ -1,0 +1,150 @@
+#+TITLE: Azure Falcon Next Steps
+#+AUTHOR: Azure Falcon
+#+DATE: 2025-01-08
+#+FILETAGS: :next-steps:azure-falcon:multi-selector:phase1:
+
+* Immediate Priorities (Next Model Tasks)
+
+** Priority 1: Floating UI Control Panel Implementation (4 hours)
+*** Task Description
+Implement the floating UI control panel as specified in Stellar Rhino's detailed Phase 1 roadmap. This is a critical component for production-ready multi-selector functionality.
+
+*** Requirements
+- Save button to persist field selections to database
+- Test button to validate selectors on multiple pages
+- Navigate button for easy page traversal
+- Progress indicator showing field completion status
+- Non-interfering positioning that doesn't block page content
+
+*** Key Files to Modify
+- `apps/content_extractor/selectors/interactive_selector.py` (main implementation)
+- Enhanced floating menu system beyond current toggle button
+
+** Priority 2: Multi-Instance Selection Logic (6 hours)
+*** Task Description
+Implement advanced multi-instance selection with instance grouping for handling multiple product listings on the same page.
+
+*** Requirements
+- Instance detection and grouping logic
+- Multi-instance selection state management
+- UI indicators for instance boundaries
+- Pattern generalization across instances
+
+*** Technical Considerations
+- Requires careful DOM analysis for instance boundaries
+- State management complexity for multiple selections per field per instance
+- UI design to prevent confusion during multi-instance selection
+
+** Priority 3: Text Input Modal System
+*** Task Description
+Create modal system for fields requiring manual text input instead of element selection.
+
+*** Requirements
+- Modal popup for text input fields
+- Integration with field selection workflow
+- Validation and formatting capabilities
+- Save/cancel functionality
+
+* Approach Strategy for Next Model
+
+** Understanding Current State
+The enhanced multi-selector system foundation is solid and fully functional:
+- ✅ JavaScript syntax errors resolved (critical blocker removed)
+- ✅ Field-specific selection with 11 LabEquipmentPage fields
+- ✅ Ctrl+click navigation without selection
+- ✅ Alt+click preview mode with visual feedback
+- ✅ Site-specific selector storage and cross-page testing
+
+** Key Files to Review First
+1. `apps/content_extractor/selectors/interactive_selector.py` - Main implementation (1513 lines)
+   - Current JavaScript implementation with field selection menu
+   - Floating toggle button system (ready for enhancement to full control panel)
+   - Field-specific color coding and selection management
+
+2. `apps/content_extractor/models.py` - Database models
+   - SiteFieldSelector for storing field-specific selectors
+   - SelectorTestResult for cross-page validation results
+   - FieldSelectionSession for progress tracking
+
+3. Stellar Rhino's next steps documentation - Detailed Phase 1 roadmap
+   - Original 4-hour floating UI control panel specification
+   - 6-hour multi-instance selection logic requirements
+   - Overall Phase 1 completion strategy
+
+** Implementation Approach
+1. **Start with floating control panel**: Build upon existing toggle button system
+2. **Maintain existing functionality**: All current features must remain working
+3. **Follow established patterns**: Use existing color coding, UI protection, and event handling
+4. **Test incrementally**: Validate each component before moving to next priority
+
+* Critical Decisions Needing Attention
+
+** UI Design Decisions
+- Control panel positioning: Fixed vs draggable vs auto-positioning
+- Button layout and styling consistency with existing field menu design
+- Progress indicators: Simple counters vs visual progress bars
+- Integration with existing floating toggle button
+
+** Technical Architecture Decisions
+- Multi-instance detection algorithm: DOM analysis vs user-defined boundaries
+- State management for complex selection scenarios
+- Database schema extensions for multi-instance selectors
+- Performance optimization for large page scanning
+
+** User Experience Decisions
+- Modal system interaction patterns
+- Keyboard shortcuts for power users
+- Visual feedback during multi-step operations
+- Error handling and recovery mechanisms
+
+* Handoff Context and Resources
+
+** Current State Summary
+Azure Falcon resolved the critical JavaScript syntax error blocking functionality. The enhanced multi-selector system is now ready for Phase 1 implementation continuation with all foundation components working properly.
+
+** Work Completed
+- JavaScript f-string template literal syntax errors completely resolved
+- Python import functionality restored (file imports without SyntaxError)
+- All Digital Wolf enhancements preserved and functional
+- Documentation and tracking updated
+
+** Incomplete Work
+- Floating UI control panel implementation (Stellar Rhino's 4-hour priority)
+- Multi-instance selection logic (6-hour advanced feature)
+- Text input modal system (user experience enhancement)
+
+** Available Resources
+- Comprehensive conversation logs documenting project history
+- Stellar Rhino's detailed Phase 1 implementation roadmap
+- Working foundation with field-specific selection and site storage
+- Database models ready for enhanced selector storage
+
+** Testing Strategy
+Use the field selector management command for comprehensive testing:
+```bash
+python manage.py field_selector [URL]
+```
+
+This command provides complete field selection workflow testing including:
+- Field menu display and selection
+- Element selection and highlighting
+- Selector generation and storage
+- Cross-page validation testing
+
+* Success Criteria for Next Model
+
+** Phase 1 Completion Markers
+- [ ] Floating UI control panel fully implemented with save/test/navigate functions
+- [ ] Multi-instance selection logic working with instance grouping
+- [ ] Text input modal system integrated with field selection workflow
+- [ ] All existing functionality preserved and enhanced
+- [ ] Production-ready UX addressing original gap analysis issues
+
+** Quality Assurance
+- No JavaScript errors or syntax issues
+- Cross-browser compatibility maintained
+- Site-specific selector storage working correctly
+- Field completion tracking accurate
+- User interaction patterns intuitive and efficient
+
+This handoff provides everything needed for seamless Phase 1 continuation and completion. 

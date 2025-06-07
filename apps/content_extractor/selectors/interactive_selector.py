@@ -4,10 +4,13 @@ Interactive Selector for Content Extraction
 Uses Selenium to display web pages and capture user selections
 for generating robust content selectors with field-specific assignment.
 Enhanced with floating field selection menu for LabEquipmentPage model.
+Now includes site-specific selector storage and cross-page testing.
 
 Created by: Phoenix Velocity
 Date: 2025-01-08
 Enhanced by: Quantum Catalyst  
+Date: 2025-01-08
+Enhanced by: Crimson Phoenix
 Date: 2025-01-08
 Project: Triad Docker Base
 """
@@ -15,6 +18,7 @@ Project: Triad Docker Base
 import time
 import json
 from typing import Dict, List, Optional, Tuple
+from urllib.parse import urlparse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -25,22 +29,23 @@ from selenium.common.exceptions import TimeoutException, WebDriverException
 from webdriver_manager.chrome import ChromeDriverManager
 import logging
 
+# Django imports for model integration
+from django.utils import timezone
+from apps.content_extractor.models import SiteFieldSelector, SelectorTestResult, FieldSelectionSession
+
 logger = logging.getLogger(__name__)
 
 
 class InteractiveSelector:
-    """Manages Selenium-based interactive element selection with field-specific assignment"""
+    """Manages Selenium-based interactive element selection with field-specific assignment and site-specific storage"""
     
     # LabEquipmentPage fields available for selection
     FIELD_OPTIONS = [
         {'name': 'title', 'label': 'Title', 'type': 'single', 'description': 'Equipment main title'},
         {'name': 'short_description', 'label': 'Short Description', 'type': 'single', 'description': 'Brief equipment summary'},
         {'name': 'full_description', 'label': 'Full Description', 'type': 'single', 'description': 'Detailed equipment description'},
-        {'name': 'specification_confidence', 'label': 'Specification Confidence', 'type': 'single', 'description': 'Confidence level (low/medium/high)'},
-        {'name': 'needs_review', 'label': 'Needs Review', 'type': 'single', 'description': 'Review flag indicator'},
         {'name': 'source_url', 'label': 'Source URL', 'type': 'single', 'description': 'Original product page URL'},
         {'name': 'source_type', 'label': 'Source Type', 'type': 'single', 'description': 'New/Used/Refurbished indicator'},
-        {'name': 'data_completeness', 'label': 'Data Completeness', 'type': 'single', 'description': 'Completeness score'},
         {'name': 'models', 'label': 'Models', 'type': 'multi-value', 'description': 'Product model variations'},
         {'name': 'features', 'label': 'Features', 'type': 'multi-value', 'description': 'Equipment features list'},
         {'name': 'accessories', 'label': 'Accessories', 'type': 'multi-value', 'description': 'Related accessories/parts'},
@@ -49,21 +54,30 @@ class InteractiveSelector:
         {'name': 'spec_groups', 'label': 'Specification Groups', 'type': 'multi-value', 'description': 'Technical specifications with nested specs'}
     ]
     
-    def __init__(self, headless: bool = False):
+    def __init__(self, headless: bool = False, session_name: str = None):
         """
         Initialize the interactive selector.
         
         Args:
             headless: Whether to run browser in headless mode
+            session_name: Optional session name for tracking progress
         """
         self.headless = headless
         self.driver = None
         self.selected_elements = []
+        self.current_url = None
+        self.current_domain = None
+        self.session_name = session_name or f"Session_{int(time.time())}"
+        
+        # Selection session data
         self.selection_session_data = {
             'active_field': None,
             'field_selections': {},  # field_name -> [selections]
             'multi_value_examples': {}  # field_name -> [example1, example2]
         }
+        
+        # Field selection session for progress tracking
+        self.field_session = None
     
     def setup_driver(self):
         """Set up Chrome WebDriver with appropriate options"""
@@ -120,11 +134,8 @@ class InteractiveSelector:
             'title': '#ff6b6b',
             'short_description': '#4ecdc4', 
             'full_description': '#45b7d1',
-            'specification_confidence': '#96ceb4',
-            'needs_review': '#ffeaa7',
             'source_url': '#dda0dd',
             'source_type': '#98d8c8',
-            'data_completeness': '#f7dc6f',
             'models': '#bb8fce',
             'features': '#85c1e9',
             'accessories': '#f8c471',
@@ -616,6 +627,42 @@ class InteractiveSelector:
         }}
         
         function handleClick(event) {{
+            // NEW: Check for modifier keys
+            if (event.ctrlKey || event.metaKey) {{
+                // Allow normal page interaction without selecting
+                console.log('Ctrl/Cmd+Click detected: Allowing normal navigation without selection');
+                return; // Don't prevent default, don't select
+            }}
+            
+            if (event.altKey) {{
+                // Preview mode - show element info without selecting
+                event.preventDefault();
+                event.stopPropagation();
+                
+                if (!isContentExtractorElement(event.target)) {{
+                    let element = event.target;
+                    let xpath = getXPath(element);
+                    let text = element.textContent.trim().substring(0, 100);
+                    
+                    // Show preview info
+                    console.log('Element Preview:', {{
+                        tag: element.tagName.toLowerCase(),
+                        text: text,
+                        xpath: xpath,
+                        classes: element.className
+                    }});
+                    
+                    // Visual feedback for preview
+                    element.style.outline = '2px dashed #ffa500';
+                    setTimeout(() => {{
+                        if (!window.contentExtractorData.selectedDOMElements.has(element)) {{
+                            element.style.outline = '';
+                        }}
+                    }}, 1000);
+                }}
+                return;
+            }}
+            
             if (window.contentExtractorData.isSelectionMode) {{
                 // Ignore clicks on content extractor UI elements
                 if (isContentExtractorElement(event.target)) {{
@@ -780,9 +827,11 @@ class InteractiveSelector:
                 </div>
                 ${{multiValueInstructions}}
                 <div style="background: rgba(255,255,255,0.1) !important; padding: 12px !important; border-radius: 8px !important; margin: 12px 0 !important; font-size: 12px !important; line-height: 1.4 !important; color: white !important;">
-                    <div style="font-weight: 600 !important; margin-bottom: 6px !important; color: white !important;">📍 How to select:</div>
-                    <div style="color: white !important;">• <strong>Hover</strong> over elements to preview</div>
+                    <div style="font-weight: 600 !important; margin-bottom: 6px !important; color: white !important;">📍 How to interact:</div>
                     <div style="color: white !important;">• <strong>Click</strong> elements to select them</div>
+                    <div style="color: white !important;">• <strong>Ctrl+Click</strong> to navigate without selecting</div>
+                    <div style="color: white !important;">• <strong>Alt+Click</strong> to preview element info</div>
+                    <div style="color: white !important;">• <strong>Hover</strong> to preview selection</div>
                     <div style="color: white !important;">• Selected elements stay highlighted with checkmarks</div>
                 </div>
                 <div style="display: flex !important; gap: 8px !important; margin-top: 15px !important;">
@@ -948,7 +997,11 @@ class InteractiveSelector:
             time.sleep(2)  # Give page time to fully render
             self._inject_selection_js()
             
-            logger.info(f"Successfully loaded page: {url}")
+            # Track current URL and domain for site-specific selector storage
+            self.current_url = url
+            self.current_domain = self._get_domain_from_url(url)
+            
+            logger.info(f"Successfully loaded page: {url} (domain: {self.current_domain})")
             return True
             
         except TimeoutException:
@@ -1189,4 +1242,272 @@ class InteractiveSelector:
             except Exception as e:
                 logger.error(f"Error closing WebDriver: {e}")
             finally:
-                self.driver = None 
+                self.driver = None
+
+    def _get_domain_from_url(self, url: str) -> str:
+        """Extract domain from URL"""
+        try:
+            parsed = urlparse(url)
+            return parsed.netloc.replace('www.', '')
+        except Exception:
+            return url
+
+    def _get_or_create_field_session(self, domain: str) -> FieldSelectionSession:
+        """Get or create field selection session for this domain"""
+        if not self.field_session or self.field_session.domain != domain:
+            self.field_session, created = FieldSelectionSession.objects.get_or_create(
+                domain=domain,
+                session_name=self.session_name,
+                is_active=True,
+                defaults={
+                    'started_at': timezone.now(),
+                }
+            )
+        return self.field_session
+
+    def save_field_selector(self, field_name: str, xpath: str, css_selector: str = "", 
+                           requires_manual_input: bool = False, manual_input_note: str = "") -> bool:
+        """
+        Save a field selector to the database for the current site.
+        
+        Args:
+            field_name: Name of the LabEquipmentPage field
+            xpath: XPath selector for the field
+            css_selector: Optional CSS selector
+            requires_manual_input: Whether this field requires manual input
+            manual_input_note: Instructions for manual input
+            
+        Returns:
+            bool: True if saved successfully
+        """
+        if not self.current_domain or not self.current_url:
+            logger.error("No current domain/URL available for saving selector")
+            return False
+            
+        try:
+            # Get site name from domain
+            site_name = self.current_domain.replace('.com', '').replace('.', ' ').title()
+            
+            # Create or update the selector
+            selector, created = SiteFieldSelector.objects.update_or_create(
+                domain=self.current_domain,
+                field_name=field_name,
+                defaults={
+                    'site_name': site_name,
+                    'xpath': xpath,
+                    'css_selector': css_selector,
+                    'requires_manual_input': requires_manual_input,
+                    'manual_input_note': manual_input_note,
+                    'created_from_url': self.current_url,
+                    'created_at': timezone.now(),
+                }
+            )
+            
+            # Mark field as complete in session
+            field_session = self._get_or_create_field_session(self.current_domain)
+            field_session.mark_field_complete(field_name)
+            
+            action = "Created" if created else "Updated"
+            logger.info(f"{action} selector for {self.current_domain}/{field_name}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to save selector: {e}")
+            return False
+
+    def test_selector_on_page(self, selector: SiteFieldSelector, test_url: str) -> Dict:
+        """
+        Test a selector on a specific page and record results.
+        
+        Args:
+            selector: SiteFieldSelector instance to test
+            test_url: URL to test the selector on
+            
+        Returns:
+            Dict: Test results with success status and extracted content
+        """
+        start_time = time.time()
+        result = {
+            'success': False,
+            'result_type': 'error',
+            'content': '',
+            'error': '',
+            'test_duration': 0.0
+        }
+        
+        try:
+            # Load the test page
+            if not self.load_page(test_url):
+                result['error'] = "Failed to load test page"
+                return result
+                
+            # Test the XPath selector
+            try:
+                elements = self.driver.find_elements(By.XPATH, selector.xpath)
+                
+                if not elements:
+                    result['result_type'] = 'no_match'
+                    result['error'] = "Selector found no elements"
+                else:
+                    # Extract content from first matching element
+                    element = elements[0]
+                    content = element.text.strip() or element.get_attribute('innerHTML')
+                    
+                    if content:
+                        result['success'] = True
+                        result['result_type'] = 'success'
+                        result['content'] = content
+                    else:
+                        result['result_type'] = 'invalid_content'
+                        result['error'] = "Element found but contains no text content"
+                        
+            except Exception as e:
+                result['result_type'] = 'error'
+                result['error'] = f"XPath execution failed: {str(e)}"
+                
+        except Exception as e:
+            result['error'] = f"Test execution failed: {str(e)}"
+            
+        finally:
+            result['test_duration'] = time.time() - start_time
+            
+        # Save test result to database
+        try:
+            SelectorTestResult.objects.create(
+                selector=selector,
+                test_url=test_url,
+                result=result['result_type'],
+                extracted_content=result['content'],
+                test_duration=result['test_duration'],
+                error_message=result['error']
+            )
+        except Exception as e:
+            logger.error(f"Failed to save test result: {e}")
+            
+        return result
+
+    def test_all_selectors_on_page(self, test_url: str) -> Dict[str, Dict]:
+        """
+        Test all selectors for the current domain on a new page.
+        
+        Args:
+            test_url: URL to test selectors on
+            
+        Returns:
+            Dict: Results for each field {field_name: test_result}
+        """
+        if not self.current_domain:
+            logger.error("No current domain available for testing")
+            return {}
+            
+        # Get all selectors for this domain
+        selectors = SiteFieldSelector.objects.filter(domain=self.current_domain)
+        
+        results = {}
+        for selector in selectors:
+            logger.info(f"Testing {selector.field_name} selector on {test_url}")
+            results[selector.field_name] = self.test_selector_on_page(selector, test_url)
+            
+        return results
+
+    def get_saved_selectors(self, domain: str = None) -> List[SiteFieldSelector]:
+        """
+        Get all saved selectors for a domain.
+        
+        Args:
+            domain: Domain to get selectors for (uses current domain if None)
+            
+        Returns:
+            List of SiteFieldSelector objects
+        """
+        domain = domain or self.current_domain
+        if not domain:
+            return []
+            
+        return list(SiteFieldSelector.objects.filter(domain=domain).order_by('field_name'))
+
+    def get_selector_success_rates(self, domain: str = None) -> Dict[str, float]:
+        """
+        Get success rates for all selectors in a domain.
+        
+        Args:
+            domain: Domain to get success rates for
+            
+        Returns:
+            Dict: {field_name: success_rate}
+        """
+        selectors = self.get_saved_selectors(domain)
+        return {
+            selector.field_name: selector.success_rate 
+            for selector in selectors
+        }
+
+    def get_manual_input_fields(self, domain: str = None) -> List[Dict]:
+        """
+        Get fields that require manual input for a domain.
+        
+        Args:
+            domain: Domain to check (uses current domain if None)
+            
+        Returns:
+            List of dicts with field info and manual input instructions
+        """
+        domain = domain or self.current_domain
+        if not domain:
+            return []
+            
+        manual_fields = SiteFieldSelector.objects.filter(
+            domain=domain, 
+            requires_manual_input=True
+        )
+        
+        return [
+            {
+                'field_name': field.field_name,
+                'field_label': field.get_field_name_display(),
+                'manual_input_note': field.manual_input_note,
+                'created_from_url': field.created_from_url
+            }
+            for field in manual_fields
+        ]
+
+    def mark_field_as_manual(self, field_name: str, manual_input_note: str) -> bool:
+        """
+        Mark a field as requiring manual input instead of automatic selection.
+        
+        Args:
+            field_name: Name of the field to mark as manual
+            manual_input_note: Instructions for manual input
+            
+        Returns:
+            bool: True if successful
+        """
+        if not self.current_domain:
+            logger.error("No current domain available")
+            return False
+            
+        try:
+            selector, created = SiteFieldSelector.objects.update_or_create(
+                domain=self.current_domain,
+                field_name=field_name,
+                defaults={
+                    'site_name': self.current_domain.replace('.com', '').replace('.', ' ').title(),
+                    'xpath': '',  # No xpath needed for manual input
+                    'css_selector': '',
+                    'requires_manual_input': True,
+                    'manual_input_note': manual_input_note,
+                    'created_from_url': self.current_url or '',
+                    'created_at': timezone.now(),
+                }
+            )
+            
+            # Mark field as complete in session
+            field_session = self._get_or_create_field_session(self.current_domain)
+            field_session.mark_field_complete(field_name)
+            
+            logger.info(f"Marked {field_name} as manual input for {self.current_domain}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to mark field as manual: {e}")
+            return False 

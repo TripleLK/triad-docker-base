@@ -1,0 +1,18 @@
+# Working AirScience Product Pages - Verified 2025-01-08
+# Provided by user for field selector testing
+
+# SafeFUME Automatic Cyanoacrylate Fuming Chambers
+https://www.airscience.com/product-category-page?brandname=safefume-fuming-chambers&brand=14
+
+# Purair FLOW Laminar Flow Cabinets  
+https://www.airscience.com/product-category-page?brandname=purair-flow-laminar-flow-cabinets&brand=13
+
+# Purair NANO Ductless Nanoparticle Enclosures
+https://www.airscience.com/product-category-page?brandname=purair-nano-ductless-nanoparticle-enclosures&brand=47
+
+# Purair FLEX Portable Isolators
+https://www.airscience.com/product-category-page?brandname=purair-flex-portable-isolators&brand=37
+
+# Additional working URLs from web search:
+https://www.airscience.com/
+https://www.airscience.com/products 
