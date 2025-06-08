@@ -1,0 +1,210 @@
+#+TITLE: Multi-URL Testing UX Improvements - Next Steps
+#+AUTHOR: Rapid Forge  
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:rapid-forge:interactive:url-management:
+
+* PRIORITY TASKS FOR NEXT MODEL
+
+** IMMEDIATE: Make Interactive Mode Default (HIGH PRIORITY)
+
+*** Current State
+- Interactive mode requires `--interactive` flag
+- Visual interactive mode is in `_run_visual_interactive_mode()`
+- Command mode is in `_run_command_interactive_mode()`
+- Default behavior is visual mode without interaction monitoring
+
+*** Required Changes
+File: `apps/content_extractor/management/commands/interactive_selector.py`
+
+1. **Modify argument handling**:
+   ```python
+   # Change from requiring --interactive to requiring --command for non-interactive
+   parser.add_argument(
+       '--command',
+       action='store_true', 
+       help='Run in command-line mode instead of visual interactive mode'
+   )
+   ```
+
+2. **Update logic in handle() method**:
+   ```python
+   # Change the conditional logic
+   if demo_mode:
+       self._run_automated_demo(selector)
+   elif options['command']:  # Changed from interactive_mode
+       self._run_command_interactive_mode(selector)
+   else:
+       self._run_visual_interactive_mode(selector)  # This becomes the default
+   ```
+
+3. **Update help text and output messages** to reflect new default behavior
+
+*** Expected Outcome
+- Users run `python manage.py interactive_selector --url [URL]` and get interactive mode
+- Command-line mode available with `--command` flag for advanced users
+
+** PRIMARY: In-Interface URL Management (CORE FEATURE)
+
+*** Current State
+- URLs can only be added through Wagtail admin
+- SiteConfiguration model has `add_test_url()` and `remove_test_url()` methods
+- JavaScript interface exists but no URL management UI
+
+*** Required Implementation
+
+#### 1. JavaScript Interface Enhancement
+File: `apps/content_extractor/selectors/js_injection.py`
+
+Add URL management UI to the control panel:
+```javascript
+// Add to control panel HTML
+<div class="control-section">
+    <h4>🌐 Multi-URL Testing</h4>
+    <div class="url-list" id="testUrlList"></div>
+    <div class="url-input-group">
+        <input type="url" id="newUrlInput" placeholder="Add test URL..." />
+        <button onclick="addTestUrl()">Add URL</button>
+    </div>
+    <button onclick="switchToNextUrl()">Next URL</button>
+    <button onclick="switchToPrevUrl()">Previous URL</button>
+</div>
+```
+
+#### 2. JavaScript Functions
+Add to content_extractor_events.js:
+```javascript
+function addTestUrl() {
+    const input = document.getElementById('newUrlInput');
+    const url = input.value.trim();
+    
+    if (!url) return;
+    
+    // Validate URL and domain
+    fetch(`${contentExtractorData.baseUrl}/api/content-extractor/add-test-url/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${contentExtractorData.apiToken}`
+        },
+        body: JSON.stringify({
+            url: url,
+            current_domain: window.location.hostname
+        })
+    }).then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              updateUrlList();
+              input.value = '';
+          } else {
+              alert(`Error: ${data.error}`);
+          }
+      });
+}
+
+function switchToNextUrl() {
+    // Call backend to switch to next URL
+    fetch(`${contentExtractorData.baseUrl}/api/content-extractor/switch-url/next/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Token ${contentExtractorData.apiToken}`
+        }
+    }).then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              window.location.href = data.next_url;
+          }
+      });
+}
+```
+
+#### 3. Backend API Endpoints
+File: `apps/content_extractor/views.py`
+
+Add new API endpoints:
+```python
+@csrf_exempt
+@require_http_methods(["POST"])
+def add_test_url_view(request):
+    """Add a test URL to the current site configuration."""
+    # Implementation to add URL via AJAX
+    
+@csrf_exempt  
+@require_http_methods(["POST"])
+def switch_url_view(request, direction):
+    """Switch to next/previous test URL."""
+    # Implementation to coordinate URL switching
+```
+
+#### 4. URL Routing
+File: `apps/content_extractor/urls.py`
+
+Add URL patterns:
+```python
+path('add-test-url/', views.add_test_url_view, name='add_test_url'),
+path('switch-url/<str:direction>/', views.switch_url_view, name='switch_url'),
+```
+
+*** Expected Outcome
+- Users can add test URLs directly from the selector interface
+- Real-time URL switching without losing selector context
+- Visual feedback for URL management actions
+- Seamless workflow from URL discovery to testing
+
+** SECONDARY: Enhanced User Experience
+
+*** Visual Improvements Needed
+1. **URL Status Display**: Show current URL and available URLs prominently
+2. **Progress Indicators**: Visual feedback during URL switching
+3. **Error Handling**: Better user feedback for invalid URLs or failures
+
+*** Workflow Improvements
+1. **Auto-Detection**: Suggest related URLs from the same domain
+2. **URL Validation**: Real-time validation with helpful error messages
+3. **Persistence**: Remember URL selections across sessions
+
+** TECHNICAL NOTES
+
+*** Database Integration
+- Leverage existing `SiteConfiguration.add_test_url()` method
+- Use `InteractiveSelector.switch_to_url()` for URL switching
+- Maintain existing validation and error handling
+
+*** Security Considerations
+- Validate URLs belong to the current domain
+- Use existing API token authentication
+- Sanitize URL inputs to prevent XSS
+
+*** Testing Strategy
+1. Test default interactive mode activation
+2. Test URL addition from interface
+3. Test URL switching preserves selector state
+4. Test error handling for invalid URLs
+
+** FILES TO MODIFY
+
+*** Immediate (Interactive Mode Default)
+- `apps/content_extractor/management/commands/interactive_selector.py`
+
+*** Primary (URL Management)
+- `apps/content_extractor/selectors/js_injection.py`
+- `apps/content_extractor/static/js/content_extractor_events.js` 
+- `apps/content_extractor/views.py`
+- `apps/content_extractor/urls.py`
+
+*** Documentation
+- Update help text and command documentation
+- Add user workflow documentation
+
+** SUCCESS CRITERIA
+1. ✅ Users can run selector without command-line flags
+2. ✅ Users can add test URLs from within the interface
+3. ✅ URL switching works seamlessly
+4. ✅ Error handling provides clear feedback
+5. ✅ Overall workflow is intuitive and efficient
+
+** ESTIMATED EFFORT
+- **Interactive Mode Default**: 1-2 hours (straightforward argument handling change)
+- **URL Management Interface**: 4-6 hours (JavaScript UI + backend endpoints + integration)
+- **Testing and Polish**: 2-3 hours (comprehensive testing and refinement)
+
+Total: 7-11 hours of focused development work. 

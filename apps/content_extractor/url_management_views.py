@@ -1,12 +1,11 @@
 """
-Content Extractor Views - Site Configuration Integration
+URL Management Views for Content Extractor
 
-Django views for connecting the interactive selector JavaScript frontend
-to the new SiteConfiguration and FieldConfiguration models.
+API endpoints for managing test URLs in the interactive selector interface.
 
-Created by: Cosmic Phoenix
+Created by: Quantum Pulse
 Date: 2025-01-22
-Project: Triad Docker Base - Site Configuration Integration
+Project: Triad Docker Base - Multi-URL Testing UX Improvements
 """
 
 import json
@@ -15,16 +14,10 @@ from urllib.parse import urlparse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.views import View
 from django.contrib.auth.models import User
 
 from .models import SiteConfiguration, FieldConfiguration
 from apps.base_site.models import APIToken
-
-# Import URL management views
-from .url_management_views import add_test_url_view, switch_url_view, get_test_urls_view
 
 logger = logging.getLogger(__name__)
 
@@ -73,203 +66,6 @@ def authenticate_request(request):
             pass
     
     return None
-
-
-@csrf_exempt
-@require_http_methods(["POST"])
-def save_xpath_configuration(request):
-    """
-    Save XPath selector configurations from interactive selector.
-    
-    Supports both session authentication and API token authentication.
-    API token should be passed in Authorization header as 'Token <token_value>'
-    
-    Expected POST data:
-    {
-        "domain": "example.com",
-        "site_name": "Example Lab Supplier", 
-        "field_mappings": {
-            "title": ["//h1[@class='product-title']", "//h1"],
-            "description": ["//div[@class='description']/p"],
-            ...
-        }
-    }
-    """
-    # Authenticate the request
-    user = authenticate_request(request)
-    if not user:
-        return JsonResponse({
-            'success': False,
-            'error': 'Authentication required. Please login or provide API token.'
-        }, status=401)
-    
-    try:
-        data = json.loads(request.body)
-        
-        # Extract domain and site info
-        domain = data.get('domain', '').strip()
-        site_name = data.get('site_name', domain)
-        field_mappings = data.get('field_mappings', {})
-        
-        if not domain:
-            return JsonResponse({
-                'success': False,
-                'error': 'Domain is required'
-            }, status=400)
-        
-        # Get or create SiteConfiguration
-        site_config, created = SiteConfiguration.objects.get_or_create(
-            site_domain=domain,
-            defaults={
-                'site_name': site_name,
-                'is_active': True,
-                'created_by': user
-            }
-        )
-        
-        if created:
-            logger.info(f"Created new SiteConfiguration for domain: {domain}")
-        else:
-            logger.info(f"Using existing SiteConfiguration for domain: {domain}")
-        
-        # Process field mappings
-        saved_fields = []
-        updated_fields = []
-        
-        for field_name, xpath_selectors in field_mappings.items():
-            # Validate field_name against model choices
-            valid_fields = [choice[0] for choice in FieldConfiguration.LAB_EQUIPMENT_FIELD_CHOICES]
-            if field_name not in valid_fields:
-                logger.warning(f"Skipping invalid field name: {field_name}")
-                continue
-            
-            # Ensure xpath_selectors is a list
-            if isinstance(xpath_selectors, str):
-                xpath_selectors = [xpath_selectors]
-            elif not isinstance(xpath_selectors, list):
-                logger.warning(f"Invalid xpath_selectors format for field {field_name}: {xpath_selectors}")
-                continue
-            
-            # Get or create FieldConfiguration
-            field_config, field_created = FieldConfiguration.objects.get_or_create(
-                site_config=site_config,
-                lab_equipment_field=field_name,
-                defaults={
-                    'xpath_selectors': xpath_selectors,
-                    'is_active': True,
-                    'created_by': user,
-                    'comment': f'Auto-generated from interactive selector on {domain}'
-                }
-            )
-            
-            if field_created:
-                saved_fields.append(field_name)
-                logger.info(f"Created FieldConfiguration for {domain}.{field_name}")
-            else:
-                # Update existing configuration
-                field_config.xpath_selectors = xpath_selectors
-                field_config.save()
-                updated_fields.append(field_name)
-                logger.info(f"Updated FieldConfiguration for {domain}.{field_name}")
-        
-        return JsonResponse({
-            'success': True,
-            'message': f'Configuration saved for {domain}',
-            'site_config_id': site_config.id,
-            'site_config_created': created,
-            'saved_fields': saved_fields,
-            'updated_fields': updated_fields,
-            'total_fields': len(saved_fields) + len(updated_fields)
-        })
-        
-    except json.JSONDecodeError:
-        return JsonResponse({
-            'success': False,
-            'error': 'Invalid JSON data'
-        }, status=400)
-    except Exception as e:
-        logger.error(f"Error saving XPath configuration: {str(e)}")
-        return JsonResponse({
-            'success': False,
-            'error': f'Server error: {str(e)}'
-        }, status=500)
-
-
-@csrf_exempt
-@require_http_methods(["GET"])
-def get_site_configuration(request):
-    """
-    Retrieve existing site configuration for a domain.
-    
-    Supports both session authentication and API token authentication.
-    API token should be passed in Authorization header as 'Token <token_value>'
-    
-    Query parameters:
-    - domain: Site domain to lookup
-    
-    Returns existing field configurations for the interactive selector.
-    """
-    # Authenticate the request
-    user = authenticate_request(request)
-    if not user:
-        return JsonResponse({
-            'success': False,
-            'error': 'Authentication required. Please login or provide API token.'
-        }, status=401)
-    
-    try:
-        domain = request.GET.get('domain', '').strip()
-        
-        if not domain:
-            return JsonResponse({
-                'success': False,
-                'error': 'Domain parameter is required'
-            }, status=400)
-        
-        try:
-            site_config = SiteConfiguration.objects.get(site_domain=domain)
-        except SiteConfiguration.DoesNotExist:
-            return JsonResponse({
-                'success': True,
-                'exists': False,
-                'message': f'No configuration found for domain: {domain}'
-            })
-        
-        # Get field configurations
-        field_configs = FieldConfiguration.objects.filter(
-            site_config=site_config,
-            is_active=True
-        ).select_related('site_config')
-        
-        field_mappings = {}
-        for config in field_configs:
-            field_mappings[config.lab_equipment_field] = {
-                'xpath_selectors': config.xpath_selectors,
-                'comment': config.comment,
-                'updated_at': config.updated_at.isoformat()
-            }
-        
-        return JsonResponse({
-            'success': True,
-            'exists': True,
-            'site_config': {
-                'id': site_config.id,
-                'site_name': site_config.site_name,
-                'site_domain': site_config.site_domain,
-                'is_active': site_config.is_active,
-                'created_at': site_config.created_at.isoformat(),
-                'updated_at': site_config.updated_at.isoformat()
-            },
-            'field_mappings': field_mappings,
-            'total_configured_fields': len(field_mappings)
-        })
-        
-    except Exception as e:
-        logger.error(f"Error retrieving site configuration: {str(e)}")
-        return JsonResponse({
-            'success': False,
-            'error': f'Server error: {str(e)}'
-        }, status=500)
 
 
 @csrf_exempt
@@ -512,4 +308,4 @@ def get_test_urls_view(request):
         return JsonResponse({
             'success': False,
             'error': f'Server error: {str(e)}'
-        }, status=500)
+        }, status=500) 

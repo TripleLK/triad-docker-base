@@ -592,6 +592,7 @@ class QuoteRequest(models.Model):
 class APIToken(models.Model):
     """
     Model for API authentication tokens with name, description, and token value.
+    Enhanced to support temporary tokens with expiration for interactive selector.
     """
     name = models.CharField(max_length=100, help_text="Friendly name for this token")
     token = models.CharField(max_length=64, unique=True, editable=False, help_text="Authentication token")
@@ -600,11 +601,80 @@ class APIToken(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True, help_text="Whether this token is active and can be used")
     
+    # New fields for temporary token support
+    expires_at = models.DateTimeField(
+        null=True, 
+        blank=True, 
+        help_text="When this token expires (null = permanent)"
+    )
+    is_temporary = models.BooleanField(
+        default=False,
+        help_text="Whether this is a temporary token that should be auto-cleaned"
+    )
+    session_info = models.JSONField(
+        default=dict,
+        blank=True,
+        help_text="Additional session information for temporary tokens"
+    )
+    
     def __str__(self):
-        return f"{self.name} ({self.created_at.strftime('%Y-%m-%d')})"
+        temporary_indicator = " (TEMP)" if self.is_temporary else ""
+        expiry_info = f" expires {self.expires_at.strftime('%Y-%m-%d %H:%M')}" if self.expires_at else ""
+        return f"{self.name}{temporary_indicator} ({self.created_at.strftime('%Y-%m-%d')}){expiry_info}"
     
     def save(self, *args, **kwargs):
         # Generate a new token if one doesn't exist
         if not self.token:
             self.token = uuid.uuid4().hex
         super().save(*args, **kwargs)
+    
+    def is_expired(self):
+        """Check if token is expired."""
+        if not self.expires_at:
+            return False
+        from django.utils import timezone
+        return timezone.now() > self.expires_at
+    
+    def is_valid(self):
+        """Check if token is valid and usable."""
+        return self.is_active and not self.is_expired()
+    
+    @classmethod
+    def create_temporary_token(cls, name, description="", expires_in_minutes=60, session_info=None):
+        """
+        Create a temporary token that expires after specified minutes.
+        
+        Args:
+            name (str): Token name
+            description (str): Token description
+            expires_in_minutes (int): Minutes until expiration
+            session_info (dict): Additional session information
+            
+        Returns:
+            APIToken: Created temporary token
+        """
+        from django.utils import timezone
+        
+        expires_at = timezone.now() + timezone.timedelta(minutes=expires_in_minutes)
+        
+        token = cls.objects.create(
+            name=name,
+            description=description,
+            is_temporary=True,
+            expires_at=expires_at,
+            session_info=session_info or {}
+        )
+        
+        return token
+    
+    @classmethod
+    def cleanup_expired_tokens(cls):
+        """Remove expired temporary tokens."""
+        from django.utils import timezone
+        
+        expired_count = cls.objects.filter(
+            is_temporary=True,
+            expires_at__lt=timezone.now()
+        ).delete()[0]
+        
+        return expired_count

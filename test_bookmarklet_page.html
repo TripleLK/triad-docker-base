@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page for Content Extractor Bookmarklet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .product-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .short-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .full-description {
+            margin-bottom: 20px;
+        }
+        .features {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .models {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .model {
+            background: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .spec-group {
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .spec-title {
+            background: #e9ecef;
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+        .spec-content {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="product-title">Advanced Laboratory Microscope XR-2000</h1>
+        
+        <p class="short-description">High-precision optical microscope with digital imaging capabilities for research and education.</p>
+        
+        <div class="full-description">
+            <p>The XR-2000 is a state-of-the-art laboratory microscope designed for both professional research and educational applications. Featuring advanced optics, digital imaging integration, and precise mechanical controls, this instrument delivers exceptional performance for various microscopy applications.</p>
+        </div>
+        
+        <div class="models">
+            <span class="model">XR-2000-Basic</span>
+            <span class="model">XR-2000-Pro</span>
+            <span class="model">XR-2000-Digital</span>
+        </div>
+        
+        <div class="features">
+            <h3>Key Features</h3>
+            <ul>
+                <li>High-resolution optical system with advanced lens technology</li>
+                <li>Integrated digital camera with 4K video recording</li>
+                <li>Precision mechanical stage with micrometer controls</li>
+                <li>LED illumination system with adjustable intensity</li>
+                <li>Multiple magnification options from 40x to 1000x</li>
+                <li>Compatible with various sample preparation techniques</li>
+            </ul>
+        </div>
+        
+        <div class="spec-group">
+            <div class="spec-title">Optical Specifications</div>
+            <div class="spec-content">
+                <p><strong>Magnification:</strong> 40x, 100x, 400x, 1000x</p>
+                <p><strong>Objective Lenses:</strong> 4x, 10x, 40x, 100x (oil immersion)</p>
+                <p><strong>Eyepieces:</strong> 10x wide field</p>
+                <p><strong>Illumination:</strong> LED with adjustable brightness</p>
+            </div>
+        </div>
+        
+        <div class="spec-group">
+            <div class="spec-title">Physical Specifications</div>
+            <div class="spec-content">
+                <p><strong>Dimensions:</strong> 350mm (W) x 250mm (D) x 450mm (H)</p>
+                <p><strong>Weight:</strong> 8.5 kg</p>
+                <p><strong>Stage Size:</strong> 140mm x 110mm</p>
+                <p><strong>Power:</strong> 12V DC adapter included</p>
+            </div>
+        </div>
+        
+        <h3>Accessories</h3>
+        <ul>
+            <li>Dust cover</li>
+            <li>Calibration slide</li>
+            <li>Immersion oil</li>
+            <li>USB cable for digital connectivity</li>
+            <li>Software CD with imaging software</li>
+        </ul>
+        
+        <h3>Application Areas</h3>
+        <ul>
+            <li>Biology and life sciences research</li>
+            <li>Materials science analysis</li>
+            <li>Quality control in manufacturing</li>
+            <li>Educational institutions</li>
+            <li>Medical diagnostics</li>
+        </ul>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #e8f4fd; border-radius: 8px;">
+            <h3>🧪 Test Instructions</h3>
+            <p><strong>To test the bookmarklet:</strong></p>
+            <ol>
+                <li>Go to <a href="http://localhost:8000/admin/content-extractor/bookmarklet/" target="_blank">http://localhost:8000/admin/content-extractor/bookmarklet/</a></li>
+                <li>Drag the bookmarklet to your bookmarks bar</li>
+                <li>Come back to this page</li>
+                <li>Click the bookmarklet in your bookmarks</li>
+                <li>Try selecting different elements like the title, description, features, etc.</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html> 

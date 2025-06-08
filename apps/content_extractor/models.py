@@ -6,12 +6,14 @@ per LabEquipmentPage field per site domain.
 
 Created by: Silver Raven
 Date: 2025-01-22
+Enhanced by: Rapid Forge (Multi-URL Testing Support)
 Project: Triad Docker Base - Site Configuration System
 """
 
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.core import validators
 
 
 class SiteConfiguration(models.Model):
@@ -35,6 +37,13 @@ class SiteConfiguration(models.Model):
     notes = models.TextField(
         blank=True,
         help_text="Notes about this site configuration"
+    )
+    
+    # Multi-URL Testing Support
+    test_urls = models.JSONField(
+        default=list,
+        blank=True,
+        help_text="List of test URLs to verify selectors work across different pages of this domain"
     )
     
     # Metadata
@@ -65,6 +74,50 @@ class SiteConfiguration(models.Model):
     def active_field_configs_count(self):
         """Return the number of active field configurations for this site."""
         return self.field_configs.filter(is_active=True).count()
+    
+    @property
+    def test_urls_count(self):
+        """Return the number of test URLs configured for this site."""
+        return len(self.test_urls) if self.test_urls else 0
+    
+    def add_test_url(self, url):
+        """Add a test URL to this site configuration."""
+        if not self.test_urls:
+            self.test_urls = []
+        
+        # Validate URL belongs to this domain
+        from urllib.parse import urlparse
+        parsed = urlparse(url)
+        if self.site_domain not in parsed.netloc:
+            raise ValueError(f"URL {url} does not belong to domain {self.site_domain}")
+        
+        if url not in self.test_urls:
+            self.test_urls.append(url)
+            self.save()
+    
+    def remove_test_url(self, url):
+        """Remove a test URL from this site configuration."""
+        if self.test_urls and url in self.test_urls:
+            self.test_urls.remove(url)
+            self.save()
+    
+    def get_valid_test_urls(self):
+        """Return list of test URLs that are properly formatted and belong to this domain."""
+        if not self.test_urls:
+            return []
+        
+        from urllib.parse import urlparse
+        valid_urls = []
+        
+        for url in self.test_urls:
+            try:
+                parsed = urlparse(url)
+                if parsed.scheme in ['http', 'https'] and self.site_domain in parsed.netloc:
+                    valid_urls.append(url)
+            except Exception:
+                continue  # Skip invalid URLs
+        
+        return valid_urls
 
 
 class FieldConfiguration(models.Model):

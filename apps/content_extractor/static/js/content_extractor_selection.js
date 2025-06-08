@@ -98,7 +98,8 @@ window.createControlPanel = function() {
         z-index: 9998;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 14px;
-        min-width: 200px;
+        min-width: 250px;
+        max-width: 350px;
     `;
     
     // Calculate selection progress
@@ -115,12 +116,47 @@ window.createControlPanel = function() {
         </div>
     ` : '';
     
+    // URL Management section
+    const currentDomain = window.location.hostname;
+    const urlManagementHtml = `
+        <div style="margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 4px; border-left: 3px solid #17a2b8;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                <strong style="color: #17a2b8; font-size: 12px;">🌐 URL Testing</strong>
+                <span id="url-count" style="font-size: 11px; color: #666;">Loading...</span>
+            </div>
+            <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                <button onclick="window.switchTestUrl('previous')" 
+                        style="flex: 1; padding: 4px 6px; background: #6c757d; color: white; border: none; 
+                               border-radius: 3px; cursor: pointer; font-size: 11px; transition: all 0.2s;"
+                        onmouseover="this.style.background='#5a6268'"
+                        onmouseout="this.style.background='#6c757d'">
+                    ⬅️ Prev
+                </button>
+                <button onclick="window.switchTestUrl('next')" 
+                        style="flex: 1; padding: 4px 6px; background: #6c757d; color: white; border: none; 
+                               border-radius: 3px; cursor: pointer; font-size: 11px; transition: all 0.2s;"
+                        onmouseover="this.style.background='#5a6268'"
+                        onmouseout="this.style.background='#6c757d'">
+                    Next ➡️
+                </button>
+            </div>
+            <button onclick="window.showAddUrlDialog()" 
+                    style="width: 100%; padding: 4px 6px; background: #17a2b8; color: white; border: none; 
+                           border-radius: 3px; cursor: pointer; font-size: 11px; transition: all 0.2s;"
+                    onmouseover="this.style.background='#138496'"
+                    onmouseout="this.style.background='#17a2b8'">
+                ➕ Add Test URL
+            </button>
+        </div>
+    `;
+    
     panel.innerHTML = `
         <div style="text-align: center; margin-bottom: 10px;">
             <strong>🎯 Content Extractor</strong><br>
             <small style="color: #666;">v${window.contentExtractorData.scriptVersion}</small>
         </div>
         ${progressHtml}
+        ${urlManagementHtml}
         <button onclick="window.showFieldMenu()" 
                 style="display: block; width: 100%; margin: 5px 0; padding: 8px; 
                        background: #007bff; color: white; border: none; 
@@ -146,6 +182,9 @@ window.createControlPanel = function() {
     `;
     
     document.body.appendChild(panel);
+    
+    // Load URL count
+    window.loadUrlCount();
     
     // Update function availability indicators immediately and periodically
     window.updateFunctionStatus = function() {
@@ -456,4 +495,301 @@ window.openXPathEditor = function(fieldName, selectionIndex) {
             alert('XPath Editor not available. Please ensure the XPath editor script is loaded.');
         }
     }
+};
+
+// URL Management Functions
+window.loadUrlCount = function() {
+    const currentDomain = window.location.hostname;
+    const baseUrl = window.contentExtractorData.baseUrl;
+    const apiToken = window.contentExtractorData.apiToken;
+    
+    if (!apiToken) {
+        console.warn('⚠️ No API token available for URL management');
+        document.getElementById('url-count').textContent = 'No token';
+        return;
+    }
+    
+    fetch(`${baseUrl}/content-extractor/get-test-urls/?domain=${encodeURIComponent(currentDomain)}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Token ${apiToken}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const urlCountElement = document.getElementById('url-count');
+            if (urlCountElement) {
+                urlCountElement.textContent = `${data.total_urls} URLs`;
+            }
+            console.log(`📊 Loaded ${data.total_urls} test URLs for ${currentDomain}`);
+        } else {
+            console.warn('⚠️ Failed to load URL count:', data.error);
+            document.getElementById('url-count').textContent = 'Error';
+        }
+    })
+    .catch(error => {
+        console.error('❌ Error loading URL count:', error);
+        document.getElementById('url-count').textContent = 'Error';
+    });
+};
+
+window.switchTestUrl = function(direction) {
+    const currentUrl = window.location.href;
+    const currentDomain = window.location.hostname;
+    const baseUrl = window.contentExtractorData.baseUrl;
+    const apiToken = window.contentExtractorData.apiToken;
+    
+    if (!apiToken) {
+        alert('⚠️ No API token available for URL switching');
+        return;
+    }
+    
+    // Show loading indicator
+    const urlCountElement = document.getElementById('url-count');
+    const originalText = urlCountElement ? urlCountElement.textContent : '';
+    if (urlCountElement) {
+        urlCountElement.textContent = 'Switching...';
+    }
+    
+    fetch(`${baseUrl}/content-extractor/switch-url/${direction}/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Token ${apiToken}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            current_url: currentUrl,
+            domain: currentDomain
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log(`🔄 Switching to ${direction} URL: ${data.next_url}`);
+            
+            // Show success feedback
+            const feedback = document.createElement('div');
+            feedback.className = 'content-extractor-ui';
+            feedback.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #17a2b8;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                z-index: 10001;
+                font-size: 14px;
+                text-align: center;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            `;
+            feedback.innerHTML = `
+                🔄 Switching to ${direction} URL...<br>
+                <small>${data.next_url}</small>
+            `;
+            
+            document.body.appendChild(feedback);
+            
+            // Navigate to the new URL
+            setTimeout(() => {
+                window.location.href = data.next_url;
+            }, 1000);
+            
+        } else {
+            console.warn('⚠️ Failed to switch URL:', data.error);
+            alert(`Failed to switch URL: ${data.error}`);
+            
+            // Restore original text
+            if (urlCountElement) {
+                urlCountElement.textContent = originalText;
+            }
+        }
+    })
+    .catch(error => {
+        console.error('❌ Error switching URL:', error);
+        alert(`Error switching URL: ${error.message}`);
+        
+        // Restore original text
+        if (urlCountElement) {
+            urlCountElement.textContent = originalText;
+        }
+    });
+};
+
+window.showAddUrlDialog = function() {
+    const currentDomain = window.location.hostname;
+    
+    // Create modal dialog
+    const modal = document.createElement('div');
+    modal.className = 'content-extractor-ui';
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 10002;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    `;
+    
+    const dialog = document.createElement('div');
+    dialog.style.cssText = `
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    `;
+    
+    dialog.innerHTML = `
+        <h3 style="margin: 0 0 15px 0; color: #17a2b8;">🌐 Add Test URL</h3>
+        <p style="margin: 0 0 15px 0; color: #666; font-size: 14px;">
+            Add a new URL from <strong>${currentDomain}</strong> for testing selectors across different pages.
+        </p>
+        <input type="url" id="new-test-url" placeholder="https://${currentDomain}/page-to-test" 
+               style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 4px; 
+                      font-size: 14px; margin-bottom: 15px; box-sizing: border-box;">
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <button onclick="window.closeAddUrlDialog()" 
+                    style="padding: 8px 16px; background: #6c757d; color: white; border: none; 
+                           border-radius: 4px; cursor: pointer; transition: all 0.2s;"
+                    onmouseover="this.style.background='#5a6268'"
+                    onmouseout="this.style.background='#6c757d'">
+                Cancel
+            </button>
+            <button onclick="window.addTestUrl()" 
+                    style="padding: 8px 16px; background: #17a2b8; color: white; border: none; 
+                           border-radius: 4px; cursor: pointer; transition: all 0.2s;"
+                    onmouseover="this.style.background='#138496'"
+                    onmouseout="this.style.background='#17a2b8'">
+                ➕ Add URL
+            </button>
+        </div>
+    `;
+    
+    modal.appendChild(dialog);
+    document.body.appendChild(modal);
+    
+    // Focus the input
+    setTimeout(() => {
+        document.getElementById('new-test-url').focus();
+    }, 100);
+    
+    // Close on background click
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            window.closeAddUrlDialog();
+        }
+    });
+    
+    // Close on Escape key
+    const escapeHandler = function(e) {
+        if (e.key === 'Escape') {
+            window.closeAddUrlDialog();
+            document.removeEventListener('keydown', escapeHandler);
+        }
+    };
+    document.addEventListener('keydown', escapeHandler);
+};
+
+window.closeAddUrlDialog = function() {
+    const modal = document.querySelector('.content-extractor-ui[style*="rgba(0,0,0,0.5)"]');
+    if (modal) {
+        modal.remove();
+    }
+};
+
+window.addTestUrl = function() {
+    const urlInput = document.getElementById('new-test-url');
+    const newUrl = urlInput ? urlInput.value.trim() : '';
+    const currentDomain = window.location.hostname;
+    const baseUrl = window.contentExtractorData.baseUrl;
+    const apiToken = window.contentExtractorData.apiToken;
+    
+    if (!newUrl) {
+        alert('Please enter a URL');
+        return;
+    }
+    
+    if (!apiToken) {
+        alert('⚠️ No API token available for adding URLs');
+        return;
+    }
+    
+    // Disable the button and show loading
+    const addButton = event.target;
+    const originalText = addButton.textContent;
+    addButton.textContent = 'Adding...';
+    addButton.disabled = true;
+    
+    fetch(`${baseUrl}/content-extractor/add-test-url/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Token ${apiToken}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            url: newUrl,
+            current_domain: currentDomain
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log(`✅ Added test URL: ${newUrl}`);
+            
+            // Show success feedback
+            const feedback = document.createElement('div');
+            feedback.className = 'content-extractor-ui';
+            feedback.style.cssText = `
+                position: fixed;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #28a745;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                z-index: 10003;
+                font-size: 14px;
+                text-align: center;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            `;
+            feedback.innerHTML = `
+                ✅ URL Added Successfully!<br>
+                <small>Total URLs: ${data.total_urls}</small>
+            `;
+            
+            document.body.appendChild(feedback);
+            setTimeout(() => feedback.remove(), 3000);
+            
+            // Close dialog and refresh URL count
+            window.closeAddUrlDialog();
+            window.loadUrlCount();
+            
+        } else {
+            console.warn('⚠️ Failed to add URL:', data.error);
+            alert(`Failed to add URL: ${data.error}`);
+            
+            // Re-enable button
+            addButton.textContent = originalText;
+            addButton.disabled = false;
+        }
+    })
+    .catch(error => {
+        console.error('❌ Error adding URL:', error);
+        alert(`Error adding URL: ${error.message}`);
+        
+        // Re-enable button
+        addButton.textContent = originalText;
+        addButton.disabled = false;
+    });
 }; 

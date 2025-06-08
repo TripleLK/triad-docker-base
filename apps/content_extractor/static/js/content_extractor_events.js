@@ -385,8 +385,8 @@ function handleMouseOut(event) {
     }
 }
 
-// Stop selection mode
-function stopSelection() {
+// Stop selection mode and save configurations to backend
+window.stopSelection = function() {
     window.contentExtractorData.isSelectionMode = false;
     window.contentExtractorData.activeField = null;
     
@@ -402,7 +402,9 @@ function stopSelection() {
     }
     
     // Close selection manager
-    closeSelectionManager();
+    if (typeof closeSelectionManager === 'function') {
+        closeSelectionManager();
+    }
     
     // Clear hover effects
     document.querySelectorAll('*').forEach(el => {
@@ -413,6 +415,211 @@ function stopSelection() {
     });
     
     console.log('🛑 Selection mode stopped');
+    
+    // Save configurations to backend if there are selections
+    saveConfigurationsToBackend();
+};
+
+// Save XPath configurations to the backend
+function saveConfigurationsToBackend() {
+    const fieldSelections = window.contentExtractorData.fieldSelections || {};
+    
+    // Check if there are any selections to save
+    const hasSelections = Object.keys(fieldSelections).some(fieldName => 
+        fieldSelections[fieldName] && fieldSelections[fieldName].length > 0
+    );
+    
+    if (!hasSelections) {
+        console.log('📝 No selections to save');
+        return;
+    }
+    
+    // Extract domain from current URL
+    const domain = window.location.hostname;
+    
+    // Prepare field mappings for backend
+    const field_mappings = {};
+    
+    Object.keys(fieldSelections).forEach(fieldName => {
+        const selections = fieldSelections[fieldName];
+        if (selections && selections.length > 0) {
+            // Extract XPath selectors (filter out null/undefined values from manual text inputs)
+            const xpaths = selections
+                .map(selection => selection.xpath)
+                .filter(xpath => xpath && xpath.trim());
+            
+            if (xpaths.length > 0) {
+                field_mappings[fieldName] = xpaths;
+            }
+        }
+    });
+    
+    // Only proceed if we have XPath selectors to save
+    if (Object.keys(field_mappings).length === 0) {
+        console.log('📝 No XPath selectors to save (manual text entries only)');
+        return;
+    }
+    
+    // Show saving indicator
+    const savingIndicator = document.createElement('div');
+    savingIndicator.id = 'saving-indicator';
+    savingIndicator.className = 'content-extractor-ui';
+    savingIndicator.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #007bff;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        z-index: 10002;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        min-width: 200px;
+        text-align: center;
+    `;
+    savingIndicator.innerHTML = `
+        <div style="font-weight: bold; margin-bottom: 5px;">💾 Saving Configuration...</div>
+        <div style="font-size: 12px;">Domain: ${domain}</div>
+    `;
+    document.body.appendChild(savingIndicator);
+    
+    // Prepare data for backend
+    const data = {
+        domain: domain,
+        site_name: document.title || domain,
+        field_mappings: field_mappings
+    };
+    
+    console.log('📡 Saving configuration to backend:', data);
+    
+    // Send to backend - Use configurable base URL
+    const apiUrl = `${window.contentExtractorData.baseUrl}/content-extractor/save-configuration/`;
+    console.log('📍 API URL:', apiUrl);
+    
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // Use dynamically generated API token from management command
+            'Authorization': 'Token ' + (window.contentExtractorData.apiToken || 'PLACEHOLDER_TOKEN_NEEDS_DYNAMIC_GENERATION')
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('✅ Configuration saved successfully:', result);
+        
+        // Update indicator with success message
+        savingIndicator.style.background = '#28a745';
+        savingIndicator.innerHTML = `
+            <div style="font-weight: bold; margin-bottom: 5px;">✅ Configuration Saved!</div>
+            <div style="font-size: 12px;">
+                ${result.total_fields} fields configured for ${domain}
+            </div>
+            <div style="font-size: 11px; margin-top: 5px;">
+                New: ${result.saved_fields?.length || 0}, Updated: ${result.updated_fields?.length || 0}
+            </div>
+        `;
+        
+        // Remove success indicator after delay
+        setTimeout(() => {
+            if (savingIndicator.parentNode) {
+                savingIndicator.remove();
+            }
+        }, 5000);
+        
+        // Show detailed success notification
+        showSaveSuccessDetail(result);
+    })
+    .catch(error => {
+        console.error('❌ Error saving configuration:', error);
+        
+        // Update indicator with error message
+        savingIndicator.style.background = '#dc3545';
+        savingIndicator.innerHTML = `
+            <div style="font-weight: bold; margin-bottom: 5px;">❌ Save Failed</div>
+            <div style="font-size: 12px;">
+                Error: ${error.message || 'Network error'}
+            </div>
+            <div style="font-size: 11px; margin-top: 5px;">
+                Check console for details
+            </div>
+        `;
+        
+        // Remove error indicator after longer delay
+        setTimeout(() => {
+            if (savingIndicator.parentNode) {
+                savingIndicator.remove();
+            }
+        }, 8000);
+    });
+}
+
+// Show detailed success notification
+function showSaveSuccessDetail(result) {
+    const detailModal = document.createElement('div');
+    detailModal.className = 'content-extractor-ui';
+    detailModal.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        color: #333;
+        padding: 20px;
+        border-radius: 12px;
+        z-index: 10003;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        max-width: 500px;
+        border: 2px solid #28a745;
+    `;
+    
+    const savedFieldsList = result.saved_fields?.map(field => `<li>${field}</li>`).join('') || '';
+    const updatedFieldsList = result.updated_fields?.map(field => `<li>${field}</li>`).join('') || '';
+    
+    detailModal.innerHTML = `
+        <div style="text-align: center; margin-bottom: 15px;">
+            <div style="font-size: 18px; font-weight: bold; color: #28a745; margin-bottom: 10px;">
+                ✅ Configuration Saved Successfully!
+            </div>
+            <div style="font-size: 14px; color: #666;">
+                Domain: <strong>${result.site_config?.site_domain || 'Unknown'}</strong>
+            </div>
+        </div>
+        
+        ${savedFieldsList ? `
+            <div style="margin-bottom: 15px;">
+                <strong>New Fields Configured (${result.saved_fields.length}):</strong>
+                <ul style="margin: 5px 0; padding-left: 20px;">${savedFieldsList}</ul>
+            </div>
+        ` : ''}
+        
+        ${updatedFieldsList ? `
+            <div style="margin-bottom: 15px;">
+                <strong>Updated Fields (${result.updated_fields.length}):</strong>
+                <ul style="margin: 5px 0; padding-left: 20px;">${updatedFieldsList}</ul>
+            </div>
+        ` : ''}
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="this.parentElement.parentElement.remove()" 
+                    style="padding: 8px 16px; background: #28a745; color: white; 
+                           border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">
+                Continue
+            </button>
+            <button onclick="window.open('/admin/snippets/content_extractor/siteconfiguration/', '_blank')" 
+                    style="padding: 8px 16px; background: #007bff; color: white; 
+                           border: none; border-radius: 6px; cursor: pointer; font-size: 14px; margin-left: 10px;">
+                View in Admin
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(detailModal);
 }
 
 // Field setting method handlers
@@ -1032,36 +1239,42 @@ window.selectSubfield = function(fieldName, instanceIndex, subfieldName) {
         
         window.ContentExtractorUnifiedMenu.createMenu(config);
     } else {
-        // Fallback to legacy system
-        const subfieldConfig = {
-            parentField: fieldName,
-            instanceIndex: instanceIndex,
-            subfieldName: subfieldName,
-            label: subfield.label,
-            type: subfield.type,
-            description: subfield.description,
-            color: subfield.color
-        };
-        createSubfieldMethodMenu(subfieldConfig);
+        // Critical error - unified menu system not available
+        console.error(`❌ [ERROR] ContentExtractorUnifiedMenu not available - subfield menu cannot be created`);
+        alert('Error: Menu system not properly loaded. Please refresh the page.');
+        return;
     }
 };
 
 // Helper function to open XPath editor for subfields
 window.openSubfieldXPathEditor = function(fieldName, instanceIndex, subfieldName) {
-    console.log(`🔧 Opening XPath editor for subfield: ${fieldName}[${instanceIndex}].${subfieldName}`);
+    console.log(`🔧 [DEBUG] Opening XPath editor for subfield: ${fieldName}[${instanceIndex}].${subfieldName}`);
     
     const field = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
-    if (!field) return;
+    if (!field) {
+        console.error(`❌ [ERROR] Field not found: ${fieldName}`);
+        return;
+    }
     
     const subfield = field.sub_fields.find(sf => sf.name === subfieldName);
-    if (!subfield) return;
+    if (!subfield) {
+        console.error(`❌ [ERROR] Subfield not found: ${subfieldName} in field ${fieldName}`);
+        return;
+    }
     
     const instance = window.contentExtractorData.instanceSelections[fieldName][instanceIndex];
+    if (!instance) {
+        console.error(`❌ [ERROR] Instance not found: ${fieldName}[${instanceIndex}]`);
+        return;
+    }
+    
     const subfieldSelections = instance.subfields[subfieldName] || [];
+    console.log(`📊 [DEBUG] Found ${subfieldSelections.length} subfield selections`);
     
     // Get the last XPath if available
     const lastSelection = subfieldSelections.length > 0 ? subfieldSelections[subfieldSelections.length - 1] : null;
     const currentXPath = lastSelection ? lastSelection.xpath : '';
+    console.log(`📋 [DEBUG] Current XPath: ${currentXPath || 'None'}`);
     
     // Create a pseudo-element for XPath generation if we have a selection
     let targetElement = null;
@@ -1076,29 +1289,40 @@ window.openSubfieldXPathEditor = function(fieldName, instanceIndex, subfieldName
                 null
             );
             targetElement = result.singleNodeValue;
+            console.log(`🎯 [DEBUG] Found target element:`, targetElement);
         } catch (error) {
-            console.warn('Could not find target element for XPath editor:', error);
+            console.warn('⚠️ [WARN] Could not find target element for XPath editor:', error);
         }
     }
     
-    // Set up XPath editor context for subfield
+    // Set up XPath editor context for subfield - CRITICAL FIX
     if (window.ContentExtractorXPathEditor) {
+        console.log(`📝 [DEBUG] Setting subfield context in XPath editor`);
         window.ContentExtractorXPathEditor.currentSubfieldContext = {
             fieldName: fieldName,
             instanceIndex: instanceIndex,
             subfieldName: subfieldName
         };
+        console.log(`✅ [DEBUG] Subfield context set:`, window.ContentExtractorXPathEditor.currentSubfieldContext);
+    } else {
+        console.error(`❌ [ERROR] ContentExtractorXPathEditor not available`);
+        return;
     }
     
     // Use unified menu system for XPath editor
     const fieldDisplayName = `${field.label}[${instanceIndex + 1}].${subfield.label}`;
+    console.log(`🖥️ [DEBUG] Opening XPath editor with field name: ${fieldDisplayName}`);
     
     if (window.ContentExtractorUnifiedMenu) {
+        console.log(`🚀 [DEBUG] Using unified menu system to create XPath editor`);
         window.ContentExtractorUnifiedMenu.createXPathEditor(targetElement, fieldDisplayName, currentXPath);
     } else {
+        console.error(`❌ [ERROR] ContentExtractorUnifiedMenu not available`);
         // Fallback
         window.openXPathEditor(targetElement, fieldDisplayName);
     }
+    
+    console.log(`✅ [DEBUG] XPath editor setup complete for subfield`);
 };
 
 function createSubfieldMethodMenu(subfieldConfig) {
