@@ -1,0 +1,110 @@
+#+TITLE: Next Steps - Thunder Nexus → Next Model
+#+AUTHOR: Thunder Nexus  
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:handoff:thunder-nexus:
+
+* Immediate Priorities
+** 1. Bookmarklet Core Development
+- **File**: Create `apps/content_extractor/static/js/bookmarklet/`
+- **Task**: Extract element selection JS from existing Selenium-injected code
+- **Focus**: `apps/content_extractor/static/js/content_extractor_interface.js` as starting point
+
+** 2. Wagtail Admin Integration
+- **File**: `apps/content_extractor/wagtail_hooks.py` (create)
+- **Task**: Add content extractor config upload/management to Wagtail admin
+- **Pattern**: Follow `apps/ai_processing/wagtail_hooks.py` structure
+
+** 3. File Save/Export Functionality
+- **Task**: Implement JSON export of selection configurations
+- **Format**: Compatible with existing `AIPreparationRecord` model structure
+
+* Approach Strategy
+** Development Sequence
+1. **Phase 1**: Bookmarklet JavaScript (core selection functionality)
+2. **Phase 2**: Export/save mechanism (JSON generation)
+3. **Phase 3**: Wagtail admin panel (file upload interface)
+4. **Phase 4**: Processing backend (load saved configs)
+
+** Key Files to Review First
+```
+apps/content_extractor/static/js/content_extractor_interface.js
+apps/content_extractor/static/js/content_extractor_xpath_editor.js  
+apps/content_extractor/models.py (AIPreparationRecord)
+apps/ai_processing/wagtail_hooks.py (pattern reference)
+```
+
+** Technical Architecture
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Bookmarklet   │───▶│  Local JSON Save │───▶│ Wagtail Upload  │
+│   (User Browser)│    │  (User Download) │    │ (Admin Panel)   │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                                          │
+                                                          ▼
+                                               ┌─────────────────┐
+                                               │Server Processing│
+                                               │(AIPreparation)  │
+                                               └─────────────────┘
+```
+
+* Critical Decisions Needed
+** 1. Bookmarklet Distribution Method
+- **Options**: 
+  - Generate bookmarklet URL in Wagtail admin
+  - Static bookmarklet with configurable endpoint
+  - User-customizable bookmarklet code
+- **User Input Required**: Preferred distribution approach
+
+** 2. File Format Structure
+- **Question**: JSON schema for saved configurations
+- **Consideration**: Compatibility with existing models vs. new optimized format
+- **Default Recommendation**: Extend current `AIPreparationRecord` JSON fields
+
+** 3. Security Model
+- **Decision Point**: File upload validation level
+- **Options**: Basic JSON validation vs. full sanitization
+- **Recommendation**: Start with strict validation, expand as needed
+
+* Implementation Handoff Context
+** Current State
+- Selenium-based system fully functional locally
+- XPath editor integration working (thanks to Quantum Blazer fixes)
+- Menu unification completed (Iron Nexus work)
+- Server deployment blocker identified and solution architected
+
+** Incomplete Work
+- No bookmarklet implementation exists yet
+- Wagtail admin integration not started
+- File export/import workflow needs building
+- Testing framework for bookmarklet functionality
+
+** Resources Available
+- Existing JavaScript codebase for element selection logic
+- Working Wagtail admin patterns from other apps
+- Django model structure already suitable for config storage
+- Git workflow and documentation protocols established
+
+* Technical Notes
+** JavaScript Reuse Strategy
+- Extract selection logic from `content_extractor_interface.js`
+- Modify menu systems to work without Django template context
+- Adapt XPath editor for standalone operation
+- Maintain compatibility with existing field structures
+
+** Wagtail Integration Pattern
+```python
+# Follow this pattern from apps/ai_processing/wagtail_hooks.py
+@hooks.register('register_admin_menu_item')
+def register_content_extractor_menu():
+    return MenuItem(
+        'Content Extractor Configs',
+        reverse('content_extractor_admin'),
+        icon_name='doc-full'
+    )
+```
+
+** Security Considerations
+- Bookmarklet code must be tamper-resistant
+- File uploads need strict validation
+- Consider CSP implications for bookmarklet injection
+- Sanitize user-generated XPath expressions 
