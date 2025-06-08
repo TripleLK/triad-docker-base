@@ -27,7 +27,9 @@ class JavaScriptInjectionManager:
         # JavaScript files in load order (dependencies matter)
         self.js_files = [
             'content_extractor_core.js',      # Core utilities and colors
+            'content_extractor_unified_menu.js', # Unified menu system (shared by all components)
             'content_extractor_ui.js',        # UI components and menus
+            'content_extractor_xpath_editor.js', # XPath editor modal for AI preparation
             'content_extractor_events.js',    # Event handlers
             'content_extractor_selection.js'  # Selection management and initialization
         ]
@@ -80,13 +82,26 @@ class JavaScriptInjectionManager:
         # Convert fields to JavaScript-compatible format
         field_data = []
         for field in current_fields:
+            # Convert sub_fields if they exist
+            sub_fields_data = []
+            if field.sub_fields:
+                for sub_field in field.sub_fields:
+                    sub_fields_data.append({
+                        'name': sub_field.name,
+                        'label': sub_field.label,
+                        'description': sub_field.description,
+                        'type': sub_field.type,
+                        'color': sub_field.color or '#007bff'
+                    })
+            
             field_data.append({
                 'name': field.name,
                 'label': field.label, 
                 'description': field.description,
                 'type': field.type,
                 'color': field.color or '#007bff',
-                'has_sub_fields': bool(field.sub_fields)
+                'has_sub_fields': bool(field.sub_fields),
+                'sub_fields': sub_fields_data if sub_fields_data else None
             })
         
         # Load all JavaScript files
@@ -110,11 +125,14 @@ class JavaScriptInjectionManager:
             breadcrumbs: {json.dumps(breadcrumbs)},
             contextPath: window.location.pathname,
             fieldSelections: {{}},
+            instanceSelections: {{}},
             selectedDOMElements: new Set(),
             isSelectionMode: false,
             activeField: null,
+            activeSubfield: null,
+            isSelectionPaused: false,
             pendingAction: null,
-            scriptVersion: '3.1.0'
+            scriptVersion: '3.2.0'
         }};
         
         console.log('🎯 Content Extractor initialized with', window.contentExtractorData.fieldOptions.length, 'fields');

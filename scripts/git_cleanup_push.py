@@ -37,6 +37,88 @@ def run_command(command, description=""):
     return True, result.stdout
 
 
+def is_file_gitignored(filepath):
+    """Check if a file is gitignored using git check-ignore."""
+    # Suppress error output since exit code 1 is normal for non-ignored files
+    result = subprocess.run(f"git check-ignore '{filepath}'", shell=True, capture_output=True, text=True)
+    # git check-ignore returns 0 if file is ignored, 1 if not ignored
+    return result.returncode == 0
+
+
+def filter_relevant_files(modified_files, untracked_files):
+    """Filter files to only include relevant AI management files and exclude gitignored files."""
+    relevant_files = []
+    
+    # Patterns for AI management files we want to include
+    include_patterns = [
+        '.project_management/',
+        '.cursor/rules/',
+        'scripts/',
+        'apps/content_extractor/admin.py',
+        'apps/content_extractor/models.py',
+        'apps/content_extractor/migrations/',
+        'apps/content_extractor/selectors/',  # Include all selector files
+        'apps/content_extractor/management/',
+        'apps/lab_equipment_api/',
+        'config/',
+        'tests/',
+        'triad_project_architecture.org',
+        'README.md',
+        'api.py',
+    ]
+    
+    # Patterns to exclude (in addition to gitignored files)
+    exclude_patterns = [
+        'static/',
+        'staticfiles/',
+        'node_modules/',
+        '__pycache__/',
+        '.DS_Store',
+        '*.pyc',
+        '*.log',
+        '*.tmp',
+        '*.bak',
+        '.env',
+        'media/',
+        'collected-static/',
+        '.wagtail/',
+    ]
+    
+    all_files = modified_files + untracked_files
+    
+    for filepath in all_files:
+        # Skip if gitignored
+        if is_file_gitignored(filepath):
+            print(f"  Skipping gitignored file: {filepath}")
+            continue
+            
+        # Check exclude patterns first
+        should_exclude = False
+        for pattern in exclude_patterns:
+            if pattern in filepath or filepath.endswith(pattern.lstrip('*')):
+                should_exclude = True
+                break
+        
+        if should_exclude:
+            print(f"  Skipping excluded file: {filepath}")
+            continue
+            
+        # Check include patterns
+        should_include = False
+        for pattern in include_patterns:
+            if filepath.startswith(pattern) or pattern in filepath:
+                should_include = True
+                break
+        
+        if should_include:
+            relevant_files.append(filepath)
+            print(f"  Including relevant file: {filepath}")
+        else:
+            print(f"  Skipping non-relevant file: {filepath}")
+    
+    return relevant_files
+
+
 def get_git_status():
     """Get current git status information."""
     success, output = run_command("git status --porcelain")
@@ -180,23 +262,18 @@ def main():
     if len(untracked_files) > 10:
         print(f"  ... and {len(untracked_files) - 10} more")
     
-    # Determine what to add
-    if args.add_all:
-        add_command = "git add ."
-        files_to_add = "all files"
-    else:
-        # Add only modified files and specific patterns
-        ai_management_files = [f for f in untracked_files if f.startswith('.project_management/') or f.startswith('.cursor/')]
-        important_files = modified_files + ai_management_files
-        
-        if important_files:
-            # Quote filenames to handle spaces
-            quoted_files = [f'"{f}"' for f in important_files]
-            add_command = f"git add {' '.join(quoted_files)}"
-            files_to_add = f"{len(important_files)} important files"
-        else:
-            print("No important files to add.")
-            sys.exit(0)
+    # Filter to relevant files only
+    print(f"\n=== Filtering Files ===")
+    relevant_files = filter_relevant_files(modified_files, untracked_files)
+    
+    if not relevant_files:
+        print("No relevant files to commit!")
+        sys.exit(0)
+    
+    # Create add command for relevant files only
+    quoted_files = [f'"{f}"' for f in relevant_files]
+    add_command = f"git add {' '.join(quoted_files)}"
+    files_to_add = f"{len(relevant_files)} relevant files"
     
     # Create commit message
     if args.message:

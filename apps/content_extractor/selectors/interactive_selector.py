@@ -72,6 +72,9 @@ class InteractiveSelector:
         """Set up Chrome WebDriver with appropriate options."""
         chrome_options = Options()
         
+        # Explicitly set Chrome binary path for macOS
+        chrome_options.binary_location = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        
         if self.headless:
             chrome_options.add_argument("--headless")
         
@@ -83,6 +86,7 @@ class InteractiveSelector:
         chrome_options.add_argument("--window-size=1920,1080")
         
         try:
+            # Try to install chromedriver using webdriver-manager
             service = Service(ChromeDriverManager().install())
             self.driver = webdriver.Chrome(service=service, options=chrome_options)
             
@@ -94,7 +98,19 @@ class InteractiveSelector:
             
         except Exception as e:
             logger.error(f"Failed to setup WebDriver: {e}")
-            return False
+            # Try a fallback approach without webdriver-manager
+            try:
+                logger.info("Attempting fallback WebDriver setup...")
+                self.driver = webdriver.Chrome(options=chrome_options)
+                
+                # Execute script to remove webdriver property
+                self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+                
+                logger.info("Fallback WebDriver setup complete")
+                return True
+            except Exception as e2:
+                logger.error(f"Fallback WebDriver setup also failed: {e2}")
+                return False
 
     def load_page(self, url: str, wait_time: int = 10) -> bool:
         """

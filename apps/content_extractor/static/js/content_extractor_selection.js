@@ -293,14 +293,23 @@ function updateSelectionManagerContent(manager, fieldName) {
             
             selectionsHtml += `
                 <div style="margin: 8px 0; padding: 8px; background: ${fieldColor}10; border: 1px solid ${fieldColor}40; border-radius: 6px; position: relative;">
-                    <div style="font-weight: bold; color: ${fieldColor}; margin-bottom: 4px;">
-                        Selection ${index + 1}
-                        <button onclick="removeSelection('${fieldName}', ${index})" 
-                                style="float: right; background: #dc3545; color: white; border: none; 
-                                       border-radius: 3px; padding: 2px 6px; font-size: 11px; cursor: pointer;"
-                                title="Remove this selection">
-                            ✖
-                        </button>
+                    <div style="font-weight: bold; color: ${fieldColor}; margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between;">
+                        <span>Selection ${index + 1}</span>
+                        <div style="display: flex; gap: 4px;">
+                            <button onclick="openXPathEditor('${fieldName}', ${index})" 
+                                    style="background: #007bff; color: white; border: none; 
+                                           border-radius: 3px; padding: 2px 6px; font-size: 11px; cursor: pointer;
+                                           font-weight: bold;"
+                                    title="Edit XPath for AI optimization">
+                                >
+                            </button>
+                            <button onclick="removeSelection('${fieldName}', ${index})" 
+                                    style="background: #dc3545; color: white; border: none; 
+                                           border-radius: 3px; padding: 2px 6px; font-size: 11px; cursor: pointer;"
+                                    title="Remove this selection">
+                                ✖
+                            </button>
+                        </div>
                     </div>
                     <div style="color: #333; margin-bottom: 4px;">"${shortText}"</div>
                     <div style="font-size: 11px; color: #666;">
@@ -402,5 +411,49 @@ window.updateSelectionManager = function() {
     const activeField = window.contentExtractorData.activeField;
     if (manager && activeField) {
         updateSelectionManagerContent(manager, activeField);
+    }
+};
+
+// XPath Editor Integration
+window.openXPathEditor = function(fieldName, selectionIndex) {
+    const selections = window.contentExtractorData.fieldSelections[fieldName] || [];
+    if (selectionIndex >= 0 && selectionIndex < selections.length) {
+        const selection = selections[selectionIndex];
+        
+        console.log(`🔧 Opening XPath editor for ${fieldName} selection ${selectionIndex + 1}`);
+        
+        // Try to find the element on the page using the XPath
+        let element = null;
+        try {
+            const result = document.evaluate(
+                selection.xpath,
+                document,
+                null,
+                XPathResult.FIRST_ORDERED_NODE_TYPE,
+                null
+            );
+            element = result.singleNodeValue;
+        } catch (error) {
+            console.warn('Could not find element using stored XPath:', error);
+        }
+        
+        // If element not found, try to find by text content as fallback
+        if (!element && selection.selected_text) {
+            const allElements = document.querySelectorAll('*');
+            for (let el of allElements) {
+                if (el.textContent && el.textContent.trim() === selection.selected_text.trim()) {
+                    element = el;
+                    break;
+                }
+            }
+        }
+        
+        // Open XPath editor with the element, field name, and current XPath
+        if (window.ContentExtractorXPathEditor && window.ContentExtractorXPathEditor.openEditor) {
+            window.ContentExtractorXPathEditor.openEditor(element, fieldName, selection.xpath);
+        } else {
+            console.error('XPath Editor not available');
+            alert('XPath Editor not available. Please ensure the XPath editor script is loaded.');
+        }
     }
 }; 

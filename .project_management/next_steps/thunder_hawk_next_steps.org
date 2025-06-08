@@ -1,0 +1,176 @@
+#+TITLE: Next Steps - Thunder Hawk Handoff
+#+AUTHOR: Thunder Hawk
+#+DATE: 2025-01-08
+#+FILETAGS: :next:steps:handoff:thunder-hawk:
+
+* IMMEDIATE PRIORITIES 🎯
+
+** 1. AIPreparationRecord Model Implementation (HIGHEST PRIORITY)
+   - **File**: `apps/content_extractor/models/ai_preparation.py` (NEW)
+   - **Action**: Create the foundational Django model for AI-focused data storage
+   - **Specifications**: Complete model structure documented in direction analysis
+   - **Key Fields**: session_id, field_name, extracted_content, user_comment, xpath_used
+   - **Migration**: Run `python manage.py makemigrations` and `python manage.py migrate`
+   - **Estimated Time**: 1-2 hours
+
+** 2. Basic XPath Editor Modal Infrastructure (HIGH PRIORITY)
+   - **File**: `apps/content_extractor/static/js/content_extractor_xpath_editor.js` (NEW)
+   - **Action**: Implement core modal system for xpath editing
+   - **Requirements**: Modal popup, xpath input field, basic validation
+   - **Integration**: With existing JavaScript injection system
+   - **Testing**: Basic modal display and form handling
+   - **Estimated Time**: 3-4 hours
+
+** 3. Comment Input System Integration (HIGH PRIORITY)
+   - **File**: Enhance existing menu system files
+   - **Action**: Add comment input capabilities for field selections
+   - **Integration**: With current menu hierarchy and field selection workflow
+   - **Storage**: Link comments to field selections in new model
+   - **UI**: Simple text area input within existing menu structure
+   - **Estimated Time**: 2-3 hours
+
+* APPROACH STRATEGY
+
+** Phase 1: Foundation (Current Priority)
+1. **Start with Model**: AIPreparationRecord provides data foundation
+2. **Basic Modal**: Simple xpath editor without advanced features
+3. **Comment Integration**: Basic text input for field context
+4. **Verification**: Test integration with existing multi-element system
+
+** Phase 2: Enhancement (Next Model)
+1. **Click-to-Preview**: Interactive xpath component exploration
+2. **Generalization Engine**: Automatic xpath pattern suggestions
+3. **Advanced UI**: Rich text comments, better modal interface
+
+** Phase 3: Polish (Future)
+1. **AI Export**: Context formatting for AI consumption
+2. **Performance Optimization**: Real-time preview efficiency
+3. **User Experience**: Error recovery and help systems
+
+* KEY DECISIONS NEEDED
+
+** Model Integration
+- **Question**: How to handle transition from existing FieldSelector model?
+- **Options**: 
+  - Parallel systems during transition
+  - Direct migration with data conversion
+  - Hybrid approach with compatibility layer
+- **Recommendation**: Start with parallel system, migrate gradually
+
+** XPath Editor Complexity
+- **Question**: How advanced should first version be?
+- **Options**:
+  - Basic text input with validation
+  - Component breakdown without preview
+  - Full interactive system with real-time preview
+- **Recommendation**: Start basic, add preview in Phase 2
+
+** Comment Field Scope
+- **Question**: What level of comment functionality for Phase 1?
+- **Options**:
+  - Plain text only
+  - Rich text with formatting
+  - Template-based comments
+- **Recommendation**: Plain text first, enhance later
+
+* TECHNICAL GUIDANCE
+
+** Model Implementation Notes
+```python
+# Key considerations for AIPreparationRecord:
+# - Use TextField for all content (AI consumption flexibility)
+# - Include xpath_used for reference and debugging
+# - user_comment field is critical for AI context
+# - session_id for grouping related extractions
+# - Consider parent_record for nested structures
+```
+
+** JavaScript Integration Points
+- **Existing System**: Multi-element subfield management works well
+- **Modal Trigger**: Integrate with field selection workflow
+- **Data Flow**: Field selection → XPath editing → Comment input → Storage
+- **Testing**: Use existing test commands with new model
+
+** Database Migration Strategy
+- **Create New Model**: Don't modify existing FieldSelector initially
+- **Parallel Storage**: Store in both systems during transition
+- **Data Validation**: Ensure xpath and content accuracy
+- **Rollback Plan**: Keep existing system functional
+
+* FILES TO REVIEW BEFORE STARTING
+
+** Essential Reading (MUST READ):
+1. **`.project_management/next_steps/thunder_hawk_direction_analysis.org`**
+   - Complete technical specifications
+   - Proposed model structure with all fields
+   - Risk assessment and mitigation strategies
+
+2. **`.project_management/active_work_tracking.org`**
+   - Updated priorities and current status
+   - Deprecated approaches to avoid
+
+3. **`apps/content_extractor/static/js/content_extractor_events.js`**
+   - Existing event handling patterns (Crimson Viper's work)
+   - Integration points for new modal system
+
+** Supporting Context:
+4. **`apps/content_extractor/selectors/interactive_selector.py`**
+   - Current system architecture and WebDriver setup
+   - JavaScript injection patterns
+
+5. **`.project_management/conversation_logs/thunder-hawk/2025-01-08_session_log.org`**
+   - Session context and decision rationale
+
+* CURRENT STATE SUMMARY
+
+** What's Working ✅
+- Multi-element subfield management system (Crimson Viper)
+- JavaScript injection and menu systems
+- WebDriver Chrome setup for macOS
+- Field selection and tracking functionality
+
+** What Needs Implementation ⏳
+- AIPreparationRecord model
+- XPath editor modal system
+- Comment input integration
+- Data storage routing to new model
+
+** What's Deprecated ❌
+- Direct LabEquipmentPage model targeting
+- Automatic pattern detection approaches
+- Multi-value field generalization (replaced by manual xpath editing)
+
+* WARNING NOTES ⚠️
+
+** Don't Break Existing System
+- Crimson Viper's multi-element system should remain functional
+- Test existing functionality after each change
+- Use parallel implementation approach
+
+** XPath Complexity
+- Real-time preview can be performance-intensive
+- Start with basic validation, add preview carefully
+- Consider browser compatibility for advanced features
+
+** User Experience Priority
+- Keep modal interface simple initially
+- Focus on functionality over fancy UI
+- Ensure error recovery and help text
+
+* SUCCESS CRITERIA
+
+** Phase 1 Complete When:
+- [ ] AIPreparationRecord model created and migrated
+- [ ] Basic xpath editor modal displays and accepts input
+- [ ] Comment input integrated with field selection
+- [ ] Data saves correctly to new model
+- [ ] Existing multi-element system still works
+- [ ] Basic testing completed
+
+** Ready for Phase 2 When:
+- [ ] Foundation solid and tested
+- [ ] User feedback on basic interface gathered
+- [ ] Performance baseline established
+- [ ] Integration with existing system verified
+
+The comprehensive technical analysis provides all necessary specifications. Focus on solid foundation implementation rather than trying to implement all features at once. 

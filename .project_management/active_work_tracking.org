@@ -105,170 +105,159 @@
 
 * CURRENT HIGH PRIORITY WORK 🎯
 
-** CRITICAL: Interactive Selector Architectural Refactoring - QUANTUM RIDGE HANDOFF
+** CRITICAL: MAJOR DIRECTION CHANGE - AI PREPARATION FOCUSED SYSTEM
    SCHEDULED: <2025-01-08>
    :PROPERTIES:
-   :ASSIGNED_TO: Velocity Compass
+   :ASSIGNED_TO: Thunder Hawk (ongoing)
    :PRIORITY: CRITICAL
-   :PROJECT_TYPE: Code Architecture & Maintainability
-   :STATUS: Ready for Implementation
-   :HANDOFF_FROM: Quantum Ridge
-   :ISSUE: Monolithic file (4000+ lines) blocking development
+   :PROJECT_TYPE: System Architecture Redesign
+   :STATUS: Planning Phase - Ready for Implementation
+   :DIRECTION_CHANGE: Complete shift from LabEquipmentPage model to AI preparation system
    :END:
 
-   **CRITICAL ARCHITECTURAL DISCOVERY**: The interactive_selector.py file has grown to 4000+ lines and has become a development bottleneck, containing JavaScript injection, selection logic, navigation, UI management, and database operations all mixed together.
+   **NEW SYSTEM REQUIREMENTS** (User Guidance):
 
-   **QUANTUM RIDGE ACCOMPLISHED**:
-   ✅ Fixed JavaScript brace escaping issues in f-strings
-   ✅ Started implementing 3-level hierarchy (showInstanceManagementMenu, createNewInstance functions)
-   ✅ Added instanceData support to window.contentExtractorData
-   ⚠️ PARTIALLY IMPLEMENTED: 3-level hierarchy components are incomplete and should be disabled first
+   *** 1. XPath Editor Modal System
+   - [ ] **Interactive XPath Editor**: Modal to edit xpath of selected elements
+   - [ ] **Generalization Capability**: Convert specific paths to generalized forms
+   - [ ] **Click-to-Preview**: Click any point in xpath to preview what selecting that would extract
+   - [ ] **Fine-tuning Interface**: Visual feedback for xpath modifications
 
-   **IMMEDIATE TASKS**:
+   *** 2. AI Preparation Data Model (Not LabEquipmentPage)
+   - [ ] **New Model Design**: Store relevant information for AI processing
+   - [ ] **Long String Fields**: All fields should be long strings for AI consumption
+   - [ ] **AI-Focused Structure**: Optimized for feeding to AI models for final answers
 
-   *** PHASE 1: Disable Partial Implementation (1-2 hours)
-   - [ ] Comment out new functions (lines 712-820, 905-920, 3101-3111)
-   - [ ] Remove instanceData from window object
-   - [ ] Verify existing functionality still works
-   - [ ] Backup file: ✅ apps/content_extractor/selectors/interactive_selector_backup_quantum_ridge.py
+   *** 3. Comment Field System
+   - [ ] **Per-Field Comments**: Each field needs a comment field for AI context
+   - [ ] **Menu Integration**: Comment input via existing menu system
+   - [ ] **AI Context**: Comments sent to AI model as additional context
 
-   *** PHASE 2: Split Monolithic File (4-6 hours)
-   - [ ] **javascript/templates.py** - JavaScript injection
-   - [ ] **navigation/nested_navigator.py** - Navigation logic  
-   - [ ] **ui/menu_builder.py** - Menu and control panels
-   - [ ] **core/selection_engine.py** - Core selection logic
-   - [ ] **persistence/field_session_manager.py** - Database operations
+   **ARCHITECTURAL IMPLICATIONS**:
+   - Complete shift from direct LabEquipmentPage model usage
+   - Focus on AI preparation rather than direct data storage
+   - Enhanced user control over xpath selection and generalization
+   - Context-rich data preparation for AI processing
 
-   *** PHASE 3: Re-implement 3-level Hierarchy Cleanly (3-4 hours)
-   - [ ] Clean implementation after modular architecture
-   - [ ] Proper separation of concerns
-   - [ ] Maintainable code structure
-
-   **FOUNDATION STATUS**: Solid, but code structure needs improvement before feature development can continue efficiently.
-
-** LabEquipmentPage Field Selector System - MAJOR DIRECTION CHANGE
+** Interactive Selector Architectural Refactoring - MAINTAINED PRIORITY
    SCHEDULED: <2025-01-08>
    :PROPERTIES:
    :ASSIGNED_TO: Future Models
    :PRIORITY: HIGH
-   :PROJECT_TYPE: Field-Specific Content Selection
-   :STATUS: Foundation Ready - Implementation Required
-   :APPROACH: Pure Human Selection (Zero AI Processing)
-   :TARGET_MODEL: LabEquipmentPage
+   :PROJECT_TYPE: Code Architecture & Maintainability
+   :STATUS: Ready for Implementation
+   :HANDOFF_FROM: Quantum Ridge → Crimson Viper → Thunder Hawk
+   :ISSUE: Monolithic file blocking development
    :END:
-   
-   **NEW OBJECTIVE**: Build system where humans manually select content for each specific field in the LabEquipmentPage model. Eliminate all AI processing - pure human-driven field assignment.
 
-   **CORE METHODOLOGY**: 
-   - **Field-Specific Selection**: Floating menu allows users to specify which LabEquipmentPage field they're selecting
-   - **Pure Human Assignment**: Users manually select content and assign it to model fields
-   - **Multi-Value Field Handling**: For fields with multiple values, users select 2 examples, system generates generalized selector for user modification
-   - **Zero AI Processing**: No algorithmic content detection or automatic field assignment
+   **CURRENT STATUS**: 
+   - ✅ Multi-element subfield management system implemented by Crimson Viper
+   - ✅ WebDriver Chrome path issues resolved by Thunder Hawk
+   - ⚠️ Monolithic architecture still needs refactoring for maintainability
 
-* IMPLEMENTATION PLAN - LABEQUIPMENTPAGE FIELD SELECTOR
+   **REFACTORING STILL NEEDED**:
+   - Split 4000+ line interactive_selector.py into modular components
+   - Separate JavaScript injection from selection logic
+   - Improve maintainability for new direction requirements
 
-** Phase 1: Enhanced Interactive Selector ⏳ IN PROGRESS
-*** 1.1 Floating Field Selection Menu 
-    - **File**: `apps/content_extractor/selectors/interactive_selector.py` (EXPAND EXISTING)
-    - **Scope**: Add field-specific selection capability to existing selector
-    - **NEW Requirements**:
-      - Floating menu with all LabEquipmentPage fields as options
-      - Field selection before content selection (user chooses field first)
-      - Visual indication of which field is being selected for
-      - Field-specific selection tracking and storage
-      - Session management for field completion tracking
-    - **LabEquipmentPage Fields to Support**:
-      - title, short_description, full_description
-      - specification_confidence, needs_review
-      - spec_groups (with nested specs) 
-      - models, features, accessories
-      - categorized_tags, gallery_images
-      - source_url, source_type, data_completeness
-    - **Dependencies**: Existing selenium setup
+** Multi-Element Subfield Management - COMPLETED ✅
+   CLOSED: [2025-01-08]
+   :PROPERTIES:
+   :COMPLETED_BY: Crimson Viper
+   :COMPLETION_DATE: 2025-01-08
+   :FINAL_STATUS: Fully functional multi-element instance management
+   :END:
+
+   **CRIMSON VIPER ACHIEVEMENTS**:
+   - ✅ 4-level navigation architecture implemented
+   - ✅ Instance creation and management (fieldName[1], fieldName[2], etc.)
+   - ✅ Subfield configuration system
+   - ✅ Both page selection and text input methods
+   - ✅ Progress tracking and completion indicators
+   - ✅ Consistent UI/UX patterns maintained
+
+* UPDATED IMPLEMENTATION PLAN - AI PREPARATION SYSTEM
+
+** Phase 1: XPath Editor Modal System
+*** 1.1 Interactive XPath Editor
+    - **File**: `apps/content_extractor/static/js/content_extractor_xpath_editor.js` (NEW)
+    - **Scope**: Modal interface for xpath editing and generalization
+    - **Requirements**:
+      - Modal popup with xpath input field
+      - Real-time preview of selected elements
+      - Path component breakdown (clickable hierarchy)
+      - Generalization suggestions (remove indices, use contains(), etc.)
+      - Visual feedback for each xpath modification
+    - **Dependencies**: Existing JavaScript injection system
     - **Estimated Effort**: 2-3 model sessions
 
-*** 1.2 Multi-Value Field Generalization
-    - **File**: `apps/content_extractor/utils/multi_value_generalizer.py` (NEW)
-    - **Scope**: Generate generalized selectors for multi-value fields
+*** 1.2 Click-to-Preview System
+    - **File**: Enhancement to xpath editor
+    - **Scope**: Interactive xpath path exploration
     - **Requirements**:
-      - Accept 2 human-selected examples for multi-value fields
-      - Generate generalized XPath selector covering both examples
-      - Present selector to user for modification/approval
-      - Handle common patterns: lists, grids, repeated structures
-      - Fallback to manual selection if generalization fails
-    - **Target Fields**: models, features, accessories, categorized_tags, gallery_images
-    - **Dependencies**: lxml, xpath analysis
-    - **Estimated Effort**: 3-4 model sessions
+      - Break xpath into clickable components
+      - Show preview of what each component would select
+      - Visual highlighting of different selection levels
+      - Ability to rebuild xpath from selected components
+    - **Integration**: With existing element selection system
 
-*** 1.3 Field-Specific Validation and Storage
-    - **File**: `apps/content_extractor/models.py` (EXPAND EXISTING)
-    - **Scope**: Enhanced storage for field-specific selections
+** Phase 2: AI Preparation Data Model
+*** 2.1 New Model Design
+    - **File**: `apps/content_extractor/models/ai_preparation.py` (NEW)
+    - **Scope**: Model optimized for AI consumption
     - **Requirements**:
-      - Store field name with each selection
-      - Track completion status per field per page
-      - Validation for field data types and constraints
-      - Progress tracking across multiple pages
-      - Export functionality for field-specific selectors
-    - **Storage Structure**: field_name → selector → extracted_content
-    - **Dependencies**: Django models, JSON fields
-    - **Estimated Effort**: 1-2 model sessions
+      - All fields as TextField (long strings)
+      - Flexible field structure for various content types
+      - Comment fields for each data field
+      - Metadata for AI processing context
+    - **Dependencies**: Django models, migrations
 
-** Phase 2: Field Management and Workflow ⏳ PENDING
-*** 2.1 Field Completion Tracking
-    - **File**: `apps/content_extractor/utils/field_tracker.py` (NEW)
-    - **Scope**: Track which fields are complete across pages
+*** 2.2 Data Storage Integration
+    - **File**: Update existing selection system
+    - **Scope**: Route data to new AI preparation model
     - **Requirements**:
-      - Visual progress indicators per field
-      - Incomplete field highlighting
-      - Batch completion reporting
-      - Field priority recommendations
-      - Resume incomplete field selection sessions
-    - **Dependencies**: Django models, progress tracking
-    - **Estimated Effort**: 2-3 model sessions
+      - Replace LabEquipmentPage targeting
+      - Store extracted content as strings
+      - Include xpath information for reference
+      - Store user comments for AI context
 
-*** 2.2 Enhanced Management Commands
-    - **File**: `apps/content_extractor/management/commands/` (EXPAND EXISTING)
-    - **Scope**: CLI tools for field-specific selection
-    - **NEW Commands**:
-      - `select_lab_equipment_fields`: Launch field-specific selection session
-      - `show_field_progress`: Display completion status by field
-      - `export_field_selectors`: Export selectors organized by field
-      - `validate_field_selections`: Test field selectors on new pages
-    - **Estimated Effort**: 1-2 model sessions
-
-*** 2.3 Field-Specific Testing Framework
-    - **File**: `apps/content_extractor/tests/test_field_selection.py` (NEW)
-    - **Scope**: Test field-specific selection and validation
+** Phase 3: Comment Field Integration
+*** 3.1 Menu System Enhancement
+    - **File**: `apps/content_extractor/static/js/content_extractor_comments.js` (NEW)
+    - **Scope**: Comment input integration
     - **Requirements**:
-      - Test each LabEquipmentPage field selection
-      - Validate field data type compliance
-      - Test multi-value field generalization
-      - End-to-end field completion workflow tests
-    - **Dependencies**: Django test framework
-    - **Estimated Effort**: 2-3 model sessions
+      - Comment input for each field selection
+      - Rich text or plain text options
+      - Comment persistence with selections
+      - Integration with existing menu hierarchy
+    - **Integration**: With field selection workflow
 
-** Phase 3: Advanced Field Features ⏳ PENDING
-*** 3.1 Field Relationship Mapping
-    - **File**: `apps/content_extractor/utils/field_relationships.py` (NEW)
-    - **Scope**: Handle related field selection patterns
+*** 3.2 AI Context Preparation
+    - **File**: `apps/content_extractor/utils/ai_context_builder.py` (NEW)
+    - **Scope**: Format data for AI consumption
     - **Requirements**:
-      - Detect when fields are commonly found together
-      - Suggest related field selection after completing one field
-      - Handle nested field structures (spec_groups with nested specs)
-      - Cross-field validation and consistency checking
-    - **Dependencies**: Pattern analysis, Django models
-    - **Estimated Effort**: 3-4 model sessions
+      - Combine extracted content with comments
+      - Structure for AI model input
+      - Context preservation and formatting
+      - Export capabilities for AI processing
 
-*** 3.2 Selector Export and Reuse
-    - **File**: `apps/content_extractor/utils/selector_exporter.py` (NEW)
-    - **Scope**: Export and import field-specific selectors
-    - **Requirements**:
-      - Export selectors grouped by field and site
-      - Import selectors for new sites with similar structure
-      - Selector library management
-      - Cross-site selector validation
-    - **Dependencies**: JSON export, file management
-    - **Estimated Effort**: 2-3 model sessions
+* DEPRIORITIZED/ARCHIVED WORK
+
+** Multi-Value Field Generalization - SUPERSEDED
+   :PROPERTIES:
+   :STATUS: Superseded by XPath Editor Modal System
+   :REASON: New direction focuses on interactive xpath editing rather than automatic pattern detection
+   :END:
+
+   Previous approach of automatic pattern detection from 2 examples is replaced by user-controlled xpath generalization through interactive modal interface.
+
+** LabEquipmentPage Direct Integration - DEPRECATED
+   :PROPERTIES:
+   :STATUS: Deprecated in favor of AI Preparation Model
+   :REASON: System now targets AI preparation rather than direct model population
+   :END:
+
+   Original plan to directly populate LabEquipmentPage fields is replaced by AI preparation focused approach with string-based storage for AI consumption.
 
 * FUTURE CONSIDERATIONS (SAVE FOR LATER) 🔮
 

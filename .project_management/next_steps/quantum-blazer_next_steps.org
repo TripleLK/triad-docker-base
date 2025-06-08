@@ -1,0 +1,135 @@
+#+TITLE: Next Steps - Quantum Blazer
+#+AUTHOR: Quantum Blazer
+#+DATE: [2025-01-22]
+#+FILETAGS: :next-steps:quantum-blazer:
+
+* Immediate Priorities (CRITICAL)
+
+** Priority 1: Fix Subfield XPath Saving
+STATUS: BROKEN - Users cannot save XPath from subfield menus
+
+*** Investigation Required
+- Test the complete workflow: subfield selection → XPath editor → save
+- Verify `openSubfieldXPathEditor()` function properly calls XPath editor
+- Check if `currentSubfieldContext` is being set correctly
+- Validate `saveSubfieldXPath()` function actually updates the data structure
+
+*** Likely Issues
+1. **Function Call Chain**: `openSubfieldXPathEditor()` may not be properly triggering XPath editor
+2. **Context Setting**: `currentSubfieldContext` not being populated before save
+3. **Data Path**: Subfield XPath save may be writing to wrong location in data structure
+4. **Editor Integration**: XPath editor may not be detecting subfield context properly
+
+*** Testing Approach
+1. Add console.log statements throughout the subfield XPath workflow
+2. Test each step: menu → editor → save → data verification
+3. Compare with working main field XPath workflow
+
+** Priority 2: Fix Menu Sizing Consistency
+STATUS: INCONSISTENT - Subfield menus not using unified system properly
+
+*** Root Cause Analysis
+- Subfield menus may be falling back to legacy createSubfieldMethodMenu()
+- Unified menu system config may be incomplete for subfield type
+- CSS styling may not be applied consistently
+
+*** Implementation Strategy
+1. Ensure ALL subfield menus use `ContentExtractorUnifiedMenu.createMenu()`
+2. Remove or deprecate legacy subfield menu functions
+3. Verify unified menu styling applies to subfield menu types
+4. Test menu sizing consistency across all menu types
+
+* Approach for Next Model
+
+** Key Files to Review FIRST
+1. `apps/content_extractor/static/js/content_extractor_events.js` - Lines 955-1100
+   - Focus on `selectSubfield()` and `openSubfieldXPathEditor()` functions
+   - Verify function call chain is complete
+
+2. `apps/content_extractor/static/js/content_extractor_xpath_editor.js` - Lines 940-1000
+   - Check `saveXPath()`, `saveSubfieldXPath()` functions
+   - Verify `currentSubfieldContext` handling
+
+3. `apps/content_extractor/static/js/content_extractor_unified_menu.js`
+   - Review subfield menu creation logic
+   - Ensure consistent sizing configuration
+
+** Debugging Strategy
+1. **Start with User Workflow**: Test exact user steps that are failing
+2. **Add Logging**: Insert console.log at each step to trace execution
+3. **Compare Working System**: Use main field XPath editing as reference
+4. **Incremental Testing**: Fix one issue at a time and verify
+
+** Testing Environment
+- Django server on port 8001 already configured
+- User can test subfield menu access
+- Focus on end-to-end XPath editing workflow
+
+* Critical Decisions Needing User Input
+
+** Architecture Decisions
+1. **Legacy Function Removal**: Should legacy subfield menu functions be removed entirely?
+2. **Error Handling**: How should XPath save failures be communicated to user?
+3. **Fallback Strategy**: Should there be fallback to legacy system if unified system fails?
+
+** User Experience Decisions
+1. **XPath Editor Size**: Should subfield XPath editor be same size as main field editor?
+2. **Save Feedback**: What user feedback should be shown when XPath save succeeds/fails?
+3. **Menu Behavior**: Should subfield menus auto-close after XPath save like main menus?
+
+* Current State Analysis
+
+** What's Working
+- ✅ Subfield menu architecture is in place
+- ✅ XPath editor has subfield context support
+- ✅ Data structures support subfield XPath storage
+- ✅ Menu positioning and cleanup improved
+
+** What's Broken
+- ❌ XPath save button in subfield menus doesn't function
+- ❌ Menu sizing inconsistent
+- ❌ User workflow incomplete
+
+** What's Partially Working
+- ⚠️ Subfield menus open (but wrong size)
+- ⚠️ XPath editor can be triggered (but save doesn't work)
+- ⚠️ Functions exist (but integration incomplete)
+
+* Resources for Next Model
+
+** Documentation Links
+- **Current Session**: `.project_management/conversation_logs/quantum-blazer/2025-01-22_session_log.org`
+- **Cleanup Report**: `.project_management/cleanup_reports/quantum-blazer_cleanup.org`
+- **Model Tracking**: `.project_management/model_name_tracking.org` (Model 30)
+
+** Reference Implementation
+- **Working XPath Editor**: Main field XPath editing workflow (fully functional)
+- **Working Unified Menus**: Main field menu system (consistent sizing)
+- **Working Subfield Selection**: Subfield element selection works properly
+
+** User Context
+User wants to "override entire model specs with XPath for each model" - this is the core use case that requires functional subfield XPath editing.
+
+* Verification Checklist for Next Model
+
+Before claiming completion, verify:
+- [ ] User can open subfield menu (same size as main field menus)
+- [ ] User can click XPath edit button in subfield menu
+- [ ] XPath editor opens with correct sizing
+- [ ] User can edit XPath and click save
+- [ ] XPath actually saves to correct data structure location
+- [ ] User feedback confirms successful save
+- [ ] Menu behavior consistent with main field menus
+
+* Estimated Effort
+
+** Priority 1 (XPath Saving): 1-2 hours
+- Debugging function call chain
+- Fixing context setting
+- Testing save workflow
+
+** Priority 2 (Menu Sizing): 30 minutes  
+- Ensuring unified menu system usage
+- CSS consistency verification
+
+** Total: 2-3 hours to complete user requirements 

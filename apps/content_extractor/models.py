@@ -326,3 +326,259 @@ class FieldSelectionSession(models.Model):
         """Get list of fields that still need to be completed"""
         all_field_choices = [choice[0] for choice in SiteFieldSelector.FIELD_CHOICES]
         return [field for field in all_field_choices if field not in self.completed_fields]
+
+
+class AIPreparationRecord(models.Model):
+    """
+    Store extracted content optimized for AI processing.
+    
+    This model represents the new direction for content extraction focused on 
+    AI preparation rather than direct LabEquipmentPage model population.
+    All fields are designed for flexible AI consumption with context-rich data.
+    
+    Created by: Silver Phoenix
+    Date: 2025-01-08
+    Project: Triad Docker Base - AI Preparation System
+    """
+    
+    # Identification
+    session_id = models.CharField(
+        max_length=255,
+        help_text="Unique identifier for grouping related extractions"
+    )
+    source_url = models.URLField(help_text="Source URL where content was extracted")
+    extraction_timestamp = models.DateTimeField(
+        auto_now_add=True,
+        help_text="When this extraction was performed"
+    )
+    
+    # Content Fields (All TextField for AI flexibility)
+    field_name = models.CharField(
+        max_length=255,
+        help_text="Name of the field being extracted (e.g., 'title', 'description')"
+    )
+    extracted_content = models.TextField(
+        help_text="The actual extracted text content"
+    )
+    xpath_used = models.TextField(
+        help_text="XPath selector that extracted this content"
+    )
+    css_selector_used = models.TextField(
+        blank=True,
+        help_text="CSS selector alternative (if applicable)"
+    )
+    
+    # AI Context Fields
+    user_comment = models.TextField(
+        blank=True,
+        help_text="User-provided context for AI processing"
+    )
+    extraction_method = models.CharField(
+        max_length=50,
+        choices=[
+            ('page_selection', 'Selected from page'),
+            ('text_input', 'Manual text input'),
+            ('xpath_edit', 'Edited XPath selection'),
+        ],
+        default='page_selection',
+        help_text="Method used to extract this content"
+    )
+    confidence_level = models.CharField(
+        max_length=20,
+        choices=[
+            ('high', 'High Confidence'),
+            ('medium', 'Medium Confidence'),
+            ('low', 'Low Confidence'),
+        ],
+        default='medium',
+        help_text="Confidence level in extraction accuracy"
+    )
+    
+    # Metadata for AI Processing
+    content_type = models.CharField(
+        max_length=100,
+        choices=[
+            ('text', 'Plain Text'),
+            ('list', 'List of Items'),
+            ('nested_data', 'Nested/Structured Data'),
+            ('html', 'HTML Content'),
+            ('number', 'Numeric Data'),
+            ('url', 'URL/Link'),
+        ],
+        default='text',
+        help_text="Type of content for AI processing optimization"
+    )
+    preprocessing_notes = models.TextField(
+        blank=True,
+        help_text="Technical notes for AI processing"
+    )
+    validation_status = models.CharField(
+        max_length=20,
+        choices=[
+            ('valid', 'Valid'),
+            ('needs_review', 'Needs Review'),
+            ('error', 'Error - Needs Fixing'),
+        ],
+        default='valid',
+        help_text="Validation status of extracted content"
+    )
+    
+    # Relationships and Organization
+    parent_record = models.ForeignKey(
+        'self',
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        help_text="Parent record for nested content structures"
+    )
+    instance_index = models.IntegerField(
+        default=0,
+        help_text="Instance number for multi-instance fields (0 for single instance)"
+    )
+    
+    # Creation tracking
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['session_id', 'field_name', 'instance_index']
+        unique_together = ['session_id', 'field_name', 'instance_index']
+        indexes = [
+            models.Index(fields=['session_id', 'field_name']),
+            models.Index(fields=['source_url', 'extraction_timestamp']),
+            models.Index(fields=['validation_status']),
+        ]
+        
+    def __str__(self):
+        instance_str = f"[{self.instance_index}]" if self.instance_index > 0 else ""
+        return f"{self.session_id} - {self.field_name}{instance_str}"
+    
+    @property
+    def content_preview(self):
+        """Return first 100 characters of extracted content for display."""
+        if not self.extracted_content:
+            return "(No content)"
+        return (self.extracted_content[:100] + "...") if len(self.extracted_content) > 100 else self.extracted_content
+    
+    def save(self, *args, **kwargs):
+        """Auto-set content_type based on extracted content if not specified."""
+        if not self.content_type or self.content_type == 'text':
+            # Simple heuristics for content type detection
+            content = self.extracted_content.strip()
+            if content.startswith('<') and content.endswith('>'):
+                self.content_type = 'html'
+            elif content.startswith('http'):
+                self.content_type = 'url'
+            elif '\n' in content and any(marker in content for marker in ['•', '-', '*', '1.', '2.']):
+                self.content_type = 'list'
+            elif content.replace('.', '').replace(',', '').isdigit():
+                self.content_type = 'number'
+        
+        super().save(*args, **kwargs)
+
+
+class AIContextBuilder:
+    """
+    Format extracted content and comments for AI consumption.
+    
+    Utility class for exporting AIPreparationRecord data in formats
+    optimized for AI model consumption.
+    """
+    
+    @staticmethod
+    def build_context(session_id):
+        """Build complete context dictionary for a session."""
+        from .models import AIPreparationRecord
+        
+        records = AIPreparationRecord.objects.filter(session_id=session_id).order_by('field_name', 'instance_index')
+        
+        if not records.exists():
+            return None
+            
+        first_record = records.first()
+        context = {
+            'session_id': session_id,
+            'source_url': first_record.source_url,
+            'extraction_timestamp': first_record.extraction_timestamp.isoformat(),
+            'total_fields': records.count(),
+            'fields': {}
+        }
+        
+        for record in records:
+            field_key = record.field_name
+            if record.instance_index > 0:
+                field_key = f"{record.field_name}[{record.instance_index}]"
+                
+            context['fields'][field_key] = {
+                'content': record.extracted_content,
+                'user_comment': record.user_comment,
+                'extraction_method': record.extraction_method,
+                'xpath': record.xpath_used,
+                'confidence': record.confidence_level,
+                'content_type': record.content_type,
+                'validation_status': record.validation_status,
+            }
+        
+        return context
+    
+    @staticmethod
+    def export_for_ai(session_id, format='json'):
+        """Export in format optimized for AI model consumption."""
+        import json
+        
+        context = AIContextBuilder.build_context(session_id)
+        if not context:
+            return None
+            
+        if format == 'json':
+            return json.dumps(context, indent=2)
+        elif format == 'prompt':
+            return AIContextBuilder._format_as_prompt(context)
+        elif format == 'structured':
+            return AIContextBuilder._format_as_structured_data(context)
+        else:
+            return context
+    
+    @staticmethod
+    def _format_as_prompt(context):
+        """Format context as AI prompt text."""
+        prompt_parts = [
+            f"Content Extraction Session: {context['session_id']}",
+            f"Source: {context['source_url']}",
+            f"Extracted: {context['extraction_timestamp']}",
+            "",
+            "Extracted Fields:"
+        ]
+        
+        for field_name, field_data in context['fields'].items():
+            prompt_parts.append(f"\n{field_name.upper()}:")
+            prompt_parts.append(f"Content: {field_data['content']}")
+            if field_data['user_comment']:
+                prompt_parts.append(f"Context: {field_data['user_comment']}")
+            prompt_parts.append(f"Confidence: {field_data['confidence']}")
+            prompt_parts.append("")
+        
+        return "\n".join(prompt_parts)
+    
+    @staticmethod
+    def _format_as_structured_data(context):
+        """Format context as structured data for AI processing."""
+        structured = {
+            'metadata': {
+                'session_id': context['session_id'],
+                'source_url': context['source_url'],
+                'extraction_timestamp': context['extraction_timestamp'],
+                'total_fields': context['total_fields']
+            },
+            'content': {}
+        }
+        
+        for field_name, field_data in context['fields'].items():
+            structured['content'][field_name] = {
+                'value': field_data['content'],
+                'context': field_data['user_comment'],
+                'confidence': field_data['confidence'],
+                'type': field_data['content_type']
+            }
+        
+        return structured

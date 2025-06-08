@@ -1,0 +1,83 @@
+#+TITLE: Silver Phoenix Next Steps - XPath Editor Integration Fix
+#+DATE: 2025-01-08
+#+AUTHOR: Silver Phoenix
+#+FILETAGS: :next:steps:xpath:integration:
+
+* URGENT: Fix XPath Editor Integration Issues
+
+** CONTEXT
+Silver Phoenix implemented complete AI Preparation System foundation:
+- ✅ AIPreparationRecord model (complete)
+- ✅ Django admin interface (complete) 
+- ✅ XPath editor modal JavaScript (complete - 910 lines)
+- ❌ Integration with existing selection menu (BROKEN)
+
+** CRITICAL ISSUES TO FIX
+
+*** Issue 1: XPath Editor Not Triggered by Menu Arrows
+- **Problem**: Clicking ">" arrows in Selections menu doesn't open XPath editor
+- **Expected**: ">" arrow click should open XPath editor modal
+- **Current**: No response or wrong action occurs
+
+*** Issue 2: XPath Field Not Populated
+- **Problem**: When XPath editor opens, the XPath input field is empty
+- **Expected**: Should be pre-populated with selected element's XPath
+- **Current**: Empty field requiring manual XPath entry
+
+** SPECIFIC TASKS FOR NEXT MODEL
+
+*** Task 1: Locate Menu Arrow Click Handlers
+- **File to Check**: `apps/content_extractor/static/js/content_extractor_ui.js`
+- **Action**: Find where ">" arrows are created in selection menus
+- **Goal**: Identify current click handler for ">" arrows
+
+*** Task 2: Replace/Enhance Arrow Click Handler
+- **Current Handler**: Replace with XPath editor trigger
+- **Function to Call**: `ContentExtractorXPathEditor.openEditor(element, fieldName, xpath)`
+- **Data Required**: Pass selected element, field name, and generated XPath
+
+*** Task 3: Fix Data Flow
+- **From**: Element selection and storage
+- **To**: XPath editor modal
+- **Requirements**: 
+  - Get selected element from stored selection data
+  - Generate correct XPath for element
+  - Pass data to `openEditor()` function
+
+*** Task 4: Test Integration
+- **Workflow**: Select element → click ">" arrow → XPath editor opens with populated field
+- **Verification**: 
+  - Modal opens correctly
+  - XPath field has correct value
+  - Can edit and save to AI preparation record
+
+** TECHNICAL DETAILS
+
+*** XPath Editor API (Already Implemented)
+```javascript
+ContentExtractorXPathEditor.openEditor(element, fieldName, initialXPath)
+```
+
+*** Integration Points to Fix
+1. **Menu Creation**: Where ">" arrows are added to selection items
+2. **Click Handler**: What happens when ">" is clicked
+3. **Data Retrieval**: Getting element and XPath for the modal
+
+*** Files to Modify
+- `apps/content_extractor/static/js/content_extractor_ui.js` - Menu UI
+- `apps/content_extractor/static/js/content_extractor_events.js` - Event handlers
+- Possibly others depending on selection storage system
+
+** SUCCESS CRITERIA
+✅ Click ">" arrow in selection menu → XPath editor modal opens
+✅ XPath field is pre-populated with element's XPath
+✅ Can edit XPath and see live preview
+✅ Save creates AIPreparationRecord in database
+✅ Admin interface shows saved records
+
+** PRIORITY: CRITICAL
+This is blocking live testing of the complete AI preparation system.
+All backend components are ready - only integration layer needs fixing.
+
+** ESTIMATED EFFORT: 1-2 model sessions
+The components exist, they just need to be connected properly. 
