@@ -1,0 +1,140 @@
+#+TITLE: Next Steps - Silver Raven Handoff
+#+AUTHOR: Silver Raven
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:silver-raven:handoff:
+
+* URGENT: Fix Snippet InlinePanel Error (30 minutes)
+
+** Problem
+   KeyError: 'field_configs' when accessing Site Configuration snippet add page
+   Location: /admin/snippets/content_extractor/siteconfigurationsnippet/add/
+
+** Root Cause Analysis
+   Proxy model setup in wagtail_hooks.py not properly handling InlinePanel formsets
+   
+** Solution Options (Try in Order)
+   1. **PREFERRED**: Register base models directly instead of proxy models
+   2. **ALTERNATIVE**: Fix proxy model Meta configuration for proper formset handling
+   3. **FALLBACK**: Remove InlinePanel and use separate snippet management
+
+** Implementation Steps
+   ```python
+   # In apps/content_extractor/wagtail_hooks.py
+   # Replace current proxy model approach with:
+   
+   @register_snippet
+   class SiteConfiguration:
+       panels = [
+           MultiFieldPanel([...]),
+           InlinePanel('field_configs', label="Field Configurations"),
+       ]
+   ```
+
+* PRIMARY: Interactive Selector Integration (2-3 hours)
+
+** Objective
+   Connect existing interactive selector JavaScript to new SiteConfiguration models
+   Enable: select elements on page → save XPath to FieldConfiguration → ready for AI
+
+** Current Assets to Leverage
+   - Working interactive selector: apps/content_extractor/static/js/
+   - Nested field selection: manage.py test_nested_selector (confirmed working)
+   - New models: SiteConfiguration, FieldConfiguration (database ready)
+
+** Integration Steps
+
+*** Phase 1: Selector Backend Connection (45 min)
+    1. Create Django view/endpoint to receive XPath data from selector
+    2. Map selector field names to FieldConfiguration.LAB_EQUIPMENT_FIELD_CHOICES
+    3. Implement save logic: current URL domain → find/create SiteConfiguration
+    4. Save XPath selectors to appropriate FieldConfiguration records
+
+*** Phase 2: Frontend Integration (60 min)
+    1. Modify interactive selector JavaScript to POST data to new endpoint
+    2. Update field selection workflow to include site configuration logic
+    3. Add visual feedback for successful XPath saves
+    4. Handle multiple XPath selectors per field (fallback support)
+
+*** Phase 3: Admin Workflow (45 min)
+    1. Test: run selector on lab equipment page → check snippets admin
+    2. Verify: XPath selectors appear in FieldConfiguration snippets
+    3. Validate: can edit/modify selectors through admin interface
+    4. Document: complete workflow from selection to configuration
+
+** Technical Implementation Details
+
+*** New Django View Structure
+   ```python
+   # apps/content_extractor/views.py (create if needed)
+   def save_xpath_configuration(request):
+       # Extract domain from request or POST data
+       # Find or create SiteConfiguration for domain
+       # Process field XPath mappings
+       # Save to FieldConfiguration records
+       # Return JSON success/error response
+   ```
+
+*** Frontend Modifications
+   ```javascript
+   // Modify content_extractor_events.js
+   // After XPath selection completed:
+   fetch('/content-extractor/save-configuration/', {
+       method: 'POST',
+       body: JSON.stringify({
+           domain: window.location.hostname,
+           field_mappings: {
+               'title': ['//h1[@class="product-title"]'],
+               'description': ['//div[@class="description"]/p'],
+               // ... other fields
+           }
+       })
+   })
+   ```
+
+* SECONDARY: Workflow Testing & Documentation (1 hour)
+
+** End-to-End Validation
+   1. Create test SiteConfiguration via admin interface
+   2. Run interactive selector on airscience.com test page
+   3. Verify XPath selectors saved to FieldConfiguration
+   4. Test editing configurations through admin interface
+   5. Validate multiple sites can have different configurations
+
+** Documentation Updates
+   1. Update user workflow documentation
+   2. Create admin interface usage guide
+   3. Document field mapping between selector and LabEquipmentPage model
+
+* Integration Architecture Summary
+
+** Current State (Silver Raven Complete)
+   ```
+   ✅ SiteConfiguration model (site domain, metadata)
+   ✅ FieldConfiguration model (XPath per LabEquipmentPage field)
+   ✅ Database migrations applied
+   ❌ Admin interface (InlinePanel error)
+   ❌ Interactive selector connection
+   ```
+
+** Target State (Next Model Goal)
+   ```
+   ✅ Working admin interface for site/field configuration
+   ✅ Interactive selector saves to new models
+   ✅ Complete workflow: select → save → configure → ready for AI
+   ✅ Multi-site support with reusable configurations
+   ```
+
+** Final Workflow Achievement
+   1. Admin creates SiteConfiguration for lab supplier domain
+   2. User runs interactive selector on any page from that site  
+   3. XPath selectors automatically saved to FieldConfiguration
+   4. Admin can review/edit selectors via snippets interface
+   5. System ready for AI processing with structured field mappings
+
+* Files to Modify
+  - apps/content_extractor/wagtail_hooks.py (fix error)
+  - apps/content_extractor/views.py (create integration endpoint)
+  - apps/content_extractor/urls.py (route new endpoint)
+  - apps/content_extractor/static/js/content_extractor_events.js (POST integration)
+
+**SUCCESS CRITERIA**: User can select elements → see them in admin → edit configurations 

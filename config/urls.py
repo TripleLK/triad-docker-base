@@ -21,6 +21,7 @@ urlpatterns = [
     path("api/tags/", tag_views.get_tags_api, name='api_tags'),
     path("api/v2/", include('apps.lab_equipment_api.urls')),  # Lab Equipment API v2 (DRF)
     path("api/v3/", api.urls),  # Lab Equipment API v3 (Django Ninja)
+    path("content-extractor/", include('apps.content_extractor.urls')),  # Site Configuration Integration
     path("", include('apps.base_site.urls')),
 ]
 

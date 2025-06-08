@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['*']
 
 # CORS settings for development
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 # Disable HTTPS/SSL settings
 SECURE_SSL_REDIRECT = False

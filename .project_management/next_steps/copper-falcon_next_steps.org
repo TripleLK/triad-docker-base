@@ -1,0 +1,152 @@
+#+TITLE: Next Steps - Copper Falcon
+#+AUTHOR: Copper Falcon
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:copper-falcon:
+
+* CRITICAL DISCOVERY: Model Purpose Misunderstanding
+
+** User Clarification Summary
+   The current AIPreparationRecord model is completely wrong for the intended use case:
+   - ❌ WRONG: Page-level granular extraction tracking with confidence/validation data
+   - ✅ CORRECT: Site-level field configuration for Lab Equipment Page model processing
+
+** Actual Requirements
+*** Model Purpose
+    - Store configuration for a **site** (not individual pages)
+    - Configure XPath selectors for **Lab Equipment Page model fields**
+    - Support AI-assisted content extraction workflow
+
+*** Data Structure Needed
+    ```
+    Site Configuration Model:
+    - site_domain (CharField) - e.g., "example-lab-supplier.com"
+    - site_name (CharField) - Human readable name
+    - created_date/modified_date (DateTimeFields)
+    
+    Field Configuration Model (related to Site Configuration):
+    - site_config (ForeignKey to Site Configuration)
+    - lab_equipment_field (CharField) - Maps to LabEquipmentPage model field names
+    - xpath_selectors (JSONField) - List of XPath strings (optional)
+    - comment (TextField) - Context for AI processing (optional)
+    ```
+
+*** Workflow
+    1. Admin configures XPath selectors per LabEquipmentPage field for a site
+    2. When processing any page from that site:
+       - Use configured XPaths to extract content
+       - Include comments as context
+       - Send to AI for LabEquipmentPage JSON generation
+       - AI outputs structured data for model population
+
+* IMMEDIATE ACTION PLAN
+
+** Phase 1: Model Redesign (Priority 1)
+*** Remove Current Incorrect Model
+    - Delete AIPreparationRecord model entirely
+    - Remove all associated admin configurations
+    - Clean up database migrations
+
+*** Create Correct Models
+    - SiteConfiguration model (site-level settings)
+    - FieldConfiguration model (per-field XPath/comment storage)
+    - Proper foreign key relationships
+
+** Phase 2: Admin Interface Design (Priority 2)
+*** Wagtail ModelAdmin Configuration
+    - SiteConfigurationAdmin with inline FieldConfiguration editing
+    - Field selection based on LabEquipmentPage model introspection
+    - XPath selector management (add/edit/delete multiple XPaths per field)
+    - Comment editing for AI context
+
+*** User Experience
+    - Site list view showing configured domains
+    - Site detail view with field configuration table
+    - Inline editing for XPath selectors and comments
+    - Field validation for LabEquipmentPage model field names
+
+** Phase 3: Integration Planning (Priority 3)
+*** AI Processing Integration
+    - Configuration retrieval by site domain
+    - XPath execution and content extraction
+    - Comment context inclusion for AI prompts
+    - JSON output validation against LabEquipmentPage model
+
+*** Content Extraction Workflow
+    - Site domain detection from URL
+    - Configuration lookup and field mapping
+    - XPath-based content extraction
+    - AI processing with field comments as context
+
+* TECHNICAL SPECIFICATIONS
+
+** SiteConfiguration Model Fields
+   ```python
+   class SiteConfiguration(models.Model):
+       site_domain = models.CharField(max_length=255, unique=True)
+       site_name = models.CharField(max_length=255)
+       is_active = models.BooleanField(default=True)
+       created_at = models.DateTimeField(auto_now_add=True)
+       updated_at = models.DateTimeField(auto_now=True)
+       notes = models.TextField(blank=True)
+   ```
+
+** FieldConfiguration Model Fields
+   ```python
+   class FieldConfiguration(models.Model):
+       site_config = models.ForeignKey(SiteConfiguration, on_delete=models.CASCADE, related_name='field_configs')
+       lab_equipment_field = models.CharField(max_length=100)  # Maps to LabEquipmentPage fields
+       xpath_selectors = models.JSONField(default=list, blank=True)  # List of XPath strings
+       comment = models.TextField(blank=True)  # Context for AI
+       is_active = models.BooleanField(default=True)
+       created_at = models.DateTimeField(auto_now_add=True)
+       updated_at = models.DateTimeField(auto_now=True)
+   ```
+
+** Lab Equipment Page Field Integration
+   - Introspect LabEquipmentPage model for available fields
+   - Provide dropdown/selection interface for field mapping
+   - Validate field names against actual model structure
+
+* CLEANUP REQUIREMENTS
+
+** Files to Remove/Modify
+   - apps/content_extractor/models.py - Complete model restructure
+   - apps/content_extractor/wagtail_hooks.py - Remove current admin config
+   - Database migrations - Create new migration for model changes
+   - Template cleanup - Remove upload_config functionality if not needed
+
+** Architecture Updates
+   - Update triad_project_architecture.org with correct model purpose
+   - Document site-level vs page-level distinction
+   - Update integration patterns with Lab Equipment Page model
+
+* SUCCESS CRITERIA
+
+** Admin Interface Access
+   - Content Extractor menu appears in Wagtail sidebar
+   - Site Configuration admin accessible and functional
+   - Field Configuration inline editing working
+   - XPath selector management operational
+
+** Data Model Validation  
+   - Site configurations can be created/edited
+   - Field configurations properly associated with sites
+   - XPath selectors stored as JSON arrays
+   - Comments stored for AI context
+
+** Future Integration Ready
+   - Clear pathway for AI processing integration
+   - Site domain lookup functionality
+   - Field mapping to LabEquipmentPage model
+   - Content extraction workflow preparation
+
+* HANDOFF PRIORITY: URGENT
+
+** Next Model Mission
+   Complete model redesign based on correct understanding of site-level field configuration purpose. Focus on creating proper admin interface for XPath selector management per LabEquipmentPage field per site.
+
+** Estimated Effort
+   - Model redesign: 2-3 hours
+   - Admin interface: 2-3 hours  
+   - Testing and validation: 1-2 hours
+   - Total: 5-8 hours for complete implementation 

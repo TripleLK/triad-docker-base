@@ -1,0 +1,105 @@
+#+TITLE: Cleanup Report - Copper Falcon
+#+AUTHOR: Copper Falcon
+#+DATE: 2025-01-22
+#+FILETAGS: :cleanup:copper-falcon:
+
+* Session Summary
+  :PROPERTIES:
+  :SESSION_START: 16:50:00
+  :SESSION_END: 17:15:00
+  :STATUS: Completed - Critical Discovery Made
+  :HANDOFF_FROM: Thunder Phoenix
+  :HANDOFF_TO: [Next Model]
+  :END:
+
+** Mission Objective
+   Fix critical template and URL pattern issues preventing access to existing AIPreparationRecord admin interface in Wagtail
+
+** Key Findings
+*** ✅ TEMPLATE/URL ISSUES RESOLVED
+    - Fixed missing URL pattern 'content_extractor_bookmarklet' by removing problematic "Get Bookmarklet" button
+    - Upload Data menu now returns 302 (redirect) instead of 500 errors
+    - Template rendering issues resolved for upload_config.html
+
+*** 🔄 CRITICAL DISCOVERY: FUNDAMENTAL MODEL MISUNDERSTANDING
+    - **MAJOR ISSUE**: Current AIPreparationRecord model is completely wrong for intended use case
+    - **WRONG APPROACH**: Page-level granular extraction tracking with confidence/validation data
+    - **CORRECT NEED**: Site-level field configuration for Lab Equipment Page model processing
+    - **USER CLARIFICATION**: Need XPath selectors per LabEquipmentPage field per site, not extraction tracking
+
+** Technical Achievements
+*** Template System Fix
+    - Removed reference to missing 'content_extractor_bookmarklet' URL pattern
+    - Upload Data menu functional (returns 302 redirect to login)
+    - No more 500 Internal Server Errors
+
+*** Model Analysis Discovery
+    - Current model has wrong granularity (page-level vs site-level)
+    - Missing proper relationship to LabEquipmentPage model fields
+    - Incorrect focus on data validation/confidence rather than configuration
+
+** Files Modified
+   - apps/content_extractor/templates/wagtailadmin/content_extractor/upload_config.html - Removed broken URL reference
+   - .project_management/model_name_tracking.org - Added Copper Falcon entry
+   - .project_management/next_steps/copper-falcon_next_steps.org - Comprehensive redesign plan
+
+** Status Assessment
+*** TEMPLATE/URL FIXES: ✅ COMPLETE
+    - Upload Data menu accessible
+    - Template rendering working
+    - No more 500 errors from missing URL patterns
+
+*** MODEL REQUIREMENTS: ❌ FUNDAMENTAL REDESIGN NEEDED
+    - Current AIPreparationRecord model inappropriate for actual use case
+    - Need complete model restructure for site-level configuration
+    - Admin interface needs complete redesign
+
+** Architecture Impact
+*** Current State
+    - Template/URL issues resolved but reveal deeper architectural mismatch
+    - Existing model and admin interface don't match user requirements
+    - Upload functionality exists but serves wrong purpose
+
+*** Required Changes
+    - Delete current AIPreparationRecord model entirely
+    - Create SiteConfiguration and FieldConfiguration models
+    - Redesign admin interface for site-level XPath management
+    - Focus on LabEquipmentPage field mapping rather than extraction tracking
+
+** Next Model Requirements
+*** PRIORITY 1: Complete Model Redesign
+    - Remove incorrect AIPreparationRecord model
+    - Implement SiteConfiguration model (site domain, name, settings)
+    - Implement FieldConfiguration model (XPath selectors per LabEquipmentPage field)
+    - Create proper foreign key relationships
+
+*** PRIORITY 2: Admin Interface Reconstruction
+    - SiteConfigurationAdmin with inline FieldConfiguration editing
+    - XPath selector management interface
+    - Field selection based on LabEquipmentPage model introspection
+    - Comment editing for AI context
+
+*** PRIORITY 3: Integration Planning
+    - Site domain lookup functionality
+    - XPath execution and content extraction workflow
+    - AI processing integration with field comments
+    - JSON output for LabEquipmentPage model population
+
+** Critical Success Factors
+*** User Experience
+    - Content Extractor menu must appear in Wagtail sidebar
+    - Site configuration must be easily manageable
+    - XPath selectors must be editable per field per site
+    - Comments must be available for AI context
+
+*** Technical Integration
+    - Proper model relationships with LabEquipmentPage
+    - JSON storage for XPath selector arrays
+    - Site domain-based configuration lookup
+    - Clear pathway for AI processing workflow
+
+* Handoff Status: READY
+  Fixed immediate template/URL blocking issues but discovered fundamental model design mismatch requiring complete redesign. Comprehensive plan created for next model implementation.
+
+** Handoff Message
+   "Template errors fixed, but user clarified the entire model approach is wrong. Need site-level configuration for LabEquipmentPage fields, not page-level extraction tracking. Complete redesign required - see copper-falcon_next_steps.org for detailed implementation plan." 

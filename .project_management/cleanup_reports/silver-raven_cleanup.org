@@ -1,0 +1,104 @@
+#+TITLE: Cleanup Report - Silver Raven
+#+AUTHOR: Silver Raven
+#+DATE: 2025-01-22
+#+FILETAGS: :cleanup:silver-raven:model-redesign:
+
+* Session Summary
+  **MISSION**: Complete AIPreparationRecord model redesign to site-level configuration system
+  **STATUS**: 95% Complete - Core models implemented, critical InlinePanel error blocking admin access
+  **HANDOFF**: Next model must fix snippet error and implement interactive selector integration
+
+* Major Accomplishments ✅
+
+** Complete Model Architecture Redesign
+   - ✅ Deleted incorrect AIPreparationRecord and all related models
+   - ✅ Implemented SiteConfiguration model (site domain, name, metadata)
+   - ✅ Implemented FieldConfiguration model (XPath selectors per LabEquipmentPage field)
+   - ✅ Database migration created and applied successfully
+   - ✅ Cleaned up old admin registrations and unused files
+
+** Simplified Admin Interface
+   - ✅ Replaced complex 300-line ModelAdmin with simple snippet registration
+   - ✅ Eliminated custom templates and forms (user's excellent suggestion)
+   - ✅ Standard Wagtail snippets interface implementation
+
+** Files Successfully Modified
+   - apps/content_extractor/models.py - Complete replacement (167 lines)
+   - apps/content_extractor/wagtail_hooks.py - Snippet registration (50 lines)
+   - apps/content_extractor/admin.py - Cleaned up old references
+   - Database: Migration 0006 applied successfully
+
+** Files Deleted (No Longer Needed)
+   - apps/content_extractor/forms.py
+   - apps/content_extractor/templates/wagtailadmin/content_extractor/upload_config.html
+   - apps/content_extractor/templates/wagtailadmin/content_extractor/field_wizard.html
+
+* Critical Issue Requiring Immediate Fix ❌
+
+** InlinePanel KeyError in Snippet Admin
+   **Error**: `KeyError: 'field_configs'` when accessing Site Configuration snippet
+   **Location**: /admin/snippets/content_extractor/siteconfigurationsnippet/add/
+   **Root Cause**: Proxy model setup not handling InlinePanel formset properly
+   
+   **Error Details**:
+   ```
+   File "wagtail/admin/panels/inline_panel.py", line 98, in __init__
+   self.formset = self.form.formsets[self.panel.relation_name]
+   KeyError: 'field_configs'
+   ```
+
+** Solution Required
+   Fix proxy model configuration or use direct model registration instead of proxy models
+
+* Next Model Priority Tasks
+
+** IMMEDIATE (Blocking): Fix InlinePanel Error
+   1. Fix snippet registration - likely remove proxy models and register base models directly
+   2. Test admin interface accessibility 
+   3. Verify inline field configuration editing works
+
+** PRIMARY: Interactive Selector Integration  
+   1. Connect existing interactive selector JavaScript to new SiteConfiguration models
+   2. Modify selector to save XPath results to FieldConfiguration records
+   3. Update workflow: select elements → save to database → ready for AI processing
+
+** SECONDARY: Workflow Integration
+   1. Create management command or view to bridge selector → configuration
+   2. Test end-to-end: configure site → run selector → populate field configs
+   3. Prepare for AI processing integration with LabEquipmentPage model
+
+* Architecture Achievement
+  **MAJOR SUCCESS**: Completely aligned model design with actual user workflow:
+  - ❌ OLD: Page-level extraction tracking (wrong approach)
+  - ✅ NEW: Site-level configuration with reusable XPath selectors
+  
+  **Workflow Now Supported**:
+  1. Configure site domain and field XPath selectors (admin interface)
+  2. Extract content from any page on that site (interactive selector)  
+  3. Send structured data to AI for LabEquipmentPage JSON generation
+  4. Reuse configurations across multiple pages from same site
+
+* Technical Notes for Next Model
+
+** Model Relationships
+   ```python
+   SiteConfiguration(site_domain, site_name, is_active, notes)
+   FieldConfiguration(site_config, lab_equipment_field, xpath_selectors, comment)
+   ```
+
+** Database Status
+   - Migration 0006 applied successfully
+   - All old models removed cleanly
+   - New models ready for use once admin interface fixed
+
+** Integration Points
+   - Interactive selector JavaScript: apps/content_extractor/static/js/
+   - Existing test command: manage.py test_nested_selector
+   - LabEquipmentPage fields defined in FieldConfiguration.LAB_EQUIPMENT_FIELD_CHOICES
+
+* Files for Next Model Review
+  - apps/content_extractor/wagtail_hooks.py (fix InlinePanel issue)
+  - apps/content_extractor/selectors/interactive_selector.py (integration target)
+  - apps/content_extractor/models.py (new models to connect to)
+
+**HANDOFF STATUS**: Core redesign complete, ready for error fix and selector integration 

@@ -1,0 +1,86 @@
+#+TITLE: Next Steps for Interactive Selector API Integration
+#+AUTHOR: Cosmic Phoenix
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:api-integration:interactive-selector:handoff:
+
+* URGENT: Interactive Selector Database Integration
+
+** Current Status
+- ✅ Interactive selector command is professionally named and documented
+- ✅ Entry point: `python manage.py interactive_selector [url]`
+- ❌ Database functionality broken due to architecture mismatch
+- ❌ Needs API integration to restore XPath saving capability
+
+** The Problem
+Interactive selector was built for complex AIPreparationRecord system, but current system uses simple SiteConfiguration/FieldConfiguration models. DatabaseOperationsManager (246 lines) is legacy code that doesn't match new architecture.
+
+** The Solution: Simple API Integration
+
+*** Step 1: Create API Endpoint
+**File**: `apps/content_extractor/views.py`
+**Function**: Add new endpoint following existing save_xpath_configuration() pattern
+
+```python
+@require_http_methods(["POST"])
+@login_required
+def save_interactive_selector_data(request):
+    """Save XPath data from interactive selector to SiteConfiguration models"""
+    # Follow pattern from save_xpath_configuration()
+    # Input: site_domain, field_name, xpath_selectors, comment
+    # Create/update SiteConfiguration and FieldConfiguration
+    # Return JSON success/error response
+```
+
+**URL**: Add to `apps/content_extractor/urls.py`
+```python
+path('interactive-selector-save/', views.save_interactive_selector_data, name='save_interactive_selector_data'),
+```
+
+*** Step 2: Update Interactive Selector
+**File**: `apps/content_extractor/selectors/interactive_selector.py`
+- Remove DatabaseOperationsManager dependency (currently commented out)
+- Replace with simple API calls using requests library
+- Maintain existing JavaScript interface functionality
+- Update save methods to POST to new API endpoint
+
+*** Step 3: Test End-to-End Workflow
+1. Run: `python manage.py interactive_selector https://lab-equipment-site.com`
+2. Use browser interface to select elements for different fields
+3. Verify XPath data saves to SiteConfiguration models
+4. Check Wagtail admin shows saved configurations
+
+*** Step 4: Clean Up Legacy Code
+- Remove or refactor `apps/content_extractor/selectors/database_operations.py`
+- Ensure all management commands work with new simple architecture
+- Update any remaining AIPreparationRecord references
+
+** Success Criteria
+1. ✅ Command runs: `python manage.py interactive_selector [url]`
+2. ✅ Browser opens with interactive selection interface
+3. ❌ XPath selections save to SiteConfiguration models (NEEDS IMPLEMENTATION)
+4. ❌ Data appears in Wagtail admin interface (DEPENDS ON #3)
+
+** Why This Approach Works
+- ✅ Builds on proven API pattern from previous successful integration
+- ✅ Uses existing SiteConfiguration models (working well)
+- ✅ Maintains user experience while simplifying backend
+- ✅ Clean architecture with focused components
+
+** Files to Modify
+1. `apps/content_extractor/views.py` - Add new API endpoint
+2. `apps/content_extractor/urls.py` - Add URL routing
+3. `apps/content_extractor/selectors/interactive_selector.py` - Replace database operations
+4. `apps/content_extractor/selectors/database_operations.py` - Remove or refactor
+
+** Expected Implementation Time
+- API endpoint: 30 minutes (following existing pattern)
+- Interactive selector update: 45 minutes (replace database calls)
+- Testing and cleanup: 30 minutes
+- **Total**: ~2 hours for complete restoration
+
+---
+
+**PRIORITY**: HIGH - Core functionality needs restoration
+**COMPLEXITY**: MEDIUM - Straightforward following established patterns
+**DEPENDENCY**: None - all required models and infrastructure exist
+**HANDOFF**: Ready for immediate implementation 

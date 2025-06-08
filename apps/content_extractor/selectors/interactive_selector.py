@@ -40,17 +40,21 @@ class InteractiveSelector:
     for interactive content selection with nested field support.
     """
     
-    def __init__(self, headless: bool = False, session_name: str = None):
+    def __init__(self, headless: bool = False, session_name: str = None, base_url: str = 'http://localhost:8000', api_token: str = None):
         """
-        Initialize the interactive selector.
+        Initialize interactive content selector with hierarchical field management.
         
         Args:
-            headless: Whether to run browser in headless mode
-            session_name: Optional session name for tracking progress
+            headless: Run browser in headless mode
+            session_name: Name for this selection session
+            base_url: Base URL for API calls (default: http://localhost:8000)
+            api_token: API token for authentication (optional)
         """
         self.headless = headless
         self.driver = None
-        self.session_name = session_name or f"Session_{int(time.time())}"
+        self.session_name = session_name or f"session_{int(time.time())}"
+        self.base_url = base_url
+        self.api_token = api_token
         self.current_url = None
         self.current_domain = None
         
@@ -162,7 +166,7 @@ class InteractiveSelector:
             
             # Generate and inject JavaScript
             js_code = self.js_manager.get_selection_javascript(
-                current_fields, current_depth, depth_color, breadcrumbs
+                current_fields, current_depth, depth_color, breadcrumbs, self.base_url, self.api_token
             )
             
             self.driver.execute_script(js_code)
@@ -329,11 +333,64 @@ class InteractiveSelector:
 
     def save_field_selector(self, field_name: str, xpath: str, css_selector: str = "", 
                            requires_manual_input: bool = False, manual_input_note: str = "") -> bool:
-        """Save a field selector to the database."""
-        return self.db_manager.save_field_selector(
-            field_name, xpath, css_selector, requires_manual_input, 
-            manual_input_note, self.current_domain
+        """Save field selector using AI preparation record."""
+        return self.db_manager.save_ai_preparation_record(
+            field_name=field_name,
+            extracted_content=manual_input_note if requires_manual_input else "",
+            xpath=xpath,
+            css_selector=css_selector,
+            user_comment=manual_input_note,
+            extraction_method="text_input" if requires_manual_input else "page_selection",
+            source_url=self.current_url,
+            confidence_level="medium"
         )
+    
+    def save_ai_selection(self, field_name: str, extracted_content: str, xpath: str, 
+                         css_selector: str = "", user_comment: str = "", 
+                         confidence_level: str = "medium", content_type: str = "text",
+                         instance_index: int = 0, parent_record_id: int = None) -> bool:
+        """
+        Save AI preparation record with full context.
+        
+        Args:
+            field_name: Name of the field being extracted
+            extracted_content: The actual extracted content
+            xpath: XPath selector used
+            css_selector: CSS selector alternative
+            user_comment: User-provided context for AI
+            confidence_level: Confidence in extraction (high, medium, low)
+            content_type: Type of content (text, list, nested_data, html, number, url)
+            instance_index: Instance number for multi-instance fields
+            parent_record_id: Parent record for nested structures
+            
+        Returns:
+            True if saved successfully
+        """
+        return self.db_manager.save_ai_preparation_record(
+            field_name=field_name,
+            extracted_content=extracted_content,
+            xpath=xpath,
+            css_selector=css_selector,
+            user_comment=user_comment,
+            extraction_method="page_selection",
+            confidence_level=confidence_level,
+            content_type=content_type,
+            source_url=self.current_url,
+            instance_index=instance_index,
+            parent_record_id=parent_record_id
+        )
+    
+    def get_ai_session_records(self) -> List:
+        """Get all AI preparation records for the current session."""
+        return self.db_manager.get_session_records()
+    
+    def export_ai_session(self, format: str = 'structured') -> Dict:
+        """Export session data formatted for AI processing."""
+        return self.db_manager.export_session_for_ai(format=format)
+    
+    def get_session_statistics(self) -> Dict:
+        """Get statistics about the current extraction session."""
+        return self.db_manager.get_extraction_statistics()
     
     def test_selector_on_page(self, selector, test_url: str) -> Dict:
         """Test a saved selector on a specific page."""

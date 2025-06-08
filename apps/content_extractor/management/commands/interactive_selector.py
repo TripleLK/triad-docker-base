@@ -1,21 +1,29 @@
 """
-Test Nested Object Selection Architecture
+Interactive Content Selector Management Command
 
-Management command to test the nested selection interface for hierarchical data.
-Demonstrates recursive selection contexts with visual depth indicators.
+Official interactive selector for hierarchical content extraction with nested object support.
+Provides comprehensive interface for field selection with visual depth indicators and context management.
 
 Created by: Quantum Horizon
+Enhanced by: Swift Weaver (Dynamic API Token Generation)
 Date: 2025-01-08
+Updated: 2025-01-22
 Project: Triad Docker Base
 """
 
 import time
+import signal
+import atexit
 from django.core.management.base import BaseCommand
 from apps.content_extractor.selectors.interactive_selector import InteractiveSelector
+from apps.base_site.models import APIToken
 
 
 class Command(BaseCommand):
-    help = 'Test nested object selection architecture with recursive contexts'
+    help = 'Launch interactive content selector with nested object support and hierarchical field mapping'
+    
+    # Class variable to track temporary token for cleanup
+    temporary_token = None
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -39,39 +47,74 @@ class Command(BaseCommand):
             action='store_true',
             help='Run in interactive mode - allows manual testing of the interface'
         )
+        parser.add_argument(
+            '--base-url',
+            type=str,
+            default='http://localhost:8000',
+            help='Base URL for API calls (default: http://localhost:8000)'
+        )
+        parser.add_argument(
+            '--token-expires',
+            type=int,
+            default=60,
+            help='Token expiration time in minutes (default: 60)'
+        )
 
     def handle(self, *args, **options):
         url = options['url']
         headless = options['headless']
         demo_mode = options['demo']
         interactive_mode = options['interactive']
+        base_url = options['base_url']
+        token_expires = options['token_expires']
+        
+        # Generate temporary API token
+        api_token = self._generate_temporary_token(token_expires)
+        self.temporary_token = api_token  # Store for cleanup
+        
+        # Set up signal handlers for cleanup
+        self._setup_signal_handlers()
+        
+        # Register cleanup at exit
+        atexit.register(self._cleanup_token)
         
         self.stdout.write(
-            self.style.SUCCESS("🚀 Testing Nested Object Selection Architecture")
+            self.style.SUCCESS("🚀 Interactive Content Selector - Hierarchical Field Mapping")
         )
-        self.stdout.write("📋 Available test URLs:")
+        self.stdout.write("🔐 API Authentication:")
+        self.stdout.write(f"   Generated temporary token: {api_token.name}")
+        self.stdout.write(f"   Token expires in: {token_expires} minutes")
+        self.stdout.write(f"   Token will be cleaned up automatically")
+        self.stdout.write("")
+        self.stdout.write("📋 Supported extraction URLs:")
         self.stdout.write("   https://www.airscience.com/product-category-page?brandname=safefume-fuming-chambers&brand=14")
         self.stdout.write("   https://www.airscience.com/product-category-page?brandname=purair-flow-laminar-flow-cabinets&brand=13")
         self.stdout.write("   https://www.airscience.com/product-category-page?brandname=purair-nano-ductless-nanoparticle-enclosures&brand=47")
         self.stdout.write("   https://www.airscience.com/product-category-page?brandname=purair-flex-portable-isolators&brand=37")
         self.stdout.write("")
-        self.stdout.write(f"URL: {url}")
-        self.stdout.write(f"Headless: {headless}")
-        self.stdout.write(f"Demo Mode: {demo_mode}")
-        self.stdout.write(f"Interactive Mode: {interactive_mode}")
+        self.stdout.write(f"Target URL: {url}")
+        self.stdout.write(f"Base URL: {base_url}")
+        self.stdout.write(f"Visual Mode: {'Disabled' if headless else 'Enabled'}")
+        self.stdout.write(f"Demo Mode: {'Enabled' if demo_mode else 'Disabled'}")
+        self.stdout.write(f"Interactive Mode: {'Enabled' if interactive_mode else 'Disabled'}")
         self.stdout.write("=" * 60)
         
-        # Initialize interactive selector with nested support
-        selector = InteractiveSelector(headless=headless, session_name="nested_test")
+        # Initialize interactive selector with nested support and API token
+        selector = InteractiveSelector(
+            headless=headless, 
+            session_name="content_extraction", 
+            base_url=base_url,
+            api_token=api_token.token  # Pass the generated token
+        )
         
         try:
-            # Load the test page
-            self.stdout.write("📄 Loading test page...")
+            # Load the target page
+            self.stdout.write("📄 Loading content extraction target...")
             if not selector.load_page(url):
-                self.stdout.write(self.style.ERROR("❌ Failed to load page"))
+                self.stdout.write(self.style.ERROR("❌ Failed to load target page"))
                 return
             
-            self.stdout.write(self.style.SUCCESS("✅ Page loaded successfully"))
+            self.stdout.write(self.style.SUCCESS("✅ Target page loaded successfully"))
             
             # Display current context information
             self._display_context_info(selector)
@@ -79,15 +122,66 @@ class Command(BaseCommand):
             if demo_mode:
                 self._run_automated_demo(selector)
             elif interactive_mode:
-                self._run_command_interactive_test(selector)
+                self._run_command_interactive_mode(selector)
             else:
-                self._run_visual_interactive_test(selector)
+                self._run_visual_interactive_mode(selector)
                 
         except Exception as e:
-            self.stdout.write(self.style.ERROR(f"❌ Error during testing: {e}"))
+            self.stdout.write(self.style.ERROR(f"❌ Error during content selection: {e}"))
         finally:
             selector.close()
-            self.stdout.write("🔄 Browser closed")
+            self._cleanup_token()
+            self.stdout.write("🔄 Content selector closed and token cleaned up")
+    
+    def _generate_temporary_token(self, expires_in_minutes):
+        """Generate a temporary API token for this session."""
+        import uuid
+        from datetime import datetime
+        
+        session_id = str(uuid.uuid4())[:8]
+        token_name = f"interactive_selector_{session_id}"
+        
+        # Clean up any existing expired tokens first
+        cleanup_count = APIToken.cleanup_expired_tokens()
+        if cleanup_count > 0:
+            self.stdout.write(f"🧹 Cleaned up {cleanup_count} expired tokens")
+        
+        # Create temporary token
+        api_token = APIToken.create_temporary_token(
+            name=token_name,
+            description=f"Temporary token for interactive selector session {session_id}",
+            expires_in_minutes=expires_in_minutes,
+            session_info={
+                'session_id': session_id,
+                'created_by_command': 'interactive_selector',
+                'timestamp': datetime.now().isoformat()
+            }
+        )
+        
+        self.stdout.write(self.style.SUCCESS(f"🔑 Generated temporary API token: {api_token.token}"))
+        return api_token
+    
+    def _setup_signal_handlers(self):
+        """Set up signal handlers for graceful cleanup."""
+        def signal_handler(signum, frame):
+            self.stdout.write(f"\n🔄 Received signal {signum}, cleaning up...")
+            self._cleanup_token()
+            exit(0)
+        
+        signal.signal(signal.SIGINT, signal_handler)   # Ctrl+C
+        signal.signal(signal.SIGTERM, signal_handler)  # Termination
+    
+    def _cleanup_token(self):
+        """Clean up the temporary token."""
+        if self.temporary_token:
+            try:
+                # Mark token as inactive instead of deleting (for audit trail)
+                self.temporary_token.is_active = False
+                self.temporary_token.save()
+                self.stdout.write(f"🧹 Deactivated temporary token: {self.temporary_token.name}")
+                self.temporary_token = None
+            except Exception as e:
+                self.stdout.write(f"⚠️ Error cleaning up token: {e}")
     
     def _display_context_info(self, selector):
         """Display current nested selection context information."""
@@ -174,18 +268,18 @@ class Command(BaseCommand):
         
         self.stdout.write(self.style.SUCCESS("\n✅ Automated demo completed!"))
     
-    def _run_command_interactive_test(self, selector):
-        """Run command-based interactive test allowing manual exploration."""
-        self.stdout.write("🎮 Interactive Test Mode")
+    def _run_command_interactive_mode(self, selector):
+        """Run command-based interactive mode allowing manual field exploration and selection."""
+        self.stdout.write("🎮 Interactive Command Mode")
         self.stdout.write("=" * 40)
-        self.stdout.write("Commands:")
+        self.stdout.write("Available commands:")
         self.stdout.write("  menu    - Show field selection menu")
         self.stdout.write("  enter <field>  - Enter nested field context")
         self.stdout.write("  parent  - Navigate to parent context")
         self.stdout.write("  depth <n>  - Navigate to specific depth")
         self.stdout.write("  info    - Display current context info")
         self.stdout.write("  export  - Export selection hierarchy")
-        self.stdout.write("  quit    - Exit test")
+        self.stdout.write("  quit    - Exit selector")
         self.stdout.write("")
         
         # Show initial menu
@@ -247,72 +341,37 @@ class Command(BaseCommand):
         
         self.stdout.write(self.style.SUCCESS("\n✅ Interactive test completed!"))
 
-    def _run_visual_interactive_test(self, selector):
-        """Run visual-based interactive test allowing manual exploration."""
-        self.stdout.write("🎮 Visual Interactive Test Mode")
+    def _run_visual_interactive_mode(self, selector):
+        """Run visual-based interactive mode allowing manual field exploration through browser interface."""
+        self.stdout.write("🎮 Visual Interactive Mode")
         self.stdout.write("=" * 40)
-        self.stdout.write("📍 Instructions:")
-        self.stdout.write("  - Browser window will stay open for you to interact with")
-        self.stdout.write("  - Click on the field menu to navigate nested contexts")
-        self.stdout.write("  - Use breadcrumb navigation to move between levels")
-        self.stdout.write("  - Test the visual hierarchy indicators")
-        self.stdout.write("  - Press Enter here when you're done testing")
+        self.stdout.write("Instructions:")
+        self.stdout.write("  • Use the browser interface to navigate fields")
+        self.stdout.write("  • Click elements to select content for fields")
+        self.stdout.write("  • Use menus to enter nested contexts")
+        self.stdout.write("  • Monitor this terminal for real-time feedback")
         self.stdout.write("")
         
-        # Show the field menu to start
-        self.stdout.write("🎯 Displaying field selection menu...")
+        # Show initial field menu
         selector.show_field_menu()
-        self.stdout.write("✅ Field menu is now visible in the browser")
-        self.stdout.write("🔍 Current context info:")
-        self._display_context_info(selector)
         
+        # Monitor for user actions
         try:
-            import threading
-            import sys
-            
-            # Flag to control polling
-            should_continue_polling = True
-            
             def poll_for_actions():
-                """Background thread to continuously poll for nested actions"""
-                while should_continue_polling:
-                    try:
-                        # Check for nested actions from JavaScript
-                        if selector.check_for_nested_actions():
-                            # Action was handled, display updated context
-                            self.stdout.write("🔄 Nested navigation detected - context updated!")
-                            self._display_context_info(selector)
-                        
-                        # Small delay to avoid excessive polling
-                        time.sleep(0.5)
-                    except Exception as e:
-                        # Silent failure - don't spam the console
-                        pass
+                """Monitor selector for user actions and provide feedback"""
+                last_context = None
+                while True:
+                    time.sleep(1)
+                    
+                    # Check if context changed
+                    current_context = selector.get_nested_selection_hierarchy()
+                    if current_context != last_context:
+                        self.stdout.write(f"🎯 Context: {' → '.join(current_context['breadcrumbs'])}")
+                        last_context = current_context
             
-            # Start polling thread
-            polling_thread = threading.Thread(target=poll_for_actions, daemon=True)
-            polling_thread.start()
-            
-            self.stdout.write("\n🔍 Background polling active - nested navigation will be detected automatically")
-            self.stdout.write("💡 Try clicking on 'Models' or 'Specification Groups' to test nested navigation")
-            
-            # Keep the browser open and let user interact
-            input("\n⏳ Press Enter when you're finished testing the interface...")
-            
-            # Stop polling
-            should_continue_polling = False
-            
-            # Get final state
-            self.stdout.write("\n📊 Final test results:")
-            hierarchy = selector.get_nested_selection_hierarchy()
-            self.stdout.write(f"   Selection hierarchy: {hierarchy}")
-            self._display_context_info(selector)
+            poll_for_actions()
             
         except KeyboardInterrupt:
-            should_continue_polling = False
-            self.stdout.write("\n🛑 Test interrupted by user")
-        except Exception as e:
-            should_continue_polling = False
-            self.stdout.write(f"\n❌ Error during visual test: {e}")
+            self.stdout.write("\n👋 Visual interactive mode ended")
         
-        self.stdout.write(self.style.SUCCESS("\n✅ Visual interactive test completed!")) 
+        self.stdout.write(self.style.SUCCESS("\n✅ Interactive mode completed!")) 

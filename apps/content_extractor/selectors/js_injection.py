@@ -66,7 +66,7 @@ class JavaScriptInjectionManager:
 
     def get_selection_javascript(self, current_fields: List[SelectionField], 
                                current_depth: int, depth_color: str, 
-                               breadcrumbs: List[str]) -> str:
+                               breadcrumbs: List[str], base_url: str = 'http://localhost:8000', api_token: str = None) -> str:
         """
         Generate complete JavaScript for content selection interface.
         
@@ -75,6 +75,8 @@ class JavaScriptInjectionManager:
             current_depth: Current nesting depth
             depth_color: Color for current depth level
             breadcrumbs: Navigation breadcrumb trail
+            base_url: Base URL for API calls (defaults to localhost:8000)
+            api_token: API token for authentication (optional)
             
         Returns:
             Complete JavaScript code as string
@@ -115,7 +117,7 @@ class JavaScriptInjectionManager:
             alert('Content Extractor: JavaScript files could not be loaded. Please check the installation.');
             """
         
-        # Create initialization data
+        # Create initialization data with API token
         initialization_js = f"""
         // Initialize Content Extractor Data
         window.contentExtractorData = {{
@@ -132,10 +134,14 @@ class JavaScriptInjectionManager:
             activeSubfield: null,
             isSelectionPaused: false,
             pendingAction: null,
-            scriptVersion: '3.2.0'
+            scriptVersion: '3.2.0',
+            baseUrl: '{base_url}',
+            apiToken: {json.dumps(api_token) if api_token else 'null'}
         }};
         
         console.log('🎯 Content Extractor initialized with', window.contentExtractorData.fieldOptions.length, 'fields');
+        console.log('🌐 Base URL set to:', window.contentExtractorData.baseUrl);
+        console.log('🔑 API Token configured:', window.contentExtractorData.apiToken ? 'Yes' : 'No');
         """
         
         # Combine initialization with loaded JavaScript

@@ -20,6 +20,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 # Application definition
 INSTALLED_APPS = [
+    'corsheaders',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail_modeladmin',
@@ -71,6 +72,7 @@ if (os.path.isdir(SHARED_APPS_DIR)):
 
 # Middleware
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

@@ -1,0 +1,83 @@
+#+TITLE: Next Steps - Thunder Phoenix
+#+AUTHOR: Thunder Phoenix
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:thunder-phoenix:
+
+* URGENT: Wagtail Admin Interface Fix Required
+
+** Mission Status
+   ⚠️ **PARTIAL SUCCESS**: AIPreparationRecord admin integration exists but runtime errors prevent access
+
+** IMMEDIATE ACTIONS REQUIRED (Priority Order)
+
+*** 1. CRITICAL: Fix Missing Template (BLOCKING)
+    **Issue**: Template 'wagtailadmin/content_extractor/upload_config.html' not found
+    **Action**: Create missing template file in correct location
+    **Location**: templates/wagtailadmin/content_extractor/upload_config.html
+    **Impact**: Prevents Upload Data menu from working
+
+*** 2. CRITICAL: Fix URL Pattern Error (BLOCKING)  
+    **Issue**: NoReverseMatch for 'content_extractor_bookmarklet'
+    **Action**: Either create missing URL pattern or remove reference from template
+    **Location**: Check wagtail_hooks.py register_admin_urls function
+    **Impact**: Causes 500 errors when accessing Upload Data
+
+*** 3. HIGH: Verify Menu Visibility
+    **Issue**: Content Extractor menu may not appear in Wagtail sidebar
+    **Action**: Test menu registration and fix if needed
+    **Check**: Verify ContentExtractorAdminGroup appears in left sidebar
+    **Impact**: Users cannot find AI Preparation Records
+
+*** 4. MEDIUM: Test AIPreparationRecord Access
+    **Issue**: Need to verify AI Preparation Records menu works after fixes
+    **Action**: Navigate to Content Extractor → AI Preparation Records
+    **Verify**: Can view/edit the 4 existing database records
+    **Impact**: Core functionality testing
+
+** TESTING REQUIREMENTS
+
+*** Verification Steps (In Order)
+    1. ✅ Start server (already running on port 8002)
+    2. ❌ Navigate to /admin/content-extractor/upload-config/ (currently 500 error)
+    3. ❌ Check Content Extractor menu appears in Wagtail sidebar
+    4. ❌ Access AI Preparation Records submenu
+    5. ❌ Verify 4 test records are visible and manageable
+
+*** Success Criteria
+    - No 500 errors when accessing Content Extractor menus
+    - AI Preparation Records accessible through Wagtail interface
+    - Can view/edit existing AIPreparationRecord database entries
+    - Upload Data functionality working (if kept) or cleanly removed
+
+** CURRENT WORKING STATE
+
+*** ✅ COMPLETED BY THUNDER PHOENIX
+    - ModelAdmin configuration verified
+    - Database records confirmed (4 entries)
+    - Wagtail integration structure in place
+    - Server running on port 8002
+
+*** ❌ BROKEN FUNCTIONALITY  
+    - Upload Data menu (500 Internal Server Error)
+    - Template system (missing files)
+    - URL routing (broken patterns)
+    - Menu access (runtime errors)
+
+** HANDOFF CONTEXT
+
+*** Ready for Next Model
+    **Focus**: Template and URL configuration fixes, NOT ModelAdmin setup
+    **Skills Needed**: Wagtail template system, Django URL patterns
+    **Time Estimate**: 1-2 hours for template/URL fixes
+    **Database**: Ready with test data
+
+*** Files to Focus On
+    - apps/content_extractor/wagtail_hooks.py (URL patterns)
+    - templates/wagtailadmin/content_extractor/ (create directory + templates)
+    - forms.py (may need to check BookmarkletConfigUploadForm)
+
+** SUCCESS OUTCOME
+   User should be able to navigate: Wagtail Admin → Content Extractor → AI Preparation Records and see/manage the 4 existing database records.
+
+* PRIORITY: HIGH - Core admin functionality broken
+  Next model should focus on template/URL fixes to restore access to existing working ModelAdmin integration. 

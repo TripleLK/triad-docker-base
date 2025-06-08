@@ -1,0 +1,123 @@
+#+TITLE: Digital Falcon Next Steps - Selenium Downloadable App Development  
+#+AUTHOR: Digital Falcon
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:selenium:downloadable-app:content-extractor:
+
+* Immediate Priorities
+
+** 🔍 CRITICAL: Locate Previous Selenium Code
+- Search codebase for existing selenium content extraction implementations
+- Review conversation logs for previous selenium work by other models
+- Identify reusable extraction logic and field mapping strategies
+
+** 🏗️ HIGH: Design App Architecture  
+- Create standalone Python application structure
+- Define configuration file format for extraction rules
+- Plan packaging strategy (exe, app bundle, or python package)
+- Design simple GUI or CLI interface for non-technical users
+
+** 📋 MEDIUM: Integration Planning
+- Plan how standalone app exports data back to Django admin
+- Define API endpoints or file-based integration approach
+- Ensure compatibility with existing AIPreparationRecord model
+
+* Approach Strategy
+
+** Phase 1: Discovery and Foundation
+1. **Code Archaeology**: Search for existing selenium implementations
+2. **Requirements Analysis**: Define exact user workflow for standalone app
+3. **Architecture Design**: Create app structure blueprint
+
+** Phase 2: Core Development  
+1. **Selenium Engine**: Rebuild/adapt content extraction logic
+2. **Configuration System**: JSON-based field mapping definitions
+3. **Data Export**: Integration with Django admin workflow
+
+** Phase 3: Distribution
+1. **Packaging**: Create distributable app (PyInstaller or similar)
+2. **User Experience**: Simple installation and usage instructions
+3. **Testing**: Cross-platform compatibility verification
+
+** Key Technical Decisions Needed
+
+*** Distribution Method
+- **Option A**: Standalone executable (PyInstaller) - easier for end users
+- **Option B**: Python package with pip install - more flexible
+- **Option C**: Docker container - most consistent across platforms
+
+*** User Interface
+- **Option A**: Simple GUI (tkinter/PyQt) - most user-friendly
+- **Option B**: CLI with clear prompts - faster to develop
+- **Option C**: Web interface (Flask) - familiar UX
+
+*** Integration Approach
+- **Option A**: Direct database connection - seamless integration
+- **Option B**: File-based export/import - simpler, more secure
+- **Option C**: API endpoints - most flexible, requires Django changes
+
+* Key Files to Review
+
+** Essential Architecture Files
+- `triad_project_architecture.org`: Update with selenium app plans
+- `apps/content_extractor/models.py`: AIPreparationRecord model structure
+- `apps/content_extractor/wagtail_hooks.py`: Admin integration patterns
+
+** Previous Work Search Targets
+- Look for: `selenium`, `webdriver`, `content extraction`, `field mapping`
+- Search in: `apps/`, `scripts/`, conversation logs, old files
+
+** Configuration Examples
+- `apps/content_extractor/`: Existing field definitions and model structure
+- Previous JSON configurations from other models' work
+
+* Decisions Requiring User Input
+
+** 🤔 **Primary Questions**
+1. **Target Users**: Are these technical users (can install Python) or non-technical (need executable)?
+2. **Distribution Preference**: App store, direct download, or package manager?
+3. **Update Mechanism**: How should app get new extraction rules/updates?
+
+** 🎯 **Scope Questions**  
+1. **Platform Priority**: Windows-first, Mac-first, or cross-platform simultaneously?
+2. **Browser Support**: Chrome-only initially, or multi-browser from start?
+3. **Field Complexity**: Simple text extraction or complex nested data structures?
+
+** 🔧 **Technical Preferences**
+1. **UI Complexity**: Minimal CLI tool or full GUI application?
+2. **Configuration**: User creates rules, or admin provides pre-made configs?
+3. **Data Volume**: Single page extraction or bulk processing capabilities?
+
+* Handoff Context
+
+** Current State
+- ✅ Django admin foundation complete with AIPreparationRecord model
+- ✅ Wagtail integration working for upload/processing workflow  
+- ✅ JSON configuration format established
+- ❌ No selenium extraction engine currently
+- ❌ No standalone app structure
+
+** Resources Available
+- Working Django admin interface for data management
+- Established data models and field definitions
+- Previous analysis of target websites and extraction patterns
+- Debug infrastructure and testing approaches
+
+** Immediate Next Actions for New Model
+1. **Search**: `find . -name "*.py" -exec grep -l "selenium\|webdriver" {} \;`
+2. **Review**: Check `.project_management/conversation_logs/` for selenium mentions
+3. **Plan**: Choose architecture approach based on user preferences
+4. **Start**: Create `apps/content_extractor/selenium_app/` directory structure
+
+** Critical Warnings
+- Don't modify existing bookmarklet code (preserved for future reference) 
+- Ensure new selenium app integrates with existing AIPreparationRecord workflow
+- Consider browser driver management (ChromeDriver updates, compatibility)
+- Plan for headless operation on various operating systems
+
+** Success Metrics
+- Standalone app can extract content from target lab equipment websites
+- Generated data seamlessly imports into Django admin
+- Non-technical users can install and operate the app
+- Cross-platform compatibility (Windows, Mac minimum)
+
+The foundation is solid - now we need to build the selenium-powered extraction engine that can be distributed as a user-friendly standalone application. 
