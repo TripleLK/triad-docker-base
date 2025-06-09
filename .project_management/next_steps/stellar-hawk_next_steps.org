@@ -1,0 +1,191 @@
+#+TITLE: Next Steps - Stellar Hawk
+#+AUTHOR: Stellar Hawk
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:stellar-hawk:url-management:ai-json:
+
+* MISSION FOR NEXT MODEL: URL Management & AI JSON Generation System
+
+** Primary Objective
+Build a comprehensive URL management system in Wagtail admin interface and create AI JSON generation capabilities for processing multiple pages per site using stored XPath configurations.
+
+** Context Handoff
+- XPath highlighting system is now fully functional (all elements highlight correctly)
+- Site configuration system stores XPath patterns per field per domain
+- FieldConfiguration model contains xpath_selectors and comments for AI context
+- SiteConfiguration model manages site-level settings
+- Ready for URL management and batch AI processing expansion
+
+* PHASE 1: URL Management Interface (PRIORITY 1)
+
+** Wagtail Admin Enhancement
+*** New Model Required: SiteURL
+```python
+class SiteURL(models.Model):
+    site_config = models.ForeignKey(SiteConfiguration, related_name='urls')
+    url = models.URLField(max_length=500)
+    page_title = models.CharField(max_length=255, blank=True)  # Auto-populated
+    status = models.CharField(choices=[('active', 'Active'), ('disabled', 'Disabled')])
+    last_processed = models.DateTimeField(null=True, blank=True)
+    processing_status = models.CharField(choices=[('pending', 'Pending'), ('processing', 'Processing'), ('completed', 'Completed'), ('failed', 'Failed')])
+    notes = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+```
+
+*** Admin Interface Requirements
+- **URL List Management**: Add/edit/delete URLs for each site configuration
+- **Bulk Import**: CSV/text file upload for multiple URLs
+- **Status Tracking**: Visual indicators for processing status
+- **Batch Actions**: Select multiple URLs for processing
+- **URL Validation**: Verify URLs are accessible before saving
+
+** Integration with Existing System
+- Extend SiteConfiguration admin to include URL management
+- Link to existing FieldConfiguration system
+- Maintain site-domain-based organization
+
+* PHASE 2: AI JSON Generation System (PRIORITY 1)
+
+** Core Functionality Requirements
+*** Per-Page JSON Generation
+Generate AI-ready JSON for each URL combining:
+1. **URL Content**: Scraped HTML content
+2. **XPath Configurations**: From FieldConfiguration model
+3. **AI Context**: Comments and field descriptions
+4. **Site Metadata**: Domain, site name, processing timestamps
+
+*** Expected JSON Structure
+```json
+{
+  "url": "https://airscience.com/product-page",
+  "site_domain": "airscience.com", 
+  "site_name": "AirScience",
+  "scraped_content": "...",
+  "extraction_config": {
+    "features": {
+      "xpath_selectors": ["//div[starts-with(@id, 'tab')]"],
+      "comment": "Product features from tabbed interface",
+      "field_type": "multi-value"
+    },
+    "title": {
+      "xpath_selectors": ["//h1[@class='product-title']"],
+      "comment": "Main product title",
+      "field_type": "single"
+    }
+  },
+  "processing_metadata": {
+    "timestamp": "2025-01-22T...",
+    "status": "ready_for_ai"
+  }
+}
+```
+
+** Processing Pipeline
+*** Batch Processing System
+- **Queue Management**: Process multiple URLs efficiently
+- **Content Scraping**: Fetch HTML content for each URL
+- **XPath Application**: Apply stored selectors to scraped content
+- **JSON Assembly**: Combine all data into AI-ready format
+- **Status Updates**: Track processing progress per URL
+
+*** Management Command
+```bash
+python manage.py generate_ai_json --domain airscience.com
+python manage.py generate_ai_json --domain airscience.com --url-id 123
+python manage.py generate_ai_json --all-sites
+```
+
+** Storage and Export
+*** JSON Storage Options
+1. **Database Storage**: New model for generated JSON
+2. **File Export**: Save to organized directory structure
+3. **API Endpoint**: Real-time JSON generation
+
+*** Export Formats
+- Individual JSON files per URL
+- Batch JSON with multiple pages
+- CSV export with metadata
+- Direct API integration ready
+
+* PHASE 3: Wagtail Admin Integration (PRIORITY 2)
+
+** Enhanced Admin Interface
+*** URL Processing Dashboard
+- **Site Overview**: Show URL count and processing status per site
+- **Processing Queue**: View pending/processing URLs
+- **Results Management**: Access generated JSON and processing logs
+- **Batch Controls**: Start/stop processing for multiple URLs
+
+*** User Experience Features
+- **Progress Indicators**: Real-time processing status
+- **Error Handling**: Display failures with actionable messages
+- **Export Options**: Download JSON, CSV, or view in admin
+- **Preview Functionality**: Test single URL before batch processing
+
+** Integration Points
+- Link from SiteConfiguration to URL management
+- Connect to existing FieldConfiguration system
+- Maintain consistent admin navigation
+
+* TECHNICAL SPECIFICATIONS
+
+** Required New Models
+1. **SiteURL**: Store URLs per site with processing metadata
+2. **AIJSONRecord**: Store generated JSON with processing results
+3. **ProcessingJob**: Track batch processing operations
+
+** Required Management Commands
+1. **scrape_site_urls**: Fetch content from URLs
+2. **generate_ai_json**: Create AI-ready JSON from scraped content
+3. **validate_site_configs**: Verify XPath configurations work across URLs
+
+** Required Admin Enhancements
+1. **URL management interface** within SiteConfiguration
+2. **Processing dashboard** for monitoring batch operations
+3. **Export functionality** for generated JSON data
+
+* SUCCESS CRITERIA
+
+** Functional Requirements
+- ✅ Users can add multiple URLs per site via Wagtail admin
+- ✅ System generates AI-ready JSON combining URLs + XPaths
+- ✅ Batch processing handles multiple URLs efficiently
+- ✅ Status tracking shows processing progress
+- ✅ Export options provide flexible data access
+
+** Technical Requirements
+- ✅ Integrates seamlessly with existing Site/FieldConfiguration system
+- ✅ Handles URL validation and content scraping
+- ✅ Applies stored XPath selectors to scraped content
+- ✅ Provides management commands for automation
+- ✅ Maintains consistent Wagtail admin experience
+
+** User Experience Requirements
+- ✅ Intuitive URL management interface
+- ✅ Clear processing status and progress indicators
+- ✅ Easy export and download of generated JSON
+- ✅ Error handling with actionable feedback
+- ✅ Bulk operations for efficiency
+
+* ARCHITECTURE CONSIDERATIONS
+
+** Database Design
+- Maintain existing Site/FieldConfiguration structure
+- Add URL management layer with status tracking
+- Store generated JSON with processing metadata
+- Support batch operations and queue management
+
+** Performance Considerations
+- Async processing for multiple URLs
+- Caching for repeated URL access
+- Efficient XPath evaluation
+- Progress tracking without blocking UI
+
+** Integration Strategy
+- Build on existing SiteConfiguration foundation
+- Leverage current XPath storage system
+- Extend Wagtail admin interface naturally
+- Maintain backward compatibility
+
+---
+
+**READY FOR NEXT MODEL**: XPath highlighting system complete. Foundation ready for URL management and AI JSON generation system expansion. 
