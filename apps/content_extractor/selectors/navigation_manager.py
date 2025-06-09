@@ -19,14 +19,16 @@ logger = logging.getLogger(__name__)
 class NavigationManager:
     """Manages navigation through nested field hierarchies."""
     
-    def __init__(self, nested_manager: NestedSelectionManager):
+    def __init__(self, nested_manager: NestedSelectionManager, interactive_selector=None):
         """
-        Initialize navigation manager.
+        Initialize navigation manager with nested selection manager.
         
         Args:
-            nested_manager: The nested selection manager instance
+            nested_manager: NestedSelectionManager instance for managing hierarchy
+            interactive_selector: Reference to InteractiveSelector for URL switching (optional)
         """
         self.nested_manager = nested_manager
+        self.interactive_selector = interactive_selector  # Store reference for URL switching
         self.pending_actions = []
         
     def enter_nested_field(self, field_name: str, instance_index: int = 0) -> bool:
@@ -170,6 +172,12 @@ class NavigationManager:
                 field_name = pending_action.get('field_name')
                 return self.add_nested_instance(field_name, driver)
                 
+            elif action_type == 'switch_url':
+                # Handle URL switching action
+                direction = pending_action.get('direction')
+                target_url = pending_action.get('target_url')
+                return self.handle_url_switch(direction, target_url, driver)
+                
             else:
                 logger.warning(f"Unknown nested action type: {action_type}")
                 return False
@@ -265,6 +273,46 @@ class NavigationManager:
             
         except Exception as e:
             logger.error(f"Error adding instance for {field_name}: {e}")
+            return False
+    
+    def handle_url_switch(self, direction: str, target_url: str, driver) -> bool:
+        """
+        Handle URL switching action triggered from JavaScript.
+        
+        Args:
+            direction: 'next' or 'previous' direction for URL switching
+            target_url: The target URL to switch to
+            driver: Selenium WebDriver instance
+            
+        Returns:
+            True if URL switch was successful, False otherwise
+        """
+        try:
+            if not self.interactive_selector:
+                logger.error("Cannot switch URL: No interactive selector reference")
+                return False
+            
+            logger.info(f"Handling URL switch: {direction} -> {target_url}")
+            
+            # Use the interactive selector's URL switching methods
+            if direction == 'next':
+                success = self.interactive_selector.switch_to_next_url()
+            elif direction == 'previous':
+                success = self.interactive_selector.switch_to_previous_url()
+            else:
+                logger.error(f"Invalid URL switch direction: {direction}")
+                return False
+            
+            if success:
+                logger.info(f"Successfully switched URL via {direction} action")
+                # The interactive selector handles JavaScript re-injection automatically
+                return True
+            else:
+                logger.error(f"Failed to switch URL via {direction} action")
+                return False
+                
+        except Exception as e:
+            logger.error(f"Error handling URL switch: {e}")
             return False
     
     def get_nested_selection_hierarchy(self) -> Dict:

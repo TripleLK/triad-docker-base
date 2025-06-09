@@ -40,19 +40,15 @@ class InteractiveSelector:
     for interactive content selection with nested field support.
     """
     
-    def __init__(self, headless: bool = False, session_name: str = None, base_url: str = 'http://localhost:8000', 
-                 api_token: str = None, enable_multi_url: bool = False, site_config = None, test_urls: list = None):
+    def __init__(self, headless: bool = False, session_name: str = None, base_url: str = 'http://localhost:8000', api_token: str = None):
         """
-        Initialize interactive content selector with hierarchical field management and multi-URL testing support.
+        Initialize interactive content selector with hierarchical field management.
         
         Args:
             headless: Run browser in headless mode
             session_name: Name for this selection session
             base_url: Base URL for API calls (default: http://localhost:8000)
             api_token: API token for authentication (optional)
-            enable_multi_url: Enable multi-URL testing functionality
-            site_config: SiteConfiguration object for multi-URL testing (optional)
-            test_urls: List of test URLs for multi-URL testing (optional)
         """
         self.headless = headless
         self.driver = None
@@ -61,12 +57,6 @@ class InteractiveSelector:
         self.api_token = api_token
         self.current_url = None
         self.current_domain = None
-        
-        # Multi-URL testing support
-        self.enable_multi_url = enable_multi_url
-        self.site_config = site_config
-        self.test_urls = test_urls or []
-        self.current_url_index = 0
         
         # Initialize modular managers
         self.nested_manager = NestedSelectionManager()
@@ -99,32 +89,90 @@ class InteractiveSelector:
         chrome_options.add_experimental_option('useAutomationExtension', False)
         chrome_options.add_argument("--window-size=1920,1080")
         
-        try:
-            # Try to install chromedriver using webdriver-manager
-            service = Service(ChromeDriverManager().install())
-            self.driver = webdriver.Chrome(service=service, options=chrome_options)
-            
-            # Execute script to remove webdriver property
-            self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-            
-            logger.info("WebDriver setup complete")
-            return True
-            
-        except Exception as e:
-            logger.error(f"Failed to setup WebDriver: {e}")
-            # Try a fallback approach without webdriver-manager
+        # Additional options for macOS ARM64 compatibility
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-software-rasterizer")
+        chrome_options.add_argument("--disable-background-timer-throttling")
+        chrome_options.add_argument("--disable-backgrounding-occluded-windows")
+        chrome_options.add_argument("--disable-renderer-backgrounding")
+        
+        # Try multiple approaches to get ChromeDriver working
+        approaches = [
+            self._setup_with_webdriver_manager,
+            self._setup_with_system_chromedriver,
+            self._setup_with_homebrew_chromedriver
+        ]
+        
+        for i, approach in enumerate(approaches, 1):
             try:
-                logger.info("Attempting fallback WebDriver setup...")
-                self.driver = webdriver.Chrome(options=chrome_options)
-                
-                # Execute script to remove webdriver property
-                self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-                
-                logger.info("Fallback WebDriver setup complete")
-                return True
-            except Exception as e2:
-                logger.error(f"Fallback WebDriver setup also failed: {e2}")
-                return False
+                logger.info(f"Attempting ChromeDriver setup method {i}/3...")
+                service = approach()
+                if service:
+                    self.driver = webdriver.Chrome(service=service, options=chrome_options)
+                    
+                    # Execute script to remove webdriver property
+                    self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+                    
+                    logger.info(f"WebDriver setup complete using method {i}")
+                    return True
+                    
+            except Exception as e:
+                logger.warning(f"Method {i} failed: {e}")
+                continue
+        
+        logger.error("All ChromeDriver setup methods failed")
+        return False
+    
+    def _setup_with_webdriver_manager(self):
+        """Try to setup ChromeDriver using webdriver-manager with permission fixes."""
+        import os
+        import stat
+        from webdriver_manager.chrome import ChromeDriverManager
+        
+        # Install chromedriver
+        driver_path = ChromeDriverManager().install()
+        logger.info(f"ChromeDriver downloaded to: {driver_path}")
+        
+        # Fix permissions on macOS ARM64
+        if os.path.exists(driver_path):
+            # Make sure the chromedriver is executable
+            current_permissions = os.stat(driver_path).st_mode
+            os.chmod(driver_path, current_permissions | stat.S_IEXEC | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+            logger.info(f"Fixed permissions for ChromeDriver: {driver_path}")
+            
+            return Service(driver_path)
+        
+        return None
+    
+    def _setup_with_system_chromedriver(self):
+        """Try to use system-installed ChromeDriver."""
+        import shutil
+        
+        # Check if chromedriver is available in PATH
+        chromedriver_path = shutil.which("chromedriver")
+        if chromedriver_path:
+            logger.info(f"Found system ChromeDriver: {chromedriver_path}")
+            return Service(chromedriver_path)
+        
+        return None
+    
+    def _setup_with_homebrew_chromedriver(self):
+        """Try to use Homebrew-installed ChromeDriver."""
+        import os
+        
+        # Common Homebrew paths for ChromeDriver
+        homebrew_paths = [
+            "/opt/homebrew/bin/chromedriver",  # ARM64 Homebrew
+            "/usr/local/bin/chromedriver",     # Intel Homebrew
+            "/opt/homebrew/Caskroom/chromedriver/latest/chromedriver"
+        ]
+        
+        for path in homebrew_paths:
+            if os.path.exists(path) and os.access(path, os.X_OK):
+                logger.info(f"Found Homebrew ChromeDriver: {path}")
+                return Service(path)
+        
+        return None
 
     def load_page(self, url: str, wait_time: int = 10) -> bool:
         """
@@ -547,240 +595,6 @@ class InteractiveSelector:
             logger.info("All selections cleared")
         except Exception as e:
             logger.error(f"Error clearing selections: {e}")
-    
-    # Multi-URL Testing Methods
-    
-    def get_available_test_urls(self) -> List[str]:
-        """Get list of available test URLs for multi-URL testing."""
-        return self.test_urls.copy() if self.test_urls else []
-    
-    def get_current_url_info(self) -> Dict:
-        """Get information about the current URL in the context of multi-URL testing."""
-        if not self.enable_multi_url or not self.test_urls:
-            return {
-                'current_url': self.current_url,
-                'is_multi_url_enabled': False,
-                'total_urls': 0,
-                'current_index': 0
-            }
-        
-        return {
-            'current_url': self.current_url,
-            'is_multi_url_enabled': True,
-            'total_urls': len(self.test_urls),
-            'current_index': self.current_url_index,
-            'site_config': self.site_config.site_name if self.site_config else None,
-            'available_urls': self.test_urls
-        }
-    
-    def switch_to_url(self, url: str) -> bool:
-        """
-        Switch to a specific test URL.
-        
-        Args:
-            url: The URL to switch to (must be in test_urls list)
-            
-        Returns:
-            True if successfully switched, False otherwise
-        """
-        if not self.enable_multi_url:
-            logger.warning("Multi-URL testing is not enabled")
-            return False
-        
-        if url not in self.test_urls:
-            logger.error(f"URL {url} is not in the configured test URLs")
-            return False
-        
-        try:
-            # Store current selections before switching
-            current_selections = self.get_all_field_selections()
-            
-            # Load the new URL
-            if self.load_page(url):
-                # Update current URL index
-                self.current_url_index = self.test_urls.index(url)
-                
-                # Re-inject JavaScript with current context
-                self._inject_selection_js()
-                
-                logger.info(f"Successfully switched to URL: {url}")
-                return True
-            else:
-                logger.error(f"Failed to load URL: {url}")
-                return False
-                
-        except Exception as e:
-            logger.error(f"Error switching to URL {url}: {e}")
-            return False
-    
-    def switch_to_next_url(self) -> bool:
-        """
-        Switch to the next URL in the test URLs list.
-        
-        Returns:
-            True if successfully switched, False otherwise
-        """
-        if not self.enable_multi_url or not self.test_urls:
-            return False
-        
-        next_index = (self.current_url_index + 1) % len(self.test_urls)
-        next_url = self.test_urls[next_index]
-        
-        return self.switch_to_url(next_url)
-    
-    def switch_to_previous_url(self) -> bool:
-        """
-        Switch to the previous URL in the test URLs list.
-        
-        Returns:
-            True if successfully switched, False otherwise
-        """
-        if not self.enable_multi_url or not self.test_urls:
-            return False
-        
-        prev_index = (self.current_url_index - 1) % len(self.test_urls)
-        prev_url = self.test_urls[prev_index]
-        
-        return self.switch_to_url(prev_url)
-    
-    def test_current_selectors_on_all_urls(self) -> Dict[str, Dict]:
-        """
-        Test current field selections on all configured test URLs.
-        
-        Returns:
-            Dictionary mapping URL to test results for each field
-        """
-        if not self.enable_multi_url or not self.test_urls:
-            return {}
-        
-        results = {}
-        original_url = self.current_url
-        
-        try:
-            # Get current field selections
-            current_selections = self.get_all_field_selections()
-            
-            if not current_selections:
-                logger.warning("No field selections to test")
-                return {}
-            
-            # Test on each URL
-            for test_url in self.test_urls:
-                logger.info(f"Testing selectors on: {test_url}")
-                
-                try:
-                    # Switch to test URL
-                    if self.switch_to_url(test_url):
-                        url_results = {}
-                        
-                        # Test each field's selectors
-                        for field_name, selections in current_selections.items():
-                            if selections:
-                                # Get the best selector for this field
-                                best_selection = self.db_manager.choose_best_selector(selections)
-                                
-                                # Test the selector on this page
-                                test_result = self._test_xpath_on_current_page(
-                                    best_selection.get('xpath', ''),
-                                    field_name
-                                )
-                                
-                                url_results[field_name] = test_result
-                        
-                        results[test_url] = url_results
-                    else:
-                        results[test_url] = {'error': 'Failed to load URL'}
-                        
-                except Exception as e:
-                    logger.error(f"Error testing on {test_url}: {e}")
-                    results[test_url] = {'error': str(e)}
-            
-            # Return to original URL
-            if original_url != self.current_url:
-                self.switch_to_url(original_url)
-            
-            return results
-            
-        except Exception as e:
-            logger.error(f"Error during multi-URL testing: {e}")
-            # Try to return to original URL
-            try:
-                if original_url != self.current_url:
-                    self.switch_to_url(original_url)
-            except:
-                pass
-            return {}
-    
-    def _test_xpath_on_current_page(self, xpath: str, field_name: str) -> Dict:
-        """
-        Test an XPath selector on the current page.
-        
-        Args:
-            xpath: XPath selector to test
-            field_name: Name of the field being tested
-            
-        Returns:
-            Dictionary with test results
-        """
-        try:
-            if not xpath:
-                return {'success': False, 'error': 'No XPath provided', 'element_count': 0}
-            
-            # Execute XPath on current page
-            result = self.driver.execute_script("""
-                var xpath = arguments[0];
-                var fieldName = arguments[1];
-                
-                try {
-                    var result = document.evaluate(xpath, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-                    var elements = [];
-                    var texts = [];
-                    
-                    for (var i = 0; i < result.snapshotLength; i++) {
-                        var element = result.snapshotItem(i);
-                        elements.push({
-                            tagName: element.tagName,
-                            textContent: element.textContent ? element.textContent.trim().substring(0, 100) : '',
-                            className: element.className || '',
-                            id: element.id || ''
-                        });
-                        
-                        if (element.textContent) {
-                            texts.push(element.textContent.trim());
-                        }
-                    }
-                    
-                    return {
-                        success: true,
-                        element_count: result.snapshotLength,
-                        elements: elements.slice(0, 5), // Limit to first 5 elements
-                        sample_texts: texts.slice(0, 3), // Limit to first 3 text samples
-                        xpath: xpath,
-                        field_name: fieldName
-                    };
-                    
-                } catch (e) {
-                    return {
-                        success: false,
-                        error: e.message,
-                        element_count: 0,
-                        xpath: xpath,
-                        field_name: fieldName
-                    };
-                }
-            """, xpath, field_name)
-            
-            return result
-            
-        except Exception as e:
-            logger.error(f"Error testing XPath {xpath}: {e}")
-            return {
-                'success': False,
-                'error': str(e),
-                'element_count': 0,
-                'xpath': xpath,
-                'field_name': field_name
-            }
     
     def close(self):
         """Close the browser and clean up resources."""

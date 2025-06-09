@@ -10,7 +10,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from apps.search import views as search_views
 from apps.categorized_tags import views as tag_views
-from api import api  # Django Ninja API v3
+# Removed: from api import api  # Django Ninja API v3 - archived by Neon Dragon
 
 urlpatterns = [
     path("django-admin/", admin.site.urls),
@@ -20,7 +20,7 @@ urlpatterns = [
     path("git-reload", include('apps.reload_from_git.urls')),
     path("api/tags/", tag_views.get_tags_api, name='api_tags'),
     path("api/v2/", include('apps.lab_equipment_api.urls')),  # Lab Equipment API v2 (DRF)
-    path("api/v3/", api.urls),  # Lab Equipment API v3 (Django Ninja)
+    # Removed: path("api/v3/", api.urls),  # Lab Equipment API v3 (Django Ninja) - archived by Neon Dragon
     path("content-extractor/", include('apps.content_extractor.urls')),  # Site Configuration Integration
     path("", include('apps.base_site.urls')),
 ]

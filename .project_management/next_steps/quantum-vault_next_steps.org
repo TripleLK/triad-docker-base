@@ -1,0 +1,107 @@
+#+TITLE: Quantum Vault Next Steps - Subfield Menu Synchronization
+#+AUTHOR: Quantum Vault
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:subfield:menu:synchronization:
+
+* MISSION ACCOMPLISHED: Main Field Menu UI Synchronization ✅
+
+** What Was Fixed:
+- ✅ Control panel progress display (now shows correct 5/11 fields)
+- ✅ Main field menu indicators (now show correct selection counts)
+- ✅ API timing synchronization (menus update after data loads)
+- ✅ CSS selector compatibility (unified menu system integration)
+
+** Technical Solutions Applied:
+- Direct data access pattern: `window.contentExtractorData.fieldSelections[fieldName]`
+- Unified menu CSS selector: `.unified-menu-body` (with `.menu-content` fallback)
+- API load refresh trigger in applyExistingSelectors()
+- Proper completion summary calculation
+
+* NEXT MODEL MISSION: Subfield Architecture Redesign 🎯
+
+** The REAL Problem (Updated Understanding):
+The subfield menus are **fundamentally different in structure** from the main field menu - not just missing proper count indicators. The entire menu system and available actions are completely different, which causes more serious architectural issues than simple UI synchronization.
+
+** User's Proposed Solution:
+Implement a **parent-child selector architecture** where:
+1. Each instance of a field with subfields requires a **parent selector** itself
+2. When that parent selector is provided, navigating to subfields only allows selecting **children of that selected item**
+3. This maintains **scope containment** - subfield selections are bounded by their parent selection
+4. Allows generalization of the field's selector to maintain what is selected within it for the subfields
+
+** Your Mission:
+**Architectural redesign**, not just UI synchronization fixes. The subfield menu system needs to be rebuilt with the parent-child selector concept.
+
+** Architectural Challenge Analysis:
+
+*** Current Broken State:
+- Subfield menus use completely different structure than main field menus
+- No parent-child relationship enforcement
+- Different menu types and action systems
+- No scope containment for selections
+
+*** Proposed New Architecture:
+```javascript
+// Parent selector requirement:
+window.contentExtractorData.instanceSelections[fieldName][instanceIndex].parentSelector = "/xpath/to/parent";
+
+// Scoped subfield selections:
+window.contentExtractorData.instanceSelections[fieldName][instanceIndex].subfields[subfieldName] = [
+    // Only children of parentSelector allowed
+];
+```
+
+** Key Files to Investigate:
+
+*** Subfield Menu Structure Analysis:
+- `apps/content_extractor/static/js/content_extractor_subfield.js` (if exists)
+- `createInstanceManagementMenu()` in content_extractor_ui.js (lines 430+)
+- Current subfield menu creation and action handling
+- How subfield selections are currently scoped (or not scoped)
+
+*** Parent-Child Selector System:
+- Element selection and XPath generation logic
+- How to implement parent element requirement for instances
+- Child element filtering within parent scope
+- Navigation flow: field → instance → parent selector → subfields
+
+** Implementation Strategy:
+
+*** 1. Analyze Current Subfield Menu Architecture:
+- Document how subfield menus currently work vs. main field menus
+- Identify specific structural differences
+- Map current data flow and selection patterns
+
+*** 2. Design Parent-Child Selector Flow:
+- Instance creation: require parent selector selection
+- Subfield navigation: scope to children of parent only
+- Data structure: maintain parent-child relationships
+- UI flow: clear indication of scope boundaries
+
+*** 3. Implement Scoped Selection System:
+- Parent selector validation for instances
+- Child element filtering for subfield selections
+- Updated menu creation with scope awareness
+- Proper data storage maintaining relationships
+
+** Success Criteria:
+- ✅ Each field instance requires parent selector before subfield access
+- ✅ Subfield selections limited to children of parent selector
+- ✅ Clear UI indication of current scope (parent element)
+- ✅ Data integrity maintained for parent-child relationships
+- ✅ Seamless navigation: field → instance → parent → subfields
+
+** Technical Notes:
+- This is **architectural redesign**, not just UI synchronization
+- Subfield menus are entirely different from main field menus
+- Parent-child selector concept is new paradigm for the system
+- Scope containment is critical for data integrity
+
+** Timeline Estimate: 2-3 hours
+This is a significant architectural change requiring design, implementation, and testing of a new parent-child selector system, not just applying existing patterns.
+
+* Code Name for Next Model
+Suggested format: [adjective]-[noun] (Xbox gamertag style)
+Must not reuse "Quantum" or "Vault" components.
+
+[SUCCESSFULLY COMPLETED MODEL TURN] 

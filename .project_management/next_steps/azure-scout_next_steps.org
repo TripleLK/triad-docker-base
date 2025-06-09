@@ -1,0 +1,218 @@
+#+TITLE: Azure Scout Next Steps - Parent Selection Implementation
+#+AUTHOR: Azure Scout
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:azure-scout:parent-selection:subfields:
+
+* MISSION: Implement Parent Selection for Subfield System 🎯
+
+** CONTEXT: Successful Menu Unification Completed ✅
+- Subfield menus now identical to main field menus
+- Unified codebase for all field selection interfaces
+- Legacy code completely removed
+- Consistent user experience achieved
+
+** USER'S VISION: Parent-Child Selector Architecture
+*** Core Concept:
+- Field instances with subfields require parent element selection FIRST
+- Subfield selections are then scoped to children of that parent element
+- Maintains containment: subfields bounded within parent selection
+- Generalized field selector maintains scope for all subfield operations
+
+*** Navigation Flow:
+```
+Field → Instance → **PARENT SELECTOR** → Scoped Subfields
+```
+
+** TECHNICAL REQUIREMENTS
+
+*** 1. Parent Selection Interface Design
+- Add "Set Parent Container" button/option to instance configuration
+- Use unified menu system (already proven to work)
+- Parent selection should precede subfield configuration
+- Visual indication when parent is set vs. not set
+
+*** 2. Parent Selection Implementation
+- Create parent element selection mode
+- Highlight potential parent containers on page
+- Allow user to click parent element (like current field selection)
+- Store parent element XPath/selector for scope boundaries
+
+*** 3. Subfield Scoping System
+- Modify subfield selection to only search within parent element
+- Update XPath generation to be relative to parent container
+- Add parent context to subfield data structure
+- Ensure subfield selections are contained within parent bounds
+
+*** 4. Visual Parent-Child Relationship
+- Show parent container boundaries during subfield selection
+- Highlight parent element when configuring subfields
+- Display parent context in subfield menus
+- Clear visual indication of scope limitations
+
+** PROVEN TECHNICAL PATTERNS (From Azure Scout)
+
+*** Unified Menu System Usage:
+```javascript
+// Use this proven pattern for parent selection menu
+const config = {
+    id: 'content-extractor-parent-selector-menu',
+    title: `🎯 Set Parent Container`,
+    subtitle: `Define scope for ${field.label}[${instanceIndex + 1}] subfields`,
+    type: 'parent',
+    color: field.color,
+    content: buildParentSelectorContent(),
+    buttons: [
+        { label: '🎯 Select Parent', type: 'primary', onClick: 'startParentSelection(...)' },
+        { label: '⬅️ Back to Instance', type: 'secondary', onClick: 'returnToInstanceManagement(...)' }
+    ]
+};
+```
+
+*** Direct Data Access Pattern:
+```javascript
+// Use this proven data access approach (from Quantum Vault)
+const instance = window.contentExtractorData.instanceSelections[fieldName][instanceIndex];
+const parentContainer = instance.parentContainer || null;
+const hasParent = parentContainer && parentContainer.xpath;
+```
+
+*** CSS Selector Integration:
+```javascript
+// Use proven CSS selector approach (from UI synchronization fix)
+const parentMenu = document.querySelector('.unified-menu-body');
+if (parentMenu) {
+    parentMenu.innerHTML = buildParentSelectorContent();
+}
+```
+
+** DATA STRUCTURE DESIGN
+
+*** Current Instance Structure:
+```javascript
+instance = {
+    xpath: "...",
+    selected_text: "...",
+    subfields: {
+        subfieldName: [...selections...]
+    }
+}
+```
+
+*** Proposed Enhanced Structure:
+```javascript
+instance = {
+    xpath: "...",
+    selected_text: "...",
+    parentContainer: {                    // NEW
+        xpath: "parent xpath",
+        selected_text: "parent preview",
+        timestamp: "selection time"
+    },
+    subfields: {
+        subfieldName: [
+            {
+                xpath: "relative to parent",  // MODIFIED: relative paths
+                selected_text: "...",
+                parentRelative: true          // NEW: flag for scoped selection
+            }
+        ]
+    }
+}
+```
+
+** IMPLEMENTATION STRATEGY
+
+*** Phase 1: Parent Selection Interface
+1. Add "Set Parent Container" option to instance menus
+2. Create parent selection mode with page highlighting
+3. Implement parent element click handling
+4. Store parent container data in instance structure
+
+*** Phase 2: Subfield Scoping
+1. Modify subfield selection to search within parent only
+2. Update XPath generation for parent-relative paths
+3. Add parent context to subfield selection UI
+4. Test containment and boundary enforcement
+
+*** Phase 3: Visual Integration
+1. Show parent container during subfield operations
+2. Add parent context to unified subfield menus
+3. Implement parent container highlighting
+4. Polish user experience and error handling
+
+** SUCCESS CRITERIA
+
+*** Functional Requirements:
+- ✅ User can select parent container for any field instance
+- ✅ Subfield selections are limited to parent container children
+- ✅ Parent container is visually indicated during subfield operations
+- ✅ Parent-relative XPath generation works correctly
+
+*** User Experience Requirements:
+- ✅ Intuitive parent selection workflow
+- ✅ Clear visual feedback for parent-child relationships
+- ✅ Consistent interface using unified menu system
+- ✅ Error handling for invalid parent selections
+
+*** Technical Requirements:
+- ✅ Parent container data properly stored and retrieved
+- ✅ Subfield scoping enforced in selection logic
+- ✅ XPath generation relative to parent container
+- ✅ Integration with existing unified menu system
+
+** ESTIMATED TIMELINE: 2-3 Hours
+
+*** Time Breakdown:
+- Parent selection interface: 45-60 minutes
+- Subfield scoping logic: 60-90 minutes
+- Visual integration and testing: 30-45 minutes
+- Documentation and cleanup: 15-30 minutes
+
+** FILES TO MODIFY
+
+*** Primary Implementation:
+- `apps/content_extractor/static/js/content_extractor_unified_menu.js`
+  - Add parent selection menu creation
+  - Enhance subfield menu with parent context
+
+*** Event Handling:
+- `apps/content_extractor/static/js/content_extractor_events.js`
+  - Add parent selection event handlers
+  - Modify subfield selection for scoping
+
+*** Data Management:
+- Backend field data structures (if needed)
+- Instance data storage enhancement
+
+** RISK MITIGATION
+
+*** Known Challenges:
+- XPath complexity for parent-relative selections
+- DOM traversal for parent-child relationships
+- Visual indication of scope boundaries
+- Integration with existing subfield workflow
+
+*** Mitigation Strategies:
+- Use proven technical patterns from Azure Scout
+- Leverage unified menu system for consistency
+- Test thoroughly with real-world DOM structures
+- Maintain backward compatibility during transition
+
+** HANDOFF NOTES
+
+*** Azure Scout's Proven Approaches:
+- Unified menu system is stable and consistent
+- Direct data access pattern works reliably
+- CSS selector integration proven functional
+- Legacy code elimination strategy successful
+
+*** Next Model Should:
+- Focus on parent selection logic implementation
+- Use established technical patterns
+- Maintain unified interface consistency
+- Test parent-child containment thoroughly
+
+* Summary:
+Implement parent container selection for field instances, enabling scoped subfield selection within defined boundaries. Use proven unified menu system and direct data access patterns established by Azure Scout. Create intuitive parent-child workflow with clear visual feedback and proper XPath scoping.
+
+[MISSION READY FOR HANDOFF] 

@@ -142,6 +142,24 @@ class JavaScriptInjectionManager:
         console.log('🎯 Content Extractor initialized with', window.contentExtractorData.fieldOptions.length, 'fields');
         console.log('🌐 Base URL set to:', window.contentExtractorData.baseUrl);
         console.log('🔑 API Token configured:', window.contentExtractorData.apiToken ? 'Yes' : 'No');
+        
+        // Automatically load existing selectors for this domain after initialization
+        setTimeout(function() {{
+            if (typeof loadExistingSelectors === 'function') {{
+                console.log('🔄 Automatically loading existing selectors for domain:', window.location.hostname);
+                loadExistingSelectors().then(function(fieldMappings) {{
+                    if (fieldMappings && Object.keys(fieldMappings).length > 0) {{
+                        console.log('✅ Successfully loaded existing selectors:', Object.keys(fieldMappings));
+                    }} else {{
+                        console.log('📝 No existing selectors found for this domain');
+                    }}
+                }}).catch(function(error) {{
+                    console.error('❌ Error auto-loading existing selectors:', error);
+                }});
+            }} else {{
+                console.warn('⚠️ loadExistingSelectors function not available');
+            }}
+        }}, 1000); // Wait 1 second for all functions to be loaded
         """
         
         # Combine initialization with loaded JavaScript
