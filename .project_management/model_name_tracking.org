@@ -721,3 +721,38 @@ Track all AI model code names to ensure uniqueness and avoid component reuse.
 *** Key File
     - Primary: `apps/content_extractor/management/commands/generate_ai_json.py`
     - Focus: Lines 124-194 (field organization and JSON generation methods)
+
+** Model [Next]: Iron Catalyst
+   :PROPERTIES:
+   :START_DATE: [2025-01-22]
+   :END_DATE: [PENDING]
+   :SESSION_FOCUS: AI JSON Structure Refinements - Remove Invented Categories & Enhance Attribute Extraction
+   :STATUS: ACTIVE
+   :HANDOFF_FROM: Thunder Nexus
+   :PRIORITY: HIGH - Structural JSON improvements for user requirements
+   :END:
+
+*** Mission Objective
+    - Remove invented field categories (accessories_options, features_specs, model_variations, other_fields)
+    - Implement flat JSON structure using actual LabEquipment model field names
+    - Add attribute extraction for images (src), links (href), and other elements
+    - Remove redundant scraped_content field from JSON output
+    - Preserve existing content-selector association functionality
+
+*** Immediate Priorities (Thunder Nexus Analysis)
+    1. **CRITICAL**: Remove `get_equipment_type_from_field()` method - creates artificial categories
+    2. **CRITICAL**: Enhance `extract_content_for_selectors()` to extract element attributes (src, href)  
+    3. **MEDIUM**: Remove redundant `scraped_content` field from JSON structure
+    4. **LOW**: Simplify overall JSON structure to flat field configuration
+
+*** Background Context
+    Thunder Nexus successfully resolved the critical content-selector association issue:
+    - ✅ XPath selectors now properly applied to HTML during JSON generation
+    - ✅ 85.7% extraction success rate achieved
+    - ✅ Database storage (AIJSONRecord) working correctly
+    - ✅ Core extraction pipeline established and validated
+
+*** Key Files for Work
+    - **Primary**: `apps/content_extractor/management/commands/generate_ai_json.py`
+    - **Focus Methods**: `organize_field_configurations()`, `extract_content_for_selectors()`, `generate_ai_json_for_url()`
+    - **Test Data**: Analysis outputs in `analysis_outputs/ai_json_exports/thunder-nexus/`
