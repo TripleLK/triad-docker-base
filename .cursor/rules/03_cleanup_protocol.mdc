@@ -1,7 +1,7 @@
 ---
-description: When Cleanup is requested
+description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # Cleanup Protocol
 

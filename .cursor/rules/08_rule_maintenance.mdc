@@ -1,7 +1,7 @@
 ---
-description: For any turns that involve modifying cursor rules
+description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # Rule System Maintenance
 

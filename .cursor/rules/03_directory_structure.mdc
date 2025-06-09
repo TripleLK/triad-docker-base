@@ -1,7 +1,7 @@
 ---
-description: Turns involving file creation, movement, directory setup, or project orientation
+description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # Directory Structure Rules
 

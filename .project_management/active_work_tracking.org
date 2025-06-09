@@ -638,27 +638,13 @@
 
 ** ACTIVE PRIORITIES: �� Next Model Focus
 
-*** 🎯 PRIORITY 1: Field Menu State Refresh Issues (HIGH IMPACT)
-**** Problem
-- Field menus don't immediately show updated selection states
-- Users need to reload menus multiple times to see changes
-- Progress indicators lag behind actual data state
-- Creates confusing user experience
-
-**** Technical Root Cause
-- Menus read data once on creation but don't refresh on data changes
-- No refresh triggers after data-changing operations
-- Status indicators cached/not updated properly
-
-**** Implementation Required
-- Audit all fieldSelections data change points
-- Add refresh triggers after selections, saves, clears
-- Centralize state reading for consistency
-- Make menus reactive to data changes
-
-**** Files to Focus
-- apps/content_extractor/static/js/content_extractor_events.js
-- Menu and progress indicator components
+*** 🎯 PRIMARY OBJECTIVE: Generalized XPath Selector Multi-Element Highlighting
+**** Mission: Fix XPath selectors to highlight ALL matching elements instead of just the first one
+**** Current Issue: `features` field shows "1 selected" but generalized XPath should highlight all matching tabs
+**** Technical Focus: Enhance `applyExistingSelectors()` to find and highlight all XPath matches
+**** Priority: Feature Enhancement (functionality working, needs visual completeness)
+**** Assigned To: Next Model
+**** Estimated Effort: 2-3 hours (XPath evaluation and highlighting logic enhancement)
 
 *** 🎯 PRIORITY 2: Unified Field/Subfield System (ARCHITECTURE)
 **** Problem  

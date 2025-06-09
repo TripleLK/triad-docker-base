@@ -164,4 +164,144 @@ refreshFieldMenus()
 
 **Field menu refresh system is functionally complete at 90%. Priority 3 focuses on visual polish and consistency rather than core functionality. Next model can deliver a professionally unified interface experience.**
 
-**All critical user pain points have been resolved. Interface unification is the final polish step for a premium user experience.** 
+**All critical user pain points have been resolved. Interface unification is the final polish step for a premium user experience.**
+
+#+TITLE: Swift Phoenix Next Steps
+#+AUTHOR: Swift Phoenix
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:swift-phoenix:xpath-highlighting:
+
+* MISSION FOR NEXT MODEL: Generalized XPath Selector Multi-Element Highlighting
+
+** OBJECTIVE
+Fix generalized XPath selectors to highlight ALL matching elements instead of just the first one.
+
+** CURRENT ISSUE
+- `features` field shows "1 selected" but should highlight all matching tabs
+- Generalized XPath patterns like `tab[X]` only select first matching element
+- Multi-value fields need visual feedback for ALL selected elements
+
+** TECHNICAL CONTEXT
+
+*** Current State ✅
+- Field comments backend integration working perfectly (Swift Phoenix completed)
+- Comment save/load cycle functional with Wagtail models
+- XPath selector save/load infrastructure intact
+- Basic element highlighting working for single elements
+
+*** Problem Area 🎯
+- `applyExistingSelectors()` function stops at first XPath match
+- Need to find and highlight ALL elements matching generalized patterns
+- Multi-element visual feedback missing
+
+** IMPLEMENTATION PLAN
+
+*** Phase 1: Analysis (30 minutes)
+1. **Examine Current Logic**: Review `applyExistingSelectors()` in `content_extractor_events.js`
+2. **Identify XPath Evaluation**: Find where document.evaluate() or querySelector() is called
+3. **Trace Highlighting**: Follow element highlighting and badge application logic
+
+*** Phase 2: Multi-Element Enhancement (1-2 hours)  
+1. **XPath Result Iteration**: Modify evaluation to process ALL matching results
+2. **Batch Highlighting**: Apply highlights to every matching element
+3. **Count Accuracy**: Update selection count badges to reflect total matches
+4. **Visual Feedback**: Ensure all selected elements show proper indicators
+
+*** Phase 3: Testing (30 minutes)
+1. **Multi-Tab Features**: Test with `features` field on pages with multiple tabs
+2. **Other Multi-Value Fields**: Verify `accessories`, `models`, etc. work correctly
+3. **Single Elements**: Ensure single-element fields still work properly
+
+** KEY FILES TO EXAMINE
+
+*** Primary Target
+- `apps/content_extractor/static/js/content_extractor_events.js`
+  - Lines 72-83: `applyExistingSelectors()` function
+  - XPath evaluation and element finding logic
+  - Element highlighting and badge application
+
+*** Secondary Files  
+- `apps/content_extractor/static/js/content_extractor_selection.js`
+  - Element highlighting functions
+  - Badge and indicator management
+
+** TECHNICAL APPROACH
+
+*** Current (Broken)
+```javascript
+// Likely stops at first match:
+const element = document.querySelector(xpath);
+if (element) {
+    highlightElement(element);
+}
+```
+
+*** Target Implementation
+```javascript
+// Process all matches:
+const elements = document.querySelectorAll(xpath);
+elements.forEach(element => {
+    highlightElement(element);
+});
+updateSelectionCount(elements.length);
+```
+
+** SUCCESS CRITERIA
+
+*** Visual Feedback ✅
+- All matching elements highlighted simultaneously
+- Selection count badges show accurate totals
+- Multi-value fields visually complete
+
+*** Functional Preservation ✅  
+- Single-element fields still work correctly
+- Comment system remains functional
+- Save/load cycle unchanged
+
+*** User Experience ✅
+- Clear visual feedback for multi-element selections
+- No confusion about selection completeness
+- Professional, polished interface
+
+** DEBUGGING SUPPORT
+
+*** Console Logging
+- Add logging for XPath evaluation results
+- Show count of elements found vs highlighted
+- Debug selection count calculation
+
+*** Test Cases
+- Pages with multiple tabs (features field)
+- Pages with multiple product variants (models field)
+- Single-element selections (title, description)
+
+** HANDOFF CONTEXT
+
+*** Swift Phoenix Achievements ✅
+- Complete field comment backend integration
+- Round-trip save/load working perfectly
+- User comments persist across sessions
+- Wagtail admin integration functional
+
+*** Foundation Ready ✅
+- All backend integration solid
+- XPath selector infrastructure working
+- Comment system not blocking development
+- Clear technical path forward
+
+*** Scope Focused 🎯
+- Pure frontend enhancement
+- No backend changes needed
+- No comment system modifications required
+- Isolated XPath highlighting improvement
+
+** ESTIMATED EFFORT
+**Total**: 2-3 hours
+- Analysis: 30 minutes
+- Implementation: 1-2 hours  
+- Testing & Polish: 30 minutes
+
+** PRIORITY
+**Feature Enhancement** - System functional, needs visual completeness for professional user experience.
+
+Next model inherits a solid, working foundation and can focus entirely on this specific multi-element highlighting enhancement. 

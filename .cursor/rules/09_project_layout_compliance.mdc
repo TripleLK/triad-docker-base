@@ -1,7 +1,7 @@
 ---
-description: Anything involving the creation or moving of files.
+description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # Project Layout Compliance
 

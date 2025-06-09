@@ -1,7 +1,7 @@
 ---
-description: Use for any tasks that involve django coding.
+description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # Django Project Rules
 
