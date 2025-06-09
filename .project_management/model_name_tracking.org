@@ -690,3 +690,34 @@ Track all AI model code names to ensure uniqueness and avoid component reuse.
   - **Focus**: URL management and AI JSON generation system
   - **Date**: 2025-01-22
   - **Handoff from**: Stellar Hawk (XPath highlighting system completion)
+
+** Model 12: Thunder Nexus
+   :PROPERTIES:
+   :START_DATE: [2025-01-22]
+   :END_DATE: [In Progress]
+   :SESSION_FOCUS: AI JSON Content-Selector Association Implementation
+   :STATUS: ACTIVE - Taking over from Cosmic Forge
+   :HANDOFF_FROM: Cosmic Forge (AI JSON Pipeline Enhancements)
+   :PRIORITY: CRITICAL - Content-selector association missing
+   :END:
+
+*** Mission Objective
+    Complete the AI JSON pipeline by implementing proper content-selector association that was identified as missing by Cosmic Forge
+
+*** Handoff Context from Cosmic Forge
+    - ✅ HTML cleaning (JavaScript/CSS removal, whitespace normalization) - COMPLETE
+    - ✅ Equipment-based field categorization - COMPLETE  
+    - ✅ JSON structure organization - COMPLETE
+    - ❌ Content-selector association - CRITICAL ISSUE REMAINS
+    - User feedback: "html contents were still not associated with their selectors properly"
+
+*** Primary Task
+    Implement content extraction preview during JSON generation:
+    1. Apply XPath selectors to scraped HTML during JSON generation
+    2. Include extracted content samples in field configurations
+    3. Add XPath validation and error reporting
+    4. Create direct associations between selectors and extraction results
+
+*** Key File
+    - Primary: `apps/content_extractor/management/commands/generate_ai_json.py`
+    - Focus: Lines 124-194 (field organization and JSON generation methods)

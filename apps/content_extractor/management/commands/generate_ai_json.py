@@ -146,9 +146,17 @@ class Command(BaseCommand):
         
         return html_text
 
-    def organize_field_configurations(self, field_configs):
-        """Organize field configurations by equipment/product groupings."""
+    def organize_field_configurations(self, field_configs, scraped_html=None):
+        """Organize field configurations by equipment/product groupings and extract content."""
         organized_configs = {}
+        
+        # Parse HTML for content extraction if provided
+        html_tree = None
+        if scraped_html:
+            try:
+                html_tree = html.fromstring(scraped_html)
+            except Exception as e:
+                self.stdout.write(self.style.WARNING(f"HTML parsing failed: {str(e)}"))
         
         for field_config in field_configs:
             field_name = field_config.lab_equipment_field
@@ -162,14 +170,109 @@ class Command(BaseCommand):
                     'extraction_fields': {}
                 }
             
-            organized_configs[equipment_type]['extraction_fields'][field_name] = {
+            # Build field configuration with content extraction
+            field_config_data = {
                 'xpath_selectors': field_config.xpath_selectors,
                 'comment': field_config.comment,
                 'field_type': self.determine_field_type(field_name),
                 'is_active': field_config.is_active
             }
+            
+            # Extract content if HTML is available
+            if html_tree is not None and field_config.xpath_selectors:
+                content_extraction = self.extract_content_for_selectors(
+                    html_tree, field_config.xpath_selectors, field_name
+                )
+                field_config_data.update(content_extraction)
+            
+            organized_configs[equipment_type]['extraction_fields'][field_name] = field_config_data
         
         return organized_configs
+
+    def extract_content_for_selectors(self, html_tree, xpath_selectors, field_name):
+        """Extract content using XPath selectors and return extraction results."""
+        extraction_results = {
+            'extracted_content': [],
+            'extraction_summary': {
+                'total_selectors': len(xpath_selectors),
+                'successful_extractions': 0,
+                'failed_extractions': 0,
+                'extraction_errors': []
+            }
+        }
+        
+        for i, xpath_selector in enumerate(xpath_selectors):
+            try:
+                # Apply XPath selector to HTML
+                elements = html_tree.xpath(xpath_selector)
+                
+                if elements:
+                    # Extract text content from matched elements
+                    extracted_texts = []
+                    for element in elements[:5]:  # Limit to first 5 matches for preview
+                        try:
+                            if hasattr(element, 'text_content'):
+                                text = element.text_content().strip()
+                            elif isinstance(element, str):
+                                text = element.strip()
+                            else:
+                                text = str(element).strip()
+                            
+                            if text:
+                                extracted_texts.append(text)
+                        except Exception as e:
+                            extraction_results['extraction_summary']['extraction_errors'].append({
+                                'selector_index': i,
+                                'xpath': xpath_selector,
+                                'error': f"Text extraction error: {str(e)}"
+                            })
+                    
+                    if extracted_texts:
+                        extraction_results['extracted_content'].append({
+                            'selector_index': i,
+                            'xpath': xpath_selector,
+                            'match_count': len(elements),
+                            'extracted_text': extracted_texts,
+                            'preview_note': f"Showing first {len(extracted_texts)} of {len(elements)} matches" if len(elements) > len(extracted_texts) else "All matches shown"
+                        })
+                        extraction_results['extraction_summary']['successful_extractions'] += 1
+                    else:
+                        extraction_results['extracted_content'].append({
+                            'selector_index': i,
+                            'xpath': xpath_selector,
+                            'match_count': len(elements),
+                            'extracted_text': [],
+                            'extraction_note': "Elements found but no text content extracted"
+                        })
+                        extraction_results['extraction_summary']['failed_extractions'] += 1
+                else:
+                    # No matches found
+                    extraction_results['extracted_content'].append({
+                        'selector_index': i,
+                        'xpath': xpath_selector,
+                        'match_count': 0,
+                        'extracted_text': [],
+                        'extraction_note': "No elements matched this XPath selector"
+                    })
+                    extraction_results['extraction_summary']['failed_extractions'] += 1
+                    
+            except Exception as e:
+                # XPath execution error
+                extraction_results['extraction_summary']['failed_extractions'] += 1
+                extraction_results['extraction_summary']['extraction_errors'].append({
+                    'selector_index': i,
+                    'xpath': xpath_selector,
+                    'error': f"XPath execution error: {str(e)}"
+                })
+                extraction_results['extracted_content'].append({
+                    'selector_index': i,
+                    'xpath': xpath_selector,
+                    'match_count': 0,
+                    'extracted_text': [],
+                    'extraction_note': f"XPath error: {str(e)}"
+                })
+        
+        return extraction_results
 
     def get_equipment_type_from_field(self, field_name):
         """Determine equipment type category from field name."""
@@ -205,8 +308,11 @@ class Command(BaseCommand):
         # Get XPath configurations for this site
         field_configs = site_url.site_config.field_configs.filter(is_active=True)
         
-        # Organize field configurations by equipment type
-        organized_extraction_config = self.organize_field_configurations(field_configs)
+        # Organize field configurations by equipment type with content extraction
+        organized_extraction_config = self.organize_field_configurations(field_configs, scraped_content['html'])
+        
+        # Calculate extraction statistics
+        extraction_stats = self.calculate_extraction_statistics(organized_extraction_config)
         
         # Assemble complete JSON
         ai_json = {
@@ -217,14 +323,48 @@ class Command(BaseCommand):
             'field_configurations': organized_extraction_config,
             'processing_metadata': {
                 'timestamp': timezone.now().isoformat(),
-                'status': 'ready_for_ai',
+                'status': 'ready_for_ai_with_content_mapping',
                 'equipment_categories': len(organized_extraction_config),
                 'total_field_count': sum(len(config['extraction_fields']) for config in organized_extraction_config.values()),
-                'content_length': len(scraped_content.get('html', '')) if scraped_content else 0
+                'content_length': len(scraped_content.get('html', '')) if scraped_content else 0,
+                'extraction_statistics': extraction_stats
             }
         }
         
         return ai_json
+
+    def calculate_extraction_statistics(self, organized_configs):
+        """Calculate overall extraction statistics from organized field configurations."""
+        total_fields = 0
+        total_selectors = 0
+        total_successful_extractions = 0
+        total_failed_extractions = 0
+        fields_with_content = 0
+        
+        for equipment_type, config in organized_configs.items():
+            for field_name, field_data in config['extraction_fields'].items():
+                total_fields += 1
+                
+                if 'extraction_summary' in field_data:
+                    summary = field_data['extraction_summary']
+                    total_selectors += summary['total_selectors']
+                    total_successful_extractions += summary['successful_extractions']
+                    total_failed_extractions += summary['failed_extractions']
+                    
+                    if summary['successful_extractions'] > 0:
+                        fields_with_content += 1
+        
+        success_rate = (total_successful_extractions / total_selectors * 100) if total_selectors > 0 else 0
+        
+        return {
+            'total_fields_configured': total_fields,
+            'total_xpath_selectors': total_selectors,
+            'successful_extractions': total_successful_extractions,
+            'failed_extractions': total_failed_extractions,
+            'fields_with_extracted_content': fields_with_content,
+            'extraction_success_rate_percent': round(success_rate, 1),
+            'content_mapping_status': 'complete' if total_successful_extractions > 0 else 'no_content_extracted'
+        }
 
     def scrape_url_content(self, url):
         """Scrape HTML content from the given URL."""
