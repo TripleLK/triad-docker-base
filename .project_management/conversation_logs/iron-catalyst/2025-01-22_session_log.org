@@ -192,4 +192,102 @@ Iron Catalyst addressed all issues while preserving Thunder Nexus's solid extrac
 ** Cross-References
 - Documentation: `analysis_outputs/ai_json_exports/iron-catalyst/README.md`
 - Enhanced JSON examples: `analysis_outputs/ai_json_exports/iron-catalyst/`
-- Model tracking: Updated `.project_management/model_name_tracking.org` 
+- Model tracking: Updated `.project_management/model_name_tracking.org`
+
+* Turn 3: AI Prompt Template Creation - JSON to API Conversion
+  :PROPERTIES:
+  :TIMESTAMP: [Prompt Template Creation]
+  :END:
+
+** Discussion Summary
+User requested creation of a comprehensive AI prompt template with `{{double bracket variables}}` for converting the enhanced AI JSON output (from Iron Catalyst's refined pipeline) into the specific JSON format needed to create LabEquipmentPage objects via the Django REST API.
+
+** Analysis Performed
+Examined the complete data transformation pipeline:
+
+1. **Source Format**: Iron Catalyst's enhanced AI JSON with flat field structure and attribute extraction
+2. **Target Format**: LabEquipmentPageCreateUpdateSerializer API requirements
+3. **Conversion Requirements**: Transform extracted content into structured API payload
+
+** Key Research Activities
+- **API Structure Analysis**: Examined `apps/lab_equipment_api/serializers.py` for LabEquipmentPageCreateUpdateSerializer fields
+- **Model Requirements**: Reviewed LabEquipmentPage model structure and related models
+- **JSON Sample Analysis**: Studied Iron Catalyst enhanced JSON samples to understand available data structure
+- **Field Mapping**: Identified conversion paths from AI JSON fields to API fields
+
+** API Requirements Identified
+```json
+{
+  "title": "string",
+  "slug": "string", 
+  "short_description": "html",
+  "full_description": "html",
+  "source_url": "url",
+  "source_type": "choice",
+  "data_completeness": "float 0.0-1.0",
+  "specification_confidence": "choice",
+  "needs_review": "boolean",
+  "categorized_tags": ["array of tag names"],
+  "specifications": "complex json",
+  "models_data": "complex json", 
+  "features_data": ["array of strings"]
+}
+```
+
+** Template Variables Defined
+- `{{EQUIPMENT_TITLE}}`: Cleaned title from extracted content
+- `{{AUTO_GENERATED_SLUG}}`: URL-safe slug generation
+- `{{SHORT_DESCRIPTION_HTML}}`: Formatted short description
+- `{{FULL_DESCRIPTION_HTML}}`: Rich HTML full description
+- `{{SOURCE_URL}}`: Original extraction URL
+- `{{SOURCE_TYPE}}`: Equipment type classification
+- `{{DATA_COMPLETENESS_SCORE}}`: Quality metric calculation
+- `{{CONFIDENCE_LEVEL}}`: Content confidence assessment
+- `{{CATEGORIZED_TAGS_ARRAY}}`: Tag extraction and formatting
+- `{{SPECIFICATIONS_JSON}}`: Structured specifications
+- `{{MODELS_DATA_JSON}}`: Model information parsing
+- `{{FEATURES_LIST}}`: Feature extraction and formatting
+
+** Transformation Rules Created
+1. **Core Fields**: Direct extraction from flat AI JSON structure
+2. **Quality Metrics**: Automated calculation based on field completion
+3. **Structured Data**: Complex parsing for specifications, models, and features
+4. **Content Processing**: HTML formatting and data cleaning guidelines
+5. **Error Handling**: Fallback strategies for missing or malformed data
+
+** File Created
+- **Location**: `.project_management/ai_prompts/ai_json_to_lab_equipment_api.md`
+- **Content**: Comprehensive prompt template with detailed transformation rules
+- **Format**: Template variables using `{{variable_name}}` convention
+- **Usage**: Can be filled programmatically or used as AI instruction template
+
+** Template Features
+- **Input/Output Formats**: Clear JSON structure examples
+- **Transformation Rules**: Step-by-step conversion guidelines
+- **Quality Assessment**: Data completeness and confidence scoring
+- **Content Processing**: HTML formatting and data cleaning
+- **Template Variables**: All dynamic content marked for substitution
+- **Output Validation**: Requirements for API-compliant JSON
+
+** Rationale
+This template bridges the gap between Iron Catalyst's enhanced AI JSON extraction system and the Django REST API for LabEquipmentPage creation. It enables automated or AI-assisted conversion of scraped content into structured equipment pages, completing the end-to-end pipeline from web extraction to database storage.
+
+** Technical Value
+- **Automation Ready**: Template can be filled programmatically
+- **AI Compatible**: Structured for AI model instruction
+- **Quality Controlled**: Built-in scoring and validation
+- **Production Ready**: Matches exact API requirements
+- **Extensible**: Easy to modify for additional fields or requirements
+
+** Next Steps Identified
+The AI prompt template is complete and ready for use. Optional enhancements:
+1. Implement automated template filling system
+2. Create validation scripts for generated API payloads
+3. Add example transformations for common content patterns
+4. Integrate with existing AI processing workflows
+
+** Cross-References
+- **Template File**: `.project_management/ai_prompts/ai_json_to_lab_equipment_api.md`
+- **API Documentation**: `apps/lab_equipment_api/serializers.py`
+- **Enhanced JSON Examples**: `analysis_outputs/ai_json_exports/iron-catalyst/`
+- **Model Structure**: `apps/base_site/models.py` LabEquipmentPage class 
