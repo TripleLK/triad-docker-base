@@ -11,6 +11,8 @@
 - Quantum Gecko
 - Noble Harbor
 - Steady Circuit
+- Dynamic Flux (2025-01-21)
+- Stellar Bridge (2025-01-22)
 
 ** Code Name Rules
 - Must be two words (adjective + noun)
@@ -811,3 +813,41 @@ Track all AI model code names to ensure uniqueness and avoid component reuse.
 - Must be unique - no reuse of previous components
 - Announce clearly at start of first response
 - Update this file when establishing new code name
+
+** Current Model:
+- Crimson Cipher (2025-01-22)
+
+* Used Model Names
+
+** Azure Hawk
+- Date: 2025-01-22
+- Components: azure (color/tech) + hawk (bird of prey)
+- Task: Image download functionality implementation
+- Status: Active
+
+** Crimson Cipher  
+- Date: 2025-01-22
+- Components: crimson (color) + cipher (code/mystery)
+- Task: AI JSON conversion prompt updates and image investigation
+- Status: Complete
+
+** Stellar Bridge
+- Date: 2025-01-19+
+- Components: stellar (space/star) + bridge (connection)
+- Task: Nested object creation debugging, AI JSON import system
+- Status: Complete
+
+** Noble Harbor
+- Date: 2025-01-19
+- Components: noble (quality) + harbor (safe place)
+- Task: Lab Equipment API v2 development
+- Status: Complete
+
+* Reserved Component Words
+- azure, hawk, crimson, cipher, stellar, bridge, noble, harbor
+
+* Guidelines
+- Two words: adjective + noun (Xbox gamertag style)
+- Unique components - no reuse of individual words
+- Reflect technical/AI theme when possible
+- Update this file when establishing new model name

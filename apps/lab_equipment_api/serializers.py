@@ -226,6 +226,16 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
     models_data = serializers.JSONField(required=False, help_text="Models in JSON format")
     features_data = serializers.JSONField(required=False, help_text="Features in JSON format")
     
+    # Image processing fields
+    image_urls = serializers.ListField(
+        child=serializers.URLField(), required=False, 
+        help_text="List of image URLs to download and add to gallery"
+    )
+    base_url = serializers.URLField(
+        required=False, 
+        help_text="Base URL for converting relative image URLs to absolute URLs"
+    )
+    
     class Meta:
         model = LabEquipmentPage  
         fields = [
@@ -238,7 +248,9 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
             'applications', 'technical_specifications', 'structured_data',
             'page_content_sections', 'alt_text_suggestions',
             # Creation fields
-            'categorized_tags', 'specifications', 'models_data', 'features_data'
+            'categorized_tags', 'specifications', 'models_data', 'features_data',
+            # Image processing fields
+            'image_urls', 'base_url'
         ]
         extra_kwargs = {
             'slug': {'required': False},
@@ -259,10 +271,16 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
         features_data = validated_data.pop('features_data', [])
         categorized_tags = validated_data.pop('categorized_tags', [])
         
+        # Extract image processing data
+        image_urls = validated_data.pop('image_urls', [])
+        base_url = validated_data.pop('base_url', None)
+        alt_text_suggestions = validated_data.get('alt_text_suggestions', [])
+        
         logger.info(f"Extracted specifications: {len(specifications) if specifications else 0} groups")
         logger.info(f"Extracted models_data: {len(models_data) if models_data else 0} models")
         logger.info(f"Extracted features_data: {len(features_data) if features_data else 0} features") 
         logger.info(f"Extracted categorized_tags: {len(categorized_tags) if categorized_tags else 0} tags")
+        logger.info(f"Extracted image_urls: {len(image_urls) if image_urls else 0} URLs")
         
         # Find the parent page - assuming the first MultiProductPage as parent
         from wagtail.models import Site
@@ -321,6 +339,13 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
                 self.create_features(page, features_data)
             else:
                 logger.info("No features to create")
+            
+            # Process images if provided
+            if image_urls:
+                logger.info(f"Processing {len(image_urls)} images for gallery")
+                self.process_images(page, image_urls, alt_text_suggestions, base_url)
+            else:
+                logger.info("No images to process")
             
             return page
             
@@ -424,27 +449,104 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
                     sort_order=i
                 )
     
+    def process_images(self, page, image_urls, alt_text_suggestions=None, base_url=None):
+        """Process image URLs and create gallery images for the page."""
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        try:
+            from apps.base_site.utils.image_utils import process_image_urls, create_gallery_images
+            
+            logger.info(f"Processing {len(image_urls)} images for page: {page.title}")
+            
+            # Download images from URLs
+            images = process_image_urls(
+                image_urls=image_urls,
+                alt_texts=alt_text_suggestions,
+                base_url=base_url
+            )
+            
+            if images:
+                # Create gallery images
+                gallery_images = create_gallery_images(
+                    page=page,
+                    images=images,
+                    alt_texts=alt_text_suggestions
+                )
+                
+                logger.info(f"Successfully created {len(gallery_images)} gallery images")
+            else:
+                logger.warning("No images were successfully downloaded")
+                
+        except Exception as e:
+            logger.error(f"Error processing images for page {page.title}: {str(e)}")
+            # Don't raise exception - allow page creation to continue even if images fail
+    
     def update(self, instance, validated_data):
         """Update an existing lab equipment page."""
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        logger.info(f"=== Starting LabEquipmentPage update for: {instance.title} ===")
+        
         # Extract nested data
         specifications = validated_data.pop('specifications', None)
         models_data = validated_data.pop('models_data', None)
         features_data = validated_data.pop('features_data', None)
         categorized_tags = validated_data.pop('categorized_tags', None)
         
+        # Extract image processing data
+        image_urls = validated_data.pop('image_urls', None)
+        base_url = validated_data.pop('base_url', None)
+        alt_text_suggestions = validated_data.get('alt_text_suggestions', [])
+        
+        logger.info(f"Update data - specs: {len(specifications) if specifications else 0}, models: {len(models_data) if models_data else 0}, features: {len(features_data) if features_data else 0}, tags: {len(categorized_tags) if categorized_tags else 0}, images: {len(image_urls) if image_urls else 0}")
+        
         # Update basic fields
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
         
-        # Update tags if provided
+        # Update categorized tags if provided
         if categorized_tags is not None:
+            logger.info(f"Updating categorized tags: {categorized_tags}")
             instance.categorized_tags.set(categorized_tags)
         
-        # Note: For specifications, models, and features updates,
-        # we would need more complex logic to handle the nested relationships
-        # This is simplified for now
+        # Handle nested objects - clear existing and recreate
+        if specifications is not None:
+            logger.info("Clearing existing specification groups and recreating")
+            # Clear existing spec groups
+            instance.spec_groups.all().delete()
+            # Recreate from new data
+            if specifications:
+                self.create_specification_groups(instance, specifications)
+        
+        if models_data is not None:
+            logger.info("Clearing existing models and recreating")
+            # Clear existing models (this will cascade to their spec groups)
+            instance.models.all().delete()
+            # Recreate from new data
+            if models_data:
+                self.create_models(instance, models_data)
+        
+        if features_data is not None:
+            logger.info("Clearing existing features and recreating")
+            # Clear existing features
+            instance.features.all().delete()
+            # Recreate from new data
+            if features_data:
+                self.create_features(instance, features_data)
+        
+        # Process images if provided
+        if image_urls is not None:
+            logger.info("Processing updated images for gallery")
+            # Clear existing gallery images
+            instance.gallery_images.all().delete()
+            # Process new images if any
+            if image_urls:
+                self.process_images(instance, image_urls, alt_text_suggestions, base_url)
         
         instance.save()
+        logger.info(f"=== Completed LabEquipmentPage update for: {instance.title} ===")
         return instance
 
 

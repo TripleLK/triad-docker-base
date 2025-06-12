@@ -21,6 +21,7 @@ The prompt operates in two distinct modes based on the `_processing_mode` field:
 - Include ONLY universal specifications that apply to ALL models in `specifications`
 - Extract SEO content, descriptions, keywords, etc. from all available data
 - Build comprehensive equipment overview without model-specific details
+- **PROCESS IMAGES**: Extract and format image data from `gallery_images` field
 
 ### MODE 2: Model Subset  
 **When `_processing_mode` is "MODEL_SUBSET":**
@@ -32,6 +33,51 @@ The prompt operates in two distinct modes based on the `_processing_mode` field:
 
 **IMPORTANT**: This prompt is designed for two-mode processing only. Equipment data should always be split between Overall Details and Model Subset modes for optimal token utilization and comprehensive data coverage.
 
+## INPUT DATA STRUCTURE AND IMAGE PROCESSING
+
+### Gallery Images Field Structure
+Input may contain a `gallery_images` field with this structure:
+```json
+{
+  "gallery_images": {
+    "extracted_content": [
+      {
+        "extracted_data": [
+          {
+            "html": "<div class=\"image-wrapper\"><img src=\"/wp-content/uploads/2021/12/PDT_CA30S_Right.png\" alt=\"\"><img src=\"/wp-content/uploads/2021/12/PDT_CA30T_Front_Open.png\" alt=\"\">...</div>"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+### Image Processing Requirements
+**CRITICAL**: When processing images in Overall Details mode:
+
+1. **Extract Image URLs**: Parse the HTML in `gallery_images.extracted_content[].extracted_data[].html` to find all `<img src="...">` tags
+2. **Convert to Full URLs**: 
+   - If `src` starts with `/`, prepend the domain from `site_domain` field (e.g., `"https://www.airscience.com"`)
+   - If `src` is already a full URL, use as-is
+3. **Create Image References**: Generate both fields:
+   - `image_urls`: Array of full URLs for download system
+   - `alt_text_suggestions`: Descriptive alt text for each image
+
+### Image Output Format
+```json
+{
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30S_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30T_Front_Open.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view",
+    "SafeFUME CA30T front view with door open for fingerprint processing"
+  ]
+}
+```
+
 ## Input Data Structure
 You will receive: `{{INPUT_JSON_DATA}}`
 
@@ -41,7 +87,8 @@ This contains extracted website data with field configurations including:
 - `full_description` - Detailed product information
 - `features` - Product features and capabilities
 - `models` - Model specifications and details
-- `gallery_images` - Product images
+- `gallery_images` - Product images (see Image Processing section above)
+- `site_domain` - Website domain for constructing full image URLs
 - Various technical specifications and compliance data
 - `_processing_mode` - Optional: "OVERALL_DETAILS" or "MODEL_SUBSET"
 - `_batch_info` - Optional: Batch coordination metadata
@@ -102,7 +149,8 @@ This contains extracted website data with field configurations including:
     "manufacturer": "manufacturer name",
     "category": "product category"
   },
-  "alt_text_suggestions": ["image alt text suggestions"],
+  "image_urls": ["https://full-url-to-image1.png", "https://full-url-to-image2.png"],
+  "alt_text_suggestions": ["descriptive alt text for image1", "descriptive alt text for image2"],
   "page_content_sections": {
     "overview": "section content",
     "specifications": "section content", 
@@ -174,6 +222,8 @@ This contains extracted website data with field configurations including:
 
 **SEO Content**: Use technical specifications to create additional content sections highlighting capabilities
 
+**Image Processing**: Use product name and model information to create descriptive alt text that improves SEO
+
 ## VALIDATION CHECKLIST
 
 **Overall Details Mode:**
@@ -181,6 +231,8 @@ This contains extracted website data with field configurations including:
 - [ ] No model-specific data included
 - [ ] SEO fields leverage all available data
 - [ ] Complete equipment overview provided
+- [ ] Images processed and both `image_urls` and `alt_text_suggestions` included
+- [ ] Image URLs are full URLs (include domain if needed)
 
 **Model Subset Mode:**  
 - [ ] All assigned models processed
@@ -203,6 +255,7 @@ This contains extracted website data with field configurations including:
 3. **COMPLETENESS**: All data processed according to mode rules
 4. **SEO OPTIMIZATION**: Maximum search visibility within mode constraints
 5. **CONSISTENCY**: Uniform structure and quality across all outputs
+6. **IMAGE PROCESSING**: Complete extraction and formatting of image data in Overall Details mode
 
 ## SPECIFICATION GROUP EXTRACTION REQUIREMENTS
 
@@ -231,4 +284,4 @@ If input contains `extracted_specification_groups` field:
 
 Output ONLY JSON. Do not put it in a code block or provide any fluff before or after.
 
-Transform the provided input data into this SEO-optimized API format, using ALL available information to create the most search-engine-friendly and comprehensive equipment listing possible while strictly adhering to the specified processing mode. 
+Transform the provided input data into this SEO-optimized API format, using ALL available information to create the most search-engine-friendly and comprehensive equipment listing possible while strictly adhering to the specified processing mode. Ensure complete image processing when in Overall Details mode. 

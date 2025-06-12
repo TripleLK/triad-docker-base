@@ -1,0 +1,132 @@
+#+TITLE: Next Steps - Crimson Cipher → Next Model
+#+AUTHOR: Crimson Cipher  
+#+DATE: 2025-01-22
+#+FILETAGS: :handoff:next-steps:images:crimson-cipher:
+
+* Immediate Priorities
+
+** 🎯 CRITICAL: Implement Image Download Functionality
+The prompt has been updated but the import system needs image processing implementation.
+
+** 📁 Key Files to Modify
+1. ~apps/content_extractor/management/commands/import_ai_json_to_equipment.py~
+   - Update ~combine_json_data_for_api()~ method
+   - Process ~image_urls~ field from AI JSON
+   
+2. ~apps/lab_equipment_api/serializers.py~
+   - Add image download to ~LabEquipmentPageCreateUpdateSerializer~
+   - Handle ~image_urls~ field in create/update methods
+
+3. Create new utility: ~apps/base_site/utils/image_utils.py~
+   - Download images from URLs
+   - Create Wagtail Image objects
+   - Handle errors and timeouts
+
+* Technical Implementation Plan
+
+** Step 1: Create Image Download Utility
+#+begin_src python
+# apps/base_site/utils/image_utils.py
+import requests
+from wagtail.images.models import Image
+from django.core.files.base import ContentFile
+
+def download_image_from_url(url, title=None):
+    """Download image from URL and create Wagtail Image object"""
+    # HTTP request with timeout
+    # Create Wagtail Image from response content
+    # Return Image object or None if failed
+#+end_src
+
+** Step 2: Update Import Command
+#+begin_src python
+# In combine_json_data_for_api method
+if 'image_urls' in overall_data:
+    # Process image URLs for download
+    api_data['image_urls'] = overall_data['image_urls']
+#+end_src
+
+** Step 3: Enhance Serializer
+#+begin_src python
+# In LabEquipmentPageCreateUpdateSerializer
+def create(self, validated_data):
+    image_urls = validated_data.pop('image_urls', [])
+    page = super().create(validated_data)
+    
+    if image_urls:
+        self.process_images(page, image_urls)
+    
+    return page
+#+end_src
+
+* Testing Strategy
+
+** 🧪 Test Data Available
+- SafeFUME equipment with known image URLs
+- ~ai_json_exports/two_mode/SafeFUME_*_overall_details_*.json~ contains:
+  - ~/wp-content/uploads/2021/12/PDT_CA30S_Right.png~
+  - ~/wp-content/uploads/2021/12/PDT_CA30T_Front_Open.png~
+  - ~/wp-content/uploads/2021/12/PDT_CA60T_Left.png~
+
+** ✅ Verification Steps
+1. Run updated prompt on SafeFUME data → should generate ~image_urls~ field
+2. Import with ~--dry-run~ → validate serializer accepts image data
+3. Full import → verify Wagtail images created and gallery displays
+4. Frontend test → confirm images show with proper alt text
+
+* Architecture Context
+
+** 🏗️ System Ready
+- ~LabEquipmentGalleryImage~ model supports both internal and external images
+- ~get_image_url()~ method prioritizes internal images over external URLs
+- Frontend has CORS fallback handling already implemented
+- API serializers have gallery image processing infrastructure
+
+** 🔧 Integration Points
+- ~add_gallery_images()~ function in ~apps/base_site/api.py~ ready for enhancement
+- Wagtail Image system handles thumbnails, renditions automatically
+- Gallery ordering via ~sort_order~ field maintained
+
+* Error Handling Requirements
+
+** Network Issues
+- HTTP timeout handling (suggested: 30 seconds)
+- Invalid URL format validation
+- HTTP error status handling (404, 500, etc.)
+
+** Image Validation
+- File format validation (PNG, JPG, etc.)
+- File size limits (reasonable for equipment images)
+- Duplicate image detection (optional enhancement)
+
+** Graceful Degradation
+- Import should continue if some images fail
+- Log failed downloads for review
+- Fall back to external URLs if download fails
+
+* Success Criteria
+
+** ✅ Must Achieve
+1. AI JSON with ~image_urls~ field imports successfully
+2. Images appear in Wagtail admin gallery
+3. Frontend displays images correctly
+4. Alt text from ~alt_text_suggestions~ applied properly
+
+** 🎯 Bonus Goals
+- Efficient duplicate image handling
+- Progress indicators for bulk imports
+- Image optimization (resize if needed)
+
+* Handoff Resources
+
+** 📋 Documentation Updated
+- Cleanup Report: ~.project_management/cleanup_reports/crimson-cipher_cleanup.org~
+- Prompt Updated: ~.project_management/ai_prompts/ai_json_to_lab_equipment_api.md~
+
+** 🔍 Investigation Complete
+- Image data structure documented
+- Current limitations identified  
+- Technical gaps mapped
+- Integration points confirmed
+
+Ready for seamless implementation! 🚀 

@@ -1,0 +1,98 @@
+#+TITLE: Cleanup Report - Crimson Cipher
+#+AUTHOR: Crimson Cipher
+#+DATE: 2025-01-22
+#+FILETAGS: :cleanup:crimson-cipher:images:ai-json:
+
+* Summary
+Investigated image import issue in AI JSON system and updated conversion prompt to properly extract and format image data. Identified that image download functionality needs to be implemented in import system.
+
+* Files Modified
+** .project_management/ai_prompts/ai_json_to_lab_equipment_api.md
+- Added comprehensive image processing section
+- Instructions for extracting image URLs from gallery_images HTML
+- Convert relative URLs to full URLs using site_domain
+- Generate both image_urls and alt_text_suggestions fields
+- Updated validation checklist for image processing
+
+* Major Findings
+** Root Cause Analysis
+- AI JSON files contain image data in gallery_images.extracted_content[].extracted_data[].html
+- Conversion prompt was only creating alt_text_suggestions, not extracting actual URLs
+- Import system expects image_urls field but wasn't receiving it
+- Example URLs found: /wp-content/uploads/2021/12/PDT_CA30S_Right.png
+
+** Image Data Flow Discovery
+1. Raw extraction (two_mode): Contains <img src="/path/to/image.png"> in HTML
+2. AI conversion: Should extract URLs and create image_urls array
+3. Import system: Should download URLs and create Wagtail images
+4. Frontend: Display images with fallback handling
+
+** Technical Architecture
+- LabEquipmentGalleryImage model supports both internal_image and external_image_url
+- get_image_url() method prioritizes internal images
+- Frontend has CORS fallback handling with onerror
+- API serializers ready for image processing
+
+* Current Status
+- ✅ Prompt updated to extract image URLs
+- ✅ Image data structure documented  
+- ❌ Image download functionality not implemented
+- ❌ Import command doesn't process image_urls field
+- ❌ End-to-end image workflow incomplete
+
+* Architecture Implications
+** Database Ready
+- LabEquipmentGalleryImage model supports both internal and external images
+- Wagtail Image system integration available
+- Gallery ordering with sort_order field
+
+** API Integration Points
+- LabEquipmentPageCreateUpdateSerializer needs image processing
+- add_gallery_images() function in api.py ready for enhancement
+- JSON field processing in combine_json_data_for_api needs image support
+
+* Issues Identified
+** Current Limitations
+- No HTTP download utility for images
+- Import command skips image_urls field processing
+- Serializer doesn't trigger image download
+- No error handling for failed image downloads
+
+** Technical Gaps
+- Missing requests/HTTP functionality for image download
+- No Wagtail Image object creation from URLs
+- No duplicate image detection
+- No image validation (format, size, etc.)
+
+* Next Steps Required
+** Immediate Implementation (Next Model)
+1. Add image download utility function
+2. Update import command combine_json_data_for_api() to process image_urls
+3. Enhance LabEquipmentPageCreateUpdateSerializer to handle image download
+4. Add error handling and logging for image operations
+
+** Testing Requirements
+1. Test with SafeFUME data containing known image URLs
+2. Verify Wagtail Image object creation
+3. Confirm gallery display on frontend
+4. Test fallback behavior for failed downloads
+
+** Error Handling Needs
+- Network timeout handling
+- Invalid image URL handling
+- Image format validation
+- Storage space considerations
+
+* Verification Steps
+** Pre-Implementation Checks
+- [X] Identified image URLs in raw data
+- [X] Documented data flow requirements
+- [X] Updated AI conversion prompt
+- [ ] Image download functionality implemented
+- [ ] End-to-end testing completed
+
+* Cross-References
+- Conversation Log: .project_management/conversation_logs/crimson-cipher/2025-01-22_session_log.org
+- Related Files: apps/content_extractor/management/commands/import_ai_json_to_equipment.py
+- Related Files: apps/lab_equipment_api/serializers.py
+- Related Files: apps/base_site/models.py (LabEquipmentGalleryImage) 

@@ -315,6 +315,18 @@ class Command(BaseCommand):
         if models_data:
             api_data['models_data'] = models_data
         
+        # Process image URLs and alt text suggestions
+        if 'image_urls' in overall_data and overall_data['image_urls']:
+            api_data['image_urls'] = overall_data['image_urls']
+            if 'alt_text_suggestions' in overall_data:
+                api_data['alt_text_suggestions'] = overall_data['alt_text_suggestions']
+            
+            # Extract base URL from source_url for relative URL conversion
+            if 'source_url' in overall_data:
+                from urllib.parse import urlparse
+                parsed_url = urlparse(overall_data['source_url'])
+                api_data['base_url'] = f"{parsed_url.scheme}://{parsed_url.netloc}"
+        
         # Convert features_data list to proper format if needed
         if 'features_data' in api_data and isinstance(api_data['features_data'], list):
             # The serializer expects features_data as JSON field

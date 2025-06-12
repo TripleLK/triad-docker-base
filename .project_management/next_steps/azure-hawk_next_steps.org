@@ -1,0 +1,32 @@
+#+TITLE: Azure Hawk Next Steps
+#+AUTHOR: Azure Hawk
+#+DATE: 2025-01-22
+#+FILETAGS: :next:steps:azure-hawk:
+
+* Immediate Priorities
+1. Use existing web scraping tools to discover all product pages on a target site
+2. Convert each product page to structured JSON (using the established AI JSON format)
+3. Upload the batch of JSON files to a designated S3 bucket for AI model processing
+
+* Approach
+- Leverage current HTML extraction and field configuration tools
+- Implement a crawler to enumerate all product URLs (respect robots.txt and site structure)
+- For each product page, extract content and convert to JSON using the AI JSON pipeline
+- Use boto3 or similar library to upload files to S3
+- Ensure robust error handling and logging throughout
+
+* Decisions/Questions
+- Confirm S3 bucket name, region, and credentials
+- Define batch size and naming conventions for JSON files
+- Determine if deduplication or update logic is needed for repeated runs
+
+* Handoff Context
+- All image and alt text handling is complete and robust
+- AI JSON format is stable and validated
+- System is ready for large-scale batch processing
+
+* Key Files
+- apps/content_extractor/management/commands/generate_ai_json.py (for JSON conversion)
+- scripts/ (for new crawler and S3 upload logic)
+- .project_management/conversation_logs/azure-hawk/2025-01-22_session_log.org
+- .project_management/cleanup_reports/azure-hawk_cleanup.org 
