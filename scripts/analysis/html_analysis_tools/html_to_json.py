@@ -191,31 +191,24 @@ class DOMToJSONConverter:
         return ' > '.join(reversed(path))
     
     def has_meaningful_content(self, element):
-        """Check if element has text content or images, including hidden content"""
+        """Check if element should be included - exclude only non-displayable tags"""
         if element.name is None:
             return False
             
-        # Check for images
-        if element.name == 'img':
-            return True
+        # EXCLUDE only non-displayable content tags
+        excluded_tags = {
+            'script', 'style', 'noscript', 'meta', 'link', 'head', 
+            'comment', 'title'  # title handled separately in main conversion
+        }
+        
+        if element.name.lower() in excluded_tags:
+            return False
             
-        # Check for input elements (forms, selects, etc.)
-        if element.name in ['input', 'select', 'textarea', 'button']:
-            return True
-            
-        # Check for text content - INCLUDE HIDDEN TEXT
-        text_content = self.extract_all_text(element, include_hidden=True)
-        if text_content and text_content.strip():
-            return True
-            
-        # Check if it contains images or form elements
-        if element.find(['img', 'input', 'select', 'textarea', 'button']):
-            return True
-            
-        return False
+        # INCLUDE everything else - all visible and hidden HTML elements
+        return True
     
     def extract_all_text(self, element, include_hidden=True):
-        """Extract all text content including hidden elements"""
+        """Extract all text content including hidden elements with whitespace cleanup"""
         if element.name is None:
             return ""
             
@@ -226,22 +219,27 @@ class DOMToJSONConverter:
         for text_node in element.children:
             if isinstance(text_node, NavigableString) and not isinstance(text_node, Comment):
                 text = str(text_node).strip()
+                # Clean up excess whitespace
+                text = ' '.join(text.split())
                 if text:
                     texts.append(text)
         
-        # Get text from child elements - ALWAYS include hidden content
+        # Get text from child elements - include ALL content including hidden
         for child in element.children:
             if hasattr(child, 'name') and child.name:
-                # Skip script and style tags, but include everything else including hidden
-                if child.name.lower() not in ['script', 'style', 'noscript']:
+                # Only skip truly non-displayable tags
+                excluded_tags = {'script', 'style', 'noscript', 'meta', 'link', 'head', 'comment', 'title'}
+                if child.name.lower() not in excluded_tags:
                     child_text = self.extract_all_text(child, include_hidden=True)
                     if child_text:
                         texts.append(child_text)
         
-        return ' '.join(texts).strip()
+        # Join and clean up whitespace
+        result = ' '.join(texts).strip()
+        return ' '.join(result.split())  # Normalize whitespace
     
     def is_parent_of_meaningful_content(self, element):
-        """Check if element is a parent of elements with meaningful content"""
+        """Check if element is a parent of included elements"""
         if element.name is None:
             return False
             
@@ -252,8 +250,7 @@ class DOMToJSONConverter:
         return False
     
     def should_include_element(self, element):
-        """Determine if element should be included in JSON - INCLUDE HIDDEN ELEMENTS"""
-        # Always include meaningful content regardless of visibility
+        """Determine if element should be included - include all except non-displayable tags"""
         return (self.has_meaningful_content(element) or 
                 self.is_parent_of_meaningful_content(element))
     
@@ -277,6 +274,18 @@ class DOMToJSONConverter:
             option_texts = [opt.get_text(strip=True) for opt in options if opt.get_text(strip=True)]
             if option_texts:
                 text = f"{text} {' '.join(option_texts)}".strip()
+        
+        # For optgroup elements, get label attribute
+        if element.name == 'optgroup':
+            label = element.get('label', '')
+            if label:
+                text = f"{text} {label}".strip()
+        
+        # For label elements, get 'for' attribute to show association
+        if element.name == 'label':
+            for_attr = element.get('for', '')
+            if for_attr:
+                text = f"{text} [for: {for_attr}]".strip()
         
         return text if text else None
     
@@ -307,12 +316,7 @@ class DOMToJSONConverter:
                 if child_dict:  # Only add if it should be included
                     result['children'].append(child_dict)
         
-        # If element has no meaningful content and no children after filtering, don't include it
-        if (not result['text_content'] and 
-            not result['children'] and 
-            result['tag'] not in ['img', 'input', 'select', 'textarea', 'button']):
-            return None
-            
+        # Include all elements that passed initial filtering
         return result
     
     def validate_selectors(self, html_content, json_data):

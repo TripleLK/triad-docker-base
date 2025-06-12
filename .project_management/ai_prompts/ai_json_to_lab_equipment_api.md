@@ -1,93 +1,234 @@
 # AI JSON to LabEquipmentPage API Conversion Prompt
 
 ## Task
-Convert enhanced AI JSON output from Iron Catalyst pipeline into the JSON format required for LabEquipmentPageCreateUpdateSerializer API.
+Convert enhanced JSON output from an extraction pipeline into SEO-optimized JSON format required for LabEquipmentPageCreateUpdateSerializer API. Your goal is to maximize SEO performance by intelligently using ALL available data from ANY field in the input to create the most comprehensive, search-engine-friendly output possible.
 
-## Input Format
+## Cross-Field Intelligence
+**IMPORTANT**: You have access to ALL extracted data and should intelligently cross-reference information between fields to:
+- Enhance SEO metadata with relevant technical specifications
+- Create comprehensive descriptions using features, models, and specifications data
+- Generate rich keyword lists from all available content
+- Build complete structured data using any relevant information
+- Maximize search visibility by leveraging every data point available
+
+## PROCESSING MODES
+
+The prompt operates in two distinct modes based on the `_processing_mode` field:
+
+### MODE 1: Overall Details
+**When `_processing_mode` is "OVERALL_DETAILS":**
+- Generate ALL fields EXCEPT `models_data`
+- Include ONLY universal specifications that apply to ALL models in `specifications`
+- Extract SEO content, descriptions, keywords, etc. from all available data
+- Build comprehensive equipment overview without model-specific details
+
+### MODE 2: Model Subset  
+**When `_processing_mode` is "MODEL_SUBSET":**
+- Generate ONLY the `models_data` array
+- Include ALL models provided in the input `models` field
+- EXCLUDE any specifications that are universal across ALL models (these belong in Overall Details mode)
+- Include only model-specific specifications and features
+- Output format: `{"models_data": [...]}`
+
+**IMPORTANT**: This prompt is designed for two-mode processing only. Equipment data should always be split between Overall Details and Model Subset modes for optimal token utilization and comprehensive data coverage.
+
+## Input Data Structure
+You will receive: `{{INPUT_JSON_DATA}}`
+
+This contains extracted website data with field configurations including:
+- `title` - Product title
+- `short_description` - Brief product description  
+- `full_description` - Detailed product information
+- `features` - Product features and capabilities
+- `models` - Model specifications and details
+- `gallery_images` - Product images
+- Various technical specifications and compliance data
+- `_processing_mode` - Optional: "OVERALL_DETAILS" or "MODEL_SUBSET"
+- `_batch_info` - Optional: Batch coordination metadata
+- `extracted_specification_groups` - Optional: Exact group names to use from content extractor
+- `_specification_instructions` - Optional: Specification handling requirements
+
+## Required Output Format
+
+### STRICT REQUIREMENTS (Always the same when included)
 ```json
 {
-  "url": "{{SOURCE_URL}}",
-  "site_domain": "{{SITE_DOMAIN}}",
-  "field_configurations": {
-    "title": {"extracted_content": [{"extracted_data": [{"text": "..."}]}]},
-    "short_description": {"extracted_content": [{"extracted_data": [{"text": "..."}]}]},
-    "full_description": {"extracted_content": [{"extracted_data": [{"text": "..."}]}]},
-    "features": {"extracted_content": [{"extracted_data": [{"text": "..."}]}]},
-    "models": {"extracted_content": [{"extracted_data": [{"text": "..."}]}]},
-    "accessories": {"extracted_content": [{"extracted_data": [{"text": "...", "attributes": {"src": "..."}}]}]},
-    "categorized_tags": {"extracted_content": [{"extracted_data": [{"text": "..."}]}]}
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.8-1.0,
+  "specification_confidence": "high|medium|low"
+}
+```
+
+### Overall Details Mode Output
+```json
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.8-1.0,
+  "specification_confidence": "high|medium|low",
+  "title": "SEO-optimized product title",
+  "slug": "url-friendly-slug",
+  "meta_title": "60-char optimized title",
+  "meta_description": "155-char compelling description",
+  "meta_keywords": "comma-separated primary keywords",
+  "short_description": "<p>HTML formatted brief description</p>",
+  "full_description": "<div>HTML with structured content</div>",
+  "seo_content": "<div>Additional SEO-focused content</div>",
+  "source_url": "original URL",
+  "target_keywords": ["primary", "keywords", "array"],
+  "related_keywords": ["related", "terms", "array"],
+  "technical_keywords": ["technical", "specifications", "terms"],
+  "categorized_tags": [
+    {"category": "Equipment Type", "tag": "specific equipment"},
+    {"category": "Application", "tag": "primary use"},
+    {"category": "Industry", "tag": "target industry"},
+    {"category": "Technology", "tag": "key technology"},
+    {"category": "Compliance", "tag": "standards met"}
+  ],
+  "specifications": {
+    "Universal_Group_Name": {
+      "spec_key": "value that applies to ALL models",
+      "another_universal_spec": "universal value"
+    }
+  },
+  "features_data": ["comprehensive", "feature", "list"],
+  "applications": ["detailed", "application", "list"],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "product name",
+    "description": "structured data description",
+    "manufacturer": "manufacturer name",
+    "category": "product category"
+  },
+  "alt_text_suggestions": ["image alt text suggestions"],
+  "page_content_sections": {
+    "overview": "section content",
+    "specifications": "section content", 
+    "applications": "section content",
+    "models": "section content"
   }
 }
 ```
 
-## Required Output
+### Model Subset Mode Output
 ```json
 {
-  "title": "{{EQUIPMENT_TITLE}}",
-  "slug": "{{AUTO_GENERATED_SLUG}}",
-  "short_description": "{{SHORT_DESCRIPTION_HTML}}",
-  "full_description": "{{FULL_DESCRIPTION_HTML}}",
-  "source_url": "{{SOURCE_URL}}",
-  "source_type": "{{SOURCE_TYPE}}",
-  "data_completeness": {{DATA_COMPLETENESS_SCORE}},
-  "specification_confidence": "{{CONFIDENCE_LEVEL}}",
-  "needs_review": true,
-  "categorized_tags": [{{CATEGORIZED_TAGS_ARRAY}}],
-  "specifications": {{SPECIFICATIONS_JSON}},
-  "models_data": {{MODELS_DATA_JSON}},
-  "features_data": [{{FEATURES_LIST}}]
+  "models_data": [
+    {
+      "model_name": "exact model identifier",
+      "specifications": {
+        "Model_Specific_Group": {
+          "spec_key": "value unique to this model",
+          "dimension": "specific to this model only"
+        }
+      },
+      "features": ["model-specific", "features", "only"],
+      "seo_description": "SEO-optimized model description"
+    }
+  ]
 }
 ```
 
-## Transformation Rules
+## SPECIFICATIONS HANDLING - CRITICAL
 
-### Core Fields
-- **title**: Extract from `field_configurations.title.extracted_content[0].extracted_data[0].text`
-- **slug**: Generate from title (lowercase, hyphens, no special chars)
-- **short_description**: Extract from `short_description` field, clean HTML format
-- **full_description**: Extract from `full_description` field, rich HTML format
-- **source_url**: Use input JSON `url` field
-- **source_type**: Set to "{{SOURCE_TYPE}}" (default: "new")
+### Universal vs Model-Specific Specification Rules
 
-### Quality Metrics
-- **data_completeness**: Calculate 0.0-1.0 based on field completion
-  - Title: +0.3, Descriptions: +0.2, Features: +0.2, Models: +0.2, URL: +0.1
-- **specification_confidence**: "high"/"medium"/"low" based on content quality
-- **needs_review**: Always `true` for AI-generated content
+**OVERALL DETAILS MODE:**
+- Include ONLY specifications that are identical across ALL models in the entire product line
+- Examples: Construction material, electrical voltage, compliance standards, filter types
+- Group by logical categories: "Construction", "Electrical", "Compliance", "Filtration"
+- These specifications will NOT be repeated in any model's individual specifications
 
-### Structured Data
-- **categorized_tags**: Extract from `categorized_tags` field, return array of tag name strings
-- **features_data**: Extract from `features` field, split into array of feature strings
-- **models_data**: Parse `models` field into structured model objects
-- **specifications**: Extract specs from `models` field, organize into spec groups
+**MODEL SUBSET MODE:**
+- Include ONLY specifications that vary between models OR are unique to specific models
+- Examples: Dimensions, weights, capacities, model-specific features
+- EXCLUDE any specification that appears identically across all models
+- Group by logical categories: "Dimensions", "Weight", "Performance", "Model Features"
 
-### Content Processing
-1. Clean excessive whitespace, normalize formatting
-2. Convert to appropriate HTML for rich text fields
-3. Split multi-value content appropriately
-4. Handle missing fields with fallbacks
-5. Preserve image URLs from attributes where relevant
+### Cross-Mode Consistency Rules
+1. **No Duplication**: A specification appears in either universal specs OR model specs, never both
+2. **Complete Coverage**: Every specification from source data must appear somewhere
+3. **Logical Grouping**: Use consistent group names across modes where applicable
 
-## Template Variables
-- `{{EQUIPMENT_TITLE}}`: Cleaned title text
-- `{{AUTO_GENERATED_SLUG}}`: URL-safe slug
-- `{{SHORT_DESCRIPTION_HTML}}`: Formatted short description
-- `{{FULL_DESCRIPTION_HTML}}`: Rich HTML full description  
-- `{{SOURCE_URL}}`: Original extraction URL
-- `{{SOURCE_TYPE}}`: Equipment type ("new", "used", "refurbished")
-- `{{DATA_COMPLETENESS_SCORE}}`: Completeness score 0.0-1.0
-- `{{CONFIDENCE_LEVEL}}`: Confidence level string
-- `{{CATEGORIZED_TAGS_ARRAY}}`: Tag names as string array
-- `{{SPECIFICATIONS_JSON}}`: Nested specifications structure
-- `{{MODELS_DATA_JSON}}`: Array of model objects
-- `{{FEATURES_LIST}}`: Array of feature strings
+## OUTPUT EFFICIENCY STRATEGIES
 
-## Output Requirements
-Generate valid JSON for LabEquipmentPageCreateUpdateSerializer with:
-- Proper JSON syntax and formatting
-- All required fields present
-- Appropriate data types (strings, arrays, objects, numbers, booleans)
-- Clean HTML in rich text fields
-- Structured arrays and objects for complex fields
+### Condensed Formatting (when needed)
+- Use abbreviated but clear keys: "w"/"width", "h"/"height", "temp"/"temperature"
+- Combine related specs: "net_weight": "156 lbs | 71 kg"
+- Use efficient formatting: "24\" | 610 mm"
 
-Transform the provided AI JSON into this API-ready format. 
+### Strategic Content Organization
+- Prioritize most important technical specifications
+- Use concise but complete descriptions
+- Maintain consistency across all processing modes
+
+## Cross-Field Intelligence Examples
+
+**Title Enhancement**: If features mention "programmable control" and specs show "humidity control", create title: "Programmable Humidity-Controlled [Equipment Name]"
+
+**Description Building**: Combine short_description + key features + primary applications for rich full_description
+
+**Keyword Generation**: Extract from title + features + specifications + applications for comprehensive keyword arrays
+
+**SEO Content**: Use technical specifications to create additional content sections highlighting capabilities
+
+## VALIDATION CHECKLIST
+
+**Overall Details Mode:**
+- [ ] All universal specifications included in `specifications`
+- [ ] No model-specific data included
+- [ ] SEO fields leverage all available data
+- [ ] Complete equipment overview provided
+
+**Model Subset Mode:**  
+- [ ] All assigned models processed
+- [ ] No universal specifications duplicated
+- [ ] Only model-specific specifications included
+- [ ] Model features and descriptions complete
+- [ ] Extracted specification group names used exactly as provided (if available)
+- [ ] NO underscores in group names or specification keys
+
+**Both Modes:**
+- [ ] Categorized tags use proper {category, tag} format
+- [ ] Cross-field intelligence applied throughout
+- [ ] Technical accuracy maintained
+- [ ] Specification group names use proper capitalization and spacing
+- [ ] Complete specification data extracted (not just basic dimensions)
+
+## Critical Success Factors
+1. **MODE COMPLIANCE**: Strict adherence to processing mode requirements
+2. **SPECIFICATION SEPARATION**: Clear distinction between universal and model-specific specs
+3. **COMPLETENESS**: All data processed according to mode rules
+4. **SEO OPTIMIZATION**: Maximum search visibility within mode constraints
+5. **CONSISTENCY**: Uniform structure and quality across all outputs
+
+## SPECIFICATION GROUP EXTRACTION REQUIREMENTS
+
+### Use Extracted Group Names (When Available)
+If input contains `extracted_specification_groups` field:
+1. **Use EXACT group names** provided - do not modify or rename them
+2. **Extract specifications for these groups** from source data
+3. **Maintain exact spelling and capitalization** from extracted names
+4. **No group coordination needed** - just use the names as-is
+
+### Naming Standards (All Cases)
+1. **NO underscores** in group names or specification keys
+2. **Use spaces** for readability: "Dimensions & Weights" not "Dimensions_Weights"  
+3. **Use proper capitalization**: "Electrical Requirements" not "electrical requirements"
+4. **No special characters** except spaces, ampersands (&), and standard punctuation
+
+### Extraction Approach
+1. **Use provided group names** if available in `extracted_specification_groups`
+2. **Extract ALL available data** for each group name
+3. **Create logical groupings** if no group names provided
+4. **Focus on completeness** - don't skip specification data
+
+### Examples of Proper Group Names
+✅ **Correct**: "Dimensions & Weights", "Electrical Requirements", "Protection & Compliance"
+❌ **Incorrect**: "Dimensions_Weights", "electrical_requirements", "protection-compliance"
+
+Output ONLY JSON. Do not put it in a code block or provide any fluff before or after.
+
+Transform the provided input data into this SEO-optimized API format, using ALL available information to create the most search-engine-friendly and comprehensive equipment listing possible while strictly adhering to the specified processing mode. 

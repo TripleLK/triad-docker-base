@@ -1,0 +1,152 @@
+#+TITLE: Next Steps - Dynamic Flux Handoff
+#+AUTHOR: Dynamic Flux
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:handoff:ai-json:lab-equipment:
+
+* Immediate Priorities
+
+** CRITICAL TASK: AI JSON File Combination Command
+Create management command that:
+1. **Accepts directory path** containing AI JSON export files
+2. **Detects file types** automatically (overall details vs model subsets)
+3. **Combines related files** by matching domain and timestamp patterns
+4. **Creates Lab Equipment Pages** from combined data
+
+** First Steps for Next Model
+1. **Review existing file structure** in `ai_json_exports/two_mode/` directory
+2. **Understand file naming patterns** for automatic detection
+3. **Study Lab Equipment models** to understand target data structure
+4. **Design combination logic** for overall details + model subset merging
+
+* Approach Strategy
+
+** File Detection and Pairing
+- **File Pattern Recognition**: Parse filename patterns to group related files
+  - Overall Details: `{title}_overall_details_{domain}_{timestamp}.json`
+  - Model Subsets: `{title}_models_batch_{X}_of_{Y}_{domain}_{timestamp}.json`
+- **Timestamp Matching**: Group files with same timestamp for same extraction session
+- **Domain Validation**: Ensure all files in group belong to same domain
+
+** Data Combination Logic
+1. **Load Overall Details**: Extract universal product information and specification groups
+2. **Load Model Subsets**: Collect all model-specific data from batch files
+3. **Merge Data**: Combine overall + models while preserving specification group structure
+4. **Validation**: Ensure no data loss during combination process
+
+** Lab Equipment Page Creation
+- **Map AI JSON to Lab Equipment fields**: Understand existing model structure
+- **Handle Specification Groups**: Maintain extracted group names and structure
+- **Model Integration**: Create individual equipment records for each model
+- **Relationship Management**: Link related models under product families
+
+* Key Files to Review
+
+** Essential Command Files
+- `apps/content_extractor/management/commands/process_and_export_ai_json.py`
+  - Understanding of two-mode processing workflow
+  - File naming conventions and structure
+  - Specification group handling
+
+- `apps/content_extractor/management/commands/export_ai_json.py`
+  - Export metadata structure
+  - Model extraction methods
+  - File organization patterns
+
+** Lab Equipment Models (TO RESEARCH)
+- Study existing Lab Equipment application models
+- Understand field mappings from AI JSON to database
+- Review relationship structures for product families
+
+** Example Export Files
+- `ai_json_exports/two_mode/` directory contains working examples
+- Study actual file structure and data organization
+- Note specification group formatting and content
+
+* Decision Points Requiring User Input
+
+** Command Interface Design
+- **Single vs Multiple Directories**: Support single directory or multiple paths?
+- **Output Destination**: Where should Lab Equipment Pages be created?
+- **Conflict Resolution**: How to handle existing equipment with same names?
+- **Batch Processing**: Process all files at once or allow selective processing?
+
+** Data Mapping Strategy
+- **Field Prioritization**: Which AI JSON fields map to which Lab Equipment fields?
+- **Specification Handling**: How should specification groups be stored in database?
+- **Model Relationships**: How to link individual models to product families?
+- **Image Processing**: How to handle model images and documentation?
+
+* Technical Architecture Recommendations
+
+** Command Structure
+```python
+# Suggested command signature
+python manage.py combine_ai_json_to_equipment --directory /path/to/exports [OPTIONS]
+
+# Possible options:
+--dry-run          # Show what would be created without saving
+--force-update     # Overwrite existing equipment records  
+--batch-size       # Process files in batches
+--domain-filter    # Only process specific domains
+```
+
+** Processing Pipeline
+1. **Directory Scanning**: Detect and categorize files
+2. **File Grouping**: Match overall details with model subsets
+3. **Data Validation**: Ensure complete data sets
+4. **Combination**: Merge overall + model data
+5. **Lab Equipment Creation**: Save to database with proper relationships
+
+** Error Handling Considerations
+- **Missing Files**: Handle incomplete file sets gracefully
+- **Data Conflicts**: Resolve specification group mismatches
+- **Database Errors**: Rollback on creation failures
+- **File Corruption**: Validate JSON structure before processing
+
+* Current State Summary
+
+** What's Working Well
+✅ **Specification Groups**: Automatically extracted with proper formatting
+✅ **File Structure**: Clear naming patterns enable automatic detection
+✅ **Two-Mode Processing**: Complete separation of overall vs model-specific data
+✅ **Export Metadata**: Rich metadata for tracking and validation
+
+** Foundation for Next Phase
+- **Automatic Processing**: No hardcoded values, all data-driven
+- **Complete Data Sets**: All matches included, no arbitrary limitations
+- **Consistent Structure**: Specification groups in both file types
+- **Streamlined Workflow**: Combined command reduces manual steps
+
+* Handoff Context
+
+** Successfully Completed by Dynamic Flux
+- Specification group names field implementation
+- Combined AI JSON processing command
+- Field selector error resolution
+- Export enhancement for complete data coverage
+
+** Ready for Next Model (Stellar Bridge)
+- AI JSON file combination logic
+- Lab Equipment Page creation system
+- Directory-based processing workflow
+- Database integration and relationship management
+
+The foundation is solid. Focus on understanding the Lab Equipment models and designing clean combination logic that preserves the specification group structure we've carefully implemented.
+
+* Resource Files for Reference
+
+** Documentation Created
+- `.project_management/cleanup_reports/dynamic_flux_cleanup.org` - Complete session summary
+- `.project_management/conversation_logs/dynamic_flux/2025-01-22_session_log.org` - Detailed change log
+
+** Key Commands for Testing
+```bash
+# Generate test data
+python manage.py process_and_export_ai_json --domain www.airscience.com
+
+# Review export structure  
+ls -la ai_json_exports/two_mode/
+grep "extracted_specification_groups" ai_json_exports/two_mode/*.json
+```
+
+Ready for seamless transition to AI JSON combination and Lab Equipment Page creation! 🚀 

@@ -1,0 +1,113 @@
+#+TITLE: Next Steps - Stellar Bridge → Next Model
+#+AUTHOR: Stellar Bridge
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:stellar-bridge:ai-json:import:
+
+* Immediate Priorities (URGENT)
+
+** 1. Debug Nested Object Creation Failure
+- **Problem**: EquipmentModel, SpecGroup, Feature objects not being created
+- **Status**: CRITICAL BLOCKER - affects core functionality
+- **Next Actions**:
+  - Investigate why `create_models()` method not executing
+  - Check for transaction rollbacks or silent validation failures
+  - Test serializer methods individually to isolate issue
+  - Review Django model constraints and foreign key relationships
+
+** 2. Fix Silent Logging Issue
+- **Problem**: Debug logging added but not appearing in output
+- **Next Actions**:
+  - Configure Django logging properly for debug output
+  - Replace logging with print statements for immediate feedback
+  - Use Python debugger (pdb) to step through execution
+  - Check if methods are being called at all
+
+** 3. Verify Data Flow
+- **Current State**: JSON combination working, basic page creation working
+- **Missing**: Nested object creation from combined JSON data
+- **Next Actions**:
+  - Trace data flow from import command to serializer
+  - Verify `models_data` is correctly passed to `create_models()`
+  - Check serializer field validation for nested data
+
+* Approach for Next Model
+
+** Investigation Strategy
+1. **Start Simple**: Test with minimal data to isolate the problem
+2. **Debug Systematically**: Use print statements to trace execution
+3. **Test Components**: Verify each creation method individually
+4. **Check Dependencies**: Ensure all model relationships are correct
+
+** Key Files to Review
+- `apps/lab_equipment_api/serializers.py` (lines 250-420)
+- `apps/content_extractor/management/commands/import_ai_json_to_equipment.py`
+- `analysis_outputs/page_jsons/SafeFUME/Claude 3.7 Sonnet/` (test data)
+
+** Testing Commands
+```bash
+# Test import with debug output
+python manage.py import_ai_json_to_equipment analysis_outputs/page_jsons/SafeFUME/Claude\ 3.7\ Sonnet/ --verbose
+
+# Check database state
+python -c "from apps.base_site.models import *; page = LabEquipmentPage.objects.filter(title__icontains='SafeFUME').first(); print('Models:', page.models.count()); print('Specs:', page.spec_groups.count()); print('Features:', page.features.count())"
+
+# Clean up for testing
+python -c "from apps.base_site.models import LabEquipmentPage; LabEquipmentPage.objects.filter(title__icontains='SafeFUME').delete()"
+```
+
+* Implementation Decisions Needed
+
+** Logging Strategy
+- Should we use Django logging or print statements for debugging?
+- Need to determine why current logging setup isn't working
+
+** Error Handling
+- Add explicit exception handling in nested creation methods
+- Consider using Django transaction.atomic() with savepoints
+
+** Data Validation
+- Review serializer field validation for nested JSON data
+- Check if DRF is rejecting the nested data silently
+
+* Technical Context
+
+** Current Working Components
+- ✅ File discovery and grouping logic
+- ✅ JSON combination (overall_details + model batches)
+- ✅ Basic LabEquipmentPage creation
+- ✅ SEO content import
+- ✅ Categorized tag association
+
+** Broken Components
+- ❌ EquipmentModel creation (`create_models()`)
+- ❌ SpecificationGroup creation (`create_specification_groups()`)
+- ❌ Feature creation (`create_features()`)
+- ❌ Debug logging output
+
+** Data Flow Confirmed
+```
+AI JSON files → import command → combine_json_data_for_api() → 
+LabEquipmentPageCreateUpdateSerializer.create() → ??? (fails here)
+```
+
+* Handoff Information
+
+** Current Database State
+- SafeFUME page exists with basic data
+- No EquipmentModel objects created
+- No related nested objects
+- Ready for fresh testing after cleanup
+
+** Test Data Available
+- `analysis_outputs/page_jsons/SafeFUME/Claude 3.7 Sonnet/overall_details.json`
+- `analysis_outputs/page_jsons/SafeFUME/Claude 3.7 Sonnet/models_batch_*.json`
+- Data structure confirmed correct and complete
+
+** Expected Results After Fix
+- 1 LabEquipmentPage created
+- 9 EquipmentModel objects
+- 3+ SpecificationGroup objects
+- 7+ Feature objects
+- All properly linked via foreign keys
+
+The infrastructure is solid - this is a specific debugging challenge with the serializer's nested creation logic. Once resolved, the system should work end-to-end for AI JSON import. 

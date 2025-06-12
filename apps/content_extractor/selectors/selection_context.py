@@ -129,7 +129,9 @@ class SelectionContext:
                 SelectionField('title', 'Title', 'single', 'Equipment main title', color='#ff6b6b'),
                 SelectionField('short_description', 'Short Description', 'single', 'Brief equipment summary', color='#4ecdc4'),
                 SelectionField('full_description', 'Full Description', 'single', 'Detailed equipment description', color='#45b7d1'),
-                SelectionField('source_url', 'Source URL', 'single', 'Original product page URL', color='#dda0dd'),
+                SelectionField('model_name', 'Model Name', 'multi-value', 'Individual model names for extraction (select all models)', color='#ffa07a'),
+                SelectionField('specification_group_names', 'Specification Group Names', 'multi-value', 'Extract specification group names (DIMENSIONS, ELECTRICAL, etc.)', color='#98fb98'),
+                SelectionField('source_url', 'Source URL', 'single', 'Original product page URL', color='#87ceeb'),
                 SelectionField('source_type', 'Source Type', 'single', 'New/Used/Refurbished indicator', color='#98d8c8'),
                 # Nested/Multi-value fields
                 self.FIELD_DEFINITIONS['models'],

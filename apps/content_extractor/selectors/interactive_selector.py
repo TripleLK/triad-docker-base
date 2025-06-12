@@ -98,9 +98,9 @@ class InteractiveSelector:
         
         # Try multiple approaches to get ChromeDriver working
         approaches = [
-            self._setup_with_webdriver_manager,
-            self._setup_with_system_chromedriver,
-            self._setup_with_homebrew_chromedriver
+            self._setup_with_homebrew_chromedriver,  # Try Homebrew first (works)
+            self._setup_with_system_chromedriver,    # Then system PATH
+            self._setup_with_webdriver_manager       # webdriver-manager last (has issues)
         ]
         
         for i, approach in enumerate(approaches, 1):
@@ -372,22 +372,90 @@ class InteractiveSelector:
         return self.selection_session_data['field_selections'].get(field_name, [])
     
     def get_all_field_selections(self) -> Dict[str, List[Dict]]:
-        """Get all field selections."""
-        try:
-            # Get latest selections from JavaScript
-            js_selections = self.driver.execute_script("""
-                return window.contentExtractorData ? window.contentExtractorData.fieldSelections : {};
-            """)
-            
-            # Merge with internal state
-            all_selections = self.selection_session_data['field_selections'].copy()
-            all_selections.update(js_selections or {})
-            
-            return all_selections
-            
-        except Exception as e:
-            logger.error(f"Failed to get all field selections: {e}")
-            return self.selection_session_data['field_selections']
+        """
+        Get all field selections organized by field name.
+        
+        Returns:
+            Dictionary mapping field names to lists of selections
+        """
+        all_selections = {}
+        
+        # Get selections from nested manager if available
+        if hasattr(self, 'nested_manager') and self.nested_manager:
+            try:
+                exported_data = self.nested_manager.export_all_selections()
+                
+                # The exported_data is a hierarchy, need to recursively extract selections
+                def extract_selections_from_hierarchy(hierarchy_data):
+                    selections = hierarchy_data.get('selections', [])
+                    for selection in selections:
+                        field_name = selection.get('field_name', 'unknown')
+                        if field_name not in all_selections:
+                            all_selections[field_name] = []
+                        all_selections[field_name].append(selection)
+                    
+                    # Process sub-contexts recursively
+                    sub_contexts = hierarchy_data.get('sub_contexts', {})
+                    for sub_context_data in sub_contexts.values():
+                        extract_selections_from_hierarchy(sub_context_data)
+                
+                # Extract from the root hierarchy
+                extract_selections_from_hierarchy(exported_data)
+                
+            except Exception as e:
+                # If nested manager fails, continue with legacy method
+                pass
+        
+        # Include any legacy selections from session data
+        legacy_selections = self.selection_session_data.get('field_selections', {})
+        for field_name, selections in legacy_selections.items():
+            if field_name not in all_selections:
+                all_selections[field_name] = []
+            all_selections[field_name].extend(selections)
+        
+        # Include any selections from selected_elements
+        for selection in getattr(self, 'selected_elements', []):
+            field_name = selection.get('field_name', 'unknown')
+            if field_name not in all_selections:
+                all_selections[field_name] = []
+            all_selections[field_name].append(selection)
+        
+        return all_selections
+
+    def extract_model_names_from_selections(self) -> List[str]:
+        """
+        Extract model names from current selections for batch processing.
+        
+        Returns:
+            List of extracted model names
+        """
+        model_names = []
+        all_selections = self.get_all_field_selections()
+        
+        # Look for model name selections
+        if 'name' in all_selections:
+            # Check if these are model names (nested under models context)
+            for selection in all_selections['name']:
+                context_path = selection.get('context_path', '')
+                if 'models' in context_path:
+                    selected_text = selection.get('selected_text', '').strip()
+                    if selected_text:
+                        model_names.append(selected_text)
+        
+        # Also check for direct model_name field selections
+        if 'model_name' in all_selections:
+            for selection in all_selections['model_name']:
+                selected_text = selection.get('selected_text', '').strip()
+                if selected_text:
+                    model_names.append(selected_text)
+        
+        # Remove duplicates while preserving order
+        unique_model_names = []
+        for name in model_names:
+            if name not in unique_model_names:
+                unique_model_names.append(name)
+        
+        return unique_model_names
 
     def save_field_selector(self, field_name: str, xpath: str, css_selector: str = "", 
                            requires_manual_input: bool = False, manual_input_note: str = "") -> bool:

@@ -86,7 +86,8 @@ class Command(BaseCommand):
             # Get page info
             page_info = selector.get_page_info()
             self.stdout.write(f'Page Title: {page_info.get("title", "Unknown")}')
-            self.stdout.write(f'Page Source Length: {page_info.get("page_source_length", 0):,} characters')
+            self.stdout.write(f'Page URL: {page_info.get("url", "Unknown")}')
+            self.stdout.write(f'Current Domain: {page_info.get("domain", "Unknown")}')
 
             if specific_field:
                 # Test specific field
@@ -97,7 +98,13 @@ class Command(BaseCommand):
             
             # Get final results
             all_selections = selector.get_all_field_selections()
-            total_selections = sum(len(selections) for selections in all_selections.values())
+            
+            # Defensive handling for potential error cases
+            if not isinstance(all_selections, dict):
+                self.stdout.write(self.style.WARNING(f'⚠️ Unexpected selections format: {type(all_selections)}'))
+                all_selections = {}
+            
+            total_selections = sum(len(selections) for selections in all_selections.values() if isinstance(selections, list))
             
             self.stdout.write(f'\n📊 Selection Results:')
             self.stdout.write(f'Fields with selections: {len(all_selections)}')
@@ -105,7 +112,7 @@ class Command(BaseCommand):
             
             # Show field breakdown
             for field_name, selections in all_selections.items():
-                if selections:
+                if selections and isinstance(selections, list):
                     self.stdout.write(f'  {field_name}: {len(selections)} selections')
             
             # Show completion status if requested
@@ -174,19 +181,41 @@ class Command(BaseCommand):
                 
                 if field_name:
                     # Monitor specific field
-                    selections = selector.get_field_selections(field_name)
-                    count = len(selections)
-                    if count != last_count:
-                        self.stdout.write(f'📈 {field_name}: {count} selections')
-                        last_count = count
+                    try:
+                        selections = selector.get_field_selections(field_name)
+                        if not isinstance(selections, list):
+                            self.stdout.write(self.style.WARNING(f'⚠️ get_field_selections returned {type(selections)}: {selections}'))
+                            selections = []
+                        count = len(selections)
+                        if count != last_count:
+                            self.stdout.write(f'📈 {field_name}: {count} selections')
+                            last_count = count
+                    except Exception as e:
+                        self.stdout.write(self.style.ERROR(f'❌ Error getting field selections: {e}'))
+                        break
                 else:
                     # Monitor all fields
-                    all_selections = selector.get_all_field_selections()
-                    total_count = sum(len(selections) for selections in all_selections.values())
-                    if total_count != last_count:
-                        active_fields = [f for f, s in all_selections.items() if s]
-                        self.stdout.write(f'📈 Total: {total_count} selections across {len(active_fields)} fields')
-                        last_count = total_count
+                    try:
+                        all_selections = selector.get_all_field_selections()
+                        if not isinstance(all_selections, dict):
+                            self.stdout.write(self.style.WARNING(f'⚠️ get_all_field_selections returned {type(all_selections)}: {all_selections}'))
+                            all_selections = {}
+                        
+                        total_count = 0
+                        active_fields = []
+                        for f, s in all_selections.items():
+                            if isinstance(s, list) and s:
+                                total_count += len(s)
+                                active_fields.append(f)
+                            elif s and not isinstance(s, list):
+                                self.stdout.write(self.style.WARNING(f'⚠️ Field {f} has non-list selections: {type(s)}'))
+                        
+                        if total_count != last_count:
+                            self.stdout.write(f'📈 Total: {total_count} selections across {len(active_fields)} fields')
+                            last_count = total_count
+                    except Exception as e:
+                        self.stdout.write(self.style.ERROR(f'❌ Error getting all field selections: {e}'))
+                        break
                         
             except KeyboardInterrupt:
                 break

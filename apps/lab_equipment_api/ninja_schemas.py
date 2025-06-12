@@ -188,12 +188,23 @@ class LabEquipmentPageDetailSchema(ModelSchema):
     main_image_url: Optional[str] = None
     spec_group_names: List[str] = []
     
+    # SEO helper methods
+    meta_title_computed: Optional[str] = None
+    meta_description_computed: Optional[str] = None
+    structured_data_computed: Dict[str, Any] = {}
+    
     class Config:
         model = LabEquipmentPage
         model_fields = [
             "page_ptr", "title", "slug", "short_description", "full_description",
             "source_url", "source_type", "data_completeness",
             "specification_confidence", "needs_review",
+            # SEO Fields
+            "meta_title", "meta_description", "meta_keywords", "seo_content",
+            "target_keywords", "related_keywords", "technical_keywords",
+            "applications", "technical_specifications", "structured_data",
+            "page_content_sections", "alt_text_suggestions",
+            # Standard fields
             "live", "first_published_at", "last_published_at"
         ]
 
@@ -244,8 +255,23 @@ class LabEquipmentPageDetailSchema(ModelSchema):
 
     @staticmethod
     def resolve_spec_group_names(obj):
-        """Get specification group names."""
+        """Get spec group names."""
         return obj.spec_group_names
+    
+    @staticmethod
+    def resolve_meta_title_computed(obj):
+        """Get computed meta title."""
+        return obj.get_meta_title()
+    
+    @staticmethod
+    def resolve_meta_description_computed(obj):
+        """Get computed meta description."""
+        return obj.get_meta_description()
+    
+    @staticmethod
+    def resolve_structured_data_computed(obj):
+        """Get computed structured data."""
+        return obj.get_structured_data()
 
 
 # ============ QUOTE CART SCHEMAS ============

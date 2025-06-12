@@ -199,18 +199,22 @@ class Command(BaseCommand):
                 elements = html_tree.xpath(xpath_selector)
                 
                 if elements:
-                    # Extract text content and attributes from matched elements
+                    # Extract content and attributes from each matching element
                     extracted_data = []
-                    for element in elements[:5]:  # Limit to first 5 matches for preview
+                    for element in elements:
                         try:
-                            # Extract text content
-                            text_content = ""
-                            if hasattr(element, 'text_content'):
-                                text_content = element.text_content().strip()
-                            elif isinstance(element, str):
-                                text_content = element.strip()
-                            else:
-                                text_content = str(element).strip()
+                            # Get text content
+                            text_content = element.text_content().strip() if hasattr(element, 'text_content') else ""
+                            
+                            # ARCTIC STORM: Extract full HTML content
+                            html_content = ""
+                            if hasattr(element, 'tag'):
+                                try:
+                                    from lxml import etree
+                                    html_content = etree.tostring(element, encoding='unicode', method='html')
+                                except Exception as html_error:
+                                    # Fallback to outer HTML if lxml fails
+                                    html_content = f"<{element.tag}>" + (element.text or "") + f"</{element.tag}>"
                             
                             # Extract element attributes
                             attributes = {}
@@ -243,11 +247,13 @@ class Command(BaseCommand):
                                     if attr.startswith('data-'):
                                         attributes[attr] = element.get(attr)
                             
-                            # Include data if there's text content OR attributes
-                            if text_content or attributes:
+                            # ARCTIC STORM: Include data if there's text content, HTML content, OR attributes
+                            if text_content or html_content or attributes:
                                 extracted_item = {}
                                 if text_content:
                                     extracted_item['text'] = text_content
+                                if html_content:
+                                    extracted_item['html'] = html_content
                                 if attributes:
                                     extracted_item['attributes'] = attributes
                                 extracted_data.append(extracted_item)
@@ -317,22 +323,13 @@ class Command(BaseCommand):
         # Organize field configurations with flat structure and content extraction
         field_configurations = self.organize_field_configurations(field_configs, scraped_content['html'])
         
-        # Calculate extraction statistics
-        extraction_stats = self.calculate_extraction_statistics(field_configurations)
         
         # Assemble simplified JSON structure (no redundant scraped_content)
         ai_json = {
             'url': site_url.url,
             'site_domain': site_url.site_config.site_domain,
             'site_name': site_url.site_config.site_name,
-            'field_configurations': field_configurations,
-            'processing_metadata': {
-                'timestamp': timezone.now().isoformat(),
-                'status': 'ready_for_ai_with_content_mapping',
-                'total_field_count': len(field_configurations),
-                'content_length': len(scraped_content.get('html', '')) if scraped_content else 0,
-                'extraction_statistics': extraction_stats
-            }
+            'field_configurations': field_configurations
         }
         
         return ai_json

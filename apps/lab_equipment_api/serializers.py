@@ -16,6 +16,7 @@ from apps.categorized_tags.models import CategorizedTag
 from taggit.models import Tag
 from django.utils.text import slugify
 import time
+import logging
 
 
 class SpecSerializer(serializers.ModelSerializer):
@@ -54,7 +55,7 @@ class EquipmentModelSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = EquipmentModel
-        fields = ['id', 'name', 'model_number', 'spec_groups', 'merged_spec_groups']
+        fields = ['id', 'name', 'spec_groups', 'merged_spec_groups']
     
     def get_merged_spec_groups(self, obj):
         """Get merged spec groups from the model."""
@@ -150,12 +151,25 @@ class LabEquipmentPageDetailSerializer(serializers.ModelSerializer):
     # Computed fields
     spec_group_names = serializers.ReadOnlyField()
     
+    # SEO helper methods
+    meta_title_computed = serializers.SerializerMethodField()
+    meta_description_computed = serializers.SerializerMethodField()
+    structured_data_computed = serializers.SerializerMethodField()
+    
     class Meta:
         model = LabEquipmentPage
         fields = [
             'page_ptr_id', 'title', 'slug', 'short_description', 'full_description',
             'source_url', 'source_type', 'data_completeness', 
             'specification_confidence', 'needs_review',
+            # SEO Fields
+            'meta_title', 'meta_description', 'meta_keywords', 'seo_content',
+            'target_keywords', 'related_keywords', 'technical_keywords',
+            'applications', 'technical_specifications', 'structured_data',
+            'page_content_sections', 'alt_text_suggestions',
+            # Computed SEO fields
+            'meta_title_computed', 'meta_description_computed', 'structured_data_computed',
+            # Related objects
             'spec_groups', 'models', 'features', 'accessories', 
             'categorized_tags', 'gallery_images', 'main_image_url',
             'spec_group_names', 'live', 'first_published_at', 'last_published_at'
@@ -186,6 +200,18 @@ class LabEquipmentPageDetailSerializer(serializers.ModelSerializer):
                 return request.build_absolute_uri(main_image)
             return main_image
         return None
+    
+    def get_meta_title_computed(self, obj):
+        """Get computed meta title."""
+        return obj.get_meta_title()
+    
+    def get_meta_description_computed(self, obj):
+        """Get computed meta description."""
+        return obj.get_meta_description()
+    
+    def get_structured_data_computed(self, obj):
+        """Get computed structured data."""
+        return obj.get_structured_data()
 
 
 class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
@@ -198,9 +224,7 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
     # Nested creation fields
     specifications = serializers.JSONField(required=False, help_text="Specifications in JSON format")
     models_data = serializers.JSONField(required=False, help_text="Models in JSON format")
-    features_data = serializers.ListField(
-        child=serializers.CharField(), required=False, help_text="List of feature strings"
-    )
+    features_data = serializers.JSONField(required=False, help_text="Features in JSON format")
     
     class Meta:
         model = LabEquipmentPage  
@@ -208,19 +232,37 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
             'page_ptr_id', 'title', 'slug', 'short_description', 'full_description',
             'source_url', 'source_type', 'data_completeness',
             'specification_confidence', 'needs_review',
+            # SEO Fields
+            'meta_title', 'meta_description', 'meta_keywords', 'seo_content',
+            'target_keywords', 'related_keywords', 'technical_keywords',
+            'applications', 'technical_specifications', 'structured_data',
+            'page_content_sections', 'alt_text_suggestions',
+            # Creation fields
             'categorized_tags', 'specifications', 'models_data', 'features_data'
         ]
         extra_kwargs = {
-            'slug': {'required': False}
+            'slug': {'required': False},
+            'page_ptr_id': {'read_only': True},
         }
     
     def create(self, validated_data):
         """Create a new lab equipment page with nested data."""
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        logger.info(f"=== Starting LabEquipmentPage creation ===")
+        logger.info(f"Validated data keys: {list(validated_data.keys())}")
+        
         # Extract nested data
-        specifications = validated_data.pop('specifications', [])
+        specifications = validated_data.pop('specifications', {})
         models_data = validated_data.pop('models_data', [])
         features_data = validated_data.pop('features_data', [])
         categorized_tags = validated_data.pop('categorized_tags', [])
+        
+        logger.info(f"Extracted specifications: {len(specifications) if specifications else 0} groups")
+        logger.info(f"Extracted models_data: {len(models_data) if models_data else 0} models")
+        logger.info(f"Extracted features_data: {len(features_data) if features_data else 0} features") 
+        logger.info(f"Extracted categorized_tags: {len(categorized_tags) if categorized_tags else 0} tags")
         
         # Find the parent page - assuming the first MultiProductPage as parent
         from wagtail.models import Site
@@ -237,23 +279,16 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
             else:
                 parent_page = root_page
             
-            # Create the page
-            page = LabEquipmentPage(
-                title=validated_data['title'],
-                short_description=validated_data.get('short_description', ''),
-                full_description=validated_data.get('full_description', ''),
-                source_url=validated_data.get('source_url', ''),
-                source_type=validated_data.get('source_type', 'new'),
-                data_completeness=validated_data.get('data_completeness', 0.5),
-                specification_confidence=validated_data.get('specification_confidence', 0.5),
-                needs_review=validated_data.get('needs_review', True),
-                live=False  # Explicitly set as not live
-            )
+            # Create the page with all the validated data
+            page = LabEquipmentPage(**validated_data)
             
             # Auto-generate slug if not provided
             if not page.slug:
                 base_slug = slugify(page.title)
                 page.slug = f"{base_slug}-{int(time.time())}"
+            
+            # Set as not live initially
+            page.live = False
             
             # Add to parent page
             parent_page.add_child(instance=page)
@@ -266,13 +301,128 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
                 page.categorized_tags.set(categorized_tags)
                 page.save()
             
-            # TODO: Add specifications, models, and features processing here if needed
-            # For now, we'll create basic pages without these complex nested structures
+            # Process specifications if provided
+            if specifications:
+                logger.info(f"Calling create_specification_groups with {len(specifications)} groups")
+                self.create_specification_groups(page, specifications)
+            else:
+                logger.info("No specifications to create")
+            
+            # Process models if provided
+            if models_data:
+                logger.info(f"Calling create_models with {len(models_data)} models")
+                self.create_models(page, models_data)
+            else:
+                logger.info("No models to create")
+            
+            # Process features if provided  
+            if features_data:
+                logger.info(f"Calling create_features with {len(features_data)} features")
+                self.create_features(page, features_data)
+            else:
+                logger.info("No features to create")
             
             return page
             
         except Exception as e:
             raise serializers.ValidationError(f'Error creating lab equipment page: {str(e)}')
+    
+    def create_specification_groups(self, page, specifications):
+        """Create specification groups from JSON data."""
+        from apps.base_site.models import LabEquipmentPageSpecGroup, Spec
+        
+        for group_name, specs in specifications.items():
+            spec_group = LabEquipmentPageSpecGroup.objects.create(
+                LabEquipmentPage=page,
+                name=group_name
+            )
+            
+            for key, value in specs.items():
+                Spec.objects.create(
+                    spec_group=spec_group,
+                    key=key,
+                    value=str(value)
+                )
+    
+    def create_models(self, page, models_data):
+        """Create equipment models from JSON data."""
+        from apps.base_site.models import EquipmentModel, EquipmentModelSpecGroup, Spec
+        
+        logger = logging.getLogger(__name__)
+        
+        logger.info(f"Creating models for page: {page.title}")
+        logger.info(f"Models data type: {type(models_data)}")
+        logger.info(f"Models data length: {len(models_data) if hasattr(models_data, '__len__') else 'No length'}")
+        
+        if not models_data:
+            logger.warning("No models data provided")
+            return
+            
+        if not isinstance(models_data, list):
+            logger.error(f"Models data should be list, got: {type(models_data)}")
+            return
+        
+        for i, model_data in enumerate(models_data):
+            logger.info(f"Processing model {i+1}: {model_data.get('model_name', 'Unknown')}")
+            
+            try:
+                # Prepare model creation kwargs
+                model_kwargs = {
+                    'page': page,
+                    'name': model_data.get('model_name', ''),
+                }
+                
+                # Only add model_number if it exists in the data
+                if model_data.get('model_number'):
+                    model_kwargs['model_number'] = model_data['model_number']
+                
+                logger.info(f"Creating EquipmentModel with kwargs: {model_kwargs}")
+                model = EquipmentModel.objects.create(**model_kwargs)
+                logger.info(f"Created model: {model.id} - {model.name}")
+                
+                # Create model-specific specification groups
+                model_specs = model_data.get('specifications', {})
+                logger.info(f"Creating {len(model_specs)} spec groups for model {model.name}")
+                
+                for group_name, specs in model_specs.items():
+                    spec_group = EquipmentModelSpecGroup.objects.create(
+                        equipment_model=model,
+                        name=group_name
+                    )
+                    logger.info(f"Created spec group: {spec_group.name}")
+                    
+                    for key, value in specs.items():
+                        spec = Spec.objects.create(
+                            spec_group=spec_group,
+                            key=key,
+                            value=str(value)
+                        )
+                        logger.info(f"  Created spec: {key} = {value}")
+                        
+            except Exception as e:
+                logger.error(f"Error creating model {i+1}: {e}")
+                import traceback
+                logger.error(traceback.format_exc())
+    
+    def create_features(self, page, features_data):
+        """Create equipment features from JSON data."""
+        from apps.base_site.models import EquipmentFeature
+        
+        # Handle both list of strings and list of objects
+        if isinstance(features_data, list):
+            for i, feature in enumerate(features_data):
+                if isinstance(feature, str):
+                    feature_text = feature
+                elif isinstance(feature, dict):
+                    feature_text = feature.get('feature', str(feature))
+                else:
+                    feature_text = str(feature)
+                
+                EquipmentFeature.objects.create(
+                    page=page,
+                    feature=feature_text,
+                    sort_order=i
+                )
     
     def update(self, instance, validated_data):
         """Update an existing lab equipment page."""
