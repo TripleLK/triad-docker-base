@@ -1,0 +1,122 @@
+#+TITLE: Conversation Log - Digital Phoenix
+#+DATE: 2025-01-22
+#+MODEL: Digital Phoenix
+#+SESSION_START: 2025-01-22T15:30:00
+#+FILETAGS: :conversation:log:digital-phoenix:bedrock:s3:
+
+* Turn 1: Bedrock Prompt ARN Integration
+  :PROPERTIES:
+  :TIMESTAMP: 15:30:00
+  :END:
+
+** Discussion Summary
+User provided their Bedrock prompt ARN: arn:aws:bedrock:us-east-1:891377295311:prompt/H52151JSYK
+Requested integration into the existing S3 batch processing system for Bedrock batch inference.
+
+** Changes Made
+*** Updated apps/content_extractor/aws_utils.py
+- Added DEFAULT_BEDROCK_PROMPT_ARN constant with user's ARN
+- Added get_bedrock_client() function for Bedrock API access
+- Updated convert_json_to_bedrock_jsonl() to accept prompt_arn parameter
+- Updated convert_batch_to_bedrock_jsonl() to accept prompt_arn parameter
+- Changed default AWS region from us-east-2 to us-east-1 for Bedrock compatibility
+- Modified JSONL format to use proper Bedrock batch inference structure:
+  ```json
+  {
+    "recordId": "filename",
+    "modelInput": {
+      "promptArn": "arn:aws:bedrock:us-east-1:891377295311:prompt/H52151JSYK",
+      "promptVariables": {
+        "content": "{original_json_as_string}"
+      }
+    }
+  }
+  ```
+
+*** Updated apps/content_extractor/management/commands/batch_site_processor.py
+- Added --bedrock-prompt-arn command-line argument (lines 125-129)
+- Updated handle() method to store bedrock_prompt_arn instance variable (line 149)
+- Modified upload_batch_to_s3() method to:
+  - Pass prompt ARN to conversion functions (line 862)
+  - Display which prompt ARN is being used (lines 854-859)
+  - Use us-east-1 region for S3 bucket creation (line 844)
+- Updated update_manifest_with_s3_info() to include prompt ARN in manifest (line 925)
+
+*** Created scripts/test_bedrock_format.py
+- Comprehensive test script for Bedrock JSONL conversion
+- Tests both default and custom prompt ARN usage
+- Validates JSONL structure and content
+- Includes proper cleanup logic
+
+*** Created scripts/bedrock_batch_example.py
+- Complete usage example with user's specific prompt ARN
+- Shows full workflow: crawl → filter → generate → convert → upload
+- Includes AWS credential checking and dry-run fallback
+- Provides command options reference and format examples
+
+** Rationale
+The user's Bedrock prompt is in us-east-1 region, so updated all AWS utilities to use us-east-1 as default.
+The Bedrock batch inference format requires specific structure with promptArn and promptVariables.
+Added comprehensive testing and examples to ensure smooth user experience.
+
+** Next Steps Identified
+- User needs to set up AWS credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+- Test full S3 upload workflow with actual batch processing
+- Consider adding Bedrock batch job submission functionality in future
+
+** Cross-References
+- Related to previous Quantum Ridge work on S3 batch processing
+- Builds on existing batch_site_processor.py infrastructure
+- Integrates with existing AWS utilities framework 
+
+* Turn 2: Export Existing Records to S3
+  :PROPERTIES:
+  :TIMESTAMP: 18:40:00
+  :END:
+
+** Discussion Summary
+User correctly pointed out that they already have 107 processed pages in the database
+and wanted to use existing data instead of re-crawling. Created new export_to_s3 command
+to export existing AI JSON records directly to S3 with Bedrock format support.
+
+** Changes Made
+*** Created apps/content_extractor/management/commands/export_to_s3.py
+- New Django management command for exporting existing AI JSON records
+- Supports individual files, batch files, or both formats
+- Bedrock JSONL conversion with user's prompt ARN
+- S3 bucket auto-creation and file upload
+- Dry run mode for testing
+- Limit option for testing with subset of records
+- Progress tracking and error handling
+
+*** Updated apps/content_extractor/aws_utils.py
+- Added convert_batch_json_to_bedrock_jsonl() function
+- Fixed file path handling in conversion functions
+
+*** Created scripts/test_s3_export.py
+- Interactive test script with menu options
+- Demonstrates all export options and usage examples
+- Includes dry run, small batch, and full export options
+
+** Rationale
+User has 107 existing processed pages from www.airscience.com in the database.
+Much more efficient to export existing records than re-crawl and re-process.
+New command provides direct database-to-S3 export with Bedrock format support.
+
+** Testing Results
+- Dry run test successful with 3 records
+- Bedrock JSONL conversion working correctly with user's prompt ARN
+- Generated files: individual JSONLs + batch file + Bedrock JSONL versions
+- S3 bucket auto-generation: triad-batch-processing-airscience-com
+- File sizes: 16.5KB to 392.1KB for converted JSONL files
+
+** Next Steps Identified
+- User can test with small batch (3 records) first
+- Then run full export of all 107 records
+- AWS credentials need to be configured for actual S3 upload
+- Bedrock batch inference can be run with uploaded JSONL files
+
+** Cross-References
+- Links to Turn 1 Bedrock prompt ARN integration
+- Uses existing database models: SiteConfiguration, SiteURL, AIJSONRecord
+- Leverages aws_utils.py functions from previous work 

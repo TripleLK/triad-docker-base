@@ -1,0 +1,137 @@
+#+TITLE: Digital Phoenix Cleanup Report - S3 Export & Bedrock Integration
+#+AUTHOR: Digital Phoenix
+#+DATE: 2025-01-15
+#+FILETAGS: :cleanup:s3:bedrock:batch-processing:
+
+* SUMMARY
+Successfully implemented complete S3 export functionality for existing AI JSON records with AWS Bedrock batch inference format support. System is production-ready and optimized for batch processing workflow.
+
+** Major Accomplishments
+- Fixed AWS credential configuration issues
+- Implemented S3 upload functionality with proper error handling
+- Created Bedrock JSONL format conversion for batch inference
+- Optimized system for batch-only processing (primary use case)
+- Implemented multi-site support with organized S3 structure
+
+* FILES MODIFIED/CREATED
+
+** Core AWS Integration
+- apps/content_extractor/aws_utils.py (MAJOR UPDATES)
+  - Lines 24-44: Simplified S3 client creation using boto3 default credential chain
+  - Lines 45-61: Simplified Bedrock client creation
+  - Lines 136-175: Updated upload_files_batch to return proper result format
+  - Lines 303-318: Updated generate_s3_bucket_name for multi-site support
+  - Fixed BotoCoreError issues by removing explicit credential handling
+
+** Django Management Command
+- apps/content_extractor/management/commands/export_to_s3.py (MAJOR UPDATES)
+  - Lines 70-72: Changed default format from 'both' to 'batch' for Bedrock optimization
+  - Lines 124-128: Added domain-based S3 prefix organization
+  - Lines 160-166: Fixed delete_local_files function call with proper arguments
+  - Complete export workflow for individual/batch/both formats
+
+** Test Infrastructure
+- scripts/test_s3_export.py (EXISTING)
+  - Interactive test script with menu options
+  - Supports dry-run, small batch, and full export testing
+  - Uses user's Bedrock prompt ARN: arn:aws:bedrock:us-east-1:891377295311:prompt/H52151JSYK
+
+* REASONING
+
+** AWS Credential Simplification
+- Original implementation tried to manually handle environment variables
+- Boto3's default credential chain is more robust and handles AWS CLI config automatically
+- Eliminated BotoCoreError by letting boto3 handle credential discovery
+
+** Bucket Naming Strategy
+- Changed from site-specific buckets (triad-batch-processing-airscience-com) 
+- To generic bucket (triad-bedrock-batch-processing) with domain-based prefixes
+- Enables cost-effective multi-site processing in single bucket
+- Structure: batch-processing/{domain}/files
+
+** Format Optimization
+- User confirmed only batch file needed for Bedrock batch inference
+- Changed default from 'both' to 'batch' to eliminate unnecessary individual files
+- Reduces S3 storage costs and simplifies batch inference workflow
+
+* ARCHITECTURE
+
+** S3 Structure
+```
+triad-bedrock-batch-processing/
+├── batch-processing/
+│   ├── airscience-com/
+│   │   └── www.airscience.com_batch_YYYYMMDD_HHMMSS_bedrock.jsonl
+│   ├── other-site-com/
+│   │   └── other-site.com_batch_YYYYMMDD_HHMMSS_bedrock.jsonl
+│   └── ...
+```
+
+** Bedrock JSONL Format
+Each line in batch file:
+```json
+{
+  "recordId": "domain_batch_timestamp_record_N",
+  "modelInput": {
+    "promptArn": "arn:aws:bedrock:us-east-1:891377295311:prompt/H52151JSYK",
+    "promptVariables": {
+      "content": "{...json_data_as_string...}"
+    }
+  }
+}
+```
+
+** Data Flow
+1. Query existing AIJSONRecord objects from database
+2. Export to temporary JSON files
+3. Convert to Bedrock JSONL format
+4. Upload to S3 with organized structure
+5. Clean up temporary files
+6. Report success metrics
+
+* ISSUES RESOLVED
+
+** BotoCoreError Fix
+- Problem: "BotoCoreError.__init__() takes 1 positional argument but 2 were given"
+- Root Cause: Invalid AWS credentials causing boto3 internal errors
+- Solution: Updated AWS credentials + simplified credential chain usage
+
+** Upload Result Format Mismatch
+- Problem: Django command expected dict results, aws_utils returned strings
+- Solution: Updated upload_files_batch to return {success, s3_url, error} format
+
+** Function Signature Mismatch
+- Problem: delete_local_files called with wrong number of arguments
+- Solution: Updated call to provide both file_paths and success_uploads parameters
+
+* VERIFICATION
+
+** Test Results
+- Small batch (3 records): ✅ SUCCESS - 4 files uploaded (3 individual + 1 batch)
+- Full export (107 records): ✅ SUCCESS - 108 files uploaded (107 individual + 1 batch)
+- Batch-only mode: ✅ SUCCESS - 1 file uploaded (batch only)
+- S3 verification: ✅ All files present and accessible
+- Bedrock format: ✅ Proper JSONL structure with user's prompt ARN
+
+** Performance Metrics
+- Full export (107 records): 54.29 seconds
+- Batch file size: 6.47 MB (all 107 records)
+- S3 upload success rate: 100%
+
+* CONTEXT FOR NEXT MODEL
+
+** Current State
+- S3 export system is COMPLETE and PRODUCTION-READY
+- All 107 www.airscience.com records successfully exported to S3
+- Bedrock JSONL format validated and ready for batch inference
+- Multi-site architecture implemented
+
+** AWS Resources Created
+- S3 Bucket: triad-bedrock-batch-processing
+- Sample data: batch-processing/airscience-com/www.airscience.com_batch_*_bedrock.jsonl
+- User's AWS Account: 891377295311 (root user access confirmed)
+
+** Ready for Batch Processing Implementation
+- Input files are properly formatted and uploaded to S3
+- Bedrock prompt ARN configured: arn:aws:bedrock:us-east-1:891377295311:prompt/H52151JSYK
+- Next step: Implement actual Bedrock batch inference job submission and monitoring 

@@ -1,0 +1,163 @@
+#+TITLE: Digital Phoenix Next Steps - Bedrock Batch Inference Implementation
+#+AUTHOR: Digital Phoenix  
+#+DATE: 2025-01-15
+#+FILETAGS: :next-steps:bedrock:batch-inference:aws:
+
+* IMMEDIATE PRIORITIES
+
+** 1. Implement Bedrock Batch Inference Job Submission (CRITICAL)
+Create Django management command to submit batch inference jobs to AWS Bedrock.
+
+*** Key Requirements:
+- Submit JSONL files from S3 to Bedrock batch inference API
+- Use existing prompt ARN: arn:aws:bedrock:us-east-1:891377295311:prompt/H52151JSYK
+- Handle job submission with proper error handling
+- Store job metadata in database for tracking
+
+*** Implementation Files:
+- apps/content_extractor/management/commands/submit_batch_inference.py (NEW)
+- apps/content_extractor/models.py (ADD BatchInferenceJob model)
+- apps/content_extractor/aws_utils.py (ADD batch inference functions)
+
+** 2. Implement Job Status Monitoring (HIGH)
+Create system to monitor batch inference job progress and completion.
+
+*** Key Requirements:
+- Poll job status periodically
+- Handle job completion and failure states
+- Download results when jobs complete
+- Update database with job status changes
+
+*** Implementation Files:
+- apps/content_extractor/management/commands/monitor_batch_jobs.py (NEW)
+- Background task system (consider Django-RQ or Celery)
+
+** 3. Results Processing Pipeline (HIGH)
+Process completed batch inference results and integrate with existing system.
+
+*** Key Requirements:
+- Download completed results from S3
+- Parse and validate Bedrock responses
+- Store processed results in database
+- Handle partial failures and retries
+
+* APPROACH FOR NEXT MODEL
+
+** Phase 1: Core Batch Inference (Week 1)
+1. **Research Bedrock Batch Inference API**
+   - Study AWS Bedrock batch inference documentation
+   - Understand job submission parameters and requirements
+   - Review pricing and limits
+
+2. **Create Database Models**
+   - BatchInferenceJob model to track jobs
+   - Fields: job_id, status, input_s3_path, output_s3_path, created_at, completed_at
+   - Relationships to existing SiteConfiguration and AIJSONRecord models
+
+3. **Implement Job Submission**
+   - Django command: submit_batch_inference
+   - Parameters: domain, input-file, model-id, prompt-arn
+   - Error handling and validation
+   - Database logging
+
+** Phase 2: Monitoring & Results (Week 2)
+1. **Job Status Monitoring**
+   - Polling mechanism for job status
+   - Database updates for status changes
+   - Notification system for completion
+
+2. **Results Processing**
+   - Download completed results from S3
+   - Parse Bedrock response format
+   - Validate and store results
+   - Error handling for failed inferences
+
+** Phase 3: Integration & Optimization (Week 3)
+1. **Integration with Existing System**
+   - Link batch results to original AIJSONRecord entries
+   - Update content extraction workflow
+   - Performance optimization
+
+2. **User Interface**
+   - Django admin integration for job management
+   - Status dashboard for batch jobs
+   - Results viewing and export
+
+* CRITICAL DECISIONS NEEDED
+
+** 1. Model Selection
+- Which Bedrock model to use for batch inference?
+- Current prompt ARN suggests specific model requirements
+- Need to verify model compatibility with batch inference
+
+** 2. Output Format
+- How should batch inference results be structured?
+- Integration with existing AIJSONRecord format
+- Handling of failed individual inferences within batch
+
+** 3. Scaling Strategy
+- How many records per batch job?
+- Parallel job submission for large datasets?
+- Cost optimization strategies
+
+* KEY FILES TO REVIEW
+
+** Essential Understanding:
+- apps/content_extractor/models.py (Lines 1-200) - Understand existing data models
+- apps/content_extractor/aws_utils.py (Lines 1-350) - Current AWS integration
+- apps/content_extractor/management/commands/export_to_s3.py - S3 export workflow
+
+** AWS Documentation:
+- AWS Bedrock Batch Inference API documentation
+- Bedrock pricing for batch inference
+- S3 integration requirements for batch jobs
+
+** Existing Infrastructure:
+- .project_management/cleanup_reports/digital-phoenix_cleanup.org - Current state
+- S3 bucket: triad-bedrock-batch-processing - Input files location
+- User's prompt ARN: arn:aws:bedrock:us-east-1:891377295311:prompt/H52151JSYK
+
+* HANDOFF CONTEXT
+
+** What's Complete:
+✅ S3 export system fully implemented and tested
+✅ Bedrock JSONL format conversion working
+✅ AWS credentials configured and verified
+✅ Multi-site architecture established
+✅ 107 www.airscience.com records ready for batch processing
+
+** What's Ready:
+🎯 Input files uploaded to S3 in correct Bedrock format
+🎯 AWS account access confirmed (891377295311)
+🎯 Prompt ARN validated and configured
+🎯 Django infrastructure ready for extension
+
+** What's Needed:
+🔲 Bedrock batch inference job submission
+🔲 Job monitoring and status tracking
+🔲 Results processing and integration
+🔲 Error handling and retry logic
+🔲 User interface for job management
+
+** Success Criteria:
+- Submit batch inference jobs successfully
+- Monitor job progress automatically
+- Process and store results correctly
+- Handle errors gracefully
+- Provide user visibility into batch processing status
+
+* RESOURCES
+
+** AWS Documentation:
+- https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference.html
+- https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock.html
+
+** Existing Codebase:
+- S3 integration patterns in aws_utils.py
+- Django command patterns in management/commands/
+- Database model patterns in models.py
+
+** Test Data:
+- S3 bucket: triad-bedrock-batch-processing
+- Sample file: batch-processing/airscience-com/www.airscience.com_batch_*_bedrock.jsonl
+- 107 records ready for processing 

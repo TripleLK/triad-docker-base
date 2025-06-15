@@ -81,7 +81,28 @@ class Command(BaseCommand):
         parser.add_argument(
             '--upload-to-s3',
             action='store_true',
-            help='Upload generated files to S3 (Phase 3 feature)'
+            help='Upload generated files to S3'
+        )
+        parser.add_argument(
+            '--s3-bucket',
+            type=str,
+            help='S3 bucket name (auto-generated if not provided)'
+        )
+        parser.add_argument(
+            '--s3-prefix',
+            type=str,
+            default='batch-processing',
+            help='S3 key prefix for organizing files (default: batch-processing)'
+        )
+        parser.add_argument(
+            '--bedrock-format',
+            action='store_true',
+            help='Convert JSON files to Bedrock JSONL format'
+        )
+        parser.add_argument(
+            '--delete-local',
+            action='store_true',
+            help='Delete local files after successful S3 upload'
         )
         parser.add_argument(
             '--output-dir',
@@ -105,6 +126,11 @@ class Command(BaseCommand):
             default='product-category-page',
             help='Pattern to identify product pages (default: product-category-page)'
         )
+        parser.add_argument(
+            '--bedrock-prompt-arn',
+            type=str,
+            help='Bedrock prompt ARN for batch inference (uses default if not provided)'
+        )
 
     def handle(self, *args, **options):
         """Main command handler"""
@@ -115,13 +141,18 @@ class Command(BaseCommand):
         self.dry_run = options['dry_run']
         self.test_selectors_only = options['test_selectors_only']
         self.upload_to_s3 = options['upload_to_s3']
+        self.s3_bucket = options['s3_bucket']
+        self.s3_prefix = options['s3_prefix']
+        self.bedrock_format = options['bedrock_format']
+        self.delete_local = options['delete_local']
         self.output_dir = options['output_dir']
         self.verbose = options['verbose']
         self.start_url = options['start_url']
         self.product_page_pattern = options['product_page_pattern']
+        self.bedrock_prompt_arn = options['bedrock_prompt_arn']
         
         # Derived settings
-        self.max_product_pages = min(self.max_pages, 20)  # Reasonable limit for product pages
+        self.max_product_pages = self.max_pages  # Use user's max_pages setting directly
         
         # Initialize AI JSON command for reuse
         self.ai_json_command = AIJSONCommand()
@@ -134,6 +165,13 @@ class Command(BaseCommand):
         
         if self.test_selectors_only:
             self.stdout.write("🔍 SELECTOR TEST MODE - Only testing selectors on known URLs")
+        
+        if self.upload_to_s3:
+            self.stdout.write("☁️  S3 UPLOAD MODE - Files will be uploaded to S3")
+            if self.bedrock_format:
+                self.stdout.write("🔄 BEDROCK FORMAT - JSON files will be converted to JSONL")
+            if self.delete_local:
+                self.stdout.write("🗑️  DELETE LOCAL - Local files will be deleted after upload")
         
         try:
             # Step 1: Load site configuration
@@ -788,13 +826,139 @@ class Command(BaseCommand):
             return None
 
     def upload_batch_to_s3(self, file_paths: List[str]):
-        """Upload generated JSON files to S3"""
-        self.stdout.write(f"☁️  Uploading {len(file_paths)} files to S3...")
+        """Upload generated JSON files to S3 with Bedrock format support"""
+        from apps.content_extractor.aws_utils import (
+            get_s3_client, create_bucket_if_not_exists, upload_files_batch,
+            convert_batch_to_bedrock_jsonl, generate_s3_bucket_name, delete_local_files
+        )
+        from datetime import datetime
         
-        # TODO: Implement S3 upload using existing boto3 integration
-        # This will be implemented in Phase 3
+        try:
+            self.stdout.write(f"☁️  Starting S3 upload for {len(file_paths)} files...")
+            
+            # Generate bucket name if not provided
+            if not self.s3_bucket:
+                self.s3_bucket = generate_s3_bucket_name(self.domain)
+                self.stdout.write(f"📦 Generated bucket name: {self.s3_bucket}")
+            
+            # Create bucket if it doesn't exist
+            self.stdout.write(f"🔍 Checking/creating S3 bucket: {self.s3_bucket}")
+            if not create_bucket_if_not_exists(self.s3_bucket, 'us-east-1'):
+                raise Exception(f"Failed to create or access S3 bucket: {self.s3_bucket}")
+            
+            files_to_upload = file_paths.copy()
+            upload_results = {}
+            
+            # Convert to Bedrock JSONL format if requested
+            if self.bedrock_format:
+                self.stdout.write("🔄 Converting JSON files to Bedrock JSONL format...")
+                
+                # Display prompt ARN being used
+                if self.bedrock_prompt_arn:
+                    self.stdout.write(f"🎯 Using custom Bedrock prompt ARN: {self.bedrock_prompt_arn}")
+                else:
+                    self.stdout.write("🎯 Using default Bedrock prompt ARN")
+                
+                # Create bedrock-jsonl subdirectory
+                bedrock_dir = os.path.join(self.output_dir, 'bedrock-jsonl')
+                
+                # Convert JSON files to JSONL
+                json_files = [f for f in file_paths if f.endswith('.json') and 'manifest' not in f]
+                jsonl_files = convert_batch_to_bedrock_jsonl(json_files, bedrock_dir, self.bedrock_prompt_arn)
+                
+                self.stdout.write(f"✅ Converted {len(jsonl_files)} files to JSONL format")
+                
+                # Add JSONL files to upload list
+                files_to_upload.extend(jsonl_files)
+            
+            # Generate S3 prefix with timestamp
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            s3_prefix = f"{self.s3_prefix}/{self.domain}/{timestamp}"
+            
+            self.stdout.write(f"📁 S3 prefix: {s3_prefix}")
+            
+            # Upload files in batch
+            self.stdout.write("⬆️  Uploading files to S3...")
+            upload_results = upload_files_batch(files_to_upload, self.s3_bucket, s3_prefix)
+            
+            # Count successful uploads
+            successful_uploads = {k: v for k, v in upload_results.items() if v is not None}
+            failed_uploads = {k: v for k, v in upload_results.items() if v is None}
+            
+            self.stdout.write(f"✅ Successfully uploaded: {len(successful_uploads)} files")
+            if failed_uploads:
+                self.stdout.write(f"❌ Failed uploads: {len(failed_uploads)} files")
+                for failed_file in failed_uploads.keys():
+                    self.stdout.write(f"   - {failed_file}")
+            
+            # Update manifest with S3 information
+            self.update_manifest_with_s3_info(upload_results, s3_prefix)
+            
+            # Delete local files if requested and uploads were successful
+            if self.delete_local and successful_uploads:
+                self.stdout.write("🗑️  Deleting local files after successful upload...")
+                deleted_count, failed_count = delete_local_files(files_to_upload, successful_uploads)
+                self.stdout.write(f"🗑️  Deleted {deleted_count} files, {failed_count} failed deletions")
+            
+            # Display S3 URLs for successful uploads
+            if self.verbose and successful_uploads:
+                self.stdout.write("📋 S3 URLs:")
+                for local_path, s3_url in successful_uploads.items():
+                    self.stdout.write(f"   {os.path.basename(local_path)} → {s3_url}")
+            
+            self.stdout.write(f"☁️  S3 upload complete! Bucket: {self.s3_bucket}")
+            
+        except Exception as e:
+            logger.error(f"S3 upload failed: {str(e)}")
+            self.stdout.write(f"❌ S3 upload failed: {str(e)}")
+            raise
+
+    def update_manifest_with_s3_info(self, upload_results: Dict[str, Optional[str]], s3_prefix: str):
+        """Update the batch manifest with S3 upload information"""
+        from datetime import datetime
         
-        self.stdout.write("⚠️  S3 upload not yet implemented - files saved locally")
+        try:
+            manifest_path = os.path.join(self.output_dir, 'batch_manifest.json')
+            
+            if not os.path.exists(manifest_path):
+                logger.warning("Manifest file not found, skipping S3 info update")
+                return
+            
+            # Read existing manifest
+            with open(manifest_path, 'r', encoding='utf-8') as f:
+                manifest = json.load(f)
+            
+            # Add S3 information
+            manifest['s3_upload_info'] = {
+                'bucket': self.s3_bucket,
+                'prefix': s3_prefix,
+                'upload_timestamp': datetime.now().isoformat(),
+                'bedrock_format_enabled': self.bedrock_format,
+                'bedrock_prompt_arn': self.bedrock_prompt_arn,
+                'local_files_deleted': self.delete_local,
+                'upload_results': upload_results
+            }
+            
+            # Update file entries with S3 URLs
+            for file_entry in manifest.get('files', []):
+                full_path = file_entry.get('full_path')
+                if full_path in upload_results and upload_results[full_path]:
+                    file_entry['s3_url'] = upload_results[full_path]
+                    file_entry['upload_status'] = 'success'
+                elif full_path in upload_results:
+                    file_entry['upload_status'] = 'failed'
+                else:
+                    file_entry['upload_status'] = 'not_attempted'
+            
+            # Write updated manifest
+            with open(manifest_path, 'w', encoding='utf-8') as f:
+                json.dump(manifest, f, indent=2, ensure_ascii=False)
+            
+            self.stdout.write(f"📋 Updated manifest with S3 information: {manifest_path}")
+            
+        except Exception as e:
+            logger.error(f"Failed to update manifest with S3 info: {str(e)}")
+            self.stdout.write(f"⚠️  Failed to update manifest: {str(e)}")
 
     def create_batch_manifest(self, file_paths: List[str]) -> str:
         """Create a manifest file for the batch processing results"""
