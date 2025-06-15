@@ -54,7 +54,7 @@ Ready for seamless handoff! 🚀
 ```
 
 ## Step 5: Git Automation (FINAL)
-- Execute: `python triad-reorganized/scripts/git_cleanup_push.py`
+- Execute: `python scripts/git_cleanup_push.py`
 - Commit and push ALL cleanup work to ai-work branch
 - Verify successful push
 - Document commit hash in conversation log

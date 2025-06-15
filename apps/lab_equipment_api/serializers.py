@@ -276,6 +276,9 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
         base_url = validated_data.pop('base_url', None)
         alt_text_suggestions = validated_data.get('alt_text_suggestions', [])
         
+        # Store whether the page should be published at the end
+        should_be_published = validated_data.pop('should_be_published', False)
+        
         logger.info(f"Extracted specifications: {len(specifications) if specifications else 0} groups")
         logger.info(f"Extracted models_data: {len(models_data) if models_data else 0} models")
         logger.info(f"Extracted features_data: {len(features_data) if features_data else 0} features") 
@@ -305,14 +308,16 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
                 base_slug = slugify(page.title)
                 page.slug = f"{base_slug}-{int(time.time())}"
             
-            # Set as not live initially
-            page.live = False
+            # Set as live initially to ensure relationships are properly saved
+            page.live = True
             
             # Add to parent page
             parent_page.add_child(instance=page)
             
-            # Save to generate initial revision
-            page.save_revision()
+            # Save and publish to generate initial revision and ensure proper DB relationships
+            revision = page.save_revision()
+            revision.publish()
+            logger.info(f"Initial page created and published with ID: {page.id}")
             
             # Add categorized tags if provided
             if categorized_tags:
@@ -347,9 +352,23 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
             else:
                 logger.info("No images to process")
             
+            # Save and publish again to ensure all relationships are properly saved
+            revision = page.save_revision()
+            revision.publish()
+            logger.info("Page published with all relationships")
+            
+            # If the page should not be published at the end, unpublish it
+            if not should_be_published:
+                page.live = False
+                page.save_revision().publish()
+                logger.info("Page unpublished as requested")
+            
             return page
             
         except Exception as e:
+            logger.error(f"Error creating lab equipment page: {str(e)}")
+            import traceback
+            logger.error(traceback.format_exc())
             raise serializers.ValidationError(f'Error creating lab equipment page: {str(e)}')
     
     def create_specification_groups(self, page, specifications):
@@ -500,11 +519,25 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
         base_url = validated_data.pop('base_url', None)
         alt_text_suggestions = validated_data.get('alt_text_suggestions', [])
         
+        # Store whether the page should be published at the end
+        should_be_published = validated_data.pop('should_be_published', instance.live)
+        was_live = instance.live
+        
         logger.info(f"Update data - specs: {len(specifications) if specifications else 0}, models: {len(models_data) if models_data else 0}, features: {len(features_data) if features_data else 0}, tags: {len(categorized_tags) if categorized_tags else 0}, images: {len(image_urls) if image_urls else 0}")
         
         # Update basic fields
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
+        
+        # Make sure the page is live for the update to ensure relationships are properly saved
+        if not instance.live:
+            instance.live = True
+            logger.info("Temporarily setting page to live for update")
+        
+        # Save and publish the initial changes
+        revision = instance.save_revision()
+        revision.publish()
+        logger.info("Initial page updates published")
         
         # Update categorized tags if provided
         if categorized_tags is not None:
@@ -545,7 +578,19 @@ class LabEquipmentPageCreateUpdateSerializer(serializers.ModelSerializer):
             if image_urls:
                 self.process_images(instance, image_urls, alt_text_suggestions, base_url)
         
-        instance.save()
+        # Save and publish again to ensure all relationships are properly saved
+        revision = instance.save_revision()
+        revision.publish()
+        logger.info("All updates published")
+        
+        # Restore the page's original publish state if needed
+        if not should_be_published:
+            instance.live = False
+            instance.save_revision().publish()
+            logger.info("Page unpublished as requested")
+        elif should_be_published != was_live:
+            logger.info(f"Page publish state changed from {was_live} to {should_be_published}")
+        
         logger.info(f"=== Completed LabEquipmentPage update for: {instance.title} ===")
         return instance
 

@@ -1,74 +1,129 @@
 #+TITLE: Active Work Tracking
 #+DATE: 2025-01-22
-#+AUTHOR: Stellar Bridge (updated from Dynamic Flux)
+#+AUTHOR: Quantum Ridge
 #+FILETAGS: :tracking:active:work:
 
 * Current Project Status
 
-** ONGOING: AI JSON to Lab Equipment Import System
-- **Model**: Stellar Bridge (taking over from Dynamic Flux)
-- **Status**: CRITICAL ISSUE - Core functionality 70% complete
-- **Priority**: HIGH - Next model must resolve immediately
+** ACTIVE: Selector-Based Batch Site Processing System
+- **Model**: Quantum Ridge
+- **Status**: IMPLEMENTATION PHASE - Starting development
+- **Priority**: HIGH - Complete automated website processing pipeline
 
-*** Completed (✅)
-- Management command framework (`import_ai_json_to_equipment.py`)
-- File discovery and JSON combination logic
-- Basic LabEquipmentPage creation via API serializer
-- SEO content import working
-- Categorized tag association working
+*** Project Objective
+Implement comprehensive website crawling and batch JSON generation system using existing selectors as relevance filters. System will:
+1. Crawl websites to discover all pages
+2. Test stored XPath selectors against each page
+3. Filter pages by selector success rate (≥90% threshold)
+4. Generate AI JSON for qualifying pages
+5. Upload batch results to S3 bucket
 
-*** CRITICAL BLOCKER (❌)
-- **Issue**: Nested object creation failing silently
-- **Impact**: EquipmentModel, SpecGroup, Feature objects not created (count = 0)
-- **Expected**: 9 models, 3+ spec groups, 7+ features
-- **Status**: Ready for next model to debug immediately
+*** Implementation Phases
 
-*** Next Model Priorities
-1. **URGENT**: Debug why `create_models()` method not executing
-2. **URGENT**: Fix silent logging issues for debugging
-3. Test with minimal data to isolate the problem
-4. Add image import once models creation works
+**** Phase 1: Core Batch Processor (🔄 IN PROGRESS)
+- **File**: `apps/content_extractor/management/commands/batch_site_processor.py`
+- **Components**:
+  - Site discovery using enhanced crawler logic
+  - Selector testing against discovered pages
+  - Relevance filtering by success rate threshold
+  - Progress tracking and resumption capability
 
-** Related Objectives
-*** COMPLETED: AI JSON Export Enhancement (Dynamic Flux)
-- Specification group names with title case formatting
-- Combined AI JSON processing command
-- Field selector error fixes
-- Export shows all matches in details and subset files
+**** Phase 2: Selector Success Rate Engine (⏳ PENDING)
+- **Integration**: Enhance existing `extract_content_for_selectors()` method
+- **Features**:
+  - Calculate percentage of successful selectors per page
+  - Handle multiple XPath selectors per field
+  - Detailed success/failure reporting
+  - Configurable threshold settings
 
-*** TODO: Image Import Integration
-- **Dependency**: Must wait for models creation fix
-- **Status**: Blocked by current critical issue
+**** Phase 3: S3 Batch Upload System (⏳ PENDING)
+- **Integration**: Use existing `apps/ai_processing/utils.py` boto3 client
+- **Features**:
+  - Organized S3 structure: `bucket/domain/date/`
+  - Batch manifest generation
+  - Upload progress tracking
+  - Error handling and retry logic
+
+**** Phase 4: Enhanced Crawler Integration (⏳ PENDING)
+- **Base**: Extend `scripts/equipment_scrapers/triad_url_scraper.py`
+- **Enhancements**:
+  - Generalized URL pattern detection
+  - Domain-specific crawling rules
+  - Depth and page limits
+  - URL normalization and deduplication
+
+*** Technical Foundation (✅ AVAILABLE)
+- **Database Models**: SiteConfiguration, FieldConfiguration with XPath storage
+- **XPath Testing**: `generate_ai_json.py` extraction engine
+- **Crawler Base**: `triad_url_scraper.py` with depth-limited crawling
+- **AI JSON Generation**: Complete structured output system
+- **AWS Integration**: S3 upload capabilities via boto3
+- **Interactive Selectors**: Field mapping and configuration system
+
+*** Success Criteria
+- [ ] Batch processor command functional
+- [ ] Selector success rate calculation accurate
+- [ ] Pages filtered by relevance threshold
+- [ ] AI JSON generated for qualifying pages only
+- [ ] S3 upload organized and reliable
+- [ ] System handles 100+ pages automatically
+- [ ] Minimal human intervention required
+
+* Implementation Timeline
+
+** Immediate Tasks (Today)
+1. **Create batch_site_processor.py command structure**
+2. **Implement selector success rate calculation**
+3. **Test with airscience.com existing selectors**
+4. **Basic progress reporting and logging**
+
+** Next Session Tasks
+1. **S3 integration and batch upload**
+2. **Enhanced crawler with generalized patterns**
+3. **Error handling and resumption logic**
+4. **Performance optimization for large sites**
 
 * File Locations
-** Current Work Files
-- `apps/content_extractor/management/commands/import_ai_json_to_equipment.py`
-- `apps/lab_equipment_api/serializers.py` (lines 250-420 enhanced)
-- Test data: `analysis_outputs/page_jsons/SafeFUME/Claude 3.7 Sonnet/`
+
+** New Files to Create
+- `apps/content_extractor/management/commands/batch_site_processor.py` (main command)
+- Enhanced methods in existing files
+
+** Existing Files to Enhance
+- `apps/content_extractor/management/commands/generate_ai_json.py` (selector testing)
+- `scripts/equipment_scrapers/triad_url_scraper.py` (crawler base)
+- `apps/ai_processing/utils.py` (S3 integration)
 
 ** Documentation
-- Cleanup: `.project_management/cleanup_reports/stellar-bridge_cleanup.org`
-- Next Steps: `.project_management/next_steps/stellar-bridge_next_steps.org`
-- Conversation: `.project_management/conversation_logs/stellar-bridge/2025-01-22_session_log.org`
+- Conversation: `.project_management/conversation_logs/quantum-ridge/2025-01-22_session_log.org`
+- Architecture updates: `triad_project_architecture.org`
 
-* Testing Status
-** Working Commands
-```bash
-python manage.py import_ai_json_to_equipment analysis_outputs/page_jsons/SafeFUME/Claude\ 3.7\ Sonnet/ --verbose
-```
+* Testing Strategy
+
+** Test Sites Available
+- **airscience.com**: Existing selectors configured via interactive system
+- **triadscientific.com**: Crawler already tested on this domain
 
 ** Verification Commands
 ```bash
-# Check database state (currently shows models=0, should be 9)
-python -c "from apps.base_site.models import *; page = LabEquipmentPage.objects.filter(title__icontains='SafeFUME').first(); print('Models:', page.models.count())"
+# Run batch processor with selector filtering
+python manage.py batch_site_processor --domain airscience.com --threshold 0.9 --max-pages 20 --dry-run
+
+# Test selector success rate calculation
+python manage.py batch_site_processor --domain airscience.com --test-selectors-only
+
+# Full processing with S3 upload
+python manage.py batch_site_processor --domain airscience.com --threshold 0.9 --upload-to-s3
 ```
 
-** Cleanup for Testing
-```bash
-python -c "from apps.base_site.models import LabEquipmentPage; LabEquipmentPage.objects.filter(title__icontains='SafeFUME').delete()"
-```
+** Expected Workflow
+1. **Discovery**: Find 20-50 pages on airscience.com
+2. **Testing**: Apply existing selectors to each page
+3. **Filtering**: Keep pages with ≥90% selector success
+4. **Processing**: Generate AI JSON for 10-25 qualifying pages
+5. **Upload**: Batch upload to S3 with organized structure
 
-* Context for Next Session
-The AI JSON import system is architected correctly and partially working. The issue is specifically in the Django REST Framework serializer's nested object creation methods. The next model should focus immediately on debugging this critical blocker before moving to additional features.
+* Context for Implementation
+This system leverages all existing infrastructure (selectors, crawler, JSON generation, S3) into a unified automated pipeline. The selector-based filtering approach eliminates manual page review while ensuring high-quality extraction results.
 
-All infrastructure is in place - this is a focused debugging task that should resolve quickly once the root cause is identified. 
+Key advantage: Uses the interactive selector system as a "proof of relevance" mechanism - if selectors work well on a page, it's relevant for processing. 

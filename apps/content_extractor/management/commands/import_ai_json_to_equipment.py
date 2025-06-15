@@ -366,4 +366,9 @@ class Command(BaseCommand):
         api_data.setdefault('data_completeness', 0.9)
         api_data.setdefault('specification_confidence', 'high')
         
+        # Add should_be_published flag to ensure proper relationship handling
+        # This will temporarily publish the page during creation/update to ensure
+        # all relationships are properly saved, then unpublish it at the end
+        api_data['should_be_published'] = False
+        
         return api_data 
