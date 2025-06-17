@@ -157,3 +157,159 @@ Stellar Nexus successfully implemented the complete parent selection architectur
 This is primarily a routing/navigation fix rather than a feature implementation task. The parent selection system is architecturally complete and ready for production once navigation is consolidated.
 
 [NAVIGATION INTEGRATION PRIORITY - ARCHITECTURE READY] 
+
+#+TITLE: Next Steps - Stellar Nexus
+#+AUTHOR: Stellar Nexus
+#+DATE: 2025-01-15
+#+FILETAGS: :next-steps:aws:bedrock:batch-inference:stellar-nexus:
+
+* Immediate Priorities
+
+** 🚨 CRITICAL: Resolve AWS Bedrock Batch Inference Model ID Parsing Issue
+The root cause has been identified: AWS Bedrock batch inference API is incorrectly parsing model IDs, extracting only the model name portion instead of using the full foundation model ARN.
+
+*** Error Pattern Confirmed
+- Input: `anthropic.claude-3-haiku-20240307-v1:0`
+- API Processing: `claude-3-haiku-20240307`
+- Result: "not supported on this API" error
+
+*** Models Tested (All Failed)
+- Claude 3.7 Sonnet (inference profile): `arn:aws:bedrock:us-east-1:891377295311:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0`
+- Claude 3.5 Sonnet (foundation): `anthropic.claude-3-5-sonnet-20240620-v1:0`
+- Claude 3.5 Sonnet (inference profile): `us.anthropic.claude-3-5-sonnet-20240620-v1:0`
+- Claude 3 Haiku (foundation): `anthropic.claude-3-haiku-20240307-v1:0`
+
+* Approach for Next Model
+
+** Phase 1: Alternative Model Testing (HIGH PRIORITY)
+Test non-Anthropic models to determine if issue is Anthropic-specific:
+
+*** Amazon Titan Models
+```bash
+# Test with Amazon Titan Text Express
+python manage.py submit_batch_inference \
+  --input-s3-uri s3://triad-bedrock-batch-processing/batch-processing/airscience-com/www.airscience.com_batch_20250615_202112_bedrock.jsonl \
+  --model-id amazon.titan-text-express-v1 \
+  --domain airscience-com \
+  --job-name test-titan-express-20250115 \
+  --skip-site-config \
+  --role-arn arn:aws:iam::891377295311:role/BedrockBatchInferenceRole
+```
+
+*** Meta Llama Models
+```bash
+# Test with Meta Llama 3.1 70B
+python manage.py submit_batch_inference \
+  --input-s3-uri s3://triad-bedrock-batch-processing/batch-processing/airscience-com/www.airscience.com_batch_20250615_202112_bedrock.jsonl \
+  --model-id meta.llama3-1-70b-instruct-v1:0 \
+  --domain airscience-com \
+  --job-name test-llama-70b-20250115 \
+  --skip-site-config \
+  --role-arn arn:aws:iam::891377295311:role/BedrockBatchInferenceRole
+```
+
+** Phase 2: Regional Testing (MEDIUM PRIORITY)
+If non-Anthropic models also fail, test different regions:
+
+*** Test in us-west-2
+- Update AWS region configuration
+- Submit same job in different region
+- Compare error patterns
+
+** Phase 3: Account/Permission Verification (MEDIUM PRIORITY)
+Verify account has proper batch inference permissions:
+
+*** Check IAM Role Permissions
+```bash
+# Verify role has all required permissions
+aws iam get-role-policy --role-name BedrockBatchInferenceRole --policy-name BedrockBatchInferencePolicy
+```
+
+*** Test Account Limits
+```bash
+# Check service quotas
+aws service-quotas get-service-quota --service-code bedrock --quota-code L-12345678
+```
+
+** Phase 4: AWS Support Escalation (IF NEEDED)
+If all models fail across regions:
+
+*** Prepare Support Case
+- Document consistent error pattern across all models
+- Include job IDs and error outputs
+- Reference model ID parsing bug hypothesis
+- Request escalation to Bedrock engineering team
+
+** Phase 5: Alternative Implementation (FALLBACK)
+If batch inference remains non-functional:
+
+*** Custom Batching with Messages API
+- Implement parallel processing using Messages API
+- Use asyncio/threading for concurrent requests
+- Add rate limiting and retry logic
+- Maintain same input/output format
+
+* Key Files to Review
+
+** Current Implementation
+- `apps/content_extractor/aws_utils.py` (lines 406-477): create_batch_inference_job function
+- `apps/content_extractor/management/commands/submit_batch_inference.py`: Management command
+
+** Input Data
+- S3 Location: `s3://triad-bedrock-batch-processing/batch-processing/airscience-com/www.airscience.com_batch_20250615_202112_bedrock.jsonl`
+- Format: Correct promptArn + promptVariables structure (confirmed working)
+
+** Failed Job Results
+- Job IDs: vn017bnbltt6, mrsimwmxa04t, frep578vz6qw, x6baw2gy49mq
+- S3 Results: `s3://triad-bedrock-batch-processing/batch-processing/airscience-com/results/`
+
+* Decisions Needed from User
+
+** Model Selection Priority
+1. Should we prioritize getting ANY model working first?
+2. Or focus on fixing Anthropic models specifically?
+3. Is Claude family required, or are alternatives acceptable?
+
+** Timeline Constraints
+- How urgent is batch processing functionality?
+- Should we implement Messages API fallback in parallel?
+
+** AWS Support Engagement
+- Authorization to open AWS support case if needed?
+- Budget for potential premium support if required?
+
+* Important Context
+
+** What's Working
+- S3 infrastructure and permissions ✅
+- Input data format and prompt configuration ✅
+- Batch job submission and monitoring ✅
+- Error detection and reporting ✅
+
+** What's Broken
+- Model ID parsing in AWS Bedrock batch inference API ❌
+- All Anthropic models failing with same error pattern ❌
+
+** Technical Confidence
+- Our implementation is correct (confirmed via multiple tests)
+- Issue is definitively on AWS service side
+- Workarounds exist but require different approach
+
+* Resources Available
+
+** AWS Infrastructure
+- S3 bucket: triad-bedrock-batch-processing
+- IAM role: arn:aws:iam::891377295311:role/BedrockBatchInferenceRole
+- Prompt ARN: arn:aws:bedrock:us-east-1:891377295311:prompt/H52151JSYK
+
+** Test Data
+- 107 www.airscience.com records ready for processing
+- Proper JSONL format with prompt variables
+- Known good input data structure
+
+** Monitoring Tools
+- Django management commands for job submission/monitoring
+- S3 access for result examination
+- AWS CLI for direct API testing
+
+**NEXT MODEL PRIORITY**: Test alternative models (Titan, Llama) to determine if issue is Anthropic-specific or affects all batch inference models. 

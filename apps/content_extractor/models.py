@@ -339,3 +339,144 @@ class AIJSONRecord(models.Model):
         """Mark this record as no longer current (when new JSON is generated)."""
         self.is_current = False
         self.save(update_fields=['is_current'])
+
+
+class BatchInferenceJob(models.Model):
+    """
+    Tracks AWS Bedrock batch inference jobs and their status.
+    Links batch jobs to the site configurations and tracks processing status.
+    """
+    
+    STATUS_CHOICES = [
+        ('Submitted', 'Submitted'),
+        ('InProgress', 'In Progress'),
+        ('Completed', 'Completed'),
+        ('Failed', 'Failed'),
+        ('Stopping', 'Stopping'),
+        ('Stopped', 'Stopped'),
+    ]
+    
+    site_config = models.ForeignKey(
+        SiteConfiguration,
+        on_delete=models.CASCADE,
+        related_name='batch_inference_jobs',
+        help_text="Site configuration this batch job belongs to"
+    )
+    job_name = models.CharField(
+        max_length=255,
+        help_text="Human-readable name for the batch inference job"
+    )
+    job_arn = models.CharField(
+        max_length=512,
+        unique=True,
+        help_text="AWS Bedrock batch inference job ARN"
+    )
+    job_id = models.CharField(
+        max_length=255,
+        help_text="AWS Bedrock batch inference job ID (extracted from ARN)"
+    )
+    model_id = models.CharField(
+        max_length=255,
+        help_text="AWS Bedrock model ID used for inference"
+    )
+    prompt_arn = models.CharField(
+        max_length=512,
+        help_text="AWS Bedrock prompt ARN used for inference"
+    )
+    
+    # S3 locations
+    input_s3_uri = models.CharField(
+        max_length=1024,
+        help_text="S3 URI of the input JSONL file"
+    )
+    output_s3_uri = models.CharField(
+        max_length=1024,
+        help_text="S3 URI where results will be stored"
+    )
+    
+    # Job status and tracking
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='Submitted',
+        help_text="Current status of the batch inference job"
+    )
+    record_count = models.IntegerField(
+        null=True,
+        blank=True,
+        help_text="Number of records submitted for processing"
+    )
+    
+    # Timestamps
+    submitted_at = models.DateTimeField(
+        auto_now_add=True,
+        help_text="When the job was submitted to Bedrock"
+    )
+    started_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text="When the job started processing"
+    )
+    completed_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text="When the job completed (success or failure)"
+    )
+    
+    # Error tracking
+    failure_reason = models.TextField(
+        blank=True,
+        help_text="Reason for job failure, if applicable"
+    )
+    
+    # Metadata
+    created_by = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        help_text="User who submitted this batch job"
+    )
+    notes = models.TextField(
+        blank=True,
+        help_text="Notes about this batch inference job"
+    )
+    
+    class Meta:
+        ordering = ['-submitted_at']
+        verbose_name = "Batch Inference Job"
+        verbose_name_plural = "Batch Inference Jobs"
+        
+    def __str__(self):
+        return f"{self.job_name} ({self.site_config.site_name}) - {self.status}"
+    
+    @property
+    def duration(self):
+        """Return the duration of the job if completed."""
+        if self.started_at and self.completed_at:
+            return self.completed_at - self.started_at
+        return None
+    
+    @property
+    def is_complete(self):
+        """Check if the job is in a final state."""
+        return self.status in ['Completed', 'Failed', 'Stopped']
+    
+    @property
+    def is_active(self):
+        """Check if the job is currently running."""
+        return self.status in ['Submitted', 'InProgress']
+    
+    def update_status(self, status, failure_reason=None):
+        """Update job status and set appropriate timestamps."""
+        self.status = status
+        
+        if status == 'InProgress' and not self.started_at:
+            self.started_at = timezone.now()
+        elif status in ['Completed', 'Failed', 'Stopped'] and not self.completed_at:
+            self.completed_at = timezone.now()
+            
+        if failure_reason:
+            self.failure_reason = failure_reason
+            
+        self.save(update_fields=['status', 'started_at', 'completed_at', 'failure_reason', 'updated_at'])
