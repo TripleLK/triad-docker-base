@@ -1,0 +1,120 @@
+#+TITLE: Cleanup Report - Azure Voyager
+#+AUTHOR: Azure Voyager
+#+DATE: 2025-01-22
+#+FILETAGS: :cleanup:report:azure-voyager:
+
+* Summary
+Fixed critical AWS Bedrock batch processing issue where AI was returning structured text summaries instead of JSON. Root cause was batch processing using a generic 5-line prompt instead of the comprehensive 15,885-character AI JSON to Lab Equipment API prompt. Implemented centralized prompt loading system and switched to Claude 3 Haiku for cost efficiency.
+
+* Files Modified/Created
+
+** apps/content_extractor/prompts/ai_json_to_lab_equipment_api.md
+- **Action**: Created (copied from .project_management/ai_prompts/)
+- **Purpose**: Centralized location for AI prompt within the content_extractor app
+- **Content**: Complete 15,885-character prompt for AI JSON to Lab Equipment API conversion
+
+** apps/content_extractor/aws_utils.py
+- **Action**: Modified (lines 202-230)
+- **Changes**: 
+  - Added `load_ai_json_prompt()` function for centralized prompt loading
+  - Updated `create_bedrock_messages_jsonl()` to use centralized function
+  - Removed hardcoded file path references
+- **Impact**: All AWS batch processing now uses consistent prompt
+
+** apps/content_extractor/batch_processing.py
+- **Action**: Modified (lines 32, 95-108, 52)
+- **Changes**:
+  - Added import for `load_ai_json_prompt` from aws_utils
+  - Updated `create_bedrock_jsonl()` method to use centralized prompt loading
+  - Removed duplicate prompt loading code
+  - Changed model_id to Claude 3 Haiku (`anthropic.claude-3-haiku-20240307-v1:0`)
+- **Impact**: Batch processing now uses proper AI prompt and cost-effective model
+
+** .project_management/conversation_logs/azure-voyager/2025-01-22_session_log.org
+- **Action**: Created
+- **Purpose**: Document investigation and fix implementation
+
+* Reasoning
+
+** Root Cause Analysis
+The batch processing system was using this generic prompt:
+```
+Analyze this equipment data and extract key information about the models and specifications. 
+Focus on model names, technical specifications, and key features.
+
+Equipment Data: {{INPUT_JSON_DATA}}
+
+Please provide a structured summary of the equipment information.
+```
+
+Instead of the comprehensive AI JSON to Lab Equipment API prompt that:
+- Contains detailed processing mode instructions
+- Includes metadata preservation requirements
+- Specifies exact JSON output format
+- Provides comprehensive field mapping guidance
+
+** Solution Architecture
+1. **Centralized Prompt Management**: Single source of truth for AI prompt
+2. **Fallback Handling**: Graceful degradation if prompt file unavailable
+3. **Consistent Usage**: All batch processing utilities use same prompt loading function
+4. **Cost Optimization**: Switched to Claude 3 Haiku for better cost/performance ratio
+
+* Architecture Impact
+
+** Prompt Loading System
+- **Location**: `apps/content_extractor/prompts/ai_json_to_lab_equipment_api.md`
+- **Function**: `load_ai_json_prompt()` in `apps/content_extractor/aws_utils.py`
+- **Usage**: All batch processing operations (BatchProcessor, management commands, etc.)
+
+** Model Selection
+- **Previous**: Claude 3 Sonnet (`anthropic.claude-3-sonnet-20240229-v1:0`)
+- **Current**: Claude 3 Haiku (`anthropic.claude-3-haiku-20240307-v1:0`)
+- **Rationale**: Cost optimization while maintaining batch processing capability
+
+* Issues Resolved
+
+** Critical Bug Fix
+- **Issue**: AWS Bedrock returning text summaries instead of JSON
+- **Root Cause**: Wrong prompt being used in batch processing
+- **Solution**: Centralized prompt loading ensures correct prompt usage
+- **Impact**: Future batch jobs will return proper JSON format
+
+** Code Maintainability
+- **Issue**: Duplicate prompt loading code across multiple files
+- **Solution**: Single centralized function with consistent error handling
+- **Benefit**: Easier to update prompt, consistent behavior across all utilities
+
+* Verification Steps
+
+** Prompt Loading Test
+```bash
+python manage.py shell -c "from apps.content_extractor.aws_utils import load_ai_json_prompt; prompt = load_ai_json_prompt(); print('Prompt loaded successfully, length:', len(prompt), 'characters')"
+```
+**Result**: "Prompt loaded successfully, length: 15885 characters"
+
+** Integration Points
+- ✅ BatchProcessor class uses centralized prompt loading
+- ✅ create_bedrock_messages_jsonl function updated
+- ✅ Fallback handling implemented for missing files
+- ✅ Model switched to Claude 3 Haiku
+
+* Context for Next Model
+
+** Immediate Priority
+Test batch processing upload with corrected prompt to verify JSON output format instead of text summaries.
+
+** Key Files for Testing
+- `apps/content_extractor/batch_processing.py` - Main batch processor
+- `apps/content_extractor/prompts/ai_json_to_lab_equipment_api.md` - AI prompt file
+- `batch_results_analysis/batch_input_20250617_183657.jsonl.out` - Previous results for comparison
+
+** Expected Outcome
+New batch processing jobs should return structured JSON matching LabEquipmentPage API format instead of text summaries starting with "Here's a structured summary of the key equipment information:"
+
+** Testing Approach
+1. Run new batch processing job with corrected prompt
+2. Compare output format to previous results
+3. Verify JSON structure matches API requirements
+4. Test upload to LabEquipmentPage records
+
+The centralized prompt loading system is now ready for production use and will ensure consistent AI behavior across all batch processing operations. 

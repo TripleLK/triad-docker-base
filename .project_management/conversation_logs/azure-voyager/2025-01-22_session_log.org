@@ -1,0 +1,42 @@
+#+TITLE: Conversation Log - Azure Voyager
+#+DATE: 2025-01-22
+#+MODEL: Azure Voyager
+#+SESSION_START: 16:45:00
+#+FILETAGS: :conversation:log:azure-voyager:
+
+* Turn 1: Batch Results Analysis Investigation
+  :PROPERTIES:
+  :TIMESTAMP: 16:45:00
+  :END:
+
+** Discussion Summary
+User reported that AWS Bedrock batch processing was returning structured text summaries instead of expected JSON format. Investigation revealed the batch processing was using a simple generic prompt instead of the comprehensive AI JSON to Lab Equipment API prompt.
+
+** Changes Made
+1. **Moved Prompt to Centralized Location**:
+   - Copied `.project_management/ai_prompts/ai_json_to_lab_equipment_api.md` to `apps/content_extractor/prompts/ai_json_to_lab_equipment_api.md`
+   - Created `apps/content_extractor/prompts/` directory
+
+2. **Created Centralized Prompt Loading Function**:
+   - Added `load_ai_json_prompt()` function in `apps/content_extractor/aws_utils.py` (lines 202-230)
+   - Function loads prompt from new location with fallback handling
+
+3. **Updated Batch Processing**:
+   - Modified `apps/content_extractor/batch_processing.py` to use centralized prompt loading
+   - Removed duplicate prompt loading code
+   - Updated imports to include `load_ai_json_prompt`
+
+4. **Updated AWS Utils**:
+   - Modified `create_bedrock_messages_jsonl()` function to use centralized prompt loading
+   - Replaced hardcoded file path with new centralized function
+
+5. **Switched to Claude 3 Haiku**:
+   - Changed `model_id` from `anthropic.claude-3-sonnet-20240229-v1:0` to `anthropic.claude-3-haiku-20240307-v1:0`
+
+** Rationale
+The root cause was that batch processing used a generic prompt: "Analyze this equipment data and extract key information..." instead of the comprehensive 15,885-character AI JSON to Lab Equipment API prompt. This explains why AWS Bedrock was returning structured text summaries instead of JSON. Centralizing prompt loading ensures consistency across all batch processing operations.
+
+** Next Steps Identified
+- Next model should test batch processing upload with the corrected prompt
+- Verify that new batch jobs return proper JSON format instead of text summaries
+- Test the centralized prompt loading across all batch processing utilities 

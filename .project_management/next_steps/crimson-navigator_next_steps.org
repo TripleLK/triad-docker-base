@@ -1,0 +1,132 @@
+#+TITLE: Next Steps - Crimson Navigator Handoff
+#+AUTHOR: Crimson Navigator
+#+DATE: 2025-06-17
+#+FILETAGS: :next-steps:batch-processing:verification:testing:
+
+* Immediate Priorities
+
+** 1. CRITICAL: Monitor Batch Job Completion
+- Job Name: batch-job-20250617-195027
+- Job ARN: arn:aws:bedrock:us-east-1:891377295311:batch-inference-job/batch-job-20250617-195027
+- Command: `python manage.py check_batch_status --job-id=batch-job-20250617-195027`
+- Expected completion: 15-30 minutes for 107 records with Claude 3 Haiku
+
+** 2. CRITICAL: Verify JSON Output Format
+**PROBLEM CONTEXT**: Previous batch results returned text summaries starting with "Here's a structured summary..." instead of JSON. This was fixed by using the proper AI prompt, but MUST be verified.
+
+**Verification Steps**:
+1. Download results when job completes: `python manage.py process_batch_results --job-id=batch-job-20250617-195027 --download-only`
+2. Examine first few results manually to confirm they are JSON objects, NOT text summaries
+3. Look for proper JSON structure with fields like: `title`, `short_description`, `models_data`, etc.
+4. Verify metadata preservation: `_processing_mode`, `_batch_info`, `target_model_names`
+
+** 3. CRITICAL: Test Complete Import Workflow
+Once JSON format is verified:
+1. Process and import results: `python manage.py process_batch_results --job-id=batch-job-20250617-195027`
+2. Test equipment page creation: `python manage.py import_ai_json_to_equipment --limit=5 --dry-run`
+3. Create actual test pages: `python manage.py import_ai_json_to_equipment --limit=5`
+4. Verify pages display correctly in Wagtail admin and frontend
+
+* Approach for Next Model
+
+** Phase 1: Results Verification (First 30 minutes)
+1. **Monitor Job Status**
+   - Use: `python manage.py monitor_batch_jobs --active-only`
+   - Check every 5 minutes until "Completed" status
+   - Document completion time and any errors
+
+2. **Download and Inspect Results**
+   - Use: `python manage.py process_batch_results --job-id=batch-job-20250617-195027 --download-only`
+   - Manually examine 3-5 result files
+   - Verify JSON structure vs text summaries
+   - Document findings
+
+3. **JSON Structure Validation**
+   Key fields to verify in outputs:
+   ```json
+   {
+     "_processing_mode": "OVERALL_DETAILS" | "MODEL_SUBSET",
+     "_batch_info": { batch metadata },
+     "target_model_names": [...],
+     "title": "Equipment Title",
+     "short_description": "...",
+     "full_description": "...",
+     "models_data": [...]
+   }
+   ```
+
+** Phase 2: Import Testing (Next 30 minutes)
+1. **Process Results**
+   - Use: `python manage.py process_batch_results --job-id=batch-job-20250617-195027`
+   - Monitor for processing errors
+   - Verify database updates
+
+2. **Test Equipment Page Creation**
+   - Start with dry run: `python manage.py import_ai_json_to_equipment --limit=3 --dry-run`
+   - Review what would be created
+   - Create actual pages: `python manage.py import_ai_json_to_equipment --limit=3`
+
+3. **Verify Page Quality**
+   - Check Wagtail admin for created pages
+   - Verify content quality and completeness
+   - Test frontend display
+   - Document any issues
+
+** Phase 3: Full Pipeline Validation (Remaining time)
+1. **Scale Up Testing**
+   - If initial tests pass, process more records
+   - Monitor for any errors at scale
+   - Document performance metrics
+
+2. **Quality Assurance**
+   - Compare generated pages to source URLs
+   - Verify SEO content quality
+   - Check model data accuracy
+   - Test search functionality
+
+* Decisions Needing User Input
+
+** Critical Questions for User
+1. **Quality Threshold**: What's the minimum acceptable quality for generated equipment pages?
+2. **Error Handling**: How should the system handle malformed JSON responses?
+3. **Batch Size**: Should future batches be larger or smaller based on results?
+4. **Review Process**: Should generated pages require manual review before publishing?
+
+** Technical Decisions
+1. **Prompt Optimization**: If outputs are still not perfect, should prompt be further refined?
+2. **Model Selection**: Should we test Claude 3.5 Sonnet for better quality vs Claude 3 Haiku for speed?
+3. **Processing Mode**: Are both OVERALL_DETAILS and MODEL_SUBSET modes working correctly?
+
+* Handoff Context
+
+** Current State
+- ✅ Content extractor cleaned up and streamlined
+- ✅ Batch job successfully submitted (107 records)
+- ✅ AI prompt optimized to 13,793 characters
+- ✅ Management commands organized and functional
+- ⏳ Batch processing in progress
+- ❓ Results format verification pending
+- ❓ Site upload testing pending
+
+** Key Files for Next Model
+- `apps/content_extractor/management/commands/check_batch_status.py` - Job monitoring
+- `apps/content_extractor/management/commands/process_batch_results.py` - Results processing
+- `apps/content_extractor/management/commands/import_ai_json_to_equipment.py` - Page creation
+- `apps/content_extractor/prompts/ai_json_to_lab_equipment_api.md` - Current AI prompt
+- `batch_processing_outputs/` - Where results will be downloaded
+
+** Success Criteria
+1. ✅ JSON outputs (not text summaries)
+2. ✅ Successful equipment page creation
+3. ✅ Pages display correctly on frontend
+4. ✅ Content quality meets standards
+5. ✅ No critical errors in processing pipeline
+
+** Escalation Path
+If JSON format issues persist:
+1. Check prompt template substitution in `aws_utils.py`
+2. Verify Claude 3 Haiku model behavior
+3. Consider switching to Claude 3.5 Sonnet
+4. Review batch processing JSONL structure
+
+This handoff includes everything needed for thorough results verification and site upload testing. The next model has complete context and detailed step-by-step instructions. 

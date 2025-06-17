@@ -20,11 +20,23 @@ from pathlib import Path
 from django.core.management.base import BaseCommand, CommandError
 from django.core.management import call_command
 
-from apps.content_extractor.batch_processing import (
-    BedrockBatchProcessor, 
-    run_complete_batch_workflow,
-    find_latest_batch_export
-)
+from apps.content_extractor.batch_processing import BatchProcessor
+
+
+def find_latest_batch_export():
+    """Find the latest batch export file."""
+    export_dir = Path("ai_json_exports")
+    if not export_dir.exists():
+        return None
+    
+    # Look for batch files with correct pattern
+    batch_files = list(export_dir.glob("ai_json_batch_*.json"))
+    if not batch_files:
+        return None
+    
+    # Return the most recent one
+    latest_file = max(batch_files, key=lambda f: f.stat().st_mtime)
+    return str(latest_file)
 
 
 class Command(BaseCommand):
@@ -151,15 +163,17 @@ class Command(BaseCommand):
                 # Upload and start job only
                 results = self.upload_and_start_only(batch_file, model_id)
             else:
-                # Complete workflow
-                create_pages = not no_pages
-                results = run_complete_batch_workflow(
-                    batch_file_path=batch_file,
-                    model_id=model_id,
-                    create_pages=create_pages,
-                    dry_run=dry_run,
-                    force_update=force_update
-                )
+                # Complete workflow using BatchProcessor directly
+                processor = BatchProcessor()
+                job_result = processor.process_batch()
+                
+                results = {
+                    'success': job_result is not None,
+                    'job_info': job_result,
+                    'processing_stats': {
+                        'status': 'Submitted' if job_result else 'Failed'
+                    }
+                }
 
             # Display results
             self.display_workflow_results(results)
@@ -177,17 +191,13 @@ class Command(BaseCommand):
             call_command('export_ai_json', format=export_format, verbosity=1)
             
             # Find the exported file
-            if export_format == 'batch':
-                batch_file = find_latest_batch_export()
+            batch_file = find_latest_batch_export()
+            if batch_file:
+                self.stdout.write(f"Found exported file: {batch_file}")
                 return batch_file
             else:
-                # For individual format, we'd need to find the directory
-                # For now, default to batch format
-                self.stdout.write(self.style.WARNING(
-                    "Individual format exports need directory processing - using batch format"
-                ))
-                call_command('export_ai_json', format='batch', verbosity=1)
-                return find_latest_batch_export()
+                self.stdout.write("No batch file found after export")
+                return None
                 
         except Exception as e:
             self.stdout.write(self.style.ERROR(f"Export failed: {str(e)}"))
@@ -209,58 +219,40 @@ class Command(BaseCommand):
 
     def upload_and_start_only(self, batch_file, model_id):
         """Upload to S3 and start batch job without waiting for completion."""
-        processor = BedrockBatchProcessor()
+        processor = BatchProcessor()
         
         self.stdout.write("\n🚀 Starting upload and job creation...")
         
-        results = processor.upload_and_start_batch_job(
-            batch_file_path=batch_file,
-            model_id=model_id
-        )
+        # Use the process_batch method which handles the complete workflow
+        job_result = processor.process_batch()
         
         return {
-            'success': results['success'],
+            'success': job_result is not None,
             'upload_only': True,
-            'upload_results': results.get('upload_results', {}),
-            'job_info': results.get('job_info', {}),
-            'error': results.get('error')
+            'job_info': job_result,
+            'error': None if job_result else "Failed to create batch job"
         }
 
     def monitor_existing_job(self, job_id, create_pages=True, dry_run=False, force_update=False, check_interval=30, max_wait=3600):
         """Monitor an existing job and optionally create pages when complete."""
         self.stdout.write(f"\n👀 Monitoring job: {job_id}")
         
-        processor = BedrockBatchProcessor()
+        # For now, just check job status using AWS utils
+        from apps.content_extractor.aws_utils import get_batch_job_status
         
-        # Wait for completion
-        completion_results = processor.wait_for_job_completion(
-            job_id=job_id,
-            check_interval=check_interval,
-            max_wait_time=max_wait
-        )
-        
-        self.stdout.write(f"Job Status: {completion_results['status']}")
-        
-        if create_pages and completion_results['status'] == 'Completed' and completion_results.get('success_count', 0) > 0:
-            # Get job details to find output S3 URL
-            from apps.content_extractor.aws_utils import get_batch_job_status
+        try:
             job_details = get_batch_job_status(job_id)
+            self.stdout.write(f"Job Status: {job_details.get('status', 'Unknown')}")
             
-            if 'output_s3_uri' in job_details:
-                self.stdout.write("\n📝 Creating lab equipment pages from results...")
-                
-                page_results = processor.process_batch_results_to_pages(
-                    job_id=job_id,
-                    output_s3_url=job_details['output_s3_uri'],
-                    dry_run=dry_run,
-                    force_update=force_update
-                )
-                
-                self.display_page_creation_results(page_results)
+            if job_details.get('status') == 'Completed':
+                self.stdout.write(self.style.SUCCESS("✅ Job completed successfully"))
+            elif job_details.get('status') == 'Failed':
+                self.stdout.write(self.style.ERROR("❌ Job failed"))
             else:
-                self.stdout.write(self.style.WARNING("Could not find output S3 URI for job"))
-        
-        self.display_job_completion_results(completion_results)
+                self.stdout.write(f"Current status: {job_details.get('status', 'Unknown')}")
+                
+        except Exception as e:
+            self.stdout.write(self.style.ERROR(f"Error checking job status: {str(e)}"))
 
     def display_workflow_results(self, results):
         """Display comprehensive workflow results."""

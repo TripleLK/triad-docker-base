@@ -1,0 +1,106 @@
+#+TITLE: Next Steps - Azure Voyager
+#+AUTHOR: Azure Voyager
+#+DATE: 2025-01-22
+#+FILETAGS: :next:steps:azure-voyager:
+
+* Immediate Priority: Test Corrected Batch Processing
+
+** Context
+Azure Voyager fixed critical batch processing issue where AWS Bedrock was returning structured text summaries instead of JSON. The root cause was using a generic 5-line prompt instead of the comprehensive 15,885-character AI JSON to Lab Equipment API prompt.
+
+** Primary Task
+Test batch processing with the corrected prompt to verify JSON output format.
+
+** Key Changes Made
+1. **Centralized Prompt Loading**: Created `apps/content_extractor/prompts/ai_json_to_lab_equipment_api.md`
+2. **Updated Batch Processing**: `apps/content_extractor/batch_processing.py` now uses proper prompt
+3. **Model Switch**: Changed to Claude 3 Haiku for cost efficiency
+4. **Consistent Integration**: All batch utilities use centralized `load_ai_json_prompt()` function
+
+* Testing Approach
+
+** Step 1: Verify Prompt Loading
+```bash
+python manage.py shell -c "from apps.content_extractor.aws_utils import load_ai_json_prompt; prompt = load_ai_json_prompt(); print('Prompt loaded successfully, length:', len(prompt), 'characters')"
+```
+**Expected**: "Prompt loaded successfully, length: 15885 characters"
+
+** Step 2: Run New Batch Processing Job
+```bash
+cd apps/content_extractor
+python batch_processing.py
+```
+
+** Step 3: Compare Output Format
+- **Previous Results**: `batch_results_analysis/batch_input_20250617_183657.jsonl.out`
+- **Previous Format**: Text summaries starting with "Here's a structured summary of the key equipment information:"
+- **Expected New Format**: Structured JSON matching LabEquipmentPage API format
+
+** Step 4: Test Upload Integration
+Use `batch_results_analysis/upload_batch_results.py` to test uploading the new JSON results to LabEquipmentPage records.
+
+* Key Files to Review
+
+** Core Batch Processing
+- `apps/content_extractor/batch_processing.py` - Main BatchProcessor class
+- `apps/content_extractor/aws_utils.py` - Centralized prompt loading function
+- `apps/content_extractor/prompts/ai_json_to_lab_equipment_api.md` - AI prompt file
+
+** Testing and Analysis
+- `batch_results_analysis/analyze_batch_results.py` - Results analysis
+- `batch_results_analysis/upload_batch_results.py` - Upload to Django API
+- `batch_results_analysis/batch_input_20250617_183657.jsonl.out` - Previous results for comparison
+
+* Expected Outcomes
+
+** Successful Prompt Integration
+- Batch processing jobs should use the comprehensive AI prompt
+- Output should be properly formatted JSON instead of text summaries
+- JSON structure should match LabEquipmentPage API requirements
+
+** Model Performance
+- Claude 3 Haiku should provide cost-effective processing
+- Quality should remain high despite model switch
+- Processing time may improve with lighter model
+
+** Upload Compatibility
+- New JSON format should upload successfully to LabEquipmentPage records
+- Metadata preservation should work correctly
+- Record reunification by ai_json_record_id should function properly
+
+* Success Criteria
+
+** JSON Format Validation
+- [ ] Output contains valid JSON objects (not text summaries)
+- [ ] JSON structure includes required API fields
+- [ ] Metadata fields are preserved correctly
+- [ ] Processing modes (OVERALL_DETAILS/MODEL_SUBSET) are handled properly
+
+** Upload Integration
+- [ ] upload_batch_results.py processes new format successfully
+- [ ] No URL validation errors
+- [ ] Records upload to LabEquipmentPage API
+- [ ] ai_json_record_id matching works for record reunification
+
+** System Integration
+- [ ] Centralized prompt loading works across all utilities
+- [ ] Claude 3 Haiku performs adequately
+- [ ] No regression in existing functionality
+
+* Troubleshooting
+
+** If Prompt Loading Fails
+Check file path: `apps/content_extractor/prompts/ai_json_to_lab_equipment_api.md`
+Verify file permissions and encoding (UTF-8)
+
+** If Output Still Shows Text Summaries
+- Verify prompt is actually being used in batch processing
+- Check AWS Bedrock job configuration
+- Confirm model_id is correct for Claude 3 Haiku
+
+** If Upload Fails
+- Compare new JSON structure to expected LabEquipmentPage format
+- Check for missing required fields
+- Verify URL format and validation
+
+The centralized prompt loading system is ready for production testing. This fix should resolve the critical issue where batch processing was producing unusable text summaries instead of structured JSON data. 
