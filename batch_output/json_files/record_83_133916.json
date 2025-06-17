@@ -1,0 +1,110 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Mobile Forensic Evidence BENCH\u2122",
+  "slug": "mobile-forensic-evidence-bench",
+  "meta_title": "Mobile Forensic Evidence Bench - Air Science Safefume Cyanoacrylate Fuming Chambers",
+  "meta_description": "The Air Science Evidence BENCH\u2122 series of laboratory work tables is designed specifically for high volume processing of forensic evidence by multiple users. Professional design and construction features offer convenience during use, cleaning and maintenance.",
+  "meta_keywords": "forensic evidence bench, mobile forensic workstation, cyanoacrylate fuming chamber, fingerprint processing equipment",
+  "short_description": "<p>The Air Science Evidence BENCH\u2122 series of laboratory work tables is designed specifically for high volume processing of forensic evidence by multiple users. Professional design and construction features offer convenience during use, cleaning and maintenance.</p>",
+  "full_description": "<div>No positive airflow<br>Fabric withstands decontamination with standard bleach solution to eliminate blood-borne pathogens and DNA cross-contamination.<br>Cabinet includes plastic hangers, a plastic zipper designed for tamperproof seals, hanging rod, push handle, locking wheels, evidence tray and biological hazard warning label.</div>",
+  "seo_content": "<div>The Air Science Evidence BENCH\u2122 series provides a versatile and durable solution for forensic investigation and processing. Designed with professional-grade construction and features, these mobile work tables offer convenience, safety, and efficiency for high-volume evidence processing. With options for customization and compliance with industry standards, the Evidence BENCH\u2122 is an essential tool for modern forensic labs and crime scene investigation teams.</div>",
+  "source_url": "https://www.airscience.com/product-category-page?brandname=mobile-forensic-evidence-benches&brand=36",
+  "target_keywords": [
+    "forensic evidence bench",
+    "mobile forensic workstation",
+    "cyanoacrylate fuming chamber",
+    "fingerprint processing equipment"
+  ],
+  "related_keywords": [
+    "forensic lab equipment",
+    "crime scene investigation",
+    "evidence processing",
+    "DNA contamination prevention"
+  ],
+  "technical_keywords": [
+    "vertical laminar flow",
+    "epoxy-coated steel",
+    "ISO 14001",
+    "ISO 9001"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Forensic Evidence Bench"
+    },
+    {
+      "category": "Application",
+      "tag": "Forensic Investigation and Processing"
+    },
+    {
+      "category": "Industry",
+      "tag": "Law Enforcement"
+    },
+    {
+      "category": "Technology",
+      "tag": "Laminar Flow"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Dimensions & Weights": {
+      "External Width": "72\" | 1828 mm",
+      "External Depth": "28\" | 711 mm",
+      "External Height": "36\" | 914 mm",
+      "Shipping Width": "80\" | 2032 mm",
+      "Shipping Depth": "40\" | 1016 mm",
+      "Net Weight": "325 lbs | 147 kg",
+      "Shipping Weight": "400 lbs | 182 kg"
+    },
+    "Construction": {
+      "Construction": "Epoxy-coated Steel"
+    },
+    "Protection & Compliance": {
+      "Environmental": "ISO 14001 : 2015 ; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Electrical": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "Specify UK, Euro or Other Plug"
+    },
+    "Controls & Monitoring": {
+      "Control": "Fan Manual On Off"
+    }
+  },
+  "features_data": [
+    "No positive airflow",
+    "Fabric withstands decontamination with standard bleach solution to eliminate blood-borne pathogens and DNA cross-contamination",
+    "Cabinet includes plastic hangers, a plastic zipper designed for tamperproof seals, hanging rod, push handle, locking wheels, evidence tray and biological hazard warning label"
+  ],
+  "applications": [
+    "Forensic Investigation and Processing"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Mobile Forensic Evidence BENCH\u2122",
+    "description": "The Air Science Evidence BENCH\u2122 series of laboratory work tables is designed specifically for high volume processing of forensic evidence by multiple users. Professional design and construction features offer convenience during use, cleaning and maintenance.",
+    "manufacturer": "Air Science",
+    "category": "Forensic Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_EVB-72_Front.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_EVB-72_Front.png"
+  ],
+  "alt_text_suggestions": [
+    "Mobile Forensic Evidence Bench front view",
+    "Mobile Forensic Evidence Bench front view with open door"
+  ],
+  "page_content_sections": {
+    "overview": "The Air Science Evidence BENCH\u2122 series of laboratory work tables is designed specifically for high volume processing of forensic evidence by multiple users. Professional design and construction features offer convenience during use, cleaning and maintenance.",
+    "specifications": "Detailed specifications for the Mobile Forensic Evidence BENCH\u2122 including dimensions, construction, electrical, and compliance information.",
+    "applications": "The Evidence BENCH\u2122 is designed for forensic investigation and processing applications, providing a versatile and durable solution for modern forensic labs and crime scene investigation teams.",
+    "models": "The EVB-72-A model of the Mobile Forensic Evidence BENCH\u2122 features a 72\" width, 115VAC 60Hz electrical, and other key specifications."
+  }
+}

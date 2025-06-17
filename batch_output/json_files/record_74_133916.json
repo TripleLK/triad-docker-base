@@ -1,0 +1,112 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae SKY Ceiling Mounted Air Filtration Units",
+  "slug": "purair-sky-ceiling-mounted-air-filtration",
+  "meta_title": "Purair SKY Ceiling Filtration Units - Protect Lab Personnel & Environment",
+  "meta_description": "The Purair\u00ae SKY ceiling mounted filtration units are designed to protect laboratory personnel and the environment in areas where hazardous substances are handled.",
+  "meta_keywords": "ceiling filtration, air filtration, laboratory safety, hazardous substance handling",
+  "short_description": "<p>The Purair\u00ae SKY ceiling mounted filtration units are designed to protect laboratory personnel and the environment in areas where hazardous substances are handled.</p>",
+  "full_description": "<div>Advanced carbon filtration technology. Multi-unit connection options. Ceiling mounted or hanging configurations. Energy efficiency. Enhanced Filtration. Central to the design of the Purair SKY Series is the Multiplex\u2122 Filtration System developed to ensure universal protection in the work environment over the widest range of applications within the industry.</div>",
+  "seo_content": "<div>The Purair SKY Series ceiling filtration units offer programmable humidity control, HEPA filtration, and energy-efficient operation to create a safe, clean work environment for a variety of laboratory and industrial applications including compounding, forensics, histology, pharmaceutical, and more.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=purair-sky-ceiling-unit&brand=44",
+  "target_keywords": [
+    "ceiling filtration",
+    "air filtration",
+    "laboratory safety",
+    "hazardous substance handling"
+  ],
+  "related_keywords": [
+    "multiplex filtration",
+    "energy efficient",
+    "programmable controls",
+    "HEPA filtration"
+  ],
+  "technical_keywords": [
+    "downflow airflow",
+    "carbon filtration",
+    "epoxy-coated steel",
+    "120V 60Hz electrical"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ceiling Filtration Unit"
+    },
+    {
+      "category": "Application",
+      "tag": "Hazardous Substance Handling"
+    },
+    {
+      "category": "Industry",
+      "tag": "Laboratory"
+    },
+    {
+      "category": "Technology",
+      "tag": "Multiplex Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "HEPA Filtration"
+    }
+  ],
+  "specifications": {
+    "Construction & Electrical": {
+      "Construction": "Epoxy-coated Steel",
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Filtration & Airflow": {
+      "Airflow Direction": "Downflow",
+      "Main Filter": "1 x 11 lbs Carbon Filter",
+      "Biological Filter": "HEPA"
+    },
+    "Compliance & Warranty": {
+      "Compliance Standards": "HEPA Filtration",
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Advanced carbon filtration technology",
+    "Multi-unit connection options",
+    "Ceiling mounted or hanging configurations",
+    "Energy efficiency",
+    "Multiplex\u2122 Filtration System for universal protection"
+  ],
+  "applications": [
+    "Compounding",
+    "Forensics",
+    "Histology",
+    "Pharmaceutical",
+    "Powder Fingerprinting",
+    "Solvent Cleaning"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair\u00ae SKY Ceiling Mounted Air Filtration Units",
+    "description": "The Purair\u00ae SKY ceiling mounted filtration units are designed to protect laboratory personnel and the environment in areas where hazardous substances are handled.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2022/11/PDT_SKY-48.webp",
+    "https://www.airscience.com/wp-content/uploads/2022/11/PDT_SKY-24_Front.webp",
+    "https://www.airscience.com/wp-content/uploads/2022/11/PDT_SKY-48_Front.webp",
+    "https://www.airscience.com/wp-content/uploads/2022/11/PDT_SKY-48.webp"
+  ],
+  "alt_text_suggestions": [
+    "Purair SKY-48 ceiling filtration unit",
+    "Purair SKY-24 front view",
+    "Purair SKY-48 front view",
+    "Purair SKY-48 ceiling filtration unit"
+  ],
+  "page_content_sections": {
+    "overview": "Advanced carbon filtration technology. Multi-unit connection options. Ceiling mounted or hanging configurations. Energy efficiency. Enhanced Filtration. Central to the design of the Purair SKY Series is the Multiplex\u2122 Filtration System developed to ensure universal protection in the work environment over the widest range of applications within the industry.",
+    "specifications": "Epoxy-coated steel construction, 120V 60Hz electrical, downflow airflow, 11 lbs carbon main filter, HEPA biological filter, HEPA filtration compliance, and Air Science Legacy Limited warranty.",
+    "applications": "The Purair SKY Series is designed for use in compounding, forensics, histology, pharmaceutical, powder fingerprinting, solvent cleaning, and other laboratory applications requiring hazardous substance handling.",
+    "models": "The Purair SKY Series is available in two models: SKY-24-A (26.4\" x 26.4\") and SKY-48-A (26.4\" x 52.75\")."
+  }
+}

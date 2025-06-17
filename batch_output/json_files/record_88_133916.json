@@ -1,0 +1,121 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "SafeFUME Cyanoacrylate Fuming Chamber | Air Science",
+  "slug": "safefume-cyanoacrylate-fuming-chamber",
+  "meta_title": "SafeFUME Cyanoacrylate Fuming Chamber - Forensic Lab Equipment",
+  "meta_description": "The Air Science SafeFUME Cyanoacrylate Fuming Chamber uses innovative filtration technology to create a safe work environment for latent print development across a wide range of applications.",
+  "meta_keywords": "cyanoacrylate fuming chamber, forensic lab equipment, latent print development, air science, safefume",
+  "short_description": "<p>The Air Science Fuming Chamber uses cyanoacrylate fuming for latent print development on various surfaces. The fuming chamber incorporates the Air Science Fume Extraction unit coupled with a self-contained filtration system to safely purge the noxious fumes when the printing cycle is complete.</p>",
+  "full_description": "<div>Using innovative filtration technology, the SafeFUME Cyanoacrylate Fuming Chamber creates a safe work environment over the widest range of applications in the industry, including Compounding / Balance Enclosures, Microscopes and Robotic Equipment, Forensics, Histology, Educational, Microscopy, Mobile and Classroom Demonstrations, Pharmaceutical, Powder Fingerprinting, Powder Weighing, Sample Prep Work, Soldering, Solvent Cleaning and Welding, Veterinary, and Dental.</div>",
+  "seo_content": "<div>The SafeFUME Cyanoacrylate Fuming Chamber features a self-contained filtration system that safely removes noxious fumes during the latent print development process. Its compact, space-saving design and wide range of applications make it a versatile solution for forensic labs, educational institutions, and other environments where sensitive work with powders and solvents is required.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=fumechamber&brand=48",
+  "target_keywords": [
+    "cyanoacrylate fuming chamber",
+    "forensic lab equipment",
+    "latent print development",
+    "air science safefume"
+  ],
+  "related_keywords": [
+    "fingerprint processing",
+    "powder weighing",
+    "solvent cleaning",
+    "microscopy",
+    "pharmaceutical",
+    "veterinary"
+  ],
+  "technical_keywords": [
+    "self-contained filtration",
+    "noxious fume removal",
+    "compact design",
+    "wide applications"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Cyanoacrylate Fuming Chamber"
+    },
+    {
+      "category": "Application",
+      "tag": "Latent Print Development"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics"
+    },
+    {
+      "category": "Technology",
+      "tag": "Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001, ISO 9001, ENERGY STAR"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Construction": "Epoxy-coated Steel",
+      "Environmental": "ISO 14001 : 2015",
+      "Quality": "ISO 9001 : 2015",
+      "Energy Efficiency": "ENERGY STAR\u00ae Partner"
+    },
+    "Electrical": {
+      "Voltage": "120V, 60Hz"
+    },
+    "Options & Warranty": {
+      "Accessories": "Portable Humidifier and Hose (PHUM-BLC)",
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Self-contained cyanoacrylate filtration system",
+    "Connects directly to Laboratory Fuming Chambers",
+    "Draws noxious odors and fumes through activated carbon filter",
+    "Wide range of applications including forensics, pharmaceutical, and more"
+  ],
+  "applications": [
+    "Compounding / Balance Enclosures",
+    "Microscopes and Robotic Equipment",
+    "Forensics",
+    "Histology",
+    "Educational",
+    "Microscopy",
+    "Mobile and Classroom Demonstrations",
+    "Pharmaceutical",
+    "Powder Fingerprinting",
+    "Powder Weighing",
+    "Sample Prep Work",
+    "Soldering",
+    "Solvent Cleaning and Welding",
+    "Veterinary",
+    "Dental"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "SafeFUME Cyanoacrylate Fuming Chamber",
+    "description": "The Air Science SafeFUME Cyanoacrylate Fuming Chamber uses innovative filtration technology to create a safe work environment for latent print development across a wide range of applications.",
+    "manufacturer": "Air Science",
+    "category": "Forensic Lab Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_BLC-4_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_BLC-4-EX_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_BLC-6.5_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_BLC-4_Right.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME CA30 cyanoacrylate fuming chamber right view",
+    "SafeFUME CA30 cyanoacrylate fuming chamber right view with door open",
+    "SafeFUME CA30 cyanoacrylate fuming chamber left view",
+    "SafeFUME CA30 cyanoacrylate fuming chamber right view"
+  ],
+  "page_content_sections": {
+    "overview": "The Air Science Fuming Chamber uses cyanoacrylate fuming for latent print development on various surfaces. The fuming chamber incorporates the Air Science Fume Extraction unit coupled with a self-contained filtration system to safely purge the noxious fumes when the printing cycle is complete.",
+    "specifications": "The SafeFUME Cyanoacrylate Fuming Chamber features an epoxy-coated steel construction and is compliant with ISO 14001 and ISO 9001 standards. It operates on 120V, 60Hz electrical power and can be equipped with a portable humidifier and hose accessory. The equipment is backed by the Air Science Legacy Limited warranty.",
+    "applications": "The SafeFUME Cyanoacrylate Fuming Chamber is suitable for a wide range of applications including forensics, pharmaceutical, educational, and more. It can be used for compounding, microscopy, powder fingerprinting, solvent cleaning, and other sensitive work requiring a safe, controlled environment.",
+    "models": "The SafeFUME Cyanoacrylate Fuming Chamber is available in multiple models with varying dimensions and capacities to suit different laboratory and workspace requirements."
+  }
+}

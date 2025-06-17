@@ -1,0 +1,131 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "UV-Box Benchtop Decontamination Chambers",
+  "slug": "uv-box-benchtop-decontamination-chambers",
+  "meta_title": "UV-Box Benchtop Decontamination Chambers | Air Science",
+  "meta_description": "High-efficiency UV light chambers designed to safely decontaminate contents while providing a safe work environment. Destroy exposed surface DNA and bacteria.",
+  "meta_keywords": "uv box, benchtop decontamination chamber, uv light decontamination, forensic equipment, pharmaceutical equipment, veterinary equipment, dental equipment",
+  "short_description": "<p>UV Light Box is a high-efficiency chamber designed to create light emission conditions known to safely decontaminate contents while providing for a safe work environment for the operator. High intensity UV lamps destroy exposed surface DNA and bacteria.</p>",
+  "full_description": "<div>UV lamps are optimally placed to eliminate blind spots and corners and walls are smooth to ensure easy cleaning. Stainless steel surfaces naturally reflect UV radiation to ensure contents are fully irradiated from all directions. Professional design and construction features offer convenience and protect the safety of personnel during use, cleaning and maintenance of the cabinets. The operator is protected from UV radiation by the UV absorbing window and with safety controls to ensure that lamps cannot be activated until the cabinet door is securely closed. Other safety features include UV timer, hanging rod and shelf to support or suspend items for decontamination.</div>",
+  "seo_content": "<div>The UV-Box Benchtop Decontamination Chambers from Air Science are designed to provide a safe and effective solution for decontaminating a variety of forensic, pharmaceutical, veterinary, and dental equipment and materials. These high-efficiency UV light chambers utilize powerful lamps to destroy exposed surface DNA and bacteria, ensuring a sterile work environment. With features like optimal UV lamp placement, smooth stainless steel construction, and comprehensive safety controls, the UV-Box line offers convenient and reliable decontamination capabilities for critical laboratory and clinical applications.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=uv-box-benchtop-chambers&brand=35",
+  "target_keywords": [
+    "uv box",
+    "benchtop decontamination chamber",
+    "uv light decontamination",
+    "forensic equipment",
+    "pharmaceutical equipment",
+    "veterinary equipment",
+    "dental equipment"
+  ],
+  "related_keywords": [
+    "uv sterilization",
+    "dna decontamination",
+    "surface bacteria removal",
+    "laboratory safety",
+    "clinical decontamination"
+  ],
+  "technical_keywords": [
+    "stainless steel construction",
+    "uv radiation reflection",
+    "uv timer",
+    "hanging rod",
+    "shelf",
+    "iso 14001",
+    "iso 9001",
+    "energy star"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Benchtop Decontamination Chamber"
+    },
+    {
+      "category": "Application",
+      "tag": "Forensic"
+    },
+    {
+      "category": "Application",
+      "tag": "Pharmaceutical"
+    },
+    {
+      "category": "Application",
+      "tag": "Veterinary"
+    },
+    {
+      "category": "Application",
+      "tag": "Dental"
+    },
+    {
+      "category": "Technology",
+      "tag": "UV Decontamination"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 9001"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ENERGY STAR"
+    }
+  ],
+  "specifications": {
+    "Construction & Safety": {
+      "Cabinet Style": "Desktop",
+      "Construction": "Stainless Steel",
+      "Environmental": "ISO 14001 : 2015; ENERGY STAR\u00ae PARTNER",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Electrical": {
+      "Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Optimally placed UV lamps to eliminate blind spots",
+    "Smooth stainless steel surfaces for easy cleaning",
+    "Stainless steel construction reflects UV radiation",
+    "Professional design for user convenience and safety",
+    "UV absorbing window protects operator from radiation",
+    "Safety controls prevent lamps from activating when open",
+    "UV timer, hanging rod, and shelf for decontamination"
+  ],
+  "applications": [
+    "Forensic equipment and materials decontamination",
+    "Pharmaceutical product and equipment sterilization",
+    "Veterinary instrument and surface decontamination",
+    "Dental tool and equipment sterilization"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "UV-Box Benchtop Decontamination Chambers",
+    "description": "High-efficiency UV light chambers designed to safely decontaminate contents while providing a safe work environment. Destroy exposed surface DNA and bacteria.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_UVB-15_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_UVB-15_Front_Open.png"
+  ],
+  "alt_text_suggestions": [
+    "UV-Box benchtop decontamination chamber right view",
+    "UV-Box benchtop decontamination chamber front view with door open"
+  ],
+  "page_content_sections": {
+    "overview": "UV lamps are optimally placed to eliminate blind spots and corners and walls are smooth to ensure easy cleaning. Stainless steel surfaces naturally reflect UV radiation to ensure contents are fully irradiated from all directions.",
+    "specifications": "The UV-Box Benchtop Decontamination Chambers feature a desktop cabinet style constructed from stainless steel, meeting ISO 14001 and ISO 9001 standards. Electrical requirements are 120V, 60Hz with a 5-15P NEMA plug.",
+    "applications": "These high-efficiency UV light chambers are designed for decontaminating a variety of forensic, pharmaceutical, veterinary, and dental equipment and materials.",
+    "models": "The UV-Box line includes the UVB-15-A model, which measures 15.25\" wide, 16.25\" deep, and 19\" high."
+  }
+}

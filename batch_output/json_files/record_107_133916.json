@@ -1,0 +1,111 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae CAGEX Ductless Fume Hood for Animal Research Laboratories",
+  "slug": "purair-cagex-ductless-fume-hood",
+  "meta_title": "Purair CAGEX Ductless Fume Hood | Protect Users and Environment in Animal Research",
+  "meta_description": "The Purair CAGEX ductless fume hood is engineered to protect users and the environment from animal dander and bedding particulates in animal research labs.",
+  "meta_keywords": "ductless fume hood, animal research, laboratory safety, particulate containment, odor control",
+  "short_description": "<p>Engineered to meet the needs of the animal research laboratory, the Purair\u00ae CAGEX is designed to protect the user and the environment from animal dander or bedding material particulates generated on the work surface. The CAGEX incorporates carbon filters to absorb odor while optional HEPA filtration contains harmful particulates generated during cage changing and waste disposal operations.</p>",
+  "full_description": "<div>Using innovative filtration technology, the Purair CAGEX creates a safe work environment over the widest range of applications in the animal research industry. Key features include a high-efficiency EC blower, energy-saving LED lighting, filter blockage alarm, improved filter clamping to eliminate bypass leakage, easy-to-change filters, and a mounted waste container for rapid waste disposal within the work zone. The durable, chemically resistant cabinet frame and easy-to-clean work surfaces make the CAGEX ideal for animal cage cleaning, bedding changes, and waste disposal operations. The hinged front sash facilitates easy opening and closing, while the optional mobile cart offers ergonomic use and maximum flexibility. The CAGEX construction complies with current technical and safety regulations.</div>",
+  "seo_content": "<div>The Purair CAGEX ductless fume hood is specifically engineered to provide a safe, controlled work environment for a wide range of animal research applications. With its advanced filtration technology, the CAGEX effectively captures and contains animal dander, bedding particulates, and other hazardous materials generated during routine cage cleaning, bedding changes, and waste disposal. This helps protect both the user and the surrounding environment from exposure to these potentially harmful contaminants. The CAGEX's durable, chemically resistant construction, easy-to-clean work surfaces, and user-friendly design make it an ideal solution for animal research laboratories seeking to enhance safety and compliance.</div>",
+  "source_url": "https://www.airscience.com/product-category-page?brandname=purair-cagex&brand=52",
+  "target_keywords": [
+    "ductless fume hood",
+    "animal research",
+    "laboratory safety",
+    "particulate containment",
+    "odor control"
+  ],
+  "related_keywords": [
+    "cage cleaning",
+    "bedding changes",
+    "waste disposal",
+    "hazardous materials",
+    "exposure control"
+  ],
+  "technical_keywords": [
+    "high-efficiency EC blower",
+    "energy-saving LED lighting",
+    "filter blockage alarm",
+    "filter clamping",
+    "chemically resistant construction"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Fume Hood"
+    },
+    {
+      "category": "Application",
+      "tag": "Animal Research"
+    },
+    {
+      "category": "Industry",
+      "tag": "Laboratory"
+    },
+    {
+      "category": "Technology",
+      "tag": "Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Construction": "Epoxy-coated Steel",
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental Compliance": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality Compliance": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz"
+    },
+    "Filtration & Controls": {
+      "Filter Types": "GP Plus!, ACI Plus!/SUL, ACR, ACM, AMM, FOR, HEPA/ULPA",
+      "Control": "Fan Manual On Off"
+    }
+  },
+  "features_data": [
+    "High-efficiency EC blower",
+    "Energy saving LED lighting",
+    "Filter blockage alarm",
+    "Improved filter clamping eliminates bypass leakage",
+    "Easy to change filters",
+    "Mounted waste container allows for rapid waste disposal within work zone",
+    "Durable, chemically resistant cabinet frame, easy to clean work surfaces",
+    "Hinged front sash facilitates easy opening and closing",
+    "Optional mobile cart offers ergonomic use and maximum flexibility"
+  ],
+  "applications": [
+    "Cage Cleaning",
+    "Bedding Changes",
+    "Waste Disposal"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair CAGEX Ductless Fume Hood",
+    "description": "The Purair CAGEX ductless fume hood is engineered to protect users and the environment from animal dander and bedding particulates in animal research labs.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-36-XT-CAGEX_Left_Cart.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-36-XT-CAGEX_Left_Cart.png"
+  ],
+  "alt_text_suggestions": [
+    "Purair CAGEX ductless fume hood with mobile cart",
+    "Purair CAGEX ductless fume hood with mobile cart"
+  ],
+  "page_content_sections": {
+    "overview": "Using innovative filtration technology, the Purair CAGEX creates a safe work environment over the widest range of applications in the animal research industry.",
+    "specifications": "The Purair CAGEX features a durable, chemically resistant cabinet frame, easy-to-clean work surfaces, and compliance with current technical and safety regulations.",
+    "applications": "The CAGEX is ideal for animal cage cleaning, bedding changes, and waste disposal operations.",
+    "models": "The Purair CAGEX is available in a 36-inch wide model with 115V, 60Hz electrical requirements."
+  }
+}

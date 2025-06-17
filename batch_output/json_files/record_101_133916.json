@@ -1,0 +1,119 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "SafeFUME Cyanoacrylate Fuming Chamber | Air Science",
+  "slug": "safefume-cyanoacrylate-fuming-chamber",
+  "meta_title": "SafeFUME Cyanoacrylate Fuming Chamber - Forensic Lab Equipment",
+  "meta_description": "The Air Science SafeFUME Cyanoacrylate Fuming Chamber uses innovative filtration technology to create a safe work environment for latent print development across a wide range of applications.",
+  "meta_keywords": "cyanoacrylate fuming chamber, forensic lab equipment, latent print development, air science",
+  "short_description": "<p>The Air Science Fuming Chamber uses cyanoacrylate fuming for latent print development on various surfaces. The fuming chamber incorporates the Air Science Fume Extraction unit coupled with a self-contained filtration system to safely purge the noxious fumes when the printing cycle is complete.</p>",
+  "full_description": "<div>Using innovative filtration technology, the SafeFUME Cyanoacrylate Fuming Chamber creates a safe work environment over the widest range of applications in the industry, including Compounding / Balance Enclosures, Microscopes and Robotic Equipment, Forensics, Histology, Educational, Microscopy, Mobile and Classroom Demonstrations, Pharmaceutical, Powder Fingerprinting, Powder Weighing, Sample Prep Work, Soldering, Solvent Cleaning and Welding, Veterinary, and Dental.</div>",
+  "seo_content": "<div>The SafeFUME Cyanoacrylate Fuming Chamber features a self-contained filtration system that safely purges noxious fumes during the latent print development process. Its innovative design and comprehensive filtration capabilities make it an essential tool for forensic laboratories, educational institutions, and a wide range of other applications requiring a controlled, safe environment for sensitive work.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=fumechamber&brand=48",
+  "target_keywords": [
+    "cyanoacrylate fuming chamber",
+    "forensic lab equipment",
+    "latent print development",
+    "air science"
+  ],
+  "related_keywords": [
+    "fume extraction",
+    "fingerprint processing",
+    "powder weighing",
+    "solvent cleaning"
+  ],
+  "technical_keywords": [
+    "filtration technology",
+    "self-contained system",
+    "noxious fume purge",
+    "compliance standards"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Cyanoacrylate Fuming Chamber"
+    },
+    {
+      "category": "Application",
+      "tag": "Latent Print Development"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics"
+    },
+    {
+      "category": "Technology",
+      "tag": "Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001, ISO 9001, ENERGY STAR"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Construction": "Epoxy-coated Steel",
+      "Environmental": "ISO 14001 : 2015",
+      "Quality": "ISO 9001 : 2015",
+      "Energy Efficiency": "ENERGY STAR\u00ae Partner"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz"
+    },
+    "Filtration & Accessories": {
+      "Filter Types": "GP Plus!, HEPA/ULPA",
+      "Portable Humidifier": "PHUM-BLC (factory installed)"
+    },
+    "Warranty": {
+      "Coverage": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Cyanoacrylate fuming for latent print development",
+    "Self-contained filtration system",
+    "Safely purges noxious fumes",
+    "Wide range of applications",
+    "Compliance with ISO 14001, ISO 9001, and ENERGY STAR"
+  ],
+  "applications": [
+    "Compounding / Balance Enclosures",
+    "Microscopes and Robotic Equipment",
+    "Forensics",
+    "Histology",
+    "Educational",
+    "Microscopy",
+    "Mobile and Classroom Demonstrations",
+    "Pharmaceutical",
+    "Powder Fingerprinting",
+    "Powder Weighing",
+    "Sample Prep Work",
+    "Soldering",
+    "Solvent Cleaning and Welding",
+    "Veterinary",
+    "Dental"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "SafeFUME Cyanoacrylate Fuming Chamber",
+    "description": "The Air Science SafeFUME Cyanoacrylate Fuming Chamber uses innovative filtration technology to create a safe work environment for latent print development across a wide range of applications.",
+    "manufacturer": "Air Science",
+    "category": "Forensic Lab Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30S_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30T_Front_Open.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view",
+    "SafeFUME CA30T front view with door open for fingerprint processing"
+  ],
+  "page_content_sections": {
+    "overview": "<div>The Air Science Fuming Chamber uses cyanoacrylate fuming for latent print development on various surfaces. The fuming chamber incorporates the Air Science Fume Extraction unit coupled with a self-contained filtration system to safely purge the noxious fumes when the printing cycle is complete.</div>",
+    "specifications": "<div>The SafeFUME Cyanoacrylate Fuming Chamber features a durable epoxy-coated steel construction and complies with ISO 14001 environmental and ISO 9001 quality standards. It operates on 120V, 60Hz electrical power and includes a range of filter options and accessories like a portable humidifier.</div>",
+    "applications": "<div>The SafeFUME Cyanoacrylate Fuming Chamber creates a safe work environment for a wide variety of applications, including forensics, pharmaceutical, educational, and more. Its comprehensive filtration system safely purges noxious fumes during latent print development, powder weighing, solvent cleaning, and other sensitive processes.</div>",
+    "models": "<div>The SafeFUME Cyanoacrylate Fuming Chamber is available in multiple models to suit different space and capacity requirements, with internal heights ranging from 9.5\" to 34\" and a variety of width and depth dimensions.</div>"
+  }
+}

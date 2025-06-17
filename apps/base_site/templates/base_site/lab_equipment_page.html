@@ -2,6 +2,38 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 
 {% block extra_head %}
+<!-- SEO Meta Tags -->
+<title>{{ page.get_meta_title }}</title>
+<meta name="description" content="{{ page.get_meta_description }}">
+{% if page.meta_keywords %}<meta name="keywords" content="{{ page.meta_keywords }}">{% endif %}
+<link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+<!-- Open Graph Tags -->
+<meta property="og:title" content="{{ page.get_meta_title }}">
+<meta property="og:description" content="{{ page.get_meta_description }}">
+<meta property="og:type" content="product">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+{% if page.main_image %}
+<meta property="og:image" content="{% if request.is_secure %}https{% else %}http{% endif %}://{{ request.get_host }}{{ page.main_image }}">
+{% endif %}
+
+<!-- Twitter Card Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.get_meta_title }}">
+<meta name="twitter:description" content="{{ page.get_meta_description }}">
+{% if page.main_image %}
+<meta name="twitter:image" content="{% if request.is_secure %}https{% else %}http{% endif %}://{{ request.get_host }}{{ page.main_image }}">
+{% endif %}
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{{ page.get_structured_data_json|safe }}
+</script>
+
+<!-- Additional SEO Keywords -->
+{% if page.target_keywords %}
+<meta name="keywords" content="{% for keyword in page.target_keywords %}{{ keyword }}{% if not forloop.last %}, {% endif %}{% endfor %}">
+{% endif %}
 {% endblock %}
 
 {% block extra_css %}
@@ -62,6 +94,35 @@
   .confidence-badge.medium {
     background-color: #fffbe6;
     color: #ad8b00;
+  }
+
+  /* SEO Content Sections */
+  .seo-content-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .seo-content-section h3 {
+    margin-top: 0;
+    color: #2b2610;
+  }
+  
+  .applications-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  
+  .application-tag {
+    background-color: #e8f4fd;
+    color: #0070c0;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
   }
 
   .quantity-controls {
@@ -183,7 +244,11 @@
   <div class="product-image-container">
     {% if page.main_image %}
     {% with img_url=page.main_image %}
+    {% if page.alt_text_suggestions %}
+    <img id="featured-img" src="{{ img_url }}" alt="{{ page.alt_text_suggestions.0 }}" class="product-detail-image" onerror="this.src='{% static 'img/default-image.jpg' %}'">
+    {% else %}
     <img id="featured-img" src="{{ img_url }}" alt="{{ page.title }}" class="product-detail-image" onerror="this.src='{% static 'img/default-image.jpg' %}'">
+    {% endif %}
     {% endwith %}
     {% else %}
     <img id="featured-img" src="{% static 'img/default-image.jpg' %}" alt="{{ page.title }}" class="product-detail-image">
@@ -195,7 +260,11 @@
       {% for gallery_item in page.gallery_images.all %}
       {% with img_url=gallery_item.get_image_url %}
       {% if img_url %}
-      <img class="gallery-thumbnail" src="{{ img_url }}" alt="Gallery Image" onerror="this.src='{% static 'img/default-image.jpg' %}'" data-full="{{ img_url }}">
+      {% if page.alt_text_suggestions and forloop.counter0 < page.alt_text_suggestions|length %}
+      <img class="gallery-thumbnail" src="{{ img_url }}" alt="{{ page.alt_text_suggestions|slice:forloop.counter0 }}" onerror="this.src='{% static 'img/default-image.jpg' %}'" data-full="{{ img_url }}">
+      {% else %}
+      <img class="gallery-thumbnail" src="{{ img_url }}" alt="Gallery Image {{ forloop.counter }}" onerror="this.src='{% static 'img/default-image.jpg' %}'" data-full="{{ img_url }}">
+      {% endif %}
       {% endif %}
       {% endwith %}
       {% endfor %}
@@ -203,7 +272,7 @@
     {% endif %}
   </div>
   
-  <h2 class="machine-title">{{ page.title }}</h2>
+  <h1 class="machine-title">{{ page.title }}</h1>
   <div class="product-description">
     {{ page.short_description|richtext }}
   </div>
@@ -241,6 +310,28 @@
       </a>
     {% endfor %}
   </div>
+  
+  <!-- Applications Section -->
+  {% if page.applications %}
+  <div class="seo-content-section">
+    <h3>Applications & Use Cases</h3>
+    <div class="applications-list">
+      {% for application in page.applications %}
+        <span class="application-tag">{{ application }}</span>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  
+  <!-- Additional SEO Content -->
+  {% if page.seo_content %}
+  <div class="seo-content-section">
+    <h3>Additional Information</h3>
+    {{ page.seo_content|richtext }}
+  </div>
+  {% endif %}
+  
+  <!-- Page Content Sections - Equipment Overview section removed to avoid duplication -->
   
   <!-- Full Description Accordion -->
   <div class="more-details-box-frame">

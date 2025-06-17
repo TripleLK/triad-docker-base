@@ -1,0 +1,783 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=purair-flow-laminar-flow-cabinets&brand=11",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "model_name": {
+      "xpath_selectors": [
+        "//*[@class=\"blockcontainer2\"]/form/select/option"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//*[@class=\"blockcontainer2\"]/form/select/option",
+          "match_count": 12,
+          "extracted_data": [
+            {
+              "text": "HLF-24-A - 24\"W, 115VAC, 60Hz",
+              "html": "<option value=\"Div1\" selected>HLF-24-A - 24\"W, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-24XT-A - 24\"W, extra tall legs, 115VAC, 60Hz",
+              "html": "<option value=\"Div2\">HLF-24XT-A - 24\"W, extra tall legs, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-36-A - 36\"W, 115VAC, 60Hz",
+              "html": "<option value=\"Div3\">HLF-36-A - 36\"W, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-36XT-A - 36\"W, extra tall legs, 115VAC, 60Hz",
+              "html": "<option value=\"Div4\">HLF-36XT-A - 36\"W, extra tall legs, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-48-A - 48\"W, 115VAC, 60Hz",
+              "html": "<option value=\"Div5\">HLF-48-A - 48\"W, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-48XT-A - 48\"W, extra tall legs, 115VAC, 60Hz",
+              "html": "<option value=\"Div6\">HLF-48XT-A - 48\"W, extra tall legs, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-60-A - 60\"W, 115VAC, 60Hz",
+              "html": "<option value=\"Div7\">HLF-60-A - 60\"W, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-60XT-A - 60\"W, extra tall legs, 115VAC, 60Hz",
+              "html": "<option value=\"Div8\">HLF-60XT-A - 60\"W, extra tall legs, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-72-A - 72\"W, 115VAC, 60Hz",
+              "html": "<option value=\"Div9\">HLF-72-A - 72\"W, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-72XT-A - 72\"W, extra tall legs, 115VAC, 60Hz",
+              "html": "<option value=\"Div10\">HLF-72XT-A - 72\"W, extra tall legs, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-96-A - 96\"W, 115VAC, 60Hz",
+              "html": "<option value=\"Div11\">HLF-96-A - 96\"W, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "HLF-96XT-A - 96\"W, extra tall legs, 115VAC, 60Hz",
+              "html": "<option value=\"Div12\">HLF-96XT-A - 96\"W, extra tall legs, 115VAC, 60Hz </option> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "models": {
+      "xpath_selectors": [
+        "/html/body/section[4]/*[contains(@class, 'roweven')]",
+        "/html/body/section[6]/*[contains(@class, 'roweven')]"
+      ],
+      "comment": "First selection has the model names; second selection has the spec groups and specs for those models in the same order (Div1 in the selector = Div1 in the spec groups). Spec groups are particular by model.",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[4]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Model Specifications     Model  HLF-24-A - 24\"W, 115VAC, 60Hz  HLF-24XT-A - 24\"W, extra tall legs, 115VAC, 60Hz  HLF-36-A - 36\"W, 115VAC, 60Hz  HLF-36XT-A - 36\"W, extra tall legs, 115VAC, 60Hz  HLF-48-A - 48\"W, 115VAC, 60Hz  HLF-48XT-A - 48\"W, extra tall legs, 115VAC, 60Hz  HLF-60-A - 60\"W, 115VAC, 60Hz  HLF-60XT-A - 60\"W, extra tall legs, 115VAC, 60Hz  HLF-72-A - 72\"W, 115VAC, 60Hz  HLF-72XT-A - 72\"W, extra tall legs, 115VAC, 60Hz  HLF-96-A - 96\"W, 115VAC, 60Hz  HLF-96XT-A - 96\"W, extra tall legs, 115VAC, 60Hz",
+              "html": "<div class=\"roweven\"> <div class=\"blockcontainer2\"> <h1>Model Specifications</h1> <form class=\"elementor-form\" method=\"post\" name=\"New Form\"> <input type=\"hidden\" name=\"post_id\" value=\"3802\"> <input type=\"hidden\" name=\"form_id\" value=\"2a193c2\"> <input type=\"hidden\" name=\"referer_title\" value=\"\"> <div>Model</div> <select name=\"form_fields[field_2400c42]\" id=\"form-field-field_2400c42\" class=\"elementor-field-textual elementor-size-sm\"> <option value=\"Div1\" selected>HLF-24-A - 24\"W, 115VAC, 60Hz </option> <option value=\"Div2\">HLF-24XT-A - 24\"W, extra tall legs, 115VAC, 60Hz </option> <option value=\"Div3\">HLF-36-A - 36\"W, 115VAC, 60Hz </option> <option value=\"Div4\">HLF-36XT-A - 36\"W, extra tall legs, 115VAC, 60Hz </option> <option value=\"Div5\">HLF-48-A - 48\"W, 115VAC, 60Hz </option> <option value=\"Div6\">HLF-48XT-A - 48\"W, extra tall legs, 115VAC, 60Hz </option> <option value=\"Div7\">HLF-60-A - 60\"W, 115VAC, 60Hz </option> <option value=\"Div8\">HLF-60XT-A - 60\"W, extra tall legs, 115VAC, 60Hz </option> <option value=\"Div9\">HLF-72-A - 72\"W, 115VAC, 60Hz </option> <option value=\"Div10\">HLF-72XT-A - 72\"W, extra tall legs, 115VAC, 60Hz </option> <option value=\"Div11\">HLF-96-A - 96\"W, 115VAC, 60Hz </option> <option value=\"Div12\">HLF-96XT-A - 96\"W, extra tall legs, 115VAC, 60Hz </option> </select> </form> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        },
+        {
+          "selector_index": 1,
+          "xpath": "/html/body/section[6]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS   Internal Height: 22.8″ | 579 mm External Width: 25.25″ | 641 mm External Depth: 29.5″ | 749 mm External Height: 42.9″ | 1091 mm Shipping Width: 40″ | 1016 mm Shipping Depth: 44″ | 1118 mm Net Weight: 170 lbs | 77 kg Shipping Weight: 280 lbs | 127 kg     CONSTRUCTION   Cabinet Style: Standard Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-24 Base Stand, Mobile, with Casters: CART-HLF-BW-24 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-24 IV Bar and \"S\" Hooks: IV-HLF-24 Ionization Bar: ION-24 Removable Front Cover: FCOVER-HLF-24 Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-24-SDW UV lamp with Night Door/Cover*: UV-24 * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 28.9″ | 734 mm External Width: 25.25″ | 641 mm External Depth: 29.5″ | 749 mm External Height: 49″ | 1246.5 mm Shipping Width: 40″ | 1016 mm Shipping Depth: 44″ | 1118 mm Net Weight: 191 lbs | 87 kg Shipping Weight: 295 lbs | 134 kg     CONSTRUCTION   Cabinet Style: Standard Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-24 Base Stand, Mobile, with Casters: CART-HLF-BW-24 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-24 IV Bar and \"S\" Hooks: IV-HLF-24 Ionization Bar: ION-24 Removable Front Cover: FCOVER-HLF-24XT Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-24-SDW UV lamp with Night Door/Cover*: UV-24XT * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 22.8″ | 579 mm External Width: 37.25″ | 946 mm External Depth: 29.5″ | 749 mm External Height: 42.9″ | 1091 mm Shipping Width: 45″ | 1143 mm Shipping Depth: 44″ | 1118 mm Net Weight: 246 lbs | 112 kg Shipping Weight: 371 lbs | 168 kg     CONSTRUCTION   Cabinet Style: Standard Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-36 Base Stand, Mobile, with Casters: CART-HLF-BW-36 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-36 IV Bar and \"S\" Hooks: IV-HLF-36 Ionization Bar: ION-36 Removable Front Cover: FCOVER-HLF-36 Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-36-SDW UV lamp with Night Door/Cover*: UV-36 * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 28.9″ | 734 mm External Width: 37.25″ | 946 mm External Depth: 29.5″ | 749 mm External Height: 49″ | 1246.5 mm Shipping Width: 45″ | 1143 mm Shipping Depth: 44″ | 1118 mm Net Weight: 266 lbs | 121 kg Shipping Weight: 391 lbs | 175 kg     CONSTRUCTION   Cabinet Style: Extra Tall Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-36 Base Stand, Mobile, with Casters: CART-HLF-BW-36 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-36 IV Bar and \"S\" Hooks: IV-HLF-36 Ionization Bar: ION-36 Removable Front Cover: FCOVER-HLF-36XT Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-36-SDW UV lamp with Night Door/Cover*: UV-36XT * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 22.8″ | 579 mm External Width: 49.25″ | 1251 mm External Depth: 29.5″ | 749 mm External Height: 42.9″ | 1091 mm Shipping Width: 60″ | 1524 mm Shipping Depth: 44″ | 1118 mm Net Weight: 289 lbs | 131 kg Shipping Weight: 478 lbs | 213 kg     CONSTRUCTION   Cabinet Style: Standard Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-48 Base Stand, Mobile, with Casters: CART-HLF-BW-48 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-48 IV Bar and \"S\" Hooks: IV-HLF-48 Ionization Bar: ION-48 Removable Front Cover: FCOVER-HLF-48 Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-48-SDW UV lamp with Night Door/Cover*: UV-48 * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 28.9″ | 734 mm External Width: 49.25″ | 1251 mm External Depth: 29.5″ | 749 mm External Height: 49″ | 1246.5 mm Shipping Width: 60″ | 1524 mm Shipping Depth: 44″ | 1118 mm Net Weight: 319 lbs | 145 kg Shipping Weight: 508 lbs | 227 kg     CONSTRUCTION   Cabinet Style: Extra Tall Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-48 Base Stand, Mobile, with Casters: CART-HLF-BW-48 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-48 IV Bar and \"S\" Hooks: IV-HLF-48 Ionization Bar: ION-48 Removable Front Cover: FCOVER-HLF-48XT Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-48-SDW UV lamp with Night Door/Cover*: UV-48XT * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 22.8″ | 579 mm External Width: 61.25″ | 1556 mm External Depth: 29.5″ | 749 mm External Height: 42.9″ | 1091 mm Shipping Width: 70″ | 1778 mm Shipping Depth: 44″ | 1118 mm Net Weight: 344 lbs | 156 kg Shipping Weight: 494 lbs | 224 kg     CONSTRUCTION   Cabinet Style: Standard Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-60 Base Stand, Mobile, with Casters: CART-HLF-BW-60 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-60 IV Bar and \"S\" Hooks: IV-HLF-60 Ionization Bar: ION-48 Removable Front Cover: FCOVER-HLF-60 Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-60-SDW UV lamp with Night Door/Cover*: UV-60 * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 28.9″ | 734 mm External Width: 61.25″ | 1565 mm External Depth: 29.5″ | 749 mm External Height: 49″ | 1246.5 mm Shipping Width: 70″ | 1778 mm Shipping Depth: 44″ | 1118 mm Net Weight: 375 lbs | 170 kg Shipping Weight: 525 lbs | 238 kg     CONSTRUCTION   Cabinet Style: Standard Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-60 Base Stand, Mobile, with Casters: CART-HLF-BW-60 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-60 IV Bar and \"S\" Hooks: IV-HLF-60 Ionization Bar: ION-48 Removable Front Cover: FCOVER-HLF-60XT Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-60-SDW UV lamp with Night Door/Cover*: UV-60XT * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 22.8″ | 579 mm External Width: 73.25″ | 1861 mm External Depth: 29.5″ | 749 mm External Height: 42.9″ | 1091 mm Shipping Width: 91″ | 2311 mm Shipping Depth: 44″ | 1118 mm Net Weight: 439 lbs | 199 kg Shipping Weight: 595 lbs | 266 kg     CONSTRUCTION   Cabinet Style: Standard Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-72 Base Stand, Mobile, with Casters: CART-HLF-BW-72 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-72 IV Bar and \"S\" Hooks: IV-HLF-72 Ionization Bar: ION-72 Removable Front Cover: FCOVER-HLF-72 Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-72-SDW UV lamp with Night Door/Cover*: UV-72 * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 28.9″ | 734 mm External Width: 73.25″ | 1861 mm External Depth: 29.5″ | 749 mm External Height: 49″ | 1246.5 mm Shipping Width: 91″ | 2311 mm Shipping Depth: 44″ | 1118 mm Net Weight: 479 lbs | 217 kg Shipping Weight: 635 lbs | 283 kg     CONSTRUCTION   Cabinet Style: Extra Tall Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-72 Base Stand, Mobile, with Casters: CART-HLF-BW-72 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-72 IV Bar and \"S\" Hooks: IV-HLF-72 Ionization Bar: ION-72 Removable Front Cover: FCOVER-HLF-72XT Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-72-SDW UV lamp with Night Door/Cover*: UV-72XT * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 22.8″ | 579 mm External Width: 98.5″ | 2502 mm External Depth: 29.5″ | 749 mm External Height: 42.9″ | 1091 mm Shipping Width: 110″ | 2794 mm Shipping Depth: 44″ | 1118 mm Net Weight: 725 lbs | 329 kg Shipping Weight: 878 lbs | 398 kg     CONSTRUCTION   Cabinet Style: Standard Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-96 Base Stand, Mobile, with Casters: CART-HLF-BW-96 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-96 IV Bar and \"S\" Hooks: IV-HLF-96 Ionization Bar: ION-96 Removable Front Cover: FCOVER-HLF-96 Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-96-SDW UV lamp with Night Door/Cover*: UV-96 * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 28.9″ | 734 mm External Width: 98.5″ | 2502 mm External Depth: 29.5″ | 749 mm External Height: 49″ | 1246.5 mm Shipping Width: 110″ | 2794 mm Shipping Depth: 44″ | 1118 mm Net Weight: 585 lbs | 265 kg Shipping Weight: 746 lbs | 338 kg     CONSTRUCTION   Cabinet Style: Extra Tall Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Base Stand, Mobile, Motorized: CART-HLF-BM-96 Base Stand, Mobile, with Casters: CART-HLF-BW-96 Base Stand, Mobile, with Leveling Feet: CART-HLF-BL-96 IV Bar and \"S\" Hooks: IV-HLF-96 Ionization Bar: ION-96 Removable Front Cover: FCOVER-HLF-96XT Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-96-SDW UV lamp with Night Door/Cover*: UV-96XT * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P",
+              "html": "<div class=\"roweven\"> <div class=\"blockcontainer2\"> <div id=\"Div1\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-1\"> <p> <strong>Internal Height:</strong> 22.8″ | 579 mm<br> <strong>External Width:</strong> 25.25″ | 641 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 42.9″ | 1091 mm<br> <strong>Shipping Width:</strong> 40″ | 1016 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 170 lbs | 77 kg<br> <strong>Shipping Weight:</strong> 280 lbs | 127 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-4\"> <p> <strong>Cabinet Style:</strong> Standard<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"7\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-7\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"2\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-2\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-24<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-24<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-24<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-24<br> <strong>Ionization Bar</strong>: ION-24<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-24<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-24-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-24<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"5\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-5\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-5\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-8\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-3\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div2\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"9\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-9\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-9\"> <p> <strong>Internal Height:</strong> 28.9″ | 734 mm<br> <strong>External Width:</strong> 25.25″ | 641 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 49″ | 1246.5 mm<br> <strong>Shipping Width:</strong> 40″ | 1016 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 191 lbs | 87 kg<br> <strong>Shipping Weight:</strong> 295 lbs | 134 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"12\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-12\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-12\"> <p> <strong>Cabinet Style:</strong> Standard<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"15\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-15\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-15\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"10\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-10\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-10\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-24<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-24<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-24<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-24<br> <strong>Ionization Bar</strong>: ION-24<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-24XT<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-24-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-24XT<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"13\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-13\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-13\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"16\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-16\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-16\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"11\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-11\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-11\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div3\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"17\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-17\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-17\"> <p> <strong>Internal Height:</strong> 22.8″ | 579 mm<br> <strong>External Width:</strong> 37.25″ | 946 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 42.9″ | 1091 mm<br> <strong>Shipping Width:</strong> 45″ | 1143 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 246 lbs | 112 kg<br> <strong>Shipping Weight:</strong> 371 lbs | 168 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"20\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-20\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-20\"> <p> <strong>Cabinet Style:</strong> Standard<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"23\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-23\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-23\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"18\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-18\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-18\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-36<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-36<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-36<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-36<br> <strong>Ionization Bar</strong>: ION-36<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-36<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-36-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-36<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"21\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-21\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-21\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"24\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-24\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-24\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"19\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-19\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-19\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div4\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"25\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-25\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-25\"> <p> <strong>Internal Height:</strong> 28.9″ | 734 mm<br> <strong>External Width:</strong> 37.25″ | 946 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 49″ | 1246.5 mm<br> <strong>Shipping Width:</strong> 45″ | 1143 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 266 lbs | 121 kg<br> <strong>Shipping Weight:</strong> 391 lbs | 175 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"28\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-28\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-28\"> <p> <strong>Cabinet Style:</strong> Extra Tall<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"31\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-31\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-31\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"26\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-26\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-26\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-36<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-36<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-36<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-36<br> <strong>Ionization Bar</strong>: ION-36<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-36XT<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-36-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-36XT<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"29\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-29\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-29\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"32\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-32\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-32\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"27\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-27\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-27\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div5\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"33\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-33\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-33\"> <p> <strong>Internal Height:</strong> 22.8″ | 579 mm<br> <strong>External Width:</strong> 49.25″ | 1251 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 42.9″ | 1091 mm<br> <strong>Shipping Width:</strong> 60″ | 1524 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 289 lbs | 131 kg<br> <strong>Shipping Weight:</strong> 478 lbs | 213 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"36\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-36\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-36\"> <p> <strong>Cabinet Style:</strong> Standard<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"39\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-39\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-39\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"34\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-34\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-34\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-48<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-48<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-48<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-48<br> <strong>Ionization Bar</strong>: ION-48<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-48<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-48-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-48<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"37\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-37\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-37\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"40\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-40\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-40\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"35\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-35\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-35\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div6\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"41\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-41\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-41\"> <p> <strong>Internal Height:</strong> 28.9″ | 734 mm<br> <strong>External Width:</strong> 49.25″ | 1251 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 49″ | 1246.5 mm<br> <strong>Shipping Width:</strong> 60″ | 1524 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 319 lbs | 145 kg<br> <strong>Shipping Weight:</strong> 508 lbs | 227 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"44\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-44\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-44\"> <p> <strong>Cabinet Style:</strong> Extra Tall<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"47\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-47\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-47\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"42\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-42\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-42\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-48<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-48<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-48<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-48<br> <strong>Ionization Bar</strong>: ION-48<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-48XT<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-48-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-48XT<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"45\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-45\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-45\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"48\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-48\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-48\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"43\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-43\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-43\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div7\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"49\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-49\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-49\"> <p> <strong>Internal Height:</strong> 22.8″ | 579 mm<br> <strong>External Width:</strong> 61.25″ | 1556 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 42.9″ | 1091 mm<br> <strong>Shipping Width:</strong> 70″ | 1778 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 344 lbs | 156 kg<br> <strong>Shipping Weight:</strong> 494 lbs | 224 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"52\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-52\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-52\"> <p> <strong>Cabinet Style:</strong> Standard<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"55\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-55\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-55\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"50\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-50\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-50\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-60<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-60<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-60<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-60<br> <strong>Ionization Bar</strong>: ION-48<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-60<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-60-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-60<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"53\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-53\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-53\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"56\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-56\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-56\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"51\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-51\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-51\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div8\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"57\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-57\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-57\"> <p> <strong>Internal Height:</strong> 28.9″ | 734 mm<br> <strong>External Width:</strong> 61.25″ | 1565 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 49″ | 1246.5 mm<br> <strong>Shipping Width:</strong> 70″ | 1778 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 375 lbs | 170 kg<br> <strong>Shipping Weight:</strong> 525 lbs | 238 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"60\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-60\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-60\"> <p> <strong>Cabinet Style:</strong> Standard<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"63\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-63\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-63\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"58\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-58\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-58\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-60<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-60<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-60<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-60<br> <strong>Ionization Bar</strong>: ION-48<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-60XT<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-60-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-60XT<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"61\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-61\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-61\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"64\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-64\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-64\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"59\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-59\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-59\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div9\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"65\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-65\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-65\"> <p> <strong>Internal Height:</strong> 22.8″ | 579 mm<br> <strong>External Width:</strong> 73.25″ | 1861 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 42.9″ | 1091 mm<br> <strong>Shipping Width:</strong> 91″ | 2311 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 439 lbs | 199 kg<br> <strong>Shipping Weight:</strong> 595 lbs | 266 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"68\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-68\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-68\"> <p> <strong>Cabinet Style:</strong> Standard<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"71\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-71\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-71\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"66\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-66\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-66\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-72<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-72<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-72<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-72<br> <strong>Ionization Bar</strong>: ION-72<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-72<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-72-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-72<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"69\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-69\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-69\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"72\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-72\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-72\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"67\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-67\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-67\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div10\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"73\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-73\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-73\"> <p> <strong>Internal Height:</strong> 28.9″ | 734 mm<br> <strong>External Width:</strong> 73.25″ | 1861 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 49″ | 1246.5 mm<br> <strong>Shipping Width:</strong> 91″ | 2311 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 479 lbs | 217 kg<br> <strong>Shipping Weight:</strong> 635 lbs | 283 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"76\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-76\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-76\"> <p> <strong>Cabinet Style:</strong> Extra Tall<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"79\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-79\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-79\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"74\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-74\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-74\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-72<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-72<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-72<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-72<br> <strong>Ionization Bar</strong>: ION-72<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-72XT<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-72-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-72XT<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"77\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-77\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-77\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"80\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-80\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-80\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"75\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-75\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-75\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div11\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"81\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-81\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-81\"> <p> <strong>Internal Height:</strong> 22.8″ | 579 mm<br> <strong>External Width:</strong> 98.5″ | 2502 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 42.9″ | 1091 mm<br> <strong>Shipping Width:</strong> 110″ | 2794 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 725 lbs | 329 kg<br> <strong>Shipping Weight:</strong> 878 lbs | 398 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"84\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-84\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-84\"> <p> <strong>Cabinet Style:</strong> Standard<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"87\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-87\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-87\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"82\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-82\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-82\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-96<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-96<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-96<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-96<br> <strong>Ionization Bar</strong>: ION-96<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-96<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-96-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-96<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"85\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-85\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-85\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"88\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-88\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-88\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"83\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-83\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-83\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div12\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"89\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-89\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-89\"> <p> <strong>Internal Height:</strong> 28.9″ | 734 mm<br> <strong>External Width:</strong> 98.5″ | 2502 mm<br> <strong>External Depth:</strong> 29.5″ | 749 mm<br> <strong>External Height:</strong> 49″ | 1246.5 mm<br> <strong>Shipping Width:</strong> 110″ | 2794 mm<br> <strong>Shipping Depth:</strong> 44″ | 1118 mm<br> <strong>Net Weight:</strong> 585 lbs | 265 kg<br> <strong>Shipping Weight:</strong> 746 lbs | 338 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"92\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-92\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-92\"> <p> <strong>Cabinet Style:</strong> Extra Tall<br> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"95\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-95\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-95\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"90\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-90\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-90\"> <p> <strong>Base Stand, Mobile, Motorized</strong>: CART-HLF-BM-96<br> <strong>Base Stand, Mobile, with Casters</strong>: CART-HLF-BW-96<br> <strong>Base Stand, Mobile, with Leveling Feet</strong>: CART-HLF-BL-96<br> <strong>IV Bar and \"S\" Hooks</strong>: IV-HLF-96<br> <strong>Ionization Bar</strong>: ION-96<br> <strong>Removable Front Cover</strong>: FCOVER-HLF-96XT<br> <strong>Service Fixtures</strong>: SF-WALL<br> <strong>Static Dissipative Work Surface</strong>: TRAY-HLF-96-SDW<br> <strong>UV lamp with Night Door/Cover*</strong>: UV-96XT<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"93\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-93\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-93\"> <p> <strong>Airflow:</strong> Horizontal<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"96\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-96\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-96\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"91\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-91\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-91\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 2,
+        "successful_extractions": 2,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "specification_group_names": {
+      "xpath_selectors": [
+        "/html/body/section[6]/div/div[1]/div/div/div/div/p"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[6]/div/div[1]/div/div/div/div/p",
+          "match_count": 84,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "1"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "4"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"7\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "7"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"2\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "2"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"5\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-5\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "5"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "8"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "3"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"9\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-9\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "9"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"12\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-12\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "12"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"15\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-15\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "15"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"10\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-10\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "10"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"13\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-13\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "13"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"16\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-16\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "16"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"11\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-11\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "11"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"17\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-17\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "17"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"20\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-20\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "20"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"23\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-23\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "23"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"18\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-18\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "18"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"21\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-21\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "21"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"24\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-24\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "24"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"19\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-19\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "19"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"25\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-25\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "25"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"28\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-28\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "28"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"31\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-31\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "31"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"26\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-26\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "26"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"29\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-29\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "29"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"32\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-32\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "32"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"27\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-27\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "27"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"33\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-33\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "33"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"36\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-36\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "36"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"39\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-39\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "39"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"34\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-34\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "34"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"37\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-37\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "37"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"40\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-40\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "40"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"35\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-35\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "35"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"41\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-41\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "41"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"44\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-44\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "44"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"47\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-47\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "47"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"42\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-42\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "42"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"45\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-45\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "45"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"48\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-48\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "48"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"43\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-43\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "43"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"49\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-49\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "49"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"52\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-52\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "52"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"55\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-55\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "55"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"50\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-50\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "50"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"53\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-53\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "53"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"56\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-56\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "56"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"51\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-51\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "51"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"57\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-57\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "57"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"60\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-60\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "60"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"63\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-63\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "63"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"58\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-58\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "58"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"61\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-61\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "61"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"64\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-64\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "64"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"59\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-59\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "59"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"65\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-65\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "65"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"68\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-68\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "68"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"71\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-71\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "71"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"66\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-66\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "66"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"69\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-69\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "69"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"72\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-72\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "72"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"67\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-67\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "67"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"73\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-73\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "73"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"76\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-76\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "76"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"79\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-79\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "79"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"74\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-74\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "74"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"77\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-77\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "77"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"80\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-80\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "80"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"75\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-75\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "75"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"81\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-81\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "81"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"84\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-84\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "84"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"87\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-87\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "87"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"82\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-82\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "82"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"85\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-85\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "85"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"88\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-88\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "88"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"83\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-83\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "83"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"89\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-89\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "89"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"92\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-92\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "92"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"95\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-95\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "95"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"90\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-90\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "90"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"93\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-93\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "93"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"96\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-96\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "96"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"91\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-91\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "91"
+              }
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T16:51:17.968747+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "MODEL_SUBSET",
+  "_page_info": {
+    "page_title": "Horizontal Laminar Flow Cabinet | Air Science",
+    "safe_directory_name": "Horizontal_Laminar_Flow_Cabinet_Air_Science",
+    "ai_json_record_id": 36
+  },
+  "_batch_info": {
+    "batch_number": 10,
+    "total_batches": 15,
+    "models_in_batch": [
+      "60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 28.9″ | 734 mm External Width: 49.25″ | 1251 mm External Depth: 29.5″ | 749 mm External Height: 49″ | 1246.5 mm Shipping Width: 60″ | 1524 mm Shipping Depth: 44″ | 1118 mm Net Weight: 319 lbs | 145 kg Shipping Weight: 508 lbs | 227 kg     CONSTRUCTION   Cabinet Style: Extra Tall Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR",
+      "with Leveling Feet: CART-HLF-BL-48 IV Bar and \"S\" Hooks: IV-HLF-48 Ionization Bar: ION-48 Removable Front Cover: FCOVER-HLF-48XT Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-48-SDW UV lamp with Night Door/Cover*: UV-48XT * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V",
+      "60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 22.8″ | 579 mm External Width: 61.25″ | 1556 mm External Depth: 29.5″ | 749 mm External Height: 42.9″ | 1091 mm Shipping Width: 70″ | 1778 mm Shipping Depth: 44″ | 1118 mm Net Weight: 344 lbs | 156 kg Shipping Weight: 494 lbs | 224 kg     CONSTRUCTION   Cabinet Style: Standard Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR",
+      "Motorized: CART-HLF-BM-60 Base Stand"
+    ],
+    "total_models": 57
+  },
+  "target_model_names": [
+    "60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 28.9″ | 734 mm External Width: 49.25″ | 1251 mm External Depth: 29.5″ | 749 mm External Height: 49″ | 1246.5 mm Shipping Width: 60″ | 1524 mm Shipping Depth: 44″ | 1118 mm Net Weight: 319 lbs | 145 kg Shipping Weight: 508 lbs | 227 kg     CONSTRUCTION   Cabinet Style: Extra Tall Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR",
+    "with Leveling Feet: CART-HLF-BL-48 IV Bar and \"S\" Hooks: IV-HLF-48 Ionization Bar: ION-48 Removable Front Cover: FCOVER-HLF-48XT Service Fixtures: SF-WALL Static Dissipative Work Surface: TRAY-HLF-48-SDW UV lamp with Night Door/Cover*: UV-48XT * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow: Horizontal     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V",
+    "60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   Internal Height: 22.8″ | 579 mm External Width: 61.25″ | 1556 mm External Depth: 29.5″ | 749 mm External Height: 42.9″ | 1091 mm Shipping Width: 70″ | 1778 mm Shipping Depth: 44″ | 1118 mm Net Weight: 344 lbs | 156 kg Shipping Weight: 494 lbs | 224 kg     CONSTRUCTION   Cabinet Style: Standard Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR",
+    "Motorized: CART-HLF-BM-60 Base Stand"
+  ],
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

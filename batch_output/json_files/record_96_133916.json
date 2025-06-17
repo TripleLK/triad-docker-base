@@ -1,0 +1,116 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "SafeFUME\u2122 Automatic Cyanoacrylate Fuming Chambers",
+  "slug": "safefume-automatic-cyanoacrylate-fuming-chambers",
+  "meta_title": "SafeFUME Cyanoacrylate Fuming Chambers for Fingerprint Development",
+  "meta_description": "Innovative SafeFUME cyanoacrylate fuming chambers create a safe work environment for developing latent fingerprints using methylcyanoacrylate (CNA) vapor.",
+  "meta_keywords": "cyanoacrylate fuming chamber, fingerprint development, forensic equipment, crime scene investigation, law enforcement",
+  "short_description": "<p>SafeFUME\u2122 cyanoacrylate fuming chambers are designed to safely develop latent fingerprints using methylcyanoacrylate (CNA) vapor in a controlled environment.</p>",
+  "full_description": "<div>Choose from multiple sizes, from bench top to floor standing. Multi-chamber cabinets available. Caster wheels standard on all models except bench top series. Optional UV Lamp decontamination. Optional side and rear windows for 360\u00b0 view of development.</div>",
+  "seo_content": "<div>Using innovative filtration technology, the Safefume cyanoacrylate fuming chamber creates a safe work environment over the widest range of applicationsin the industry. State and Federal Crime Laboratories \\ Crime Scene Investigation \\ Law Enforcement Agencies \\ Medical Examiners' Programs \\ Criminal Justice Education</div>",
+  "source_url": "https://www.airscience.com/product-category-page?brandname=safefume-fuming-chambers&brand=14",
+  "target_keywords": [
+    "cyanoacrylate fuming chamber",
+    "fingerprint development",
+    "forensic equipment",
+    "crime scene investigation",
+    "law enforcement"
+  ],
+  "related_keywords": [
+    "latent fingerprints",
+    "methylcyanoacrylate",
+    "CNA vapor",
+    "controlled environment",
+    "filtration technology"
+  ],
+  "technical_keywords": [
+    "OSHA compliance",
+    "ISO 14001",
+    "ENERGY STAR",
+    "ISO 9001",
+    "upflow airflow",
+    "programmable controls"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Cyanoacrylate Fuming Chamber"
+    },
+    {
+      "category": "Application",
+      "tag": "Fingerprint Development"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics, Law Enforcement"
+    },
+    {
+      "category": "Technology",
+      "tag": "Filtration, Vapor Deposition"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Cabinet Style": "Epoxy-coated Steel#Polypropylene",
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood.",
+      "Environmental Compliance": "ISO 14001: 2015; ENERGY STAR\u00ae Partner",
+      "Quality Certification": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Airflow & Filtration": {
+      "Airflow Direction": "Upflow",
+      "Face Velocity": 145,
+      "Main Filter": "22 lbs / 9.6 kg"
+    }
+  },
+  "features_data": [
+    "Choose from multiple sizes, from bench top to floor standing",
+    "Multi-chamber cabinets available",
+    "Caster wheels standard on all models except bench top series",
+    "Optional UV Lamp decontamination",
+    "Optional side and rear windows for 360\u00b0 view of development"
+  ],
+  "applications": [
+    "State and Federal Crime Laboratories",
+    "Crime Scene Investigation",
+    "Law Enforcement Agencies",
+    "Medical Examiners' Programs",
+    "Criminal Justice Education"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "SafeFUME Automatic Cyanoacrylate Fuming Chambers",
+    "description": "Innovative cyanoacrylate fuming chambers for safe development of latent fingerprints",
+    "manufacturer": "Air Science",
+    "category": "Forensic Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30S_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30T_Front_Open.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA60T_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30S_Right.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view",
+    "SafeFUME CA30T front view with door open for fingerprint processing",
+    "SafeFUME CA60T left side view",
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view"
+  ],
+  "page_content_sections": {
+    "overview": "Choose from multiple sizes, from bench top to floor standing. Multi-chamber cabinets available. Caster wheels standard on all models except bench top series. Optional UV Lamp decontamination. Optional side and rear windows for 360\u00b0 view of development.",
+    "specifications": "Constructed with epoxy-coated steel and polypropylene. Complies with OSHA, ISO 14001, and ISO 9001 standards. 120V, 60Hz electrical with NEMA 5-15P plug. Upflow airflow with 145 fpm face velocity and 22 lb main filter.",
+    "applications": "Used in state and federal crime labs, crime scene investigation, law enforcement, medical examiner programs, and criminal justice education.",
+    "models": "Multiple model sizes available from 24\" to 60\" width, with bench top and upright configurations."
+  }
+}

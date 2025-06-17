@@ -9,18 +9,268 @@
  * Project: Triad Docker Base
  */
 
-// Field selection handler
+// Field selection handler - SWIFT PHOENIX: Direct XPath selection workflow
 function selectField(fieldName) {
     const field = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
     if (!field) return;
     
-    if (field.has_sub_fields) {
-        // Show instance management menu for nested fields
-        createInstanceManagementMenu(fieldName);
-    } else {
-        // Show field setting method menu for simple fields
-        createFieldSettingMethodMenu(fieldName);
+    // SWIFT PHOENIX: Skip method menu completely - direct to selections interface
+    // User feedback: "The 'how to set' menu can be skipped; everything will be xpaths"
+    console.log(`🎯 Swift Phoenix: Direct XPath selection for ${fieldName} - bypassing method menu`);
+    startSelection(fieldName);
+}
+
+// Load existing selectors for the current domain
+async function loadExistingSelectors() {
+    const domain = window.location.hostname;
+    const apiUrl = `${window.contentExtractorData.baseUrl}/content-extractor/get-site-configuration/?domain=${encodeURIComponent(domain)}`;
+    
+    try {
+        console.log('📥 Loading existing selectors for domain:', domain);
+        
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Token ' + (window.contentExtractorData.apiToken || 'PLACEHOLDER_TOKEN_NEEDS_DYNAMIC_GENERATION')
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const result = await response.json();
+        
+        // Check if we have successful response with field mappings
+        if (result.success && result.field_mappings && Object.keys(result.field_mappings).length > 0) {
+            console.log('✅ Found existing configuration for domain:', domain);
+            console.log('📋 Field mappings:', result.field_mappings);
+            
+            // Apply existing selectors to the page
+            applyExistingSelectors(result.field_mappings);
+            
+            // Show notification that existing selectors were loaded
+            showExistingSelectorNotification(Object.keys(result.field_mappings).length, domain);
+            
+            return result.field_mappings;
+        } else {
+            console.log('📝 No existing configuration found for domain:', domain);
+            return {};
+        }
+    } catch (error) {
+        console.error('❌ Error loading existing selectors:', error);
+        return {};
     }
+}
+
+// Apply existing selectors to the page
+function applyExistingSelectors(fieldMappings) {
+    if (!fieldMappings || Object.keys(fieldMappings).length === 0) {
+        console.log('ℹ️ No field mappings to apply');
+        return;
+    }
+    
+    console.log('🎯 Applying existing selectors to page...');
+    
+    // SWIFT PHOENIX: Initialize fieldComments if not already done
+    if (!window.contentExtractorData.fieldComments) {
+        window.contentExtractorData.fieldComments = {};
+    }
+    
+    Object.keys(fieldMappings).forEach(fieldName => {
+        const config = fieldMappings[fieldName];
+        const xpathSelectors = config.xpath_selectors || [];
+        const fieldComment = config.comment || '';
+        
+        // SWIFT PHOENIX: Load field comment from backend configuration
+        if (fieldComment && fieldComment !== `Auto-generated from interactive selector on ${window.location.hostname}`) {
+            window.contentExtractorData.fieldComments[fieldName] = fieldComment;
+            console.log(`💬 Loaded comment for ${fieldName}: "${fieldComment}"`);
+        }
+        
+        if (xpathSelectors.length > 0) {
+            // ARCTIC STORM: Fix selector multiplication bug
+            // Initialize field selections if not already done
+            if (!window.contentExtractorData.fieldSelections[fieldName]) {
+                window.contentExtractorData.fieldSelections[fieldName] = [];
+            }
+            
+            // Try to find elements using the stored XPath selectors
+            xpathSelectors.forEach((xpath, index) => {
+                try {
+                    console.log(`🔍 STELLAR HAWK: Testing XPath for ${fieldName}: ${xpath}`);
+                    const result = document.evaluate(
+                        xpath, 
+                        document, 
+                        null, 
+                        XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, 
+                        null
+                    );
+                    
+                    console.log(`📊 STELLAR HAWK: XPath result count: ${result.snapshotLength}`);
+                    
+                    // ARCTIC STORM: Only create one selection object per XPath, regardless of matches
+                    // Check if this XPath is already in the field selections to prevent duplication
+                    const existingSelection = window.contentExtractorData.fieldSelections[fieldName].find(
+                        sel => sel.xpath === xpath
+                    );
+                    
+                    if (!existingSelection && result.snapshotLength > 0) {
+                        // Use the first matched element for the selection data
+                        const firstElement = result.snapshotItem(0);
+                        
+                        // Create ONE selection object for this XPath
+                        const selection = {
+                            field_name: fieldName,
+                            xpath: xpath,
+                            css_selector: getElementCSSSelector(firstElement),
+                            selected_text: firstElement.textContent.trim(),
+                            context_path: window.contentExtractorData.contextPath,
+                            depth: window.contentExtractorData.currentDepth,
+                            timestamp: Date.now(),
+                            element_id: generateElementId(),
+                            is_existing: true, // Mark as existing selector
+                            match_count: result.snapshotLength // Track how many elements this XPath matches
+                        };
+                        
+                        // Add ONLY ONE selection object per XPath
+                        window.contentExtractorData.fieldSelections[fieldName].push(selection);
+                        console.log(`✅ ARCTIC STORM: Added single selector for ${fieldName}: ${xpath} (matches ${result.snapshotLength} elements)`);
+                    }
+                    
+                    // Still highlight ALL matched elements for visual feedback
+                    for (let i = 0; i < result.snapshotLength; i++) {
+                        const element = result.snapshotItem(i);
+                        console.log(`✨ STELLAR HAWK: Highlighting element ${i + 1}/${result.snapshotLength}:`, element);
+                        
+                        // Highlight the element with a special style for existing selectors
+                        highlightExistingElement(element, getFieldColor(fieldName), fieldName);
+                        window.contentExtractorData.selectedDOMElements.add(element);
+                    }
+                    
+                } catch (xpathError) {
+                    console.warn(`⚠️ XPath selector failed for ${fieldName}: ${xpath}`, xpathError);
+                }
+            });
+        }
+    });
+    
+    console.log('🎉 Finished applying existing selectors');
+    
+    // QUANTUM VAULT: Fix UI synchronization - refresh field menus after loading existing selectors
+    // This ensures that if a field menu is currently open, it updates to show the correct field counts
+    if (typeof refreshFieldMenus === 'function') {
+        console.log('🔄 Refreshing field menus after loading existing selectors');
+        refreshFieldMenus();
+        console.log('✅ Field menus refreshed with newly loaded selector data');
+    }
+}
+
+// STELLAR HAWK: Add missing highlightElement function
+// This function is called by highlightExistingElement but was not defined globally
+function highlightElement(element, color) {
+    element.style.setProperty('outline', `3px solid ${color}`, 'important');
+    element.style.setProperty('outline-offset', '2px', 'important');
+    element.style.setProperty('box-shadow', `0 0 0 1px ${color}20`, 'important');
+}
+
+// Highlight existing selector elements with special styling
+function highlightExistingElement(element, fieldColor, fieldName) {
+    // Apply base highlight
+    highlightElement(element, fieldColor);
+    
+    // Add additional styling to indicate this is a pre-existing selector
+    element.style.setProperty('border', '2px dashed ' + fieldColor, 'important');
+    element.style.setProperty('background-color', fieldColor + '15', 'important'); // Light background
+    
+    // Add a special badge for existing selectors
+    const badge = document.createElement('div');
+    badge.className = 'content-extractor-ui existing-selector-badge';
+    badge.setAttribute('data-field-name', fieldName);
+    badge.style.cssText = `
+        position: absolute;
+        top: -12px;
+        left: -2px;
+        background: ${fieldColor};
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 10px;
+        font-weight: bold;
+        z-index: 9998;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        pointer-events: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        border: 1px solid rgba(255,255,255,0.3);
+    `;
+    badge.textContent = `✓ ${fieldName}`;
+    
+    // Position the badge relative to the element
+    const rect = element.getBoundingClientRect();
+    if (rect.top < 20) {
+        // If element is near top of page, put badge below
+        badge.style.top = '100%';
+        badge.style.marginTop = '2px';
+    }
+    
+    element.style.position = 'relative';
+    element.appendChild(badge);
+}
+
+// Show notification that existing selectors were loaded
+function showExistingSelectorNotification(count, domain) {
+    const notification = document.createElement('div');
+    notification.className = 'content-extractor-ui';
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 12px;
+        z-index: 10001;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border: 2px solid rgba(255,255,255,0.3);
+        backdrop-filter: blur(10px);
+        max-width: 350px;
+    `;
+    
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <span style="font-size: 18px;">✨</span>
+            <div>
+                <div style="font-weight: bold; font-size: 16px;">Existing Selectors Loaded</div>
+                <div style="font-size: 12px; opacity: 0.9;">Domain: ${domain}</div>
+            </div>
+        </div>
+        <div style="font-size: 13px; margin-bottom: 10px;">
+            Found <strong>${count} configured fields</strong> with existing selectors.
+            Elements are highlighted with dashed borders and checkmark badges.
+        </div>
+        <div style="text-align: right;">
+            <button onclick="this.parentElement.remove()" 
+                    style="padding: 6px 12px; background: rgba(255,255,255,0.2); 
+                           color: white; border: 1px solid rgba(255,255,255,0.4); 
+                           border-radius: 6px; cursor: pointer; font-size: 12px;">
+                Got it
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto-remove after 8 seconds
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateX(-100%)';
+            notification.style.transition = 'all 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }
+    }, 8000);
 }
 
 // Start element selection
@@ -207,6 +457,13 @@ function handleElementClick(event) {
     // Update selection manager if open
     if (typeof window.updateSelectionManager === 'function') {
         window.updateSelectionManager();
+    }
+    
+    // CRIMSON FALCON: Trigger field menu refresh after selection changes
+    // This ensures completion indicators update immediately
+    if (typeof refreshFieldMenus === 'function') {
+        refreshFieldMenus();
+        console.log('🔄 Field menu refreshed after selection');
     }
     
     // Show visual feedback for the selection
@@ -423,6 +680,7 @@ window.stopSelection = function() {
 // Save XPath configurations to the backend
 function saveConfigurationsToBackend() {
     const fieldSelections = window.contentExtractorData.fieldSelections || {};
+    const fieldComments = window.contentExtractorData.fieldComments || {};
     
     // Check if there are any selections to save
     const hasSelections = Object.keys(fieldSelections).some(fieldName => 
@@ -449,7 +707,17 @@ function saveConfigurationsToBackend() {
                 .filter(xpath => xpath && xpath.trim());
             
             if (xpaths.length > 0) {
-                field_mappings[fieldName] = xpaths;
+                // SWIFT PHOENIX: Use actual user field comment instead of generic message
+                const userComment = fieldComments[fieldName] || '';
+                const defaultComment = userComment || `Auto-generated from interactive selector on ${window.location.hostname}`;
+                
+                // Create proper field mapping object format expected by backend
+                field_mappings[fieldName] = {
+                    xpath_selectors: xpaths,
+                    comment: defaultComment
+                };
+                
+                console.log(`💬 Field ${fieldName}: Using comment "${userComment || '(auto-generated)'}"`);
             }
         }
     });
@@ -459,6 +727,8 @@ function saveConfigurationsToBackend() {
         console.log('📝 No XPath selectors to save (manual text entries only)');
         return;
     }
+    
+    console.log('📡 ARCTIC STORM: Backend will auto-delete missing fields. Sending current fields:', Object.keys(field_mappings));
     
     // Show saving indicator
     const savingIndicator = document.createElement('div');
@@ -578,8 +848,51 @@ function showSaveSuccessDetail(result) {
         border: 2px solid #28a745;
     `;
     
-    const savedFieldsList = result.saved_fields?.map(field => `<li>${field}</li>`).join('') || '';
-    const updatedFieldsList = result.updated_fields?.map(field => `<li>${field}</li>`).join('') || '';
+    const savedFieldsList = result.saved_fields?.map(field => typeof field === 'object' ? field.field : field).join(', ') || '';
+    const updatedFieldsList = result.updated_fields?.join(', ') || '';
+    const deletedFieldsList = result.deleted_fields?.join(', ') || '';
+    
+    // ARCTIC STORM: Build sections for different operation types
+    let sectionsHTML = '';
+    
+    if (result.saved_fields?.length > 0) {
+        const newCount = result.saved_fields.filter(f => !result.updated_fields?.includes(typeof f === 'object' ? f.field : f)).length;
+        if (newCount > 0) {
+            sectionsHTML += `
+                <div style="margin-bottom: 15px;">
+                    <strong>✅ New Fields Configured (${newCount}):</strong>
+                    <div style="margin: 5px 0; padding: 8px; background: #d4edda; border-radius: 4px; font-size: 13px;">
+                        ${savedFieldsList}
+                    </div>
+                </div>
+            `;
+        }
+    }
+    
+    if (result.updated_fields?.length > 0) {
+        sectionsHTML += `
+            <div style="margin-bottom: 15px;">
+                <strong>🔄 Updated Fields (${result.updated_fields.length}):</strong>
+                <div style="margin: 5px 0; padding: 8px; background: #d1ecf1; border-radius: 4px; font-size: 13px;">
+                    ${updatedFieldsList}
+                </div>
+            </div>
+        `;
+    }
+    
+    if (result.deleted_fields?.length > 0) {
+        sectionsHTML += `
+            <div style="margin-bottom: 15px;">
+                <strong>🗑️ Auto-Deleted Fields (${result.deleted_fields.length}):</strong>
+                <div style="margin: 5px 0; padding: 8px; background: #f8d7da; border-radius: 4px; font-size: 13px;">
+                    ${deletedFieldsList}
+                </div>
+                <div style="font-size: 11px; color: #666; margin-top: 5px;">
+                    ℹ️ Fields removed because they were cleared in the interface
+                </div>
+            </div>
+        `;
+    }
     
     detailModal.innerHTML = `
         <div style="text-align: center; margin-bottom: 15px;">
@@ -587,23 +900,14 @@ function showSaveSuccessDetail(result) {
                 ✅ Configuration Saved Successfully!
             </div>
             <div style="font-size: 14px; color: #666;">
-                Domain: <strong>${result.site_config?.site_domain || 'Unknown'}</strong>
+                Domain: <strong>${result.domain || 'Unknown'}</strong>
+            </div>
+            <div style="font-size: 12px; color: #888; margin-top: 5px;">
+                Total Active Fields: ${result.total_fields || 0}
             </div>
         </div>
         
-        ${savedFieldsList ? `
-            <div style="margin-bottom: 15px;">
-                <strong>New Fields Configured (${result.saved_fields.length}):</strong>
-                <ul style="margin: 5px 0; padding-left: 20px;">${savedFieldsList}</ul>
-            </div>
-        ` : ''}
-        
-        ${updatedFieldsList ? `
-            <div style="margin-bottom: 15px;">
-                <strong>Updated Fields (${result.updated_fields.length}):</strong>
-                <ul style="margin: 5px 0; padding-left: 20px;">${updatedFieldsList}</ul>
-            </div>
-        ` : ''}
+        ${sectionsHTML}
         
         <div style="text-align: center; margin-top: 20px;">
             <button onclick="this.parentElement.parentElement.remove()" 
@@ -645,6 +949,13 @@ window.startAIExtraction = function(fieldName) {
     alert('AI-powered extraction feature coming soon!');
 };
 
+// THUNDER CASCADE: Add field comment functionality for simplified approach
+window.addFieldComment = function(fieldName) {
+    console.log(`💬 Adding comment for ${fieldName}`);
+    closeFieldSettingMethodMenu();
+    createFieldCommentDialog(fieldName);
+};
+
 window.closeFieldSettingMethodMenu = function() {
     console.log('❌ closeFieldSettingMethodMenu called - returning to field menu');
     const menu = document.getElementById('content-extractor-method-menu');
@@ -659,6 +970,7 @@ window.closeFieldSettingMethodMenu = function() {
 
 window.clearFieldSelections = function(fieldName) {
     if (confirm(`Clear all selections for "${fieldName}"?`)) {
+        // ARCTIC STORM: Clear locally - backend will auto-delete missing fields on save
         window.contentExtractorData.fieldSelections[fieldName] = [];
         
         // Remove highlights for this field
@@ -667,7 +979,13 @@ window.clearFieldSelections = function(fieldName) {
         });
         window.contentExtractorData.selectedDOMElements.clear();
         
-        console.log(`🗑️ Cleared all selections for ${fieldName}`);
+        console.log(`🗑️ ARCTIC STORM: Cleared ${fieldName} locally - will be auto-deleted on save`);
+        
+        // CRIMSON FALCON: Refresh field menus after clearing selections
+        if (typeof refreshFieldMenus === 'function') {
+            refreshFieldMenus();
+            console.log('🔄 Field menu refreshed after clearing selections');
+        }
         
         // Refresh the method menu to show updated state
         setTimeout(() => {
@@ -678,6 +996,27 @@ window.clearFieldSelections = function(fieldName) {
         if (typeof window.updateControlPanelProgress === 'function') {
             window.updateControlPanelProgress();
         }
+        
+        // Show local clear feedback
+        const feedback = document.createElement('div');
+        feedback.className = 'content-extractor-ui';
+        feedback.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #17a2b8;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            z-index: 10003;
+            font-size: 14px;
+            font-weight: bold;
+            animation: fadeInOut 3s ease-in-out;
+        `;
+        feedback.textContent = `🗑️ ${fieldName} cleared - will be removed on "Finish"`;
+        
+        document.body.appendChild(feedback);
+        setTimeout(() => feedback.remove(), 3000);
     }
 };
 
@@ -771,6 +1110,12 @@ window.saveTextInput = function(fieldName) {
         window.updateControlPanelProgress();
     }
     
+    // CRIMSON FALCON: Refresh field menus after text input save
+    if (typeof refreshFieldMenus === 'function') {
+        refreshFieldMenus();
+        console.log('🔄 Field menu refreshed after text input save');
+    }
+    
     // Return to field menu
     setTimeout(() => {
         window.showFieldMenu();
@@ -815,6 +1160,13 @@ window.createNewInstance = function(fieldName) {
     window.contentExtractorData.instanceSelections[fieldName].push(newInstance);
     
     console.log(`✅ Created new instance ${fieldName}[${newInstance.instance_index}]`);
+    
+    // SWIFT PHOENIX: Refresh main menu after instance creation
+    // Addresses Priority 2 - Cross-menu communication
+    if (typeof refreshFieldMenus === 'function') {
+        refreshFieldMenus();
+        console.log('🔄 Swift Phoenix: Main menu refreshed after instance creation');
+    }
     
     // Refresh the instance management menu
     createInstanceManagementMenu(fieldName);
@@ -871,8 +1223,20 @@ window.deleteInstance = function(fieldName, instanceIndex) {
         
         console.log(`✅ Deleted instance ${fieldName}[${instanceIndex}]`);
         
-        // Refresh the instance management menu
-        createInstanceManagementMenu(fieldName);
+        // SWIFT PHOENIX: Refresh main menu after instance deletion
+        // Addresses Priority 2 - Cross-menu communication
+        if (typeof refreshFieldMenus === 'function') {
+            refreshFieldMenus();
+            console.log('🔄 Swift Phoenix: Main menu refreshed after instance deletion');
+        }
+        
+        // Refresh using unified menu system
+        if (window.ContentExtractorUnifiedMenu) {
+            window.ContentExtractorUnifiedMenu.createInstanceMenu(fieldName);
+        } else {
+            console.error(`❌ [ERROR] ContentExtractorUnifiedMenu not available`);
+            createInstanceManagementMenu(fieldName);
+        }
         
         // Show success feedback
         const feedback = document.createElement('div');
@@ -900,7 +1264,7 @@ window.deleteInstance = function(fieldName, instanceIndex) {
 };
 
 function createInstanceSubfieldsMenu(fieldName, instanceIndex) {
-    // Use unified menu system if available
+    // Use unified menu system
     if (window.ContentExtractorUnifiedMenu) {
         const field = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
         if (!field || !field.sub_fields) return;
@@ -924,232 +1288,93 @@ function createInstanceSubfieldsMenu(fieldName, instanceIndex) {
         
         return window.ContentExtractorUnifiedMenu.createMenu(config);
     } else {
-        // Legacy subfields menu creation (fallback)
-        return createLegacyInstanceSubfieldsMenu(fieldName, instanceIndex);
+        // Critical error - unified menu system not available
+        console.error(`❌ [ERROR] ContentExtractorUnifiedMenu not available - subfield menu cannot be created`);
+        console.error(`💡 [SOLUTION] Include content_extractor_unified_menu.js before this file`);
+        return null;
     }
 }
 
-// Build subfields menu content HTML with XPath editing capabilities
+// Build subfields menu content HTML with unified field menu styling
 function buildSubfieldsMenuContent(field, instanceIndex, instance) {
-    let subfieldsHtml = `
-        <div style="margin: 15px 0;">
-            <h4 style="margin: 0 0 10px 0; color: ${field.color}; font-size: 14px;">
-                Subfields with XPath Configuration:
-            </h4>
-            <div style="max-height: 300px; overflow-y: auto;">
-    `;
+    // Get fresh completion data for subfields (similar to main field menu)
+    let completedSubfields = 0;
+    let totalSubfields = field.sub_fields.length;
+    let totalSubfieldSelections = 0;
     
-    field.sub_fields.forEach((subfield, index) => {
+    field.sub_fields.forEach(subfield => {
+        const subfieldSelections = instance.subfields[subfield.name] || [];
+        if (subfieldSelections.length > 0) {
+            completedSubfields++;
+            totalSubfieldSelections += subfieldSelections.length;
+        }
+    });
+    
+    // Build subfield options using the same style as main field menu
+    let subfieldsHtml = '';
+    field.sub_fields.forEach(subfield => {
+        const icon = subfield.type === 'multi-value' ? '📋' : '📝';
+        
+        // Use direct access like main field menu
         const subfieldSelections = instance.subfields[subfield.name] || [];
         const hasSelections = subfieldSelections.length > 0;
-        const progressText = hasSelections ? ` (${subfieldSelections.length} selected)` : '';
-        const statusColor = hasSelections ? '#28a745' : '#6c757d';
+        const selectionCount = subfieldSelections.length;
         
-        // Get current XPath if available
+        // Selection indicator - identical to main field menu style
+        let selectionIndicator = '';
+        if (hasSelections) {
+            selectionIndicator = `
+                <span style="float: right; background: #28a745; color: white; 
+                             padding: 2px 6px; border-radius: 10px; font-size: 11px; font-weight: bold;">
+                    ✓ ${selectionCount}
+                </span>
+            `;
+        } else {
+            selectionIndicator = `
+                <span style="float: right; background: #6c757d; color: white; 
+                             padding: 2px 6px; border-radius: 10px; font-size: 11px;">
+                    ○
+                </span>
+            `;
+        }
+        
+        // Button styling based on current selection status - identical to main field menu
+        const buttonStyle = hasSelections 
+            ? `background: ${subfield.color || field.color}40; border: 2px solid #28a745; box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);`
+            : `background: ${subfield.color || field.color}20; border: 2px solid ${subfield.color || field.color};`;
+        
+        // Get current XPath for display (like "Last:" in main field menu)
         const lastSelection = hasSelections ? subfieldSelections[subfieldSelections.length - 1] : null;
         const currentXPath = lastSelection ? lastSelection.xpath : '';
+        const lastSelectionText = lastSelection ? lastSelection.selected_text || '' : '';
         
         subfieldsHtml += `
-            <div style="margin: 8px 0; padding: 12px; background: ${subfield.color || '#f8f9fa'}10; 
-                       border: 1px solid ${subfield.color || '#dee2e6'}; border-radius: 6px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                    <div style="flex: 1;">
-                        <div style="font-weight: bold; color: ${subfield.color || '#333'};">
-                            ${subfield.label}${progressText}
-                        </div>
-                        <div style="font-size: 12px; color: #666; margin-top: 2px;">
-                            ${subfield.description || subfield.type}
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 8px;">
-                        <button onclick="selectSubfield('${field.name}', ${instanceIndex}, '${subfield.name}')" 
-                                style="padding: 8px 16px; background: ${statusColor}; color: white; 
-                                       border: none; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold;"
-                                onmouseover="this.style.opacity='0.8'"
-                                onmouseout="this.style.opacity='1'">
-                            ${hasSelections ? '✅ Set' : '⚙️ Set'}
-                        </button>
-                        ${hasSelections ? `
-                            <button onclick="openSubfieldXPathEditor('${field.name}', ${instanceIndex}, '${subfield.name}')" 
-                                    style="padding: 8px 12px; background: #007bff; color: white; 
-                                           border: none; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold;"
-                                    onmouseover="this.style.opacity='0.8'"
-                                    onmouseout="this.style.opacity='1'"
-                                    title="Edit XPath for this subfield">
-                                🔧
-                            </button>
-                        ` : ''}
-                    </div>
-                </div>
-                ${currentXPath ? `
-                    <div style="margin-top: 8px; padding: 6px 8px; background: #f8f9fa; border-radius: 4px; font-family: monospace; font-size: 11px; color: #666;">
-                        <strong>XPath:</strong> ${currentXPath}
-                    </div>
-                ` : ''}
-            </div>
+            <button onclick="selectSubfield('${field.name}', ${instanceIndex}, '${subfield.name}')" 
+                    style="display: block; width: 100%; margin: 8px 0; padding: 12px; 
+                           ${buttonStyle}
+                           border-radius: 8px; cursor: pointer; text-align: left;
+                           font-size: 14px; transition: all 0.2s; position: relative;"
+                    onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)'"
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='${hasSelections ? '0 2px 4px rgba(40, 167, 69, 0.2)' : 'none'}'">
+                ${selectionIndicator}
+                ${icon} <strong>${subfield.label}</strong><br>
+                <small style="color: #666;">${subfield.description || subfield.type}</small>
+                ${hasSelections && lastSelectionText ? `<br><small style="color: #28a745; font-weight: bold;">Last: "${lastSelectionText.substring(0, 30)}${lastSelectionText.length > 30 ? '...' : ''}"</small>` : ''}
+                ${hasSelections && currentXPath ? `<br><small style="color: #007bff; font-weight: bold;">XPath: ${currentXPath.substring(0, 40)}${currentXPath.length > 40 ? '...' : ''}</small>` : ''}
+            </button>
         `;
     });
     
-    subfieldsHtml += `
-            </div>
+    // Selection summary - using same style as main field menu
+    const summaryHtml = totalSubfieldSelections > 0 ? `
+        <div style="margin: 15px 0; padding: 10px; background: #e8f5e8; border-radius: 6px; text-align: center;">
+            <strong style="color: #28a745;">📊 Progress: ${completedSubfields}/${totalSubfields} subfields completed</strong><br>
+            <small style="color: #666;">Total selections: ${totalSubfieldSelections}</small>
         </div>
-    `;
+    ` : '';
     
-    return subfieldsHtml;
+    return summaryHtml + subfieldsHtml;
 }
-
-// Legacy subfields menu creation (kept for backward compatibility)
-function createLegacyInstanceSubfieldsMenu(fieldName, instanceIndex) {
-    const menuId = 'content-extractor-subfields-menu';
-    let existingMenu = document.getElementById(menuId);
-    if (existingMenu) {
-        existingMenu.remove();
-    }
-    
-    const field = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
-    if (!field || !field.sub_fields) return;
-    
-    const instance = window.contentExtractorData.instanceSelections[fieldName][instanceIndex];
-    if (!instance) return;
-    
-    const menu = document.createElement('div');
-    menu.id = menuId;
-    menu.className = 'content-extractor-ui';
-    menu.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        border: 3px solid ${field.color};
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        z-index: 10000;
-        max-width: 600px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        cursor: move;
-    `;
-    
-    // Add draggable functionality
-    let isDragging = false;
-    let dragOffset = { x: 0, y: 0 };
-    
-    menu.addEventListener('mousedown', function(e) {
-        if (e.target.closest('.menu-header') || e.target === menu) {
-            isDragging = true;
-            const rect = menu.getBoundingClientRect();
-            dragOffset.x = e.clientX - rect.left;
-            dragOffset.y = e.clientY - rect.top;
-            menu.style.cursor = 'grabbing';
-            e.preventDefault();
-        }
-    });
-    
-    document.addEventListener('mousemove', function(e) {
-        if (isDragging) {
-            menu.style.left = (e.clientX - dragOffset.x) + 'px';
-            menu.style.top = (e.clientY - dragOffset.y) + 'px';
-            menu.style.transform = 'none';
-        }
-    });
-    
-    document.addEventListener('mouseup', function() {
-        if (isDragging) {
-            isDragging = false;
-            menu.style.cursor = 'move';
-        }
-    });
-    
-    // Header
-    const headerHtml = `
-        <div class="menu-header" style="text-align: center; margin-bottom: 20px; cursor: grab; padding: 5px; border-radius: 6px;"
-             onmousedown="this.style.cursor='grabbing'" onmouseup="this.style.cursor='grab'">
-            <h3 style="margin: 0; color: ${field.color};">
-                ⚙️ ${field.label}[${instanceIndex + 1}] Subfields
-            </h3>
-            <small style="color: #666;">Configure subfields for this instance</small>
-        </div>
-    `;
-    
-    // Breadcrumb
-    const breadcrumbHtml = `
-        <div style="margin-bottom: 15px; padding: 8px 12px; background: #f8f9fa; border-radius: 6px; font-size: 14px; color: #6c757d;">
-            📍 Fields → ${field.label} → Instance ${instanceIndex + 1}
-        </div>
-    `;
-    
-    // Subfields list
-    let subfieldsHtml = `
-        <div style="margin: 15px 0;">
-            <h4 style="margin: 0 0 10px 0; color: ${field.color}; font-size: 14px;">
-                Subfields:
-            </h4>
-            <div style="max-height: 300px; overflow-y: auto;">
-    `;
-    
-    field.sub_fields.forEach((subfield, index) => {
-        const subfieldSelections = instance.subfields[subfield.name] || [];
-        const hasSelections = subfieldSelections.length > 0;
-        const progressText = hasSelections ? ` (${subfieldSelections.length} selected)` : '';
-        const statusColor = hasSelections ? '#28a745' : '#6c757d';
-        
-        subfieldsHtml += `
-            <div style="margin: 8px 0; padding: 12px; background: ${subfield.color || '#f8f9fa'}10; 
-                       border: 1px solid ${subfield.color || '#dee2e6'}; border-radius: 6px; 
-                       display: flex; justify-content: space-between; align-items: center;">
-                <div style="flex: 1;">
-                    <div style="font-weight: bold; color: ${subfield.color || '#333'};">
-                        ${subfield.label}${progressText}
-                    </div>
-                    <div style="font-size: 12px; color: #666; margin-top: 2px;">
-                        ${subfield.description || subfield.type}
-                    </div>
-                </div>
-                <div>
-                    <button onclick="selectSubfield('${field.name}', ${instanceIndex}, '${subfield.name}')" 
-                            style="padding: 8px 16px; background: ${statusColor}; color: white; 
-                                   border: none; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold;"
-                            onmouseover="this.style.opacity='0.8'"
-                            onmouseout="this.style.opacity='1'">
-                        ${hasSelections ? '✅ Set' : '⚙️ Set'}
-                    </button>
-                </div>
-            </div>
-        `;
-    });
-    
-    subfieldsHtml += `
-            </div>
-        </div>
-    `;
-    
-    // Navigation buttons
-    const navigationHtml = `
-        <div style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee;">
-            <button onclick="returnToInstanceManagement('${fieldName}')" 
-                    style="padding: 8px 16px; margin: 0 5px; background: #6c757d; color: white; 
-                           border: none; border-radius: 6px; cursor: pointer; transition: all 0.2s;"
-                    onmouseover="this.style.background='#5a6268'"
-                    onmouseout="this.style.background='#6c757d'">
-                ⬅️ Back to Instances
-            </button>
-            <button onclick="returnToFieldMenu()" 
-                    style="padding: 8px 16px; margin: 0 5px; background: #007bff; color: white; 
-                           border: none; border-radius: 6px; cursor: pointer; transition: all 0.2s;"
-                    onmouseover="this.style.background='#0056b3'"
-                    onmouseout="this.style.background='#007bff'">
-                🏠 Main Menu
-            </button>
-        </div>
-    `;
-    
-    menu.innerHTML = headerHtml + breadcrumbHtml + subfieldsHtml + navigationHtml;
-    document.body.appendChild(menu);
-    
-    return menu;
-}
-
 // Subfield selection handler - now works like main field selection
 window.selectSubfield = function(fieldName, instanceIndex, subfieldName) {
     console.log(`🎯 Selecting subfield: ${fieldName}[${instanceIndex}].${subfieldName}`);
@@ -1470,11 +1695,26 @@ function createSubfieldMethodMenu(subfieldConfig) {
 // Navigation helper functions
 window.returnToInstanceManagement = function(fieldName) {
     console.log(`⬅️ Returning to instance management for ${fieldName}`);
-    const menu = document.getElementById('content-extractor-subfields-menu');
-    if (menu) {
-        menu.remove();
+    
+    // Close any open menus
+    const parentMenu = document.getElementById('content-extractor-parent-selector-menu');
+    if (parentMenu) {
+        parentMenu.remove();
     }
-    createInstanceManagementMenu(fieldName);
+    
+    const subfieldMenu = document.getElementById('content-extractor-subfields-menu');
+    if (subfieldMenu) {
+        subfieldMenu.remove();
+    }
+    
+    // Always use unified menu system
+    if (window.ContentExtractorUnifiedMenu) {
+        window.ContentExtractorUnifiedMenu.createInstanceMenu(fieldName);
+    } else {
+        console.error(`❌ [ERROR] ContentExtractorUnifiedMenu not available`);
+        // Fallback to old system
+        createInstanceManagementMenu(fieldName);
+    }
 };
 
 window.returnToFieldMenu = function() {
@@ -1701,6 +1941,24 @@ function handleSubfieldElementClick(event) {
     
     const { fieldName, instanceIndex, subfieldName } = activeSubfield;
     
+    // STELLAR NEXUS: Check parent container scoping
+    const instance = window.contentExtractorData.instanceSelections[fieldName][instanceIndex];
+    if (instance.parentContainer && instance.parentContainer.xpath) {
+        // Find parent container element
+        const parentElement = findElementByXPath(instance.parentContainer.xpath);
+        if (parentElement) {
+            // Check if selected element is within parent container
+            if (!parentElement.contains(element)) {
+                console.log('🚫 Element outside parent container scope:', element);
+                showParentScopeWarning(fieldName, instanceIndex, subfieldName);
+                return;
+            }
+            console.log('✅ Element within parent container scope');
+        } else {
+            console.warn('⚠️ Parent container element not found on page');
+        }
+    }
+    
     // Create selection data
     const selection = {
         field_name: `${fieldName}[${instanceIndex}].${subfieldName}`,
@@ -1711,11 +1969,21 @@ function handleSubfieldElementClick(event) {
         depth: window.contentExtractorData.currentDepth,
         timestamp: Date.now(),
         element_id: generateElementId(),
-        input_method: 'page_selection'
+        input_method: 'page_selection',
+        parentRelative: instance.parentContainer ? true : false // Mark as parent-scoped
     };
     
+    // If parent container exists, create relative XPath
+    if (instance.parentContainer && instance.parentContainer.xpath) {
+        const parentElement = findElementByXPath(instance.parentContainer.xpath);
+        if (parentElement) {
+            selection.xpath = getRelativeXPath(element, parentElement);
+            selection.parentXPath = instance.parentContainer.xpath;
+            console.log('🎯 Created parent-relative XPath:', selection.xpath);
+        }
+    }
+    
     // Store in instance subfields
-    const instance = window.contentExtractorData.instanceSelections[fieldName][instanceIndex];
     if (!instance.subfields[subfieldName]) {
         instance.subfields[subfieldName] = [];
     }
@@ -1744,6 +2012,13 @@ function handleSubfieldElementClick(event) {
     window.contentExtractorData.selectedDOMElements.add(element);
     
     console.log(`✅ Selected element for ${fieldName}[${instanceIndex}].${subfieldName}:`, element.textContent.trim());
+    
+    // SWIFT PHOENIX: Refresh main menu after subfield selection
+    // Addresses Priority 2 - Cross-menu communication
+    if (typeof refreshFieldMenus === 'function') {
+        refreshFieldMenus();
+        console.log('🔄 Swift Phoenix: Main menu refreshed after subfield element selection');
+    }
 }
 
 function createSubfieldTextInputDialog(fieldName, instanceIndex, subfieldName) {
@@ -1926,6 +2201,13 @@ window.saveSubfieldTextInput = function(fieldName, instanceIndex, subfieldName) 
     document.body.appendChild(feedback);
     setTimeout(() => feedback.remove(), 2000);
     
+    // SWIFT PHOENIX: Refresh main menu after subfield text input save
+    // Addresses Priority 2 - Cross-menu communication
+    if (typeof refreshFieldMenus === 'function') {
+        refreshFieldMenus();
+        console.log('🔄 Swift Phoenix: Main menu refreshed after subfield text input save');
+    }
+    
     // Return to subfields list
     setTimeout(() => {
         createInstanceSubfieldsMenu(fieldName, instanceIndex);
@@ -1966,6 +2248,13 @@ window.clearSubfieldSelections = function(fieldName, instanceIndex, subfieldName
         
         console.log(`🗑️ Cleared all selections for ${fieldName}[${instanceIndex}].${subfieldName}`);
         
+        // SWIFT PHOENIX: Refresh main menu after subfield clearing
+        // Addresses Priority 2 - Cross-menu communication
+        if (typeof refreshFieldMenus === 'function') {
+            refreshFieldMenus();
+            console.log('🔄 Swift Phoenix: Main menu refreshed after subfield clearing');
+        }
+        
         // Refresh the subfield method menu
         setTimeout(() => {
             const field = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
@@ -1983,4 +2272,574 @@ window.clearSubfieldSelections = function(fieldName, instanceIndex, subfieldName
             createSubfieldMethodMenu(subfieldConfig);
         }, 100);
     }
-}; 
+};
+
+// Parent selection functions - Stellar Nexus Implementation
+window.setParentContainer = function(fieldName, instanceIndex) {
+    console.log(`🎯 Setting parent container for ${fieldName}[${instanceIndex}]`);
+    
+    if (window.ContentExtractorUnifiedMenu) {
+        window.ContentExtractorUnifiedMenu.createParentSelectionMenu(fieldName, instanceIndex);
+    } else {
+        console.error(`❌ [ERROR] ContentExtractorUnifiedMenu not available`);
+    }
+};
+
+window.startParentSelection = function(fieldName, instanceIndex) {
+    console.log(`🎯 Starting parent element selection for ${fieldName}[${instanceIndex}]`);
+    
+    // Store selection context
+    window.contentExtractorData.parentSelectionContext = {
+        fieldName: fieldName,
+        instanceIndex: instanceIndex,
+        active: true
+    };
+    
+    // Close parent selection menu
+    const parentMenu = document.getElementById('content-extractor-parent-selector-menu');
+    if (parentMenu) {
+        parentMenu.remove();
+    }
+    
+    // Add parent selection overlay similar to field selection
+    addParentSelectionOverlay();
+    
+    // Enable parent selection mode
+    enableParentSelectionMode();
+    
+    // Show selection indicator
+    showParentSelectionIndicator(fieldName, instanceIndex);
+};
+
+function addParentSelectionOverlay() {
+    // Remove any existing overlays
+    const existingOverlays = document.querySelectorAll('.content-extractor-ui.parent-selection-overlay');
+    existingOverlays.forEach(overlay => overlay.remove());
+    
+    // Create parent selection overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'content-extractor-ui parent-selection-overlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        pointer-events: none;
+        backdrop-filter: blur(1px);
+    `;
+    
+    document.body.appendChild(overlay);
+    console.log('🎯 Parent selection overlay added');
+}
+
+function enableParentSelectionMode() {
+    // Remove existing event listeners
+    document.removeEventListener('click', handleElementClick, true);
+    document.removeEventListener('mouseover', handleMouseOver, true);
+    document.removeEventListener('mouseout', handleMouseOut, true);
+    
+    // Add parent selection event listeners
+    document.addEventListener('click', handleParentElementClick, true);
+    document.addEventListener('mouseover', handleParentMouseOver, true);
+    document.addEventListener('mouseout', handleParentMouseOut, true);
+    
+    console.log('🎯 Parent selection mode enabled');
+}
+
+function handleParentElementClick(event) {
+    // Prevent default behavior
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const target = event.target;
+    
+    // Skip content extractor UI elements
+    if (target.closest('.content-extractor-ui')) {
+        console.log('🎯 Skipping content extractor UI element');
+        return;
+    }
+    
+    const context = window.contentExtractorData.parentSelectionContext;
+    if (!context || !context.active) {
+        console.log('🎯 Parent selection context not active');
+        return;
+    }
+    
+    console.log(`🎯 Parent element clicked for ${context.fieldName}[${context.instanceIndex}]`, target);
+    
+    // Get element details
+    const xpath = getElementXPath(target);
+    const selectedText = target.textContent.trim();
+    
+    // Create parent container data
+    const parentContainer = {
+        xpath: xpath,
+        selected_text: selectedText,
+        timestamp: Date.now()
+    };
+    
+    // Store parent container in instance
+    const instance = window.contentExtractorData.instanceSelections[context.fieldName][context.instanceIndex];
+    if (instance) {
+        instance.parentContainer = parentContainer;
+        console.log(`✅ Parent container saved for ${context.fieldName}[${context.instanceIndex}]:`, parentContainer);
+        
+        // Highlight the selected parent element
+        highlightParentElement(target, getFieldColor(context.fieldName));
+        
+        // Disable parent selection mode
+        disableParentSelectionMode();
+        
+        // Show success feedback
+        showParentSelectionSuccess(context.fieldName, context.instanceIndex, selectedText);
+        
+        // Return to instance management menu
+        setTimeout(() => {
+            returnToInstanceManagement(context.fieldName);
+        }, 1500);
+    } else {
+        console.error(`❌ Instance not found: ${context.fieldName}[${context.instanceIndex}]`);
+    }
+    
+    // Clear selection context
+    window.contentExtractorData.parentSelectionContext = null;
+}
+
+function handleParentMouseOver(event) {
+    const target = event.target;
+    
+    // Skip content extractor UI elements
+    if (target.closest('.content-extractor-ui')) {
+        return;
+    }
+    
+    // Add hover highlight for potential parent selection
+    target.style.setProperty('outline', '3px solid #007bff', 'important');
+    target.style.setProperty('outline-offset', '2px', 'important');
+    target.style.setProperty('background-color', 'rgba(0, 123, 255, 0.1)', 'important');
+    target.style.setProperty('cursor', 'crosshair', 'important');
+}
+
+function handleParentMouseOut(event) {
+    const target = event.target;
+    
+    // Skip content extractor UI elements
+    if (target.closest('.content-extractor-ui')) {
+        return;
+    }
+    
+    // Remove hover highlight
+    target.style.removeProperty('outline');
+    target.style.removeProperty('outline-offset');
+    target.style.removeProperty('background-color');
+    target.style.removeProperty('cursor');
+}
+
+function disableParentSelectionMode() {
+    // Remove parent selection event listeners
+    document.removeEventListener('click', handleParentElementClick, true);
+    document.removeEventListener('mouseover', handleParentMouseOver, true);
+    document.removeEventListener('mouseout', handleParentMouseOut, true);
+    
+    // Remove overlay
+    const overlay = document.querySelector('.content-extractor-ui.parent-selection-overlay');
+    if (overlay) {
+        overlay.remove();
+    }
+    
+    // Remove selection indicator
+    const indicator = document.querySelector('.content-extractor-ui.parent-selection-indicator');
+    if (indicator) {
+        indicator.remove();
+    }
+    
+    console.log('🎯 Parent selection mode disabled');
+}
+
+function highlightParentElement(element, color) {
+    // Apply parent container highlighting
+    element.style.setProperty('border', '3px solid ' + color, 'important');
+    element.style.setProperty('background-color', color + '20', 'important');
+    element.style.setProperty('box-shadow', '0 0 10px ' + color + '80', 'important');
+    
+    // Add parent container badge
+    const badge = document.createElement('div');
+    badge.className = 'content-extractor-ui parent-container-badge';
+    badge.style.cssText = `
+        position: absolute;
+        top: -15px;
+        left: -3px;
+        background: ${color};
+        color: white;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: bold;
+        z-index: 9998;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        pointer-events: none;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        border: 2px solid white;
+    `;
+    badge.textContent = '🎯 PARENT CONTAINER';
+    
+    element.style.position = 'relative';
+    element.appendChild(badge);
+    
+    console.log('🎯 Parent element highlighted with badge');
+}
+
+function showParentSelectionIndicator(fieldName, instanceIndex) {
+    const field = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
+    if (!field) return;
+    
+    const indicator = document.createElement('div');
+    indicator.className = 'content-extractor-ui parent-selection-indicator';
+    indicator.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, ${field.color}, ${field.color}dd);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        z-index: 10001;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border: 2px solid white;
+        text-align: center;
+        animation: slideDown 0.3s ease-out;
+    `;
+    indicator.innerHTML = `
+        <div>🎯 Select Parent Container</div>
+        <div style="font-size: 12px; margin-top: 4px; opacity: 0.9;">
+            ${field.label}[${instanceIndex + 1}] - Click on parent element
+        </div>
+    `;
+    
+    document.body.appendChild(indicator);
+}
+
+function showParentSelectionSuccess(fieldName, instanceIndex, selectedText) {
+    const field = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
+    if (!field) return;
+    
+    const success = document.createElement('div');
+    success.className = 'content-extractor-ui parent-selection-success';
+    success.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        padding: 20px 30px;
+        border-radius: 12px;
+        z-index: 10003;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        border: 3px solid white;
+        text-align: center;
+        animation: scaleIn 0.3s ease-out;
+    `;
+    success.innerHTML = `
+        <div style="font-size: 16px; margin-bottom: 8px;">✅ Parent Container Set!</div>
+        <div style="font-size: 12px; opacity: 0.9; margin-bottom: 6px;">
+            ${field.label}[${instanceIndex + 1}]
+        </div>
+        <div style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 6px; border-radius: 4px;">
+            "${selectedText.substring(0, 60)}${selectedText.length > 60 ? '...' : ''}"
+        </div>
+    `;
+    
+    document.body.appendChild(success);
+    
+    setTimeout(() => {
+        success.remove();
+    }, 1500);
+}
+
+// Add new instance and refresh unified menu
+window.addNewInstance = function(fieldName) {
+    console.log(`➕ Adding new instance for ${fieldName}`);
+    
+    if (!window.contentExtractorData.instanceSelections[fieldName]) {
+        window.contentExtractorData.instanceSelections[fieldName] = [];
+    }
+    
+    // Create new instance with proper structure 
+    const newInstance = {
+        instance_index: window.contentExtractorData.instanceSelections[fieldName].length,
+        xpath: '',
+        selected_text: '',
+        timestamp: new Date().toISOString(),
+        subfields: {}
+    };
+    
+    // Initialize subfields structure
+    const field = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
+    if (field && field.sub_fields) {
+        field.sub_fields.forEach(subfield => {
+            newInstance.subfields[subfield.name] = [];
+        });
+    }
+    
+    window.contentExtractorData.instanceSelections[fieldName].push(newInstance);
+    console.log(`✅ Created new instance ${fieldName}[${newInstance.instance_index}]`);
+    
+    // SWIFT PHOENIX: Refresh main menu after instance creation
+    // Addresses Priority 2 - Cross-menu communication
+    if (typeof refreshFieldMenus === 'function') {
+        refreshFieldMenus();
+        console.log('🔄 Swift Phoenix: Main menu refreshed after instance creation');
+    }
+    
+    // Refresh using unified menu system
+    if (window.ContentExtractorUnifiedMenu) {
+        window.ContentExtractorUnifiedMenu.createInstanceMenu(fieldName);
+    } else {
+        console.error(`❌ [ERROR] ContentExtractorUnifiedMenu not available`);
+        createInstanceManagementMenu(fieldName);
+    }
+    
+    // Show success feedback
+    const feedback = document.createElement('div');
+    feedback.className = 'content-extractor-ui';
+    feedback.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #28a745;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        z-index: 10003;
+        font-size: 14px;
+        font-weight: bold;
+        pointer-events: none;
+        animation: fadeInOut 2s ease-in-out;
+    `;
+    feedback.textContent = `✅ New ${fieldName} instance created!`;
+    
+    document.body.appendChild(feedback);
+    setTimeout(() => feedback.remove(), 2000);
+};
+
+// Helper functions for parent scoping - Stellar Nexus Implementation
+function findElementByXPath(xpath) {
+    try {
+        const result = document.evaluate(
+            xpath, 
+            document, 
+            null, 
+            XPathResult.FIRST_ORDERED_NODE_TYPE, 
+            null
+        );
+        return result.singleNodeValue;
+    } catch (error) {
+        console.error('Error finding element by XPath:', xpath, error);
+        return null;
+    }
+}
+
+function getRelativeXPath(element, parentElement) {
+    if (!element || !parentElement) {
+        return getElementXPath(element);
+    }
+    
+    try {
+        // Get full XPath of element
+        const fullXPath = getElementXPath(element);
+        
+        // Get XPath of parent
+        const parentXPath = getElementXPath(parentElement);
+        
+        // If element's XPath starts with parent's XPath, create relative path
+        if (fullXPath.startsWith(parentXPath)) {
+            // Remove parent path and leading slash
+            let relativePath = fullXPath.substring(parentXPath.length);
+            if (relativePath.startsWith('/')) {
+                relativePath = '.' + relativePath;
+            } else {
+                relativePath = './' + relativePath;
+            }
+            
+            console.log(`🎯 Relative XPath: ${relativePath} (from parent: ${parentXPath})`);
+            return relativePath;
+        } else {
+            console.warn('⚠️ Element not properly contained in parent, using absolute XPath');
+            return fullXPath;
+        }
+    } catch (error) {
+        console.error('Error creating relative XPath:', error);
+        return getElementXPath(element);
+    }
+}
+
+function showParentScopeWarning(fieldName, instanceIndex, subfieldName) {
+    const field = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
+    if (!field) return;
+    
+    const warning = document.createElement('div');
+    warning.className = 'content-extractor-ui parent-scope-warning';
+    warning.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #dc3545, #c82333);
+        color: white;
+        padding: 20px 30px;
+        border-radius: 12px;
+        z-index: 10005;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        border: 3px solid white;
+        text-align: center;
+        animation: shakeWarning 0.5s ease-in-out;
+        max-width: 400px;
+    `;
+    warning.innerHTML = `
+        <div style="font-size: 18px; margin-bottom: 10px;">🚫 Outside Parent Scope!</div>
+        <div style="font-size: 13px; margin-bottom: 8px; opacity: 0.9;">
+            ${field.label}[${instanceIndex + 1}].${subfieldName}
+        </div>
+        <div style="font-size: 12px; background: rgba(255,255,255,0.2); padding: 8px; border-radius: 6px; line-height: 1.4;">
+            Selected element is not within the parent container.<br>
+            Please select elements inside the parent scope only.
+        </div>
+    `;
+    
+    // Add shake animation if not exists
+    if (!document.getElementById('parent-scope-warning-style')) {
+        const style = document.createElement('style');
+        style.id = 'parent-scope-warning-style';
+        style.textContent = `
+            @keyframes shakeWarning {
+                0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+                25% { transform: translate(-50%, -50%) rotate(1deg); }
+                75% { transform: translate(-50%, -50%) rotate(-1deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(warning);
+    
+    // Remove after delay
+    setTimeout(() => {
+        warning.remove();
+    }, 3000);
+    
+    console.log(`🚫 Parent scope warning shown for ${fieldName}[${instanceIndex}].${subfieldName}`);
+}
+
+// CRIMSON PHOENIX: Missing button event handlers for unified menu system
+window.configureSubfields = function(fieldName, instanceIndex) {
+    console.log(`⚙️ Configuring subfields for ${fieldName}[${instanceIndex}]`);
+    
+    const instance = window.contentExtractorData.instanceSelections[fieldName][instanceIndex];
+    if (!instance) {
+        console.error(`❌ Instance ${fieldName}[${instanceIndex}] not found`);
+        return;
+    }
+    
+    // Check if parent container is set
+    const hasParent = instance.parentContainer && instance.parentContainer.xpath;
+    if (!hasParent) {
+        console.warn(`⚠️ No parent container set for ${fieldName}[${instanceIndex}]`);
+        // Show warning and redirect to parent selection
+        alert('Please set a parent container first before configuring subfields.');
+        window.setParentContainer(fieldName, instanceIndex);
+        return;
+    }
+    
+    // Open subfields menu
+    createInstanceSubfieldsMenu(fieldName, instanceIndex);
+};
+
+window.editInstance = function(fieldName, instanceIndex) {
+    console.log(`✏️ Editing instance ${fieldName}[${instanceIndex}]`);
+    
+    // For now, redirect to existing openInstanceSubfields functionality
+    // This maintains backward compatibility while using unified menu system
+    openInstanceSubfields(fieldName, instanceIndex);
+};
+
+// THUNDER CASCADE: Field comment save/cancel functions
+window.saveFieldComment = function(fieldName) {
+    const textarea = document.getElementById('comment-input-field');
+    if (!textarea) return;
+    
+    const commentValue = textarea.value.trim();
+    
+    // Initialize fieldComments if not exists
+    if (!window.contentExtractorData.fieldComments) {
+        window.contentExtractorData.fieldComments = {};
+    }
+    
+    // Save comment (even if empty to clear existing)
+    window.contentExtractorData.fieldComments[fieldName] = commentValue;
+    
+    console.log(`💾 Saved comment for ${fieldName}:`, commentValue || '(empty)');
+    
+    // Close the dialog
+    const dialog = document.getElementById('content-extractor-comment-dialog');
+    if (dialog) {
+        dialog.remove();
+    }
+    
+    // Show success feedback
+    const feedback = document.createElement('div');
+    feedback.className = 'content-extractor-ui';
+    feedback.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #17a2b8;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        z-index: 10003;
+        font-size: 14px;
+        font-weight: bold;
+        pointer-events: none;
+        animation: fadeInOut 2s ease-in-out;
+    `;
+    feedback.textContent = `💬 Comment ${commentValue ? 'saved' : 'cleared'} for ${fieldName}!`;
+    
+    document.body.appendChild(feedback);
+    setTimeout(() => feedback.remove(), 2000);
+    
+    // Return to method selection menu
+    setTimeout(() => {
+        createFieldSettingMethodMenu(fieldName);
+    }, 500);
+};
+
+window.cancelFieldComment = function(fieldName) {
+    console.log(`❌ Cancelled comment input for ${fieldName}`);
+    
+    // Close the dialog
+    const dialog = document.getElementById('content-extractor-comment-dialog');
+    if (dialog) {
+        dialog.remove();
+    }
+    
+    // Return to method selection menu
+    setTimeout(() => {
+        createFieldSettingMethodMenu(fieldName);
+    }, 100);
+};

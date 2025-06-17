@@ -1,0 +1,128 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "SafeKEEPER\u00ae Forensic Evidence Drying Cabinets",
+  "slug": "safekeeperforsic-evidence-drying-cabinets",
+  "meta_title": "SafeKEEPER Forensic Evidence Drying Cabinets - Secure Storage & Drying",
+  "meta_description": "SafeKEEPER forensic evidence drying cabinets provide secure, controlled storage and drying for sensitive forensic samples. Maintain chain of custody with tamper-resistant compartments.",
+  "meta_keywords": "forensic evidence drying cabinet, forensic drying cabinet, evidence drying cabinet, forensic storage cabinet",
+  "short_description": "<p>SafeKEEPER\u00ae series forensic evidence drying cabinets are designed to store, dry or otherwise process forensic evidence in the controlled environment of a tamper-resistant compartment to maintain the chain of custody.</p>",
+  "full_description": "<div>SafeKEEPER\u00ae series forensic evidence drying cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science\u00ae ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents. Using innovative filtration technology, the forensic evidence drying cabinet creates a safe work environment over the widest range of applications in the industry.</div><div>State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies</div>",
+  "seo_content": "<div>SafeKEEPER forensic evidence drying cabinets feature programmable humidity control, HEPA/ULPA filtration, and a variety of model sizes to accommodate different evidence processing needs. The cabinets maintain a secure, tamper-resistant environment to preserve the chain of custody for sensitive forensic samples. Available in single, dual, and quad chamber configurations, these drying cabinets are designed for use in crime labs, medical examiner offices, law enforcement facilities, and other forensic settings.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=safekeeper-forensic-evidence-drying-cabinets&brand=20",
+  "target_keywords": [
+    "forensic evidence drying cabinet",
+    "forensic drying cabinet",
+    "evidence drying cabinet",
+    "forensic storage cabinet",
+    "chain of custody"
+  ],
+  "related_keywords": [
+    "forensic evidence processing",
+    "crime lab equipment",
+    "medical examiner equipment",
+    "law enforcement equipment",
+    "secure storage"
+  ],
+  "technical_keywords": [
+    "HEPA filtration",
+    "ULPA filtration",
+    "humidity control",
+    "tamper-resistant",
+    "ductless technology"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Forensic Evidence Drying Cabinet"
+    },
+    {
+      "category": "Application",
+      "tag": "Forensic Evidence Processing"
+    },
+    {
+      "category": "Industry",
+      "tag": "Crime Laboratories"
+    },
+    {
+      "category": "Industry",
+      "tag": "Medical Examiners"
+    },
+    {
+      "category": "Industry",
+      "tag": "Law Enforcement"
+    },
+    {
+      "category": "Technology",
+      "tag": "HEPA Filtration"
+    },
+    {
+      "category": "Technology",
+      "tag": "ULPA Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "Tamper-Resistant"
+    }
+  ],
+  "specifications": {
+    "Construction & Design": {
+      "Cabinet Style": "Desktop, Standard, Extra Wide, Tall, Quad, Tri, Duplex",
+      "Construction": "Epoxy-coated Steel, Polypropylene"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Protection & Compliance": {
+      "OSHA Compliance": "OSHA Standard -29 CFR, 1910.1450: Occupational exposure to hazardous chemicals in laboratories",
+      "Environmental Certifications": "ISO 14001:2015, ENERGY STAR Partner",
+      "Quality Certifications": "ISO 9001:2015"
+    },
+    "Filtration & Airflow": {
+      "Airflow Direction": "Upflow",
+      "Main Filter": "Electrostatic",
+      "Secondary Filter": "HEPA / ULPA",
+      "Ternary Filter": "Carbon",
+      "Biological Filter": "Optional"
+    }
+  },
+  "features_data": [
+    "Programmable humidity control",
+    "HEPA/ULPA filtration for particulates and pathogens",
+    "Ductless technology removes fumes and odors",
+    "Tamper-resistant, secure storage compartments",
+    "Available in single, dual, and quad chamber configurations"
+  ],
+  "applications": [
+    "Forensic evidence processing and drying",
+    "Secure storage of sensitive forensic samples",
+    "Maintaining chain of custody in crime labs",
+    "Evidence processing in medical examiner offices",
+    "Secure storage for law enforcement agencies"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "SafeKEEPER Forensic Evidence Drying Cabinets",
+    "description": "Secure, controlled storage and drying for forensic evidence samples",
+    "manufacturer": "Air Science",
+    "category": "Forensic Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30S_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30T_Front_Open.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view",
+    "SafeFUME CA30T front view with door open for fingerprint processing"
+  ],
+  "page_content_sections": {
+    "overview": "SafeKEEPER\u00ae series forensic evidence drying cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science\u00ae ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents.",
+    "specifications": "SafeKEEPER forensic evidence drying cabinets feature programmable humidity control, HEPA/ULPA filtration, and a variety of model sizes to accommodate different evidence processing needs.",
+    "applications": "The forensic evidence drying cabinets are designed for use in crime labs, medical examiner offices, law enforcement facilities, and other forensic settings to maintain the chain of custody for sensitive samples.",
+    "models": "Available in single, dual, and quad chamber configurations to meet the needs of different forensic evidence processing workflows."
+  }
+}

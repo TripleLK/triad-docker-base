@@ -1,0 +1,85 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "SafeFUME Automatic Cyanoacrylate Fuming Chambers for Fingerprint Development",
+  "slug": "safefume-automatic-cyanoacrylate-fuming-chambers",
+  "meta_title": "SafeFUME Cyanoacrylate Fuming Chambers | Fingerprint Development",
+  "meta_description": "Professional cyanoacrylate fuming chambers for latent fingerprint development with controlled environment. Multiple sizes available from bench top to floor standing models.",
+  "meta_keywords": "cyanoacrylate fuming chamber, fingerprint development, latent fingerprint, forensic equipment, methylcyanoacrylate vapor",
+  "short_description": "<p>SafeFUME™ cyanoacrylate fuming chambers are designed to safely develop latent fingerprints using methylcyanoacrylate (CNA) vapor in a controlled environment. Available in multiple sizes from bench top to floor standing models.</p>",
+  "full_description": "<div><p>SafeFUME™ automatic cyanoacrylate fuming chambers create a safe work environment for latent fingerprint development using methylcyanoacrylate (CNA) vapor in a controlled environment. These professional-grade chambers are designed for forensic applications in crime laboratories, law enforcement agencies, and criminal justice education programs.</p><p>Available in multiple configurations including bench top models (CA24S-A), standard floor models (CA30S-A, CA48S-A, CA60S-A), tall floor models (CA30T-A, CA48T-A, CA60T-A), and multi-chamber options (CATRI-A, CAQUAD-A). All floor models include caster wheels for mobility.</p><p>The chambers feature innovative filtration technology with GP Plus filters for solvent, organic and alcohol removal. Optional features include UV lamp decontamination and side/rear windows for 360° viewing of the development process.</p></div>",
+  "seo_content": "<div><h2>Professional Cyanoacrylate Fuming for Forensic Applications</h2><p>SafeFUME chambers provide controlled environments for developing latent fingerprints on evidence using cyanoacrylate (superglue) fuming techniques. These chambers are essential tools for:</p><ul><li>State and Federal Crime Laboratories</li><li>Crime Scene Investigation Units</li><li>Law Enforcement Agencies</li><li>Medical Examiners' Programs</li><li>Criminal Justice Education</li></ul><p>The innovative filtration technology ensures safe operation while the programmable controls allow for precise management of the fuming process. Available in multiple sizes to accommodate various evidence types and laboratory space constraints.</p></div>",
+  "source_url": "https://www.airscience.com/product-category-page?brandname=safefume-fuming-chambers&brand=14",
+  "target_keywords": ["cyanoacrylate fuming chamber", "fingerprint development equipment", "forensic fuming chamber", "latent fingerprint processing", "methylcyanoacrylate vapor chamber"],
+  "related_keywords": ["crime lab equipment", "forensic science tools", "fingerprint evidence processing", "superglue fuming", "evidence processing chamber"],
+  "technical_keywords": ["GP Plus filtration", "UV lamp decontamination", "programmable controls", "cyanoacrylate vapor", "forensic chamber"],
+  "categorized_tags": [
+    {"category": "Equipment Type", "tag": "Fuming Chamber"},
+    {"category": "Application", "tag": "Fingerprint Development"},
+    {"category": "Industry", "tag": "Forensic Science"},
+    {"category": "Technology", "tag": "Cyanoacrylate Fuming"},
+    {"category": "Compliance", "tag": "Laboratory Safety"}
+  ],
+  "specifications": {
+    "Construction": {
+      "Filter": "GP Plus! - primarily for solvent, organic and alcohol removal",
+      "Caster Wheels": "Standard on all models except bench top series"
+    },
+    "Options And Accessories": {
+      "UV Lamp": "Optional decontamination",
+      "Viewing Windows": "Optional side and rear windows for 360° view of development"
+    }
+  },
+  "features_data": [
+    "Multiple sizes available from bench top to floor standing",
+    "Multi-chamber cabinets available",
+    "Caster wheels standard on all models except bench top series",
+    "Optional UV Lamp decontamination",
+    "Optional side and rear windows for 360° view of development",
+    "GP Plus filtration for solvent, organic and alcohol removal",
+    "Controlled environment for methylcyanoacrylate (CNA) vapor",
+    "Designed for forensic fingerprint development applications"
+  ],
+  "applications": [
+    "State and Federal Crime Laboratories",
+    "Crime Scene Investigation",
+    "Law Enforcement Agencies",
+    "Medical Examiners' Programs",
+    "Criminal Justice Education",
+    "Latent fingerprint development",
+    "Forensic evidence processing"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "SafeFUME Automatic Cyanoacrylate Fuming Chamber",
+    "description": "Professional cyanoacrylate fuming chambers for developing latent fingerprints in forensic applications using methylcyanoacrylate vapor in a controlled environment.",
+    "manufacturer": "Air Science",
+    "category": "Forensic Laboratory Equipment",
+    "offers": {
+      "@type": "AggregateOffer",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "USD"
+    }
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30S_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30T_Front_Open.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA60T_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30S_Right.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME CA30S cyanoacrylate fuming chamber right side view for fingerprint development",
+    "SafeFUME CA30T cyanoacrylate fuming chamber with front door open showing interior chamber",
+    "SafeFUME CA60T large cyanoacrylate fuming chamber left side view for forensic applications",
+    "SafeFUME CA30S standard cyanoacrylate fuming chamber for latent fingerprint processing"
+  ],
+  "page_content_sections": {
+    "overview": "SafeFUME™ cyanoacrylate fuming chambers create a safe work environment for developing latent fingerprints using methylcyanoacrylate vapor in a controlled environment. These chambers are essential tools for forensic laboratories and law enforcement agencies.",
+    "specifications": "Available in multiple sizes from bench top to floor standing models with various chamber heights. Features GP Plus filtration for solvent, organic and alcohol removal. Optional UV lamp decontamination and 360° viewing windows available.",
+    "applications": "Designed for State and Federal Crime Laboratories, Crime Scene Investigation units, Law Enforcement Agencies, Medical Examiners' Programs, and Criminal Justice Education facilities. Ideal for processing evidence to develop latent fingerprints.",
+    "models": "Models range from compact bench top CA24S-A to floor standing options in various widths (30\", 48\", 60\") and heights. Multi-chamber options include CATRI-A and CAQUAD-A configurations for high-volume processing needs."
+  }
+}

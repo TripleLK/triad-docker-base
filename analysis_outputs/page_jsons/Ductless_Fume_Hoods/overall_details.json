@@ -1,0 +1,99 @@
+{
+    "source_type": "new",
+    "needs_review": true,
+    "data_completeness": 0.9,
+    "specification_confidence": "high",
+    "title": "Purair BASIC Ductless Fume Hoods - Compact Laboratory Safety Enclosures",
+    "slug": "purair-basic-ductless-fume-hoods",
+    "meta_title": "Purair BASIC Ductless Fume Hoods | Compact Lab Safety Enclosures",
+    "meta_description": "Compact ductless fume hoods ideal for limited lab space with high-efficiency EC blower, LED lighting, and filter blockage alarm. Available in multiple sizes with advanced filtration technology.",
+    "meta_keywords": "ductless fume hood, laboratory safety, compact fume hood, filtration technology, chemical safety enclosure",
+    "short_description": "<p>The Purair® BASIC Series ductless fume hoods are compact, ideal for use in laboratory environments where space is limited or where only small volumes of harmful substances are handled. These units feature high efficiency EC blowers, energy saving LED lighting, and filter blockage alarms for optimal safety.</p>",
+    "full_description": "<div><p>The Purair® BASIC Series ductless fume hoods create a safe work environment over the widest range of laboratory applications. These compact units are perfect for laboratories with limited space or where only small volumes of harmful substances are handled.</p><p>Key features include high efficiency EC blower technology, energy-saving LED lighting, and a filter blockage alarm system that ensures optimal safety. The unique filter clamping design eliminates bypass leakage outside the cabinet, protecting operators from fume hazards and, with added HEPA/ULPA filtration, from particle hazards as well.</p><p>Available in multiple sizes (24\", 36\", and 48\" widths) with standard and shallow depth options, these versatile fume hoods accommodate various laboratory configurations. The innovative filtration technology makes them suitable for applications including compounding, forensics, histology, microscopy, pharmaceutical work, powder handling, solvent cleaning, and more.</p></div>",
+    "seo_content": "<div><h2>Advanced Filtration Technology for Laboratory Safety</h2><p>Purair BASIC ductless fume hoods utilize sophisticated filtration formulas designed for specific laboratory applications. The GP Plus! filter handles solvents, organics and alcohols, while specialized filters are available for acids (ACI Plus!/SUL), iodine vapors (ACR), mercury vapor (ACM), ammonia solutions (AMM), and formaldehyde (FOR).</p><h2>Versatile Laboratory Applications</h2><p>These compact ductless fume hoods excel in multiple laboratory settings including: compounding, balance enclosures, microscopy workstations, forensic analysis, histology procedures, educational demonstrations, pharmaceutical processing, powder fingerprinting, sample preparation, soldering operations, solvent cleaning, and veterinary/dental applications.</p><h2>Space-Efficient Design with Multiple Configuration Options</h2><p>Available in six model configurations ranging from 24\" to 48\" widths and in standard (27\") or space-saving (24\") depths, the Purair BASIC series accommodates various laboratory space constraints while maintaining a consistent 35\" height profile and 23.6\" internal working height.</p></div>",
+    "source_url": "https://www.airscience.com/product-category-page?brandname=purair-basic-ductless-fume-hoods&brand=8",
+    "target_keywords": ["ductless fume hood", "laboratory safety enclosure", "compact fume hood", "filtration technology", "chemical containment"],
+    "related_keywords": ["laboratory equipment", "chemical safety", "fume extraction", "air filtration", "laboratory workstation"],
+    "technical_keywords": ["EC blower", "LED lighting", "filter blockage alarm", "HEPA filtration", "ULPA filtration", "carbon filtration"],
+    "categorized_tags": [
+      {"category": "Equipment Type", "tag": "Ductless Fume Hood"},
+      {"category": "Application", "tag": "Chemical Containment"},
+      {"category": "Industry", "tag": "Laboratory"},
+      {"category": "Technology", "tag": "Filtration System"},
+      {"category": "Compliance", "tag": "Laboratory Safety"}
+    ],
+    "specifications": {
+      "Construction": {
+        "Filter clamping": "Unique design eliminates bypass leakage",
+        "Lighting": "Energy saving LED lighting"
+      },
+      "Airflow & Filtration": {
+        "Blower": "High efficiency EC blower",
+        "Filter options": "GP Plus!, ACI Plus!/SUL, ACR, ACM, AMM, FOR"
+      },
+      "Controls & Monitoring": {
+        "Alarm": "Filter blockage alarm"
+      }
+    },
+    "features_data": [
+      "High efficiency EC blower",
+      "Energy saving LED lighting",
+      "Filter blockage alarm",
+      "Protects operator from fume and particle hazards",
+      "Unique filter clamping design eliminates bypass leakage",
+      "Available in multiple sizes (24\", 36\", and 48\" widths)",
+      "Available in standard (27\") and space-saving (24\") depths",
+      "Specialized filtration options for different chemical applications"
+    ],
+    "applications": [
+      "Compounding",
+      "Balance Enclosures",
+      "Microscopy and Robotic Equipment",
+      "Forensics",
+      "Histology",
+      "Educational Settings",
+      "Mobile and Classroom Demonstrations",
+      "Pharmaceutical Processing",
+      "Powder Fingerprinting",
+      "Powder Weighing",
+      "Sample Preparation",
+      "Soldering",
+      "Solvent Cleaning and Welding",
+      "Veterinary Applications",
+      "Dental Applications"
+    ],
+    "structured_data": {
+      "@type": "Product",
+      "@context": "https://schema.org/",
+      "name": "Purair BASIC Ductless Fume Hood",
+      "description": "Compact ductless fume hood with high-efficiency EC blower and advanced filtration technology for laboratory safety applications.",
+      "manufacturer": "Air Science",
+      "category": "Laboratory Equipment",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock"
+      },
+      "brand": {
+        "@type": "Brand",
+        "name": "Air Science"
+      }
+    },
+    "image_urls": [
+      "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-24-XT_Left.png",
+      "https://www.airscience.com/wp-content/uploads/2022/10/PDT_P5-36-XT_Left-1.png",
+      "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-48-XT_Left.png",
+      "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-24-XT_Left.png"
+    ],
+    "alt_text_suggestions": [
+      "Purair BASIC P5-24-XT Ductless Fume Hood - 24 inch model left view",
+      "Purair BASIC P5-36-XT Ductless Fume Hood - 36 inch model left view",
+      "Purair BASIC P5-48-XT Ductless Fume Hood - 48 inch model left view",
+      "Purair BASIC P5-24-XT Ductless Fume Hood - compact laboratory enclosure"
+    ],
+    "page_content_sections": {
+      "overview": "The Purair BASIC Series ductless fume hoods provide compact laboratory safety solutions with advanced filtration technology. These units feature high-efficiency EC blowers, energy-saving LED lighting, and filter blockage alarms to ensure operator protection from chemical fumes and particulates.",
+      "specifications": "Available in multiple configurations with widths of 24\", 36\", and 48\", and depths of either 27\" or 24\". All models maintain a consistent 35\" height with 23.6\" internal working height. Features include high-efficiency EC blower technology, energy-saving LED lighting, and specialized filtration options for various chemical applications.",
+      "applications": "Ideal for laboratory environments with limited space or where small volumes of harmful substances are handled. Applications include compounding, forensics, histology, educational demonstrations, pharmaceutical work, powder handling, sample preparation, soldering, solvent cleaning, and veterinary/dental procedures.",
+      "models": "The Purair BASIC Series includes six primary models: P5-24-XT-A, P5-36-XT-A, P5-48-XT-A (standard 27\" depth) and P5-24-XTS-A, P5-36-XTS-A, P5-48-XTS-A (space-saving 24\" depth). All models feature the same advanced filtration technology and safety features."
+    }
+  }

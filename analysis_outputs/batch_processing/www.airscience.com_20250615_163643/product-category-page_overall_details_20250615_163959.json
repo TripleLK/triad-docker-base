@@ -1,0 +1,185 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=purair-bio-biosafety-cabinets&brand=42",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 3,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     AS-AHA-103-CA-B 40.7\" | 1034 mm 31.1\" | 789 mm 60.5\" | 1537 mm   AS-AHA-133-CA-B 52.5\" | 1334 mm 31.1\" | 789 mm 60.5\" | 1537 mm   AS-AHA-163-CA-B 64.3\" | 1634 mm 31.1\" | 789 mm 60.5\" | 1537 mm   AS-AHA-193-CA-A 76.1\" | 1934 mm 31.1\" | 789 mm 60.5\" | 1537 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>AS-AHA-103-CA-B</td> <td>40.7\" | 1034 mm</td> <td>31.1\" | 789 mm</td> <td>60.5\" | 1537 mm</td> </tr> <tr> <td>AS-AHA-133-CA-B</td> <td>52.5\" | 1334 mm</td> <td>31.1\" | 789 mm</td> <td>60.5\" | 1537 mm</td> </tr> <tr> <td>AS-AHA-163-CA-B</td> <td>64.3\" | 1634 mm</td> <td>31.1\" | 789 mm</td> <td>60.5\" | 1537 mm</td> </tr> <tr> <td>AS-AHA-193-CA-A</td> <td>76.1\" | 1934 mm</td> <td>31.1\" | 789 mm</td> <td>60.5\" | 1537 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     AS-AHA-103-CA-B 36.2\" | 920 mm 24.6\" | 626 mm 28\" | 709 mm   AS-AHA-133-CA-B 48\" | 1220 mm 24.6\" | 626 mm 28\" | 709 mm   AS-AHA-163-CA-B 59.8\" | 1520 mm 24.6\" | 626 mm 28\" | 709 mm   AS-AHA-193-CA-A 71.6\" | 1820 mm 24.6\" | 626 mm 28\" | 709 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>AS-AHA-103-CA-B</td> <td>36.2\" | 920 mm</td> <td>24.6\" | 626 mm</td> <td>28\" | 709 mm</td> </tr> <tr> <td>AS-AHA-133-CA-B</td> <td>48\" | 1220 mm</td> <td>24.6\" | 626 mm</td> <td>28\" | 709 mm</td> </tr> <tr> <td>AS-AHA-163-CA-B</td> <td>59.8\" | 1520 mm</td> <td>24.6\" | 626 mm</td> <td>28\" | 709 mm</td> </tr> <tr> <td>AS-AHA-193-CA-A</td> <td>71.6\" | 1820 mm</td> <td>24.6\" | 626 mm</td> <td>28\" | 709 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Purair BIO is designed to protect individuals, the environment and products from a variety of biological particulates. Specific applications include, but are not limited to: Life Science Research \\ Sterile Product Preparation \\ Biological Protocols",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Purair BIO is designed to protect individuals, the environment and products from a variety of biological particulates. Specific applications include, but are not limited to:</p> <p>Life Science Research \\ Sterile Product Preparation \\ Biological Protocols</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Single EC Blower Motor Design. The Purair BIO biosafety cabinet is designed with a single EC blower motor for ease of use, reliability, and to promote low cost of ownership. Dual motor designs can introduce a number of problems, including unbalanced airflow, higher maintenance costs, longer certification processes, and uneven filter loading. Airflow adjustments are simpler, operational costs lower, and maintenance easier for BSCs equipped with single EC blower motors. Flexibility. The Purair BIO includes multiple service connections for maximum flexibility. It includes duplex electrical outlets with splash-proof, UL listed covers. CSA certified service valves for gas, air, and vacuum are also available. Maximum working pressure of 75PSI. Operator Safety. The anti-ultraviolet, 6 mm tempered glass ensures maximum protection for the operator. Ergonomic Design. The user interface combines ergonomics, safety, and aesthetics with a 10° angled window design that reduces operator head and elbow discomfort, as well as eye strain and fatigue. Slim Profile. The Purair BIO is one of the narrowest BSCs on the market and permits easy passage through standard doorways.     Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/Icons_Purair-BIO.svg\" alt=\"\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> <ul> <li><strong>Single EC Blower Motor Design. </strong>The Purair BIO biosafety cabinet is designed with a single EC blower motor for ease of use, reliability, and to promote low cost of ownership. Dual motor designs can introduce a number of problems, including unbalanced airflow, higher maintenance costs, longer certification processes, and uneven filter loading. Airflow adjustments are simpler, operational costs lower, and maintenance easier for BSCs equipped with single EC blower motors.</li> <li><strong>Flexibility. </strong>The Purair BIO includes multiple service connections for maximum flexibility. It includes duplex electrical outlets with splash-proof, UL listed covers. CSA certified service valves for gas, air, and vacuum are also available. Maximum working pressure of 75PSI.</li> <li><strong>Operator Safety. </strong>The anti-ultraviolet, 6 mm tempered glass ensures maximum protection for the operator.</li> <li><strong>Ergonomic Design.</strong> The user interface combines ergonomics, safety, and aesthetics with a 10° angled window design that reduces operator head and elbow discomfort, as well as eye strain and fatigue.</li> <li><strong>Slim Profile.</strong> The Purair BIO is one of the narrowest BSCs on the market and permits easy passage through standard doorways.</li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/biological-safety-cabinets.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2025/06/PDT_AS-AHA-103_Right-Cart.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2025/06/PDT_AS-AHA-133_Right-Cart.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2025/06/PDT_AS-AHA-163_Right_Cart.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2025/06/AS-AHA-193-CA-A_6ft-BSC.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2025/06/PDT_AS-AHA-103_Right-Cart.png\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  The Purair® BIO Biological Safety Cabinet (BSC) is certified for safety and performance in accordance with NSF/ANSI Standard 49 and EN12469 which certifies Class II, Type A2 laminar flow cabinets are suitable for working with biosafety agents at levels 1, 2 and 3. Air Science 4-foot and 6 foot models are certified by NSF.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>The Purair® BIO Biological Safety Cabinet (BSC) is certified for safety and performance in accordance with NSF/ANSI Standard 49 and EN12469 which certifies Class II, Type A2 laminar flow cabinets are suitable for working with biosafety agents at levels 1, 2 and 3. Air Science 4-foot and 6 foot models are certified by NSF.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® BIO Biological Safety Cabinets",
+              "html": "<h1>Purair® BIO Biological Safety Cabinets</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T16:39:59.929964+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Controls & Monitoring",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Controls & Monitoring",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

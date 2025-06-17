@@ -1,0 +1,134 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.95,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae ECO Green Performance Ductless Fume Hoods",
+  "slug": "purair-eco-green-performance-ductless-fume-hoods",
+  "meta_title": "Purair ECO Ductless Fume Hoods - High Efficiency Air Filtration",
+  "meta_description": "The Purair ECO Series high efficiency ductless fume hoods protect the user and the environment from hazardous vapors generated on the work surface.",
+  "meta_keywords": "ductless fume hood, purair eco, air filtration, hazardous vapors, laboratory equipment",
+  "short_description": "<p>The Purair\u00ae ECO Series high efficiency ductless fume hoods protect the user and the environment from hazardous vapors generated on the work surface.</p>",
+  "full_description": "<div>A high capacity air handling system delivers face velocity of 100 FPM. Improved clamping prevents bypass leakage. Ergonomic arm rest for user comfort. The filter assembly is easy to access, easy to change.</div>",
+  "seo_content": "<div>Using innovative filtration technology, the Purair ECO creates a safe work environment over the widest range of applications in the industry. Capsule Filling / Chemical Sampling / Dental / Drug and Chemical Analysis / Forensics / Histology/ Ink Fumes / LEEDS Installations / Light Grinding / Pharmaceuticals / Pipetting / Slide Staining / Spray Adhesives / Weighing</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=purair-eco-ductless-fume-hoods&brand=34",
+  "target_keywords": [
+    "ductless fume hood",
+    "purair eco",
+    "air filtration",
+    "hazardous vapors",
+    "laboratory equipment"
+  ],
+  "related_keywords": [
+    "capsule filling",
+    "chemical sampling",
+    "dental",
+    "drug analysis",
+    "forensics",
+    "histology",
+    "ink fumes",
+    "leeds installations",
+    "light grinding",
+    "pharmaceuticals",
+    "pipetting",
+    "slide staining",
+    "spray adhesives",
+    "weighing"
+  ],
+  "technical_keywords": [
+    "face velocity",
+    "clamping",
+    "filter assembly",
+    "filtration technology"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "ductless fume hood"
+    },
+    {
+      "category": "Application",
+      "tag": "chemical handling"
+    },
+    {
+      "category": "Industry",
+      "tag": "laboratory"
+    },
+    {
+      "category": "Technology",
+      "tag": "air filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Construction": "Epoxy-coated Steel",
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. This product may assist you with compliance or as part of your chemical hygiene plan. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental Compliance": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality Compliance": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Airflow & Filtration": {
+      "Airflow Direction": "Upflow",
+      "Face Velocity": 100,
+      "Main Filter": "HEPA (ULPA optional)",
+      "Carbon Filter": "Activated Carbon (optional)",
+      "Biological Filter": "HEPA or ULPA (optional)"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "High capacity air handling system delivers 100 FPM face velocity",
+    "Improved clamping prevents bypass leakage",
+    "Ergonomic arm rest for user comfort",
+    "Easy access, easy change filter assembly"
+  ],
+  "applications": [
+    "Capsule Filling",
+    "Chemical Sampling",
+    "Dental",
+    "Drug and Chemical Analysis",
+    "Forensics",
+    "Histology",
+    "Ink Fumes",
+    "LEEDS Installations",
+    "Light Grinding",
+    "Pharmaceuticals",
+    "Pipetting",
+    "Slide Staining",
+    "Spray Adhesives",
+    "Weighing"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair\u00ae ECO Green Performance Ductless Fume Hoods",
+    "description": "The Purair\u00ae ECO Series high efficiency ductless fume hoods protect the user and the environment from hazardous vapors generated on the work surface.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_ECO-20-Front.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_ECO-25_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_ECO-20-Front.png"
+  ],
+  "alt_text_suggestions": [
+    "Purair ECO-20 ductless fume hood front view",
+    "Purair ECO-25 ductless fume hood left side view",
+    "Purair ECO-20 ductless fume hood front view"
+  ],
+  "page_content_sections": {
+    "overview": "A high capacity air handling system delivers face velocity of 100 FPM. Improved clamping prevents bypass leakage. Ergonomic arm rest for user comfort. The filter assembly is easy to access, easy to change.",
+    "specifications": "Comprehensive technical specifications covering construction, electrical, airflow, filtration, and warranty details.",
+    "applications": "The Purair ECO creates a safe work environment over a wide range of applications including capsule filling, chemical sampling, dental, drug analysis, forensics, and more.",
+    "models": "The Purair ECO Series is available in 5 different model sizes from 30\" to 69\" width."
+  }
+}

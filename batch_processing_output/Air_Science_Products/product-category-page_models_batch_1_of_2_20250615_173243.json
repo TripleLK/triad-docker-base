@@ -1,0 +1,200 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=mobile-forensic-evidence-benches &brand=36",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "model_name": {
+      "xpath_selectors": [
+        "//*[@class=\"blockcontainer2\"]/form/select/option"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//*[@class=\"blockcontainer2\"]/form/select/option",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "EVB-72-A - Work table, 72\"W, 115VAC, 60Hz",
+              "html": "<option value=\"Div1\" selected>EVB-72-A - Work table, 72\"W, 115VAC, 60Hz </option> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "models": {
+      "xpath_selectors": [
+        "/html/body/section[4]/*[contains(@class, 'roweven')]",
+        "/html/body/section[6]/*[contains(@class, 'roweven')]"
+      ],
+      "comment": "First selection has the model names; second selection has the spec groups and specs for those models in the same order (Div1 in the selector = Div1 in the spec groups). Spec groups are particular by model.",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[4]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Model Specifications     Model  EVB-72-A - Work table, 72\"W, 115VAC, 60Hz",
+              "html": "<div class=\"roweven\"> <div class=\"blockcontainer2\"> <h1>Model Specifications</h1> <form class=\"elementor-form\" method=\"post\" name=\"New Form\"> <input type=\"hidden\" name=\"post_id\" value=\"3802\"> <input type=\"hidden\" name=\"form_id\" value=\"2a193c2\"> <input type=\"hidden\" name=\"referer_title\" value=\"\"> <div>Model</div> <select name=\"form_fields[field_2400c42]\" id=\"form-field-field_2400c42\" class=\"elementor-field-textual elementor-size-sm\"> <option value=\"Div1\" selected>EVB-72-A - Work table, 72\"W, 115VAC, 60Hz </option> </select> </form> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        },
+        {
+          "selector_index": 1,
+          "xpath": "/html/body/section[6]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS   External Width: 72″ | 1828 mm External Depth: 28″ | 711 mm External Height: 36″ | 914 mm Shipping Width: 80″ | 2032 mm Shipping Depth: 40″ | 1016 mm Net Weight: 325 lbs | 147 kg Shipping Weight: 400 lbs | 182 kg     CONSTRUCTION   Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   Environmental: ISO 14001 : 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Adjustable Levelling feet: CART-LEVEL Drop-in Airflow Pod: P5-24-HEAD-EVB Magnifying Lamp: MAG-L Power Package Outlet Strip: PSTRIP Stainless steel work surface: TRAY-EVB-SS Water Package: SINK Water Package*: SF-WATER * Factory installed; specify when ordering     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: Specify UK, Euro or Other Plug     CONTROLS & MONITORING   Control: Fan Manual On Off",
+              "html": "<div class=\"roweven\"> <div class=\"blockcontainer2\"> <div id=\"Div1\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-1\"> <p> <strong>External Width:</strong> 72″ | 1828 mm<br> <strong>External Depth:</strong> 28″ | 711 mm<br> <strong>External Height:</strong> 36″ | 914 mm<br> <strong>Shipping Width:</strong> 80″ | 2032 mm<br> <strong>Shipping Depth:</strong> 40″ | 1016 mm<br> <strong>Net Weight:</strong> 325 lbs | 147 kg<br> <strong>Shipping Weight:</strong> 400 lbs | 182 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-4\"> <p> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"7\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-7\"> <p> <strong>Environmental:</strong> ISO 14001 : 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"2\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-2\"> <p> <strong>Adjustable Levelling feet</strong>: CART-LEVEL<br> <strong>Drop-in Airflow Pod</strong>: P5-24-HEAD-EVB<br> <strong>Magnifying Lamp</strong>: MAG-L<br> <strong>Power Package Outlet Strip</strong>: PSTRIP<br> <strong>Stainless steel work surface</strong>: TRAY-EVB-SS<br> <strong>Water Package</strong>: SINK<br> <strong>Water Package*</strong>: SF-WATER<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-8\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-3\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> Specify UK, Euro or Other Plug<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"6\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-6\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> <div class=\"expandable-content\" id=\"content-6\"> <p> <strong>Control:</strong> Fan Manual On Off<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 2,
+        "successful_extractions": 2,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "specification_group_names": {
+      "xpath_selectors": [
+        "/html/body/section[6]/div/div[1]/div/div/div/div/p"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[6]/div/div[1]/div/div/div/div/p",
+          "match_count": 7,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "1"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "4"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"7\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "7"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"2\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "2"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "8"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "3"
+              }
+            },
+            {
+              "text": "CONTROLS & MONITORING",
+              "html": "<p class=\"expandable-text\" data-id=\"6\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-6\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> ",
+              "attributes": {
+                "data-id": "6"
+              }
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:32:40.839242+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "MODEL_SUBSET",
+  "_page_info": {
+    "page_title": "Air Science Products",
+    "safe_directory_name": "Air_Science_Products",
+    "ai_json_record_id": 123
+  },
+  "_batch_info": {
+    "batch_number": 1,
+    "total_batches": 2,
+    "models_in_batch": [
+      "Model Specifications     Model  EVB-72-A - Work table",
+      "72\"W",
+      "115VAC",
+      "60Hz"
+    ],
+    "total_models": 7
+  },
+  "target_model_names": [
+    "Model Specifications     Model  EVB-72-A - Work table",
+    "72\"W",
+    "115VAC",
+    "60Hz"
+  ],
+  "extracted_specification_groups": [
+    "Construction",
+    "Controls & Monitoring",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Construction",
+      "Controls & Monitoring",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

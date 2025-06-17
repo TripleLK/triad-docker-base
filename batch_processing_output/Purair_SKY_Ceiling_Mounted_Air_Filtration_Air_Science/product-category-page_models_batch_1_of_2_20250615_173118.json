@@ -1,0 +1,221 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=purair-sky-ceiling-unit&brand=44",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "model_name": {
+      "xpath_selectors": [
+        "//*[@class=\"blockcontainer2\"]/form/select/option"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//*[@class=\"blockcontainer2\"]/form/select/option",
+          "match_count": 2,
+          "extracted_data": [
+            {
+              "text": "SKY-24-A - Nominal 26.4\" x 26.4\", 115VAC, 60Hz",
+              "html": "<option value=\"Div1\" selected>SKY-24-A - Nominal 26.4\" x 26.4\", 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "SKY-48-A - Nominal 26.4\" x 52.75\", 115VAC, 60Hz",
+              "html": "<option value=\"Div2\">SKY-48-A - Nominal 26.4\" x 52.75\", 115VAC, 60Hz</option> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "models": {
+      "xpath_selectors": [
+        "/html/body/section[4]/*[contains(@class, 'roweven')]",
+        "/html/body/section[6]/*[contains(@class, 'roweven')]"
+      ],
+      "comment": "First selection has the model names; second selection has the spec groups and specs for those models in the same order (Div1 in the selector = Div1 in the spec groups). Spec groups are particular by model.",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[4]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Model Specifications     Model  SKY-24-A - Nominal 26.4\" x 26.4\", 115VAC, 60Hz  SKY-48-A - Nominal 26.4\" x 52.75\", 115VAC, 60Hz",
+              "html": "<div class=\"roweven\"> <div class=\"blockcontainer2\"> <h1>Model Specifications</h1> <form class=\"elementor-form\" method=\"post\" name=\"New Form\"> <input type=\"hidden\" name=\"post_id\" value=\"3802\"> <input type=\"hidden\" name=\"form_id\" value=\"2a193c2\"> <input type=\"hidden\" name=\"referer_title\" value=\"\"> <div>Model</div> <select name=\"form_fields[field_2400c42]\" id=\"form-field-field_2400c42\" class=\"elementor-field-textual elementor-size-sm\"> <option value=\"Div1\" selected>SKY-24-A - Nominal 26.4\" x 26.4\", 115VAC, 60Hz </option> <option value=\"Div2\">SKY-48-A - Nominal 26.4\" x 52.75\", 115VAC, 60Hz</option> </select> </form> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        },
+        {
+          "selector_index": 1,
+          "xpath": "/html/body/section[6]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS   External Width: 26.4″ | 670 mm External Depth: 9.25″ | 235 mm External Height: 26.4″ | 670 mm Net Weight: 45 lbs | 20.4 kg Shipping Weight: 150 lbs | 68 kg     CONSTRUCTION   Construction: Epoxy-coated Steel         AIRFLOW & FILTRATION   Airflow Direction: Downflow Face Velocity: 250 Main Filter: 1 x 11 lbs Biological Filter: HEPA     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P             DIMENSIONS & WEIGHTS   External Width: 26.4″ | 670 mm External Depth: 9.25″ | 235 mm External Height: 52.75″ | 1340 mm Net Weight: 90 lbs | 40.8 kg Shipping Weight: 180 lbs | 82 kg     CONSTRUCTION   Construction: Epoxy-coated Steel         AIRFLOW & FILTRATION   Airflow Direction: Downflow Face Velocity: 500 Main Filter: 1 x 11 lbs Biological Filter: HEPA     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P",
+              "html": "<div class=\"roweven\"> <div class=\"blockcontainer2\"> <div id=\"Div1\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-1\"> <p> <strong>External Width:</strong> 26.4″ | 670 mm<br> <strong>External Depth:</strong> 9.25″ | 235 mm<br> <strong>External Height:</strong> 26.4″ | 670 mm<br> <strong>Net Weight:</strong> 45 lbs | 20.4 kg<br> <strong>Shipping Weight:</strong> 150 lbs | 68 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-4\"> <p> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"5\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-5\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-5\"> <p> <strong>Airflow Direction:</strong> Downflow<br> <strong>Face Velocity:</strong> 250<br> <strong>Main Filter:</strong> 1 x 11 lbs<br> <strong>Biological Filter:</strong> HEPA<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-8\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-3\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div2\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"9\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-9\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-9\"> <p> <strong>External Width:</strong> 26.4″ | 670 mm<br> <strong>External Depth:</strong> 9.25″ | 235 mm<br> <strong>External Height:</strong> 52.75″ | 1340 mm<br> <strong>Net Weight:</strong> 90 lbs | 40.8 kg<br> <strong>Shipping Weight:</strong> 180 lbs | 82 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"12\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-12\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-12\"> <p> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"13\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-13\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-13\"> <p> <strong>Airflow Direction:</strong> Downflow<br> <strong>Face Velocity:</strong> 500<br> <strong>Main Filter:</strong> 1 x 11 lbs<br> <strong>Biological Filter:</strong> HEPA<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"16\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-16\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-16\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"11\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-11\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-11\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 2,
+        "successful_extractions": 2,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "specification_group_names": {
+      "xpath_selectors": [
+        "/html/body/section[6]/div/div[1]/div/div/div/div/p"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[6]/div/div[1]/div/div/div/div/p",
+          "match_count": 10,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "1"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "4"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"5\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-5\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "5"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "8"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "3"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"9\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-9\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "9"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"12\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-12\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "12"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"13\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-13\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "13"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"16\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-16\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "16"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"11\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-11\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "11"
+              }
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:31:16.617014+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "MODEL_SUBSET",
+  "_page_info": {
+    "page_title": "Purair SKY Ceiling Mounted Air Filtration | Air Science",
+    "safe_directory_name": "Purair_SKY_Ceiling_Mounted_Air_Filtration_Air_Science",
+    "ai_json_record_id": 107
+  },
+  "_batch_info": {
+    "batch_number": 1,
+    "total_batches": 2,
+    "models_in_batch": [
+      "Model Specifications     Model  SKY-24-A - Nominal 26.4\" x 26.4\"",
+      "115VAC",
+      "60Hz  SKY-48-A - Nominal 26.4\" x 52.75\"",
+      "60Hz"
+    ],
+    "total_models": 7
+  },
+  "target_model_names": [
+    "Model Specifications     Model  SKY-24-A - Nominal 26.4\" x 26.4\"",
+    "115VAC",
+    "60Hz  SKY-48-A - Nominal 26.4\" x 52.75\"",
+    "60Hz"
+  ],
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Dimensions & Weights",
+    "Electrical",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Dimensions & Weights",
+      "Electrical",
+      "Warranty"
+    ]
+  }
+}

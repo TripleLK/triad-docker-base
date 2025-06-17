@@ -1,0 +1,140 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Total EXHAUST\u2122 Ducted Fume Hoods",
+  "slug": "total-exhaust-ducted-fume-hoods",
+  "meta_title": "Total EXHAUST Ducted Fume Hoods - Air Science",
+  "meta_description": "Air Science's Total EXHAUST ducted fume hoods provide personnel protection from hazardous agents and toxic chemicals with horizontal and vertical airflow across the work surface.",
+  "meta_keywords": "ducted fume hoods, total exhaust, air science, hazardous agents, toxic chemicals, horizontal airflow, vertical airflow",
+  "short_description": "<p>Total EXHAUST\u2122 ducted fume hoods use horizontal and vertical airflow across the work surface to provide personnel protection from hazardous agents and toxic chemicals. These hoods are connected to the facility exhaust system.</p>",
+  "full_description": "<div>Air Science manufactures 6 standard sizes of Total EXHAUST\u2122 ducted fume hoods for new and replacement installations. Custom sizes are available for special equipment or instrumentation. These hoods feature an ergonomic design with easy access and uniform non-glare lighting.</div>",
+  "seo_content": "<div>The Total EXHAUST line of ducted fume hoods from Air Science are constructed of durable polypropylene and comply with OSHA, ISO, and ENERGY STAR standards. They are available in a range of widths from 24\" to 96\" to meet any specialized filtration need, including common applications in forensics, education, microscopy, pharmaceuticals, powder weighing, sample preparation, veterinary, and dental work.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=exhaust-fume-hoods&brand=31",
+  "target_keywords": [
+    "ducted fume hoods",
+    "total exhaust",
+    "air science",
+    "hazardous agents",
+    "toxic chemicals"
+  ],
+  "related_keywords": [
+    "fume hood",
+    "laboratory equipment",
+    "filtration",
+    "safety equipment",
+    "polypropylene"
+  ],
+  "technical_keywords": [
+    "horizontal airflow",
+    "vertical airflow",
+    "osha compliance",
+    "iso 14001",
+    "energy star"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ducted Fume Hoods"
+    },
+    {
+      "category": "Application",
+      "tag": "Hazardous Agent Containment"
+    },
+    {
+      "category": "Application",
+      "tag": "Toxic Chemical Containment"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics"
+    },
+    {
+      "category": "Industry",
+      "tag": "Education"
+    },
+    {
+      "category": "Industry",
+      "tag": "Pharmaceutical"
+    },
+    {
+      "category": "Technology",
+      "tag": "Horizontal Airflow"
+    },
+    {
+      "category": "Technology",
+      "tag": "Vertical Airflow"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA Compliant"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001 Certified"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ENERGY STAR Partner"
+    }
+  ],
+  "specifications": {
+    "Construction": {
+      "Construction": "Polypropylene"
+    },
+    "Electrical": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Compliance": {
+      "OSHA": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Airflow & Filtration": {
+      "Airflow": "Horizontal#Vertical",
+      "Airflow Direction": "Upflow"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "6 standard sizes for new and replacement installations",
+    "Custom sizes available for special equipment or instrumentation",
+    "Ergonomic design with easy access and uniform non-glare lighting"
+  ],
+  "applications": [
+    "Forensics",
+    "Educational",
+    "Microscopy",
+    "Pharmaceutical",
+    "Powder Weighing",
+    "Sample Prep Work",
+    "Veterinary",
+    "Dental"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Total EXHAUST\u2122 Ducted Fume Hoods",
+    "description": "Air Science's Total EXHAUST ducted fume hoods provide personnel protection from hazardous agents and toxic chemicals with horizontal and vertical airflow across the work surface.",
+    "manufacturer": "Air Science",
+    "category": "Ducted Fume Hoods"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30S_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_CA30T_Front_Open.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view",
+    "SafeFUME CA30T front view with door open for fingerprint processing"
+  ],
+  "page_content_sections": {
+    "overview": "<div>Air Science manufactures 6 standard sizes of Total EXHAUST\u2122 ducted fume hoods for new and replacement installations. Custom sizes are available for special equipment or instrumentation. These hoods feature an ergonomic design with easy access and uniform non-glare lighting.</div>",
+    "specifications": "<div>The Total EXHAUST line of ducted fume hoods from Air Science are constructed of durable polypropylene and comply with OSHA, ISO, and ENERGY STAR standards. They are available in a range of widths from 24\" to 96\" to meet any specialized filtration need.</div>",
+    "applications": "<div>Common applications for Air Science's Total EXHAUST ducted fume hoods include forensics, education, microscopy, pharmaceuticals, powder weighing, sample preparation, veterinary, and dental work.</div>",
+    "models": "<div>Air Science offers 6 standard model sizes of the Total EXHAUST ducted fume hoods, ranging from 24\" to 96\" in width, all with a 36\" internal height and 47\" external height.</div>"
+  }
+}

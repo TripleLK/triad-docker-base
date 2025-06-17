@@ -1,0 +1,182 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=mobile-evidence-transporters&brand=27",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 3,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     FDC-BASIC-A 35\" | 889 mm 30\" | 762 mm 69\" | 1753 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>FDC-BASIC-A</td> <td>35\" | 889 mm</td> <td>30\" | 762 mm</td> <td>69\" | 1753 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     FDC-BASIC-A - - 68\" | 1727.25 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>FDC-BASIC-A</td> <td>-</td> <td>-</td> <td>68\" | 1727.25 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science® ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents. Using innovative filtration technology, the forensic evidence drying cabinet creates a safe work environment over the widest range of applications in the industry. State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science® ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents. Using innovative filtration technology, the forensic evidence drying cabinet creates a safe work environment over the widest range of applications in the industry.</p> <p>State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Kraft paper dispenser Lockable storage compartments to secure tools Open storage shelf Wheels allowing the bench to be moved throughout the building wherever processing needs to take place. Optional airflow pod     Get a Quote",
+              "html": "<div class=\"leftblock\"> <div class=\"introprodtext\"> <ul> <li>Kraft paper dispenser</li> <li>Lockable storage compartments to secure tools</li> <li>Open storage shelf</li> <li>Wheels allowing the bench to be moved throughout the building wherever processing needs to take place.</li> <li>Optional airflow pod</li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_FDC-BASIC_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_FDC-BASIC_Right.png\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  The Evidence Transporter is a special-purpose basic evidence transporter and storage cabinet designed to maintain the chain of custody in transport from the field to the laboratory, while allowing effective air-drying prior to evidence processing.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>The Evidence Transporter is a special-purpose basic evidence transporter and storage cabinet designed to maintain the chain of custody in transport from the field to the laboratory, while allowing effective air-drying prior to evidence processing.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Mobile Evidence Transporters",
+              "html": "<h1>Mobile Evidence Transporters</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:30:23.576675+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Mobile Evidence Transporter | Air Science",
+    "safe_directory_name": "Mobile_Evidence_Transporter_Air_Science",
+    "ai_json_record_id": 96
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Dimensions & Weights",
+    "Options And Accessories",
+    "Protection & Compliance"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Dimensions & Weights",
+      "Options And Accessories",
+      "Protection & Compliance"
+    ]
+  }
+}

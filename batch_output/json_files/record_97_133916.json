@@ -1,0 +1,125 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae BIO Biological Safety Cabinets",
+  "slug": "purair-bio-biological-safety-cabinets",
+  "meta_title": "Purair BIO Biological Safety Cabinets - Certified for Safety and Performance",
+  "meta_description": "The Purair BIO Biological Safety Cabinet (BSC) is certified for safety and performance in accordance with NSF/ANSI Standard 49 and EN12469. Protect individuals, the environment, and products from biological particulates.",
+  "meta_keywords": "biological safety cabinet, biosafety cabinet, purair bio, air science, class ii type a2",
+  "short_description": "<p>The Purair\u00ae BIO Biological Safety Cabinet (BSC) is certified for safety and performance in accordance with NSF/ANSI Standard 49 and EN12469 which certifies Class II, Type A2 laminar flow cabinets are suitable for working with biosafety agents at levels 1, 2 and 3. Air Science 4-foot and 6 foot models are certified by NSF.</p>",
+  "full_description": "<div>The Purair\u00ae BIO Biological Safety Cabinet (BSC) is designed with a single EC blower motor for ease of use, reliability, and to promote low cost of ownership. Dual motor designs can introduce a number of problems, including unbalanced airflow, higher maintenance costs, longer certification processes, and uneven filter loading. Airflow adjustments are simpler, operational costs lower, and maintenance easier for BSCs equipped with single EC blower motors.</div><div>The Purair BIO includes multiple service connections for maximum flexibility. It includes duplex electrical outlets with splash-proof, UL listed covers. CSA certified service valves for gas, air, and vacuum are also available. Maximum working pressure of 75PSI.</div><div>The anti-ultraviolet, 6 mm tempered glass ensures maximum protection for the operator. The user interface combines ergonomics, safety, and aesthetics with a 10\u00b0 angled window design that reduces operator head and elbow discomfort, as well as eye strain and fatigue.</div><div>The Purair BIO is one of the narrowest BSCs on the market and permits easy passage through standard doorways.</div>",
+  "seo_content": "<div>Purair BIO Biological Safety Cabinets are designed to protect individuals, the environment, and products from a variety of biological particulates. Specific applications include life science research, sterile product preparation, and biological protocols. These Class II, Type A2 laminar flow cabinets are suitable for working with biosafety agents at levels 1, 2, and 3.</div><div>Key features of the Purair BIO include a single EC blower motor for reliable, low-maintenance operation, multiple service connections for flexibility, anti-UV tempered glass for operator safety, and an ergonomic 10\u00b0 angled window design. The slim profile allows easy passage through standard doorways.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=purair-bio-biosafety-cabinets&brand=42",
+  "target_keywords": [
+    "biological safety cabinet",
+    "biosafety cabinet",
+    "purair bio",
+    "class ii type a2"
+  ],
+  "related_keywords": [
+    "life science research",
+    "sterile product preparation",
+    "biological protocols",
+    "laminar flow cabinet"
+  ],
+  "technical_keywords": [
+    "single ec blower motor",
+    "service connections",
+    "tempered glass",
+    "ergonomic design",
+    "narrow profile"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Biological Safety Cabinet"
+    },
+    {
+      "category": "Application",
+      "tag": "Life Science Research"
+    },
+    {
+      "category": "Application",
+      "tag": "Sterile Product Preparation"
+    },
+    {
+      "category": "Application",
+      "tag": "Biological Protocols"
+    },
+    {
+      "category": "Industry",
+      "tag": "Life Science"
+    },
+    {
+      "category": "Technology",
+      "tag": "Laminar Flow"
+    },
+    {
+      "category": "Compliance",
+      "tag": "NSF/ANSI Standard 49"
+    },
+    {
+      "category": "Compliance",
+      "tag": "EN12469"
+    }
+  ],
+  "specifications": {
+    "Construction & Design": {
+      "Cabinet Style": "Straight Legs",
+      "Construction": "Stainless Steel"
+    },
+    "Electrical Requirements": {
+      "Voltage": "115V, 60Hz, 15A",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Protection & Compliance": {
+      "Manufacturing Standards": "EN 12469"
+    },
+    "Filtration & Airflow": {
+      "Airflow Direction": "Downflow",
+      "Biological Filters": "2 Astrocel Class H14 HEPA Filters (Supply and Exhaust)"
+    }
+  },
+  "features_data": [
+    "Single EC Blower Motor Design",
+    "Multiple Service Connections",
+    "Anti-UV Tempered Glass",
+    "Ergonomic 10\u00b0 Angled Window",
+    "Narrow Profile for Easy Access"
+  ],
+  "applications": [
+    "Life Science Research",
+    "Sterile Product Preparation",
+    "Biological Protocols"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair BIO Biological Safety Cabinets",
+    "description": "The Purair BIO Biological Safety Cabinet (BSC) is certified for safety and performance in accordance with NSF/ANSI Standard 49 and EN12469. It protects individuals, the environment, and products from biological particulates.",
+    "manufacturer": "Air Science",
+    "category": "Biological Safety Cabinet"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2025/06/PDT_AS-AHA-103_Right-Cart.png",
+    "https://www.airscience.com/wp-content/uploads/2025/06/PDT_AS-AHA-133_Right-Cart.png",
+    "https://www.airscience.com/wp-content/uploads/2025/06/PDT_AS-AHA-163_Right_Cart.png",
+    "https://www.airscience.com/wp-content/uploads/2025/06/AS-AHA-193-CA-A_6ft-BSC.png",
+    "https://www.airscience.com/wp-content/uploads/2025/06/PDT_AS-AHA-103_Right-Cart.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view",
+    "SafeFUME CA30T front view with door open for fingerprint processing",
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view",
+    "6ft Purair BIO Biological Safety Cabinet",
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view"
+  ],
+  "page_content_sections": {
+    "overview": "<div>The Purair\u00ae BIO Biological Safety Cabinet (BSC) is designed with a single EC blower motor for ease of use, reliability, and to promote low cost of ownership. Dual motor designs can introduce a number of problems, including unbalanced airflow, higher maintenance costs, longer certification processes, and uneven filter loading. Airflow adjustments are simpler, operational costs lower, and maintenance easier for BSCs equipped with single EC blower motors.</div><div>The Purair BIO includes multiple service connections for maximum flexibility. It includes duplex electrical outlets with splash-proof, UL listed covers. CSA certified service valves for gas, air, and vacuum are also available. Maximum working pressure of 75PSI.</div><div>The anti-ultraviolet, 6 mm tempered glass ensures maximum protection for the operator. The user interface combines ergonomics, safety, and aesthetics with a 10\u00b0 angled window design that reduces operator head and elbow discomfort, as well as eye strain and fatigue.</div><div>The Purair BIO is one of the narrowest BSCs on the market and permits easy passage through standard doorways.</div>",
+    "specifications": "<div>The Purair\u00ae BIO Biological Safety Cabinet (BSC) is certified for safety and performance in accordance with NSF/ANSI Standard 49 and EN12469 which certifies Class II, Type A2 laminar flow cabinets are suitable for working with biosafety agents at levels 1, 2 and 3. Air Science 4-foot and 6 foot models are certified by NSF.</div>",
+    "applications": "<div>Purair BIO Biological Safety Cabinets are designed to protect individuals, the environment, and products from a variety of biological particulates. Specific applications include life science research, sterile product preparation, and biological protocols.</div>",
+    "models": "<div>The Purair BIO includes multiple service connections for maximum flexibility. It includes duplex electrical outlets with splash-proof, UL listed covers. CSA certified service valves for gas, air, and vacuum are also available. Maximum working pressure of 75PSI.</div>"
+  }
+}

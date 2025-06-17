@@ -1,0 +1,188 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=safedevelop-fingerprint-development-chambers&brand=39",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 3,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     SD-34S-A 36.25\" | 921 mm 25.5\" | 648 mm 29.25\" | 743 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>SD-34S-A</td> <td>36.25\" | 921 mm</td> <td>25.5\" | 648 mm</td> <td>29.25\" | 743 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     SD-34S-A 18.25\" | 464 mm 20.5\" | 521 mm 19.6\" | 495 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>SD-34S-A</td> <td>18.25\" | 464 mm</td> <td>20.5\" | 521 mm</td> <td>19.6\" | 495 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Using innovative filtration technology, the Safedevelop Fingerprint Development Chamber creates a safe work environment over the widest range of applications in the industry. State and Federal Crime Laboratories \\ Crime Scene Investigation \\ Law Enforcement Agencies \\ Medical Examiners� Programs \\ Criminal Justice Education",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Using innovative filtration technology, the Safedevelop Fingerprint Development Chamber creates a safe work environment over the widest range of applications in the industry.</p> <p>State and Federal Crime Laboratories \\ Crime Scene Investigation \\ Law Enforcement Agencies \\ Medical Examiners� Programs \\ Criminal Justice Education</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "The professionally designed automatic development chamber eliminates reliance on do-it-yourself systems that lack user-safety allowances and controls needed for repeatable results.  To change between profiles required only the press of a few buttons on an easy to use LED display. The chamber features rapid condition recovery following a door opening.  The wide temperature and humidity range allows fingerprints to be processed in a matter of minutes - not days like some conventional methods.  The steam generator produces humidity by a sealed, automatic, steam injection system, ensuring only vaporized water enters the sample chamber to eliminate the possibility of contaminating samples with water droplets. The chamber's generous working area and flexible shelving and rod system enable large batches of operational material to be processed quickly and easily.      Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"introprodtext\"> <ul> <li>The professionally designed automatic development chamber eliminates reliance on do-it-yourself systems that lack user-safety allowances and controls needed for repeatable results. </li> <li>To change between profiles required only the press of a few buttons on an easy to use LED display.</li> <li>The chamber features rapid condition recovery following a door opening. </li> <li>The wide temperature and humidity range allows fingerprints to be processed in a matter of minutes - not days like some conventional methods. </li> <li>The steam generator produces humidity by a sealed, automatic, steam injection system, ensuring only vaporized water enters the sample chamber to eliminate the possibility of contaminating samples with water droplets.</li> <li>The chamber's generous working area and flexible shelving and rod system enable large batches of operational material to be processed quickly and easily. </li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/forensic-lab-equipment/safedevelop-dfo-and-ninhydrin-devleopment-chambers.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_SD-34S_Left_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_SD-34S_Left_Open.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_SD-34S_Left_Right.png\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  SafeDEVELOP™ fingerprint development chambers are designed to safely develop latent fingerprints on porous surfaces using DFO, Ninhydrin, and other chemicals in a controlled environment for optimum effectiveness and safety where moisture, temperature, and development time are critical factors.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>SafeDEVELOP™ fingerprint development chambers are designed to safely develop latent fingerprints on porous surfaces using DFO, Ninhydrin, and other chemicals in a controlled environment for optimum effectiveness and safety where moisture, temperature, and development time are critical factors.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "SafeDEVELOP™ DFO and Ninhydrin Fingerprint Development Chamber",
+              "html": "<h1>SafeDEVELOP™ DFO and Ninhydrin Fingerprint Development Chamber</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:33:28.015951+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Safedevelop Fingerprint Chamber | Air Science",
+    "safe_directory_name": "Safedevelop_Fingerprint_Chamber_Air_Science",
+    "ai_json_record_id": 132
+  },
+  "extracted_specification_groups": [
+    "Construction",
+    "Controls & Monitoring",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Construction",
+      "Controls & Monitoring",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

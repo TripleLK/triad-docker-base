@@ -1,0 +1,120 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "SafeSTORE\u00ae Vented Chemical Storage Cabinets",
+  "slug": "safestore-vented-chemical-storage-cabinets",
+  "meta_title": "SafeSTORE Vented Chemical Storage Cabinets - Protect Lab Chemicals",
+  "meta_description": "The SafeSTORE Series of vented filtering storage cabinets offers an economical solution for chemical storage in the laboratory. Protect users from hazardous fumes and vapors.",
+  "meta_keywords": "chemical storage cabinets, vented storage cabinets, lab storage, hazardous chemical storage",
+  "short_description": "<p>The SafeSTORE Series of vented filtering storage cabinets offers an economical solution for storage of toxic, noxious and odorous chemicals in the laboratory.</p>",
+  "full_description": "<div>Activated carbon main filter formulated for general purpose storage to contain putrid organic odors as well as fumes (i.e. alcohol, solvents, gasoline, etc.). Perforated polypropylene shelves. With optional HEPA filter, eliminates exposure to biological particulates; see Accessories. Upflow airflow geometry operates at 120-180 FPM face velocity to exchange air through activated carbon main filter. Available with windowless doors</div>",
+  "seo_content": "<div>State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Forensics \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=safestore-vented-chemical-storage-cabinets&brand=22",
+  "target_keywords": [
+    "chemical storage cabinets",
+    "vented storage cabinets",
+    "lab storage",
+    "hazardous chemical storage"
+  ],
+  "related_keywords": [
+    "chemical containment",
+    "fume control",
+    "odor removal",
+    "ductless technology"
+  ],
+  "technical_keywords": [
+    "activated carbon filter",
+    "HEPA filtration",
+    "upflow airflow",
+    "face velocity"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Vented Chemical Storage Cabinets"
+    },
+    {
+      "category": "Application",
+      "tag": "Chemical Storage"
+    },
+    {
+      "category": "Industry",
+      "tag": "Laboratories"
+    },
+    {
+      "category": "Technology",
+      "tag": "Ductless Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Cabinet Style": "Desktop, Tall",
+      "Construction": "Polypropylene, Epoxy-coated Steel",
+      "OSHA Compliance": "OSHA Standard -29 CRF, 1910.1450",
+      "Environmental Compliance": "ISO 14001 : 2015, ENERGY STAR\u00ae Partner",
+      "Quality Compliance": "ISO 9001 : 2015"
+    },
+    "Filtration & Airflow": {
+      "Main Filter": "Activated Carbon, Formulated for General Purpose",
+      "Optional Filter": "HEPA",
+      "Airflow Direction": "Upflow",
+      "Face Velocity": "120-180 FPM"
+    },
+    "Electrical": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Activated carbon main filter for general purpose storage",
+    "Perforated polypropylene shelves",
+    "Optional HEPA filter for biological particulate removal",
+    "Upflow airflow geometry with 120-180 FPM face velocity",
+    "Available with windowless doors"
+  ],
+  "applications": [
+    "State and Federal Crime Laboratories",
+    "Medical Examiners and Coroners",
+    "Forensics",
+    "Law Enforcement Agencies",
+    "Hospital Emergency Rooms",
+    "Drug Agencies"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "SafeSTORE Vented Chemical Storage Cabinets",
+    "description": "The SafeSTORE Series of vented filtering storage cabinets offers an economical solution for storage of toxic, noxious and odorous chemicals in the laboratory.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_Mini-Single_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_Mini-Double_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_34s-right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_64t-left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_Mini-Single_Right.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME Mini Single cyanoacrylate fuming chamber right view",
+    "SafeFUME Mini Double cyanoacrylate fuming chamber right view",
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view",
+    "SafeFUME CA64T cyanoacrylate fuming chamber left view",
+    "SafeFUME Mini Single cyanoacrylate fuming chamber right view"
+  ],
+  "page_content_sections": {
+    "overview": "The SafeSTORE Series of vented filtering storage cabinets offers an economical solution for storage of toxic, noxious and odorous chemicals in the laboratory.",
+    "specifications": "Detailed specifications covering dimensions, construction, filtration, electrical, and warranty information.",
+    "applications": "The SafeSTORE cabinets are used in a variety of laboratory settings including crime labs, medical examiners, forensics, law enforcement, and more.",
+    "models": "The SafeSTORE line includes multiple model sizes and configurations to meet different laboratory storage needs."
+  }
+}

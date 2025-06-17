@@ -1,0 +1,39 @@
+{
+  "models_data": [
+    {
+      "model_name": "CAQUAD-A - Upright, 60\"W, quad, four doors, 115VAC, 60Hz",
+      "specifications": {
+        "Dimensions & Weights": {
+          "Internal Height": "4 @ 24\" | 4 @ 610 mm",
+          "External Width": "60\" | 1524 mm",
+          "External Depth": "27.75\" | 705 mm",
+          "External Height": "75\" | 1905 mm",
+          "Shipping Width": "70\" | 1778 mm",
+          "Shipping Depth": "40\" | 1016 mm",
+          "Net Weight": "418 lbs | 189 kg",
+          "Shipping Weight": "476 lbs | 216 kg"
+        },
+        "Construction": {
+          "Cabinet Style": "Extra Tall, Quad"
+        },
+        "Options And Accessories": {
+          "Advanced Hot Plate": "AHOTPLATE110, AHOTPLATE230",
+          "Basic Hot Plate": "BHOTPLATE110, BHOTPLATE230",
+          "Electronic Lock": "E-LOCK (Factory installed; specify when ordering)"
+        },
+        "Airflow & Filtration": {
+          "Main Filter": "22 lbs / 9.6 kg (4)"
+        }
+      },
+      "features": [
+        "Four separate compartment doors for maximum workspace flexibility",
+        "Quad configuration with 4 individual 24\" high chambers",
+        "60\" wide upright design for efficient laboratory space utilization",
+        "Multiple hot plate options available (basic and advanced)",
+        "Electronic lock option for enhanced security",
+        "Four separate main filters for optimal performance"
+      ],
+      "seo_description": "The SafeFUME CAQUAD-A is a high-capacity cyanoacrylate fuming chamber featuring four separate compartments with individual doors, ideal for processing multiple evidence sets simultaneously. With dimensions of 60\"W x 27.75\"D x 75\"H, this quad-configuration chamber maximizes laboratory efficiency while maintaining the security and performance required for forensic fingerprint development."
+    }
+  ]
+}

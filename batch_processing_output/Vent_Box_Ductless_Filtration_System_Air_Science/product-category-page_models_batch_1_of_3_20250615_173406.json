@@ -1,0 +1,191 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=vent-box-ductless-filtration&brand=38",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "model_name": {
+      "xpath_selectors": [
+        "//*[@class=\"blockcontainer2\"]/form/select/option"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//*[@class=\"blockcontainer2\"]/form/select/option",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "VB60-A - Modular filtration system, 115VAC, 60Hz",
+              "html": "<option value=\"Div1\" selected>VB60-A - Modular filtration system, 115VAC, 60Hz </option> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "models": {
+      "xpath_selectors": [
+        "/html/body/section[4]/*[contains(@class, 'roweven')]",
+        "/html/body/section[6]/*[contains(@class, 'roweven')]"
+      ],
+      "comment": "First selection has the model names; second selection has the spec groups and specs for those models in the same order (Div1 in the selector = Div1 in the spec groups). Spec groups are particular by model.",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[4]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Model Specifications     Model  VB60-A - Modular filtration system, 115VAC, 60Hz",
+              "html": "<div class=\"roweven\"> <div class=\"blockcontainer2\"> <h1>Model Specifications</h1> <form class=\"elementor-form\" method=\"post\" name=\"New Form\"> <input type=\"hidden\" name=\"post_id\" value=\"3802\"> <input type=\"hidden\" name=\"form_id\" value=\"2a193c2\"> <input type=\"hidden\" name=\"referer_title\" value=\"\"> <div>Model</div> <select name=\"form_fields[field_2400c42]\" id=\"form-field-field_2400c42\" class=\"elementor-field-textual elementor-size-sm\"> <option value=\"Div1\" selected>VB60-A - Modular filtration system, 115VAC, 60Hz </option> </select> </form> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        },
+        {
+          "selector_index": 1,
+          "xpath": "/html/body/section[6]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS   External Width: 21.25″ | 540 mm External Depth: 12″ | 305 mm External Height: 13″ | 330 mm Shipping Width: 24″ | 610 mm Shipping Depth: 22″ | 559 mm Net Weight: 32 lbs | 14 kg Shipping Weight: 34 lbs | 15 kg     CONSTRUCTION   Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001: 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Color Match - Blue: VB60-BE Color Match - Green: VB60-GN Color Match - Red: VB60-RD Color Match - Yellow: VB60-YW Ducting Collar: VB60-EXH Filter Saturation Alarm*: FSA Wall Mount: VB60-WM * Factory installed; specify when ordering     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P",
+              "html": "<div class=\"roweven\"> <div class=\"blockcontainer2\"> <div id=\"Div1\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-1\"> <p> <strong>External Width:</strong> 21.25″ | 540 mm<br> <strong>External Depth:</strong> 12″ | 305 mm<br> <strong>External Height:</strong> 13″ | 330 mm<br> <strong>Shipping Width:</strong> 24″ | 610 mm<br> <strong>Shipping Depth:</strong> 22″ | 559 mm<br> <strong>Net Weight:</strong> 32 lbs | 14 kg<br> <strong>Shipping Weight:</strong> 34 lbs | 15 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-4\"> <p> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"7\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-7\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001: 2015 ; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"2\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-2\"> <p> <strong>Color Match - Blue</strong>: VB60-BE<br> <strong>Color Match - Green</strong>: VB60-GN<br> <strong>Color Match - Red</strong>: VB60-RD<br> <strong>Color Match - Yellow</strong>: VB60-YW<br> <strong>Ducting Collar</strong>: VB60-EXH<br> <strong>Filter Saturation Alarm*</strong>: FSA<br> <strong>Wall Mount</strong>: VB60-WM<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-8\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-3\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 2,
+        "successful_extractions": 2,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "specification_group_names": {
+      "xpath_selectors": [
+        "/html/body/section[6]/div/div[1]/div/div/div/div/p"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[6]/div/div[1]/div/div/div/div/p",
+          "match_count": 6,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "1"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "4"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"7\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "7"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"2\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "2"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "8"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "3"
+              }
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:34:03.617124+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "MODEL_SUBSET",
+  "_page_info": {
+    "page_title": "Vent Box Ductless Filtration System | Air Science",
+    "safe_directory_name": "Vent_Box_Ductless_Filtration_System_Air_Science",
+    "ai_json_record_id": 140
+  },
+  "_batch_info": {
+    "batch_number": 1,
+    "total_batches": 3,
+    "models_in_batch": [
+      "Model Specifications     Model  VB60-A - Modular filtration system",
+      "115VAC",
+      "60Hz",
+      "DIMENSIONS & WEIGHTS   External Width: 21.25″ | 540 mm External Depth: 12″ | 305 mm External Height: 13″ | 330 mm Shipping Width: 24″ | 610 mm Shipping Depth: 22″ | 559 mm Net Weight: 32 lbs | 14 kg Shipping Weight: 34 lbs | 15 kg     CONSTRUCTION   Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR"
+    ],
+    "total_models": 9
+  },
+  "target_model_names": [
+    "Model Specifications     Model  VB60-A - Modular filtration system",
+    "115VAC",
+    "60Hz",
+    "DIMENSIONS & WEIGHTS   External Width: 21.25″ | 540 mm External Depth: 12″ | 305 mm External Height: 13″ | 330 mm Shipping Width: 24″ | 610 mm Shipping Depth: 22″ | 559 mm Net Weight: 32 lbs | 14 kg Shipping Weight: 34 lbs | 15 kg     CONSTRUCTION   Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR"
+  ],
+  "extracted_specification_groups": [
+    "Construction",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Construction",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

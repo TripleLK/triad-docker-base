@@ -1,0 +1,115 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "SafeFUME\u2122 360 Automatic Cyanoacrylate Fuming Chambers",
+  "slug": "safefume-360-automatic-cyanoacrylate-fuming-chambers",
+  "meta_title": "SafeFUME 360 Cyanoacrylate Fuming Chambers - Forensic Crime Lab Equipment",
+  "meta_description": "The SafeFUME 360 cyanoacrylate fuming chamber creates a safe work environment for developing latent prints from non-porous surfaces. Choose from multiple sizes and configurations.",
+  "meta_keywords": "cyanoacrylate fuming chamber, forensic equipment, crime lab equipment, latent print development, fingerprint processing",
+  "short_description": "<p>The SafeFUME\u2122 360 is used to develop latent prints from non-porous surfaces in a controlled and safe environment. Choose from small benchtop units to larger walk-in chambers.</p>",
+  "full_description": "<div>Using innovative filtration technology, the SafeFUME 360 cyanoacrylate fuming chamber creates a safe work environment over the widest range of applications in the industry. Optional side and rear windows provide a 360\u00b0 view of the development process. Choose from multiple sizes, from bench top to floor standing, including multi-chamber cabinets. Caster wheels are standard on all models except the bench top series, and optional UV lamp decontamination is available.</div><div>Evidence is easily positioned inside the chamber using the adjustable hanging rods. Cyanoacrylate is placed within the chamber and starting the cycle triggers the automated system that controls the hot plate, cabinet humidity, door lock, internal circulation fan, and purge cycle. The recirculatory design requires no ducting for setup. Cyanoacrylate vapors are filtered by a special carbon filter that ensures no dangerous substances are exhausted into the atmosphere air supply.</div>",
+  "seo_content": "<div>The SafeFUME 360 cyanoacrylate fuming chamber is an essential piece of equipment for state and federal crime laboratories, crime scene investigation teams, law enforcement agencies, medical examiners' programs, and criminal justice education facilities. Its innovative filtration technology and comprehensive safety features make it the ideal solution for developing latent prints from non-porous surfaces.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=safefume-360-fuming-chamber&brand=43",
+  "target_keywords": [
+    "cyanoacrylate fuming chamber",
+    "forensic equipment",
+    "crime lab equipment",
+    "latent print development",
+    "fingerprint processing"
+  ],
+  "related_keywords": [
+    "non-porous surfaces",
+    "evidence processing",
+    "controlled environment",
+    "safe work conditions",
+    "automated system"
+  ],
+  "technical_keywords": [
+    "filtration technology",
+    "carbon filter",
+    "recirculatory design",
+    "adjustable hanging rods",
+    "automated controls"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Cyanoacrylate Fuming Chamber"
+    },
+    {
+      "category": "Application",
+      "tag": "Latent Print Development"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensic Crime Lab"
+    },
+    {
+      "category": "Technology",
+      "tag": "Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Construction": "Aluminum",
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental Compliance": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality Compliance": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Filtration": {
+      "Main Filter": "Carbon"
+    }
+  },
+  "features_data": [
+    "Optional side and rear windows for 360\u00b0 view of development",
+    "Choose from multiple sizes, from bench top to floor standing",
+    "Multi-chamber cabinets available",
+    "Caster wheels standard on all models except bench top series",
+    "Optional UV Lamp decontamination",
+    "Adjustable hanging rods for easy evidence positioning",
+    "Automated control of hot plate, humidity, door lock, fan, and purge cycle",
+    "Recirculatory design requires no ducting",
+    "Carbon filter ensures no dangerous vapors are exhausted"
+  ],
+  "applications": [
+    "State and Federal Crime Laboratories",
+    "Crime Scene Investigation",
+    "Law Enforcement Agencies",
+    "Medical Examiners' Programs",
+    "Criminal Justice Education"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "SafeFUME 360 Automatic Cyanoacrylate Fuming Chambers",
+    "description": "The SafeFUME 360 cyanoacrylate fuming chamber creates a safe work environment for developing latent prints from non-porous surfaces. Choose from multiple sizes and configurations.",
+    "manufacturer": "Air Science",
+    "category": "Forensic Crime Lab Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_ARV-24_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_ARV-60T_Front.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_ARV-24_Right.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME 360 cyanoacrylate fuming chamber right view",
+    "SafeFUME 360 cyanoacrylate fuming chamber front view",
+    "SafeFUME 360 cyanoacrylate fuming chamber right view"
+  ],
+  "page_content_sections": {
+    "overview": "Using innovative filtration technology, the SafeFUME 360 cyanoacrylate fuming chamber creates a safe work environment over the widest range of applications in the industry.",
+    "specifications": "The SafeFUME 360 is constructed of aluminum and complies with OSHA, ISO 14001, and ISO 9001 standards. It operates on 120V, 60Hz power and uses a carbon filter for safe vapor filtration.",
+    "applications": "The SafeFUME 360 is used by state and federal crime labs, crime scene investigation teams, law enforcement agencies, medical examiners, and criminal justice education facilities.",
+    "models": "The SafeFUME 360 is available in multiple sizes, from bench top to floor standing, including multi-chamber cabinets. Optional features include UV lamp decontamination and adjustable hanging rods."
+  }
+}

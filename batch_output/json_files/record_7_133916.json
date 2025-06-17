@@ -1,0 +1,123 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae BASIC Ductless Fume Hoods - Compact, Versatile Lab Safety",
+  "slug": "purair-basic-ductless-fume-hoods",
+  "meta_title": "Purair BASIC Ductless Fume Hoods - Compact Lab Safety Equipment",
+  "meta_description": "The Purair BASIC Series ductless fume hoods provide compact, versatile lab safety for a wide range of applications. Featuring innovative filtration, energy-efficient design, and OSHA compliance.",
+  "meta_keywords": "ductless fume hood, lab safety equipment, compact fume hood, versatile fume hood, cyanoacrylate fuming chamber",
+  "short_description": "<p>The Purair\u00ae BASIC Series ductless fume hoods are compact, ideal for use in laboratory environments where space is limited or where only small volumes of harmful substances are handled. For package and mail inspection workstations, see <a href=\"/mail-handling-safety\">Purair SafeSEARCH</a>.</p>",
+  "full_description": "<div>Using innovative filtration technology, the Purair Basic creates a safe work environment over the widest range of applications in the industry, including:</div><ul><li>Compounding \\ Balance Enclosures, Microscopes, and Robotic Equipment</li><li>Forensics \\ Histology \\ Educational \\ Microscopy</li><li>Mobile and Classroom Demonstrations \\ Pharmaceutical</li><li>Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work</li><li>Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental</li></ul><div>The Purair BASIC Series features high efficiency EC blowers, energy-saving LED lighting, and a filter blockage alarm to protect the operator from fume and particle hazards. A unique filter clamping design eliminates bypass leakage outside the cabinet.</div>",
+  "seo_content": "<div>The Purair BASIC ductless fume hoods are designed to provide a safe, controlled work environment for a wide variety of laboratory applications. With innovative filtration technology, energy-efficient components, and OSHA compliance, these compact fume hoods offer versatile protection against chemical fumes, vapors, and particulates.</div><div>Key features include a high-efficiency EC blower, LED lighting, and a filter blockage alarm to monitor performance. The unique filter clamping design ensures no bypass leakage, keeping the work area secure. Available in a range of sizes to fit any lab space, the Purair BASIC series is an ideal solution for applications from forensics and histology to pharmaceutical powder handling and solvent cleaning.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=purair-basic-ductless-fume-hoods&brand=8",
+  "target_keywords": [
+    "ductless fume hood",
+    "compact fume hood",
+    "versatile fume hood",
+    "lab safety equipment",
+    "cyanoacrylate fuming chamber"
+  ],
+  "related_keywords": [
+    "forensics equipment",
+    "histology equipment",
+    "pharmaceutical equipment",
+    "powder handling",
+    "solvent cleaning"
+  ],
+  "technical_keywords": [
+    "high efficiency EC blower",
+    "energy-saving LED lighting",
+    "filter blockage alarm",
+    "HEPA/ULPA filtration",
+    "OSHA compliance"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Fume Hood"
+    },
+    {
+      "category": "Application",
+      "tag": "Laboratory Safety"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics, Histology, Pharmaceutical"
+    },
+    {
+      "category": "Technology",
+      "tag": "Innovative Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Dimensions": {
+      "Cabinet Style": "Extra Tall",
+      "Construction": "Epoxy-coated Steel",
+      "Internal Height": "23.6\" | 600 mm",
+      "External Width": "24\" - 48\" | 610 mm - 1219 mm",
+      "External Depth": "24\" - 27\" | 610 mm - 676 mm",
+      "External Height": "35\" | 889 mm",
+      "Shipping Dimensions": "40\" - 55\" W x 40\" D | 1016 mm - 1397 mm W x 1016 mm D",
+      "Net Weight": "72 lbs - 138 lbs | 33 kg - 63 kg",
+      "Shipping Weight": "150 lbs - 230 lbs | 68 kg - 104 kg"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Protection & Compliance": {
+      "OSHA Compliance": "OSHA Standard -29 CFR, 1910.1450: Occupational exposure to hazardous chemicals in laboratories",
+      "Environmental Certifications": "ISO 14001 : 2015, ENERGY STAR\u00ae Partner",
+      "Quality Certifications": "ISO 9001 : 2015"
+    },
+    "Filtration & Airflow": {
+      "Airflow Direction": "Upflow"
+    }
+  },
+  "features_data": [
+    "High efficiency EC blower",
+    "Energy saving LED lighting",
+    "Filter blockage alarm",
+    "Protects operator from fumes and particles with HEPA/ULPA filtration",
+    "Unique filter clamping design eliminates bypass leakage"
+  ],
+  "applications": [
+    "Compounding \\ Balance Enclosures, Microscopes, and Robotic Equipment",
+    "Forensics \\ Histology \\ Educational \\ Microscopy",
+    "Mobile and Classroom Demonstrations \\ Pharmaceutical",
+    "Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work",
+    "Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair BASIC Ductless Fume Hoods",
+    "description": "Compact, versatile ductless fume hoods providing safe work environments for a wide range of laboratory applications. Features innovative filtration, energy-efficient design, and OSHA compliance.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-24-XT_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2022/10/PDT_P5-36-XT_Left-1.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-48-XT_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-24-XT_Left.png"
+  ],
+  "alt_text_suggestions": [
+    "Purair BASIC P5-24-XT ductless fume hood left view",
+    "Purair BASIC P5-36-XT ductless fume hood left view",
+    "Purair BASIC P5-48-XT ductless fume hood left view",
+    "Purair BASIC P5-24-XT ductless fume hood left view"
+  ],
+  "page_content_sections": {
+    "overview": "<div>Using innovative filtration technology, the Purair Basic creates a safe work environment over the widest range of applications in the industry, including:</div><ul><li>Compounding \\ Balance Enclosures, Microscopes, and Robotic Equipment</li><li>Forensics \\ Histology \\ Educational \\ Microscopy</li><li>Mobile and Classroom Demonstrations \\ Pharmaceutical</li><li>Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work</li><li>Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental</li></ul><div>The Purair BASIC Series features high efficiency EC blowers, energy-saving LED lighting, and a filter blockage alarm to protect the operator from fume and particle hazards. A unique filter clamping design eliminates bypass leakage outside the cabinet.</div>",
+    "specifications": "<div>The Purair BASIC ductless fume hoods are designed to provide a safe, controlled work environment for a wide variety of laboratory applications. With innovative filtration technology, energy-efficient components, and OSHA compliance, these compact fume hoods offer versatile protection against chemical fumes, vapors, and particulates.</div>",
+    "applications": "<div>Key features include a high-efficiency EC blower, LED lighting, and a filter blockage alarm to monitor performance. The unique filter clamping design ensures no bypass leakage, keeping the work area secure. Available in a range of sizes to fit any lab space, the Purair BASIC series is an ideal solution for applications from forensics and histology to pharmaceutical powder handling and solvent cleaning.</div>",
+    "models": "<div>The Purair BASIC Series ductless fume hoods are available in a variety of widths and depths to accommodate different laboratory needs and space constraints.</div>"
+  }
+}

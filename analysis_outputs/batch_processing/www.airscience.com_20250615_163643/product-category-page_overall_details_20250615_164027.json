@@ -1,0 +1,183 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=purair-flow-laminar-flow-cabinets&brand=13",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 3,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     VLF-24-A 28.4\" | 721 mm 29.25\" | 743 mm 47.25\" | 1200 mm   VLF-36-A 40.4\" | 1026 mm 29.25\" | 743 mm 47.25\" | 1200 mm   VLF-48-A 52.4\" | 1331 mm 29.25\" | 743 mm 47.25\" | 1200 mm   VLF-60-A 64.4\" | 1636 mm 29.25\" | 743 mm 47.25\" | 1200 mm   VLF-72-A 76.4\" | 1941 mm 29.25\" | 743 mm 47.25\" | 1200 mm   VLF-96-A 104\" | 2642 mm 29.25\" | 743 mm 47.25\" | 1200 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>VLF-24-A</td> <td>28.4\" | 721 mm</td> <td>29.25\" | 743 mm</td> <td>47.25\" | 1200 mm</td> </tr> <tr> <td>VLF-36-A</td> <td>40.4\" | 1026 mm</td> <td>29.25\" | 743 mm</td> <td>47.25\" | 1200 mm</td> </tr> <tr> <td>VLF-48-A</td> <td>52.4\" | 1331 mm</td> <td>29.25\" | 743 mm</td> <td>47.25\" | 1200 mm</td> </tr> <tr> <td>VLF-60-A</td> <td>64.4\" | 1636 mm</td> <td>29.25\" | 743 mm</td> <td>47.25\" | 1200 mm</td> </tr> <tr> <td>VLF-72-A</td> <td>76.4\" | 1941 mm</td> <td>29.25\" | 743 mm</td> <td>47.25\" | 1200 mm</td> </tr> <tr> <td>VLF-96-A</td> <td>104\" | 2642 mm</td> <td>29.25\" | 743 mm</td> <td>47.25\" | 1200 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     VLF-24-A 24\" | 610 mm 28.25\" | 718 mm 27.3\" | 694 mm   VLF-36-A 36\" | 914 mm 28.25\" | 718 mm 27.3\" | 694 mm   VLF-48-A 48\" | 1219 mm 28.25\" | 718 mm 27.3\" | 694 mm   VLF-60-A 60\" | 1524 mm 28.25\" | 718 mm 27.3\" | 694 mm   VLF-72-A 72\" | 1829 mm 28.25\" | 718 mm 27.3\" | 694 mm   VLF-96-A 96\" | 2438 mm 28.25\" | 718 mm 27.3\" | 694 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>VLF-24-A</td> <td>24\" | 610 mm</td> <td>28.25\" | 718 mm</td> <td>27.3\" | 694 mm</td> </tr> <tr> <td>VLF-36-A</td> <td>36\" | 914 mm</td> <td>28.25\" | 718 mm</td> <td>27.3\" | 694 mm</td> </tr> <tr> <td>VLF-48-A</td> <td>48\" | 1219 mm</td> <td>28.25\" | 718 mm</td> <td>27.3\" | 694 mm</td> </tr> <tr> <td>VLF-60-A</td> <td>60\" | 1524 mm</td> <td>28.25\" | 718 mm</td> <td>27.3\" | 694 mm</td> </tr> <tr> <td>VLF-72-A</td> <td>72\" | 1829 mm</td> <td>28.25\" | 718 mm</td> <td>27.3\" | 694 mm</td> </tr> <tr> <td>VLF-96-A</td> <td>96\" | 2438 mm</td> <td>28.25\" | 718 mm</td> <td>27.3\" | 694 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Purair Laminar Flow cabinets are suitable for applications that generate no biohazardous materials and do not require operator protection. Mycology and Food Microbiology \\ Plant and Mammalian Cell Culture \\ Clinical Pharmacy and Hospitals \\ Cleanrooms \\ Semiconductor Assembly \\ Pharmaceutical \\ Aerospace \\ Medical Device Assembly \\ Research Laboratories",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Purair Laminar Flow cabinets are suitable for applications that generate no biohazardous materials and do not require operator protection.</p> <p>Mycology and Food Microbiology \\ Plant and Mammalian Cell Culture \\ Clinical Pharmacy and Hospitals \\ Cleanrooms \\ Semiconductor Assembly \\ Pharmaceutical \\ Aerospace \\ Medical Device Assembly \\ Research Laboratories</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair Laminar Flow Hoods are available in vertical and horizontal configurations with various sizes and options for a total of 36 models to choose from in 6 different widths.  Purair Laminar Flow Hoods are shipped fully assembled. No installation is required; just plug them in and use them. Products are designed for desktop use, or may be installed on an optional mobile base stand. The rear wall of vertical flow cabinets is perforated to reduce work surface turbulence by removing some of the airflow to the rear. High capacity air handling system delivers flow velocity of 0.4 m/s or 80 fpm. Choose from standard powder coated interior or stainless steel interior (-SS models). Purair VLF and HLF hoods have an ULPA filter pressure gauge to measure filter performance. The Air Science filters are easy to access, easy to change. Accessories include an IV bar, service fixtures, base stand, UV lamp, and front door/cover. Provides sterile work zone for aeseptic techniques.  Air cleanliness meets and exceeds ISO Class 4.  All models use ULPA filters (99.999% efficient at particle sizes between 0.1 and 0.3 microns. All models equipped with a stainless steel work surface.      Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/Icons_Purair-LF-Vertical.svg\" alt=\"\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> <ul> <li>Purair Laminar Flow Hoods are available in vertical and horizontal configurations with various sizes and options for a total of 36 models to choose from in 6 different widths. </li> <li>Purair Laminar Flow Hoods are shipped fully assembled. No installation is required; just plug them in and use them.</li> <li>Products are designed for desktop use, or may be installed on an optional mobile base stand.</li> <li>The rear wall of vertical flow cabinets is perforated to reduce work surface turbulence by removing some of the airflow to the rear.</li> <li>High capacity air handling system delivers flow velocity of 0.4 m/s or 80 fpm.</li> <li>Choose from standard powder coated interior or stainless steel interior (-SS models).</li> <li>Purair VLF and HLF hoods have an <a href=\"https://www.airscience.com/hepa-ulpa-filtration\">ULPA filter</a> pressure gauge to measure filter performance.</li> <li>The Air Science filters are easy to access, easy to change.</li> <li>Accessories include an IV bar, service fixtures, base stand, UV lamp, and front door/cover.</li> <li>Provides sterile work zone for aeseptic techniques. </li> <li>Air cleanliness meets and exceeds ISO Class 4. </li> <li>All models use ULPA filters (99.999% efficient at particle sizes between 0.1 and 0.3 microns.</li> <li>All models equipped with a stainless steel work surface. </li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/laminar-flow-hoods/vertical-laminar-flow-cabinets.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_VLF-48_Front.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_VLF-48_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_VLF-48_Front.png\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  Air Science Purair® Vertical Laminar Flow Cabinets are a series of high-efficiency products designed to protect equipment and other contents of the work zone from particulates, for applications sensitive to such contamination.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>Air Science Purair® Vertical Laminar Flow Cabinets are a series of high-efficiency products designed to protect equipment and other contents of the work zone from particulates, for applications sensitive to such contamination.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® LF Series, Vertical Laminar Flow Cabinets",
+              "html": "<h1>Purair® LF Series, Vertical Laminar Flow Cabinets</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T16:40:27.136046+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

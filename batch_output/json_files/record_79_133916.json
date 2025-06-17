@@ -1,0 +1,110 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "SafeKEEPER\u00ae COLD Refrigerated Evidence Storage Cabinets",
+  "slug": "safekeeper-cold-refrigerated-evidence-storage-cabinets",
+  "meta_title": "SafeKEEPER\u00ae COLD Refrigerated Evidence Storage Cabinets | Air Science",
+  "meta_description": "The SafeKEEPER\u00ae COLD is a unique refrigerator designed to provide temperature-controlled storage within a single cabinet with multiple layers of security.",
+  "meta_keywords": "safekeeper cold, refrigerated evidence storage, forensic evidence storage, cold storage, air science",
+  "short_description": "<p>The SafeKEEPER\u00ae COLD is a unique refrigerator designed to provide temperature controlled storage within a single cabinet with multiple layers of security.</p>",
+  "full_description": "<div>The SafeKEEPER\u00ae COLD is a unique refrigerator designed to provide temperature controlled storage within a single cabinet with multiple layers of security. It features a compact footprint less than 24\" wide, allowing placement in nearly any location. The reversible door can be customized with a 304-stainless steel wrap, and the environmentally friendly design is 100% CFC free with no ozone-damaging chemicals.</div>",
+  "seo_content": "<div>The SafeKEEPER\u00ae COLD refrigerated evidence storage cabinets are ideal for pharmaceutical, forensic, and other applications requiring secure, temperature-controlled storage. With a range of sizes and customization options, these high-quality stainless steel cabinets provide reliable cold storage in a compact footprint.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=safekeeper-cold&brand=50",
+  "target_keywords": [
+    "refrigerated evidence storage",
+    "forensic evidence storage",
+    "cold storage cabinet",
+    "pharmaceutical storage"
+  ],
+  "related_keywords": [
+    "temperature controlled storage",
+    "secure storage",
+    "stainless steel construction",
+    "cfc free"
+  ],
+  "technical_keywords": [
+    "dimensions",
+    "weight",
+    "electrical",
+    "warranty",
+    "accessories"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Refrigerated Evidence Storage Cabinet"
+    },
+    {
+      "category": "Application",
+      "tag": "Forensic Investigation and Processing"
+    },
+    {
+      "category": "Application",
+      "tag": "Pharmaceutical Storage"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics"
+    },
+    {
+      "category": "Industry",
+      "tag": "Pharmaceuticals"
+    },
+    {
+      "category": "Technology",
+      "tag": "Stainless Steel Construction"
+    },
+    {
+      "category": "Compliance",
+      "tag": "CFC Free"
+    }
+  ],
+  "specifications": {
+    "Construction": {
+      "Construction": "Stainless Steel"
+    },
+    "Electrical": {
+      "Electrical Voltage": "115V, 60Hz"
+    },
+    "Warranty": {
+      "Warranty": "2 Year Warranty"
+    }
+  },
+  "features_data": [
+    "Compact Footprint: Less than 24\" wide for placement in nearly any location",
+    "Customizable Door: Reversible door with option for 304-stainless steel wrap",
+    "100% CFC Free: Environmentally friendly design with no ozone-damaging chemicals"
+  ],
+  "applications": [
+    "Pharmaceutical Storage",
+    "Forensic Investigation and Processing"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "SafeKEEPER\u00ae COLD Refrigerated Evidence Storage Cabinets",
+    "description": "The SafeKEEPER\u00ae COLD is a unique refrigerator designed to provide temperature-controlled storage within a single cabinet with multiple layers of security.",
+    "manufacturer": "Air Science",
+    "category": "Refrigerated Evidence Storage Cabinet"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2024/09/PDT_Safekeeper-COLD-8_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/PDT_Safekeeper-COLD-12_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/PDT_Safekeeper-COLD-15_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/PDT_Safekeeper-COLD-8_Left.webp"
+  ],
+  "alt_text_suggestions": [
+    "SafeKEEPER COLD 8 refrigerated evidence storage cabinet left view",
+    "SafeKEEPER COLD 12 refrigerated evidence storage cabinet left view",
+    "SafeKEEPER COLD 15 refrigerated evidence storage cabinet left view",
+    "SafeKEEPER COLD 8 refrigerated evidence storage cabinet left view"
+  ],
+  "page_content_sections": {
+    "overview": "The SafeKEEPER\u00ae COLD is a unique refrigerator designed to provide temperature controlled storage within a single cabinet with multiple layers of security.",
+    "specifications": "The SafeKEEPER\u00ae COLD refrigerated evidence storage cabinets are constructed of stainless steel and feature 115V, 60Hz electrical requirements. They come with a 2 year warranty.",
+    "applications": "The SafeKEEPER\u00ae COLD is ideal for pharmaceutical storage and forensic investigation and processing applications.",
+    "models": "The SafeKEEPER\u00ae COLD is available in 15, 12, and 8 cubic foot models, with dimensions ranging from 23.4\" wide x 24.4\" deep x 50\" to 72\" high."
+  }
+}

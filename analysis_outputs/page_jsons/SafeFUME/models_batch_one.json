@@ -1,0 +1,120 @@
+{
+  "models_data": [
+    {
+      "model_name": "CA24S-A",
+      "specifications": {
+        "Dimensions & Weights": {
+          "Internal Height": "12.75″ | 325 mm",
+          "External Width": "24″ | 610 mm",
+          "External Depth": "17.25″ | 705 mm",
+          "External Height": "24″ | 610 mm",
+          "Shipping Width": "40″ | 1016 mm",
+          "Shipping Depth": "40″ | 1016 mm",
+          "Net Weight": "156 lbs | 71 kg",
+          "Shipping Weight": "200 lbs | 91 kg"
+        },
+        "Construction": {
+          "Cabinet Style": "Desktop"
+        },
+        "Options And Accessories": {
+          "Base Stand": "CART-25",
+          "UV lamp": "UV-CA"
+        }
+      },
+      "features": [
+        "Benchtop model with 24″ width",
+        "Compact design for laboratory workspaces",
+        "115VAC, 60Hz power configuration",
+        "Compatible with CART-25 mobile base stand"
+      ],
+      "seo_description": "SafeFUME CA24S-A benchtop cyanoacrylate fuming chamber with 24″ width, 12.75″ internal height, and 115VAC/60Hz power configuration. Ideal for fingerprint development in smaller laboratory settings."
+    },
+    {
+      "model_name": "CA30S-A",
+      "specifications": {
+        "Dimensions & Weights": {
+          "Internal Height": "36″ | 914 mm",
+          "External Width": "30″ | 762 mm",
+          "External Depth": "28″ | 711 mm",
+          "External Height": "48″ | 1220 mm",
+          "Shipping Width": "40″ | 1016 mm",
+          "Shipping Depth": "40″ | 1016 mm",
+          "Net Weight": "175 lbs | 79 kg",
+          "Shipping Weight": "215 lbs | 98 kg"
+        },
+        "Construction": {
+          "Cabinet Style": "Desktop"
+        },
+        "Options And Accessories": {
+          "Base Stand": "CART-30",
+          "UV lamp": "UV-CA"
+        }
+      },
+      "features": [
+        "Benchtop model with 30″ width",
+        "Larger internal height of 36″",
+        "115VAC, 60Hz power configuration",
+        "Compatible with CART-30 mobile base stand"
+      ],
+      "seo_description": "SafeFUME CA30S-A benchtop cyanoacrylate fuming chamber with 30″ width, 36″ internal height, and 115VAC/60Hz power configuration. Provides increased capacity for fingerprint development in laboratory environments."
+    },
+    {
+      "model_name": "CA48S-A",
+      "specifications": {
+        "Dimensions & Weights": {
+          "Internal Height": "36″ | 914 mm",
+          "External Width": "48″ | 1219 mm",
+          "External Depth": "28″ | 711 mm",
+          "External Height": "48″ | 1219 mm",
+          "Shipping Width": "58″ | 1473 mm",
+          "Shipping Depth": "40″ | 1016 mm",
+          "Net Weight": "306 lbs | 139 kg",
+          "Shipping Weight": "346 lbs | 157 kg"
+        },
+        "Construction": {
+          "Cabinet Style": "Desktop"
+        },
+        "Options And Accessories": {
+          "Base Stand": "CART-50",
+          "UV lamp": "UV-CA"
+        }
+      },
+      "features": [
+        "Benchtop model with 48″ width",
+        "Expanded workspace for larger evidence items",
+        "115VAC, 60Hz power configuration",
+        "Compatible with CART-50 mobile base stand"
+      ],
+      "seo_description": "SafeFUME CA48S-A benchtop cyanoacrylate fuming chamber with 48″ width, 36″ internal height, and 115VAC/60Hz power configuration. Designed for processing multiple or larger evidence items in forensic laboratories."
+    },
+    {
+      "model_name": "CA60S-A",
+      "specifications": {
+        "Dimensions & Weights": {
+          "Internal Height": "36″ | 914 mm",
+          "External Width": "60″ | 1524 mm",
+          "External Depth": "28″ | 711 mm",
+          "External Height": "48″ | 1219 mm",
+          "Shipping Width": "65″ | 1651 mm",
+          "Shipping Depth": "40″ | 1016 mm",
+          "Net Weight": "369 lbs | 167 kg",
+          "Shipping Weight": "407 lbs | 185 kg"
+        },
+        "Construction": {
+          "Cabinet Style": "Desktop"
+        },
+        "Options And Accessories": {
+          "Base Stand": "CART-60",
+          "UV lamp": "UV-CA"
+        }
+      },
+      "features": [
+        "Benchtop model with 60″ width",
+        "Maximum workspace for benchtop configuration",
+        "115VAC, 60Hz power configuration",
+        "Compatible with CART-60 mobile base stand"
+      ],
+      "seo_description": "SafeFUME CA60S-A benchtop cyanoacrylate fuming chamber with 60″ width, 36″ internal height, and 115VAC/60Hz power configuration. Provides maximum capacity for processing large or multiple evidence items in forensic laboratories."
+    }
+  ]
+}

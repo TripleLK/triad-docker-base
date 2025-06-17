@@ -1,6 +1,6 @@
 from django.db import models
 from wagtail.models import Page, Orderable, ClusterableModel
-from wagtail.admin.panels import FieldRowPanel, FieldPanel, InlinePanel
+from wagtail.admin.panels import FieldRowPanel, FieldPanel, InlinePanel, TabbedInterface, ObjectList
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.fields import RichTextField
 from wagtail.search import index
@@ -10,6 +10,7 @@ from apps.categorized_tags.models import CategorizedPageTag
 from apps.categorized_tags.forms import CategoryTagForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import uuid
+import json
 
 class BasicPage(Page):
     intro = models.CharField(max_length=250)
@@ -396,6 +397,82 @@ class LabEquipmentPage(Page):
         help_text="Detailed description of the equipment."
     )
     
+    # SEO and Meta Fields
+    meta_title = models.CharField(
+        max_length=60,
+        blank=True,
+        help_text="SEO-optimized title tag (50-60 characters). Leave blank to auto-generate from title."
+    )
+    
+    meta_description = models.CharField(
+        max_length=160,
+        blank=True,
+        help_text="Compelling meta description with key features (150-160 characters)"
+    )
+    
+    meta_keywords = models.TextField(
+        blank=True,
+        help_text="Comma-separated list of primary, secondary, technical, specification keywords"
+    )
+    
+    seo_content = RichTextField(
+        blank=True,
+        help_text="Additional SEO-rich content incorporating specifications and features"
+    )
+    
+    # Keyword Fields (stored as JSON arrays)
+    target_keywords = models.JSONField(
+        default=list,
+        blank=True,
+        help_text="Primary search keywords (3-5 terms: equipment type, brand, model)"
+    )
+    
+    related_keywords = models.JSONField(
+        default=list,
+        blank=True,
+        help_text="Secondary search terms (5-10 terms: applications, specifications, features)"
+    )
+    
+    technical_keywords = models.JSONField(
+        default=list,
+        blank=True,
+        help_text="Technical terms and specifications for expert searches"
+    )
+    
+    # Application and Technical Data
+    applications = models.JSONField(
+        default=list,
+        blank=True,
+        help_text="Lab applications and use cases for this equipment"
+    )
+    
+    technical_specifications = models.JSONField(
+        default=dict,
+        blank=True,
+        help_text="Detailed technical specifications in structured format"
+    )
+    
+    # Structured Data for Schema.org
+    structured_data = models.JSONField(
+        default=dict,
+        blank=True,
+        help_text="Schema.org structured data for rich snippets (JSON-LD format)"
+    )
+    
+    # SEO Content Sections
+    page_content_sections = models.JSONField(
+        default=dict,
+        blank=True,
+        help_text="Organized content sections (overview, specifications, applications, models)"
+    )
+    
+    # Image SEO
+    alt_text_suggestions = models.JSONField(
+        default=list,
+        blank=True,
+        help_text="SEO-optimized alt text suggestions for equipment images"
+    )
+    
     source_url = models.URLField(
         verbose_name="Source URL",
         blank=True, 
@@ -431,9 +508,21 @@ class LabEquipmentPage(Page):
     # tags = ClusterTaggableManager(through=CategoryPageTag, blank=True)
     categorized_tags = ClusterTaggableManager(through=CategorizedPageTag, blank=True)
 
+    # SEO-focused search fields
+    search_fields = Page.search_fields + [
+        index.SearchField('short_description'),
+        index.SearchField('full_description'),
+        index.SearchField('seo_content'),
+        index.SearchField('meta_description'),
+        index.SearchField('meta_keywords'),
+        index.AutocompleteField('title'),
+        index.AutocompleteField('meta_title'),
+    ]
+
     content_panels = Page.content_panels + [
         FieldPanel('short_description', classname="full"),
         FieldPanel('full_description', classname="full"),
+        FieldPanel('seo_content', classname="full"),
         FieldPanel('source_url'),
         FieldPanel('source_type'),
         FieldPanel('data_completeness'),
@@ -449,6 +538,29 @@ class LabEquipmentPage(Page):
         ),
         InlinePanel('models', label='Models'),
     ]
+    
+    # New SEO panel for admin
+    seo_panels = [
+        FieldPanel('meta_title'),
+        FieldPanel('meta_description'),
+        FieldPanel('meta_keywords'),
+        FieldPanel('target_keywords'),
+        FieldPanel('related_keywords'),
+        FieldPanel('technical_keywords'),
+        FieldPanel('applications'),
+        FieldPanel('technical_specifications'),
+        FieldPanel('structured_data'),
+        FieldPanel('page_content_sections'),
+        FieldPanel('alt_text_suggestions'),
+    ]
+    
+    # Add the SEO panel to edit handler
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(seo_panels, heading='SEO & Metadata'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings'),
+    ])
 
     base_form_class = CategoryTagForm
 
@@ -463,7 +575,7 @@ class LabEquipmentPage(Page):
             return gallery_item.get_image_url
         else:
             return None
-
+    
     @property
     def spec_group_names(self):
         spec_group_names = set()
@@ -502,6 +614,88 @@ class LabEquipmentPage(Page):
 
         # Return as a list – you can sort by name or leave unsorted.
         return sorted(effective.values(), key=lambda x: x['name'])
+    
+    # SEO helper methods
+    def get_meta_title(self):
+        """Get the meta title, falling back to page title if not set."""
+        return self.meta_title or self.title
+    
+    def get_meta_description(self):
+        """Get the meta description, auto-generating if not set."""
+        # If meta_description is explicitly set, use it
+        if self.meta_description:
+            return self.meta_description
+        
+        # Fall back to short_description
+        if self.short_description:
+            # Strip HTML and limit to 160 characters
+            from django.utils.html import strip_tags
+            desc = strip_tags(self.short_description)
+            return desc[:157] + "..." if len(desc) > 160 else desc
+            
+        # Use Equipment Overview section as last resort
+        if self.page_content_sections and 'overview' in self.page_content_sections:
+            overview = self.page_content_sections['overview']
+            # Limit to 160 characters
+            return overview[:157] + "..." if len(overview) > 160 else overview
+        
+        return ""
+    
+    def get_structured_data(self):
+        """Get structured data for JSON-LD output."""
+        if self.structured_data:
+            return self.structured_data
+        
+        # Auto-generate basic product structured data
+        data = {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": self.title,
+            "description": self.get_meta_description(),
+            "url": self.full_url,
+        }
+        
+        # Add main image if available
+        main_image = self.main_image()
+        if main_image:
+            from django.contrib.sites.models import Site
+            try:
+                site = Site.objects.get_current()
+                domain = site.domain
+                protocol = "https" if not domain.startswith("localhost") else "http"
+                image_url = f"{protocol}://{domain}{main_image}"
+                data["image"] = image_url
+            except:
+                # If we can't get the domain, use the relative URL
+                data["image"] = main_image
+        
+        # Add manufacturer/brand if available from tags
+        manufacturer_tags = self.categorized_tags.filter(category__name__icontains='manufacturer')
+        if manufacturer_tags.exists():
+            data["brand"] = {
+                "@type": "Brand",
+                "name": manufacturer_tags.first().name
+            }
+        
+        # Add model information if available
+        if self.models.exists():
+            first_model = self.models.first()
+            data["model"] = first_model.name
+            
+            # Add offers section (generic since we don't have pricing)
+            data["offers"] = {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "priceCurrency": "USD",
+                "price": "0.00",  # We don't have actual pricing
+                "url": self.full_url
+            }
+        
+        return data
+    
+    def get_structured_data_json(self):
+        """Get structured data as JSON string for template use."""
+        return json.dumps(self.get_structured_data(), indent=2)
 
 class LabEquipmentAccessory(ClusterableModel):
     page = ParentalManyToManyField(

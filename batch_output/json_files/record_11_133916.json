@@ -1,0 +1,94 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Mobile Forensic Evidence BENCH\u2122",
+  "slug": "mobile-forensic-evidence-bench",
+  "meta_title": "Mobile Forensic Evidence BENCH - Air Science Cyanoacrylate Fuming Chambers",
+  "meta_description": "The Air Science Evidence BENCH\u2122 series of laboratory work tables is designed specifically for high volume processing of forensic evidence by multiple users.",
+  "meta_keywords": "mobile forensic evidence bench, forensic evidence processing, cyanoacrylate fuming chamber, air science equipment",
+  "short_description": "<p>The Air Science Evidence BENCH\u2122 series of laboratory work tables is designed specifically for high volume processing of forensic evidence by multiple users. Professional design and construction features offer convenience during use, cleaning and maintenance.</p>",
+  "full_description": "<div>No positive airflow<br>Fabric withstands decontamination with standard bleach solution to eliminate blood-borne pathogens and DNA cross-contamination.<br>Cabinet includes plastic hangers, a plastic zipper designed for tamperproof seals, hanging rod, push handle, locking wheels, evidence tray and biological hazard warning label.</div>",
+  "seo_content": "<div>The Air Science Evidence BENCH\u2122 series provides a comprehensive solution for forensic investigation and processing, featuring a durable, easy-to-clean design that helps prevent cross-contamination. With a range of accessories and customization options, these mobile work tables are optimized for high-volume evidence processing in any forensic lab environment.</div>",
+  "source_url": "https://www.airscience.com/uk/uk-product-category-page?brandname=mobile-forensic-evidence-benches&brand=36",
+  "target_keywords": [
+    "mobile forensic evidence bench",
+    "forensic evidence processing",
+    "cyanoacrylate fuming chamber",
+    "air science equipment"
+  ],
+  "related_keywords": [
+    "forensic lab equipment",
+    "evidence processing",
+    "crime scene investigation",
+    "fingerprint processing"
+  ],
+  "technical_keywords": [
+    "epoxy-coated steel",
+    "tamperproof seals",
+    "biological hazard warning",
+    "ISO 14001",
+    "ISO 9001"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Mobile Forensic Evidence Bench"
+    },
+    {
+      "category": "Application",
+      "tag": "Forensic Investigation and Processing"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensic Lab"
+    },
+    {
+      "category": "Technology",
+      "tag": "Cyanoacrylate Fuming"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Construction": "Epoxy-coated Steel",
+      "Environmental": "ISO 14001 : 2015",
+      "Quality": "ISO 9001 : 2015"
+    }
+  },
+  "features_data": [
+    "No positive airflow",
+    "Fabric withstands decontamination with standard bleach solution",
+    "Eliminates blood-borne pathogens and DNA cross-contamination",
+    "Includes plastic hangers, tamperproof seals, hanging rod, push handle, locking wheels, evidence tray, biological hazard warning"
+  ],
+  "applications": [
+    "Forensic Investigation and Processing"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Mobile Forensic Evidence BENCH",
+    "description": "The Air Science Evidence BENCH\u2122 series of laboratory work tables is designed specifically for high volume processing of forensic evidence by multiple users.",
+    "manufacturer": "Air Science",
+    "category": "Forensic Lab Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_EVB-72_Front.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_EVB-72_Front.png"
+  ],
+  "alt_text_suggestions": [
+    "Mobile Forensic Evidence BENCH front view",
+    "Mobile Forensic Evidence BENCH front view with open door"
+  ],
+  "page_content_sections": {
+    "overview": "The Air Science Evidence BENCH\u2122 series of laboratory work tables is designed specifically for high volume processing of forensic evidence by multiple users. Professional design and construction features offer convenience during use, cleaning and maintenance.",
+    "specifications": "The Evidence BENCH\u2122 features epoxy-coated steel construction and meets ISO 14001 and ISO 9001 standards for environmental and quality management.",
+    "applications": "Designed for forensic investigation and processing applications in forensic lab environments.",
+    "models": "The EVB-72-G model is a 72-inch wide work table with 230VAC, 50Hz electrical requirements."
+  }
+}

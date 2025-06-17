@@ -1,0 +1,143 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae DWS\u2122 Ductless Downflow Workstations",
+  "slug": "purair-dws-ductless-downflow-workstations",
+  "meta_title": "Purair DWS Ductless Downflow Workstations - Protect Users from Hazardous Vapors",
+  "meta_description": "Purair DWS Downflow Workstations are ductless fume hoods designed to protect users and the environment from hazardous vapors. Unrestricted access and downward airflow provide safe operation.",
+  "meta_keywords": "ductless fume hood, downflow workstation, hazardous vapor protection, laboratory safety equipment",
+  "short_description": "<p>Purair\u00ae DWS\u2122 Downflow Workstations are ductless fume hoods designed to protect the user and the environment from hazardous vapors generated on the work surface. Unrestricted front and side access permits applications requiring complex user involvement. Downward airflow in the chamber protects the operator.</p>",
+  "full_description": "<div>Available in 3 standard sizes, in metal or polypropylene construction, totaling 6 models. Wider units, comprising two or more workstations can be positioned side-by-side with junction connections option. Downward airflow protects operator from fume and particle hazards. Unrestricted front and side access to work area. Filter blockage alarm. The Air Science high capacity filters are easy to access, easy to change. A unique filter clamping design eliminates bypass leakage outside the cabinet. Redesigned DWS offers increased internal height.</div>",
+  "seo_content": "<div>Using innovative filtration technology, the DWS Downflow Workstations create a safe work environment over the widest range of applications in the industry, including Chemical, Dental, Forensic, Histology, Industrial, Microscopy, Pharmaceutical, Powder Fingerprinting, and Veterinary applications.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=ductless-down-flow-workstations&brand=1",
+  "target_keywords": [
+    "ductless fume hood",
+    "downflow workstation",
+    "hazardous vapor protection",
+    "laboratory safety equipment"
+  ],
+  "related_keywords": [
+    "chemical safety",
+    "dental lab",
+    "forensic analysis",
+    "histology",
+    "industrial applications",
+    "microscopy",
+    "pharmaceutical research",
+    "powder fingerprinting",
+    "veterinary lab"
+  ],
+  "technical_keywords": [
+    "HEPA filtration",
+    "activated carbon filtration",
+    "ULPA filtration",
+    "downflow airflow",
+    "filter blockage alarm",
+    "filter clamping design"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Fume Hood"
+    },
+    {
+      "category": "Application",
+      "tag": "Hazardous Vapor Protection"
+    },
+    {
+      "category": "Industry",
+      "tag": "Laboratory"
+    },
+    {
+      "category": "Technology",
+      "tag": "Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Dimensions & Weights": {
+      "Internal Height": "15.75\" | 400 mm",
+      "External Width": "24\" | 610 mm to 48\" | 1220 mm",
+      "External Depth": "22.75\" | 580 mm",
+      "External Height": "31.5\" | 800 mm",
+      "Shipping Width": "40\" | 1016 mm",
+      "Shipping Depth": "40\" | 1016 mm to 55\" | 1397 mm",
+      "Net Weight": "120 lbs | 55 kg to 185 lbs | 84 kg",
+      "Shipping Weight": "160 lbs | 73 kg to 250 lbs | 114 kg"
+    },
+    "Construction": {
+      "Construction": "Epoxy-coated Steel"
+    },
+    "Protection & Compliance": {
+      "OSHA": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. This product may assist you with compliance or as part of your chemical hygiene plan. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Airflow & Filtration": {
+      "Airflow Direction": "Downflow",
+      "Face Velocity": "80",
+      "Main Filter": "HEPA (ULPA optional)",
+      "Carbon Filter": "Activated Carbon (optional)",
+      "Biological Filter": "HEPA or ULPA (optional)"
+    },
+    "Electrical": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Available in 3 standard sizes, in metal or polypropylene construction",
+    "Wider units can be positioned side-by-side with junction connections",
+    "Downward airflow protects operator from fumes and particles",
+    "Unrestricted front and side access to work area",
+    "Filter blockage alarm",
+    "Easy access and replacement of high capacity filters",
+    "Unique filter clamping design eliminates bypass leakage",
+    "Increased internal height in redesigned model"
+  ],
+  "applications": [
+    "Chemical",
+    "Dental",
+    "Forensic",
+    "Histology",
+    "Industrial",
+    "Microscopy",
+    "Pharmaceutical",
+    "Powder Fingerprinting",
+    "Veterinary"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair DWS Ductless Downflow Workstations",
+    "description": "Ductless fume hoods designed to protect users and the environment from hazardous vapors. Unrestricted access and downward airflow provide safe operation.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_DWS-24_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_DWS-36_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_DWS-48_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_DWS-24_Right.png"
+  ],
+  "alt_text_suggestions": [
+    "Purair DWS-24 ductless downflow workstation right view",
+    "Purair DWS-36 ductless downflow workstation right view",
+    "Purair DWS-48 ductless downflow workstation right view",
+    "Purair DWS-24 ductless downflow workstation right view"
+  ],
+  "page_content_sections": {
+    "overview": "Available in 3 standard sizes, in metal or polypropylene construction, totaling 6 models. Wider units, comprising two or more workstations can be positioned side-by-side with junction connections option. Downward airflow protects operator from fume and particle hazards. Unrestricted front and side access to work area. Filter blockage alarm. The Air Science high capacity filters are easy to access, easy to change. A unique filter clamping design eliminates bypass leakage outside the cabinet. Redesigned DWS offers increased internal height.",
+    "specifications": "Comprehensive technical specifications covering dimensions, weights, construction, protection & compliance, airflow & filtration, electrical, and warranty details.",
+    "applications": "Designed for use in a wide range of applications including Chemical, Dental, Forensic, Histology, Industrial, Microscopy, Pharmaceutical, Powder Fingerprinting, and Veterinary.",
+    "models": "Available in 3 standard widths: 24\", 36\", and 48\", in both metal and polypropylene construction."
+  }
+}

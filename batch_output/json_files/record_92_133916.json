@@ -1,0 +1,222 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae FUMEBOX\u2122 - Portable Ductless Fume Adsorber for Chemical Manipulations",
+  "slug": "purair-fumebox-portable-ductless-fume-adsorber",
+  "meta_title": "Purair FUMEBOX - Portable Ductless Fume Adsorber for Chemical Manipulations",
+  "meta_description": "The Purair\u00ae FUMEBOX\u2122 is a compact, portable ductless fume adsorber designed to protect users from chemicals, vapors, or non-toxic powders during low-volume laboratory procedures.",
+  "meta_keywords": "ductless fume adsorber, portable fume hood, chemical manipulation safety, laboratory fume containment",
+  "short_description": "<p>The Purair\u00ae FUMEBOX\u2122 is designed to protect the user from chemicals, vapors or non-toxic powders during low-volume chemical manipulations by effectively containing low concentrations of noxious fumes, vapors, or powders.</p>",
+  "full_description": "<div>The Purair\u00ae FUMEBOX\u2122 is a compact, portable ductless fume adsorber designed to protect users from chemicals, vapors, or non-toxic powders during low-volume laboratory procedures. With a low-profile design, the FUMEBOX can be easily positioned on shallow countertops or under cabinets, providing a clear viewing enclosure to prevent chemical splash. Its modular construction allows for multiple configuration options to meet your specific needs.</div>",
+  "seo_content": "<div>The FUMEBOX features a crossflow or upflow airflow design to effectively capture and contain noxious fumes, vapors, and powders. It is constructed with epoxy-coated steel for durability and easy cleaning. The unit meets OSHA standards for laboratory chemical exposure and is ISO 14001 and ISO 9001 certified for environmental and quality management.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=fume-box-ductless-enclosures&brand=5",
+  "target_keywords": [
+    "ductless fume adsorber",
+    "portable fume hood",
+    "chemical manipulation safety",
+    "laboratory fume containment"
+  ],
+  "related_keywords": [
+    "chemical fume control",
+    "benchtop fume enclosure",
+    "low-volume chemical processing"
+  ],
+  "technical_keywords": [
+    "crossflow airflow",
+    "epoxy-coated steel",
+    "OSHA compliance",
+    "ISO 14001",
+    "ISO 9001"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Fume Adsorber"
+    },
+    {
+      "category": "Application",
+      "tag": "Chemical Manipulation"
+    },
+    {
+      "category": "Industry",
+      "tag": "Laboratory"
+    },
+    {
+      "category": "Technology",
+      "tag": "Ductless Fume Containment"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Construction": "Epoxy-coated Steel",
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood.",
+      "Environmental Certification": "ISO 14001 : 2015",
+      "Quality Certification": "ISO 9001 : 2015"
+    },
+    "Electrical": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Filtration": {
+      "Filter Types": "GP Plus!, ACI Plus!/SUL, ACR, ACM, AMM, FOR, HEPA/ULPA"
+    }
+  },
+  "features_data": [
+    "Low-profile, completely portable, no ductwork required",
+    "Compact size, easily positioned on shallow countertops or under cabinets",
+    "Clear viewing enclosure prevents chemical splash",
+    "Modular design permits multiple configurations",
+    "Crossflow or upflow airflow design for effective fume capture and containment"
+  ],
+  "applications": [
+    "Soldering",
+    "Histology",
+    "Cover Slipping",
+    "Staining",
+    "Pathology",
+    "Graphic Arts",
+    "Sign Shops",
+    "Art Conservation",
+    "Electronics Assembly",
+    "Particulate Control",
+    "Manufacturing Processes",
+    "Air Purification"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair\u00ae FUMEBOX\u2122",
+    "description": "The Purair\u00ae FUMEBOX\u2122 is a compact, portable ductless fume adsorber designed to protect users from chemicals, vapors, or non-toxic powders during low-volume laboratory procedures.",
+    "manufacturer": "Air Science",
+    "category": "Ductless Fume Adsorber"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2024/09/AP60V_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/PDT_AP60H_Bottom-Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/AP60H-XL_Side.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/AP60V_Left.webp"
+  ],
+  "alt_text_suggestions": [
+    "Purair FUMEBOX AP60V model left view",
+    "Purair FUMEBOX AP60H model bottom left view",
+    "Purair FUMEBOX AP60H-XL model side view",
+    "Purair FUMEBOX AP60V model left view"
+  ],
+  "page_content_sections": {
+    "overview": "The Purair\u00ae FUMEBOX\u2122 is a compact, portable ductless fume adsorber designed to protect users from chemicals, vapors, or non-toxic powders during low-volume laboratory procedures.",
+    "specifications": "The FUMEBOX features epoxy-coated steel construction, meets OSHA standards, and is ISO 14001 and ISO 9001 certified. It operates on 120V, 60Hz power with a NEMA 5-15P plug.",
+    "applications": "The FUMEBOX is suitable for a wide range of applications including soldering, histology, cover slipping, staining, pathology, graphic arts, sign shops, art conservation, electronics assembly, particulate control, manufacturing processes, and air purification.",
+    "models": {
+      "models_data": [
+        {
+          "model_name": "AP60H-A",
+          "specifications": {
+            "Dimensions & Weights": {
+              "Internal Height": "20.63\" | 524 mm",
+              "External Width": "20.72\" | 526 mm",
+              "External Depth": "12.02\" | 305 mm",
+              "External Height": "21.16\" | 537 mm",
+              "Shipping Width": "27\" | 686 mm",
+              "Shipping Depth": "27\" | 686 mm",
+              "Net Weight": "45 lbs | 20 kg",
+              "Shipping Weight": "60 lbs | 27 kg"
+            },
+            "Options & Accessories": {
+              "Fume Extraction Unit - Source Capture Hose": "AP60EX",
+              "Spill Tray": "TRAY-AP60"
+            },
+            "Airflow & Filtration": {
+              "Airflow Direction": "Crossflow"
+            },
+            "Electrical": {
+              "Voltage": "120V, 60Hz",
+              "Plug Type": "NEMA 5-15P"
+            },
+            "Controls & Monitoring": {
+              "Control": "Electronic"
+            }
+          },
+          "features": [
+            "Benchtop, horizontal design",
+            "21\" wide"
+          ],
+          "seo_description": "The AP60H-A is a benchtop, horizontal Purair FUMEBOX model with a 21\" width, 115VAC, 60Hz power, and crossflow airflow design."
+        },
+        {
+          "model_name": "AP60V-A",
+          "specifications": {
+            "Dimensions & Weights": {
+              "Internal Height": "11\" | 279 mm",
+              "External Width": "21.16\" | 537 mm",
+              "External Depth": "12.02\" | 305 mm",
+              "External Height": "20.72\" | 526 mm",
+              "Shipping Width": "27\" | 686 mm",
+              "Shipping Depth": "27\" | 686 mm",
+              "Net Weight": "45 lbs | 20 kg",
+              "Shipping Weight": "60 lbs | 27 kg"
+            },
+            "Options & Accessories": {
+              "Fume Extraction Unit - Source Capture Hose": "AP60EX",
+              "Spill Tray": "TRAY-AP60"
+            },
+            "Airflow & Filtration": {
+              "Airflow Direction": "Upflow"
+            },
+            "Electrical": {
+              "Voltage": "120V, 60Hz",
+              "Plug Type": "NEMA 5-15P"
+            },
+            "Controls & Monitoring": {
+              "Control": "Electronic"
+            }
+          },
+          "features": [
+            "Benchtop, vertical design",
+            "21\" wide"
+          ],
+          "seo_description": "The AP60V-A is a benchtop, vertical Purair FUMEBOX model with a 21\" width, 115VAC, 60Hz power, and upflow airflow design."
+        },
+        {
+          "model_name": "AP60H-XL-A",
+          "specifications": {
+            "Dimensions & Weights": {
+              "Internal Height": "15.32\" | 389 mm",
+              "External Width": "29.75\" | 756 mm",
+              "External Depth": "24.72\" | 628 mm",
+              "External Height": "15.67\" | 398 mm",
+              "Shipping Width": "40\" | 1016 mm",
+              "Shipping Depth": "40\" | 1016 mm",
+              "Net Weight": "50 lbs | 23 kg",
+              "Shipping Weight": "100 lbs | 45 kg"
+            },
+            "Options & Accessories": {
+              "Fume Extraction Unit - Source Capture Hose": "AP60EX",
+              "Spill Tray (Polypropylene)": "TRAY-AP60-XL"
+            },
+            "Airflow & Filtration": {
+              "Airflow Direction": "Crossflow"
+            },
+            "Electrical": {
+              "Voltage": "120V, 60Hz",
+              "Plug Type": "NEMA 5-15P"
+            },
+            "Controls & Monitoring": {
+              "Control": "Electronic"
+            }
+          },
+          "features": [
+            "Benchtop, horizontal design",
+            "30\" wide"
+          ],
+          "seo_description": "The AP60H-XL-A is a benchtop, horizontal Purair FUMEBOX model with a 30\" width, 115VAC, 60Hz power, and crossflow airflow design."
+        }
+      ]
+    }
+  }
+}

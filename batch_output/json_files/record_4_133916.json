@@ -1,0 +1,146 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae ADVANCED Ductless Fume Hoods",
+  "slug": "purair-advanced-ductless-fume-hoods",
+  "meta_title": "Purair ADVANCED Ductless Fume Hoods - High-Efficiency Vapor Protection",
+  "meta_description": "The Purair ADVANCED Series ductless fume hoods are designed to protect users and the environment from hazardous vapors with innovative filtration technology and a wide range of applications.",
+  "meta_keywords": "ductless fume hood, purair advanced, vapor protection, hazardous vapors, filtration technology",
+  "short_description": "<p>The Purair\u00ae ADVANCED Series ductless fume hoods are available in 7 standard sizes in metal or polypropylene construction. This Series of high-efficiency products is designed to protect the user and the environment from hazardous vapors generated on the work surface.</p>",
+  "full_description": "<div>Using innovative filtration technology, the Purair Advanced creates a safe work environment over the widest range of applications in the industry. Compounding \\ Balance Enclosures, Microscopes and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental</div>",
+  "seo_content": "<div>High operator protection to fume and particle hazards. Improved clamping eliminates bypass leakage. Filter blockage alarm. Polypropylene work surface (stainless steel option). High capacity filters for more demanding applications.</div>",
+  "source_url": "https://www.airscience.com/product-category-page?brandname=purair-advanced-ductless-fume-hoods&brand=9",
+  "target_keywords": [
+    "ductless fume hood",
+    "purair advanced",
+    "vapor protection",
+    "hazardous vapors",
+    "filtration technology"
+  ],
+  "related_keywords": [
+    "compounding",
+    "microscopes",
+    "forensics",
+    "pharmaceutical",
+    "powder weighing"
+  ],
+  "technical_keywords": [
+    "vertical airflow",
+    "HEPA/ULPA filtration",
+    "electronic controls",
+    "OSHA compliance",
+    "ISO 14001 certified"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Fume Hood"
+    },
+    {
+      "category": "Application",
+      "tag": "Compounding"
+    },
+    {
+      "category": "Application",
+      "tag": "Microscopy"
+    },
+    {
+      "category": "Application",
+      "tag": "Pharmaceutical"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics"
+    },
+    {
+      "category": "Industry",
+      "tag": "Veterinary"
+    },
+    {
+      "category": "Technology",
+      "tag": "Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Cabinet Style": "Tall",
+      "Construction": "Epoxy-coated Steel",
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental Certification": "ISO 14001 : 2015",
+      "Quality Certification": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Filtration & Airflow": {
+      "Airflow Direction": "Vertical Upflow",
+      "Face Velocity": 100,
+      "Main Filter": "22 lbs each",
+      "Carbon Filter": "1 x 11 lbs each",
+      "Biological Filter": "HEPA / ULPA"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "High operator protection to fume and particle hazards",
+    "Improved clamping eliminates bypass leakage",
+    "Filter blockage alarm",
+    "Polypropylene work surface (stainless steel option)",
+    "High capacity filters for more demanding applications"
+  ],
+  "applications": [
+    "Compounding \\ Balance Enclosures",
+    "Microscopes and Robotic Equipment",
+    "Forensics",
+    "Histology",
+    "Educational \\ Microscopy",
+    "Mobile and Classroom Demonstrations",
+    "Pharmaceutical",
+    "Powder Fingerprinting",
+    "Powder Weighing",
+    "Sample Prep Work",
+    "Soldering",
+    "Solvent Cleaning and Welding",
+    "Veterinary",
+    "Dental"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair ADVANCED Ductless Fume Hoods",
+    "description": "The Purair ADVANCED Series ductless fume hoods are designed to protect users and the environment from hazardous vapors with innovative filtration technology and a wide range of applications.",
+    "manufacturer": "Air Science",
+    "category": "Ductless Fume Hood"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P10-XT_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P15-XT_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P20-XT.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P10-XT_Left.png"
+  ],
+  "alt_text_suggestions": [
+    "Purair Advanced P10-XT ductless fume hood left view",
+    "Purair Advanced P15-XT ductless fume hood left view",
+    "Purair Advanced P20-XT ductless fume hood",
+    "Purair Advanced P10-XT ductless fume hood left view"
+  ],
+  "page_content_sections": {
+    "overview": "Using innovative filtration technology, the Purair Advanced creates a safe work environment over the widest range of applications in the industry.",
+    "specifications": "The Purair ADVANCED Series ductless fume hoods are available in 7 standard sizes in metal or polypropylene construction.",
+    "applications": "Compounding \\ Balance Enclosures, Microscopes and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental",
+    "models": "The Purair ADVANCED Series ductless fume hoods are available in 7 standard sizes."
+  }
+}

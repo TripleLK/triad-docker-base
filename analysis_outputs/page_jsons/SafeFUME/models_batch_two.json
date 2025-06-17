@@ -1,0 +1,136 @@
+{
+  "models_data": [
+    {
+      "model_name": "CA30T-A",
+      "specifications": {
+        "Dimensions & Weights": {
+          "Internal Height": "57.24″ | 1454 mm",
+          "External Width": "30″ | 762 mm",
+          "External Depth": "28″ | 711 mm",
+          "External Height": "74.88″ | 1902 mm",
+          "Shipping Width": "40″ | 1016 mm",
+          "Shipping Depth": "40″ | 1016 mm",
+          "Net Weight": "271 lbs | 123 kg",
+          "Shipping Weight": "316 lbs | 143 kg"
+        },
+        "Construction": {
+          "Cabinet Style": "Tall"
+        },
+        "Options And Accessories": {
+          "Advanced Hot Plate": "AHOTPLATE110, AHOTPLATE230",
+          "Basic Hot Plate": "BHOTPLATE110, BHOTPLATE230",
+          "Electronic Lock": "E-LOCK (Factory installed; specify when ordering)"
+        }
+      },
+      "features": [
+        "Upright single door design",
+        "30″ width configuration",
+        "Tall cabinet style for larger evidence processing",
+        "Compatible with both advanced and basic hot plates",
+        "Single door configuration for efficient space utilization",
+        "Optional electronic lock for enhanced security"
+      ],
+      "seo_description": "The SafeFUME CA30T-A is an upright, single door cyanoacrylate fuming chamber with 30″ width and 115VAC/60Hz power configuration. This tall cabinet design features 57.24″ internal height, upflow airflow system, and programmable heat and humidity control for optimal fingerprint development."
+    },
+    {
+      "model_name": "CA48T-A",
+      "specifications": {
+        "Dimensions & Weights": {
+          "Internal Height": "57.24″ | 1454 mm",
+          "External Width": "48″ | 1219 mm",
+          "External Depth": "28″ | 711 mm",
+          "External Height": "74.88″ | 1902 mm",
+          "Shipping Width": "58″ | 1473 mm",
+          "Shipping Depth": "40″ | 1016 mm",
+          "Net Weight": "327 lbs | 148 kg",
+          "Shipping Weight": "367 lbs | 166 kg"
+        },
+        "Construction": {
+          "Cabinet Style": "Tall"
+        },
+        "Options And Accessories": {
+          "Advanced Hot Plate": "AHOTPLATE110, AHOTPLATE230",
+          "Basic Hot Plate": "BHOTPLATE110, BHOTPLATE230",
+          "Electronic Lock": "E-LOCK (Factory installed; specify when ordering)"
+        }
+      },
+      "features": [
+        "Upright single door design",
+        "48″ width configuration for larger evidence processing",
+        "Tall cabinet style with 57.24″ internal height",
+        "Compatible with both advanced and basic hot plates",
+        "Single door configuration for efficient access",
+        "Optional electronic lock for enhanced security"
+      ],
+      "seo_description": "The SafeFUME CA48T-A is an upright, single door cyanoacrylate fuming chamber with 48″ width and 115VAC/60Hz power configuration. This tall cabinet design features 57.24″ internal height, upflow airflow system, and programmable heat and humidity control for optimal fingerprint development in forensic applications."
+    },
+    {
+      "model_name": "CA60T-A",
+      "specifications": {
+        "Dimensions & Weights": {
+          "Internal Height": "57.24″ | 1454 mm",
+          "External Width": "60″ | 1524 mm",
+          "External Depth": "28″ | 705 mm",
+          "External Height": "74.88″ | 1902 mm",
+          "Shipping Width": "70″ | 1778 mm",
+          "Shipping Depth": "40″ | 1016 mm",
+          "Net Weight": "382 lbs | 173 kg",
+          "Shipping Weight": "447 lbs | 203 kg"
+        },
+        "Construction": {
+          "Cabinet Style": "Tall"
+        },
+        "Options And Accessories": {
+          "Advanced Hot Plate": "AHOTPLATE110, AHOTPLATE230",
+          "Basic Hot Plate": "BHOTPLATE110, BHOTPLATE230",
+          "Electronic Lock": "E-LOCK (Factory installed; specify when ordering)"
+        }
+      },
+      "features": [
+        "Upright double door design",
+        "60″ width configuration for maximum evidence processing capacity",
+        "Tall cabinet style with 57.24″ internal height",
+        "Compatible with both advanced and basic hot plates",
+        "Double door configuration for easy access to large evidence items",
+        "Optional electronic lock for enhanced security"
+      ],
+      "seo_description": "The SafeFUME CA60T-A is an upright, double door cyanoacrylate fuming chamber with 60″ width and 115VAC/60Hz power configuration. This tall cabinet design features 57.24″ internal height, upflow airflow system, and programmable heat and humidity control for optimal fingerprint development in forensic applications."
+    },
+    {
+      "model_name": "CATRI-A",
+      "specifications": {
+        "Dimensions & Weights": {
+          "Internal Height": "2 @ 24, 1 @ 57.25″ | 2 @ 610, 1 @ 1454 mm",
+          "External Width": "60″ | 1524 mm",
+          "External Depth": "27.75″ | 705 mm",
+          "External Height": "75″ | 1905 mm",
+          "Shipping Width": "70″ | 1778 mm",
+          "Shipping Depth": "40″ | 1016 mm",
+          "Net Weight": "402 lbs | 182 kg",
+          "Shipping Weight": "467 lbs | 212 kg"
+        },
+        "Construction": {
+          "Cabinet Style": "Extra Tall, Tri"
+        },
+        "Airflow & Filtration": {
+          "Main Filter": "22 lbs / 9.6 kg (3)"
+        },
+        "Options And Accessories": {
+          "Advanced Hot Plate": "AHOTPLATE110, AHOTPLATE230",
+          "Basic Hot Plate": "BHOTPLATE110, BHOTPLATE230",
+          "Electronic Lock": "E-LOCK (Factory installed; specify when ordering)"
+        }
+      },
+      "features": [
+        "Triplex design with three separate doors",
+        "60″ width configuration for maximum evidence processing capacity",
+        "Extra tall cabinet style with multiple compartment heights",
+        "Three separate chambers with individual access",
+        "Compatible with both advanced and basic hot plates",
+        "Optional electronic lock for enhanced security",
+        "Three main filters for optimal performance"
+      ],
+      "seo_description": "The SafeFUME CATRI-A is an upright, triplex cyanoacrylate fuming chamber with three doors, 60″ width and 115VAC/60Hz power configuration. This extra tall cabinet features multiple compartment heights (two at 24″ and one at 57.25″), upflow airflow system, and programmable heat and humidity control for versatile fingerprint development applications."
+    }
+  ]
+}

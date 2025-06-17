@@ -1,0 +1,260 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=purair-basic-ductless-fume-hoods&brand=8",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "accessories": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[1]/div/div/div[1]/img"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[1]/div/div/div[1]/img",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "attributes": {
+                "src": "/wp-content/uploads/2024/07/13133_3_AIR_Purair_BASIC_Brochure_vf-1.webp"
+              }
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "categorized_tags": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]/div[3]/div[1]/a"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]/div[3]/div[1]/a",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Get a Quote",
+              "attributes": {
+                "href": "/quote-request"
+              }
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 4,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     P5-24-XT-A 24\" | 610 mm 27\" | 676 mm 35\" | 889 mm   P5-36-XT-A 36\" | 914 mm 27\" | 676 mm 35\" | 889 mm   P5-48-XT-A 48\" | 1219 mm 27\" | 676 mm 35\" | 889 mm   P5-24-XTS-A 24\" | 610 mm 24\" | 610 mm 35\" | 889 mm   P5-36-XTS-A 36\" | 914 mm 24\" | 610 mm 35\" | 889 mm   P5-48-XTS-A 48\" | 1219 mm 24\" | 610 mm 35\" | 889 mm"
+            },
+            {
+              "text": "Model Width Depth Height     P5-24-XT-A - - 23.6\" | 600 mm   P5-36-XT-A - - 23.6\" | 600 mm   P5-48-XT-A - - 23.6\" | 600 mm   P5-24-XTS-A - - 23.6\" | 600 mm   P5-36-XTS-A - - 23.6\" | 600 mm   P5-48-XTS-A - - 23.6\" | 600 mm"
+            },
+            {
+              "text": "Formula Description     GP Plus! The most widely used filter in the range, primarily for solvent, organic and alcohol removal.   ACI Plus!/SUL Designed to neutralize volatile inorganic acid vapors.   ACR Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.   ACM Mercury vapor   AMM Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.   FOR Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.    SEFA Chemical Compatability Order from Filtco"
+            },
+            {
+              "text": "Using innovative filtration technology, the Purair Basic creates a safe work environment over the widest range of applications in the industry. Compounding \\ Balance Enclosures, Microscopes, and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental"
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]/div[2]/ul"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]/div[2]/ul",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "High efficiency EC blower Energy saving LED lighting Filter blockage alarm Protects the operator from fume and (with added HEPA/ULPA filter) particle hazards. A unique filter clamping design eliminates bypass leakage outside the cabinet."
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [],
+          "extraction_note": "Elements found but no content or attributes extracted"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 0,
+        "failed_extractions": 1,
+        "extraction_errors": []
+      }
+    },
+    "models": {
+      "xpath_selectors": [
+        "/html/body/section[4]/*[contains(@class, 'roweven')]",
+        "/html/body/section[6]/*[contains(@class, 'roweven')]"
+      ],
+      "comment": "First selection has the model names; second selection has the spec groups and groups, in",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[4]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Model Specifications     Model  P5-24-XT-A - Standard depth cabinet, 24\"W, extra tall legs, 115VAC, 60Hz  P5-36-XT-A - Standard depth cabinet, 36\"W, extra tall legs, 115VAC, 60Hz  P5-48-XT-A - Standard depth cabinet, 48\"W, extra tall legs, 115VAC, 60Hz  P5-24-XTS-A - Shallow depth cabinet, 24\"W, extra tall legs, 115VAC, 60Hz  P5-36-XTS-A - Shallow depth cabinet, 36\"W, extra tall legs, 115VAC, 60Hz  P5-48-XTS-A - Shallow depth cabinet, 48\"W, extra tall legs, 115VAC, 60Hz"
+            }
+          ],
+          "preview_note": "All matches shown"
+        },
+        {
+          "selector_index": 1,
+          "xpath": "/html/body/section[6]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS   Internal Height: 23.6″ | 600 mm External Width: 24″ | 610 mm External Depth: 27″ | 676 mm External Height: 35″ | 889 mm Shipping Width: 40″ | 1016 mm Shipping Depth: 40″ | 1016 mm Net Weight: 72 lbs | 33 kg Shipping Weight: 150 lbs | 68 kg     CONSTRUCTION   Cabinet Style: Extra Tall Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. This product may assist you with compliance or as part of your chemical hygiene plan. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001 : 2015; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Advanced Controller*: P5-24-XT-A-ADVP Autocal Control Panel*: P5-24-XT-A-ACAL Base Cabinet, Fixed (Metal): CART-MCC-25 Base Cabinet, Fixed (Polypropylene): CART-SSC-25 Base Stand, Mobile, with Casters: CART-25 Dwyer Air Flow Meter: DWYER Fire Safety Cabinet Base: CART-FSC-25 Polypropylene Construction*: P5-24-XT-A-PP Spill Tray (Polypropylene): TRAY-P5-24 UV lamp: P5-24-XT-A-UV * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow Direction: Upflow     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P     CONTROLS & MONITORING   Control: Fan Manual On Off Monitoring Options:  / / Standard             DIMENSIONS & WEIGHTS   Internal Height: 23.6″ | 600 mm External Width: 36″ | 914 mm External Depth: 27″ | 676 mm External Height: 35″ | 889 mm Shipping Width: 40″ | 1016 mm Shipping Depth: 40″ | 1016 mm Net Weight: 99 lbs | 45 kg Shipping Weight: 170 lbs | 77 kg     CONSTRUCTION   Cabinet Style: Extra Tall Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. This product may assist you with compliance or as part of your chemical hygiene plan. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001 : 2015; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Advanced Controller*: P5-36-XT-A-ADVP Autocal Control Panel*: P5-36-XT-A-ACAL Base Cabinet, Fixed (Metal): CART-MCC-36 Base Cabinet, Fixed (Polypropylene): CART-SSC-36 Base Stand, Mobile, with Casters: CART-36 Dwyer Air Flow Meter: DWYER Fire Safety Cabinet Base: CART-FSC-36 Polypropylene Construction*: P5-36-XT-A-PP Spill Tray (Polypropylene): TRAY-P5-36 UV lamp: P5-36-XT-A-UV * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow Direction: Upflow     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P     CONTROLS & MONITORING   Control: Fan Manual On Off Monitoring Options:  / / Standard             DIMENSIONS & WEIGHTS   Internal Height: 23.6″ | 600 mm External Width: 48″ | 1219 mm External Depth: 27″ | 676 mm External Height: 35″ | 889 mm Shipping Width: 55″ | 1397 mm Shipping Depth: 40″ | 1016 mm Net Weight: 138 lbs | 63 kg Shipping Weight: 230 lbs | 104 kg     CONSTRUCTION   Cabinet Style: Extra Tall Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. This product may assist you with compliance or as part of your chemical hygiene plan. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001 : 2015; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Advanced Controller*: P5-48-XT-A-ADVP Autocal Control Panel*: P5-48-XT-A-ACAL Base Cabinet, Fixed (Metal): CART-MCC-50 Base Cabinet, Fixed (Polypropylene): CART-SSC-50 Base Stand, Mobile, with Casters: CART-50 Dwyer Air Flow Meter: DWYER Fire Safety Cabinet Base: CART-FSC-50 Polypropylene Construction*: P5-48-XT-A-PP Spill Tray (Polypropylene): TRAY-P5-48 UV lamp: P5-48-XT-A-UV * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow Direction: Upflow     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P     CONTROLS & MONITORING   Control: Fan Manual On Off             DIMENSIONS & WEIGHTS   Internal Height: 23.6″ | 600 mm External Width: 24″ | 610 mm External Depth: 24″ | 610 mm External Height: 35″ | 889 mm Shipping Width: 40″ | 1016 mm Shipping Depth: 40″ | 1016 mm Net Weight: 72 lbs | 33 kg Shipping Weight: 150 lbs | 68 kg     CONSTRUCTION   Cabinet Style: Extra Tall#Shallow Depth Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. This product may assist you with compliance or as part of your chemical hygiene plan. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001 : 2015; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Advanced Controller*: P5-24-XTS-A-ADVP Autocal Control Panel*: P5-24-XTS-A-ACAL Base Cabinet, Fixed (Metal): CART-MCC-25 Base Cabinet, Fixed (Polypropylene): CART-SSC-25 Base Stand, Mobile, with Casters: CART-25 Dwyer Air Flow Meter: DWYER Fire Safety Cabinet Base: CART-FSC-25 Polypropylene Construction*: P5-24-XTS-A-PP Spill Tray (Polypropylene): TRAY-P5-24S UV lamp: P5-24-XTS-A-UV * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow Direction: Upflow     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P     CONTROLS & MONITORING   Control: Fan Manual On Off Monitoring Options:  / / Standard             DIMENSIONS & WEIGHTS   Internal Height: 23.6″ | 600 mm External Width: 36″ | 914 mm External Depth: 24″ | 610 mm External Height: 35″ | 889 mm Shipping Width: 40″ | 1016 mm Shipping Depth: 40″ | 1016 mm Net Weight: 99 lbs | 45 kg Shipping Weight: 170 lbs | 77 kg     CONSTRUCTION   Cabinet Style: Extra Tall#Shallow Depth Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. This product may assist you with compliance or as part of your chemical hygiene plan. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001 : 2015; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Advanced Controller*: P5-36-XTS-A-ADVP Autocal Control Panel*: P5-36-XTS-A-ACAL Base Cabinet, Fixed (Metal): CART-MCC-36 Base Cabinet, Fixed (Polypropylene): CART-SSC-36 Base Stand, Mobile, with Casters: CART-36 Dwyer Air Flow Meter: DWYER Fire Safety Cabinet Base: CART-FSC-36 Polypropylene Construction*: P5-36-XTS-A-PP Spill Tray (Polypropylene): TRAY-P5-36S UV lamp: P5-36-XTS-A-UV * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow Direction: Upflow     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P     CONTROLS & MONITORING   Control: Fan Manual On Off             DIMENSIONS & WEIGHTS   Internal Height: 23.6″ | 600 mm External Width: 48″ | 1219 mm External Depth: 24″ | 610 mm External Height: 35″ | 889 mm Shipping Width: 55″ | 1397 mm Shipping Depth: 40″ | 1016 mm Net Weight: 138 lbs | 63 kg Shipping Weight: 230 lbs | 104 kg     CONSTRUCTION   Cabinet Style: Extra Tall#Shallow Depth Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. This product may assist you with compliance or as part of your chemical hygiene plan. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001 : 2015; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Advanced Controller*: P5-48-XTS-A-ADVP Autocal Control Panel*: P5-48-XTS-A-ACAL Base Cabinet, Fixed (Metal): CART-MCC-50 Base Cabinet, Fixed (Polypropylene): CART-SSC-50 Base Stand, Mobile, with Casters: CART-50 Dwyer Air Flow Meter: DWYER Fire Safety Cabinet Base: CART-FSC-50 Polypropylene Construction*: P5-48-XTS-A-PP Spill Tray (Polypropylene): TRAY-P5-48S UV lamp: P5-48-XTS-A-UV * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow Direction: Upflow     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P     CONTROLS & MONITORING   Control: Fan Manual On Off Monitoring Options:  / / Standard"
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 2,
+        "successful_extractions": 2,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  The Purair® BASIC Series ductless fume hoods are compact, ideal for use in laboratory environments where space is limited or where only small volumes of harmful substances are handled. For package and mail inspection workstations, see Purair SafeSEARCH."
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® BASIC Ductless Fume Hoods"
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "processing_metadata": {
+    "timestamp": "2025-06-10T15:41:35.640422+00:00",
+    "status": "ready_for_ai_with_content_mapping",
+    "total_field_count": 8,
+    "content_length": 114784,
+    "extraction_statistics": {
+      "total_fields_configured": 8,
+      "total_xpath_selectors": 9,
+      "successful_extractions": 8,
+      "failed_extractions": 1,
+      "fields_with_extracted_content": 7,
+      "extraction_success_rate_percent": 88.9,
+      "content_mapping_status": "complete"
+    }
+  }
+}

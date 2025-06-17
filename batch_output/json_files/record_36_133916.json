@@ -1,0 +1,132 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair Horizontal Laminar Flow Cabinets",
+  "slug": "purair-horizontal-laminar-flow-cabinets",
+  "meta_title": "Purair Horizontal Laminar Flow Cabinets - Air Science",
+  "meta_description": "Purair Horizontal Laminar Flow Cabinets are high-efficiency products designed to protect equipment and contents from particulates in sensitive applications.",
+  "meta_keywords": "laminar flow cabinets, horizontal laminar flow, air science, purair, clean work environment, sterile work zone",
+  "short_description": "<p>Air Science Purair Horizontal Laminar Flow Cabinets are a series of high-efficiency products designed to protect equipment and other contents of the work zone from particulates, for applications sensitive to such contamination.</p>",
+  "full_description": "<div>Purair Laminar Flow Hoods are available in vertical and horizontal configurations with various sizes and options for a total of 36 models to choose from in 6 different widths. Purair Laminar Flow Hoods are shipped fully assembled. No installation is required; just plug them in and use them. Products are designed for desktop use, or may be installed on an optional mobile base stand. The rear wall of vertical flow cabinets is perforated to reduce work surface turbulence by removing some of the airflow to the rear. High capacity air handling system delivers flow velocity of 0.4 m/s or 80 fpm. Choose from standard powder coated interior or stainless steel interior (-SS models). Purair VLF and HLF hoods have an ULPA filter pressure gauge to measure filter performance. The Air Science filters are easy to access, easy to change. Accessories include an IV bar, service fixtures, base stand, UV lamp, and front door/cover. Provides sterile work zone for aseptic techniques. Air cleanliness meets and exceeds ISO Class 4. All models use ULPA filters (99.999% efficient at particle sizes between 0.1 and 0.3 microns. All models equipped with a stainless steel work surface.</div>",
+  "seo_content": "<div>Purair Horizontal Laminar Flow Cabinets are designed for a variety of sensitive applications that require a clean, sterile work environment free from particulate contamination. These high-efficiency products utilize ULPA filtration to provide ISO Class 4 air cleanliness, making them suitable for use in mycology, cell culture, pharmaceutical, and other critical research and production environments. The horizontal airflow design ensures uniform air distribution across the work surface, minimizing turbulence and maintaining optimal sterility. With a range of sizes and options, Purair Horizontal Laminar Flow Cabinets can be configured to meet the specific needs of any laboratory or cleanroom setting.</div>",
+  "source_url": "https://www.airscience.com/product-category-page?brandname=purair-flow-laminar-flow-cabinets&brand=11",
+  "target_keywords": [
+    "laminar flow cabinets",
+    "horizontal laminar flow",
+    "clean work environment",
+    "sterile work zone",
+    "ULPA filtration",
+    "ISO Class 4"
+  ],
+  "related_keywords": [
+    "air science",
+    "purair",
+    "mycology",
+    "cell culture",
+    "pharmaceutical",
+    "research",
+    "production"
+  ],
+  "technical_keywords": [
+    "flow velocity",
+    "work surface turbulence",
+    "stainless steel",
+    "powder coated",
+    "pressure gauge",
+    "filter performance"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Horizontal Laminar Flow Cabinets"
+    },
+    {
+      "category": "Application",
+      "tag": "Mycology and Food Microbiology"
+    },
+    {
+      "category": "Application",
+      "tag": "Plant and Mammalian Cell Culture"
+    },
+    {
+      "category": "Application",
+      "tag": "Pharmaceutical"
+    },
+    {
+      "category": "Application",
+      "tag": "Research Laboratories"
+    },
+    {
+      "category": "Technology",
+      "tag": "ULPA Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO Class 4"
+    }
+  ],
+  "specifications": {
+    "Construction": {
+      "Cabinet Style": "Standard",
+      "Construction": "Epoxy-coated Steel"
+    },
+    "Electrical": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Compliance": {
+      "OSHA": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental": "ISO 14001: 2015; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Filtration": {
+      "Filter Type": "ULPA",
+      "Filter Efficiency": "99.999% at 0.1-0.3 microns"
+    }
+  },
+  "features_data": [
+    "Horizontal airflow design for uniform air distribution",
+    "ULPA filtration provides ISO Class 4 air cleanliness",
+    "Stainless steel work surface",
+    "Perforated rear wall to reduce work surface turbulence",
+    "High capacity air handling system with 0.4 m/s (80 fpm) flow velocity",
+    "Standard powder coated or optional stainless steel interior",
+    "ULPA filter pressure gauge for monitoring performance",
+    "Easy access and replacement of Air Science filters",
+    "Accessories include IV bar, service fixtures, base stand, UV lamp, and front cover"
+  ],
+  "applications": [
+    "Mycology and Food Microbiology",
+    "Plant and Mammalian Cell Culture",
+    "Pharmaceutical",
+    "Research Laboratories"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair Horizontal Laminar Flow Cabinets",
+    "description": "Purair Horizontal Laminar Flow Cabinets are high-efficiency products designed to protect equipment and contents from particulates in sensitive applications.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2023/10/PDT_HLF-48_Right.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/10/PDT_HLF-72_Right.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/06/PDT_HLF-60XT_UV.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/10/PDT_HLF-48_Right.webp"
+  ],
+  "alt_text_suggestions": [
+    "Purair HLF-48 horizontal laminar flow cabinet right view",
+    "Purair HLF-72 horizontal laminar flow cabinet right view",
+    "Purair HLF-60XT horizontal laminar flow cabinet with UV light",
+    "Purair HLF-48 horizontal laminar flow cabinet right view"
+  ],
+  "page_content_sections": {
+    "overview": "Purair Horizontal Laminar Flow Cabinets are a series of high-efficiency products designed to protect equipment and other contents of the work zone from particulates, for applications sensitive to such contamination.",
+    "specifications": "Purair Horizontal Laminar Flow Cabinets feature stainless steel construction, ULPA filtration for ISO Class 4 air cleanliness, and a range of sizes and options to meet diverse laboratory and cleanroom needs.",
+    "applications": "Purair Horizontal Laminar Flow Cabinets are suitable for use in mycology, cell culture, pharmaceutical, and other critical research and production environments that require a sterile, particulate-free work zone.",
+    "models": "Purair Horizontal Laminar Flow Cabinets are available in 36 different models across 6 widths, providing a wide range of size and configuration options to choose from."
+  }
+}

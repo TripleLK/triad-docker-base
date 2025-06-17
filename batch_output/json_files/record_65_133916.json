@@ -1,0 +1,179 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae ADVANCED Ductless Fume Cupboards",
+  "slug": "purair-advanced-ductless-fume-cupboards",
+  "meta_title": "Purair Advanced Ductless Fume Hoods - High-Efficiency Fume Containment",
+  "meta_description": "The Purair Advanced Series ductless fume cupboards are designed to protect users and the environment from hazardous vapors with innovative filtration technology.",
+  "meta_keywords": "ductless fume hood, ductless fume cupboard, fume containment, hazardous vapor control, laboratory safety equipment",
+  "short_description": "<p>The Purair Advanced Series ductless fume cupboards are available in 7 standard sizes in metal or polypropylene construction. This Series of high-efficiency products is designed to protect the user and the environment from hazardous vapors generated on the work surface.</p>",
+  "full_description": "<div>Using innovative filtration technology, the Purair Advanced creates a safe work environment over the widest range of applications in the industry. Compounding \\ Balance Enclosures, Microscopes and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental</div>",
+  "seo_content": "<div>High operator protection to fume and particle hazards. Improved clamping eliminates bypass leakage. Filter blockage alarm. Polypropylene work surface (stainless steel option). High capacity filters for more demanding applications.</div>",
+  "source_url": "https://www.airscience.com/uk/uk-product-category-page/?brandname=purair-advanced-ductless-fume-hoods&brand=9",
+  "target_keywords": [
+    "ductless fume hood",
+    "ductless fume cupboard",
+    "fume containment",
+    "hazardous vapor control",
+    "laboratory safety equipment"
+  ],
+  "related_keywords": [
+    "compounding",
+    "balance enclosures",
+    "microscopes",
+    "robotic equipment",
+    "forensics",
+    "histology",
+    "educational",
+    "microscopy",
+    "pharmaceutical",
+    "powder fingerprinting",
+    "powder weighing",
+    "sample prep",
+    "soldering",
+    "solvent cleaning",
+    "welding",
+    "veterinary",
+    "dental"
+  ],
+  "technical_keywords": [
+    "vertical airflow",
+    "HEPA/ULPA filtration",
+    "polypropylene work surface",
+    "stainless steel construction",
+    "filter blockage alarm",
+    "OSHA compliance",
+    "ISO 14001",
+    "ENERGY STAR"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Fume Cupboard"
+    },
+    {
+      "category": "Application",
+      "tag": "Compounding"
+    },
+    {
+      "category": "Application",
+      "tag": "Microscopy"
+    },
+    {
+      "category": "Application",
+      "tag": "Pharmaceutical"
+    },
+    {
+      "category": "Application",
+      "tag": "Sample Preparation"
+    },
+    {
+      "category": "Industry",
+      "tag": "Laboratory"
+    },
+    {
+      "category": "Technology",
+      "tag": "Vertical Airflow"
+    },
+    {
+      "category": "Technology",
+      "tag": "HEPA/ULPA Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ENERGY STAR"
+    }
+  ],
+  "specifications": {
+    "Dimensions & Weights": {
+      "Internal Height": "38\" | 965 mm",
+      "External Width Range": "30\" | 762 mm to 96\" | 2438 mm",
+      "External Depth": "27.375\" | 695 mm",
+      "External Height": "53\" | 1346 mm",
+      "Net Weight Range": "111 lbs | 50 kg to 427 lbs | 193 kg"
+    },
+    "Construction": {
+      "Cabinet Style": "Tall",
+      "Construction": "Epoxy-coated Steel"
+    },
+    "Protection & Compliance": {
+      "OSHA": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Airflow & Filtration": {
+      "Airflow": "Vertical",
+      "Airflow Direction": "Upflow",
+      "Face Velocity": 100,
+      "Main Filter": "22 lbs each",
+      "Carbon Filter": "1 x 11 lbs each",
+      "Biological Filter": "HEPA / ULPA"
+    },
+    "Electrical": {
+      "Electrical Voltage": "230V, 50Hz"
+    },
+    "Controls & Monitoring": {
+      "Control": "Electronic#Monitair"
+    }
+  },
+  "features_data": [
+    "High operator protection to fume and particle hazards",
+    "Improved clamping eliminates bypass leakage",
+    "Filter blockage alarm",
+    "Polypropylene work surface (stainless steel option)",
+    "High capacity filters for more demanding applications"
+  ],
+  "applications": [
+    "Compounding \\ Balance Enclosures",
+    "Microscopes and Robotic Equipment",
+    "Forensics",
+    "Histology",
+    "Educational",
+    "Microscopy",
+    "Mobile and Classroom Demonstrations",
+    "Pharmaceutical",
+    "Powder Fingerprinting",
+    "Powder Weighing",
+    "Sample Prep Work",
+    "Soldering",
+    "Solvent Cleaning and Welding",
+    "Veterinary",
+    "Dental"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair ADVANCED Ductless Fume Cupboards",
+    "description": "The Purair Advanced Series ductless fume cupboards are designed to protect users and the environment from hazardous vapors with innovative filtration technology.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P10-XT_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P15-XT_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P20-XT.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P10-XT_Left.png"
+  ],
+  "alt_text_suggestions": [
+    "Purair Advanced P10-XT ductless fume hood left view",
+    "Purair Advanced P15-XT ductless fume hood left view",
+    "Purair Advanced P20-XT ductless fume hood",
+    "Purair Advanced P10-XT ductless fume hood left view"
+  ],
+  "page_content_sections": {
+    "overview": "The Purair Advanced Series ductless fume cupboards are available in 7 standard sizes in metal or polypropylene construction. This Series of high-efficiency products is designed to protect the user and the environment from hazardous vapors generated on the work surface.",
+    "specifications": "Detailed technical specifications covering dimensions, construction, compliance, airflow, filtration, electrical, and controls.",
+    "applications": "Compounding \\ Balance Enclosures, Microscopes and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental",
+    "models": "7 standard model sizes available in the Purair Advanced Series."
+  }
+}

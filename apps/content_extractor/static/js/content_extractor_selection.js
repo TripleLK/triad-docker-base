@@ -49,6 +49,11 @@ function addNewInstance(fieldName) {
 // Menu management functions - explicitly attached to window
 window.showFieldMenu = function() {
     console.log('📋 showFieldMenu called');
+    
+    // CRIMSON FALCON: Ensure menu shows current field state data
+    // This guarantees fresh completion indicators every time menu opens
+    console.log('🔄 Ensuring fresh field state data before showing menu');
+    
     window.createFieldMenu();
 };
 
@@ -77,78 +82,83 @@ window.closeInstanceMenu = function() {
 // Control panel integration
 window.createControlPanel = function() {
     console.log('🎛️ Creating control panel');
-    const panelId = 'content-extractor-control-panel';
-    let existingPanel = document.getElementById(panelId);
+    
+    // Remove existing panel if present
+    const existingPanel = document.getElementById('content-extractor-control-panel');
     if (existingPanel) {
         existingPanel.remove();
     }
     
     const panel = document.createElement('div');
-    panel.id = panelId;
+    panel.id = 'content-extractor-control-panel';
     panel.className = 'content-extractor-ui'; // Mark as our UI
     panel.style.cssText = `
         position: fixed;
-        bottom: 20px;
+        top: 20px;
         right: 20px;
+        width: 200px;
         background: white;
         border: 2px solid #007bff;
         border-radius: 8px;
         padding: 15px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         z-index: 9998;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-size: 14px;
-        min-width: 250px;
-        max-width: 350px;
+        font-size: 13px;
+        cursor: move;
     `;
     
-    // Calculate selection progress
-    const totalSelections = Object.values(window.contentExtractorData.fieldSelections).reduce((sum, selections) => sum + selections.length, 0);
-    const completedFields = Object.keys(window.contentExtractorData.fieldSelections).filter(key => window.contentExtractorData.fieldSelections[key].length > 0).length;
-    const totalFields = window.contentExtractorData.fieldOptions.length;
+    // Add draggable functionality
+    let isDragging = false;
+    let dragOffset = { x: 0, y: 0 };
     
-    // Progress indicator
-    const progressHtml = totalSelections > 0 ? `
-        <div style="margin: 8px 0; padding: 6px; background: #e8f5e8; border-radius: 4px; text-align: center;">
-            <small style="color: #28a745; font-weight: bold;">
-                📊 ${completedFields}/${totalFields} fields (${totalSelections} selections)
+    panel.addEventListener('mousedown', function(e) {
+        if (e.target === panel || e.target.closest('strong')) {
+            isDragging = true;
+            const rect = panel.getBoundingClientRect();
+            dragOffset.x = e.clientX - rect.left;
+            dragOffset.y = e.clientY - rect.top;
+            panel.style.cursor = 'grabbing';
+            e.preventDefault();
+        }
+    });
+    
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            panel.style.left = (e.clientX - dragOffset.x) + 'px';
+            panel.style.top = (e.clientY - dragOffset.y) + 'px';
+            panel.style.right = 'auto'; // Remove right positioning when dragging
+        }
+    });
+    
+    document.addEventListener('mouseup', function() {
+        if (isDragging) {
+            isDragging = false;
+            panel.style.cursor = 'move';
+        }
+    });
+    
+    // Progress information
+    // QUANTUM VAULT: Fix UI synchronization - use proper completion summary instead of flawed counting
+    const summary = getFieldCompletionSummary ? getFieldCompletionSummary() : {
+        completedFields: Object.keys(window.contentExtractorData.fieldSelections).filter(fieldName => {
+            const selections = window.contentExtractorData.fieldSelections[fieldName];
+            return selections && selections.length > 0;
+        }).length,
+        totalFields: window.contentExtractorData.fieldOptions.length
+    };
+    
+    const progressHtml = summary.totalFields > 0 ? `
+        <div class="progress-info" style="margin: 10px 0; padding: 8px; background: #e8f4f8; border-radius: 4px; border-left: 3px solid #17a2b8;">
+            <div style="font-size: 11px; color: #666; margin-bottom: 3px;">Progress</div>
+            <div style="font-size: 12px; color: #333;">
+                ${summary.completedFields}/${summary.totalFields} fields selected
+            </div>
+            <small style="color: #888; font-size: 10px;">
+                ${summary.completedFields === summary.totalFields ? '✅ All fields complete!' : 'Continue selecting...'}
             </small>
         </div>
     ` : '';
-    
-    // URL Management section
-    const currentDomain = window.location.hostname;
-    const urlManagementHtml = `
-        <div style="margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 4px; border-left: 3px solid #17a2b8;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <strong style="color: #17a2b8; font-size: 12px;">🌐 URL Testing</strong>
-                <span id="url-count" style="font-size: 11px; color: #666;">Loading...</span>
-            </div>
-            <div style="display: flex; gap: 4px; margin-bottom: 5px;">
-                <button onclick="window.switchTestUrl('previous')" 
-                        style="flex: 1; padding: 4px 6px; background: #6c757d; color: white; border: none; 
-                               border-radius: 3px; cursor: pointer; font-size: 11px; transition: all 0.2s;"
-                        onmouseover="this.style.background='#5a6268'"
-                        onmouseout="this.style.background='#6c757d'">
-                    ⬅️ Prev
-                </button>
-                <button onclick="window.switchTestUrl('next')" 
-                        style="flex: 1; padding: 4px 6px; background: #6c757d; color: white; border: none; 
-                               border-radius: 3px; cursor: pointer; font-size: 11px; transition: all 0.2s;"
-                        onmouseover="this.style.background='#5a6268'"
-                        onmouseout="this.style.background='#6c757d'">
-                    Next ➡️
-                </button>
-            </div>
-            <button onclick="window.showAddUrlDialog()" 
-                    style="width: 100%; padding: 4px 6px; background: #17a2b8; color: white; border: none; 
-                           border-radius: 3px; cursor: pointer; font-size: 11px; transition: all 0.2s;"
-                    onmouseover="this.style.background='#138496'"
-                    onmouseout="this.style.background='#17a2b8'">
-                ➕ Add Test URL
-            </button>
-        </div>
-    `;
     
     panel.innerHTML = `
         <div style="text-align: center; margin-bottom: 10px;">
@@ -156,7 +166,6 @@ window.createControlPanel = function() {
             <small style="color: #666;">v${window.contentExtractorData.scriptVersion}</small>
         </div>
         ${progressHtml}
-        ${urlManagementHtml}
         <button onclick="window.showFieldMenu()" 
                 style="display: block; width: 100%; margin: 5px 0; padding: 8px; 
                        background: #007bff; color: white; border: none; 
@@ -182,9 +191,6 @@ window.createControlPanel = function() {
     `;
     
     document.body.appendChild(panel);
-    
-    // Load URL count
-    window.loadUrlCount();
     
     // Update function availability indicators immediately and periodically
     window.updateFunctionStatus = function() {
@@ -220,6 +226,8 @@ window.updateControlPanelProgress = function() {
 // Initialize the interface
 window.initializeInterface = function() {
     console.log('🎬 Initializing Content Extractor interface');
+    
+    // Create control panel and other interface elements
     window.createControlPanel();
     
     // Add keyboard shortcuts
@@ -335,7 +343,7 @@ function updateSelectionManagerContent(manager, fieldName) {
                     <div style="font-weight: bold; color: ${fieldColor}; margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between;">
                         <span>Selection ${index + 1}</span>
                         <div style="display: flex; gap: 4px;">
-                            <button onclick="openXPathEditor('${fieldName}', ${index})" 
+                            <button onclick="editXPathSelector('${fieldName}', ${index})" 
                                     style="background: #007bff; color: white; border: none; 
                                            border-radius: 3px; padding: 2px 6px; font-size: 11px; cursor: pointer;
                                            font-weight: bold;"
@@ -363,6 +371,29 @@ function updateSelectionManagerContent(manager, fieldName) {
     const fieldType = field ? field.type : 'unknown';
     const isMultiValue = fieldType === 'multi-value';
     
+    // SWIFT PHOENIX: Check for existing comment for display in selection manager
+    const existingComment = window.contentExtractorData.fieldComments ? 
+        window.contentExtractorData.fieldComments[fieldName] || '' : '';
+    const hasComment = existingComment.length > 0;
+    
+    // Current comment display in selection manager
+    let currentCommentHtml = '';
+    if (hasComment) {
+        const commentPreview = existingComment.length > 80 
+            ? existingComment.substring(0, 80) + '...'
+            : existingComment;
+        currentCommentHtml = `
+            <div style="margin: 10px 0; padding: 8px; background: #17a2b815; border: 1px solid #17a2b840; border-radius: 6px;">
+                <div style="font-size: 11px; color: #666; margin-bottom: 3px;">
+                    💬 Current Comment:
+                </div>
+                <div style="font-style: italic; color: #17a2b8; font-size: 12px;">
+                    "${commentPreview}"
+                </div>
+            </div>
+        `;
+    }
+
     manager.innerHTML = `
         <div class="manager-header" style="text-align: center; margin-bottom: 15px; cursor: grab; padding: 5px; border-radius: 6px;"
              onmousedown="this.style.cursor='grabbing'" onmouseup="this.style.cursor='grab'">
@@ -373,10 +404,19 @@ function updateSelectionManagerContent(manager, fieldName) {
                 ${isMultiValue ? 'Multi-value field' : 'Single-value field'} • ${selections.length} selected
             </small>
         </div>
+        
+        ${currentCommentHtml}
+        
         <div style="max-height: 300px; overflow-y: auto;">
             ${selectionsHtml}
         </div>
         <div style="text-align: center; margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee;">
+            <button onclick="addFieldCommentFromSelections('${fieldName}')" 
+                    style="padding: 6px 12px; margin: 0 5px; background: #17a2b8; color: white; 
+                           border: none; border-radius: 4px; cursor: pointer; font-size: 12px;"
+                    title="Add context comment for AI processing">
+                💬 ${hasComment ? 'Edit' : 'Add'} Comment
+            </button>
             <button onclick="clearAllSelections('${fieldName}')" 
                     style="padding: 6px 12px; margin: 0 5px; background: #ffc107; color: #212529; 
                            border: none; border-radius: 4px; cursor: pointer; font-size: 12px;"
@@ -408,6 +448,12 @@ window.removeSelection = function(fieldName, index) {
         // Remove from array
         selections.splice(index, 1);
         
+        // CRIMSON FALCON: Refresh field menus after removing selection
+        if (typeof refreshFieldMenus === 'function') {
+            refreshFieldMenus();
+            console.log('🔄 Field menu refreshed after removing selection');
+        }
+        
         // Update the selection manager display
         window.updateSelectionManager();
         
@@ -429,6 +475,12 @@ window.clearAllSelections = function(fieldName) {
         window.contentExtractorData.selectedDOMElements.clear();
         
         console.log(`🗑️ Cleared all selections for ${fieldName}`);
+        
+        // CRIMSON FALCON: Refresh field menus after clearing all selections
+        if (typeof refreshFieldMenus === 'function') {
+            refreshFieldMenus();
+            console.log('🔄 Field menu refreshed after clearing all selections');
+        }
         
         // Update displays
         window.updateSelectionManager();
@@ -497,299 +549,151 @@ window.openXPathEditor = function(fieldName, selectionIndex) {
     }
 };
 
-// URL Management Functions
-window.loadUrlCount = function() {
-    const currentDomain = window.location.hostname;
-    const baseUrl = window.contentExtractorData.baseUrl;
-    const apiToken = window.contentExtractorData.apiToken;
+window.editXPathSelector = function(fieldName, index) {
+    console.log(`✏️ Swift Phoenix: Edit XPath for ${fieldName}[${index}]`);
     
-    if (!apiToken) {
-        console.warn('⚠️ No API token available for URL management');
-        document.getElementById('url-count').textContent = 'No token';
+    const selections = window.contentExtractorData.fieldSelections[fieldName] || [];
+    if (index < 0 || index >= selections.length) {
+        console.error(`❌ Invalid selection index ${index} for ${fieldName}`);
+        alert(`Invalid selection index. Please refresh the page and try again.`);
         return;
     }
     
-    fetch(`${baseUrl}/content-extractor/get-test-urls/?domain=${encodeURIComponent(currentDomain)}`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Token ${apiToken}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            const urlCountElement = document.getElementById('url-count');
-            if (urlCountElement) {
-                urlCountElement.textContent = `${data.total_urls} URLs`;
-            }
-            console.log(`📊 Loaded ${data.total_urls} test URLs for ${currentDomain}`);
-        } else {
-            console.warn('⚠️ Failed to load URL count:', data.error);
-            document.getElementById('url-count').textContent = 'Error';
-        }
-    })
-    .catch(error => {
-        console.error('❌ Error loading URL count:', error);
-        document.getElementById('url-count').textContent = 'Error';
+    const selection = selections[index];
+    if (!selection) {
+        console.error(`❌ No selection found at index ${index} for ${fieldName}`);
+        alert(`Selection not found. Please refresh the page and try again.`);
+        return;
+    }
+    
+    console.log(`🎯 Opening XPath editor for selection:`, {
+        fieldName: fieldName,
+        index: index,
+        xpath: selection.xpath,
+        text: selection.selected_text?.substring(0, 50) + '...'
     });
-};
-
-window.switchTestUrl = function(direction) {
-    const currentUrl = window.location.href;
-    const currentDomain = window.location.hostname;
-    const baseUrl = window.contentExtractorData.baseUrl;
-    const apiToken = window.contentExtractorData.apiToken;
-    
-    if (!apiToken) {
-        alert('⚠️ No API token available for URL switching');
-        return;
-    }
-    
-    // Show loading indicator
-    const urlCountElement = document.getElementById('url-count');
-    const originalText = urlCountElement ? urlCountElement.textContent : '';
-    if (urlCountElement) {
-        urlCountElement.textContent = 'Switching...';
-    }
-    
-    fetch(`${baseUrl}/content-extractor/switch-url/${direction}/`, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Token ${apiToken}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            current_url: currentUrl,
-            domain: currentDomain
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log(`🔄 Switching to ${direction} URL: ${data.next_url}`);
-            
-            // Show success feedback
-            const feedback = document.createElement('div');
-            feedback.className = 'content-extractor-ui';
-            feedback.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: #17a2b8;
-                color: white;
-                padding: 12px 20px;
-                border-radius: 8px;
-                z-index: 10001;
-                font-size: 14px;
-                text-align: center;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            `;
-            feedback.innerHTML = `
-                🔄 Switching to ${direction} URL...<br>
-                <small>${data.next_url}</small>
-            `;
-            
-            document.body.appendChild(feedback);
-            
-            // Navigate to the new URL
-            setTimeout(() => {
-                window.location.href = data.next_url;
-            }, 1000);
-            
-        } else {
-            console.warn('⚠️ Failed to switch URL:', data.error);
-            alert(`Failed to switch URL: ${data.error}`);
-            
-            // Restore original text
-            if (urlCountElement) {
-                urlCountElement.textContent = originalText;
-            }
-        }
-    })
-    .catch(error => {
-        console.error('❌ Error switching URL:', error);
-        alert(`Error switching URL: ${error.message}`);
+                    
+    // Try to find the element on the page using the XPath
+    let element = null;
+                    try {
+        const result = document.evaluate(
+            selection.xpath,
+            document,
+            null,
+            XPathResult.FIRST_ORDERED_NODE_TYPE,
+            null
+        );
+        element = result.singleNodeValue;
         
-        // Restore original text
-        if (urlCountElement) {
-            urlCountElement.textContent = originalText;
+        if (element) {
+            console.log(`✅ Found element for XPath editing:`, element);
+                        } else {
+            console.warn(`⚠️ Element not found with XPath: ${selection.xpath}`);
+                        }
+                    } catch (error) {
+        console.warn('⚠️ Error evaluating XPath:', error);
+    }
+    
+    // If element not found, try to find by text content as fallback
+    if (!element && selection.selected_text) {
+        const textToFind = selection.selected_text.trim();
+        const allElements = document.querySelectorAll('*');
+        for (let el of allElements) {
+            if (el.textContent && el.textContent.trim() === textToFind) {
+                element = el;
+                console.log(`✅ Found element by text content as fallback:`, element);
+                break;
+            }
         }
-    });
+    }
+    
+    // SWIFT PHOENIX: Fixed XPath editor integration - use correct API
+    if (window.ContentExtractorXPathEditor && typeof window.ContentExtractorXPathEditor.openEditor === 'function') {
+        console.log(`🔧 Opening XPath editor with element, fieldName: ${fieldName}, xpath: ${selection.xpath}`);
+        window.ContentExtractorXPathEditor.openEditor(element, fieldName, selection.xpath);
+        
+        // Store the selection index for potential updates
+        window.ContentExtractorXPathEditor.currentSelectionIndex = index;
+        
+    } else {
+        console.error('❌ XPath Editor not available');
+        console.log('Available XPath Editor methods:', Object.keys(window.ContentExtractorXPathEditor || {}));
+        alert('XPath Editor not available. Please ensure the XPath editor script is loaded.');
+    }
 };
 
-window.showAddUrlDialog = function() {
-    const currentDomain = window.location.hostname;
+// SWIFT PHOENIX: Comment functionality for selections interface
+window.addFieldCommentFromSelections = function(fieldName) {
+    console.log(`💬 Adding comment for ${fieldName} from selections interface`);
     
-    // Create modal dialog
-    const modal = document.createElement('div');
-    modal.className = 'content-extractor-ui';
-    modal.style.cssText = `
+    // Create the comment dialog with fromSelections=true (reuse existing function from content_extractor_ui.js)
+    if (typeof createFieldCommentDialog === 'function') {
+        createFieldCommentDialog(fieldName, true);
+    } else {
+        console.error('createFieldCommentDialog function not available');
+        alert('Comment functionality not available. Please ensure the UI script is loaded.');
+    }
+};
+
+// SWIFT PHOENIX: Modified comment save function to return to selections instead of method menu
+window.saveFieldCommentFromSelections = function(fieldName) {
+    const textarea = document.getElementById('comment-input-field');
+    if (!textarea) return;
+    
+    const commentValue = textarea.value.trim();
+    
+    // Initialize fieldComments if not exists
+    if (!window.contentExtractorData.fieldComments) {
+        window.contentExtractorData.fieldComments = {};
+    }
+    
+    // Save comment (even if empty to clear existing)
+    window.contentExtractorData.fieldComments[fieldName] = commentValue;
+    
+    console.log(`💾 Saved comment for ${fieldName} from selections:`, commentValue || '(empty)');
+    
+    // Close the dialog
+    const dialog = document.getElementById('content-extractor-comment-dialog');
+    if (dialog) {
+        dialog.remove();
+    }
+    
+    // Show success feedback
+    const feedback = document.createElement('div');
+    feedback.className = 'content-extractor-ui';
+    feedback.style.cssText = `
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 10002;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    `;
-    
-    const dialog = document.createElement('div');
-    dialog.style.cssText = `
-        background: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #17a2b8;
+        color: white;
+        padding: 12px 20px;
         border-radius: 8px;
-        padding: 20px;
-        max-width: 500px;
-        width: 90%;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        z-index: 10003;
+        font-size: 14px;
+        font-weight: bold;
+        pointer-events: none;
+        animation: fadeInOut 2s ease-in-out;
     `;
+    feedback.textContent = `💬 Comment ${commentValue ? 'saved' : 'cleared'} for ${fieldName}!`;
     
-    dialog.innerHTML = `
-        <h3 style="margin: 0 0 15px 0; color: #17a2b8;">🌐 Add Test URL</h3>
-        <p style="margin: 0 0 15px 0; color: #666; font-size: 14px;">
-            Add a new URL from <strong>${currentDomain}</strong> for testing selectors across different pages.
-        </p>
-        <input type="url" id="new-test-url" placeholder="https://${currentDomain}/page-to-test" 
-               style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 4px; 
-                      font-size: 14px; margin-bottom: 15px; box-sizing: border-box;">
-        <div style="display: flex; gap: 10px; justify-content: flex-end;">
-            <button onclick="window.closeAddUrlDialog()" 
-                    style="padding: 8px 16px; background: #6c757d; color: white; border: none; 
-                           border-radius: 4px; cursor: pointer; transition: all 0.2s;"
-                    onmouseover="this.style.background='#5a6268'"
-                    onmouseout="this.style.background='#6c757d'">
-                Cancel
-            </button>
-            <button onclick="window.addTestUrl()" 
-                    style="padding: 8px 16px; background: #17a2b8; color: white; border: none; 
-                           border-radius: 4px; cursor: pointer; transition: all 0.2s;"
-                    onmouseover="this.style.background='#138496'"
-                    onmouseout="this.style.background='#17a2b8'">
-                ➕ Add URL
-            </button>
-        </div>
-    `;
+    document.body.appendChild(feedback);
+    setTimeout(() => feedback.remove(), 2000);
     
-    modal.appendChild(dialog);
-    document.body.appendChild(modal);
-    
-    // Focus the input
-    setTimeout(() => {
-        document.getElementById('new-test-url').focus();
-    }, 100);
-    
-    // Close on background click
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            window.closeAddUrlDialog();
-        }
-    });
-    
-    // Close on Escape key
-    const escapeHandler = function(e) {
-        if (e.key === 'Escape') {
-            window.closeAddUrlDialog();
-            document.removeEventListener('keydown', escapeHandler);
-        }
-    };
-    document.addEventListener('keydown', escapeHandler);
+    // Update selection manager to show new comment
+    window.updateSelectionManager();
 };
 
-window.closeAddUrlDialog = function() {
-    const modal = document.querySelector('.content-extractor-ui[style*="rgba(0,0,0,0.5)"]');
-    if (modal) {
-        modal.remove();
-    }
-};
-
-window.addTestUrl = function() {
-    const urlInput = document.getElementById('new-test-url');
-    const newUrl = urlInput ? urlInput.value.trim() : '';
-    const currentDomain = window.location.hostname;
-    const baseUrl = window.contentExtractorData.baseUrl;
-    const apiToken = window.contentExtractorData.apiToken;
+// SWIFT PHOENIX: Cancel comment function for selections interface
+window.cancelFieldCommentFromSelections = function(fieldName) {
+    console.log(`❌ Cancelled comment input for ${fieldName} from selections`);
     
-    if (!newUrl) {
-        alert('Please enter a URL');
-        return;
+    // Close the dialog
+    const dialog = document.getElementById('content-extractor-comment-dialog');
+    if (dialog) {
+        dialog.remove();
     }
     
-    if (!apiToken) {
-        alert('⚠️ No API token available for adding URLs');
-        return;
-    }
-    
-    // Disable the button and show loading
-    const addButton = event.target;
-    const originalText = addButton.textContent;
-    addButton.textContent = 'Adding...';
-    addButton.disabled = true;
-    
-    fetch(`${baseUrl}/content-extractor/add-test-url/`, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Token ${apiToken}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            url: newUrl,
-            current_domain: currentDomain
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log(`✅ Added test URL: ${newUrl}`);
-            
-            // Show success feedback
-            const feedback = document.createElement('div');
-            feedback.className = 'content-extractor-ui';
-            feedback.style.cssText = `
-                position: fixed;
-                top: 30%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: #28a745;
-                color: white;
-                padding: 12px 20px;
-                border-radius: 8px;
-                z-index: 10003;
-                font-size: 14px;
-                text-align: center;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            `;
-            feedback.innerHTML = `
-                ✅ URL Added Successfully!<br>
-                <small>Total URLs: ${data.total_urls}</small>
-            `;
-            
-            document.body.appendChild(feedback);
-            setTimeout(() => feedback.remove(), 3000);
-            
-            // Close dialog and refresh URL count
-            window.closeAddUrlDialog();
-            window.loadUrlCount();
-            
-        } else {
-            console.warn('⚠️ Failed to add URL:', data.error);
-            alert(`Failed to add URL: ${data.error}`);
-            
-            // Re-enable button
-            addButton.textContent = originalText;
-            addButton.disabled = false;
-        }
-    })
-    .catch(error => {
-        console.error('❌ Error adding URL:', error);
-        alert(`Error adding URL: ${error.message}`);
-        
-        // Re-enable button
-        addButton.textContent = originalText;
-        addButton.disabled = false;
-    });
+    // No need to return anywhere - just close the dialog and let user continue with selections
 }; 

@@ -1,0 +1,192 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=ductless-down-flow-workstations&brand=1",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 4,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     DWS24-A 24\" | 610 mm 22.75\" | 580 mm 31.5\" | 800 mm   DWS36-A 36\" | 915 mm 22.75\" | 580 mm 31.5\" | 800 mm   DWS48-A 48\" | 1220 mm 22.75\" | 580 mm 31.5\" | 800 mm   DWS24-PP-A 24\" | 610 mm 22.75\" | 580 mm 31.5\" | 800 mm   DWS36-PP-A 36\" | 915 mm 22.75\" | 580 mm 31.5\" | 800 mm   DWS48-PP-A 48\" | 1220 mm 22.75\" | 580 mm 31.5\" | 800 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>DWS24-A</td> <td>24\" | 610 mm</td> <td>22.75\" | 580 mm</td> <td>31.5\" | 800 mm</td> </tr> <tr> <td>DWS36-A</td> <td>36\" | 915 mm</td> <td>22.75\" | 580 mm</td> <td>31.5\" | 800 mm</td> </tr> <tr> <td>DWS48-A</td> <td>48\" | 1220 mm</td> <td>22.75\" | 580 mm</td> <td>31.5\" | 800 mm</td> </tr> <tr> <td>DWS24-PP-A</td> <td>24\" | 610 mm</td> <td>22.75\" | 580 mm</td> <td>31.5\" | 800 mm</td> </tr> <tr> <td>DWS36-PP-A</td> <td>36\" | 915 mm</td> <td>22.75\" | 580 mm</td> <td>31.5\" | 800 mm</td> </tr> <tr> <td>DWS48-PP-A</td> <td>48\" | 1220 mm</td> <td>22.75\" | 580 mm</td> <td>31.5\" | 800 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     DWS24-A - - 15.75\" | 400 mm   DWS36-A - - 15.75\" | 400 mm   DWS48-A - - 15.75\" | 400 mm   DWS24-PP-A - - 15.75\" | 400 mm   DWS36-PP-A - - 15.75\" | 400 mm   DWS48-PP-A - - 15.75\" | 400 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>DWS24-A</td> <td>-</td> <td>-</td> <td>15.75\" | 400 mm</td> </tr> <tr> <td>DWS36-A</td> <td>-</td> <td>-</td> <td>15.75\" | 400 mm</td> </tr> <tr> <td>DWS48-A</td> <td>-</td> <td>-</td> <td>15.75\" | 400 mm</td> </tr> <tr> <td>DWS24-PP-A</td> <td>-</td> <td>-</td> <td>15.75\" | 400 mm</td> </tr> <tr> <td>DWS36-PP-A</td> <td>-</td> <td>-</td> <td>15.75\" | 400 mm</td> </tr> <tr> <td>DWS48-PP-A</td> <td>-</td> <td>-</td> <td>15.75\" | 400 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Formula Description     GP Plus! The most widely used filter in the range, primarily for solvent, organic and alcohol removal.   ACI Plus!/SUL Designed to neutralize volatile inorganic acid vapors.   ACR Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.   ACM Mercury vapor   AMM Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.   FOR Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.   HEPA/ULPA Powders and particulates.    SEFA Chemical Compatability Order from Filtco",
+              "html": "<div id=\"tab3\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Formula</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>GP Plus!</td> <td>The most widely used filter in the range, primarily for solvent, organic and alcohol removal.</td> </tr> <tr> <td>ACI Plus!/SUL</td> <td>Designed to neutralize volatile inorganic acid vapors.</td> </tr> <tr> <td>ACR</td> <td>Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.</td> </tr> <tr> <td>ACM</td> <td>Mercury vapor</td> </tr> <tr> <td>AMM</td> <td>Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.</td> </tr> <tr> <td>FOR</td> <td>Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.</td> </tr> <tr> <td>HEPA/ULPA</td> <td>Powders and particulates.</td> </tr> </tbody> </table> <a href=\"/sefa-chemical-compatibility/\">SEFA Chemical Compatability</a> <a href=\"https://filtcofilters.com/\" target=\"_blank\" rel=\"noopener\">Order from Filtco</a> </div> "
+            },
+            {
+              "text": "Using innovative filtration technology, the DWS Downflow Workstations create a safe work environment over the widest range of applications in the industry. Chemical \\ Dental \\ Forensic \\ Histology \\ Industrial \\ Microscopy \\ Pharmaceutical \\ Powder Fingerprinting \\ Veterinary",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Using innovative filtration technology, the DWS Downflow Workstations create a safe work environment over the widest range of applications in the industry.</p> <p>Chemical \\ Dental \\ Forensic \\ Histology \\ Industrial \\ Microscopy \\ Pharmaceutical \\ Powder Fingerprinting \\ Veterinary</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Available in 3 standard sizes, in metal or polypropylene construction, totaling 6 models. Wider units, comprising two or more workstations can be positioned side-by-side with junction connections option. Downward airflow protects operator from fume and particle hazards.  Unrestricted front and side access to work area.  Filter blockage alarm. The Air Science high capacity filters are easy to access, easy to change. A unique filter clamping design eliminates bypass leakage outside the cabinet. Redesigned DWS offers increased internal height.     Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/Icons_Downflow-Workstations.svg\" alt=\"Downflow Workstations Icons\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> <ul> <li>Available in 3 standard sizes, in metal or polypropylene construction, totaling 6 models.</li> <li>Wider units, comprising two or more workstations can be positioned side-by-side with junction connections option.</li> <li>Downward airflow protects operator from fume and particle hazards. </li> <li>Unrestricted front and side access to work area. </li> <li>Filter blockage alarm.</li> <li>The Air Science high capacity filters are easy to access, easy to change.</li> <li>A unique filter clamping design eliminates bypass leakage outside the cabinet.</li> <li>Redesigned DWS offers increased internal height.</li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/ductless-fume-hoods/dws-downflow-workstations.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_DWS-24_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_DWS-36_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_DWS-48_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_DWS-24_Right.png\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  Purair® DWS™ Downflow Workstations are ductless fume hoods designed to protect the user and the environment from hazardous vapors generated on the work surface. Unrestricted front and side access permits applications requiring complex user involvement. Downward airflow in the chamber protects the operator.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>Purair® DWS™ Downflow Workstations are ductless fume hoods designed to protect the user and the environment from hazardous vapors generated on the work surface. Unrestricted front and side access permits applications requiring complex user involvement. Downward airflow in the chamber protects the operator.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® DWS™ Ductless Downflow Workstations",
+              "html": "<h1>Purair® DWS™ Ductless Downflow Workstations</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:33:11.841559+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "DWS Downflow Workstation | Air Science",
+    "safe_directory_name": "DWS_Downflow_Workstation_Air_Science",
+    "ai_json_record_id": 129
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

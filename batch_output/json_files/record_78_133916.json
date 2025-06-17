@@ -1,0 +1,122 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Safekeeper Forensic Evidence Drying Cabinets | Air Science",
+  "slug": "safekeeper-forensic-evidence-drying-cabinets",
+  "meta_title": "Safekeeper Forensic Evidence Drying Cabinets - Air Science",
+  "meta_description": "Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence with Air Science's ductless technology.",
+  "meta_keywords": "forensic evidence drying cabinet, evidence drying cabinet, forensic drying cabinet, evidence transporter, mobile evidence transporter",
+  "short_description": "<p>The Evidence Transporter is a special-purpose basic evidence transporter and storage cabinet designed to maintain the chain of custody in transport from the field to the laboratory, while allowing effective air-drying prior to evidence processing.</p>",
+  "full_description": "<div>Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science\u00ae ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents. Using innovative filtration technology, the forensic evidence drying cabinet creates a safe work environment over the widest range of applications in the industry.</div><div>State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies</div>",
+  "seo_content": "<div>The Safekeeper Forensic Evidence Drying Cabinet features a portable, PVC frame set-up with a mesh fabric wrap to provide a secure and contained environment for drying forensic evidence. With dimensions of 35\" width, 30\" depth, and 69\" height, this compact unit can be easily transported and positioned wherever processing needs to take place. The cabinet utilizes Air Science's advanced ductless filtration technology to remove airborne contaminants, ensuring a safe work area for handling sensitive forensic materials.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=mobile-evidence-transporters&brand=27",
+  "target_keywords": [
+    "forensic evidence drying cabinet",
+    "evidence drying cabinet",
+    "forensic drying cabinet",
+    "evidence transporter",
+    "mobile evidence transporter"
+  ],
+  "related_keywords": [
+    "forensic evidence storage",
+    "chain of custody",
+    "air-drying",
+    "evidence processing",
+    "ductless filtration"
+  ],
+  "technical_keywords": [
+    "PVC frame",
+    "mesh fabric",
+    "portable",
+    "dimensions",
+    "Air Science filtration"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Forensic Evidence Drying Cabinet"
+    },
+    {
+      "category": "Application",
+      "tag": "Forensic Evidence Storage and Drying"
+    },
+    {
+      "category": "Industry",
+      "tag": "Law Enforcement"
+    },
+    {
+      "category": "Technology",
+      "tag": "Ductless Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ANSI, OSHA, ADA, ISO"
+    }
+  ],
+  "specifications": {
+    "Dimensions & Weights": {
+      "Internal Height": "68\" | 1727.25 mm",
+      "External Width": "35\" | 889 mm",
+      "External Depth": "30\" | 762 mm",
+      "External Height": "69\" | 1753 mm",
+      "Shipping Width": "30\" | 762 mm",
+      "Shipping Depth": "30\" | 762 mm",
+      "Net Weight": "34 lbs | 15 kg",
+      "Shipping Weight": "38 lbs | 18 kg"
+    },
+    "Protection & Compliance": {
+      "Product Design": "ANSI Z 9.5-2003; ANSI Z 9.7-2032",
+      "OSHA": "OSHA Standard - 29 CRF",
+      "ADA": "Wheelchair Access and Lowered Controls",
+      "Biological Filtration": "IEST-RP-CC-0034.2; IEST-RP-CC007.1; IEST-RP-CC001-4; EN 1856",
+      "Containment": "ANSI/ASHRAE 110 2029",
+      "Environmental": "ISO 14001; Energy Star Partner",
+      "Filter": "B 7989-2001; SEFA Standard 9; ANFOR NFX 15-245",
+      "Quality": "ISO 9001"
+    },
+    "Options and Accessories": {
+      "Windowless Doors": "SDOOR-FDC"
+    },
+    "Airflow & Filtration": {
+      "Main Filter": "HEPA / ULPA"
+    }
+  },
+  "features_data": [
+    "Kraft paper dispenser",
+    "Lockable storage compartments to secure tools",
+    "Open storage shelf",
+    "Wheels allowing the bench to be moved throughout the building wherever processing needs to take place",
+    "Optional airflow pod"
+  ],
+  "applications": [
+    "State and Federal Crime Laboratories",
+    "Medical Examiners and Coroners",
+    "Law Enforcement Agencies",
+    "Hospital Emergency Rooms",
+    "Drug Agencies"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Safekeeper Forensic Evidence Drying Cabinets",
+    "description": "Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence with Air Science's ductless technology.",
+    "manufacturer": "Air Science",
+    "category": "Forensic Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_FDC-BASIC_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_FDC-BASIC_Right.png"
+  ],
+  "alt_text_suggestions": [
+    "Safekeeper Forensic Evidence Drying Cabinet right view",
+    "Safekeeper Forensic Evidence Drying Cabinet right view"
+  ],
+  "page_content_sections": {
+    "overview": "Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science\u00ae ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents.",
+    "specifications": "The Safekeeper Forensic Evidence Drying Cabinet features a portable, PVC frame set-up with a mesh fabric wrap and dimensions of 35\" width, 30\" depth, and 69\" height. It utilizes HEPA/ULPA filtration and meets various ANSI, OSHA, and ISO standards.",
+    "applications": "State and Federal Crime Laboratories, Medical Examiners and Coroners, Law Enforcement Agencies, Hospital Emergency Rooms, Drug Agencies",
+    "models": "The FDC-BASIC-A model is a portable, PVC frame set-up with a mesh fabric wrap."
+  }
+}

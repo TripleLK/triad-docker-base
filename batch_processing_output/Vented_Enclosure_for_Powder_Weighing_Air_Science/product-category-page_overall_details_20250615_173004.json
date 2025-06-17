@@ -1,0 +1,194 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=vented-enclosures&brand=32",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 4,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     VE-FES-A 17.5\" | 445 mm 25.5\" | 648 mm 18\" | 457 mm   VE-FED-A 35\" | 889 mm 25.5\" | 648 mm 18\" | 457 mm   VE24S-A 24\" | 610 mm 28\" | 711 mm 19.5\" | 495 mm   VE34S-A 34\" | 864 mm 28\" | 711 mm 19.5\" | 495 mm   VE48S-A 48\" | 1219 mm 28\" | 711 mm 19.5\" | 495 mm   VE60S-A 60\" | 1524 mm 28\" | 711 mm 19.5\" | 495 mm   VE34T-A 34\" | 864 mm 28\" | 711 mm 30\" | 762 mm   VE24T-A 24\" | 610 mm 28\" | 711 mm 30\" | 762 mm   VE48T-A 48\" | 1219 mm 28\" | 711 mm 30\" | 762 mm   VE60T-A 60\" | 1524 mm 28\" | 711 mm 30\" | 762 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>VE-FES-A</td> <td>17.5\" | 445 mm</td> <td>25.5\" | 648 mm</td> <td>18\" | 457 mm</td> </tr> <tr> <td>VE-FED-A</td> <td>35\" | 889 mm</td> <td>25.5\" | 648 mm</td> <td>18\" | 457 mm</td> </tr> <tr> <td>VE24S-A</td> <td>24\" | 610 mm</td> <td>28\" | 711 mm</td> <td>19.5\" | 495 mm</td> </tr> <tr> <td>VE34S-A</td> <td>34\" | 864 mm</td> <td>28\" | 711 mm</td> <td>19.5\" | 495 mm</td> </tr> <tr> <td>VE48S-A</td> <td>48\" | 1219 mm</td> <td>28\" | 711 mm</td> <td>19.5\" | 495 mm</td> </tr> <tr> <td>VE60S-A</td> <td>60\" | 1524 mm</td> <td>28\" | 711 mm</td> <td>19.5\" | 495 mm</td> </tr> <tr> <td>VE34T-A</td> <td>34\" | 864 mm</td> <td>28\" | 711 mm</td> <td>30\" | 762 mm</td> </tr> <tr> <td>VE24T-A</td> <td>24\" | 610 mm</td> <td>28\" | 711 mm</td> <td>30\" | 762 mm</td> </tr> <tr> <td>VE48T-A</td> <td>48\" | 1219 mm</td> <td>28\" | 711 mm</td> <td>30\" | 762 mm</td> </tr> <tr> <td>VE60T-A</td> <td>60\" | 1524 mm</td> <td>28\" | 711 mm</td> <td>30\" | 762 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     VE-FES-A - - -   VE-FED-A - - -   VE24S-A - - 17\" | 432 mm   VE34S-A - - 17\" | 432 mm   VE48S-A - - 17\" | 432 mm   VE60S-A - - 17\" | 432 mm   VE34T-A - - 28.75\" | 730 mm   VE24T-A - - 28.75\" | 730 mm   VE48T-A - - 28.75\" | 730 mm   VE60T-A - - 28.75\" | 730 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>VE-FES-A</td> <td>-</td> <td>-</td> <td>-</td> </tr> <tr> <td>VE-FED-A</td> <td>-</td> <td>-</td> <td>-</td> </tr> <tr> <td>VE24S-A</td> <td>-</td> <td>-</td> <td>17\" | 432 mm</td> </tr> <tr> <td>VE34S-A</td> <td>-</td> <td>-</td> <td>17\" | 432 mm</td> </tr> <tr> <td>VE48S-A</td> <td>-</td> <td>-</td> <td>17\" | 432 mm</td> </tr> <tr> <td>VE60S-A</td> <td>-</td> <td>-</td> <td>17\" | 432 mm</td> </tr> <tr> <td>VE34T-A</td> <td>-</td> <td>-</td> <td>28.75\" | 730 mm</td> </tr> <tr> <td>VE24T-A</td> <td>-</td> <td>-</td> <td>28.75\" | 730 mm</td> </tr> <tr> <td>VE48T-A</td> <td>-</td> <td>-</td> <td>28.75\" | 730 mm</td> </tr> <tr> <td>VE60T-A</td> <td>-</td> <td>-</td> <td>28.75\" | 730 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Formula Description     GP Plus! The most widely used filter in the range, primarily for solvent, organic and alcohol removal.   ACI Plus!/SUL Designed to neutralize volatile inorganic acid vapors.   ACR Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.   ACM Mercury vapor   AMM Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.   FOR Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.   HEPA/ULPA Powders and particulates.   EFT Universal filtration.    SEFA Chemical Compatability Order from Filtco",
+              "html": "<div id=\"tab3\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Formula</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>GP Plus!</td> <td>The most widely used filter in the range, primarily for solvent, organic and alcohol removal.</td> </tr> <tr> <td>ACI Plus!/SUL</td> <td>Designed to neutralize volatile inorganic acid vapors.</td> </tr> <tr> <td>ACR</td> <td>Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.</td> </tr> <tr> <td>ACM</td> <td>Mercury vapor</td> </tr> <tr> <td>AMM</td> <td>Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.</td> </tr> <tr> <td>FOR</td> <td>Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.</td> </tr> <tr> <td>HEPA/ULPA</td> <td>Powders and particulates.</td> </tr> <tr> <td>EFT</td> <td>Universal filtration.</td> </tr> </tbody> </table> <a href=\"/sefa-chemical-compatibility/\">SEFA Chemical Compatability</a> <a href=\"https://filtcofilters.com/\" target=\"_blank\" rel=\"noopener\">Order from Filtco</a> </div> "
+            },
+            {
+              "text": "Bulk Powder Weighing and Transfers \\ Task-Specific Workstations \\ Short Duration Projects \\ Balance and Microscope Enclosure \\ Robotics \\ Enclosure \\ Compounding Activities",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Bulk Powder Weighing and Transfers \\ Task-Specific Workstations \\ Short Duration Projects \\ Balance and Microscope Enclosure \\ Robotics \\ Enclosure \\ Compounding Activities</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Custom sizes to meet every need.  Turbulent-free airflow pattern.  Proven performance.  Specialized HEPA filter technology for increased safety.  Ductless design increases location possibilities.      Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/Icons_VentedEnclosure.svg\" alt=\"\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> <ul> <li>Custom sizes to meet every need. </li> <li>Turbulent-free airflow pattern. </li> <li>Proven performance. </li> <li>Specialized <a href=\"https://www.airscience.com/hepa-ulpa-filtration\">HEPA filter technology</a> for increased safety. </li> <li>Ductless design increases location possibilities. </li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/ducted-fume-hoods/vented-balance-enclosures.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2024/02/PDT_VE24T_Right.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/10/PDT_VE34S_Left.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2024/02/PDT_VE60S_Left.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_VE-FED_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_VE-FES_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2024/02/PDT_VE24T_Right.webp\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  Ideal for containment of powders and fumes during compounding or weighing, Vented ENCLOSURE™ offer important safety features that are not found with any other competitive products.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>Ideal for containment of powders and fumes during compounding or weighing, Vented ENCLOSURE™ offer important safety features that are not found with any other competitive products.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Vented ENCLOSURE™ for Compounding and Powder Weighing",
+              "html": "<h1>Vented ENCLOSURE™ for Compounding and Powder Weighing</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:30:01.288161+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Vented Enclosure for Powder Weighing | Air Science",
+    "safe_directory_name": "Vented_Enclosure_for_Powder_Weighing_Air_Science",
+    "ai_json_record_id": 92
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Controls & Monitoring",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Controls & Monitoring",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=fume-box-ductless-enclosures&brand=5",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "model_name": {
+      "xpath_selectors": [
+        "//*[@class=\"blockcontainer2\"]/form/select/option"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//*[@class=\"blockcontainer2\"]/form/select/option",
+          "match_count": 3,
+          "extracted_data": [
+            {
+              "text": "AP60H-A - Benchtop, horizontal, 21\"W, 115VAC, 60Hz",
+              "html": "<option value=\"Div1\" selected>AP60H-A - Benchtop, horizontal, 21\"W, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "AP60V-A - Benchtop, vertical, 21\"W, 115VAC, 60Hz",
+              "html": "<option value=\"Div2\">AP60V-A - Benchtop, vertical, 21\"W, 115VAC, 60Hz </option> "
+            },
+            {
+              "text": "AP60H-XL-A - Benchtop, horizontal, 30\"W, 115VAC, 60Hz",
+              "html": "<option value=\"Div3\">AP60H-XL-A - Benchtop, horizontal, 30\"W, 115VAC, 60Hz </option> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "models": {
+      "xpath_selectors": [
+        "/html/body/section[4]/*[contains(@class, 'roweven')]",
+        "/html/body/section[6]/*[contains(@class, 'roweven')]"
+      ],
+      "comment": "First selection has the model names; second selection has the spec groups and specs for those models in the same order (Div1 in the selector = Div1 in the spec groups). Spec groups are particular by model.",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[4]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Model Specifications     Model  AP60H-A - Benchtop, horizontal, 21\"W, 115VAC, 60Hz  AP60V-A - Benchtop, vertical, 21\"W, 115VAC, 60Hz  AP60H-XL-A - Benchtop, horizontal, 30\"W, 115VAC, 60Hz",
+              "html": "<div class=\"roweven\"> <div class=\"blockcontainer2\"> <h1>Model Specifications</h1> <form class=\"elementor-form\" method=\"post\" name=\"New Form\"> <input type=\"hidden\" name=\"post_id\" value=\"3802\"> <input type=\"hidden\" name=\"form_id\" value=\"2a193c2\"> <input type=\"hidden\" name=\"referer_title\" value=\"\"> <div>Model</div> <select name=\"form_fields[field_2400c42]\" id=\"form-field-field_2400c42\" class=\"elementor-field-textual elementor-size-sm\"> <option value=\"Div1\" selected>AP60H-A - Benchtop, horizontal, 21\"W, 115VAC, 60Hz </option> <option value=\"Div2\">AP60V-A - Benchtop, vertical, 21\"W, 115VAC, 60Hz </option> <option value=\"Div3\">AP60H-XL-A - Benchtop, horizontal, 30\"W, 115VAC, 60Hz </option> </select> </form> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        },
+        {
+          "selector_index": 1,
+          "xpath": "/html/body/section[6]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS   Internal Height: 20.63″ | 524 mm External Width: 20.72″ | 526 mm External Depth: 12.02″ | 305 mm External Height: 21.16″ | 537 mm Shipping Width: 27″ | 686 mm Shipping Depth: 27″ | 686 mm Net Weight: 45 lbs | 20 kg Shipping Weight: 60 lbs | 27 kg     CONSTRUCTION   Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001 : 2015; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Fume Extraction Unit - Source Capture Hose*: AP60EX Spill Tray: TRAY-AP60 * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow Direction: Crossflow     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P     CONTROLS & MONITORING   Control: Electronic             DIMENSIONS & WEIGHTS   Internal Height: 11″ | 279 mm External Width: 21.16″ | 537 mm External Depth: 12.02″ | 305 mm External Height: 20.72″ | 526 mm Shipping Width: 27″ | 686 mm Shipping Depth: 27″ | 686 mm Net Weight: 45 lbs | 20 kg Shipping Weight: 60 lbs | 27 kg     CONSTRUCTION   Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001 : 2015; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Fume Extraction Unit - Source Capture Hose*: AP60EX Spill Tray: TRAY-AP60 * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow Direction: Upflow     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P     CONTROLS & MONITORING   Control: Electronic             DIMENSIONS & WEIGHTS   Internal Height: 15.32″ | 389 mm External Width: 29.75″ | 756 mm External Depth: 24.72″ | 628 mm External Height: 15.67″ | 398 mm Shipping Width: 40″ | 1016 mm Shipping Depth: 40″ | 1016 mm Net Weight: 50 lbs | 23 kg Shipping Weight: 100 lbs | 45 kg     CONSTRUCTION   Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001 : 2015; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Fume Extraction Unit - Source Capture Hose*: AP60EX Spill Tray (Polypropylene): TRAY-AP60-XL * Factory installed; specify when ordering     AIRFLOW & FILTRATION   Airflow Direction: Crossflow     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz NEMA Plug: 5-15P     CONTROLS & MONITORING   Control: Electronic",
+              "html": "<div class=\"roweven\"> <div class=\"blockcontainer2\"> <div id=\"Div1\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-1\"> <p> <strong>Internal Height:</strong> 20.63″ | 524 mm<br> <strong>External Width:</strong> 20.72″ | 526 mm<br> <strong>External Depth:</strong> 12.02″ | 305 mm<br> <strong>External Height:</strong> 21.16″ | 537 mm<br> <strong>Shipping Width:</strong> 27″ | 686 mm<br> <strong>Shipping Depth:</strong> 27″ | 686 mm<br> <strong>Net Weight:</strong> 45 lbs | 20 kg<br> <strong>Shipping Weight:</strong> 60 lbs | 27 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-4\"> <p> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"7\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-7\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001 : 2015; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"2\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-2\"> <p> <strong>Fume Extraction Unit - Source Capture Hose*</strong>: AP60EX<br> <strong>Spill Tray</strong>: TRAY-AP60<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"5\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-5\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-5\"> <p> <strong>Airflow Direction:</strong> Crossflow<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-8\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-3\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"6\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-6\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> <div class=\"expandable-content\" id=\"content-6\"> <p> <strong>Control:</strong> Electronic<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div2\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"9\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-9\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-9\"> <p> <strong>Internal Height:</strong> 11″ | 279 mm<br> <strong>External Width:</strong> 21.16″ | 537 mm<br> <strong>External Depth:</strong> 12.02″ | 305 mm<br> <strong>External Height:</strong> 20.72″ | 526 mm<br> <strong>Shipping Width:</strong> 27″ | 686 mm<br> <strong>Shipping Depth:</strong> 27″ | 686 mm<br> <strong>Net Weight:</strong> 45 lbs | 20 kg<br> <strong>Shipping Weight:</strong> 60 lbs | 27 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"12\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-12\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-12\"> <p> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"15\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-15\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-15\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001 : 2015; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"10\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-10\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-10\"> <p> <strong>Fume Extraction Unit - Source Capture Hose*</strong>: AP60EX<br> <strong>Spill Tray</strong>: TRAY-AP60<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"13\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-13\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-13\"> <p> <strong>Airflow Direction:</strong> Upflow<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"16\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-16\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-16\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"11\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-11\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-11\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"14\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-14\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> <div class=\"expandable-content\" id=\"content-14\"> <p> <strong>Control:</strong> Electronic<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> <div id=\"Div3\"> <div class=\"speccontainer\"> <div class=\"speccolumn\"> <!-- begin column 1 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"17\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-17\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> <div class=\"expandable-content\" id=\"content-17\"> <p> <strong>Internal Height:</strong> 15.32″ | 389 mm<br> <strong>External Width:</strong> 29.75″ | 756 mm<br> <strong>External Depth:</strong> 24.72″ | 628 mm<br> <strong>External Height:</strong> 15.67″ | 398 mm<br> <strong>Shipping Width:</strong> 40″ | 1016 mm<br> <strong>Shipping Depth:</strong> 40″ | 1016 mm<br> <strong>Net Weight:</strong> 50 lbs | 23 kg<br> <strong>Shipping Weight:</strong> 100 lbs | 45 kg<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"20\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-20\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> <div class=\"expandable-content\" id=\"content-20\"> <p> <strong>Construction:</strong> Epoxy-coated Steel<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"23\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-23\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> <div class=\"expandable-content\" id=\"content-23\"> <p> <strong>OSHA:</strong> OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.<br> <strong>Environmental:</strong> ISO 14001 : 2015; ENERGY STAR® Partner<br> <strong>Quality:</strong> ISO 9001 : 2015<br> </p> </div> </div> </div> <!-- end column 1 --> <div class=\"speccolumn\"> <!-- begin column 2 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"18\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-18\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> <div class=\"expandable-content\" id=\"content-18\"> <p> <strong>Fume Extraction Unit - Source Capture Hose*</strong>: AP60EX<br> <strong>Spill Tray (Polypropylene)</strong>: TRAY-AP60-XL<br> * Factory installed; specify when ordering </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"21\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-21\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> <div class=\"expandable-content\" id=\"content-21\"> <p> <strong>Airflow Direction:</strong> Crossflow<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"24\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-24\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> <div class=\"expandable-content\" id=\"content-24\"> <p> <a href=\"/warranty\">Air Science Legacy Limited™ Warranty</a> </p> </div> </div> </div> <!-- end column 2 --> <div class=\"speccolumn\"> <!-- begin column 3 --> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"19\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-19\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> <div class=\"expandable-content\" id=\"content-19\"> <p> <strong>Electrical Voltage:</strong> 120V, 60Hz<br> <strong>NEMA Plug:</strong> 5-15P<br> </p> </div> </div> <div class=\"expandable-container\"> <p class=\"expandable-text\" data-id=\"22\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-22\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> <div class=\"expandable-content\" id=\"content-22\"> <p> <strong>Control:</strong> Electronic<br> </p> </div> </div> </div> <!-- end column 3 --> </div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 2,
+        "successful_extractions": 2,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "specification_group_names": {
+      "xpath_selectors": [
+        "/html/body/section[6]/div/div[1]/div/div/div/div/p"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[6]/div/div[1]/div/div/div/div/p",
+          "match_count": 24,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "1"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "4"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"7\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "7"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"2\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "2"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"5\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-5\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "5"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "8"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "3"
+              }
+            },
+            {
+              "text": "CONTROLS & MONITORING",
+              "html": "<p class=\"expandable-text\" data-id=\"6\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-6\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> ",
+              "attributes": {
+                "data-id": "6"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"9\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-9\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "9"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"12\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-12\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "12"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"15\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-15\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "15"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"10\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-10\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "10"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"13\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-13\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "13"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"16\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-16\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "16"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"11\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-11\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "11"
+              }
+            },
+            {
+              "text": "CONTROLS & MONITORING",
+              "html": "<p class=\"expandable-text\" data-id=\"14\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-14\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> ",
+              "attributes": {
+                "data-id": "14"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"17\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-17\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "17"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"20\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-20\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "20"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"23\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-23\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "23"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"18\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-18\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "18"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"21\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-21\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "21"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"24\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-24\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "24"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"19\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-19\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "19"
+              }
+            },
+            {
+              "text": "CONTROLS & MONITORING",
+              "html": "<p class=\"expandable-text\" data-id=\"22\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-22\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> ",
+              "attributes": {
+                "data-id": "22"
+              }
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:31:53.255202+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "MODEL_SUBSET",
+  "_page_info": {
+    "page_title": "Fume Box Ductless Enclosures | Air Science",
+    "safe_directory_name": "Fume_Box_Ductless_Enclosures_Air_Science",
+    "ai_json_record_id": 114
+  },
+  "_batch_info": {
+    "batch_number": 1,
+    "total_batches": 5,
+    "models_in_batch": [
+      "Model Specifications     Model  AP60H-A - Benchtop",
+      "horizontal",
+      "21\"W",
+      "115VAC"
+    ],
+    "total_models": 19
+  },
+  "target_model_names": [
+    "Model Specifications     Model  AP60H-A - Benchtop",
+    "horizontal",
+    "21\"W",
+    "115VAC"
+  ],
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Controls & Monitoring",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Controls & Monitoring",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

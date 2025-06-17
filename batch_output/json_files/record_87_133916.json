@@ -1,0 +1,113 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae FUMEBOX\u2122 - Portable Cyanoacrylate Fuming Chamber",
+  "slug": "purair-fumebox-portable-cyanoacrylate-fuming-chamber",
+  "meta_title": "Purair FUMEBOX - Portable Cyanoacrylate Fuming Chamber | Air Science",
+  "meta_description": "The Purair\u00ae FUMEBOX\u2122 is a compact, portable cyanoacrylate fuming chamber designed to protect users from chemicals, vapors, and powders during low-volume forensic processing.",
+  "meta_keywords": "cyanoacrylate fuming chamber, portable fume hood, forensic equipment, evidence processing, air purification",
+  "short_description": "<p>The Purair\u00ae FUMEBOX\u2122 is designed to protect the user from chemicals, vapors or non-toxic powders during low-volume chemical manipulations by effectively containing low concentrations of noxious fumes, vapors, or powders.</p>",
+  "full_description": "<div>The Purair\u00ae FUMEBOX\u2122 is a compact, portable cyanoacrylate fuming chamber designed to protect users from chemicals, vapors, and powders during low-volume forensic processing. With a clear viewing enclosure, the FUMEBOX prevents chemical splash while allowing full visibility. Its modular design permits multiple configurations to fit a variety of workspace requirements.</div>",
+  "seo_content": "<div>The FUMEBOX features a low-profile design that is completely portable and requires no ductwork. Its compact size allows easy placement on shallow countertops or under cabinets. The FUMEBOX is constructed with epoxy-coated steel for durability and chemical resistance, and meets all relevant OSHA and ISO standards for laboratory equipment. Available accessories include a fume extraction unit and spill tray to further enhance safety and containment.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=fume-box-ductless-enclosures&brand=5",
+  "target_keywords": [
+    "cyanoacrylate fuming chamber",
+    "portable fume hood",
+    "forensic equipment",
+    "evidence processing",
+    "air purification"
+  ],
+  "related_keywords": [
+    "ductless fume hood",
+    "chemical containment",
+    "laboratory safety",
+    "crime scene investigation"
+  ],
+  "technical_keywords": [
+    "epoxy-coated steel",
+    "OSHA compliance",
+    "ISO 14001",
+    "ISO 9001"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Cyanoacrylate Fuming Chamber"
+    },
+    {
+      "category": "Application",
+      "tag": "Forensic Evidence Processing"
+    },
+    {
+      "category": "Industry",
+      "tag": "Law Enforcement"
+    },
+    {
+      "category": "Technology",
+      "tag": "Ductless Fume Containment"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Construction": "Epoxy-coated Steel",
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood.",
+      "Environmental Compliance": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality Compliance": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Filtration & Airflow": {
+      "Airflow Direction": "Crossflow and Upflow models available"
+    }
+  },
+  "features_data": [
+    "Low-profile, completely portable design",
+    "No ductwork required",
+    "Compact size for placement on shallow countertops or under cabinets",
+    "Clear viewing enclosure prevents chemical splash",
+    "Modular design permits multiple configurations",
+    "Available accessories include fume extraction unit and spill tray"
+  ],
+  "applications": [
+    "Cyanoacrylate Fuming for Latent Fingerprint Development",
+    "Processing of Forensic Evidence",
+    "Crime Scene Investigation",
+    "Histology and Pathology Sample Preparation",
+    "Graphic Arts and Sign Shops",
+    "Electronics Assembly"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair\u00ae FUMEBOX\u2122 Portable Cyanoacrylate Fuming Chamber",
+    "description": "The Purair\u00ae FUMEBOX\u2122 is a compact, portable cyanoacrylate fuming chamber designed to protect users from chemicals, vapors, and powders during low-volume forensic processing.",
+    "manufacturer": "Air Science",
+    "category": "Cyanoacrylate Fuming Chamber"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2024/09/AP60V_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/PDT_AP60H_Bottom-Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/AP60H-XL_Side.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/AP60V_Left.webp"
+  ],
+  "alt_text_suggestions": [
+    "Purair FUMEBOX AP60V cyanoacrylate fuming chamber left view",
+    "Purair FUMEBOX AP60H cyanoacrylate fuming chamber bottom left view",
+    "Purair FUMEBOX AP60H-XL cyanoacrylate fuming chamber side view",
+    "Purair FUMEBOX AP60V cyanoacrylate fuming chamber left view"
+  ],
+  "page_content_sections": {
+    "overview": "The Purair\u00ae FUMEBOX\u2122 is a compact, portable cyanoacrylate fuming chamber designed to protect users from chemicals, vapors, and powders during low-volume forensic processing.",
+    "specifications": "The FUMEBOX is constructed with epoxy-coated steel and meets all relevant OSHA and ISO standards for laboratory equipment. It features a low-profile, completely portable design that requires no ductwork.",
+    "applications": "The FUMEBOX is used for cyanoacrylate fuming, forensic evidence processing, crime scene investigation, histology and pathology sample preparation, graphic arts, and electronics assembly.",
+    "models": "The FUMEBOX is available in three models: AP60H-A (horizontal, 21\" width), AP60V-A (vertical, 21\" width), and AP60H-XL-A (horizontal, 30\" width)."
+  }
+}

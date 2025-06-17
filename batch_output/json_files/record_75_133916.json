@@ -1,0 +1,121 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae RX Ductless Balance Enclosures",
+  "slug": "purair-rx-ductless-balance-enclosures",
+  "meta_title": "Purair RX Ductless Balance Enclosures - Air Science",
+  "meta_description": "The Purair\u00ae RX Balance Hood is a Class I enclosure that meets USP 800 requirements for non-sterile compounding procedures.",
+  "meta_keywords": "purair, rx, ductless, balance, enclosures, air science, usp 800, non-sterile, compounding",
+  "short_description": "<p>The Purair\u00ae RX Balance Hood is a Class I enclosure that meets USP 800 requirements for non-sterile compounding procedures.</p>",
+  "full_description": "<div>Using innovative filtration technology, the Purair RX creates a safe work environment over the widest range of applications in the industry. Balance Enclosures \\ Compounding \\ Powder Mixing \\ Powder Weighing</div>",
+  "seo_content": "<div>High efficiency ebm-papst EC blower. Energy savings LED lighting. Protects the operator from powder and particle hazards. Improved filter clamping eliminates bypass leakage. Exhaust canopy allows for thimble ducting to the facility exhaust system. Filter blockage alarm. Complies with USP 800 USP 795 guidelines.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=purair-rx-ductless-balance-enclosures&brand=46",
+  "target_keywords": [
+    "purair rx",
+    "ductless balance enclosures",
+    "air science",
+    "usp 800",
+    "non-sterile compounding"
+  ],
+  "related_keywords": [
+    "balance enclosures",
+    "compounding",
+    "powder mixing",
+    "powder weighing"
+  ],
+  "technical_keywords": [
+    "ebm-papst ec blower",
+    "led lighting",
+    "filter clamping",
+    "thimble ducting",
+    "filter blockage alarm",
+    "usp 800",
+    "usp 795"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "ductless balance enclosures"
+    },
+    {
+      "category": "Application",
+      "tag": "non-sterile compounding"
+    },
+    {
+      "category": "Industry",
+      "tag": "laboratory"
+    },
+    {
+      "category": "Technology",
+      "tag": "filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "usp 800, usp 795"
+    }
+  ],
+  "specifications": {
+    "Construction": {
+      "Cabinet Style": "Standard",
+      "Construction": "Epoxy-coated Steel"
+    },
+    "Electrical": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Compliance": {
+      "OSHA": "OSHA Standard -29 CRF, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. This product may assist you with compliance or as part of your chemical hygiene plan. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Filtration": {
+      "Airflow": "Vertical",
+      "Airflow Direction": "Upflow",
+      "Face Velocity": 100,
+      "Main Filter": "HEPA (ULPA optional)",
+      "Carbon Filter": "(Optional) Activated Carbon",
+      "Biological Filter": "(Optional) HEPA (ULPA optional)"
+    }
+  },
+  "features_data": [
+    "High efficiency ebm-papst EC blower",
+    "Energy savings LED lighting",
+    "Protects the operator from powder and particle hazards",
+    "Improved filter clamping eliminates bypass leakage",
+    "Exhaust canopy allows for thimble ducting to the facility exhaust system",
+    "Filter blockage alarm",
+    "Complies with USP 800 USP 795 guidelines"
+  ],
+  "applications": [
+    "Balance Enclosures",
+    "Compounding",
+    "Powder Mixing",
+    "Powder Weighing"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair\u00ae RX Ductless Balance Enclosures",
+    "description": "The Purair\u00ae RX Balance Hood is a Class I enclosure that meets USP 800 requirements for non-sterile compounding procedures.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2023/10/PDT_P5-24-XT-RX_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/10/PDT_P5-48-XT-RX_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/10/PDT_P5-24-XT-RX_Left.webp"
+  ],
+  "alt_text_suggestions": [
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view",
+    "SafeFUME CA30T front view with door open for fingerprint processing",
+    "SafeFUME CA30S cyanoacrylate fuming chamber right view"
+  ],
+  "page_content_sections": {
+    "overview": "Using innovative filtration technology, the Purair RX creates a safe work environment over the widest range of applications in the industry.",
+    "specifications": "Detailed specifications covering construction, electrical, compliance, and filtration.",
+    "applications": "Balance Enclosures \\ Compounding \\ Powder Mixing \\ Powder Weighing",
+    "models": "Multiple models available with varying dimensions and configurations."
+  }
+}

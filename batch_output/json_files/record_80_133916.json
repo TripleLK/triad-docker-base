@@ -1,0 +1,113 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "SafeSWAB\u00ae Swab Drying Cabinets - Protect Evidence from Contamination",
+  "slug": "safeswab-swab-drying-cabinets",
+  "meta_title": "SafeSWAB\u00ae Swab Drying Cabinets - Secure Evidence Processing",
+  "meta_description": "SafeSWAB\u00ae swab drying cabinets provide effective protection for personnel and evidence from particulate hazards. Horizontal airflow and HEPA/ULPA filtration ensure a safe, controlled environment.",
+  "meta_keywords": "swab drying cabinet, evidence drying, forensic lab equipment, cyanoacrylate fuming, HEPA filtration",
+  "short_description": "<p>With a HEPA main filter formulated to contain any particulates or biological material that might be present on swabs, SafeSWAB\u00ae is used to safely dry evidence swabs while protecting them from cross-contamination.</p>",
+  "full_description": "<div>SafeSWAB\u00ae swab drying cabinets provide effective protection for personnel and evidence from particulate hazards. Featuring horizontal airflow geometry and HEPA/ULPA filtration, these cabinets create a safe, controlled environment for drying forensic evidence swabs. Key features include lockable doors for security, easy-to-change filters, and compliance with ISO 14001 and ISO 9001 standards.</div>",
+  "seo_content": "<div>The SafeSWAB\u00ae line of swab drying cabinets is designed to meet the specialized needs of crime labs, medical examiners, law enforcement, and other agencies that handle sensitive forensic evidence. With innovative filtration technology, these cabinets safely dry swabs while preventing cross-contamination and protecting personnel from exposure to hazardous particulates.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=safeswab-swab-dryers&brand=30",
+  "target_keywords": [
+    "swab drying cabinet",
+    "forensic lab equipment",
+    "evidence drying",
+    "cyanoacrylate fuming",
+    "HEPA filtration"
+  ],
+  "related_keywords": [
+    "crime lab",
+    "medical examiner",
+    "law enforcement",
+    "hospital ER",
+    "drug agency"
+  ],
+  "technical_keywords": [
+    "horizontal airflow",
+    "HEPA/ULPA filtration",
+    "ISO 14001",
+    "ISO 9001",
+    "lockable doors"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Swab Drying Cabinet"
+    },
+    {
+      "category": "Application",
+      "tag": "Forensic Evidence Processing"
+    },
+    {
+      "category": "Industry",
+      "tag": "Crime Labs, Medical Examiners, Law Enforcement"
+    },
+    {
+      "category": "Technology",
+      "tag": "HEPA/ULPA Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Cabinet Style": "Desktop",
+      "Construction": "Epoxy-coated Steel",
+      "Environmental": "ISO 14001 : 2015",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Airflow & Filtration": {
+      "Airflow": "Horizontal",
+      "Main Filter": "HEPA / ULPA"
+    },
+    "Electrical": {
+      "Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Horizontal airflow geometry",
+    "Effective protection for personnel from particulate hazards",
+    "Controlled airflow to dry forensic evidence swabs",
+    "Lockable doors for security",
+    "Safe and easy to change HEPA/ULPA filters"
+  ],
+  "applications": [
+    "State and Federal Crime Laboratories",
+    "Medical Examiners and Coroners",
+    "Law Enforcement Agencies",
+    "Hospital Emergency Rooms",
+    "Drug Agencies"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "SafeSWAB\u00ae Swab Drying Cabinets",
+    "description": "SafeSWAB\u00ae swab drying cabinets provide effective protection for personnel and evidence from particulate hazards. Horizontal airflow and HEPA/ULPA filtration ensure a safe, controlled environment.",
+    "manufacturer": "Air Science",
+    "category": "Forensic Lab Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_FDC-001_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_FDC-001_Left.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeSWAB swab drying cabinet left view",
+    "SafeSWAB swab drying cabinet left view"
+  ],
+  "page_content_sections": {
+    "overview": "SafeSWAB\u00ae swab drying cabinets provide effective protection for personnel and evidence from particulate hazards. Featuring horizontal airflow geometry and HEPA/ULPA filtration, these cabinets create a safe, controlled environment for drying forensic evidence swabs. Key features include lockable doors for security, easy-to-change filters, and compliance with ISO 14001 and ISO 9001 standards.",
+    "specifications": "The SafeSWAB\u00ae line of swab drying cabinets is designed to meet the specialized needs of crime labs, medical examiners, law enforcement, and other agencies that handle sensitive forensic evidence. With innovative filtration technology, these cabinets safely dry swabs while preventing cross-contamination and protecting personnel from exposure to hazardous particulates.",
+    "applications": "SafeSWAB\u00ae swab drying cabinets are used in a variety of forensic and medical settings, including state and federal crime laboratories, medical examiner offices, law enforcement agencies, hospital emergency rooms, and drug agencies.",
+    "models": "The SafeSWAB\u00ae line includes two main models: the FDC-001-A with a 30 swab capacity, and the FDC-001M-A with a 15 swab capacity. Both models feature 120V, 60Hz electrical systems and HEPA/ULPA filtration."
+  }
+}

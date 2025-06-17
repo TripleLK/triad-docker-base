@@ -1,0 +1,115 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae NANO Ductless Nanoparticle Containment Enclosures",
+  "slug": "purair-nano-ductless-nanoparticle-enclosures",
+  "meta_title": "Purair NANO Ductless Nanoparticle Enclosures - Protect Operators from Nanomaterials",
+  "meta_description": "The Purair NANO ductless nanoparticle enclosures protect operators from hazardous nanomaterial particles during processing of carbon nanotubes, lithium batteries, and rare earth metals.",
+  "meta_keywords": "nanoparticle enclosure, ductless fume hood, nanomaterial containment, carbon nanotube processing, lithium battery processing, rare earth metal processing",
+  "short_description": "<p>Protects the operator from nanomaterial particles (less than 100nm in size) encountered during processing of carbon nanotubes, lithium batteries, and rare earth metals.</p>",
+  "full_description": "<div>Using innovative filtration technology, the Purair NANO creates a safe work environment over the widest range of applications in the industry. Protects the operator from nanomaterial particles (less than 100nm in size) encountered during processing of carbon nanotubes, lithium batteries, and rare earth metals. SafeSwitch\u2122 Filter Shutter System (optional) for safer bag-out filter exchange. Improved filter clamping eliminates bypass leakage. Filter blockage alarm. High efficiency ebm-papst EC blower. Energy saving LED lighting.</div>",
+  "seo_content": "<div>The Purair NANO ductless nanoparticle enclosures are designed to provide a safe work environment for a wide range of applications involving hazardous nanomaterials. These enclosures utilize advanced filtration technology to protect operators from exposure to nanoparticles as small as 100nm in size, making them ideal for processing carbon nanotubes, lithium batteries, and rare earth metals.</div>",
+  "source_url": "https://www.airscience.com/product-category-page?brandname=purair-nano-ductless-nanoparticle-enclosures&brand=47",
+  "target_keywords": [
+    "nanoparticle enclosure",
+    "ductless fume hood",
+    "nanomaterial containment",
+    "carbon nanotube processing",
+    "lithium battery processing",
+    "rare earth metal processing"
+  ],
+  "related_keywords": [
+    "nanomaterial safety",
+    "nanotechnology equipment",
+    "hazardous material containment",
+    "laboratory safety equipment"
+  ],
+  "technical_keywords": [
+    "HEPA filtration",
+    "EC blower",
+    "filter clamping",
+    "filter blockage alarm",
+    "SafeSwitch filter system"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Nanoparticle Enclosure"
+    },
+    {
+      "category": "Application",
+      "tag": "Nanomaterial Processing"
+    },
+    {
+      "category": "Industry",
+      "tag": "Research, Academic, Pharmaceutical, Aerospace"
+    },
+    {
+      "category": "Technology",
+      "tag": "Nanoparticle Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Electrical": {
+      "Cabinet Style": "Desktop",
+      "Construction": "Stainless Steel",
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Compliance & Certifications": {
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood.",
+      "Environmental Certifications": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality Certifications": "ISO 9001 : 2015"
+    },
+    "Filtration & Airflow": {
+      "Airflow": "Horizontal",
+      "Face Velocity": 100,
+      "Main Filter": "HEPA (ULPA optional)",
+      "Carbon Filter": "Activated Carbon (optional)",
+      "Biological Filter": "HEPA or ULPA (optional)"
+    }
+  },
+  "features_data": [
+    "Protects the operator from nanomaterial particles (less than 100nm in size)",
+    "SafeSwitch\u2122 Filter Shutter System (optional) for safer bag-out filter exchange",
+    "Improved filter clamping eliminates bypass leakage",
+    "Filter blockage alarm",
+    "High efficiency ebm-papst EC blower",
+    "Energy saving LED lighting"
+  ],
+  "applications": [
+    "Processing of carbon nanotubes",
+    "Processing of lithium batteries",
+    "Processing of rare earth metals"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair NANO Ductless Nanoparticle Containment Enclosures",
+    "description": "The Purair NANO ductless nanoparticle enclosures protect operators from hazardous nanomaterial particles during processing of carbon nanotubes, lithium batteries, and rare earth metals.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-24-XT-NANO_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-36-XT-NANO_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-24-XT-NANO_Right.png"
+  ],
+  "alt_text_suggestions": [
+    "Purair NANO P5-24-XT ductless nanoparticle enclosure right view",
+    "Purair NANO P5-36-XT ductless nanoparticle enclosure right view",
+    "Purair NANO P5-24-XT ductless nanoparticle enclosure right view"
+  ],
+  "page_content_sections": {
+    "overview": "Using innovative filtration technology, the Purair NANO creates a safe work environment over the widest range of applications in the industry.",
+    "specifications": "The Purair NANO ductless nanoparticle enclosures are constructed of stainless steel and feature a desktop cabinet style. They operate on 120V, 60Hz power and utilize a high-efficiency EC blower. The enclosures comply with OSHA, ISO 14001, and ISO 9001 standards.",
+    "applications": "The Purair NANO is designed to protect operators from nanomaterial particles encountered during processing of carbon nanotubes, lithium batteries, and rare earth metals.",
+    "models": "The Purair NANO is available in 24-inch, 36-inch, and 48-inch widths, all with a depth of 27 inches and a height of 35 inches."
+  }
+}

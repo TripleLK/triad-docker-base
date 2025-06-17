@@ -1,0 +1,3 @@
+# Test URLs for airscience.com site configuration - Real working URLs
+https://www.airscience.com/product-category-page?brandname=purair-basic-ductless-fume-hoods&brand=8
+https://www.airscience.com/product-category-page?brandname=purair-cagex&brand=52 

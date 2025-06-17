@@ -1,0 +1,61 @@
+{
+    "models_data": [
+      {
+        "model_name": "P5-36-XT (CAGEX)-A - 36\"W, 115VAC, 60Hz",
+        "specifications": {
+          "Dimensions & Weights": {
+            "Internal Height": "23.6″ | 600 mm",
+            "External Width": "36″ | 914 mm",
+            "External Depth": "27″ | 676 mm",
+            "External Height": "35″ | 889 mm",
+            "Shipping Width": "40″ | 1016 mm",
+            "Shipping Depth": "40″ | 1016 mm",
+            "Net Weight": "175 lbs | 79 kg",
+            "Shipping Weight": "245 lbs | 111 kg"
+          },
+          "Construction": {
+            "Construction": "Epoxy-coated Steel"
+          },
+          "Protection & Compliance": {
+            "OSHA": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood.",
+            "Environmental": "ISO 14001 : 2015 ; ENERGY STAR® Partner",
+            "Quality": "ISO 9001 : 2015"
+          },
+          "Options And Accessories": {
+            "Autocal Control Panel": "AUTOCAL",
+            "Base Stand, Mobile, with Casters": "CART-36",
+            "Cup Sink, Mounts into Tray": "SINK",
+            "Duplex Electrical Outlet": "AS-GFI",
+            "Dwyer Air Flow Meter": "DWYER",
+            "FSA Control Panel": "FSA",
+            "FSA/Autocal Control Panel": "ADV-P",
+            "Remote Control": "RC-P",
+            "SafeSwitch HEPA Filter Shutter System": "ASTS-030-SS",
+            "Spill Tray (Stainless Steel)": "TRAY-P5-36-SS",
+            "Stainless Steel Hanging Rod": "HANGR-P5-36",
+            "UV lamp": "UV-P5-36"
+          },
+          "Warranty": {
+            "Warranty": "Air Science Legacy Limited™ Warranty"
+          },
+          "Electrical": {
+            "Electrical Voltage": "120V, 60Hz"
+          },
+          "Controls & Monitoring": {
+            "Control": "Fan Manual On Off"
+          }
+        },
+        "features": [
+          "36-inch width ductless fume hood",
+          "Epoxy-coated steel construction",
+          "Manual fan control",
+          "OSHA compliant laboratory hood",
+          "ISO 14001:2015 and ISO 9001:2015 certified",
+          "ENERGY STAR® Partner",
+          "Compatible with multiple control panel options",
+          "Available with mobile cart and accessories"
+        ],
+        "seo_description": "The Purair CAGEX P5-36-XT ductless fume hood offers 36-inch width workspace with epoxy-coated steel construction, operating on 115VAC/60Hz. Features manual fan control, OSHA compliance, and multiple accessory options including control panels, mobile stands, and SafeSwitch HEPA filter system."
+      }
+    ]
+  }

@@ -1,0 +1,194 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=fume-box-ductless-enclosures&brand=5",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 4,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     AP60H-A 20.72\" | 526 mm 12.02\" | 305 mm 21.16\" | 537 mm   AP60V-A 21.16\" | 537 mm 12.02\" | 305 mm 20.72\" | 526 mm   AP60H-XL-A 29.75\" | 756 mm 24.72\" | 628 mm 15.67\" | 398 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>AP60H-A</td> <td>20.72\" | 526 mm</td> <td>12.02\" | 305 mm</td> <td>21.16\" | 537 mm</td> </tr> <tr> <td>AP60V-A</td> <td>21.16\" | 537 mm</td> <td>12.02\" | 305 mm</td> <td>20.72\" | 526 mm</td> </tr> <tr> <td>AP60H-XL-A</td> <td>29.75\" | 756 mm</td> <td>24.72\" | 628 mm</td> <td>15.67\" | 398 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     AP60H-A 11\" | 279 mm 11.69\" | 297 mm 20.63\" | 524 mm   AP60V-A 20.63\" | 524 mm 11.69\" | 297 mm 11\" | 279 mm   AP60H-XL-A 29.22\" | 742 mm 13.82\" | 376 mm 15.32\" | 389 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>AP60H-A</td> <td>11\" | 279 mm</td> <td>11.69\" | 297 mm</td> <td>20.63\" | 524 mm</td> </tr> <tr> <td>AP60V-A</td> <td>20.63\" | 524 mm</td> <td>11.69\" | 297 mm</td> <td>11\" | 279 mm</td> </tr> <tr> <td>AP60H-XL-A</td> <td>29.22\" | 742 mm</td> <td>13.82\" | 376 mm</td> <td>15.32\" | 389 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Formula Description     GP Plus! The most widely used filter in the range, primarily for solvent, organic and alcohol removal.   ACI Plus!/SUL Designed to neutralize volatile inorganic acid vapors.   ACR Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.   ACM Mercury vapor   AMM Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.   FOR Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.   HEPA/ULPA Powders and particulates.    SEFA Chemical Compatability Order from Filtco",
+              "html": "<div id=\"tab3\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Formula</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>GP Plus!</td> <td>The most widely used filter in the range, primarily for solvent, organic and alcohol removal.</td> </tr> <tr> <td>ACI Plus!/SUL</td> <td>Designed to neutralize volatile inorganic acid vapors.</td> </tr> <tr> <td>ACR</td> <td>Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.</td> </tr> <tr> <td>ACM</td> <td>Mercury vapor</td> </tr> <tr> <td>AMM</td> <td>Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.</td> </tr> <tr> <td>FOR</td> <td>Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.</td> </tr> <tr> <td>HEPA/ULPA</td> <td>Powders and particulates.</td> </tr> </tbody> </table> <a href=\"/sefa-chemical-compatibility/\">SEFA Chemical Compatability</a> <a href=\"https://filtcofilters.com/\" target=\"_blank\" rel=\"noopener\">Order from Filtco</a> </div> "
+            },
+            {
+              "text": "Soldering \\ Histology \\ Cover Slipping \\ Staining \\ Pathology \\ Graphic Arts, Sign Shops \\ Art Conservation \\ Electronics Assembly \\ Particulate Control \\ Manufacturing Processes \\ Air Purification",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Soldering \\ Histology \\ Cover Slipping \\ Staining \\ Pathology \\ Graphic Arts, Sign Shops \\ Art Conservation \\ Electronics Assembly \\ Particulate Control \\ Manufacturing Processes \\ Air Purification</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Low-profile, completely portable, no ductwork required. Compact size, easily positioned on shallow countertops or counters with overhanging wall cabinets. Clear viewing enclosure prevents chemical splash. Modular design permits multiple configurations.     Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/Icons_FumeBox.svg\" alt=\"Fume Box Icons\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> <ul> <li>Low-profile, completely portable, no ductwork required.</li> <li>Compact size, easily positioned on shallow countertops or counters with overhanging wall cabinets.</li> <li>Clear viewing enclosure prevents chemical splash.</li> <li>Modular design permits multiple configurations.</li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/ductless-fume-hoods/fumebox-economy-fume-adsorbers.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2024/09/AP60V_Left.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2024/09/PDT_AP60H_Bottom-Left.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2024/09/AP60H-XL_Side.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2024/09/AP60V_Left.webp\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  The Purair® FUMEBOX™ is designed to protect the user from chemicals, vapors or non-toxic powders during low-volume chemical manipulations by effectively containing low concentrations of noxious fumes, vapors, or powders.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>The Purair® FUMEBOX™ is designed to protect the user from chemicals, vapors or non-toxic powders during low-volume chemical manipulations by effectively containing low concentrations of noxious fumes, vapors, or powders.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® FUMEBOX™",
+              "html": "<h1>Purair® FUMEBOX™</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:07:32.834581+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Fume Box Ductless Enclosures | Air Science",
+    "safe_directory_name": "Fume_Box_Ductless_Enclosures_Air_Science",
+    "ai_json_record_id": 41
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Controls & Monitoring",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Controls & Monitoring",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

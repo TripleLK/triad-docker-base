@@ -1,0 +1,116 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Drug KEEPER\u2122 Storage Cabinets for Hazardous Chemical and Drug Evidence Storage",
+  "slug": "drug-keeper-storage-cabinets",
+  "meta_title": "Drug KEEPER\u2122 Hazardous Chemical and Drug Evidence Storage Cabinets",
+  "meta_description": "Ductless, self-contained Drug KEEPER\u2122 storage cabinets provide safe, compliant storage for confiscated hazardous chemicals and illegal drugs. Protect users with advanced filtration.",
+  "meta_keywords": "drug storage cabinet, hazardous chemical storage, evidence storage, ductless cabinet, filtered storage",
+  "short_description": "<p>Drug KEEPER\u2122 storage cabinets can be used for short-term storage of hazardous chemicals and substances typically associated with drug investigations.</p>",
+  "full_description": "<div>The ductless Drugkeeper storage cabinet is self-contained and does not require venting to the outside. Many units are portable and may be moved with minimal downtime and without filter changes. Set-up, operation and filter maintenance are straightforward. Because filtered air is returned to the room, no demands are required of the facility HVAC capacity for make-up air.</div>",
+  "seo_content": "<div>Drugkeeper special purpose storage cabinets offer an economical solution for safe storage of confiscated hazardous chemicals and illegal drugs. Cabinet airflow and face velocity protect users from incidental exposures while electronic airflow monitoring assures continuous safety. Activated carbon main filters are formulated for general purpose storage; optional HEPA filters eliminate exposure to biological particulates. Air Science ductless technology combined with innovative filtration technology creates a safe work environment over a wide range of applications.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=drugkeeper-storage-cabinets&brand=26",
+  "target_keywords": [
+    "drug storage cabinet",
+    "hazardous chemical storage",
+    "evidence storage",
+    "ductless cabinet",
+    "filtered storage"
+  ],
+  "related_keywords": [
+    "confiscated drugs",
+    "forensic lab equipment",
+    "law enforcement storage",
+    "medical examiner storage",
+    "hospital emergency storage"
+  ],
+  "technical_keywords": [
+    "HEPA filtration",
+    "activated carbon filtration",
+    "ductless technology",
+    "electronic airflow monitoring",
+    "OSHA compliance"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Hazardous Chemical Storage Cabinet"
+    },
+    {
+      "category": "Application",
+      "tag": "Drug Evidence Storage"
+    },
+    {
+      "category": "Industry",
+      "tag": "Law Enforcement"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics"
+    },
+    {
+      "category": "Technology",
+      "tag": "Ductless Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA Regulations"
+    }
+  ],
+  "specifications": {
+    "Construction & Electrical": {
+      "Construction": "Epoxy-coated Steel",
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Compliance & Certifications": {
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood.",
+      "Environmental Certifications": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality Certifications": "ISO 9001 : 2015"
+    },
+    "Filtration & Airflow": {
+      "Airflow Direction": "Upflow",
+      "Main Filter": "HEPA / ULPA"
+    }
+  },
+  "features_data": [
+    "Self-contained, ductless design",
+    "Portable units with minimal downtime",
+    "Straightforward setup, operation, and maintenance",
+    "Returned filtered air eliminates HVAC demands",
+    "Activated carbon main filters for general storage",
+    "Optional HEPA filters for biological particulates",
+    "Electronic airflow monitoring for continuous safety",
+    "Protects users from incidental chemical exposures"
+  ],
+  "applications": [
+    "Short-term storage of confiscated hazardous chemicals",
+    "Storage of illegal drug evidence and related substances",
+    "Use in state and federal crime labs, medical examiners, and forensics",
+    "Deployment in law enforcement agencies, hospital emergency rooms, and drug agencies"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Drug KEEPER\u2122 Storage Cabinets",
+    "description": "Ductless, self-contained storage cabinets for safe, compliant storage of confiscated hazardous chemicals and illegal drugs.",
+    "manufacturer": "Air Science",
+    "category": "Hazardous Chemical Storage Cabinet"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_64t_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_64t_Left.png"
+  ],
+  "alt_text_suggestions": [
+    "Drug KEEPER 64T upright storage cabinet left view",
+    "Drug KEEPER 64T upright storage cabinet left view"
+  ],
+  "page_content_sections": {
+    "overview": "The ductless Drugkeeper storage cabinet is self-contained and does not require venting to the outside. Many units are portable and may be moved with minimal downtime and without filter changes. Set-up, operation and filter maintenance are straightforward. Because filtered air is returned to the room, no demands are required of the facility HVAC capacity for make-up air.",
+    "specifications": "Drugkeeper special purpose storage cabinets offer an economical solution for safe storage of confiscated hazardous chemicals and illegal drugs. Cabinet airflow and face velocity protect users from incidental exposures while electronic airflow monitoring assures continuous safety. Activated carbon main filters are formulated for general purpose storage; optional HEPA filters eliminate exposure to biological particulates. Air Science ductless technology combined with innovative filtration technology creates a safe work environment over a wide range of applications.",
+    "applications": "State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Forensics \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies",
+    "models": "Model Specifications:\n\nModel  34S-A - Cabinet, Benchtop, 4 shelves, 115VAC, 60Hz\nModel  34T-A - Cabinet,Upright,  4 shelves, 115VAC, 60Hz\nModel  64T-A - Cabinet,Upright, Double,  6 shelves, 115VAC, 60Hz"
+  }
+}

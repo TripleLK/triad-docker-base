@@ -1,0 +1,118 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae FUMEBOX\u2122 - Portable Ductless Fume Adsorber for Chemical Manipulation",
+  "slug": "purair-fumebox-portable-ductless-fume-adsorber",
+  "meta_title": "Purair FUMEBOX - Portable Ductless Fume Adsorber for Chemical Manipulation",
+  "meta_description": "The Purair\u00ae FUMEBOX\u2122 is a compact, portable ductless fume adsorber designed to protect users from chemicals, vapors, or non-toxic powders during low-volume chemical manipulations.",
+  "meta_keywords": "ductless fume adsorber, portable fume hood, chemical manipulation safety, low-volume chemical containment",
+  "short_description": "<p>The Purair\u00ae FUMEBOX\u2122 is designed to protect the user from chemicals, vapors or non-toxic powders during low-volume chemical manipulations by effectively containing low concentrations of noxious fumes, vapors, or powders.</p>",
+  "full_description": "<div>The Purair\u00ae FUMEBOX\u2122 is a compact, portable ductless fume adsorber designed to protect users from chemicals, vapors, or non-toxic powders during low-volume chemical manipulations. With a low-profile design, the FUMEBOX can be easily positioned on shallow countertops or under cabinets, providing a clear viewing enclosure to prevent chemical splash. The modular design permits multiple configurations to meet a variety of application needs.</div>",
+  "seo_content": "<div>The FUMEBOX features a crossflow or upflow airflow design to effectively capture and contain fumes, vapors, and powders. It is constructed with epoxy-coated steel for durability and easy cleaning. The unit meets OSHA standards for occupational exposure to hazardous chemicals in laboratories and is compliant with ISO 14001 and ISO 9001 quality standards.</div>",
+  "source_url": "https://www.airscience.com/product-category-page?brandname=fume-box-ductless-enclosures&brand=5",
+  "target_keywords": [
+    "ductless fume adsorber",
+    "portable fume hood",
+    "chemical manipulation safety",
+    "low-volume chemical containment"
+  ],
+  "related_keywords": [
+    "chemical fume control",
+    "benchtop fume containment",
+    "lab safety equipment",
+    "cyanoacrylate fuming chamber"
+  ],
+  "technical_keywords": [
+    "crossflow airflow",
+    "epoxy-coated steel",
+    "OSHA compliance",
+    "ISO 14001",
+    "ISO 9001"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Fume Adsorber"
+    },
+    {
+      "category": "Application",
+      "tag": "Chemical Manipulation"
+    },
+    {
+      "category": "Industry",
+      "tag": "Laboratory"
+    },
+    {
+      "category": "Technology",
+      "tag": "Ductless Fume Containment"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Construction": "Epoxy-coated Steel",
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood.",
+      "Environmental Compliance": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality Compliance": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Filtration & Airflow": {
+      "Airflow Direction": "Crossflow or Upflow",
+      "Filter Types": "GP Plus!, ACI Plus!/SUL, ACR, ACM, AMM, FOR, HEPA/ULPA"
+    }
+  },
+  "features_data": [
+    "Low-profile, completely portable, no ductwork required",
+    "Compact size, easily positioned on shallow countertops or under cabinets",
+    "Clear viewing enclosure prevents chemical splash",
+    "Modular design permits multiple configurations"
+  ],
+  "applications": [
+    "Soldering",
+    "Histology",
+    "Cover Slipping",
+    "Staining",
+    "Pathology",
+    "Graphic Arts",
+    "Sign Shops",
+    "Art Conservation",
+    "Electronics Assembly",
+    "Particulate Control",
+    "Manufacturing Processes",
+    "Air Purification"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair\u00ae FUMEBOX\u2122",
+    "description": "The Purair\u00ae FUMEBOX\u2122 is a compact, portable ductless fume adsorber designed to protect users from chemicals, vapors, or non-toxic powders during low-volume chemical manipulations.",
+    "manufacturer": "Air Science",
+    "category": "Ductless Fume Adsorber"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2024/09/AP60V_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/PDT_AP60H_Bottom-Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/AP60H-XL_Side.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/AP60V_Left.webp"
+  ],
+  "alt_text_suggestions": [
+    "Purair FUMEBOX AP60V left view",
+    "Purair FUMEBOX AP60H bottom left view",
+    "Purair FUMEBOX AP60H-XL side view",
+    "Purair FUMEBOX AP60V left view"
+  ],
+  "page_content_sections": {
+    "overview": "The Purair\u00ae FUMEBOX\u2122 is a compact, portable ductless fume adsorber designed to protect users from chemicals, vapors, or non-toxic powders during low-volume chemical manipulations.",
+    "specifications": "The FUMEBOX features epoxy-coated steel construction, meets OSHA standards, and is compliant with ISO 14001 and ISO 9001. It operates on 120V, 60Hz power with a NEMA 5-15P plug.",
+    "applications": "The FUMEBOX is suitable for a variety of applications including soldering, histology, cover slipping, staining, pathology, graphic arts, sign shops, art conservation, electronics assembly, particulate control, manufacturing processes, and air purification.",
+    "models": "The FUMEBOX is available in three models: AP60H-A (benchtop, horizontal, 21\"W), AP60V-A (benchtop, vertical, 21\"W), and AP60H-XL-A (benchtop, horizontal, 30\"W)."
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae FLEX Portable Glove Bags for Pharmaceutical, Forensic, and Industrial Applications",
+  "slug": "purair-flex-portable-glove-bags",
+  "meta_title": "Purair FLEX Portable Glove Bags - Flexible Isolators for Containment",
+  "meta_description": "The Purair FLEX is a portable, cost-effective flexible film isolator with a large work area, easy setup, and safety features for pharmaceutical, forensic, and industrial applications.",
+  "meta_keywords": "purair flex, portable glove bags, flexible isolators, pharmaceutical containment, forensic processing, industrial cleaning",
+  "short_description": "<p>Air Science provides containment solutions to meet any analytical need. The Purair\u00ae FLEX glove bag is a portable, cost-effective flexible film isolator with more volume, easy setup and safety options.</p>",
+  "full_description": "<div>Compliant with Multiple Criteria. ArmorFlex film complies with FDA 21CFR and 2002/72/EC standards for minimal outgassing, solvent and biological reactivity and static resistance. Pharmaceutical Grade Materials. The Purair FLEX is constructed with FDA approved pharmaceutical grade LLDPE anti-static and ESD safe and meets European ATEX Directive. Large Workspace. At 30\" (762 mm) wide and an internal volume of 3 cu.ft. (85 L) the Purair FLEX provides a large work area with a 12.5\" (317 mm) gas tight zippered access with a 6\" (152 mm) diameter opening. Oxygen-free Work Zone. A nitrogen gas barb is a standard feature to permit creation of an oxygen-free workspace.</div>",
+  "seo_content": "<div>The Purair FLEX portable glove bag is designed for a wide range of applications, including pharmaceutical processing, forensic investigation and processing, industrial cleaning, biological containment, and aerospace. Its large work area, easy setup, and safety features make it a versatile and effective containment solution for various analytical and processing needs.</div>",
+  "source_url": "https://www.airscience.com/uk/uk-product-category-page?brandname=purair-flex-portable-isolators&brand=37",
+  "target_keywords": [
+    "purair flex",
+    "portable glove bags",
+    "flexible isolators",
+    "pharmaceutical containment",
+    "forensic processing",
+    "industrial cleaning"
+  ],
+  "related_keywords": [
+    "containment solutions",
+    "analytical equipment",
+    "flexible film isolators",
+    "safety features",
+    "large work area"
+  ],
+  "technical_keywords": [
+    "FDA compliance",
+    "ATEX directive",
+    "pharmaceutical grade materials",
+    "nitrogen gas purge",
+    "anti-static construction"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Portable Glove Bags"
+    },
+    {
+      "category": "Application",
+      "tag": "Pharmaceutical Processing"
+    },
+    {
+      "category": "Application",
+      "tag": "Forensic Investigation"
+    },
+    {
+      "category": "Application",
+      "tag": "Industrial Cleaning"
+    },
+    {
+      "category": "Industry",
+      "tag": "Pharmaceutical"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensic"
+    },
+    {
+      "category": "Industry",
+      "tag": "Industrial"
+    },
+    {
+      "category": "Technology",
+      "tag": "Flexible Film Isolators"
+    },
+    {
+      "category": "Compliance",
+      "tag": "FDA 21CFR"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ATEX Directive"
+    }
+  ],
+  "specifications": {
+    "Dimensions & Weights": {
+      "External Width": "30\" | 762 mm",
+      "External Depth": "26\" | 660 mm",
+      "External Height": "20\" | 508 mm",
+      "Net Weight": "< 10 lbs | 4.5 kg"
+    },
+    "Construction": {
+      "Cabinet Style": "Desktop",
+      "Construction": "Polypropylene"
+    },
+    "Airflow & Filtration": {
+      "Main Filter": "Breather HEPA Filter"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Compliant with FDA 21CFR and 2002/72/EC standards",
+    "Constructed with pharmaceutical grade LLDPE",
+    "Anti-static and ESD safe design",
+    "Meets European ATEX Directive",
+    "Large 30\" (762 mm) wide work area",
+    "Internal volume of 3 cu.ft. (85 L)",
+    "12.5\" (317 mm) gas tight zippered access",
+    "6\" (152 mm) diameter opening",
+    "Nitrogen gas barb for oxygen-free workspace"
+  ],
+  "applications": [
+    "Pharmaceutical Processing",
+    "Forensic Investigation and Processing",
+    "Industrial Cleaning",
+    "Biological Containment",
+    "Aerospace"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair FLEX Portable Glove Bags",
+    "description": "The Purair FLEX is a portable, cost-effective flexible film isolator with a large work area, easy setup, and safety features for pharmaceutical, forensic, and industrial applications.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_FLEX-30_Front.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_FLEX-30_Inflated.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_FLEX-30_Front.png"
+  ],
+  "alt_text_suggestions": [
+    "Purair FLEX 30\" portable glove bag front view",
+    "Purair FLEX 30\" portable glove bag inflated view",
+    "Purair FLEX 30\" portable glove bag front view"
+  ],
+  "page_content_sections": {
+    "overview": "Compliant with Multiple Criteria. ArmorFlex film complies with FDA 21CFR and 2002/72/EC standards for minimal outgassing, solvent and biological reactivity and static resistance. Pharmaceutical Grade Materials. The Purair FLEX is constructed with FDA approved pharmaceutical grade LLDPE anti-static and ESD safe and meets European ATEX Directive. Large Workspace. At 30\" (762 mm) wide and an internal volume of 3 cu.ft. (85 L) the Purair FLEX provides a large work area with a 12.5\" (317 mm) gas tight zippered access with a 6\" (152 mm) diameter opening. Oxygen-free Work Zone. A nitrogen gas barb is a standard feature to permit creation of an oxygen-free workspace.",
+    "specifications": "Dimensions & Weights, Construction, Airflow & Filtration, Warranty",
+    "applications": "Pharmaceutical Processing, Forensic Investigation and Processing, Industrial Cleaning, Biological Containment, Aerospace",
+    "models": "FLEX-30-G - 30\"W"
+  }
+}

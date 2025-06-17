@@ -1,0 +1,122 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "SafeDEVELOP\u2122 DFO and Ninhydrin Fingerprint Development Chamber",
+  "slug": "safedevelop-dfo-and-ninhydrin-fingerprint-development-chamber",
+  "meta_title": "SafeDEVELOP\u2122 Fingerprint Development Chamber - Optimized for Forensics",
+  "meta_description": "The SafeDEVELOP\u2122 fingerprint development chamber is designed to safely develop latent fingerprints on porous surfaces using DFO, Ninhydrin, and other chemicals in a controlled environment.",
+  "meta_keywords": "fingerprint development chamber, forensic equipment, latent fingerprint processing, DFO, Ninhydrin, crime scene investigation",
+  "short_description": "<p>SafeDEVELOP\u2122 fingerprint development chambers are designed to safely develop latent fingerprints on porous surfaces using DFO, Ninhydrin, and other chemicals in a controlled environment for optimum effectiveness and safety where moisture, temperature, and development time are critical factors.</p>",
+  "full_description": "<div>The professionally designed automatic development chamber eliminates reliance on do-it-yourself systems that lack user-safety allowances and controls needed for repeatable results. To change between profiles required only the press of a few buttons on an easy to use LED display. The chamber features rapid condition recovery following a door opening. The wide temperature and humidity range allows fingerprints to be processed in a matter of minutes - not days like some conventional methods. The steam generator produces humidity by a sealed, automatic, steam injection system, ensuring only vaporized water enters the sample chamber to eliminate the possibility of contaminating samples with water droplets. The chamber's generous working area and flexible shelving and rod system enable large batches of operational material to be processed quickly and easily.</div>",
+  "seo_content": "<div>Using innovative filtration technology, the SafeDEVELOP Fingerprint Development Chamber creates a safe work environment over the widest range of applications in the industry, including state and federal crime laboratories, crime scene investigation, law enforcement agencies, medical examiners' programs, and criminal justice education.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=safedevelop-fingerprint-development-chambers&brand=39",
+  "target_keywords": [
+    "fingerprint development chamber",
+    "forensic equipment",
+    "latent fingerprint processing",
+    "DFO",
+    "Ninhydrin"
+  ],
+  "related_keywords": [
+    "crime scene investigation",
+    "law enforcement",
+    "medical examiner",
+    "criminal justice education"
+  ],
+  "technical_keywords": [
+    "controlled environment",
+    "temperature and humidity range",
+    "steam generator",
+    "flexible shelving"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Fingerprint Development Chamber"
+    },
+    {
+      "category": "Application",
+      "tag": "Latent Fingerprint Processing"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics"
+    },
+    {
+      "category": "Technology",
+      "tag": "Controlled Environment"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001, ISO 9001, ENERGY STAR"
+    }
+  ],
+  "specifications": {
+    "Dimensions & Weights": {
+      "Internal Height": "19.6\" | 495 mm",
+      "External Width": "36.25\" | 921 mm",
+      "External Depth": "25.5\" | 648 mm",
+      "External Height": "29.25\" | 743 mm",
+      "Shipping Width": "40\" | 1016 mm",
+      "Shipping Depth": "48\" | 1219 mm",
+      "Net Weight": "200 lbs | 91 kg",
+      "Shipping Weight": "245 lbs | 111 kg"
+    },
+    "Construction": {
+      "Cabinet Style": "Desktop",
+      "Construction": "Epoxy-coated Steel"
+    },
+    "Protection & Compliance": {
+      "Environmental": "ISO 14001 : 2015 ; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Electrical": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-20P"
+    },
+    "Controls & Monitoring": {
+      "Control": "Electronic#Programmable Heat and Humidity Control",
+      "Monitoring Options": "Standard"
+    }
+  },
+  "features_data": [
+    "Automatic development chamber eliminates reliance on do-it-yourself systems",
+    "Rapid condition recovery following door opening",
+    "Wide temperature and humidity range for fast fingerprint processing",
+    "Sealed, automatic steam injection system to prevent sample contamination",
+    "Generous working area and flexible shelving for large batch processing"
+  ],
+  "applications": [
+    "State and Federal Crime Laboratories",
+    "Crime Scene Investigation",
+    "Law Enforcement Agencies",
+    "Medical Examiners' Programs",
+    "Criminal Justice Education"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "SafeDEVELOP\u2122 DFO and Ninhydrin Fingerprint Development Chamber",
+    "description": "The SafeDEVELOP\u2122 fingerprint development chamber is designed to safely develop latent fingerprints on porous surfaces using DFO, Ninhydrin, and other chemicals in a controlled environment.",
+    "manufacturer": "Air Science",
+    "category": "Forensic Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_SD-34S_Left_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_SD-34S_Left_Open.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_SD-34S_Left_Right.png"
+  ],
+  "alt_text_suggestions": [
+    "SafeDEVELOP SD-34S fingerprint development chamber left and right view",
+    "SafeDEVELOP SD-34S fingerprint development chamber with door open",
+    "SafeDEVELOP SD-34S fingerprint development chamber left and right view"
+  ],
+  "page_content_sections": {
+    "overview": "The professionally designed automatic development chamber eliminates reliance on do-it-yourself systems that lack user-safety allowances and controls needed for repeatable results.",
+    "specifications": "The SafeDEVELOP\u2122 fingerprint development chamber features a wide temperature and humidity range, a sealed automatic steam injection system, and a generous working area with flexible shelving.",
+    "applications": "The SafeDEVELOP chamber is used in state and federal crime labs, crime scene investigation, law enforcement, medical examiner programs, and criminal justice education.",
+    "models": "The SD-34S-A model is a 36-inch wide desktop chamber with 120V, 60Hz electrical requirements."
+  }
+}

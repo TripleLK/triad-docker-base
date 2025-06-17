@@ -1,0 +1,188 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=exhaust-fume-hoods&brand=31",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 3,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     PTEFH-24-A 24\" | 610 mm 28\" | 711 mm 47\" | 1194 mm   PTEFH-48-A 48\" | 1219 mm 28\" | 711 mm 47\" | 1194 mm   PTEFH-36-A 36\" | 914 mm 28\" | 711 mm 47\" | 1194 mm   PTEFH-60-A 60\" | 1524 mm 28\" | 711 mm 47\" | 1194 mm   PTEFH-96-A 96\" | 2438 mm 28\" | 711 mm 47\" | 1194 mm   PTEFH-72-A 72\" | 1829 mm 28\" | 711 mm 47\" | 1194 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>PTEFH-24-A</td> <td>24\" | 610 mm</td> <td>28\" | 711 mm</td> <td>47\" | 1194 mm</td> </tr> <tr> <td>PTEFH-48-A</td> <td>48\" | 1219 mm</td> <td>28\" | 711 mm</td> <td>47\" | 1194 mm</td> </tr> <tr> <td>PTEFH-36-A</td> <td>36\" | 914 mm</td> <td>28\" | 711 mm</td> <td>47\" | 1194 mm</td> </tr> <tr> <td>PTEFH-60-A</td> <td>60\" | 1524 mm</td> <td>28\" | 711 mm</td> <td>47\" | 1194 mm</td> </tr> <tr> <td>PTEFH-96-A</td> <td>96\" | 2438 mm</td> <td>28\" | 711 mm</td> <td>47\" | 1194 mm</td> </tr> <tr> <td>PTEFH-72-A</td> <td>72\" | 1829 mm</td> <td>28\" | 711 mm</td> <td>47\" | 1194 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     PTEFH-24-A - - 36\" | 914 mm   PTEFH-48-A - - 36\" | 914 mm   PTEFH-36-A - - 36\" | 914 mm   PTEFH-60-A - - 36\" | 914 mm   PTEFH-96-A - - 36\" | 914 mm   PTEFH-72-A - - 36\" | 914 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>PTEFH-24-A</td> <td>-</td> <td>-</td> <td>36\" | 914 mm</td> </tr> <tr> <td>PTEFH-48-A</td> <td>-</td> <td>-</td> <td>36\" | 914 mm</td> </tr> <tr> <td>PTEFH-36-A</td> <td>-</td> <td>-</td> <td>36\" | 914 mm</td> </tr> <tr> <td>PTEFH-60-A</td> <td>-</td> <td>-</td> <td>36\" | 914 mm</td> </tr> <tr> <td>PTEFH-96-A</td> <td>-</td> <td>-</td> <td>36\" | 914 mm</td> </tr> <tr> <td>PTEFH-72-A</td> <td>-</td> <td>-</td> <td>36\" | 914 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Air Science manufactures fume hoods to meet any specialized filtration need. Common applications for our products include: Forensics \\ Educational \\ Microscopy \\ Pharmaceutical \\ Powder Weighing \\ Sample Prep Work \\ Veterinary \\ Dental",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Air Science manufactures fume hoods to meet any specialized filtration need. Common applications for our products include:</p> <p>Forensics \\ Educational \\ Microscopy \\ Pharmaceutical \\ Powder Weighing \\ Sample Prep Work \\ Veterinary \\ Dental</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "6 standard sizes for new and replacement installations.  Custom sizes available for special equipment or instrumentation.  Ergonomic design with easy access and uniform non-glare lighting.      Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/Icons_Purair-TotalExhaust.svg\" alt=\"\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> <ul> <li>6 standard sizes for new and replacement installations. </li> <li>Custom sizes available for special equipment or instrumentation. </li> <li>Ergonomic design with easy access and uniform non-glare lighting. </li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/ducted-fume-hoods/polyproylene-ducted-fume-hoods.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/total-exhaust.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/total-exhaust.png\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  Total EXHAUST™ ducted fume hoods use horizontal and vertical airflow across the work surface to provide personnel protection from hazardous agents and toxic chemicals. These hoods are connected to the facility exhaust system.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>Total EXHAUST™ ducted fume hoods use horizontal and vertical airflow across the work surface to provide personnel protection from hazardous agents and toxic chemicals. These hoods are connected to the facility exhaust system.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Total EXHAUST™ Ducted Fume Hoods",
+              "html": "<h1>Total EXHAUST™ Ducted Fume Hoods</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:31:38.756792+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Total Exhaust Ducted Fume Hoods | Air Science",
+    "safe_directory_name": "Total_Exhaust_Ducted_Fume_Hoods_Air_Science",
+    "ai_json_record_id": 111
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

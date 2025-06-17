@@ -1,0 +1,126 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "UV-Box Decontamination Chambers - High-Efficiency UV Disinfection",
+  "slug": "uv-box-decontamination-chambers",
+  "meta_title": "UV-Box Decontamination Chambers - Powerful UV Disinfection for Masks and Small Items",
+  "meta_description": "The UV-Box Decontamination Chamber uses high-intensity UV Surround Technology to safely and effectively decontaminate masks, PPE, and other small items. Engineered for easy loading and high throughput.",
+  "meta_keywords": "uv decontamination chamber, uv disinfection, uv box, mask decontamination, ppe decontamination",
+  "short_description": "<p>UV-Box Decontamination Chamber is a high-efficiency tunnel enclosure, engineered for easy loading and high throughput, designed to create light emission conditions known to safely decontaminate masks and other small items. High intensity UV Surround Technology destroys exposed surface viruses and bacteria while providing for a safe work environment for the operator.</p>",
+  "full_description": "<div>The UV-Box Decontamination Chamber is a powerful UV disinfection solution engineered to safely and effectively decontaminate masks, PPE, and other small items. Featuring high-intensity UV Surround Technology, the chamber creates light emission conditions known to destroy exposed viruses and bacteria on items placed within.</div><div>Designed for easy loading and high throughput, the UV-Box chamber is equipped with a microprocessor-controlled color viewscreen that provides programming capabilities, status updates, and critical safety functions. A tray interlock interrupts operation if the chamber is accidentally opened, while both HEPA and activated carbon filters capture any pathogens or vapors emitted during the decontamination process, protecting the user and the environment.</div>",
+  "seo_content": "<div>The UV-Box Decontamination Chamber leverages the proven germicidal properties of 254nm UV-C light to create a safe and effective decontamination solution for masks, PPE, and other small items. By surrounding the loading tray with high-intensity UV lamps, the chamber ensures comprehensive exposure to destroy viruses, bacteria, and other harmful microorganisms on the surfaces of items placed inside.</div><div>Designed for easy operation and high throughput, the UV-Box features a microprocessor-controlled interface that allows users to program decontamination cycles, monitor status, and access critical safety functions. The chamber's tray interlock and advanced filtration system further enhance user protection by interrupting operation if opened and capturing any pathogens or vapors released during the decontamination process.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=uv-box-chambers&brand=51",
+  "target_keywords": [
+    "uv decontamination chamber",
+    "uv disinfection",
+    "mask decontamination",
+    "ppe decontamination",
+    "high-throughput disinfection"
+  ],
+  "related_keywords": [
+    "uv-c light",
+    "virus and bacteria destruction",
+    "microprocessor control",
+    "tray interlock",
+    "hepa and carbon filtration"
+  ],
+  "technical_keywords": [
+    "254nm uv-c",
+    "uv surround technology",
+    "microprocessor control",
+    "color viewscreen",
+    "tray interlock",
+    "hepa filtration",
+    "activated carbon filtration"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "uv decontamination chamber"
+    },
+    {
+      "category": "Application",
+      "tag": "mask decontamination"
+    },
+    {
+      "category": "Application",
+      "tag": "ppe decontamination"
+    },
+    {
+      "category": "Industry",
+      "tag": "healthcare"
+    },
+    {
+      "category": "Industry",
+      "tag": "food service"
+    },
+    {
+      "category": "Technology",
+      "tag": "uv-c disinfection"
+    },
+    {
+      "category": "Compliance",
+      "tag": "iso 14001"
+    },
+    {
+      "category": "Compliance",
+      "tag": "iso 9001"
+    },
+    {
+      "category": "Compliance",
+      "tag": "energy star"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Cabinet Style": "Desktop",
+      "Construction": "Stainless Steel",
+      "Environmental": "ISO 14001 : 2015; ENERGY STAR\u00ae PARTNER",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Filtration": {
+      "Filters": "HEPA and Activated Carbon"
+    }
+  },
+  "features_data": [
+    "Eight 254nm UV-C lamps surrounding the loading tray",
+    "Microprocessor control with color viewscreen",
+    "Programmable decontamination cycles",
+    "Tray interlock to interrupt operation if opened",
+    "HEPA and activated carbon filtration"
+  ],
+  "applications": [
+    "Decontamination of masks and other small PPE items",
+    "Disinfection of laboratory equipment and supplies",
+    "Sterilization of medical devices and instruments",
+    "Decontamination of food service utensils and equipment"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "UV-Box Decontamination Chambers",
+    "description": "High-efficiency UV disinfection chamber that uses 254nm UV-C light to safely decontaminate masks, PPE, and other small items.",
+    "manufacturer": "Air Science",
+    "category": "Decontamination Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_UVB-40_Right_Closed.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_UVB-40_Right_Open.png"
+  ],
+  "alt_text_suggestions": [
+    "UV-Box decontamination chamber with door closed",
+    "UV-Box decontamination chamber with door open for loading"
+  ],
+  "page_content_sections": {
+    "overview": "The UV-Box Decontamination Chamber is a powerful UV disinfection solution engineered to safely and effectively decontaminate masks, PPE, and other small items.",
+    "specifications": "The UV-Box features a stainless steel construction, microprocessor control, HEPA and activated carbon filtration, and compliance with key industry standards.",
+    "applications": "The chamber is designed for decontaminating masks and other PPE, disinfecting lab equipment, sterilizing medical devices, and more.",
+    "models": "The UV-Box Decontamination Chamber is available in a single model, the UVB-40-A, with specific dimensions and electrical requirements."
+  }
+}

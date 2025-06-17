@@ -17,10 +17,6 @@ app_name = 'content_extractor'
 urlpatterns = [
     # Site Configuration API endpoints
     path('save-configuration/', views.save_xpath_configuration, name='save_xpath_configuration'),
-    path('get-configuration/', views.get_site_configuration, name='get_site_configuration'),
-    
-    # Multi-URL Testing API endpoints
-    path('add-test-url/', views.add_test_url_view, name='add_test_url'),
-    path('switch-url/<str:direction>/', views.switch_url_view, name='switch_url'),
-    path('get-test-urls/', views.get_test_urls_view, name='get_test_urls'),
+    path('get-site-configuration/', views.get_site_configuration, name='get_site_configuration'),
+    path('delete-configuration/', views.delete_xpath_configuration, name='delete_xpath_configuration'),
 ] 

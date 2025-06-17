@@ -1,0 +1,118 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Vent BOX Modular Ductless Filtration System",
+  "slug": "vent-box-modular-ductless-filtration-system",
+  "meta_title": "Vent BOX Modular Ductless Filtration System for Chemical Safety Cabinets",
+  "meta_description": "The Air Science Vent BOX is a modular ventilation and filtration unit designed to protect laboratory personnel from chemical vapors inside stand-alone safety cabinets.",
+  "meta_keywords": "vent box, ductless filtration, modular filtration, chemical safety cabinet, laboratory ventilation, air purification",
+  "short_description": "<p>Air Science Vent BOX ductless filtration systems are modular ventilation and filtration units designed to protect laboratory personnel from chemical vapors found inside of stand-alone chemical safety cabinets.</p>",
+  "full_description": "<div>The Vent BOX creates a safe work environment over the widest range of applications in the industry, including flammable materials, acid and corrosive chemicals, paints, pesticides, and other hazardous materials. This low-profile, completely portable system requires no ductwork and can be easily positioned on shallow safety cabinets. The modular design permits multiple configurations, and the universal connections allow retrofit to almost all available flammable and safety cabinets on the market.</div>",
+  "seo_content": "<div>Using innovative filtration technology, the Vent BOX provides a comprehensive solution for protecting laboratory personnel from exposure to a variety of chemical vapors. Its compact size and modular design make it a versatile choice for a wide range of applications where safety and compliance are paramount.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=vent-box-ductless-filtration&brand=38",
+  "target_keywords": [
+    "vent box",
+    "ductless filtration",
+    "modular filtration",
+    "chemical safety cabinet",
+    "laboratory ventilation",
+    "air purification"
+  ],
+  "related_keywords": [
+    "flammable materials",
+    "acid and corrosive chemicals",
+    "paints",
+    "pesticides",
+    "hazardous materials"
+  ],
+  "technical_keywords": [
+    "OSHA compliance",
+    "ISO 14001",
+    "ISO 9001",
+    "ENERGY STAR",
+    "epoxy-coated steel",
+    "120V 60Hz"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Filtration System"
+    },
+    {
+      "category": "Application",
+      "tag": "Chemical Safety Cabinet"
+    },
+    {
+      "category": "Industry",
+      "tag": "Laboratory"
+    },
+    {
+      "category": "Technology",
+      "tag": "Modular Design"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ISO 9001, ENERGY STAR"
+    }
+  ],
+  "specifications": {
+    "Dimensions & Weights": {
+      "External Width": "21.25\" | 540 mm",
+      "External Depth": "12\" | 305 mm",
+      "External Height": "13\" | 330 mm",
+      "Shipping Width": "24\" | 610 mm",
+      "Shipping Depth": "22\" | 559 mm",
+      "Net Weight": "32 lbs | 14 kg",
+      "Shipping Weight": "34 lbs | 15 kg"
+    },
+    "Construction": {
+      "Construction": "Epoxy-coated Steel"
+    },
+    "Protection & Compliance": {
+      "OSHA": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental": "ISO 14001: 2015 ; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Electrical": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    }
+  },
+  "features_data": [
+    "Low-profile, completely portable, no ductwork required",
+    "Compact size, easily positioned on shallow safety cabinets",
+    "Modular design permits multiple configurations",
+    "Universal connections allow retrofit to almost all available flammable and safety cabinets on the market"
+  ],
+  "applications": [
+    "Flammable Materials",
+    "Acid and Corrosive Chemicals",
+    "Paints",
+    "Pesticides",
+    "Hazardous Materials"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Vent BOX Modular Ductless Filtration System",
+    "description": "The Air Science Vent BOX is a modular ventilation and filtration unit designed to protect laboratory personnel from chemical vapors inside stand-alone safety cabinets.",
+    "manufacturer": "Air Science",
+    "category": "Ductless Filtration System"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2024/09/VB60_FSA_Left_Low.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/09/VB60_FSA_Left_Low.webp"
+  ],
+  "alt_text_suggestions": [
+    "Vent BOX modular ductless filtration system left view",
+    "Vent BOX modular ductless filtration system left view with door open"
+  ],
+  "page_content_sections": {
+    "overview": "The Vent BOX creates a safe work environment over the widest range of applications in the industry, including flammable materials, acid and corrosive chemicals, paints, pesticides, and other hazardous materials.",
+    "specifications": "The Vent BOX features a compact size, modular design, and universal connections that allow it to be easily positioned on shallow safety cabinets and retrofitted to a wide range of flammable and safety cabinets.",
+    "applications": "The Vent BOX is designed to protect laboratory personnel from exposure to chemical vapors found inside stand-alone chemical safety cabinets, making it suitable for a variety of applications involving flammable materials, acids, paints, pesticides, and other hazardous substances.",
+    "models": "The Vent BOX is available in the VB60-A model, which is a modular filtration system operating at 115VAC, 60Hz."
+  }
+}

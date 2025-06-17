@@ -1,0 +1,544 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=purair-basic-ductless-fume-hoods&brand=8",
+  "site_domain": "www.airscience.com",
+  "site_name": "Purair CAGEX Ductless Fume Hood | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 4,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     P5-24-XT-A 24\" | 610 mm 27\" | 676 mm 35\" | 889 mm   P5-36-XT-A 36\" | 914 mm 27\" | 676 mm 35\" | 889 mm   P5-48-XT-A 48\" | 1219 mm 27\" | 676 mm 35\" | 889 mm   P5-24-XTS-A 24\" | 610 mm 24\" | 610 mm 35\" | 889 mm   P5-36-XTS-A 36\" | 914 mm 24\" | 610 mm 35\" | 889 mm   P5-48-XTS-A 48\" | 1219 mm 24\" | 610 mm 35\" | 889 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>P5-24-XT-A</td> <td>24\" | 610 mm</td> <td>27\" | 676 mm</td> <td>35\" | 889 mm</td> </tr> <tr> <td>P5-36-XT-A</td> <td>36\" | 914 mm</td> <td>27\" | 676 mm</td> <td>35\" | 889 mm</td> </tr> <tr> <td>P5-48-XT-A</td> <td>48\" | 1219 mm</td> <td>27\" | 676 mm</td> <td>35\" | 889 mm</td> </tr> <tr> <td>P5-24-XTS-A</td> <td>24\" | 610 mm</td> <td>24\" | 610 mm</td> <td>35\" | 889 mm</td> </tr> <tr> <td>P5-36-XTS-A</td> <td>36\" | 914 mm</td> <td>24\" | 610 mm</td> <td>35\" | 889 mm</td> </tr> <tr> <td>P5-48-XTS-A</td> <td>48\" | 1219 mm</td> <td>24\" | 610 mm</td> <td>35\" | 889 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     P5-24-XT-A - - 23.6\" | 600 mm   P5-36-XT-A - - 23.6\" | 600 mm   P5-48-XT-A - - 23.6\" | 600 mm   P5-24-XTS-A - - 23.6\" | 600 mm   P5-36-XTS-A - - 23.6\" | 600 mm   P5-48-XTS-A - - 23.6\" | 600 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>P5-24-XT-A</td> <td>-</td> <td>-</td> <td>23.6\" | 600 mm</td> </tr> <tr> <td>P5-36-XT-A</td> <td>-</td> <td>-</td> <td>23.6\" | 600 mm</td> </tr> <tr> <td>P5-48-XT-A</td> <td>-</td> <td>-</td> <td>23.6\" | 600 mm</td> </tr> <tr> <td>P5-24-XTS-A</td> <td>-</td> <td>-</td> <td>23.6\" | 600 mm</td> </tr> <tr> <td>P5-36-XTS-A</td> <td>-</td> <td>-</td> <td>23.6\" | 600 mm</td> </tr> <tr> <td>P5-48-XTS-A</td> <td>-</td> <td>-</td> <td>23.6\" | 600 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Formula Description     GP Plus! The most widely used filter in the range, primarily for solvent, organic and alcohol removal.   ACI Plus!/SUL Designed to neutralize volatile inorganic acid vapors.   ACR Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.   ACM Mercury vapor   AMM Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.   FOR Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.    SEFA Chemical Compatability Order from Filtco",
+              "html": "<div id=\"tab3\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Formula</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>GP Plus!</td> <td>The most widely used filter in the range, primarily for solvent, organic and alcohol removal.</td> </tr> <tr> <td>ACI Plus!/SUL</td> <td>Designed to neutralize volatile inorganic acid vapors.</td> </tr> <tr> <td>ACR</td> <td>Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.</td> </tr> <tr> <td>ACM</td> <td>Mercury vapor</td> </tr> <tr> <td>AMM</td> <td>Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.</td> </tr> <tr> <td>FOR</td> <td>Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.</td> </tr> </tbody> </table> <a href=\"/sefa-chemical-compatibility/\">SEFA Chemical Compatability</a> <a href=\"https://filtcofilters.com/\" target=\"_blank\" rel=\"noopener\">Order from Filtco</a> </div> "
+            },
+            {
+              "text": "Using innovative filtration technology, the Purair Basic creates a safe work environment over the widest range of applications in the industry. Compounding \\ Balance Enclosures, Microscopes, and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Using innovative filtration technology, the Purair Basic creates a safe work environment over the widest range of applications in the industry.</p> <p>Compounding \\ Balance Enclosures, Microscopes, and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "High efficiency EC blower Energy saving LED lighting Filter blockage alarm Protects the operator from fume and (with added HEPA/ULPA filter) particle hazards. A unique filter clamping design eliminates bypass leakage outside the cabinet.     Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/Icons_Purair-Basic.svg\" alt=\"Purair Basic Fume Hood Icons\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> <ul> <li>High efficiency EC blower</li> <li>Energy saving LED lighting</li> <li>Filter blockage alarm</li> <li>Protects the operator from fume and (with added <a href=\"https://www.airscience.com/hepa-ulpa-filtration\">HEPA/ULPA filter</a>) particle hazards.</li> <li>A unique filter clamping design eliminates bypass leakage outside the cabinet.</li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/ductless-fume-hoods/basic-fume-hoods.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_P5-24-XT_Left.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2022/10/PDT_P5-36-XT_Left-1.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_P5-48-XT_Left.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_P5-24-XT_Left.png\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  The Purair® BASIC Series ductless fume hoods are compact, ideal for use in laboratory environments where space is limited or where only small volumes of harmful substances are handled. For package and mail inspection workstations, see Purair SafeSEARCH.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>The Purair® BASIC Series ductless fume hoods are compact, ideal for use in laboratory environments where space is limited or where only small volumes of harmful substances are handled. For package and mail inspection workstations, see <a href=\"/mail-handling-safety\">Purair SafeSEARCH</a>.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "specification_group_names": {
+      "xpath_selectors": [
+        "/html/body/section[6]/div/div[1]/div/div/div/div/p"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[6]/div/div[1]/div/div/div/div/p",
+          "match_count": 48,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"1\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-1\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "1"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"4\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-4\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "4"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"7\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-7\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "7"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"2\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-2\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "2"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"5\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-5\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "5"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"8\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-8\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "8"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"3\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-3\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "3"
+              }
+            },
+            {
+              "text": "CONTROLS & MONITORING",
+              "html": "<p class=\"expandable-text\" data-id=\"6\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-6\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> ",
+              "attributes": {
+                "data-id": "6"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"9\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-9\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "9"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"12\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-12\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "12"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"15\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-15\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "15"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"10\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-10\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "10"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"13\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-13\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "13"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"16\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-16\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "16"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"11\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-11\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "11"
+              }
+            },
+            {
+              "text": "CONTROLS & MONITORING",
+              "html": "<p class=\"expandable-text\" data-id=\"14\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-14\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> ",
+              "attributes": {
+                "data-id": "14"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"17\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-17\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "17"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"20\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-20\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "20"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"23\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-23\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "23"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"18\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-18\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "18"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"21\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-21\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "21"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"24\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-24\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "24"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"19\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-19\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "19"
+              }
+            },
+            {
+              "text": "CONTROLS & MONITORING",
+              "html": "<p class=\"expandable-text\" data-id=\"22\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-22\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> ",
+              "attributes": {
+                "data-id": "22"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"25\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-25\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "25"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"28\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-28\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "28"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"31\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-31\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "31"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"26\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-26\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "26"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"29\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-29\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "29"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"32\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-32\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "32"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"27\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-27\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "27"
+              }
+            },
+            {
+              "text": "CONTROLS & MONITORING",
+              "html": "<p class=\"expandable-text\" data-id=\"30\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-30\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> ",
+              "attributes": {
+                "data-id": "30"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"33\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-33\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "33"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"36\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-36\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "36"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"39\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-39\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "39"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"34\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-34\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "34"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"37\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-37\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "37"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"40\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-40\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "40"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"35\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-35\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "35"
+              }
+            },
+            {
+              "text": "CONTROLS & MONITORING",
+              "html": "<p class=\"expandable-text\" data-id=\"38\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-38\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> ",
+              "attributes": {
+                "data-id": "38"
+              }
+            },
+            {
+              "text": "DIMENSIONS & WEIGHTS",
+              "html": "<p class=\"expandable-text\" data-id=\"41\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-41\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">DIMENSIONS &amp; WEIGHTS</p> ",
+              "attributes": {
+                "data-id": "41"
+              }
+            },
+            {
+              "text": "CONSTRUCTION",
+              "html": "<p class=\"expandable-text\" data-id=\"44\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-44\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONSTRUCTION</p> ",
+              "attributes": {
+                "data-id": "44"
+              }
+            },
+            {
+              "text": "PROTECTION & COMPLIANCE",
+              "html": "<p class=\"expandable-text\" data-id=\"47\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-47\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">PROTECTION &amp; COMPLIANCE</p> ",
+              "attributes": {
+                "data-id": "47"
+              }
+            },
+            {
+              "text": "OPTIONS AND ACCESSORIES",
+              "html": "<p class=\"expandable-text\" data-id=\"42\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-42\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">OPTIONS AND ACCESSORIES</p> ",
+              "attributes": {
+                "data-id": "42"
+              }
+            },
+            {
+              "text": "AIRFLOW & FILTRATION",
+              "html": "<p class=\"expandable-text\" data-id=\"45\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-45\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">AIRFLOW &amp; FILTRATION</p> ",
+              "attributes": {
+                "data-id": "45"
+              }
+            },
+            {
+              "text": "WARRANTY",
+              "html": "<p class=\"expandable-text\" data-id=\"48\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-48\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">WARRANTY</p> ",
+              "attributes": {
+                "data-id": "48"
+              }
+            },
+            {
+              "text": "ELECTRICAL",
+              "html": "<p class=\"expandable-text\" data-id=\"43\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-43\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">ELECTRICAL</p> ",
+              "attributes": {
+                "data-id": "43"
+              }
+            },
+            {
+              "text": "CONTROLS & MONITORING",
+              "html": "<p class=\"expandable-text\" data-id=\"46\"><img decoding=\"async\" class=\"arrow\" id=\"arrow-46\" src=\"https://www.airscience.com/wp-content/uploads/2025/02/arrow-open.png\" alt=\"arrow\">CONTROLS &amp; MONITORING</p> ",
+              "attributes": {
+                "data-id": "46"
+              }
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® BASIC Ductless Fume Hoods",
+              "html": "<h1>Purair® BASIC Ductless Fume Hoods</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "extracted_specification_groups": [
+    "Dimensions & Weights",
+    "Construction",
+    "Protection & Compliance",
+    "Options And Accessories",
+    "Airflow & Filtration",
+    "Warranty",
+    "Electrical",
+    "Controls & Monitoring"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Dimensions & Weights",
+      "Construction",
+      "Protection & Compliance",
+      "Options And Accessories",
+      "Airflow & Filtration",
+      "Warranty",
+      "Electrical",
+      "Controls & Monitoring"
+    ]
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae FLOW Laminar Flow Cabinets",
+  "slug": "purair-flow-laminar-flow-cabinets",
+  "meta_title": "Purair FLOW Laminar Flow Cabinets - Vertical Airflow Hoods",
+  "meta_description": "Purair FLOW Series benchtop laminar flow cabinets provide vertical laminar airflow with HEPA filtration to protect equipment and contents from particulates.",
+  "meta_keywords": "laminar flow cabinet, vertical laminar flow, HEPA filtration, clean bench, lab equipment",
+  "short_description": "<p>Purair\u00ae FLOW Series benchtop laminar flow cabinets are compact and ideal for laboratory environments with limited space. The vertical laminar flow hoods use HEPA filtration to protect equipment and other contents of the work zone from particulates.</p>",
+  "full_description": "<div>Vertical laminar airflow with HEPA/ULPA filtration protects materials inside the cabinet from particulates. High efficiency ebm-papst centrifugal fan. Air cleanliness meets and exceeds ISO Class 5. Energy saving LED lighting. Large front opening provides unrestricted access to the work zone.</div>",
+  "seo_content": "<div>The Purair FLOW Series of vertical laminar flow cabinets are designed for non-hazardous applications where user protection from biologicals or biohazardous byproducts is not required. These clean benches are ideal for a wide range of laboratory applications including mycology, food microbiology, plant and mammalian cell culture, clinical pharmacies, cleanrooms, semiconductor assembly, pharmaceutical production, aerospace contamination control, medical device assembly, and general research protocols.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=purair-flow-laminar-flow-hoods&brand=10",
+  "target_keywords": [
+    "laminar flow cabinet",
+    "vertical laminar flow",
+    "HEPA filtration",
+    "clean bench",
+    "lab equipment"
+  ],
+  "related_keywords": [
+    "mycology",
+    "food microbiology",
+    "cell culture",
+    "cleanrooms",
+    "pharmaceutical production",
+    "medical device assembly"
+  ],
+  "technical_keywords": [
+    "ISO Class 5",
+    "ebm-papst centrifugal fan",
+    "HEPA/ULPA filtration",
+    "LED lighting"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Laminar Flow Cabinet"
+    },
+    {
+      "category": "Application",
+      "tag": "Mycology"
+    },
+    {
+      "category": "Application",
+      "tag": "Food Microbiology"
+    },
+    {
+      "category": "Application",
+      "tag": "Cell Culture"
+    },
+    {
+      "category": "Application",
+      "tag": "Cleanrooms"
+    },
+    {
+      "category": "Application",
+      "tag": "Pharmaceutical Production"
+    },
+    {
+      "category": "Application",
+      "tag": "Medical Device Assembly"
+    },
+    {
+      "category": "Technology",
+      "tag": "HEPA Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO Class 5"
+    }
+  ],
+  "specifications": {
+    "Construction": {
+      "Construction": "Epoxy-coated Steel"
+    },
+    "Electrical": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Compliance": {
+      "Environmental": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Filtration": {
+      "Airflow": "Vertical",
+      "Airflow Direction": "Downflow",
+      "Face Velocity": 90
+    }
+  },
+  "features_data": [
+    "Vertical laminar airflow with HEPA/ULPA filtration",
+    "High efficiency ebm-papst centrifugal fan",
+    "Air cleanliness meets and exceeds ISO Class 5",
+    "Energy saving LED lighting",
+    "Large front opening provides unrestricted access"
+  ],
+  "applications": [
+    "Mycology and Food Microbiology",
+    "Plant and Mammalian Cell Culture",
+    "Clinical Pharmacies and Hospitals",
+    "Cleanrooms",
+    "Semiconductor Assembly",
+    "Pharmaceutical Production",
+    "Aerospace Contamination Control",
+    "Medical Device Assembly",
+    "General Research Protocols"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair FLOW Laminar Flow Cabinets",
+    "description": "Vertical laminar flow cabinets with HEPA/ULPA filtration for non-hazardous laboratory applications.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2023/06/FLOW-24_Left-copy.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/06/FLOW-36_Front-copy.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/06/FLOW-36_Left-copy.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/06/FLOW-48_Front-copy.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/06/FLOW-48_Left-copy.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/06/FLOW-24_Left-copy.webp"
+  ],
+  "alt_text_suggestions": [
+    "Purair FLOW-24 laminar flow cabinet left view",
+    "Purair FLOW-36 laminar flow cabinet front view",
+    "Purair FLOW-36 laminar flow cabinet left view",
+    "Purair FLOW-48 laminar flow cabinet front view",
+    "Purair FLOW-48 laminar flow cabinet left view",
+    "Purair FLOW-24 laminar flow cabinet left view"
+  ],
+  "page_content_sections": {
+    "overview": "Vertical laminar airflow with HEPA/ULPA filtration protects materials inside the cabinet from particulates. High efficiency ebm-papst centrifugal fan. Air cleanliness meets and exceeds ISO Class 5. Energy saving LED lighting. Large front opening provides unrestricted access to the work zone.",
+    "specifications": "Comprehensive technical specifications covering dimensions, construction, electrical, compliance, and airflow/filtration details.",
+    "applications": "Purair FLOW Series laminar flow cabinets are suitable for a wide range of laboratory applications including mycology, food microbiology, cell culture, cleanrooms, pharmaceutical production, and more.",
+    "models": "The Purair FLOW Series is available in 24\", 36\", and 48\" widths to accommodate different workspace requirements."
+  }
+}

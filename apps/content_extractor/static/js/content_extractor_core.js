@@ -135,4 +135,135 @@ function removeHighlight(element) {
     element.style.outlineOffset = '';
     element.style.backgroundColor = '';
     element.style.cursor = '';
-} 
+}
+
+/**
+ * Safe XPath element loader function
+ * Can be called from browser console/terminal
+ * 
+ * @param {string} xpath - The XPath expression to evaluate
+ * @param {Document|Element} contextNode - Context node for evaluation (defaults to document)
+ * @returns {Element|null} - The first matching element or null
+ */
+function getElementByXpath(xpath, contextNode = document) {
+    try {
+        // Validate inputs
+        if (!xpath || typeof xpath !== 'string') {
+            console.error('getElementByXpath: Invalid XPath provided:', xpath);
+            return null;
+        }
+        
+        if (!contextNode || typeof contextNode.evaluate === 'undefined') {
+            console.error('getElementByXpath: Invalid context node provided');
+            return null;
+        }
+        
+        // Evaluate XPath
+        const result = contextNode.evaluate(
+            xpath, 
+            contextNode, 
+            null, 
+            XPathResult.FIRST_ORDERED_NODE_TYPE, 
+            null
+        );
+        
+        const element = result.singleNodeValue;
+        
+        if (element) {
+            console.log('✅ Found element:', element);
+            console.log('📍 Element location:', getElementXPath(element));
+            
+            // Briefly highlight the found element for visual confirmation
+            const originalOutline = element.style.outline;
+            const originalBackground = element.style.backgroundColor;
+            
+            highlightElement(element, '#00ff00'); // Green highlight
+            
+            // Remove highlight after 2 seconds
+            setTimeout(() => {
+                element.style.outline = originalOutline;
+                element.style.backgroundColor = originalBackground;
+            }, 2000);
+            
+            return element;
+        } else {
+            console.warn('⚠️ No element found for XPath:', xpath);
+            return null;
+        }
+        
+    } catch (error) {
+        console.error('❌ Error evaluating XPath:', xpath, error);
+        return null;
+    }
+}
+
+/**
+ * Get multiple elements by XPath
+ * 
+ * @param {string} xpath - The XPath expression to evaluate
+ * @param {Document|Element} contextNode - Context node for evaluation (defaults to document)
+ * @returns {Array<Element>} - Array of matching elements
+ */
+function getElementsByXpath(xpath, contextNode = document) {
+    try {
+        // Validate inputs
+        if (!xpath || typeof xpath !== 'string') {
+            console.error('getElementsByXpath: Invalid XPath provided:', xpath);
+            return [];
+        }
+        
+        if (!contextNode || typeof contextNode.evaluate === 'undefined') {
+            console.error('getElementsByXpath: Invalid context node provided');
+            return [];
+        }
+        
+        // Evaluate XPath for multiple results
+        const result = contextNode.evaluate(
+            xpath, 
+            contextNode, 
+            null, 
+            XPathResult.ORDERED_NODE_ITERATOR_TYPE, 
+            null
+        );
+        
+        const elements = [];
+        let element = result.iterateNext();
+        
+        while (element) {
+            elements.push(element);
+            element = result.iterateNext();
+        }
+        
+        console.log(`✅ Found ${elements.length} elements for XPath:`, xpath);
+        
+        // Briefly highlight all found elements
+        elements.forEach((el, index) => {
+            const originalOutline = el.style.outline;
+            const originalBackground = el.style.backgroundColor;
+            
+            highlightElement(el, '#00ff00'); // Green highlight
+            
+            // Remove highlight after 2 seconds
+            setTimeout(() => {
+                el.style.outline = originalOutline;
+                el.style.backgroundColor = originalBackground;
+            }, 2000);
+        });
+        
+        return elements;
+        
+    } catch (error) {
+        console.error('❌ Error evaluating XPath:', xpath, error);
+        return [];
+    }
+}
+
+// Make functions globally accessible for terminal use
+window.getElementByXpath = getElementByXpath;
+window.getElementsByXpath = getElementsByXpath;
+
+// Add to console for easy discovery
+console.log('🔧 XPath utilities loaded:');
+console.log('  • getElementByXpath(xpath) - Find single element');
+console.log('  • getElementsByXpath(xpath) - Find multiple elements');
+console.log('  • Example: getElementByXpath("//h1[@class=\\"title\\"]")'); 

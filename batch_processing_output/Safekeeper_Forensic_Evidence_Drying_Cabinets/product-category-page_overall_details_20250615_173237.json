@@ -1,0 +1,194 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=safekeeper-forensic-evidence-drying-cabinets&brand=20",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 4,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     FDC-002M-A 24\" | 610 mm 24\" | 610 mm 30\" | 762 mm   FDC-002-A 30\" | 762 mm 27.375\" | 705 mm 48\" | 1219 mm   FDC-006GL-A 36\" | 914 mm 27.75\" | 705 mm 73\" | 1854 mm   FDC-007GL-A 48\" | 1219 mm 27.75\" | 705 mm 73\" | 1854 mm   FDC-008GL-A 60\" | 1524 mm 27.75\" | 705 mm 73\" | 1854 mm   FDC-008GL-Duplex-A 60\" | 1524 mm 27.75\" | 705 mm 73\" | 1854 mm   FDC-006XL-XT-A 39\" | 991 mm 27.75\" | 705 mm 82.25\" | 2090 mm   FDC-010-QUAD-A 72\" | 1829 mm 27.75\" | 705 mm 74.375\" | 1890 mm   FDC-003-A 30\" | 762 mm 27.75\" | 705 mm 74.375\" | 1890 mm   FDC-006-A 36\" | 914 mm 27.75\" | 705 mm 74.375\" | 1890 mm   FDC-007-A 48\" | 1219 mm 27.75\" | 705 mm 70.875\" | 1800 mm   FDC-008-A 60\" | 1524 mm 27.75\" | 705 mm 74.375\" | 1890 mm   FDC-010-A 72\" | 1829 mm 27.75\" | 705 mm 74.375\" | 1890 mm   FDC-011-A 96\" | 2438 mm 27.75\" | 705 mm 74.375\" | 1890 mm   FDC-006XL-A 39\" | 991 mm 27.75\" | 705 mm 74.375\" | 1890 mm   FDC-003XT-A 30\" | 762 mm 27.75\" | 705 mm 82.25\" | 2090 mm   FDC-006XT-A 36\" | 914 mm 27.75\" | 705 mm 82.25\" | 2090 mm   FDC-007XT-A 48\" | 1219 mm 27.75\" | 705 mm 82.25\" | 2090 mm   FDC-008XT-A 60\" | 1524 mm 27.75\" | 705 mm 82.25\" | 2090 mm   FDC-010XT-A 72\" | 1829 mm 27.75\" | 705 mm 82.25\" | 2000 mm   FDC-011XT-A 96\" | 2438 mm 27.75\" | 705 mm 82.25\" | 2090 mm   FDC-008DXT-A 60\" | 1524 mm 27.75\" | 705 mm 82.25\" | 2090 mm   FDC-007DXT-A 48\" | 1219 mm 27.75\" | 705 mm 82.25\" | 2090 mm   FDC-010DXT-A 72\" | 1829 mm 27.75\" | 705 mm 82.25\" | 2090 mm   FDC-011DXT-A 96\" | 2438 mm 27.75\" | 705 mm 82.25\" | 2090 mm   FDC-010-TRI-A 72\" | 1829 mm 27.75\" | 705 mm 74.375\" | 1890 mm   FDC-007D-A 48\" | 1219 mm 27.75\" | 705 mm 74.375\" | 1890 mm   FDC-008D-A 60\" | 1524 mm 27.75\" | 705 mm 74.375\" | 1890 mm   FDC-010D-A 72\" | 1829 mm 27.75\" | 705 mm 70.875\" | 1800 mm   FDC-011D-A 96\" | 2438 mm 27.75\" | 705 mm 74.375\" | 1890 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>FDC-002M-A</td> <td>24\" | 610 mm</td> <td>24\" | 610 mm</td> <td>30\" | 762 mm</td> </tr> <tr> <td>FDC-002-A</td> <td>30\" | 762 mm</td> <td>27.375\" | 705 mm</td> <td>48\" | 1219 mm</td> </tr> <tr> <td>FDC-006GL-A</td> <td>36\" | 914 mm</td> <td>27.75\" | 705 mm</td> <td>73\" | 1854 mm</td> </tr> <tr> <td>FDC-007GL-A</td> <td>48\" | 1219 mm</td> <td>27.75\" | 705 mm</td> <td>73\" | 1854 mm</td> </tr> <tr> <td>FDC-008GL-A</td> <td>60\" | 1524 mm</td> <td>27.75\" | 705 mm</td> <td>73\" | 1854 mm</td> </tr> <tr> <td>FDC-008GL-Duplex-A</td> <td>60\" | 1524 mm</td> <td>27.75\" | 705 mm</td> <td>73\" | 1854 mm</td> </tr> <tr> <td>FDC-006XL-XT-A</td> <td>39\" | 991 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2090 mm</td> </tr> <tr> <td>FDC-010-QUAD-A</td> <td>72\" | 1829 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> <tr> <td>FDC-003-A</td> <td>30\" | 762 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> <tr> <td>FDC-006-A</td> <td>36\" | 914 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> <tr> <td>FDC-007-A</td> <td>48\" | 1219 mm</td> <td>27.75\" | 705 mm</td> <td>70.875\" | 1800 mm</td> </tr> <tr> <td>FDC-008-A</td> <td>60\" | 1524 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> <tr> <td>FDC-010-A</td> <td>72\" | 1829 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> <tr> <td>FDC-011-A</td> <td>96\" | 2438 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> <tr> <td>FDC-006XL-A</td> <td>39\" | 991 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> <tr> <td>FDC-003XT-A</td> <td>30\" | 762 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2090 mm</td> </tr> <tr> <td>FDC-006XT-A</td> <td>36\" | 914 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2090 mm</td> </tr> <tr> <td>FDC-007XT-A</td> <td>48\" | 1219 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2090 mm</td> </tr> <tr> <td>FDC-008XT-A</td> <td>60\" | 1524 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2090 mm</td> </tr> <tr> <td>FDC-010XT-A</td> <td>72\" | 1829 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2000 mm</td> </tr> <tr> <td>FDC-011XT-A</td> <td>96\" | 2438 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2090 mm</td> </tr> <tr> <td>FDC-008DXT-A</td> <td>60\" | 1524 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2090 mm</td> </tr> <tr> <td>FDC-007DXT-A</td> <td>48\" | 1219 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2090 mm</td> </tr> <tr> <td>FDC-010DXT-A</td> <td>72\" | 1829 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2090 mm</td> </tr> <tr> <td>FDC-011DXT-A</td> <td>96\" | 2438 mm</td> <td>27.75\" | 705 mm</td> <td>82.25\" | 2090 mm</td> </tr> <tr> <td>FDC-010-TRI-A</td> <td>72\" | 1829 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> <tr> <td>FDC-007D-A</td> <td>48\" | 1219 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> <tr> <td>FDC-008D-A</td> <td>60\" | 1524 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> <tr> <td>FDC-010D-A</td> <td>72\" | 1829 mm</td> <td>27.75\" | 705 mm</td> <td>70.875\" | 1800 mm</td> </tr> <tr> <td>FDC-011D-A</td> <td>96\" | 2438 mm</td> <td>27.75\" | 705 mm</td> <td>74.375\" | 1890 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     FDC-002M-A - - 18.375\" | 465 mm   FDC-002-A - - 18.375\" | 465 mm   FDC-006GL-A - - 45.25\" | 1150 mm   FDC-007GL-A - - 45.25\" | 1150 mm   FDC-008GL-A - - 45.25\" | 1150 mm   FDC-008GL-Duplex-A - - 45.25\" | 1150 mm   FDC-006XL-XT-A - - 51.125\" | 1300 mm   FDC-010-QUAD-A - - 45.25\" | 1150 mm   FDC-003-A - - 45.25\" | 1150 mm   FDC-006-A - - 45.25\" | 1150 mm   FDC-007-A - - 45.25\" | 1150 mm   FDC-008-A - - 45.25\" | 1150 mm   FDC-010-A - - 45.25\" | 1150 mm   FDC-011-A - - 45.25\" | 1150 mm   FDC-006XL-A - - 45.25\" | 1150 mm   FDC-003XT-A - - 51.125\" | 1300 mm   FDC-006XT-A - - 51.125\" | 1300 mm   FDC-007XT-A - - 51.125\" | 1300 mm   FDC-008XT-A - - 51.125\" | 1300 mm   FDC-010XT-A - - 51.125\" | 1300 mm   FDC-011XT-A - - 51.125\" | 1300 mm   FDC-008DXT-A - - 51.125\" | 1300 mm   FDC-007DXT-A - - 51.125\" | 1300 mm   FDC-010DXT-A - - 51.125\" | 1300 mm   FDC-011DXT-A - - 51.125\" | 1300 mm   FDC-010-TRI-A - - 51.125\" | 1300 mm   FDC-007D-A - - 45.25\" | 1150 mm   FDC-008D-A - - 45.25\" | 1150 mm   FDC-010D-A - - 45.25\" | 1150 mm   FDC-011D-A - - 45.25\" | 1150 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>FDC-002M-A</td> <td>-</td> <td>-</td> <td>18.375\" | 465 mm</td> </tr> <tr> <td>FDC-002-A</td> <td>-</td> <td>-</td> <td>18.375\" | 465 mm</td> </tr> <tr> <td>FDC-006GL-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-007GL-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-008GL-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-008GL-Duplex-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-006XL-XT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-010-QUAD-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-003-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-006-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-007-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-008-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-010-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-011-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-006XL-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-003XT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-006XT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-007XT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-008XT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-010XT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-011XT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-008DXT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-007DXT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-010DXT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-011DXT-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-010-TRI-A</td> <td>-</td> <td>-</td> <td>51.125\" | 1300 mm</td> </tr> <tr> <td>FDC-007D-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-008D-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-010D-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> <tr> <td>FDC-011D-A</td> <td>-</td> <td>-</td> <td>45.25\" | 1150 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Formula Description     GP Plus! The most widely used filter in the range, primarily for solvent, organic and alcohol removal.   HEPA/ULPA Powders and particulates.    SEFA Chemical Compatability Order from Filtco",
+              "html": "<div id=\"tab3\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Formula</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>GP Plus!</td> <td>The most widely used filter in the range, primarily for solvent, organic and alcohol removal.</td> </tr> <tr> <td>HEPA/ULPA</td> <td>Powders and particulates.</td> </tr> </tbody> </table> <a href=\"/sefa-chemical-compatibility/\">SEFA Chemical Compatability</a> <a href=\"https://filtcofilters.com/\" target=\"_blank\" rel=\"noopener\">Order from Filtco</a> </div> "
+            },
+            {
+              "text": "Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science® ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents. Using innovative filtration technology, the forensic evidence drying cabinet creates a safe work environment over the widest range of applications in the industry. State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Safekeeper Forensic Evidence Drying Cabinets provide cost-effective storage and containment for forensic evidence as it is dried by a constant flow of air. Air Science® ductless technology removes airborne pathogens, particulates, fumes and odors emitted by the contents. Using innovative filtration technology, the forensic evidence drying cabinet creates a safe work environment over the widest range of applications in the industry.</p> <p>State and Federal Crime Laboratories \\ Medical Examiners and Coroners \\ Law Enforcement Agencies \\ Hospital Emergency Rooms \\ Drug Agencies</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "General Purpose Safekeeper cabinets are available in bench/desktop and floor-standing models. Select models are available with two, three or four independent drying chambers, each with its own filtration and control system.  Most models are designed and configured for mobile use in uncontrolled environments.  The Drugkeeper series is designed for safe storage of confiscated hazardous chemicals and illegal drugs.  The Safeswab horizontal airflow cabinet is useful for protecting biological evidence collected on swabs from external contaminants and personnel in the working environment.  The Evidence Transporter™ is an \"on-site\" fabric chamber developed for transporting evidence from the field to the lab.      Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"introprodtext\"> <ul> <li>General Purpose Safekeeper cabinets are available in bench/desktop and floor-standing models. Select models are available with two, three or four independent drying chambers, each with its own filtration and control system. </li> <li>Most models are designed and configured for mobile use in uncontrolled environments. </li> <li>The Drugkeeper series is designed for safe storage of confiscated hazardous chemicals and illegal drugs. </li> <li>The Safeswab horizontal airflow cabinet is useful for protecting biological evidence collected on swabs from external contaminants and personnel in the working environment. </li> <li>The Evidence Transporter™ is an \"on-site\" fabric chamber developed for transporting evidence from the field to the lab. </li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/forensic-lab-equipment/forensic-evidence-drying-cabinets.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_FDC-006XT_Left.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_FDC-002_Left.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_FDC-006GL_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_FDC-010D_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_FDC-006XT_Left.png\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  SafeKEEPER® series forensic evidence drying cabinets are designed to store, dry or otherwise process forensic evidence in the controlled environment of a tamper-resistant compartment to maintain the chain of custody.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>SafeKEEPER® series forensic evidence drying cabinets are designed to store, dry or otherwise process forensic evidence in the controlled environment of a tamper-resistant compartment to maintain the chain of custody.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "SafeKEEPER® Forensic Evidence Drying Cabinets",
+              "html": "<h1>SafeKEEPER® Forensic Evidence Drying Cabinets</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:32:35.980973+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Safekeeper Forensic Evidence Drying Cabinets",
+    "safe_directory_name": "Safekeeper_Forensic_Evidence_Drying_Cabinets",
+    "ai_json_record_id": 122
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Controls & Monitoring",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Controls & Monitoring",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

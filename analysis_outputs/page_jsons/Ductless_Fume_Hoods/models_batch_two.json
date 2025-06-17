@@ -1,0 +1,91 @@
+{
+    "models_data": [
+      {
+        "model_name": "P5-36-XTS-A",
+        "specifications": {
+          "Dimensions & Weights": {
+            "Internal Height": "23.6″ | 600 mm",
+            "External Width": "36″ | 914 mm",
+            "External Depth": "24″ | 610 mm",
+            "External Height": "35″ | 889 mm",
+            "Shipping Width": "40″ | 1016 mm",
+            "Shipping Depth": "40″ | 1016 mm",
+            "Net Weight": "99 lbs | 45 kg",
+            "Shipping Weight": "170 lbs | 77 kg"
+          },
+          "Construction": {
+            "Cabinet Style": "Extra Tall, Shallow Depth"
+          },
+          "Options And Accessories": {
+            "Advanced Controller": "P5-36-XTS-A-ADVP",
+            "Autocal Control Panel": "P5-36-XTS-A-ACAL",
+            "Base Cabinet, Fixed (Metal)": "CART-MCC-36",
+            "Base Cabinet, Fixed (Polypropylene)": "CART-SSC-36",
+            "Base Stand, Mobile, with Casters": "CART-36",
+            "Fire Safety Cabinet Base": "CART-FSC-36",
+            "Polypropylene Construction": "P5-36-XTS-A-PP",
+            "Spill Tray (Polypropylene)": "TRAY-P5-36S",
+            "UV lamp": "P5-36-XTS-A-UV"
+          },
+          "Controls & Monitoring": {
+            "Control": "Fan Manual On Off"
+          }
+        },
+        "features": [
+          "Shallow depth cabinet design for space-constrained laboratories",
+          "36″ width provides medium workspace area",
+          "Extra tall legs for comfortable standing operation",
+          "Manual fan control system",
+          "Compatible with multiple base cabinet options",
+          "Optional UV lamp for sterilization",
+          "Optional advanced controller upgrade available",
+          "Optional polypropylene construction for chemical resistance"
+        ],
+        "seo_description": "P5-36-XTS-A ductless fume hood features shallow 24″ depth design with 36″ width and extra tall legs. 115VAC/60Hz operation with upflow filtration system. Ideal for laboratory applications requiring medium workspace with minimal footprint."
+      },
+      {
+        "model_name": "P5-48-XTS-A",
+        "specifications": {
+          "Dimensions & Weights": {
+            "Internal Height": "23.6″ | 600 mm",
+            "External Width": "48″ | 1219 mm",
+            "External Depth": "24″ | 610 mm",
+            "External Height": "35″ | 889 mm",
+            "Shipping Width": "55″ | 1397 mm",
+            "Shipping Depth": "40″ | 1016 mm",
+            "Net Weight": "138 lbs | 63 kg",
+            "Shipping Weight": "230 lbs | 104 kg"
+          },
+          "Construction": {
+            "Cabinet Style": "Extra Tall, Shallow Depth"
+          },
+          "Options And Accessories": {
+            "Advanced Controller": "P5-48-XTS-A-ADVP",
+            "Autocal Control Panel": "P5-48-XTS-A-ACAL",
+            "Base Cabinet, Fixed (Metal)": "CART-MCC-50",
+            "Base Cabinet, Fixed (Polypropylene)": "CART-SSC-50",
+            "Base Stand, Mobile, with Casters": "CART-50",
+            "Fire Safety Cabinet Base": "CART-FSC-50",
+            "Polypropylene Construction": "P5-48-XTS-A-PP",
+            "Spill Tray (Polypropylene)": "TRAY-P5-48S",
+            "UV lamp": "P5-48-XTS-A-UV"
+          },
+          "Controls & Monitoring": {
+            "Control": "Fan Manual On Off",
+            "Monitoring Options": "Standard"
+          }
+        },
+        "features": [
+          "Shallow depth cabinet design for space-constrained laboratories",
+          "Extra-wide 48″ workspace for larger applications",
+          "Extra tall legs for ergonomic operation",
+          "Manual fan control system with standard monitoring",
+          "Compatible with 50″ base cabinet options",
+          "Optional UV lamp for sterilization",
+          "Optional advanced controller and autocal control panel upgrades",
+          "Optional polypropylene construction for enhanced chemical resistance"
+        ],
+        "seo_description": "P5-48-XTS-A ductless fume hood combines shallow 24″ depth with expansive 48″ width and extra tall legs. Features 115VAC/60Hz operation with upflow filtration. Ideal for laboratories requiring maximum workspace with reduced depth footprint."
+      }
+    ]
+  }

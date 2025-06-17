@@ -1,0 +1,190 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=purair-flow-laminar-flow-hoods &brand=10",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 3,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     FLOW-24-A 24\" | 610 mm 24\" | 610 mm 35\" | 889 mm   FLOW-36-A 36\" | 914 mm 24\" | 610 mm 35\" | 889 mm   FLOW-48-A 48\" | 1219 mm 24\" | 610 mm 35\" | 889 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>FLOW-24-A</td> <td>24\" | 610 mm</td> <td>24\" | 610 mm</td> <td>35\" | 889 mm</td> </tr> <tr> <td>FLOW-36-A</td> <td>36\" | 914 mm</td> <td>24\" | 610 mm</td> <td>35\" | 889 mm</td> </tr> <tr> <td>FLOW-48-A</td> <td>48\" | 1219 mm</td> <td>24\" | 610 mm</td> <td>35\" | 889 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     FLOW-24-A 24\" | 610 mm 22.5\" | 571 mm 23.5\" | 596 mm   FLOW-36-A 36\" | 914 mm 22.5\" | 571 mm 23.5\" | 596 mm   FLOW-48-A 48\" | 1219 mm 22.5\" | 571 mm 23.5\" | 596 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>FLOW-24-A</td> <td>24\" | 610 mm</td> <td>22.5\" | 571 mm</td> <td>23.5\" | 596 mm</td> </tr> <tr> <td>FLOW-36-A</td> <td>36\" | 914 mm</td> <td>22.5\" | 571 mm</td> <td>23.5\" | 596 mm</td> </tr> <tr> <td>FLOW-48-A</td> <td>48\" | 1219 mm</td> <td>22.5\" | 571 mm</td> <td>23.5\" | 596 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Vertical laminar flow cabinets are intended for use in non-hazardous applications where user protection from biologicals or biohazardous byproducts is not required. Mycology and Food Microbiology \\ Plant and Mammalian Cell Culture \\ Clinical Pharmacies and Hospitals \\ Cleanrooms \\ Semiconductor Assembly \\ Pharmaceutical Production \\ Aerospace Contamination Control \\ Medical Device Assembly \\ General Research Protocols",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Vertical laminar flow cabinets are intended for use in non-hazardous applications where user protection from biologicals or biohazardous byproducts is not required.</p> <p>Mycology and Food Microbiology \\ Plant and Mammalian Cell Culture \\ Clinical Pharmacies and Hospitals \\ Cleanrooms \\ Semiconductor Assembly \\ Pharmaceutical Production \\ Aerospace Contamination Control \\ Medical Device Assembly \\ General Research Protocols</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Vertical laminar airflow with HEPA/ULPA filtration protects materials inside the cabinet from particulates. High efficiency ebm-papst centrifugal fan. Air cleanliness meets and exceeds ISO Class 5. Energy saving LED lighting. Large front opening provides unrestricted access to the work zone.     Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/Icons_Purair-FLOW.svg\" alt=\"\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> <ul> <li>Vertical laminar airflow with <a href=\"https://www.airscience.com/hepa-ulpa-filtration\">HEPA/ULPA filtration</a> protects materials inside the cabinet from particulates.</li> <li>High efficiency ebm-papst centrifugal fan.</li> <li>Air cleanliness meets and exceeds ISO Class 5.</li> <li>Energy saving LED lighting.</li> <li>Large front opening provides unrestricted access to the work zone.</li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/laminar-flow-hoods/flow-series-basic-economy-clean-benches.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/06/FLOW-24_Left-copy.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/06/FLOW-36_Front-copy.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/06/FLOW-36_Left-copy.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/06/FLOW-48_Front-copy.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/06/FLOW-48_Left-copy.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/06/FLOW-24_Left-copy.webp\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  Purair® FLOW Series benchtop laminar flow cabinets are compact and ideal for laboratory environments with limited space. The vertical laminar flow hoods use HEPA filtration to protect equipment and other contents of the work zone from particulates.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>Purair® FLOW Series benchtop laminar flow cabinets are compact and ideal for laboratory environments with limited space. The vertical laminar flow hoods use HEPA filtration to protect equipment and other contents of the work zone from particulates.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® FLOW Laminar Flow Cabinets",
+              "html": "<h1>Purair® FLOW Laminar Flow Cabinets</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:31:12.237907+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Air Science Products",
+    "safe_directory_name": "Air_Science_Products",
+    "ai_json_record_id": 106
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Controls & Monitoring",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Controls & Monitoring",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

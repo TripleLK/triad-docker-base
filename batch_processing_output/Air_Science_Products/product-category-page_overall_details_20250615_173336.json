@@ -1,0 +1,194 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=safefume-fuming-chambers &brand=14",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 4,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     CA24S-A 24\" | 610 mm 17.25\" | 705 mm 24\" | 610 mm   CA30S-A 30\" | 762 mm 28\" | 711 mm 48\" | 1220 mm   CA48S-A 48\" | 1219 mm 28\" | 711 mm 48\" | 1219 mm   CA60S-A 60\" | 1524 mm 28\" | 711 mm 48\" | 1219 mm   CA30T-A 30\" | 762 mm 28\" | 711 mm 74.88\" | 1902 mm   CA48T-A 48\" | 1219 mm 28\" | 711 mm 74.88\" | 1902 mm   CA60T-A 60\" | 1524 mm 28\" | 705 mm 74.88\" | 1902 mm   CATRI-A 60\" | 1524 mm 27.75\" | 705 mm 75\" | 1905 mm   CAQUAD-A 60\" | 1524 mm 27.75\" | 705 mm 75\" | 1905 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>CA24S-A</td> <td>24\" | 610 mm</td> <td>17.25\" | 705 mm</td> <td>24\" | 610 mm</td> </tr> <tr> <td>CA30S-A</td> <td>30\" | 762 mm</td> <td>28\" | 711 mm</td> <td>48\" | 1220 mm</td> </tr> <tr> <td>CA48S-A</td> <td>48\" | 1219 mm</td> <td>28\" | 711 mm</td> <td>48\" | 1219 mm</td> </tr> <tr> <td>CA60S-A</td> <td>60\" | 1524 mm</td> <td>28\" | 711 mm</td> <td>48\" | 1219 mm</td> </tr> <tr> <td>CA30T-A</td> <td>30\" | 762 mm</td> <td>28\" | 711 mm</td> <td>74.88\" | 1902 mm</td> </tr> <tr> <td>CA48T-A</td> <td>48\" | 1219 mm</td> <td>28\" | 711 mm</td> <td>74.88\" | 1902 mm</td> </tr> <tr> <td>CA60T-A</td> <td>60\" | 1524 mm</td> <td>28\" | 705 mm</td> <td>74.88\" | 1902 mm</td> </tr> <tr> <td>CATRI-A</td> <td>60\" | 1524 mm</td> <td>27.75\" | 705 mm</td> <td>75\" | 1905 mm</td> </tr> <tr> <td>CAQUAD-A</td> <td>60\" | 1524 mm</td> <td>27.75\" | 705 mm</td> <td>75\" | 1905 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     CA24S-A - - 12.75\" | 325 mm   CA30S-A - - 36\" | 914 mm   CA48S-A - - 36\" | 914 mm   CA60S-A - - 36\" | 914 mm   CA30T-A - - 57.24\" | 1454 mm   CA48T-A - - 57.24\" | 1454 mm   CA60T-A - - 57.24\" | 1454 mm   CATRI-A - - 2 @ 24, 1 @ 57.25\" | 2 @ 610, 1 @ 1454 mm   CAQUAD-A - - 4 @ 24\" | 4 @ 610 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>CA24S-A</td> <td>-</td> <td>-</td> <td>12.75\" | 325 mm</td> </tr> <tr> <td>CA30S-A</td> <td>-</td> <td>-</td> <td>36\" | 914 mm</td> </tr> <tr> <td>CA48S-A</td> <td>-</td> <td>-</td> <td>36\" | 914 mm</td> </tr> <tr> <td>CA60S-A</td> <td>-</td> <td>-</td> <td>36\" | 914 mm</td> </tr> <tr> <td>CA30T-A</td> <td>-</td> <td>-</td> <td>57.24\" | 1454 mm</td> </tr> <tr> <td>CA48T-A</td> <td>-</td> <td>-</td> <td>57.24\" | 1454 mm</td> </tr> <tr> <td>CA60T-A</td> <td>-</td> <td>-</td> <td>57.24\" | 1454 mm</td> </tr> <tr> <td>CATRI-A</td> <td>-</td> <td>-</td> <td>2 @ 24, 1 @ 57.25\" | 2 @ 610, 1 @ 1454 mm</td> </tr> <tr> <td>CAQUAD-A</td> <td>-</td> <td>-</td> <td>4 @ 24\" | 4 @ 610 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Formula Description     GP Plus! The most widely used filter in the range, primarily for solvent, organic and alcohol removal.    SEFA Chemical Compatability Order from Filtco",
+              "html": "<div id=\"tab3\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Formula</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>GP Plus!</td> <td>The most widely used filter in the range, primarily for solvent, organic and alcohol removal.</td> </tr> </tbody> </table> <a href=\"/sefa-chemical-compatibility/\">SEFA Chemical Compatability</a> <a href=\"https://filtcofilters.com/\" target=\"_blank\" rel=\"noopener\">Order from Filtco</a> </div> "
+            },
+            {
+              "text": "Using innovative filtration technology, the Safefume cyanoacrylate fuming chamber creates a safe work environment over the widest range of applicationsin the industry. State and Federal Crime Laboratories \\ Crime Scene Investigation \\ Law Enforcement Agencies \\ Medical Examiners' Programs \\ Criminal Justice Education",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Using innovative filtration technology, the Safefume cyanoacrylate fuming chamber creates a safe work environment over the widest range of applicationsin the industry.</p> <p>State and Federal Crime Laboratories \\ Crime Scene Investigation \\ Law Enforcement Agencies \\ Medical Examiners' Programs \\ Criminal Justice Education</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Choose from multiple sizes, from bench top to floor standing. Multi-chamber cabinets available. Caster wheels standard on all models except bench top series. Optional UV Lamp decontamination. Optional side and rear windows for 360° view of development.      Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/Icons_Safefume.svg\" alt=\"\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> <ul> <li>Choose from multiple sizes, from bench top to floor standing.</li> <li>Multi-chamber cabinets available.</li> <li>Caster wheels standard on all models except bench top series.</li> <li>Optional UV Lamp decontamination.</li> <li>Optional side and rear windows for 360° view of development. </li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/forensic-lab-equipment/cyanoacrylate-fume-chambers.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_CA30S_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_CA30T_Front_Open.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_CA60T_Left.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_CA30S_Right.png\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  SafeFUME™ cyanoacrylate fuming chambers are designed to safely develop latent fingerprints using methylcyanoacrylate (CNA) vapor in a controlled environment.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>SafeFUME™ cyanoacrylate fuming chambers are designed to safely develop latent fingerprints using methylcyanoacrylate (CNA) vapor in a controlled environment.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "SafeFUME™ Automatic Cyanoacrylate Fuming Chambers",
+              "html": "<h1>SafeFUME™ Automatic Cyanoacrylate Fuming Chambers</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:33:33.394645+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Air Science Products",
+    "safe_directory_name": "Air_Science_Products",
+    "ai_json_record_id": 133
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Controls & Monitoring",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Controls & Monitoring",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

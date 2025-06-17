@@ -1,0 +1,192 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=purair-ducted-basic-fume-hoods&brand=53",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 4,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     P5-24-XT-ENCL-DUCT-A 24\" | 610 mm 27\" | 676 mm 28\" | 710 mm   P5-36-XT-ENCL-DUCT-A 36\" | 914 mm 27\" | 676 mm 28\" | 710 mm   P5-48-XT-ENCL-DUCT-A 48\" | 1219 mm 27\" | 676 mm 28\" | 710 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>P5-24-XT-ENCL-DUCT-A</td> <td>24\" | 610 mm</td> <td>27\" | 676 mm</td> <td>28\" | 710 mm</td> </tr> <tr> <td>P5-36-XT-ENCL-DUCT-A</td> <td>36\" | 914 mm</td> <td>27\" | 676 mm</td> <td>28\" | 710 mm</td> </tr> <tr> <td>P5-48-XT-ENCL-DUCT-A</td> <td>48\" | 1219 mm</td> <td>27\" | 676 mm</td> <td>28\" | 710 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     P5-24-XT-ENCL-DUCT-A - - 23.6\" | 600 mm   P5-36-XT-ENCL-DUCT-A - - 23.6\" | 600 mm   P5-48-XT-ENCL-DUCT-A - - 23.6\" | 600 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>P5-24-XT-ENCL-DUCT-A</td> <td>-</td> <td>-</td> <td>23.6\" | 600 mm</td> </tr> <tr> <td>P5-36-XT-ENCL-DUCT-A</td> <td>-</td> <td>-</td> <td>23.6\" | 600 mm</td> </tr> <tr> <td>P5-48-XT-ENCL-DUCT-A</td> <td>-</td> <td>-</td> <td>23.6\" | 600 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Formula Description     GP Plus! The most widely used filter in the range, primarily for solvent, organic and alcohol removal.   ACI Plus!/SUL Designed to neutralize volatile inorganic acid vapors.   ACR Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.   ACM Mercury vapor   AMM Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.   FOR Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.    SEFA Chemical Compatability Order from Filtco",
+              "html": "<div id=\"tab3\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Formula</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>GP Plus!</td> <td>The most widely used filter in the range, primarily for solvent, organic and alcohol removal.</td> </tr> <tr> <td>ACI Plus!/SUL</td> <td>Designed to neutralize volatile inorganic acid vapors.</td> </tr> <tr> <td>ACR</td> <td>Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.</td> </tr> <tr> <td>ACM</td> <td>Mercury vapor</td> </tr> <tr> <td>AMM</td> <td>Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.</td> </tr> <tr> <td>FOR</td> <td>Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.</td> </tr> </tbody> </table> <a href=\"/sefa-chemical-compatibility/\">SEFA Chemical Compatability</a> <a href=\"https://filtcofilters.com/\" target=\"_blank\" rel=\"noopener\">Order from Filtco</a> </div> "
+            },
+            {
+              "text": "Using innovative filtration technology, the Purair Basic creates a safe work environment over the widest range of applications in the industry. Compounding \\ Balance Enclosures, Microscopes, and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Using innovative filtration technology, the Purair Basic creates a safe work environment over the widest range of applications in the industry.</p> <p>Compounding \\ Balance Enclosures, Microscopes, and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Chemical-resistant epoxy coated steel frame 360 degree visibility Protects the operator from fume hazards     Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/12/Icons_Purair-Basic-Ducted.svg\" alt=\"Purair Basic Ducted Fume Hood Icons\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> <ul> <li>Chemical-resistant epoxy coated steel frame</li> <li>360 degree visibility</li> <li>Protects the operator from fume hazards</li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/ducted-fume-hoods.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/12/P5-24-XT-ENCL-DUCT_Left.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/12/P5-48-XT-ENCL-DUCT_Left.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2023/12/P5-24-XT-ENCL-DUCT_Left.webp\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  Air Science® Purair® DUCTED Basic Fume Hoods are exterior-venting exhaust hoods designed to protect personnel from exposure to hazardous agents and toxic chemicals in various applications.   Purair Ducted Basic Fume Hoods are ideal for applications that generate high volumes of volatile organic compounds and toxic chemicals, gases, or powders on the work surface. As a ducted fume hood, the Purair Ducted Basic utilizes an external ducting system. The air intake face velocity can be adjusted to provide the desired balance between conditioned room air conservation and the necessary volume of exhausted contaminated air.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>Air Science® Purair® DUCTED Basic Fume Hoods are exterior-venting exhaust hoods designed to protect personnel from exposure to hazardous agents and toxic chemicals in various applications.</div> <div> </div> <div>Purair Ducted Basic Fume Hoods are ideal for applications that generate high volumes of volatile organic compounds and toxic chemicals, gases, or powders on the work surface. As a ducted fume hood, the Purair Ducted Basic utilizes an external ducting system. The air intake face velocity can be adjusted to provide the desired balance between conditioned room air conservation and the necessary volume of exhausted contaminated air.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® DUCTED Basic Fume Hood",
+              "html": "<h1>Purair® DUCTED Basic Fume Hood</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:07:36.413690+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Purair Ducted Basic Fume Hood | Air Science",
+    "safe_directory_name": "Purair_Ducted_Basic_Fume_Hood_Air_Science",
+    "ai_json_record_id": 42
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

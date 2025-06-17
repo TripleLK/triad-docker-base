@@ -1,0 +1,137 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Vented ENCLOSURE\u2122 for Compounding and Powder Weighing",
+  "slug": "vented-enclosure-for-compounding-and-powder-weighing",
+  "meta_title": "Vented Enclosures for Powder Weighing and Compounding | Air Science",
+  "meta_description": "Vented ENCLOSURE\u2122 from Air Science offer important safety features for containment of powders and fumes during compounding or weighing activities.",
+  "meta_keywords": "vented enclosure, powder weighing, compounding, fume containment, air science",
+  "short_description": "<p>Ideal for containment of powders and fumes during compounding or weighing, Vented ENCLOSURE\u2122 offer important safety features that are not found with any other competitive products.</p>",
+  "full_description": "<div>Custom sizes to meet every need. Turbulent-free airflow pattern. Proven performance. Specialized HEPA filter technology for increased safety. Ductless design increases location possibilities.</div>",
+  "seo_content": "<div>Vented ENCLOSURE\u2122 from Air Science provide comprehensive containment and safety features for a wide range of powder weighing, compounding, and other critical laboratory applications. With custom sizing, turbulent-free airflow, and specialized filtration, these enclosures offer unparalleled protection and flexibility.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=vented-enclosures&brand=32",
+  "target_keywords": [
+    "vented enclosure",
+    "powder weighing",
+    "compounding",
+    "fume containment",
+    "air science"
+  ],
+  "related_keywords": [
+    "laboratory equipment",
+    "safety equipment",
+    "containment solutions",
+    "ductless design"
+  ],
+  "technical_keywords": [
+    "HEPA filtration",
+    "turbulent-free airflow",
+    "custom sizing",
+    "ductless design",
+    "OSHA compliance"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Vented Enclosure"
+    },
+    {
+      "category": "Application",
+      "tag": "Powder Weighing"
+    },
+    {
+      "category": "Application",
+      "tag": "Compounding"
+    },
+    {
+      "category": "Industry",
+      "tag": "Laboratory"
+    },
+    {
+      "category": "Technology",
+      "tag": "HEPA Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA"
+    }
+  ],
+  "specifications": {
+    "Dimensions & Weights": {
+      "External Width": "17.5\" | 445 mm",
+      "External Depth": "25.5\" | 648 mm",
+      "External Height": "18\" | 457 mm",
+      "Shipping Width": "40\" | 1016 mm",
+      "Shipping Depth": "40\" | 1016 mm",
+      "Net Weight": "45 lbs | 20 kg",
+      "Shipping Weight": "120 lbs | 54 kg"
+    },
+    "Construction": {
+      "Construction": "Polypropylene#Stainless Steel"
+    },
+    "Protection & Compliance": {
+      "OSHA": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental": "ISO 14001: 2015 ; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Airflow & Filtration": {
+      "Face Velocity": "265",
+      "Main Filter": "HEPA and/or Carbon; Bag-out version available."
+    },
+    "Electrical": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Custom sizes to meet every need",
+    "Turbulent-free airflow pattern",
+    "Proven performance",
+    "Specialized HEPA filter technology for increased safety",
+    "Ductless design increases location possibilities"
+  ],
+  "applications": [
+    "Bulk Powder Weighing and Transfers",
+    "Task-Specific Workstations",
+    "Short Duration Projects",
+    "Balance and Microscope Enclosure",
+    "Robotics",
+    "Enclosure",
+    "Compounding Activities"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Vented ENCLOSURE\u2122 for Compounding and Powder Weighing",
+    "description": "Vented ENCLOSURE\u2122 from Air Science offer important safety features for containment of powders and fumes during compounding or weighing activities.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2024/02/PDT_VE24T_Right.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/10/PDT_VE34S_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2024/02/PDT_VE60S_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_VE-FED_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_VE-FES_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2024/02/PDT_VE24T_Right.webp"
+  ],
+  "alt_text_suggestions": [
+    "Vented enclosure model VE24T right view",
+    "Vented enclosure model VE34S left view",
+    "Vented enclosure model VE60S left view",
+    "Vented enclosure model VE-FED right view",
+    "Vented enclosure model VE-FES right view",
+    "Vented enclosure model VE24T right view"
+  ],
+  "page_content_sections": {
+    "overview": "Custom sizes to meet every need. Turbulent-free airflow pattern. Proven performance. Specialized HEPA filter technology for increased safety. Ductless design increases location possibilities.",
+    "specifications": "Detailed technical specifications covering dimensions, construction, compliance, airflow, electrical, and warranty information.",
+    "applications": "Vented ENCLOSURE\u2122 are ideal for a wide range of laboratory applications including bulk powder weighing, compounding, robotics, and more.",
+    "models": "The Vented ENCLOSURE\u2122 product line includes multiple models with varying widths, heights, and other customizable features to meet specific customer needs."
+  }
+}

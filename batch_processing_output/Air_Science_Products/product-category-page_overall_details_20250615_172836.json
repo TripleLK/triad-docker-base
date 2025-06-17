@@ -1,0 +1,190 @@
+{
+  "url": "https://www.airscience.com/product-category-page/?brandname=fumechamber &brand=48",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 4,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     BLC-EX-A 9.5\" | 241 mm 9.5\" | 241 mm 9.5\" | 241 mm   BLC-6.5-A 31\" | 787 mm 13\" | 330 mm 34\" | 864 mm   BLC-4-A 31\" | 787 mm 13\" | 330 mm 21\" | 533 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>BLC-EX-A</td> <td>9.5\" | 241 mm</td> <td>9.5\" | 241 mm</td> <td>9.5\" | 241 mm</td> </tr> <tr> <td>BLC-6.5-A</td> <td>31\" | 787 mm</td> <td>13\" | 330 mm</td> <td>34\" | 864 mm</td> </tr> <tr> <td>BLC-4-A</td> <td>31\" | 787 mm</td> <td>13\" | 330 mm</td> <td>21\" | 533 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     BLC-EX-A - - -   BLC-6.5-A 30.5\" | 775 mm 12.5\" | 318 mm 31\" | 787 mm   BLC-4-A 30.5\" | 775 mm 12.5\" | 318 mm 17\" | 432 mm",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>BLC-EX-A</td> <td>-</td> <td>-</td> <td>-</td> </tr> <tr> <td>BLC-6.5-A</td> <td>30.5\" | 775 mm</td> <td>12.5\" | 318 mm</td> <td>31\" | 787 mm</td> </tr> <tr> <td>BLC-4-A</td> <td>30.5\" | 775 mm</td> <td>12.5\" | 318 mm</td> <td>17\" | 432 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Formula Description     GP Plus! The most widely used filter in the range, primarily for solvent, organic and alcohol removal.   HEPA/ULPA Powders and particulates.    SEFA Chemical Compatability Order from Filtco",
+              "html": "<div id=\"tab3\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Formula</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>GP Plus!</td> <td>The most widely used filter in the range, primarily for solvent, organic and alcohol removal.</td> </tr> <tr> <td>HEPA/ULPA</td> <td>Powders and particulates.</td> </tr> </tbody> </table> <a href=\"/sefa-chemical-compatibility/\">SEFA Chemical Compatability</a> <a href=\"https://filtcofilters.com/\" target=\"_blank\" rel=\"noopener\">Order from Filtco</a> </div> "
+            },
+            {
+              "text": "Using innovative filtration technology, the Fumechamber creates a safe work environment over the widest range of applications in the industry. Compounding / Balance Enclosures, Microscopes and Robotic Equipment / Forensics / Histology / Educational / Microscopy / Mobile and Classroom Demonstrations / Pharmaceutical / Powder Fingerprinting / Powder Weighing / Sample Prep Work / Soldering / Solvent Cleaning and Welding / Veterinary / Dental",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Using innovative filtration technology, the Fumechamber creates a safe work environment over the widest range of applications in the industry.</p> <p>Compounding / Balance Enclosures, Microscopes and Robotic Equipment / Forensics / Histology / Educational / Microscopy / Mobile and Classroom Demonstrations / Pharmaceutical / Powder Fingerprinting / Powder Weighing / Sample Prep Work / Soldering / Solvent Cleaning and Welding / Veterinary / Dental</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "The fume extractor is a self-contained cyanoacrylate filtration system that connects directly to the Laboratory Fuming Chambers via the inlet port. The noxious odors and fumes inside the chamber are drawn through an activated carbon filter.    Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"icon-image\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/Icons_Fumechamber.svg\" alt=\"\" loading=\"lazy\"> </div> <div class=\"introprodtext\"> The fume extractor is a self-contained cyanoacrylate filtration system that connects directly to the Laboratory Fuming Chambers via the inlet port. The noxious odors and fumes inside the chamber are drawn through an activated carbon filter. </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/forensic-lab-equipment.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_BLC-4_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_BLC-4-EX_Right.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_BLC-6.5_Left.png\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_BLC-4_Right.png\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  The Air Science Fuming Chamber uses cyanoacrylate fuming for latent print development on various surfaces. The fuming chamber incorporates the Air Science Fume Extraction unit coupled with a self-contained filtration system to safely purge the noxious fumes when the printing cycle is complete.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>The Air Science Fuming Chamber uses cyanoacrylate fuming for latent print development on various surfaces. The fuming chamber incorporates the Air Science Fume Extraction unit coupled with a self-contained filtration system to safely purge the noxious fumes when the printing cycle is complete.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Fume CHAMBER™",
+              "html": "<h1>Fume CHAMBER™</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:28:34.319645+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Air Science Products",
+    "safe_directory_name": "Air_Science_Products",
+    "ai_json_record_id": 76
+  },
+  "extracted_specification_groups": [
+    "Construction",
+    "Dimensions & Weights",
+    "Electrical",
+    "Options And Accessories",
+    "Protection & Compliance",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Construction",
+      "Dimensions & Weights",
+      "Electrical",
+      "Options And Accessories",
+      "Protection & Compliance",
+      "Warranty"
+    ]
+  }
+}

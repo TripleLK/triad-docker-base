@@ -1,0 +1,127 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae BASIC Ductless Fume Hoods - Compact, Versatile Lab Equipment",
+  "slug": "purair-basic-ductless-fume-hoods",
+  "meta_title": "Purair BASIC Ductless Fume Hoods - Compact Lab Equipment for Hazardous Substances",
+  "meta_description": "The Purair BASIC Series ductless fume hoods are compact, ideal for use in laboratory environments where space is limited or where only small volumes of harmful substances are handled.",
+  "meta_keywords": "ductless fume hood, lab equipment, hazardous substances, compact, versatile, air science",
+  "short_description": "<p>The Purair\u00ae BASIC Series ductless fume hoods are compact, ideal for use in laboratory environments where space is limited or where only small volumes of harmful substances are handled. For package and mail inspection workstations, see <a href=\"/mail-handling-safety\">Purair SafeSEARCH</a>.</p>",
+  "full_description": "<div>Using innovative filtration technology, the Purair Basic creates a safe work environment over the widest range of applications in the industry. Features include high efficiency EC blower, energy saving LED lighting, filter blockage alarm, and a unique filter clamping design that eliminates bypass leakage outside the cabinet. The Purair Basic protects the operator from fume and (with added HEPA/ULPA filter) particle hazards.</div>",
+  "seo_content": "<div>The Purair BASIC Series ductless fume hoods are compact, versatile lab equipment ideal for use in a variety of applications where space is limited or only small volumes of hazardous substances are handled. These energy-efficient, OSHA-compliant fume hoods utilize advanced filtration technology to create a safe work environment for applications ranging from forensics and histology to pharmaceutical and dental work.</div>",
+  "source_url": "https://www.airscience.com/product-category-page?brandname=purair-basic-ductless-fume-hoods&brand=8",
+  "target_keywords": [
+    "ductless fume hood",
+    "lab equipment",
+    "hazardous substances",
+    "compact",
+    "versatile"
+  ],
+  "related_keywords": [
+    "air science",
+    "fume extraction",
+    "cyanoacrylate fuming",
+    "fingerprint processing",
+    "microscopy"
+  ],
+  "technical_keywords": [
+    "EC blower",
+    "LED lighting",
+    "filter blockage alarm",
+    "HEPA/ULPA filtration",
+    "OSHA compliance"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Fume Hood"
+    },
+    {
+      "category": "Application",
+      "tag": "Laboratory"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics, Histology, Pharmaceutical, Dental"
+    },
+    {
+      "category": "Technology",
+      "tag": "Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 14001, ENERGY STAR"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Cabinet Style": "Epoxy-coated Steel",
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood.",
+      "Environmental Compliance": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality Compliance": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Filtration & Airflow": {
+      "Airflow Direction": "Upflow"
+    },
+    "Warranty": {
+      "Coverage": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "High efficiency EC blower",
+    "Energy saving LED lighting",
+    "Filter blockage alarm",
+    "Protects operator from fumes and (with HEPA/ULPA filter) particles",
+    "Unique filter clamping design eliminates bypass leakage"
+  ],
+  "applications": [
+    "Compounding",
+    "Balance Enclosures",
+    "Microscopes and Robotic Equipment",
+    "Forensics",
+    "Histology",
+    "Educational",
+    "Microscopy",
+    "Mobile and Classroom Demonstrations",
+    "Pharmaceutical",
+    "Powder Fingerprinting",
+    "Powder Weighing",
+    "Sample Prep Work",
+    "Soldering",
+    "Solvent Cleaning and Welding",
+    "Veterinary",
+    "Dental"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair BASIC Ductless Fume Hoods",
+    "description": "The Purair BASIC Series ductless fume hoods are compact, versatile lab equipment that create a safe work environment using advanced filtration technology.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-24-XT_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2022/10/PDT_P5-36-XT_Left-1.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-48-XT_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_P5-24-XT_Left.png"
+  ],
+  "alt_text_suggestions": [
+    "Purair BASIC P5-24-XT ductless fume hood left view",
+    "Purair BASIC P5-36-XT ductless fume hood left view",
+    "Purair BASIC P5-48-XT ductless fume hood left view",
+    "Purair BASIC P5-24-XT ductless fume hood left view"
+  ],
+  "page_content_sections": {
+    "overview": "Using innovative filtration technology, the Purair Basic creates a safe work environment over the widest range of applications in the industry.",
+    "specifications": "The Purair BASIC Series ductless fume hoods are constructed of epoxy-coated steel, comply with OSHA and ISO standards, and feature a unique filter clamping design that eliminates bypass leakage.",
+    "applications": "The Purair BASIC ductless fume hoods are ideal for use in a variety of laboratory environments, including compounding, forensics, pharmaceutical, and more.",
+    "models": "The Purair BASIC Series is available in 24\", 36\", and 48\" widths, with both standard and shallow depth options."
+  }
+}

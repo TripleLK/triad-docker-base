@@ -1,0 +1,43 @@
+[
+  {
+    "id": "safefume_overall_details",
+    "json_data": {
+      "title": "SafeFUME Cyanoacrylate Fuming Chambers",
+      "short_description": "Professional-grade cyanoacrylate fuming chambers for forensic fingerprint development",
+      "full_description": "The SafeFUME series provides safe, efficient cyanoacrylate fuming for forensic laboratories. Features precise humidity and temperature control for optimal fingerprint development.",
+      "features": [
+        "Precise humidity control (80-85% RH)",
+        "Temperature control (105-120\u00b0F)",
+        "Safety exhaust system",
+        "LED lighting for visibility",
+        "Stainless steel construction"
+      ],
+      "models": [
+        {
+          "model_name": "CA30S",
+          "dimensions": "30\" W x 24\" D x 30\" H",
+          "weight": "156 lbs",
+          "capacity": "Small items"
+        },
+        {
+          "model_name": "CA48S",
+          "dimensions": "48\" W x 24\" D x 30\" H",
+          "weight": "210 lbs",
+          "capacity": "Large items"
+        },
+        {
+          "model_name": "CA30T",
+          "dimensions": "30\" W x 24\" D x 48\" H",
+          "weight": "180 lbs",
+          "capacity": "Tall items"
+        }
+      ],
+      "_processing_mode": "OVERALL_DETAILS",
+      "site_domain": "www.airscience.com",
+      "_batch_info": {
+        "total_models": 3,
+        "equipment_name": "SafeFUME Fuming Chambers"
+      }
+    }
+  }
+]

@@ -1,0 +1,107 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "UV-Box Benchtop Decontamination Chambers",
+  "slug": "uv-box-benchtop-decontamination-chambers",
+  "meta_title": "UV-Box Benchtop Decontamination Chambers | Air Science",
+  "meta_description": "High-efficiency UV light box chambers designed to safely decontaminate contents while providing a safe work environment. Destroy exposed surface DNA and bacteria.",
+  "meta_keywords": "uv box, benchtop decontamination chambers, uv light box, decontamination equipment, forensic lab equipment",
+  "short_description": "<p>UV Light Box is a high-efficiency chamber designed to create light emission conditions known to safely decontaminate contents while providing for a safe work environment for the operator. High intensity UV lamps destroy exposed surface DNA and bacteria.</p>",
+  "full_description": "<div>UV lamps are optimally placed to eliminate blind spots and corners and walls are smooth to ensure easy cleaning. Stainless steel surfaces naturally reflect UV radiation to ensure contents are fully irradiated from all directions. Professional design and construction features offer convenience and protect the safety of personnel during use, cleaning and maintenance of the cabinets. The operator is protected from UV radiation by the UV absorbing window and with safety controls to ensure that lamps cannot be activated until the cabinet door is securely closed. Other safety features include UV timer, hanging rod and shelf to support or suspend items for decontamination.</div>",
+  "seo_content": "<div>These UV-Box benchtop decontamination chambers provide a high-efficiency, safe solution for eliminating DNA and bacteria from forensic, pharmaceutical, veterinary, and dental lab equipment and samples. The stainless steel construction, optimized UV lamp placement, and safety features make these UV light boxes an essential tool for any lab that requires thorough decontamination.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=uv-box-benchtop-chambers&brand=35",
+  "target_keywords": [
+    "uv box",
+    "benchtop decontamination chambers",
+    "uv light box",
+    "decontamination equipment",
+    "forensic lab equipment"
+  ],
+  "related_keywords": [
+    "dna destruction",
+    "bacteria elimination",
+    "uv radiation",
+    "stainless steel construction",
+    "lab safety"
+  ],
+  "technical_keywords": [
+    "uv lamp placement",
+    "radiation reflection",
+    "safety controls",
+    "uv timer",
+    "hanging rod",
+    "shelving"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "UV light box"
+    },
+    {
+      "category": "Application",
+      "tag": "Decontamination"
+    },
+    {
+      "category": "Industry",
+      "tag": "Forensics, Pharmaceutical, Veterinary, Dental"
+    },
+    {
+      "category": "Technology",
+      "tag": "UV radiation"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO 14001, ISO 9001, ENERGY STAR"
+    }
+  ],
+  "specifications": {
+    "Construction & Safety": {
+      "Cabinet Style": "Desktop",
+      "Construction": "Stainless Steel",
+      "Environmental Compliance": "ISO 14001 : 2015; ENERGY STAR\u00ae PARTNER",
+      "Quality Compliance": "ISO 9001 : 2015"
+    },
+    "Electrical": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    }
+  },
+  "features_data": [
+    "Optimally placed UV lamps to eliminate blind spots",
+    "Smooth stainless steel walls for easy cleaning",
+    "Stainless steel surfaces reflect UV radiation for full coverage",
+    "Professional design and construction for user safety",
+    "UV absorbing window and safety controls to prevent exposure",
+    "UV timer, hanging rod, and shelf for decontamination"
+  ],
+  "applications": [
+    "Forensics",
+    "Pharmaceutical",
+    "Veterinary",
+    "Dental"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "UV-Box Benchtop Decontamination Chambers",
+    "description": "High-efficiency UV light box chambers designed to safely decontaminate contents while providing a safe work environment. Destroy exposed surface DNA and bacteria.",
+    "manufacturer": "Air Science",
+    "category": "Decontamination Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_UVB-15_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_UVB-15_Front_Open.png"
+  ],
+  "alt_text_suggestions": [
+    "UV-Box benchtop decontamination chamber right view",
+    "UV-Box benchtop decontamination chamber front view with door open"
+  ],
+  "page_content_sections": {
+    "overview": "UV lamps are optimally placed to eliminate blind spots and corners and walls are smooth to ensure easy cleaning. Stainless steel surfaces naturally reflect UV radiation to ensure contents are fully irradiated from all directions.",
+    "specifications": "Detailed specifications including dimensions, weights, construction, safety features, and electrical requirements.",
+    "applications": "These UV-Box chambers are designed for use in forensics, pharmaceutical, veterinary, and dental applications.",
+    "models": "The UVB-15-A model is a 15-inch wide benchtop UV decontamination chamber with 120V, 60Hz electrical requirements."
+  }
+}

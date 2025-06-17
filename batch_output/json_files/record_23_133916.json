@@ -1,0 +1,133 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae LF Series, Vertical Laminar Flow Cabinets",
+  "slug": "purair-lf-series-vertical-laminar-flow-cabinets",
+  "meta_title": "Purair Vertical Laminar Flow Cabinets - High-Efficiency Sterile Work Zones",
+  "meta_description": "Purair Vertical Laminar Flow Cabinets provide a sterile work zone for sensitive applications, with ULPA filtration, ISO Class 4 air cleanliness, and a range of sizes and options.",
+  "meta_keywords": "vertical laminar flow cabinets, purair, air science, sterile work zone, ULPA filtration, ISO Class 4",
+  "short_description": "<p>Air Science Purair\u00ae Vertical Laminar Flow Cabinets are a series of high-efficiency products designed to protect equipment and other contents of the work zone from particulates, for applications sensitive to such contamination.</p>",
+  "full_description": "<div>Purair Laminar Flow Hoods are available in vertical and horizontal configurations with various sizes and options for a total of 36 models to choose from in 6 different widths. Purair Laminar Flow Hoods are shipped fully assembled. No installation is required; just plug them in and use them. Products are designed for desktop use, or may be installed on an optional mobile base stand. The rear wall of vertical flow cabinets is perforated to reduce work surface turbulence by removing some of the airflow to the rear. High capacity air handling system delivers flow velocity of 0.4 m/s or 80 fpm. Choose from standard powder coated interior or stainless steel interior (-SS models). Purair VLF and HLF hoods have an ULPA filter pressure gauge to measure filter performance. The Air Science filters are easy to access, easy to change. Accessories include an IV bar, service fixtures, base stand, UV lamp, and front door/cover. Provides sterile work zone for aeseptic techniques. Air cleanliness meets and exceeds ISO Class 4. All models use ULPA filters (99.999% efficient at particle sizes between 0.1 and 0.3 microns. All models equipped with a stainless steel work surface.</div>",
+  "seo_content": "<div>Purair Vertical Laminar Flow Cabinets feature high-efficiency ULPA filtration, delivering ISO Class 4 air cleanliness to protect sensitive equipment and materials from airborne particulates. With a range of sizes, configurations, and accessory options, these cabinets provide a sterile, controlled work environment for a variety of applications including mycology, cell culture, pharmaceutical processing, and more. The perforated rear wall design and powerful air handling system ensure consistent, laminar airflow across the work surface to minimize turbulence and maintain optimal conditions.</div>",
+  "source_url": "https://www.airscience.com/product-category-page?brandname=purair-flow-laminar-flow-cabinets&brand=13",
+  "target_keywords": [
+    "vertical laminar flow cabinets",
+    "purair laminar flow hoods",
+    "sterile work zone",
+    "ULPA filtration",
+    "ISO Class 4"
+  ],
+  "related_keywords": [
+    "mycology",
+    "cell culture",
+    "pharmaceutical",
+    "cleanroom",
+    "laboratory equipment"
+  ],
+  "technical_keywords": [
+    "ULPA filter",
+    "air handling system",
+    "perforated rear wall",
+    "stainless steel work surface"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Vertical Laminar Flow Cabinets"
+    },
+    {
+      "category": "Application",
+      "tag": "Sterile Work Zone"
+    },
+    {
+      "category": "Industry",
+      "tag": "Research Laboratories"
+    },
+    {
+      "category": "Technology",
+      "tag": "ULPA Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ISO Class 4"
+    }
+  ],
+  "specifications": {
+    "Dimensions & Weights": {
+      "Internal Height": "27.3\" | 694 mm",
+      "External Width": "28.4\" | 721 mm to 104\" | 2642 mm",
+      "External Depth": "29.25\" | 743 mm",
+      "External Height": "47.25\" | 1200 mm",
+      "Net Weight": "181 lbs | 82 kg to 620 lbs | 281 kg",
+      "Shipping Weight": "288 lbs | 131 kg to 745 lbs | 338 kg"
+    },
+    "Construction": {
+      "Cabinet Style": "Standard",
+      "Construction": "Epoxy-coated Steel"
+    },
+    "Protection & Compliance": {
+      "OSHA": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Environmental": "ISO 14001: 2015; ENERGY STAR\u00ae Partner",
+      "Quality": "ISO 9001 : 2015"
+    },
+    "Electrical": {
+      "Electrical Voltage": "120V, 60Hz",
+      "NEMA Plug": "5-15P"
+    },
+    "Airflow & Filtration": {
+      "Airflow": "Vertical"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Vertical and horizontal configurations",
+    "36 models in 6 different widths",
+    "Fully assembled, plug-and-play design",
+    "Perforated rear wall for reduced turbulence",
+    "High-capacity air handling system",
+    "Choice of powder coated or stainless steel interior",
+    "ULPA filter pressure gauge",
+    "Easy-access, easy-change filters",
+    "Accessory options include base stand, IV bar, UV lamp",
+    "Provides ISO Class 4 sterile work zone"
+  ],
+  "applications": [
+    "Mycology and Food Microbiology",
+    "Plant and Mammalian Cell Culture",
+    "Clinical Pharmacy and Hospitals",
+    "Cleanrooms",
+    "Semiconductor Assembly",
+    "Pharmaceutical Processing",
+    "Aerospace Manufacturing",
+    "Medical Device Assembly",
+    "Research Laboratories"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair\u00ae LF Series, Vertical Laminar Flow Cabinets",
+    "description": "Purair Vertical Laminar Flow Cabinets provide a sterile work zone for sensitive applications, with ULPA filtration, ISO Class 4 air cleanliness, and a range of sizes and options.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_VLF-48_Front.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_VLF-48_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_VLF-48_Front.png"
+  ],
+  "alt_text_suggestions": [
+    "Purair VLF-48 vertical laminar flow cabinet front view",
+    "Purair VLF-48 vertical laminar flow cabinet right side view",
+    "Purair VLF-48 vertical laminar flow cabinet front view with open door"
+  ],
+  "page_content_sections": {
+    "overview": "Purair Vertical Laminar Flow Cabinets provide a sterile work zone for sensitive applications, with ULPA filtration, ISO Class 4 air cleanliness, and a range of sizes and options.",
+    "specifications": "Detailed specifications covering dimensions, construction, electrical, airflow, and more.",
+    "applications": "Suitable for a variety of applications including mycology, cell culture, pharmaceutical processing, and more.",
+    "models": "36 models available in 6 different widths to choose from."
+  }
+}

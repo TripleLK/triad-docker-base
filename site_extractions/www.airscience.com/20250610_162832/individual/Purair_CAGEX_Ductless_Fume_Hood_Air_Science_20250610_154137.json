@@ -1,0 +1,249 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=purair-cagex&brand=52",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "accessories": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[1]/div/div/div[1]/img"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[1]/div/div/div[1]/img",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "attributes": {
+                "src": "/wp-content/uploads/2024/07/11683_6_AIR_Purair_CAGEX_Brochure_vf-1.webp"
+              }
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "categorized_tags": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]/div[3]/div[1]/a"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]/div[3]/div[1]/a",
+          "match_count": 0,
+          "extracted_data": [],
+          "extraction_note": "No elements matched this XPath selector"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 0,
+        "failed_extractions": 1,
+        "extraction_errors": []
+      }
+    },
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 4,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     P5-36-XT (CAGEX)-A 36\" | 914 mm 27\" | 676 mm 35\" | 889 mm"
+            },
+            {
+              "text": "Model Width Depth Height     P5-36-XT (CAGEX)-A - - 23.6\" | 600 mm"
+            },
+            {
+              "text": "Formula Description     GP Plus! The most widely used filter in the range, primarily for solvent, organic and alcohol removal.   ACI Plus!/SUL Designed to neutralize volatile inorganic acid vapors.   ACR Iodine and methyl iodide vapors; It is frequently used for iodination reactions with lower level radioactive iodine.   ACM Mercury vapor   AMM Removes vapors from dilute ammonia solutions and to remove low molecular weight amines.   FOR Designed to oxidize formaldehyde and glutaraldehyde fumes; It is widely used in hospital pathology laboratories.   HEPA/ULPA Powders and particulates.    SEFA Chemical Compatability Order from Filtco"
+            },
+            {
+              "text": "Using innovative filtration technology, the Purair CAGEX creates a safe work environment over the widest range of applications in the animal research industry. Cage Cleaning \\ Bedding Changes \\ Waste Disposal"
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]/div[2]/ul"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]/div[2]/ul",
+          "match_count": 0,
+          "extracted_data": [],
+          "extraction_note": "No elements matched this XPath selector"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 0,
+        "failed_extractions": 1,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [],
+          "extraction_note": "Elements found but no content or attributes extracted"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 0,
+        "failed_extractions": 1,
+        "extraction_errors": []
+      }
+    },
+    "models": {
+      "xpath_selectors": [
+        "/html/body/section[4]/*[contains(@class, 'roweven')]",
+        "/html/body/section[6]/*[contains(@class, 'roweven')]"
+      ],
+      "comment": "First selection has the model names; second selection has the spec groups and groups, in",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[4]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Model Specifications     Model  P5-36-XT (CAGEX)-A - 36\"W, 115VAC, 60Hz"
+            }
+          ],
+          "preview_note": "All matches shown"
+        },
+        {
+          "selector_index": 1,
+          "xpath": "/html/body/section[6]/*[contains(@class, 'roweven')]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "DIMENSIONS & WEIGHTS   Internal Height: 23.6″ | 600 mm External Width: 36″ | 914 mm External Depth: 27″ | 676 mm External Height: 35″ | 889 mm Shipping Width: 40″ | 1016 mm Shipping Depth: 40″ | 1016 mm Net Weight: 175 lbs | 79 kg Shipping Weight: 245 lbs | 111 kg     CONSTRUCTION   Construction: Epoxy-coated Steel     PROTECTION & COMPLIANCE   OSHA: OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. Please consult your Safety Officer and/or Industrial Hygienist. Environmental: ISO 14001 : 2015 ; ENERGY STAR® Partner Quality: ISO 9001 : 2015         OPTIONS AND ACCESSORIES   Autocal Control Panel*: AUTOCAL Base Stand, Mobile, with Casters: CART-36 Cup Sink, Mounts into Tray*: SINK Duplex Electrical Outlet*: AS-GFI Dwyer Air Flow Meter: DWYER FSA Control Panel*: FSA FSA/Autocal Control Panel*: ADV-P Remote Control: RC-P SafeSwitch HEPA Filter Shutter System: ASTS-030-SS Spill Tray (Stainless Steel): TRAY-P5-36-SS Stainless Steel Hanging Rod*: HANGR-P5-36 UV lamp: UV-P5-36 * Factory installed; specify when ordering     WARRANTY   Air Science Legacy Limited™ Warranty         ELECTRICAL   Electrical Voltage: 120V, 60Hz     CONTROLS & MONITORING   Control: Fan Manual On Off"
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 2,
+        "successful_extractions": 2,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  Engineered to meet the needs of the animal research laboratory, the Purair® CAGEX is designed to protect the user and the environment from animal dander or bedding material particulates generated on the work surface. The CAGEX incorporates carbon filters to absorb odor while optional HEPA filtration contains harmful particulates generated during cage changing and waste disposal operations."
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® CAGEX"
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "processing_metadata": {
+    "timestamp": "2025-06-10T15:41:37.361423+00:00",
+    "status": "ready_for_ai_with_content_mapping",
+    "total_field_count": 8,
+    "content_length": 86407,
+    "extraction_statistics": {
+      "total_fields_configured": 8,
+      "total_xpath_selectors": 9,
+      "successful_extractions": 6,
+      "failed_extractions": 3,
+      "fields_with_extracted_content": 5,
+      "extraction_success_rate_percent": 66.7,
+      "content_mapping_status": "complete"
+    }
+  }
+}

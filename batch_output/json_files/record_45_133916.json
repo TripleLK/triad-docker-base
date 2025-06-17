@@ -1,0 +1,131 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "EDU\u2122 Ductless Classroom Demonstration Fume Hoods",
+  "slug": "edu-ductless-classroom-demonstration-fume-hoods",
+  "meta_title": "EDU Ductless Fume Hoods for Classrooms and Laboratories",
+  "meta_description": "Protect users and the environment from hazardous vapors with the EDU Series of ductless demonstration fume hoods. Featuring 360\u00b0 visibility and advanced filtration.",
+  "meta_keywords": "ductless fume hood, classroom fume hood, laboratory fume hood, demonstration fume hood, hazardous vapor protection",
+  "short_description": "<p>The EDU\u2122 Series Ductless Demonstration Fume Hoods for individual and group applications protect the user and the classroom environment from hazardous vapors. Clear front, side and rear walls permit 360\u00b0 visibility.</p>",
+  "full_description": "<div>Offers 360\u00b0 visibility for full participation<br>Protects the operator or class from toxic fumes and (with added HEPA/ULPA filter) particle hazards<br>High efficiency ebm-papst centrifugal blower<br>Available in four configurations and 6 standard sizes, in metal or polypropylene construction, totaling 12 standard models<br>Filters are easy to change<br>Improved filter clamping prevents bypass leakage<br>Low airflow alarm warns of unsafe conditions<br>Compliant with ANSI, OSHA, AFNOR and BSI safety standards<br>Portable fume hood with transparent front, back and side walls for maximum visibility. The EDU Series offers personnel and environmental protection, optimal energy savings and zero toxic emissions to the room.</div>",
+  "seo_content": "<div>Using innovative filtration technology, the EDU Series creates a safe work environment over the widest range of applications in the industry.<br>Science Class Lectures / Safety Practice Demonstrations / Laboratory Assignments</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=edu-class-demo-hoods&brand=4",
+  "target_keywords": [
+    "ductless fume hood",
+    "classroom fume hood",
+    "laboratory fume hood",
+    "demonstration fume hood",
+    "hazardous vapor protection"
+  ],
+  "related_keywords": [
+    "fume hood",
+    "safety equipment",
+    "laboratory equipment",
+    "science education",
+    "OSHA compliance"
+  ],
+  "technical_keywords": [
+    "ebm-papst centrifugal blower",
+    "HEPA/ULPA filtration",
+    "ANSI/OSHA standards",
+    "polypropylene construction"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ductless Fume Hood"
+    },
+    {
+      "category": "Application",
+      "tag": "Classroom Demonstrations"
+    },
+    {
+      "category": "Application",
+      "tag": "Laboratory Safety"
+    },
+    {
+      "category": "Industry",
+      "tag": "Education"
+    },
+    {
+      "category": "Technology",
+      "tag": "Filtration"
+    },
+    {
+      "category": "Compliance",
+      "tag": "ANSI/OSHA"
+    }
+  ],
+  "specifications": {
+    "Dimensions & Weights": {
+      "Internal Height": "38\" | 965 mm",
+      "External Width": "34\" - 59.5\" | 864 mm - 1511 mm",
+      "External Depth": "27\" - 28.5\" | 686 mm - 724 mm",
+      "External Height": "70\" - 87\" | 1778 mm - 2210 mm",
+      "Shipping Width": "40\" - 72\" | 1016 mm - 1829 mm",
+      "Shipping Depth": "40\" | 1016 mm",
+      "Net Weight": "156 lbs - 470 lbs | 71 kg - 213 kg",
+      "Shipping Weight": "225 lbs - 520 lbs | 102 kg - 236 kg"
+    },
+    "Construction": {
+      "Material": "Epoxy-coated Steel"
+    },
+    "Protection & Compliance": {
+      "OSHA Compliance": "OSHA Standard -29 CRF, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood.",
+      "Education Approval": "CLEAPPS Instruction Approved (EDU) based on ASTM-100 filter (UK)",
+      "Environmental Certifications": "ISO 14001 : 2015; ENERGY STAR\u00ae Partner",
+      "Quality Certifications": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz",
+      "Plug Type": "NEMA 5-15P"
+    },
+    "Filtration": {
+      "Airflow Direction": "Upflow or Downflow",
+      "Main Filter": "22 or 11 Series"
+    }
+  },
+  "features_data": [
+    "360\u00b0 visibility for full participation",
+    "Protects from toxic fumes and particle hazards",
+    "High efficiency centrifugal blower",
+    "Available in 12 standard models",
+    "Easy filter changes",
+    "Prevents bypass leakage",
+    "Low airflow alarm",
+    "Compliant with safety standards"
+  ],
+  "applications": [
+    "Science Class Lectures",
+    "Safety Practice Demonstrations",
+    "Laboratory Assignments"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "EDU\u2122 Ductless Classroom Demonstration Fume Hoods",
+    "description": "Ductless fume hoods that protect users and the environment from hazardous vapors, featuring 360\u00b0 visibility and advanced filtration.",
+    "manufacturer": "Air Science",
+    "category": "Laboratory Equipment"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_EDU-M-40_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_EDU-P10XL-CART-RC-P_Left.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_EDU--P15-XT-CART-MCC-40_Right.png",
+    "https://www.airscience.com/wp-content/uploads/2021/12/PDT_EDU-M-40_Left.png"
+  ],
+  "alt_text_suggestions": [
+    "EDU-M-40 ductless fume hood left view",
+    "EDU-P10XL-CART-RC-P ductless fume hood left view",
+    "EDU-P15-XT-CART-MCC-40 ductless fume hood right view",
+    "EDU-M-40 ductless fume hood left view"
+  ],
+  "page_content_sections": {
+    "overview": "Offers 360\u00b0 visibility for full participation. Protects the operator or class from toxic fumes and (with added HEPA/ULPA filter) particle hazards.",
+    "specifications": "Available in four configurations and 6 standard sizes, in metal or polypropylene construction, totaling 12 standard models. Filters are easy to change and improved filter clamping prevents bypass leakage.",
+    "applications": "Science Class Lectures / Safety Practice Demonstrations / Laboratory Assignments",
+    "models": "P10XL-CART-RC-P-A, P15-XT-CART-MCC-40-A, P5-24XT-CART-A, EDU-M-40-A, EDU-M-48-A, EDU-M-60-A"
+  }
+}

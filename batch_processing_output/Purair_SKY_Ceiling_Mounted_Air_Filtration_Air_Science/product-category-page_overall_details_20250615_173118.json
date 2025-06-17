@@ -1,0 +1,184 @@
+{
+  "url": "https://www.airscience.com/product-category-page?brandname=purair-sky-ceiling-unit&brand=44",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 3,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     SKY-24-A 26.4\" | 670 mm 9.25\" | 235 mm 26.4\" | 670 mm   SKY-48-A 26.4\" | 670 mm 9.25\" | 235 mm 52.75\" | 1340 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>SKY-24-A</td> <td>26.4\" | 670 mm</td> <td>9.25\" | 235 mm</td> <td>26.4\" | 670 mm</td> </tr> <tr> <td>SKY-48-A</td> <td>26.4\" | 670 mm</td> <td>9.25\" | 235 mm</td> <td>52.75\" | 1340 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     SKY-24-A 22.75\" | 578 mm 22.75\" | 578 mm -   SKY-48-A 45.5\" | 1156 mm 22.75\" | 578 mm -",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>SKY-24-A</td> <td>22.75\" | 578 mm</td> <td>22.75\" | 578 mm</td> <td>-</td> </tr> <tr> <td>SKY-48-A</td> <td>45.5\" | 1156 mm</td> <td>22.75\" | 578 mm</td> <td>-</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Compounding \\ Balance Enclosures, Microscopes, and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Compounding \\ Balance Enclosures, Microscopes, and Robotic Equipment \\ Forensics \\ Histology \\ Educational \\ Microscopy \\ Mobile and Classroom Demonstrations \\ Pharmaceutical \\ Powder Fingerprinting \\ Powder Weighing \\ Sample Prep Work \\ Soldering \\ Solvent Cleaning and Welding \\ Veterinary \\ Dental</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Advanced carbon filtration technology. Multi-unit connection options.  Ceiling mounted or hanging configurations.  Energy efficiency.  Enhanced Filtration. Central to the design of the Purair SKY Series is the MultiplexTM Filtration System developed to ensure universal protection in the work environment over the widest range of applications within the industry.      Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"introprodtext\"> <ul> <li>Advanced carbon filtration technology.</li> <li>Multi-unit connection options. </li> <li>Ceiling mounted or hanging configurations. </li> <li>Energy efficiency. </li> <li>Enhanced Filtration. Central to the design of the Purair SKY Series is the <a href=\"https://www.airscience.com/multiplex-filtration-system\">Multiplex<sup>TM </sup>Filtration System</a> developed to ensure universal protection in the work environment over the widest range of applications within the industry. </li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/ceiling-filtration-units.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2022/11/PDT_SKY-48.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2022/11/PDT_SKY-24_Front.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2022/11/PDT_SKY-48_Front.webp\" alt=\"\"> <img decoding=\"async\" src=\"/wp-content/uploads/2022/11/PDT_SKY-48.webp\" alt=\"\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  The Purair® SKY ceiling mounted filtration units are designed to protect laboratory personnel and the environment in areas where hazardous substances are handled.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>The Purair® SKY ceiling mounted filtration units are designed to protect laboratory personnel and the environment in areas where hazardous substances are handled.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® SKY Ceiling Mounted Air Filtration",
+              "html": "<h1>Purair® SKY Ceiling Mounted Air Filtration</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:31:16.617014+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Purair SKY Ceiling Mounted Air Filtration | Air Science",
+    "safe_directory_name": "Purair_SKY_Ceiling_Mounted_Air_Filtration_Air_Science",
+    "ai_json_record_id": 107
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Dimensions & Weights",
+    "Electrical",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Dimensions & Weights",
+      "Electrical",
+      "Warranty"
+    ]
+  }
+}

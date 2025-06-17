@@ -9,6 +9,117 @@
  * Project: Triad Docker Base
  */
 
+// CRIMSON FALCON: Centralized state management functions
+// These functions ensure menus always show current field completion status
+
+/**
+ * Get current field state with fresh data
+ * @param {string} fieldName - Name of the field
+ * @returns {object} Current state of the field
+ */
+function getCurrentFieldState(fieldName) {
+    const selections = window.contentExtractorData.fieldSelections[fieldName] || [];
+    return {
+        hasSelections: selections.length > 0,
+        count: selections.length,
+        selections: selections,
+        lastSelection: selections.length > 0 ? selections[selections.length - 1] : null,
+        lastXPath: selections.length > 0 ? selections[selections.length - 1].xpath : null
+    };
+}
+
+/**
+ * Get completion summary for all fields
+ * @returns {object} Overall completion statistics
+ */
+function getFieldCompletionSummary() {
+    const fieldStates = {};
+    let totalSelections = 0;
+    let completedFields = 0;
+    
+    window.contentExtractorData.fieldOptions.forEach(field => {
+        const state = getCurrentFieldState(field.name);
+        fieldStates[field.name] = state;
+        totalSelections += state.count;
+        if (state.hasSelections) {
+            completedFields++;
+        }
+    });
+    
+    return {
+        fieldStates: fieldStates,
+        totalSelections: totalSelections,
+        completedFields: completedFields,
+        totalFields: window.contentExtractorData.fieldOptions.length,
+        progressPercentage: Math.round((completedFields / window.contentExtractorData.fieldOptions.length) * 100)
+    };
+}
+
+/**
+ * Force refresh of all field menus and progress indicators
+ * Call this after any field selection changes
+ */
+function refreshFieldMenus() {
+    console.log('🔄 Refreshing field menu state indicators');
+    
+    // Refresh main field menu if it exists
+    const fieldMenu = document.getElementById('content-extractor-field-menu');
+    if (fieldMenu) {
+        // QUANTUM VAULT: Fix CSS selector - unified menu uses .unified-menu-body, not .menu-content
+        const contentArea = fieldMenu.querySelector('.unified-menu-body') || fieldMenu.querySelector('.menu-content');
+        if (contentArea) {
+            // For unified menu system, we need to preserve the breadcrumbs and only update the main content
+            const existingBreadcrumbs = contentArea.querySelector('.unified-breadcrumbs');
+            const breadcrumbHTML = existingBreadcrumbs ? existingBreadcrumbs.outerHTML : '';
+            
+            contentArea.innerHTML = breadcrumbHTML + buildFieldMenuContent();
+            console.log('✅ Field menu refreshed with current data using unified menu system');
+        } else {
+            console.warn('⚠️ Field menu content area not found - menu may not be using unified system');
+        }
+    }
+    
+    // Refresh control panel progress if it exists
+    refreshControlPanelProgress();
+    
+    // Refresh any other progress indicators
+    refreshProgressIndicators();
+}
+
+/**
+ * Refresh control panel progress indicator
+ */
+function refreshControlPanelProgress() {
+    const controlPanel = document.getElementById('content-extractor-control-panel');
+    if (controlPanel) {
+        const summary = getFieldCompletionSummary();
+        const progressElement = controlPanel.querySelector('.progress-info');
+        if (progressElement) {
+            progressElement.innerHTML = `
+                <div style="font-size: 11px; color: #666; margin-bottom: 3px;">Progress</div>
+                <div style="font-size: 12px; color: #333;">
+                    ${summary.completedFields}/${summary.totalFields} fields selected
+                </div>
+                <small style="color: #888; font-size: 10px;">
+                    ${summary.completedFields === summary.totalFields ? '✅ All fields complete!' : 'Continue selecting...'}
+                </small>
+            `;
+        }
+    }
+}
+
+/**
+ * Refresh any other progress indicators in the UI
+ */
+function refreshProgressIndicators() {
+    // Update any floating progress bars or indicators
+    const indicators = document.querySelectorAll('[data-progress-indicator]');
+    indicators.forEach(indicator => {
+        const summary = getFieldCompletionSummary();
+        indicator.textContent = `${summary.completedFields}/${summary.totalFields}`;
+    });
+}
+
 // Create field selection menu using unified system
 function createFieldMenu() {
     // Use unified menu system if available
@@ -33,19 +144,22 @@ function createFieldMenu() {
     }
 }
 
-// Build field menu content HTML
+// Build field menu content HTML - CRIMSON FALCON: Now uses fresh state data
 function buildFieldMenuContent() {
-    // Build field options with selection indicators
+    // Get fresh completion data every time
+    const summary = getFieldCompletionSummary();
+    
+    // Build field options with current selection indicators
     let fieldsHtml = '';
     window.contentExtractorData.fieldOptions.forEach(field => {
         const icon = field.has_sub_fields ? '🏗️' : (field.type === 'multi-value' ? '📋' : '📝');
         
-        // Check if field has selections
+        // QUANTUM VAULT: Use direct access like the working field highlighting system
         const fieldSelections = window.contentExtractorData.fieldSelections[field.name] || [];
         const hasSelections = fieldSelections.length > 0;
         const selectionCount = fieldSelections.length;
         
-        // Selection indicator
+        // Selection indicator - updated with fresh data
         let selectionIndicator = '';
         if (hasSelections) {
             selectionIndicator = `
@@ -63,7 +177,7 @@ function buildFieldMenuContent() {
             `;
         }
         
-        // Button styling based on selection status
+        // Button styling based on current selection status
         const buttonStyle = hasSelections 
             ? `background: ${field.color}40; border: 2px solid #28a745; box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);`
             : `background: ${field.color}20; border: 2px solid ${field.color};`;
@@ -79,7 +193,7 @@ function buildFieldMenuContent() {
                 ${selectionIndicator}
                 ${icon} <strong>${field.label}</strong><br>
                 <small style="color: #666;">${field.description}</small>
-                ${hasSelections ? `<br><small style="color: #28a745; font-weight: bold;">Last: "${fieldSelections[fieldSelections.length - 1].selected_text.substring(0, 30)}${fieldSelections[fieldSelections.length - 1].selected_text.length > 30 ? '...' : ''}"</small>` : ''}
+                ${hasSelections && fieldSelections[fieldSelections.length - 1] ? `<br><small style="color: #28a745; font-weight: bold;">Last: "${fieldSelections[fieldSelections.length - 1].selected_text.substring(0, 30)}${fieldSelections[fieldSelections.length - 1].selected_text.length > 30 ? '...' : ''}"</small>` : ''}
             </button>
         `;
     });
@@ -101,14 +215,11 @@ function buildFieldMenuContent() {
         `;
     }
     
-    // Selection summary
-    const totalSelections = Object.values(window.contentExtractorData.fieldSelections).reduce((sum, selections) => sum + selections.length, 0);
-    const completedFields = Object.keys(window.contentExtractorData.fieldSelections).filter(key => window.contentExtractorData.fieldSelections[key].length > 0).length;
-    
-    const summaryHtml = totalSelections > 0 ? `
+    // Selection summary - using fresh data
+    const summaryHtml = summary.totalSelections > 0 ? `
         <div style="margin: 15px 0; padding: 10px; background: #e8f5e8; border-radius: 6px; text-align: center;">
-            <strong style="color: #28a745;">📊 Progress: ${completedFields}/${window.contentExtractorData.fieldOptions.length} fields completed</strong><br>
-            <small style="color: #666;">Total selections: ${totalSelections}</small>
+            <strong style="color: #28a745;">📊 Progress: ${summary.completedFields}/${summary.totalFields} fields completed</strong><br>
+            <small style="color: #666;">Total selections: ${summary.totalSelections}</small>
         </div>
     ` : '';
     
@@ -536,6 +647,11 @@ function createFieldSettingMethodMenu(fieldName) {
     const fieldSelections = window.contentExtractorData.fieldSelections[fieldName] || [];
     const hasSelections = fieldSelections.length > 0;
     
+    // THUNDER CASCADE: Check for existing comment
+    const existingComment = window.contentExtractorData.fieldComments ? 
+        window.contentExtractorData.fieldComments[fieldName] || '' : '';
+    const hasComment = existingComment.length > 0;
+    
     // Current value display
     let currentValueHtml = '';
     if (hasSelections) {
@@ -550,6 +666,24 @@ function createFieldSettingMethodMenu(fieldName) {
                 </div>
                 <div style="font-weight: bold; color: ${field.color};">
                     "${valuePreview}"
+                </div>
+            </div>
+        `;
+    }
+    
+    // THUNDER CASCADE: Current comment display
+    let currentCommentHtml = '';
+    if (hasComment) {
+        const commentPreview = existingComment.length > 80 
+            ? existingComment.substring(0, 80) + '...'
+            : existingComment;
+        currentCommentHtml = `
+            <div style="margin: 15px 0; padding: 10px; background: #17a2b815; border: 1px solid #17a2b840; border-radius: 6px;">
+                <div style="font-size: 12px; color: #666; margin-bottom: 5px;">
+                    💬 Current Comment:
+                </div>
+                <div style="font-style: italic; color: #17a2b8;">
+                    "${commentPreview}"
                 </div>
             </div>
         `;
@@ -571,6 +705,8 @@ function createFieldSettingMethodMenu(fieldName) {
         
         ${currentValueHtml}
         
+        ${currentCommentHtml}
+        
         <div style="margin: 15px 0;">
             <button onclick="startPageSelection('${fieldName}')" 
                     style="display: block; width: 100%; margin: 8px 0; padding: 15px; 
@@ -590,6 +726,16 @@ function createFieldSettingMethodMenu(fieldName) {
                     onmouseout="this.style.background='#28a745'; this.style.transform='scale(1)'">
                 ✏️ <strong>Enter Text Manually</strong><br>
                 <small style="opacity: 0.9;">Type or paste the value directly</small>
+            </button>
+            
+            <button onclick="addFieldComment('${fieldName}')" 
+                    style="display: block; width: 100%; margin: 8px 0; padding: 15px; 
+                           background: #17a2b8; color: white; border: none; border-radius: 8px; 
+                           cursor: pointer; text-align: left; font-size: 14px; transition: all 0.2s;"
+                    onmouseover="this.style.background='#138496'; this.style.transform='scale(1.02)'"
+                    onmouseout="this.style.background='#17a2b8'; this.style.transform='scale(1)'">
+                💬 <strong>Add Context Comment</strong><br>
+                <small style="opacity: 0.9;">Add notes or instructions for AI processing</small>
             </button>
             
             <button onclick="startFileImport('${fieldName}')" 
@@ -639,7 +785,98 @@ function createFieldSettingMethodMenu(fieldName) {
     return menu;
 }
 
-// Text input dialog creation
+// SWIFT PHOENIX: Modified comment dialog to support selections interface context
+function createFieldCommentDialog(fieldName, fromSelections = false) {
+    const dialogId = 'content-extractor-comment-dialog';
+    let existingDialog = document.getElementById(dialogId);
+    if (existingDialog) {
+        existingDialog.remove();
+    }
+    
+    const field = window.contentExtractorData.fieldOptions.find(f => f.name === fieldName);
+    if (!field) return;
+    
+    // Get existing comment if any
+    const existingComment = window.contentExtractorData.fieldComments ? 
+        window.contentExtractorData.fieldComments[fieldName] || '' : '';
+    
+    // SWIFT PHOENIX: Determine save/cancel functions based on context
+    const saveFunction = fromSelections ? 'saveFieldCommentFromSelections' : 'saveFieldComment';
+    const cancelFunction = fromSelections ? 'cancelFieldCommentFromSelections' : 'cancelFieldComment';
+    
+    const dialog = document.createElement('div');
+    dialog.id = dialogId;
+    dialog.className = 'content-extractor-ui';
+    dialog.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border: 3px solid ${field.color};
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        z-index: 10001;
+        max-width: 500px;
+        min-width: 400px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    `;
+    
+    dialog.innerHTML = `
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="margin: 0; color: ${field.color};">
+                💬 Add Context Comment
+            </h3>
+            <small style="color: #666;">Field: ${field.label}</small>
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #333;">
+                Comment for AI Processing:
+            </label>
+            <textarea id="comment-input-field" placeholder="Add any context, instructions, or notes that will help AI understand this field better..." 
+                      style="width: 100%; height: 120px; padding: 12px; border: 2px solid ${field.color}40; 
+                             border-radius: 8px; font-size: 14px; font-family: inherit; resize: vertical;
+                             box-sizing: border-box;">${existingComment}</textarea>
+            <small style="color: #666; font-size: 12px;">
+                Examples: "Extract price without currency symbol", "Look for technical specifications", "Include model numbers"
+            </small>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="${saveFunction}('${fieldName}')" 
+                    style="padding: 10px 20px; margin: 0 5px; background: ${field.color}; color: white; 
+                           border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: bold;"
+                    onmouseover="this.style.opacity='0.9'"
+                    onmouseout="this.style.opacity='1'">
+                💾 Save Comment
+            </button>
+            <button onclick="${cancelFunction}('${fieldName}')" 
+                    style="padding: 10px 20px; margin: 0 5px; background: #6c757d; color: white; 
+                           border: none; border-radius: 6px; cursor: pointer; font-size: 14px;"
+                    onmouseover="this.style.background='#5a6268'"
+                    onmouseout="this.style.background='#6c757d'">
+                ❌ Cancel
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(dialog);
+    
+    // Focus on textarea
+    setTimeout(() => {
+        const textarea = document.getElementById('comment-input-field');
+        if (textarea) {
+            textarea.focus();
+            textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+        }
+    }, 100);
+    
+    return dialog;
+}
+
+// Text input dialog creation  
 function createTextInputDialog(fieldName) {
     const dialogId = 'content-extractor-text-dialog';
     let existingDialog = document.getElementById(dialogId);
@@ -745,4 +982,36 @@ function createTextInputDialog(fieldName) {
     }, 100);
     
     return dialog;
-} 
+}
+
+// SWIFT PHOENIX: Page Load State Initialization
+// Addresses Priority 1 - Ensure field menus show correct completion status on page load
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🔄 Swift Phoenix: Initializing field menu state on page load');
+    
+    // Wait a brief moment to ensure contentExtractorData is fully loaded
+    setTimeout(function() {
+        // Check if data is available and has field selections
+        if (window.contentExtractorData && 
+            window.contentExtractorData.fieldSelections && 
+            typeof refreshFieldMenus === 'function') {
+            
+            console.log('✅ Field data available, refreshing menus for page load');
+            console.log('📊 Current field selections:', Object.keys(window.contentExtractorData.fieldSelections));
+            
+            // Refresh field menus to show current completion status
+            refreshFieldMenus();
+            
+            console.log('🎯 Page load initialization complete - menus should show correct indicators');
+        } else {
+            console.log('⚠️ Field data not yet available or refresh function missing');
+            console.log('🔍 Available data:', {
+                hasContentExtractorData: !!window.contentExtractorData,
+                hasFieldSelections: !!(window.contentExtractorData && window.contentExtractorData.fieldSelections),
+                hasRefreshFunction: typeof refreshFieldMenus === 'function'
+            });
+        }
+    }, 250); // Small delay to ensure all data is loaded
+});
+
+console.log('🔥 Swift Phoenix: Page load initialization listener registered'); 

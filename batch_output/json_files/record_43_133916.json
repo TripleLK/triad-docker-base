@@ -1,0 +1,118 @@
+{
+  "source_type": "new",
+  "needs_review": true,
+  "data_completeness": 0.9,
+  "specification_confidence": "high",
+  "title": "Purair\u00ae DUCTED Basic Fume Hood",
+  "slug": "purair-ducted-basic-fume-hood",
+  "meta_title": "Purair DUCTED Basic Fume Hood - Protect Personnel from Hazardous Agents",
+  "meta_description": "The Purair DUCTED Basic Fume Hood is an exterior-venting exhaust hood designed to protect personnel from exposure to hazardous agents and toxic chemicals in various applications.",
+  "meta_keywords": "purair, ducted fume hood, basic fume hood, hazardous agents, toxic chemicals, exterior-venting, exhaust hood",
+  "short_description": "<p>Air Science\u00ae Purair\u00ae DUCTED Basic Fume Hoods are exterior-venting exhaust hoods designed to protect personnel from exposure to hazardous agents and toxic chemicals in various applications.</p>",
+  "full_description": "<div>Purair Ducted Basic Fume Hoods are ideal for applications that generate high volumes of volatile organic compounds and toxic chemicals, gases, or powders on the work surface. As a ducted fume hood, the Purair Ducted Basic utilizes an external ducting system. The air intake face velocity can be adjusted to provide the desired balance between conditioned room air conservation and the necessary volume of exhausted contaminated air.</div>",
+  "seo_content": "<div>The Purair DUCTED Basic Fume Hood features a chemical-resistant epoxy coated steel frame and 360 degree visibility, providing maximum protection for operators from fume hazards. With adjustable air intake face velocity, the Purair Ducted Basic can be customized to meet the specific ventilation requirements of your application, whether it's compounding, forensics, pharmaceutical processing, or any other task involving hazardous agents or toxic chemicals.</div>",
+  "source_url": "https://www.airscience.com/product-category-page/?brandname=purair-ducted-basic-fume-hoods&brand=53",
+  "target_keywords": [
+    "purair ducted basic fume hood",
+    "exterior-venting fume hood",
+    "hazardous agent protection",
+    "toxic chemical containment"
+  ],
+  "related_keywords": [
+    "fume hood",
+    "ductless fume hood",
+    "laboratory safety equipment",
+    "chemical containment"
+  ],
+  "technical_keywords": [
+    "epoxy coated steel",
+    "adjustable air intake",
+    "external ducting system"
+  ],
+  "categorized_tags": [
+    {
+      "category": "Equipment Type",
+      "tag": "Ducted Fume Hood"
+    },
+    {
+      "category": "Application",
+      "tag": "Hazardous Chemical Containment"
+    },
+    {
+      "category": "Industry",
+      "tag": "Laboratory, Pharmaceutical, Forensics"
+    },
+    {
+      "category": "Technology",
+      "tag": "Adjustable Air Intake"
+    },
+    {
+      "category": "Compliance",
+      "tag": "OSHA, ISO 9001"
+    }
+  ],
+  "specifications": {
+    "Construction & Compliance": {
+      "Construction": "Epoxy-coated Steel",
+      "OSHA Compliance": "OSHA Standard -29 CFR, Safety and Health Regulations for General Industry, 1910.1450: Occupational exposure to hazardous chemicals in laboratories. Part B, definition, laboratory type hood. This product may assist you with compliance or as part of your chemical hygiene plan. Please consult your Safety Officer and/or Industrial Hygienist.",
+      "Quality Certification": "ISO 9001 : 2015"
+    },
+    "Electrical Requirements": {
+      "Voltage": "120V, 60Hz"
+    },
+    "Filtration & Airflow": {
+      "Airflow Direction": "Upflow"
+    },
+    "Warranty": {
+      "Warranty": "Air Science Legacy Limited\u2122 Warranty"
+    }
+  },
+  "features_data": [
+    "Chemical-resistant epoxy coated steel frame",
+    "360 degree visibility",
+    "Protects the operator from fume hazards",
+    "Adjustable air intake face velocity",
+    "External ducting system"
+  ],
+  "applications": [
+    "Compounding",
+    "Balance Enclosures, Microscopes, and Robotic Equipment",
+    "Forensics",
+    "Histology",
+    "Educational",
+    "Microscopy",
+    "Mobile and Classroom Demonstrations",
+    "Pharmaceutical",
+    "Powder Fingerprinting",
+    "Powder Weighing",
+    "Sample Prep Work",
+    "Soldering",
+    "Solvent Cleaning and Welding",
+    "Veterinary",
+    "Dental"
+  ],
+  "structured_data": {
+    "@type": "Product",
+    "@context": "https://schema.org/",
+    "name": "Purair DUCTED Basic Fume Hood",
+    "description": "The Purair DUCTED Basic Fume Hood is an exterior-venting exhaust hood designed to protect personnel from exposure to hazardous agents and toxic chemicals in various applications.",
+    "manufacturer": "Air Science",
+    "category": "Ducted Fume Hood"
+  },
+  "image_urls": [
+    "https://www.airscience.com/wp-content/uploads/2023/12/P5-24-XT-ENCL-DUCT_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/12/P5-48-XT-ENCL-DUCT_Left.webp",
+    "https://www.airscience.com/wp-content/uploads/2023/12/P5-24-XT-ENCL-DUCT_Left.webp"
+  ],
+  "alt_text_suggestions": [
+    "Purair DUCTED Basic Fume Hood left view",
+    "Purair DUCTED Basic Fume Hood 48-inch model left view",
+    "Purair DUCTED Basic Fume Hood 24-inch model left view"
+  ],
+  "page_content_sections": {
+    "overview": "<div>Air Science\u00ae Purair\u00ae DUCTED Basic Fume Hoods are exterior-venting exhaust hoods designed to protect personnel from exposure to hazardous agents and toxic chemicals in various applications.</div>",
+    "specifications": "<div>The Purair DUCTED Basic Fume Hood features a chemical-resistant epoxy coated steel frame, 360 degree visibility, and adjustable air intake face velocity to provide maximum protection and customization for your specific application.</div>",
+    "applications": "<div>Purair Ducted Basic Fume Hoods are ideal for applications that generate high volumes of volatile organic compounds and toxic chemicals, gases, or powders, including compounding, forensics, pharmaceutical processing, and more.</div>",
+    "models": "<div>The Purair DUCTED Basic Fume Hood is available in 24-inch, 36-inch, and 48-inch widths to accommodate a variety of workspace requirements.</div>"
+  }
+}

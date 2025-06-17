@@ -1,0 +1,165 @@
+{
+    "models_data": [
+      {
+        "model_name": "P5-24-XT-A",
+        "specifications": {
+          "Dimensions & Weights": {
+            "Internal Height": "23.6″ | 600 mm",
+            "External Width": "24″ | 610 mm",
+            "External Depth": "27″ | 676 mm",
+            "External Height": "35″ | 889 mm",
+            "Shipping Width": "40″ | 1016 mm",
+            "Shipping Depth": "40″ | 1016 mm",
+            "Net Weight": "72 lbs | 33 kg",
+            "Shipping Weight": "150 lbs | 68 kg"
+          },
+          "Construction": {
+            "Cabinet Style": "Extra Tall"
+          },
+          "Options And Accessories": {
+            "Advanced Controller": "P5-24-XT-A-ADVP",
+            "Autocal Control Panel": "P5-24-XT-A-ACAL",
+            "Base Cabinet, Fixed (Metal)": "CART-MCC-25",
+            "Base Cabinet, Fixed (Polypropylene)": "CART-SSC-25",
+            "Base Stand, Mobile, with Casters": "CART-25",
+            "Fire Safety Cabinet Base": "CART-FSC-25",
+            "Polypropylene Construction": "P5-24-XT-A-PP",
+            "Spill Tray (Polypropylene)": "TRAY-P5-24",
+            "UV lamp": "P5-24-XT-A-UV"
+          },
+          "Controls & Monitoring": {
+            "Monitoring Options": "Standard"
+          }
+        },
+        "features": [
+          "Standard depth cabinet (27″ | 676 mm)",
+          "24″ width for smaller laboratory spaces",
+          "Extra tall legs for comfortable standing operation",
+          "Manual fan control",
+          "Standard monitoring options",
+          "Compatible with multiple base cabinet options"
+        ],
+        "seo_description": "P5-24-XT-A ductless fume hood features standard depth cabinet (27″), 24″ width, and extra tall legs. Includes manual fan control with standard monitoring and 115VAC/60Hz operation. Ideal for laboratory applications requiring OSHA compliance."
+      },
+      {
+        "model_name": "P5-36-XT-A",
+        "specifications": {
+          "Dimensions & Weights": {
+            "Internal Height": "23.6″ | 600 mm",
+            "External Width": "36″ | 914 mm",
+            "External Depth": "27″ | 676 mm",
+            "External Height": "35″ | 889 mm",
+            "Shipping Width": "40″ | 1016 mm",
+            "Shipping Depth": "40″ | 1016 mm",
+            "Net Weight": "99 lbs | 45 kg",
+            "Shipping Weight": "170 lbs | 77 kg"
+          },
+          "Construction": {
+            "Cabinet Style": "Extra Tall"
+          },
+          "Options And Accessories": {
+            "Advanced Controller": "P5-36-XT-A-ADVP",
+            "Autocal Control Panel": "P5-36-XT-A-ACAL",
+            "Base Cabinet, Fixed (Metal)": "CART-MCC-36",
+            "Base Cabinet, Fixed (Polypropylene)": "CART-SSC-36",
+            "Base Stand, Mobile, with Casters": "CART-36",
+            "Fire Safety Cabinet Base": "CART-FSC-36",
+            "Polypropylene Construction": "P5-36-XT-A-PP",
+            "Spill Tray (Polypropylene)": "TRAY-P5-36",
+            "UV lamp": "P5-36-XT-A-UV"
+          },
+          "Controls & Monitoring": {
+            "Monitoring Options": "Standard"
+          }
+        },
+        "features": [
+          "Standard depth cabinet (27″ | 676 mm)",
+          "36″ width for medium laboratory workspaces",
+          "Extra tall legs for ergonomic operation",
+          "Manual fan control",
+          "Standard monitoring options",
+          "Compatible with 36″ base cabinet options"
+        ],
+        "seo_description": "P5-36-XT-A ductless fume hood features standard depth cabinet (27″), 36″ width, and extra tall legs. Includes manual fan control with standard monitoring and 115VAC/60Hz operation. Ideal for medium-sized laboratory applications requiring OSHA compliance."
+      },
+      {
+        "model_name": "P5-48-XT-A",
+        "specifications": {
+          "Dimensions & Weights": {
+            "Internal Height": "23.6″ | 600 mm",
+            "External Width": "48″ | 1219 mm",
+            "External Depth": "27″ | 676 mm",
+            "External Height": "35″ | 889 mm",
+            "Shipping Width": "55″ | 1397 mm",
+            "Shipping Depth": "40″ | 1016 mm",
+            "Net Weight": "138 lbs | 63 kg",
+            "Shipping Weight": "230 lbs | 104 kg"
+          },
+          "Construction": {
+            "Cabinet Style": "Extra Tall"
+          },
+          "Options And Accessories": {
+            "Advanced Controller": "P5-48-XT-A-ADVP",
+            "Autocal Control Panel": "P5-48-XT-A-ACAL",
+            "Base Cabinet, Fixed (Metal)": "CART-MCC-50",
+            "Base Cabinet, Fixed (Polypropylene)": "CART-SSC-50",
+            "Base Stand, Mobile, with Casters": "CART-50",
+            "Fire Safety Cabinet Base": "CART-FSC-50",
+            "Polypropylene Construction": "P5-48-XT-A-PP",
+            "Spill Tray (Polypropylene)": "TRAY-P5-48",
+            "UV lamp": "P5-48-XT-A-UV"
+          }
+        },
+        "features": [
+          "Standard depth cabinet (27″ | 676 mm)",
+          "48″ width for larger laboratory workspaces",
+          "Extra tall legs for ergonomic operation",
+          "Manual fan control",
+          "Largest standard depth model in the series",
+          "Compatible with 50″ base cabinet options"
+        ],
+        "seo_description": "P5-48-XT-A ductless fume hood features standard depth cabinet (27″), 48″ width, and extra tall legs. Includes manual fan control and 115VAC/60Hz operation. Ideal for larger laboratory applications requiring OSHA compliance and maximum workspace."
+      },
+      {
+        "model_name": "P5-24-XTS-A",
+        "specifications": {
+          "Dimensions & Weights": {
+            "Internal Height": "23.6″ | 600 mm",
+            "External Width": "24″ | 610 mm",
+            "External Depth": "24″ | 610 mm",
+            "External Height": "35″ | 889 mm",
+            "Shipping Width": "40″ | 1016 mm",
+            "Shipping Depth": "40″ | 1016 mm",
+            "Net Weight": "72 lbs | 33 kg",
+            "Shipping Weight": "150 lbs | 68 kg"
+          },
+          "Construction": {
+            "Cabinet Style": "Extra Tall#Shallow Depth"
+          },
+          "Options And Accessories": {
+            "Advanced Controller": "P5-24-XTS-A-ADVP",
+            "Autocal Control Panel": "P5-24-XTS-A-ACAL",
+            "Base Cabinet, Fixed (Metal)": "CART-MCC-25",
+            "Base Cabinet, Fixed (Polypropylene)": "CART-SSC-25",
+            "Base Stand, Mobile, with Casters": "CART-25",
+            "Fire Safety Cabinet Base": "CART-FSC-25",
+            "Polypropylene Construction": "P5-24-XTS-A-PP",
+            "Spill Tray (Polypropylene)": "TRAY-P5-24S",
+            "UV lamp": "P5-24-XTS-A-UV"
+          },
+          "Controls & Monitoring": {
+            "Monitoring Options": "Standard"
+          }
+        },
+        "features": [
+          "Shallow depth cabinet (24″ | 610 mm)",
+          "24″ width for space-constrained laboratories",
+          "Extra tall legs for ergonomic operation",
+          "Manual fan control",
+          "Standard monitoring options",
+          "Compact footprint for limited laboratory spaces"
+        ],
+        "seo_description": "P5-24-XTS-A ductless fume hood features shallow depth cabinet (24″), 24″ width, and extra tall legs. Includes manual fan control with standard monitoring and 115VAC/60Hz operation. Ideal for space-constrained laboratory applications requiring OSHA compliance."
+      }
+    ]
+  }

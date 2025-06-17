@@ -1,0 +1,182 @@
+{
+  "url": "https://www.airscience.com/uk/uk-product-category-page?brandname=purair-flex-portable-isolators&brand=37",
+  "site_domain": "www.airscience.com",
+  "site_name": "Safefume Cyanoacrylate Fuming Chamber | Air Science",
+  "field_configurations": {
+    "features": {
+      "xpath_selectors": [
+        "//div[starts-with(@id, \"tab\")]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "//div[starts-with(@id, \"tab\")]",
+          "match_count": 3,
+          "extracted_data": [
+            {
+              "text": "Model Width Depth Height     FLEX-30-G 30\" | 762 mm 26\" | 660 mm 20\" | 508 mm",
+              "html": "<div id=\"tab1\" class=\"tab-content\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>FLEX-30-G</td> <td>30\" | 762 mm</td> <td>26\" | 660 mm</td> <td>20\" | 508 mm</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Model Width Depth Height     FLEX-30-G - - -",
+              "html": "<div id=\"tab2\" class=\"tab-content active\"> <table class=\"blueTable\"> <thead> <tr> <th>Model</th> <th>Width</th> <th>Depth</th> <th>Height</th> </tr> </thead> <tbody> <tr> <td>FLEX-30-G</td> <td>-</td> <td>-</td> <td>-</td> </tr> </tbody> </table> </div> "
+            },
+            {
+              "text": "Pharmaceutical Processing \\ Forensic Investigation and Processing \\ Industrial Cleaning \\ Biological Containment \\ Aerospace",
+              "html": "<div id=\"tab4\" class=\"tab-content\"> <p>Pharmaceutical Processing \\ Forensic Investigation and Processing \\ Industrial Cleaning \\ Biological Containment \\ Aerospace</p> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "full_description": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[1]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[1]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Compliant with Multiple Criteria. ArmorFlex film complies with FDA 21CFR and 2002/72/EC standards for minimal outgassing, solvent and biological reactivity and static resistance. Pharmaceutical Grade Materials. The Purair FLEX is constructed with FDA approved pharmaceutical grade LLDPE anti-static and ESD safe and meets European ATEX Directive. Large Workspace. At 30\" (762 mm) wide and an internal volume of 3 cu.ft. (85 L) the Purair FLEX provides a large work area with a 12.5\" (317 mm) gas tight zippered access with a 6\" (152 mm) diameter opening. Oxygen-free Work Zone. A nitrogen gas barb is a standard feature to permit creation of an oxygen-free workspace.     Get a Quote    Shop Select Models Online",
+              "html": "<div class=\"leftblock\"> <div class=\"introprodtext\"> <ul> <li><strong>Compliant with Multiple Criteria. </strong>ArmorFlex film complies with FDA 21CFR and 2002/72/EC standards for minimal outgassing, solvent and biological reactivity and static resistance.</li> <li><strong>Pharmaceutical Grade Materials.</strong> The Purair FLEX is constructed with FDA approved pharmaceutical grade LLDPE anti-static and ESD safe and meets European ATEX Directive.</li> <li><strong>Large Workspace.</strong> At 30\" (762 mm) wide and an internal volume of 3 cu.ft. (85 L) the Purair FLEX provides a large work area with a 12.5\" (317 mm) gas tight zippered access with a 6\" (152 mm) diameter opening.</li> <li><strong>Oxygen-free Work Zone.</strong> A nitrogen gas barb is a standard feature to permit creation of an oxygen-free workspace.</li> </ul> </div> <div> <div> <a href=\"/quote-request\" class=\"button1\" role=\"button\">Get a Quote</a> </div> <div> <a href=\"https://ductless.com/forensic-lab-equipment/glove-bags.html\" class=\"button2\" role=\"button\" target=\"_blank\"> Shop Select Models Online </a> </div> <div> </div> </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "gallery_images": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/div/div[2]/div/div"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "multi-value",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/div/div[2]/div/div",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "html": "<div class=\"image-wrapper\" id=\"image-wrapper\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_FLEX-30_Front.png\" alt=\"Image 0\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_FLEX-30_Inflated.png\" alt=\"Image 1\"> <img decoding=\"async\" src=\"/wp-content/uploads/2021/12/PDT_FLEX-30_Front.png\" alt=\"Image 1\"> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "short_description": {
+      "xpath_selectors": [
+        "/html/body/section[3]/div/div/div[2]"
+      ],
+      "comment": "Auto-generated from interactive selector on www.airscience.com",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[3]/div/div/div[2]",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Description  Air Science provides containment solutions to meet any analytical need. The Purair® FLEX glove bag is a portable, cost-effective flexible film isolator with more volume, easy setup and safety options.",
+              "html": "<div class=\"rightblock2\"> <div class=\"descriptioncontainer\"> <h1>Description</h1> <p> </p><div>Air Science provides containment solutions to meet any analytical need. The Purair® FLEX glove bag is a portable, cost-effective flexible film isolator with more volume, easy setup and safety options.</div>  </div> </div> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    },
+    "title": {
+      "xpath_selectors": [
+        "/html/body/section[2]/div/div/h1"
+      ],
+      "comment": "Use this for the title",
+      "field_type": "single",
+      "is_active": true,
+      "extracted_content": [
+        {
+          "selector_index": 0,
+          "xpath": "/html/body/section[2]/div/div/h1",
+          "match_count": 1,
+          "extracted_data": [
+            {
+              "text": "Purair® FLEX Glove Bags",
+              "html": "<h1>Purair® FLEX Glove Bags</h1> "
+            }
+          ],
+          "preview_note": "All matches shown"
+        }
+      ],
+      "extraction_summary": {
+        "total_selectors": 1,
+        "successful_extractions": 1,
+        "failed_extractions": 0,
+        "extraction_errors": []
+      }
+    }
+  },
+  "batch_processing_info": {
+    "processed_at": "2025-06-15T17:31:02.174850+00:00",
+    "processor": "batch_site_processor",
+    "threshold_used": 0.85
+  },
+  "_processing_mode": "OVERALL_DETAILS",
+  "_page_info": {
+    "page_title": "Purair FLEX Portable Isolators | Air Science UK",
+    "safe_directory_name": "Purair_FLEX_Portable_Isolators_Air_Science_UK",
+    "ai_json_record_id": 104
+  },
+  "extracted_specification_groups": [
+    "Airflow & Filtration",
+    "Construction",
+    "Dimensions & Weights",
+    "Warranty"
+  ],
+  "_specification_instructions": {
+    "use_exact_group_names": true,
+    "no_underscores_in_names": true,
+    "extract_all_available_data": true,
+    "available_groups": [
+      "Airflow & Filtration",
+      "Construction",
+      "Dimensions & Weights",
+      "Warranty"
+    ]
+  }
+}
