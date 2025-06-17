@@ -5,8 +5,9 @@
 
 * Model Code Name Tracking
 ** Active Models
+- Arctic Dawn (current session - taking over from Quantum Ridge)
 - Quantum Flux (current session)
-- Quantum Ridge (current session)
+- Quantum Ridge (completed handoff)
 - Digital Phoenix (current active model)
 
 ** Previous Models

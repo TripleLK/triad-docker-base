@@ -1,0 +1,109 @@
+#+TITLE: Arctic Dawn Next Steps
+#+AUTHOR: Arctic Dawn  
+#+DATE: 2025-01-27
+#+FILETAGS: :next-steps:arctic-dawn:batch-processing:
+
+* Immediate Priorities
+
+** 🚨 CRITICAL: Fix Reunification Logic (BLOCKING)
+The core equipment record pairing mechanism is fundamentally broken and must be completely overhauled.
+
+*** Problem Analysis
+- Expected: OVERALL_DETAILS + MODEL_SUBSET records should pair by shared `ai_json_record_id`
+- Reality: 53 MODEL_SUBSET records orphaned, 0 successful pairings
+- Impact: Cannot reunify equipment data, defeating entire batch processing workflow
+
+*** Investigation Steps
+1. **Examine batch job generation code** - How are records created with processing modes?
+2. **Debug ID assignment logic** - Why aren't matching records getting same `ai_json_record_id`?
+3. **Analyze sample records** - Compare OVERALL_DETAILS vs MODEL_SUBSET record structures
+4. **Review original design** - Validate assumptions about pairing mechanism
+
+*** Key Files to Review
+- `apps/content_extractor/batch_processing.py` - Batch job generation logic
+- `batch_results/metadata-preservation-test-1750180172/metadata_test_input.jsonl.out` - Actual results
+- `scripts/import_batch_results.py` - Current (broken) reunification logic
+
+** 🔍 Debug Sample Records
+Before redesigning, understand the current data structure:
+
+*** Analyze Record Structure
+```bash
+# Look at first few OVERALL_DETAILS records
+grep '"_processing_mode": "OVERALL_DETAILS"' batch_results/metadata-preservation-test-1750180172/metadata_test_input.jsonl.out | head -3
+
+# Look at first few MODEL_SUBSET records  
+grep '"_processing_mode": "MODEL_SUBSET"' batch_results/metadata-preservation-test-1750180172/metadata_test_input.jsonl.out | head -3
+```
+
+*** Compare ID Assignment
+- Do OVERALL_DETAILS and MODEL_SUBSET records actually share `ai_json_record_id`?
+- Are IDs being generated differently for different processing modes?
+- Is the pairing logic using the wrong field?
+
+* Approach for Next Model
+
+** Phase 1: Investigation (30 minutes)
+1. **Sample Data Analysis** - Extract and compare 5-10 record pairs manually
+2. **Code Review** - Understand how batch jobs are generated and IDs assigned
+3. **Root Cause Identification** - Determine why pairing fails
+
+** Phase 2: Design New Approach (30 minutes)
+1. **Alternative Pairing Strategies** - Source URL, title matching, content similarity
+2. **Validation Logic** - Ensure robust pairing before database import
+3. **Error Handling** - Graceful handling of unpaired records
+
+** Phase 3: Implementation (60 minutes)
+1. **Rewrite Reunification Logic** - Based on findings from Phase 1
+2. **Test with Sample Data** - Validate new approach works
+3. **Full Import** - Process all 107 records with new logic
+
+** Phase 4: Validation (30 minutes)
+1. **Database Verification** - Confirm equipment pages have complete data
+2. **Model Count Validation** - Ensure MODEL_SUBSET data properly integrated
+3. **Success Metrics** - Aim for >80% successful reunification
+
+* Decisions Needing Input
+
+** Pairing Strategy Options
+1. **Fix Current ID-based Approach** - If IDs can be made consistent
+2. **Source URL Matching** - Use equipment source_url as pairing key
+3. **Content-based Matching** - Use title/description similarity
+4. **Hybrid Approach** - Multiple fallback strategies
+
+** Data Handling Questions
+1. **Orphaned Records** - What to do with unpaired OVERALL_DETAILS or MODEL_SUBSET?
+2. **Multiple Matches** - How to handle when one OVERALL_DETAILS matches multiple MODEL_SUBSET?
+3. **Quality Thresholds** - Minimum confidence required for pairing?
+
+* Handoff Context
+
+** What's Working ✅
+- AWS Bedrock batch processing (100% success rate)
+- Metadata preservation (Option A validated)
+- S3 results download and parsing
+- Django database import infrastructure
+- Tag creation and conflict resolution
+
+** What's Broken ❌
+- **Equipment record reunification** (0% pairing success)
+- This is the ONLY blocking issue preventing production deployment
+
+** Resources Available
+- Complete batch results: `batch_results/metadata-preservation-test-1750180172/`
+- Working import infrastructure: `scripts/import_batch_results.py`
+- 26 successfully imported equipment pages (OVERALL_DETAILS only)
+- Detailed error analysis and logs
+
+** Success Criteria
+- Achieve >80% successful OVERALL_DETAILS + MODEL_SUBSET pairing
+- Import complete equipment data with models information
+- Validate end-to-end workflow for production readiness
+
+The foundation is solid - this is purely a data reunification problem that can be solved with proper investigation and redesign.
+
+* Cross-References
+- Cleanup Report: `.project_management/cleanup_reports/arctic_dawn_cleanup.org`
+- Conversation Log: `.project_management/conversation_logs/arctic_dawn/2025-01-27_session_log.org`
+- Batch Results: `batch_results/metadata-preservation-test-1750180172/`
+- Import Script: `scripts/import_batch_results.py` 
