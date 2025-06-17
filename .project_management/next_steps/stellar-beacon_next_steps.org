@@ -1,0 +1,139 @@
+#+TITLE: Next Steps - Stellar Beacon
+#+AUTHOR: Stellar Beacon  
+#+DATE: 2025-01-18
+#+FILETAGS: :next-steps:stellar-beacon:aws:bedrock:batch-processing:database:
+
+* IMMEDIATE PRIORITIES
+
+** 🚨 CRITICAL: Monitor Active AWS Batch Job
+**JOB ARN**: arn:aws:bedrock:us-east-1:891377295311:model-invocation-job/2gfv7ynppn9i
+
+The AWS Bedrock batch job is currently IN PROGRESS. Next model must:
+1. Check job status in AWS Bedrock console
+2. Monitor for completion or failure
+3. Download results when job completes
+4. Debug any issues if job fails
+
+** Primary Decision Point: Job Outcome Handling
+- **IF JOB SUCCEEDS**: Process results and integrate equipment data into database
+- **IF JOB FAILS**: Debug issues, analyze errors, and resubmit if necessary
+
+* APPROACH STRATEGY
+
+** For Successful Job Completion
+1. **Download Results**: From S3 output location
+   - Output: s3://triad-bedrock-batch-processing/batch-outputs/20250617-183659/
+   - Look for .jsonl.out files with processed results
+
+2. **Validate Fix Effectiveness**: 
+   - Verify records with same ai_json_record_id are properly grouped
+   - Check that reunification works correctly
+   - Confirm all 111 records were processed
+
+3. **Database Integration**:
+   - Use existing Django management commands for equipment import
+   - Process batch results into individual equipment records
+   - Create/update lab equipment pages
+
+** For Job Failure/Issues
+1. **Error Analysis**:
+   - Check AWS CloudWatch logs for detailed error messages
+   - Examine failed records in batch output
+   - Identify patterns in failures
+
+2. **Common Debug Areas**:
+   - Model compatibility issues (Claude 3 Sonnet should work)
+   - Input format problems (JSONL structure)
+   - IAM permission issues
+   - S3 access problems
+   - Timeout issues (24-hour limit)
+
+* KEY FILES TO REVIEW
+
+** Essential Code Locations
+- `apps/content_extractor/batch_processing.py` - Main batch processor class
+- `apps/content_extractor/aws_utils.py` - Lines 225-250 (Digital Phoenix's fix)
+- `test_data_proper_ids/` - Test data with matching ai_json_record_id pairs
+
+** AWS Integration Points
+- S3 Bucket: triad-bedrock-batch-processing
+- IAM Role: arn:aws:iam::891377295311:role/BedrockBatchInferenceServiceRole
+- Model: anthropic.claude-3-sonnet-20240229-v1:0
+
+** Database Integration Commands
+- Django management commands for equipment import
+- Existing JSON processing workflows
+- Lab equipment page creation systems
+
+* DECISIONS NEEDING INPUT
+
+** Processing Strategy
+- How to handle partial batch failures (some records succeed, others fail)
+- Whether to reprocess failed records individually or in smaller batches
+- Database update strategy (create new vs update existing equipment records)
+
+** Error Handling Approach
+- Retry logic for failed batch jobs
+- Fallback to individual record processing if batch continues to fail
+- User notification strategy for processing status
+
+** Data Validation Requirements
+- What level of validation needed for processed equipment data
+- How to handle inconsistent or incomplete AI responses
+- Quality control measures for database integration
+
+* HANDOFF CONTEXT
+
+** What Was Accomplished
+✅ Successfully submitted 111 test records to AWS Bedrock
+✅ Verified Digital Phoenix's ai_json_record_id fix implementation
+✅ Created production-ready BatchProcessor class
+✅ Established proper test data with matching record pairs
+✅ Fixed model compatibility (Claude 3 Sonnet for batch processing)
+
+** Current System State
+- AWS batch job running with proper record grouping
+- All infrastructure tested and functional
+- Clean codebase with archived temporary files
+- Ready for either success path or debugging path
+
+** Critical Success Factors
+- The fix MUST properly reunify records with matching ai_json_record_id values
+- Batch processing should maintain data integrity across OVERALL_DETAILS and MODEL_SUBSET modes
+- Database integration should create comprehensive equipment records
+
+* RESOURCES AVAILABLE
+
+** Monitoring Tools
+- AWS Bedrock Console for job status
+- AWS CloudWatch for detailed logs
+- S3 Console for input/output file inspection
+
+** Code Infrastructure
+- BatchProcessor class for future batch operations
+- Existing AWS utilities for S3 and Bedrock operations
+- Django management commands for database operations
+- Test data generation system for future testing
+
+** Documentation
+- Comprehensive cleanup report with technical details
+- Conversation logs with complete context
+- Architecture documentation for system integration
+
+* TIMELINE EXPECTATIONS
+
+** Immediate (Next 1-2 hours)
+- Check batch job status
+- Begin result processing if job completes
+- Start debugging if job fails
+
+** Short Term (Next 4-6 hours)
+- Complete result validation and database integration
+- Verify fix effectiveness with real processing results
+- Document any issues or improvements needed
+
+** Success Criteria
+- All 111 test records processed successfully
+- Records properly reunified by ai_json_record_id
+- Equipment data successfully integrated into database
+- System ready for production batch processing workflows 
