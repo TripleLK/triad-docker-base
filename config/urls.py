@@ -22,7 +22,7 @@ urlpatterns = [
     path("api/v2/", include('apps.lab_equipment_api.urls')),  # Lab Equipment API v2 (DRF)
     # Removed: path("api/v3/", api.urls),  # Lab Equipment API v3 (Django Ninja) - archived by Neon Dragon
     # path("content-extractor/", include('apps.content_extractor.urls')),  # Site Configuration Integration - DISABLED: module not found
-    # path("xpath-extractor/", include('apps.xpath_content_extraction.urls')),  # XPath Content Extraction - TEMPORARILY DISABLED for Wagtail admin focus
+    path("xpath_content_extraction/", include('apps.xpath_content_extraction.urls')),  # XPath Content Extraction - API endpoints enabled
     path("", include('apps.base_site.urls')),
 ]
 

@@ -1,0 +1,221 @@
+#+TITLE: Next Steps - Joyful Shoe
+#+AUTHOR: Joyful Shoe
+#+DATE: 2024-12-30
+#+FILETAGS: :next-steps:joyful-shoe:xpath:chrome-extension:
+
+* Immediate Priorities (CRITICAL - Fix First)
+
+** 1. Fix Field Name Display Bug 🚨
+**File**: `apps/xpath_content_extraction/extension/popup/popup.js`
+**Line**: 224
+**Problem**: Fields show as "undefined (text)" instead of "Full Description (text)"
+**Root Cause**: Code looks for `field.name` but API returns `field.display_name` and `field.field_name`
+
+**Fix Required**:
+```javascript
+// CURRENT (line 224):
+option.textContent = `${field.name} (${field.field_type})`;
+
+// SHOULD BE:
+option.textContent = `${field.display_name || field.field_name} (${field.field_type})`;
+```
+
+**Testing**: After fix, extension should show:
+- "Full Description (text)"
+- "Short Description (text)"  
+- "Model Names (list)"
+- etc.
+
+** 2. Investigate XPath Testing Discrepancy 🚨
+**Problem**: User reports generated XPaths return 0 results when tested immediately
+**Files to Check**:
+- `apps/xpath_content_extraction/extension/content-script.js` - XPath generation logic
+- Same file - XPath testing logic
+
+**Investigation Steps**:
+1. Compare XPath generation algorithm with testing implementation
+2. Check if testing uses same document context as generation
+3. Verify XPath syntax compatibility between generation and evaluation
+4. Test with simple known-working XPaths first
+
+* High Priority UI Enhancements
+
+** 3. Implement Draggable Interface Elements 🎯
+**User Request**: "I need the boxes to be able to be dragged around"
+**Files to Modify**:
+- `apps/xpath_content_extraction/extension/popup.css` - Add drag styling
+- `apps/xpath_content_extraction/extension/popup.js` - Add drag handlers
+
+**Implementation Approach**:
+```css
+/* Add to popup.css */
+.draggable {
+    cursor: move;
+    position: relative;
+}
+
+.draggable:active {
+    cursor: grabbing;
+}
+```
+
+```javascript
+// Add to popup.js
+function makeDraggable(element) {
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    element.onmousedown = dragMouseDown;
+    
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+    }
+    // ... implement drag logic
+}
+```
+
+** 4. Enhanced Main Menu with Field Overview 🎯
+**User Request**: "Switch the main menu to let you see all of the fields and what sources they have"
+
+**New UI Structure Needed**:
+```
+┌─ Site Configuration: AirScience ─┐
+├─ Full Description (text)         │
+│  └─ XPath: //div[@class="desc"]  │
+├─ Short Description (text)        │
+│  └─ No XPath configured          │
+├─ Model Names (list)              │
+│  └─ XPath: //ul[@class="models"] │
+└─ [+ Add New Field]               │
+```
+
+**Implementation**:
+- Create new section in popup.html for field overview
+- Modify API calls to load all field data with XPath status
+- Add expand/collapse functionality for individual fields
+
+** 5. Overlay Menu System 🎯
+**User Request**: "Clicking on one of them would bring up its individual menu but maybe even leave the base menu there"
+
+**Design Pattern**: Modal overlay system
+- Main menu stays visible but dimmed
+- Individual field configuration opens as overlay
+- Easy navigation back to main menu
+- Maintain context throughout workflow
+
+* Medium Priority Features
+
+** 6. URL-Based Configuration Detection 🔧
+**User Request**: "Which configuration is active should be saved (and automatically set based on the url)"
+
+**Implementation Strategy**:
+1. **URL Pattern Matching**:
+   ```javascript
+   const urlPatterns = {
+       'airscience.com': { siteId: 2, name: 'AirScience' },
+       // Add more patterns as needed
+   };
+   ```
+
+2. **Auto-Detection on Tab Change**:
+   ```javascript
+   chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+       if (changeInfo.status === 'complete') {
+           detectSiteConfiguration(tab.url);
+       }
+   });
+   ```
+
+3. **Persistent Storage**:
+   - Save last selected configuration
+   - Auto-restore on extension popup open
+   - Override with URL-based detection when available
+
+** 7. Configuration State Persistence 🔧
+**Requirements**:
+- Remember user's last selected site/field combination
+- Restore state when reopening extension
+- Clear state when switching to different domain
+
+* Technical Implementation Notes
+
+** Chrome Extension Architecture
+**Current Structure**:
+```
+extension/
+├── manifest.json          # ✅ Complete
+├── popup/
+│   ├── popup.html        # ✅ Complete, needs UI enhancement
+│   ├── popup.css         # ✅ Complete, needs draggable styles  
+│   └── popup.js          # 🚨 CRITICAL BUG - line 224
+├── content-script.js     # 🚨 XPath testing issue
+├── overlay.css           # ✅ Complete
+├── service-worker.js     # ✅ Complete
+└── icons/               # ⏳ Placeholder
+```
+
+** Django API Status
+**Endpoints Working**:
+- ✅ `/api/xpath/test-connection/` - Authentication
+- ✅ `/api/xpath/sites/` - Site list (AirScience appears)
+- ✅ `/api/xpath/sites/2/fields/` - Field list (6 fields, but names broken)
+- ✅ `/api/xpath/fields/<id>/` - Individual field management
+
+**Authentication**: Token `fdb445dfaae9dd29f86fc54fa0ad87e7c3591199` working
+
+* Testing Strategy
+
+** Manual Testing Checklist
+1. **Fix Verification**:
+   - [ ] Field names display correctly in dropdown
+   - [ ] All 6 AirScience fields visible with proper names
+   - [ ] XPath testing returns expected results
+
+2. **UI Enhancement Testing**:
+   - [ ] Interface elements can be dragged around
+   - [ ] Main menu shows field overview with XPath status
+   - [ ] Overlay system works for individual field configuration
+   - [ ] URL-based configuration detection works
+
+3. **Integration Testing**:
+   - [ ] Django admin shows AirScience configuration correctly
+   - [ ] API responses include all required field data
+   - [ ] Chrome extension can save XPath selectors to Django
+   - [ ] Full workflow: Auth → Site → Field → Select → Save
+
+** Automated Testing Opportunities
+- Unit tests for XPath generation vs testing logic
+- API endpoint tests for field data structure
+- Chrome extension popup state management tests
+
+* Approach for Next Model
+
+** Start Here (Priority Order)**:
+1. Fix popup.js line 224 field display bug
+2. Test extension with corrected field names
+3. Debug XPath generation vs testing discrepancy
+4. Implement draggable interface elements
+5. Create enhanced main menu with field overview
+
+** Key Files to Focus On**:
+- `apps/xpath_content_extraction/extension/popup/popup.js` - Primary focus
+- `apps/xpath_content_extraction/extension/content-script.js` - XPath investigation
+- `apps/xpath_content_extraction/extension/popup.css` - UI enhancements
+
+** Testing Environment Setup**:
+1. Start Django: `python manage.py runserver 8001`
+2. Load extension from: `apps/xpath_content_extraction/extension/`
+3. Use token: `fdb445dfaae9dd29f86fc54fa0ad87e7c3591199`
+4. Test with AirScience configuration (ID: 2)
+
+** Success Criteria**:
+- ✅ Field names display correctly (not "undefined")
+- ✅ XPath testing works reliably
+- ✅ Interface elements are draggable
+- ✅ Enhanced menu system provides better field overview
+- ✅ URL-based configuration detection works
+
+The foundation is solid - these are primarily UI/UX enhancements and bug fixes to make the system fully functional for user testing. 

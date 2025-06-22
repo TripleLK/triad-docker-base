@@ -209,3 +209,32 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Explicitly set SSL redirect to False to prevent Safari HTTPS issues
 SECURE_SSL_REDIRECT = False
+
+# CORS settings for Chrome extension
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
+
+# Allow Chrome extensions using regex pattern
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^chrome-extension://.*$",
+]
+
+CORS_ALLOW_ALL_ORIGINS = os.getenv('CORS_ALLOW_ALL_ORIGINS', 'False') == 'True'
+
+# Allow Chrome extension specific headers
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+# Allow credentials for token authentication
+CORS_ALLOW_CREDENTIALS = True

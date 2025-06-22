@@ -5,6 +5,7 @@
 
 * Model Code Name Tracking
 ** Active Models
+- Pink Carpet (current session - Phase 1 Step 5 Django API Endpoints)
 - Arctic Dawn (current session - taking over from Quantum Ridge)
 - Quantum Flux (current session)
 - Quantum Ridge (completed handoff)
@@ -12,6 +13,8 @@
 - Silver Dynamo (current session - Phase 1 Step 1 completion verification)
 - Silly Pillow (current active model - Phase 1 Step 2 completion: validation logic and related tables)
 - Wrathful Skateboard (completed handoff - fixed SnippetViewSet display method errors)
+- Joyful Shoe (2024-12-30): Chrome Extension Foundation & Django API Integration
+- Tubular Tunnel (2025-01-22): Field Display Bug Fix & Persistent Panel System
 
 ** Previous Models
 - Quantum Gecko
@@ -898,3 +901,9 @@ Received from Quantum Ridge:
    - Date: 2025-01-31
    - Focus: Batch processing reunification logic debugging and fixing
    - Status: Active
+
+* Current Model: Rapid Comet
+- Component 1: Rapid (adjective)
+- Component 2: Comet (noun)
+- Date: 2025-01-22
+- Previous: Tubular Tunnel, Joyful Shoe

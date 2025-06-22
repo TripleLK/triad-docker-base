@@ -1,0 +1,157 @@
+#+TITLE: Next Steps - Rapid Comet Handoff
+#+AUTHOR: Rapid Comet  
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:handoff:rapid-comet:
+
+* Immediate Priority: Phase 1 Step 5 - Django API Endpoints
+
+** Current Status
+- **Phase 1 Steps 1-4**: ✅ COMPLETE (40% of Phase 1 done)
+- **Chrome Extension**: Fully functional with robust XPath generation and save functionality
+- **Database Models**: All implemented and working
+- **Next Focus**: Django REST API endpoints for comprehensive extension support
+
+** Step 5 Implementation Requirements
+
+*** Deliverables Needed
+- REST API endpoints for extension communication
+- Configuration loading/saving endpoints
+- XPath testing functionality via API
+- Error handling and validation framework
+
+*** Specific Implementation Tasks
+1. **Create API Views** (`apps/xpath_content_extraction/api/views.py`):
+   - Configuration management endpoints
+   - XPath testing endpoint with real-time validation
+   - Field configuration CRUD operations
+   - Site configuration management
+
+2. **API Validation** (`apps/xpath_content_extraction/api/serializers.py`):
+   - XPath syntax validation
+   - Configuration data validation
+   - Error response standardization
+
+3. **URL Configuration** (`apps/xpath_content_extraction/api/urls.py`):
+   - RESTful endpoint structure
+   - Proper HTTP method mapping
+   - API versioning consideration
+
+4. **Error Handling Framework**:
+   - Consistent error response format
+   - XPath validation error messages
+   - API rate limiting considerations
+
+** Key Files to Review
+
+*** Chrome Extension (Already Working)
+- `apps/xpath_content_extraction/extension/content/content-script.js` (1013 lines)
+  - Lines 901-1013: Save functionality that calls API endpoints
+  - Lines 489-503: `refreshFieldConfiguration()` method that loads from API
+  - Current API calls: `/xpath_content_extraction/api/xpath/fields/{fieldId}/` (PUT)
+  - Current API calls: `/xpath_content_extraction/api/xpath/sites/{siteId}/fields/` (GET)
+
+*** Database Models (Already Implemented)
+- `apps/xpath_content_extraction/models.py`
+  - All 7 models implemented and working
+  - Field configurations store `xpath_selector` directly
+  - API authentication via Token system working
+
+*** Current API Structure (Partial)
+- Basic endpoints exist but need enhancement
+- Token authentication working (`fdb445dfaae9dd29f86fc54fa0ad87e7c3591199`)
+- Need comprehensive REST API framework
+
+** Testing Requirements
+- All API endpoints must return correct responses
+- Configuration data must serialize properly  
+- XPath testing must work with sample pages
+- Error handling must cover edge cases
+- API documentation must be accurate
+
+** Success Criteria
+- Extension can load/save configurations via API ✅ (partially working)
+- XPath testing provides useful feedback (needs implementation)
+- API handles errors gracefully (needs enhancement)
+- All endpoints follow REST conventions (needs review)
+
+** Implementation Approach
+1. **Start with existing API structure** - build on what's already working
+2. **Focus on XPath testing endpoint** - this is the main missing piece
+3. **Enhance error handling** - improve validation and error responses
+4. **Add comprehensive API documentation** - for future development
+
+** Critical Success Factors
+1. **Don't break existing functionality** - Chrome extension is working well
+2. **Follow Django REST framework best practices** 
+3. **Maintain consistent API response format**
+4. **Test thoroughly with Chrome extension**
+
+* Architecture Context
+
+** Chrome Extension Status (Mature)
+The Chrome extension is now production-ready:
+- Robust XPath generation with intelligent sibling counting
+- Reliable save functionality with comprehensive error handling
+- Proper separation between XPathControlPanel and XPathSelector classes
+- Working API integration for configuration management
+
+** Database Layer (Stable)
+- All 7 models implemented and tested
+- Wagtail admin integration complete
+- Field configurations working properly
+- Token authentication established
+
+** API Layer (Needs Enhancement)
+- Basic endpoints exist but need expansion
+- XPath testing functionality missing
+- Error handling needs improvement
+- Documentation needs creation
+
+* Potential Challenges
+
+** XPath Testing Implementation
+- Need to safely execute XPath queries against provided HTML
+- Handle malformed XPath expressions gracefully
+- Provide meaningful feedback about match counts and quality
+
+** API Performance
+- XPath testing might be computationally expensive
+- Consider caching strategies for frequently tested XPaths
+- Rate limiting for API endpoints
+
+** Validation Complexity
+- XPath syntax validation is non-trivial
+- Need to validate against real HTML structure
+- Balance between strict validation and usability
+
+* Resources Available
+
+** Working Code Examples
+- Chrome extension shows how API should be called
+- Database models show data structure
+- Existing API endpoints show authentication pattern
+
+** Documentation
+- Implementation roadmap has detailed requirements
+- Cleanup report shows current architecture state
+- Conversation logs show development history
+
+** Testing Environment
+- Chrome extension ready for testing API changes
+- Database populated with test configurations
+- Wagtail admin available for data verification
+
+* Recommendations for Next Model
+
+1. **Review existing API code first** - understand current structure
+2. **Focus on XPath testing endpoint** - this is the key missing piece  
+3. **Test with Chrome extension frequently** - ensure compatibility
+4. **Follow roadmap requirements exactly** - don't add unnecessary features
+5. **Document API endpoints** - for future development
+
+* Handoff Confidence Level: HIGH
+- Chrome extension is fully functional and well-tested
+- Database layer is stable and working
+- Clear requirements defined in roadmap
+- Existing API structure provides good foundation
+- Next steps are well-defined and achievable 
