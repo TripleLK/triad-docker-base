@@ -8,7 +8,9 @@
 - Arctic Dawn (current session - taking over from Quantum Ridge)
 - Quantum Flux (current session)
 - Quantum Ridge (completed handoff)
-- Digital Phoenix (current active model)
+- Digital Phoenix (completed - Wagtail admin migration)
+- Silver Dynamo (current active model - Phase 1 Step 1 completion verification)
+- Wrathful Skateboard (current active model - fixing SnippetViewSet display method errors)
 
 ** Previous Models
 - Quantum Gecko

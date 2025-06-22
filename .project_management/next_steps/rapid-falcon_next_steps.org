@@ -1,0 +1,84 @@
+#+TITLE: Next Steps - Rapid Falcon Handoff
+#+AUTHOR: Rapid Falcon
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:handoff:rapid-falcon:
+
+* Immediate Priorities
+** CRITICAL: Complete Phase 1 Step 1 - Wagtail Admin Migration
+- Remove/empty `apps/xpath_content_extraction/admin.py`
+- Create `apps/xpath_content_extraction/wagtail_hooks.py`
+- Implement Wagtail admin panels for all 7 models:
+  - SiteConfiguration
+  - FieldConfiguration  
+  - SourceConfiguration
+  - ScrapedPage
+  - ExtractedData
+  - ProcessingBatch
+  - AIProcessingResult
+  - ExtractionLog
+- Test all functionality through Wagtail admin at `/admin/`
+
+* Approach for Next Model
+** Understanding Current State
+- Database models are complete and working (7 models)
+- All migrations applied successfully
+- Model relationships tested and validated
+- Django admin interfaces exist but need Wagtail migration
+
+** Wagtail Admin Integration Strategy
+1. Study existing Wagtail admin patterns in the codebase
+2. Create wagtail_hooks.py with proper ModelAdmin classes
+3. Implement list views, edit forms, and filtering for each model
+4. Ensure proper permissions and user access
+5. Test create/read/update/delete operations through Wagtail admin
+6. Verify inline relationships work (e.g., Fields within Site configs)
+
+** Key Files to Focus On
+- `apps/xpath_content_extraction/models.py` - Models are ready
+- `apps/xpath_content_extraction/admin.py` - Remove Django admin registration
+- `apps/xpath_content_extraction/wagtail_hooks.py` - Create Wagtail admin integration
+- Test through `/admin/` interface, not `/django-admin/`
+
+* Decisions Needing Attention
+** Wagtail Admin UI Design
+- How to organize the admin menu (separate section vs existing categories)
+- Which fields to show in list views vs detail views
+- How to handle complex relationships (e.g., batch -> results)
+- Whether to use Wagtail's built-in filtering/searching
+
+** Integration Points
+- How to integrate with existing Wagtail workflows
+- Whether to add custom admin actions (bulk operations)
+- How to handle permissions for different user types
+
+* Handoff Context
+** What's Working
+- All database models and relationships
+- Django system checks pass
+- API endpoints functional
+- Dashboard template working
+- Comprehensive testing completed
+
+** What Needs Work
+- **CRITICAL**: Wagtail admin integration (primary blocker)
+- After admin migration, ready for Phase 1 Step 2 (Basic Scraping Utilities)
+
+** Architecture Decisions Made
+- Chrome-first browser extension approach
+- Manual XPath generalization (automatic as stretch goal)
+- Standalone app design with minimal dependencies
+- Integration with existing LabEquipmentPage model
+
+* Resources for Next Model
+- Implementation Roadmap: `apps/xpath_content_extraction/docs/06_implementation_roadmap.org`
+- Model Documentation: `apps/xpath_content_extraction/models.py` (well-documented)
+- Current Status: `apps/xpath_content_extraction/README.md`
+- Cleanup Report: `.project_management/cleanup_reports/rapid-falcon_cleanup.org`
+
+* Success Criteria for Completion
+- All 7 models accessible through Wagtail admin at `/admin/`
+- Can create, edit, and delete records through Wagtail interface
+- Relationships work properly (inlines, foreign keys)
+- No dependency on Django admin (`/django-admin/`)
+- Phase 1 Step 1 marked complete in roadmap
+- Ready to proceed to Phase 1 Step 2 (Basic Scraping Utilities) 

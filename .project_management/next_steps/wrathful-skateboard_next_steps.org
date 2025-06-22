@@ -1,0 +1,142 @@
+#+TITLE: Next Steps - Wrathful Skateboard Handoff
+#+AUTHOR: Wrathful Skateboard  
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:xpath:validation:admin:
+
+* Immediate Priorities
+
+** 🎯 Phase 1 Step 2 Completion (HIGH PRIORITY)
+Continue and complete Phase 1 Step 2 from the implementation roadmap. Foundation is solid, need to add missing components.
+
+** 🔧 Missing Validation Logic Implementation
+According to roadmap requirements, implement comprehensive validation system:
+- Field configuration validation (required fields, regex patterns, field type constraints)
+- Site configuration validation (URL format validation, domain format checking)  
+- XPath syntax validation for source configurations
+- Cross-field validation rules and dependencies
+
+** 🎨 Related Tables Display Enhancement
+User specifically requested this UX improvement:
+- Site configuration admin: display table of related field configurations
+- Field configuration admin: display table of related source configurations
+- Include edit links, summary info, and interactive features
+- Use Wagtail-native approaches (custom panels, ReadOnlyPanel, HTML tables)
+
+* Approach Strategy
+
+** Technical Implementation Guidelines
+1. **Maintain Wagtail-Native Approach**: Continue using only Wagtail built-in functionality
+2. **Use Proper Validation Framework**: Leverage Wagtail's model validation system
+3. **Custom Panels for Tables**: Implement related tables using custom panel rendering
+4. **JavaScript Enhancement**: Add interactive features while keeping it simple
+
+** File Focus Areas
+- **Primary**: `apps/xpath_content_extraction/wagtail_hooks.py` (ViewSet enhancements)
+- **Secondary**: `apps/xpath_content_extraction/models.py` (validation methods)
+- **Support**: Custom templates if needed for table rendering
+
+* Specific Implementation Tasks
+
+** 1. Validation Logic Implementation
+*** Model-Level Validation
+- Add `clean()` methods to SiteConfiguration, FieldConfiguration, SourceConfiguration
+- Implement URL validation for SiteConfiguration.domain and default_page_url
+- Add XPath syntax validation for SourceConfiguration.xpath_selector
+- Create field type validation for FieldConfiguration
+
+*** Cross-Field Validation
+- Validate field_name uniqueness within site configuration
+- Ensure at least one active source per field configuration
+- Validate parent_selector compatibility with xpath_selector
+
+*** Admin Integration
+- Add validation error display in admin forms
+- Implement helpful error messages for common validation failures
+- Test validation through admin interface CRUD operations
+
+** 2. Related Tables Display Enhancement
+*** Site Configuration ViewSet Enhancement
+- Add custom panel showing related FieldConfiguration objects
+- Display: field_name, field_type, is_required, source_count
+- Include edit links to FieldConfigurationViewSet
+- Add summary statistics (total fields, required fields, etc.)
+
+*** Field Configuration ViewSet Enhancement  
+- Add custom panel showing related SourceConfiguration objects
+- Display: source_type, xpath_selector (truncated), is_active, order
+- Include edit links to SourceConfigurationViewSet
+- Add source validation status indicators
+
+*** Implementation Approach
+- Use custom HTML generation in ViewSet methods
+- Create helper methods for generating table HTML
+- Add CSS styling for table presentation
+- Include JavaScript for sorting/filtering if needed
+
+** 3. Testing & Validation
+*** Create Test Data
+- Set up test site configuration with validation edge cases
+- Create field configurations with various validation scenarios
+- Test XPath validation with valid/invalid selectors
+
+*** Admin Interface Testing
+- Test all validation scenarios through admin interface
+- Verify related tables display correctly
+- Test edit links and navigation flow
+- Confirm user-friendly error messages
+
+* Key Files to Review
+
+** Primary Implementation Files
+- `apps/xpath_content_extraction/wagtail_hooks.py` - ViewSet enhancements
+- `apps/xpath_content_extraction/models.py` - Add validation methods
+
+** Reference Files
+- `apps/xpath_content_extraction/docs/06_implementation_roadmap.org` - Phase 1 Step 2 requirements
+- `.project_management/cleanup_reports/wrathful-skateboard_cleanup.org` - Current state
+
+** Testing Support
+- Use existing site configuration data for testing
+- Test through admin interface at `/admin/`
+
+* Success Criteria
+
+** Validation Logic Success
+- [ ] All model validation methods implemented and working
+- [ ] XPath syntax validation catches invalid selectors
+- [ ] URL validation prevents malformed domains
+- [ ] Cross-field validation enforces business rules
+- [ ] Admin forms display helpful validation errors
+
+** Related Tables Enhancement Success  
+- [ ] Site config admin shows field configurations table
+- [ ] Field config admin shows source configurations table
+- [ ] Tables include edit links and summary information
+- [ ] Tables are visually appealing and functional
+- [ ] Navigation between related objects is smooth
+
+** Phase 1 Step 2 Completion
+- [ ] All roadmap deliverables implemented
+- [ ] Testing requirements met
+- [ ] Admin interface is user-friendly
+- [ ] Configuration validation works end-to-end
+
+* Important Context
+
+** Current System State
+- ✅ All admin interfaces functional and error-free
+- ✅ Submenu navigation working perfectly  
+- ✅ Basic CRUD operations work through Wagtail admin
+- ✅ Proper Wagtail-native architecture established
+
+** User Requirements
+- Focus on Wagtail built-in functionality (avoid custom complex solutions)
+- Related tables enhancement specifically requested by user
+- Validation logic is missing from roadmap implementation
+
+** Technical Constraints
+- Must use SnippetViewSet (no InlinePanel compatibility)
+- Stick to Wagtail patterns (avoid Django admin approaches)
+- Maintain existing working functionality while adding enhancements
+
+Ready for next model to continue Phase 1 Step 2 completion! 🚀 

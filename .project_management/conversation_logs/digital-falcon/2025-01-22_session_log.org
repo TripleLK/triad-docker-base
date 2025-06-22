@@ -146,3 +146,62 @@ python manage.py interactive_selector --url "https://site.com" --base-url "http:
 - ✅ Default behavior preserved for local development
 - ✅ Production deployment ready
 - ✅ Clear error handling and debugging output 
+
+* Turn 3: XPath Content Extraction System Planning
+  :PROPERTIES:
+  :TIMESTAMP: 2025-01-22
+  :END:
+
+** Discussion Summary
+User requested comprehensive implementation planning for an XPath-based content extraction system. The system should:
+- Use browser extension based on XPath Helper for visual field mapping
+- Support complex field relationships including local and non-local sub-models
+- Integrate with existing AI prompt system for content processing
+- Create LabEquipmentPage instances automatically
+- Function as standalone app using only lab equipment API
+
+** Changes Made
+- Created `apps/xpath_content_extraction/` directory structure
+- Created comprehensive planning documentation:
+  - `docs/00_project_overview.org` - Complete system overview
+  - `docs/01_database_architecture.org` - Database models and relationships  
+  - `docs/02_browser_extension_design.org` - Extension architecture and UI
+  - `docs/03_scraping_system.org` - Site discovery and content extraction
+  - `docs/04_ai_processing_pipeline.org` - Batch processing and AI integration
+  - `docs/05_result_management.org` - Validation and page creation
+  - `docs/06_implementation_roadmap.org` - 30-step implementation plan
+  - `README.md` - Project overview and documentation index
+
+** Rationale
+Created comprehensive planning documentation to support systematic implementation of complex multi-component system. Each document focuses on specific architectural component while maintaining integration perspective. Implementation roadmap breaks work into manageable 0.5-day increments with specific testing requirements.
+
+** Architecture Decisions
+- **Standalone Design**: Self-contained app minimizing dependencies
+- **Visual Configuration**: Browser extension with overlay for non-technical users
+- **Batch Processing**: Token-optimized AI processing using existing prompt system
+- **Quality Assurance**: Multi-stage validation with manual review workflows
+- **Scalable Architecture**: Supports multiple sites and large-scale processing
+
+** Key Technical Components
+1. **Browser Extension**: Chrome/Firefox compatible with visual overlay system
+2. **Database Models**: 7 core models supporting complex field relationships
+3. **Scraping Engine**: Celery-based with site discovery and content extraction
+4. **AI Pipeline**: S3-integrated batch processing with existing prompt utilization
+5. **Result Management**: Validation pipeline with automatic page creation
+
+** Implementation Plan
+- **Phase 1**: Foundation (5 days) - Models, extension, API endpoints
+- **Phase 2**: Scraping System (3 days) - Discovery, extraction, admin
+- **Phase 3**: AI Processing (3 days) - Batch processing, S3, orchestration  
+- **Phase 4**: Result Management (2 days) - Validation, page creation
+- **Phase 5**: Integration & Testing (2 days) - End-to-end validation
+
+** Success Metrics Defined
+- Configuration Accuracy: >95%
+- Extraction Success: >90%
+- AI Processing: >85% validation pass rate
+- Page Creation: >80% automatic creation
+- Performance: 1000+ pages/hour
+
+** Next Steps Identified
+Ready for implementation starting with Phase 1, Step 1: Project Structure & Database Models. All planning documentation complete and implementation roadmap provides clear path forward. 

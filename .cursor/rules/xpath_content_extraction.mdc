@@ -1,0 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When working on the xpath_content_extraction app, you must by default ignore all other apps in this project. It may be necessary at times (such as configuring settings or using the API) but your default mode should be to ignore everything outside of the xpath_content_extraction directory.
+
+Additionally, when working on this project you must never continue to a new step of implementation until the user tells you to. When you think you are done with a step you must test what you can through scripts sent through manage.py, and tell the user what needs to be checked in the admin interface.

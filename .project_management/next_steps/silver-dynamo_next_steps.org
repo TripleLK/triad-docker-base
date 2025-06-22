@@ -1,0 +1,173 @@
+#+TITLE: Next Steps - Silver Dynamo Handoff
+#+AUTHOR: Silver Dynamo
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:handoff:silver-dynamo:xpath-extraction:
+
+* Immediate Priorities (Critical)
+
+** 1. Fix SnippetViewSet Display Method Errors
+**Priority**: CRITICAL - All admin interfaces are currently broken
+**Issue**: Display methods referenced in `list_display` don't exist as ViewSet methods
+
+**Required Actions**:
+- Move all display methods from `list_display` strings to actual ViewSet methods
+- Example: Change `"field_count"` in list_display to a `def field_count(self, obj)` method on the ViewSet
+- Affected ViewSets: SiteConfigurationViewSet, ScrapedPageViewSet, ProcessingBatchViewSet, AIProcessingResultViewSet, ExtractionLogViewSet
+
+**Specific Methods to Implement**:
+```python
+# SiteConfigurationViewSet
+def field_count(self, obj):
+    count = obj.fields.count()
+    return format_html('<span class="status-tag primary">{} fields</span>', count)
+
+# ScrapedPageViewSet  
+def url_preview(self, obj):
+    preview = obj.url[:50] + "..." if len(obj.url) > 50 else obj.url
+    return format_html('<a href="{}" target="_blank">{}</a>', obj.url, preview)
+
+def status_badge(self, obj):
+    # Implementation for status styling
+    
+# Similar pattern for all other ViewSets
+```
+
+** 2. Implement Proper Submenu Structure
+**Priority**: HIGH - User specifically requested this
+**Current Issue**: SnippetViewSetGroup creates flat menu, user wants submenu
+
+**Required Actions**:
+- Research Wagtail submenu implementation (likely using Menu class)
+- Organize XPath extraction interfaces in submenu structure
+- Ensure all ViewSets are accessible through submenu
+
+** 3. Test and Fix UnifiedSiteConfigView
+**Priority**: HIGH - Core functionality for unified configuration
+**Current Status**: Implemented but untested
+
+**Required Actions**:
+- Test UnifiedSiteConfigView functionality
+- Verify InlinePanel for fields and sources works correctly
+- Ensure nested editing of site + fields + sources functions properly
+- Fix any issues with form validation or saving
+
+* Secondary Priorities
+
+** 4. Restore and Fix URL Patterns
+**Priority**: MEDIUM - API functionality needed
+**Current Issue**: URLs commented out due to namespace conflict
+
+**Required Actions**:
+- Resolve URL namespace conflict properly
+- Re-enable xpath-extractor URL include in config/urls.py
+- Update views.py to work with new model relationships
+- Test API endpoints for browser extension functionality
+
+** 5. Enhance Admin Interface Features
+**Priority**: LOW - Polish and UX improvements
+
+**Potential Enhancements**:
+- Add bulk actions for processing batches
+- Implement filtering and search improvements
+- Add export functionality for configurations
+- Enhance progress tracking displays
+
+* Technical Approach Recommendations
+
+** For SnippetViewSet Display Methods
+1. **Pattern to Follow**:
+   ```python
+   class SiteConfigurationViewSet(SnippetViewSet):
+       list_display = ["name", "domain", "is_active", "field_count", "created_at"]
+       
+       def field_count(self, obj):
+           # Implementation here
+           pass
+   ```
+
+2. **HTML Formatting**: Use `format_html()` for safe HTML output
+3. **Status Styling**: Leverage existing CSS classes for consistent styling
+
+** For Submenu Implementation
+1. **Research Required**: Investigate Wagtail Menu class and submenu patterns
+2. **Structure Goal**: 
+   ```
+   XPath Content Extraction
+   ├── Site Configurations
+   ├── Scraped Pages  
+   ├── Processing Batches
+   ├── AI Results
+   └── Logs
+   ```
+
+** For UnifiedSiteConfigView Testing
+1. **Test Cases**:
+   - Create new site configuration with fields and sources
+   - Edit existing configuration
+   - Validate nested form submissions
+   - Check field/source ordering and deletion
+
+* Key Files to Modify
+
+** Primary Focus Files
+- `apps/xpath_content_extraction/wagtail_hooks.py` - Fix all ViewSet display methods
+- `apps/xpath_content_extraction/wagtail_hooks.py` - Implement submenu structure
+
+** Secondary Files  
+- `apps/xpath_content_extraction/views.py` - Update for new model relationships
+- `config/urls.py` - Re-enable URL patterns
+- `apps/xpath_content_extraction/urls.py` - Verify URL patterns work
+
+* Testing Strategy
+
+** Admin Interface Testing
+1. Start Django server: `python manage.py runserver 0.0.0.0:8001`
+2. Navigate to `/admin/` 
+3. Test each XPath extraction menu item
+4. Verify list views display correctly
+5. Test create/edit functionality
+
+** Unified Configuration Testing
+1. Access Site Configuration creation
+2. Add field configurations with nested sources
+3. Verify saving and editing works
+4. Test field/source ordering and deletion
+
+** API Testing (After URL restoration)
+1. Test API endpoints with authentication
+2. Verify browser extension compatibility
+3. Check data serialization correctness
+
+* Resources and Context
+
+** Model Relationships (Reference)
+- SiteConfiguration → FieldConfiguration (one-to-many)
+- FieldConfiguration → SourceConfiguration (one-to-many)  
+- SiteConfiguration → ScrapedPage (one-to-many)
+- ScrapedPage → ExtractedData (one-to-one)
+
+** Existing Functionality
+- All models are working correctly
+- Database schema is properly migrated
+- Basic CRUD operations function
+- Custom CSS/JS styling is in place
+
+** Documentation References
+- Wagtail SnippetViewSet documentation
+- Wagtail Menu and submenu examples
+- Django format_html for safe HTML output
+
+* Success Criteria
+
+** Must Complete
+- [ ] All admin list views display without errors
+- [ ] Submenu structure implemented and functional
+- [ ] UnifiedSiteConfigView tested and working
+
+** Should Complete  
+- [ ] URL patterns restored and API endpoints functional
+- [ ] Basic admin interface polish and UX improvements
+
+** Could Complete
+- [ ] Advanced admin features (bulk actions, enhanced filtering)
+- [ ] Performance optimizations for large datasets 
