@@ -9,8 +9,9 @@
 - Quantum Flux (current session)
 - Quantum Ridge (completed handoff)
 - Digital Phoenix (completed - Wagtail admin migration)
-- Silver Dynamo (current active model - Phase 1 Step 1 completion verification)
-- Wrathful Skateboard (current active model - fixing SnippetViewSet display method errors)
+- Silver Dynamo (current session - Phase 1 Step 1 completion verification)
+- Silly Pillow (current active model - Phase 1 Step 2 completion: validation logic and related tables)
+- Wrathful Skateboard (completed handoff - fixed SnippetViewSet display method errors)
 
 ** Previous Models
 - Quantum Gecko

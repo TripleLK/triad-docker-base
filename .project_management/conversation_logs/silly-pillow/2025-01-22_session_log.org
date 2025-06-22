@@ -1,0 +1,56 @@
+#+TITLE: Conversation Log - Silly Pillow
+#+DATE: 2025-01-22
+#+MODEL: Silly Pillow
+#+SESSION_START: [continuation]
+#+FILETAGS: :conversation:log:silly-pillow:
+
+* Turn 1: Fix Conditional Validation and Pre-filled Parent Relationships
+  :PROPERTIES:
+  :TIMESTAMP: [14:30:00]
+  :END:
+
+** Discussion Summary
+User requested two critical fixes:
+1. **Conditional validation** - XPath field should only be required when source type is "XPath", not for "Static Text" or "Special Function" types
+2. **Pre-filled parent relationships** - When clicking "Add Field Configuration" or "Add Source Configuration" buttons, the parent should be automatically selected in the creation form
+
+** Changes Made
+
+*** Model Changes (apps/xpath_content_extraction/models.py)
+- Line 201: Added `blank=True` to `xpath_selector` field to make it optional at form level
+- Validation logic already existed in `clean()` method to enforce conditional requirements
+
+*** Wagtail Admin Changes (apps/xpath_content_extraction/wagtail_hooks.py)
+- Lines 172-186: Added `FieldConfigurationCreateView` class with `get_initial()` method to pre-fill `site_config` from URL parameter
+- Lines 189-203: Added `SourceConfigurationCreateView` class with `get_initial()` method to pre-fill `field_config` from URL parameter
+- Line 242: Added `add_view_class = FieldConfigurationCreateView` to `FieldConfigurationViewSet`
+- Line 275: Added `add_view_class = SourceConfigurationCreateView` to `SourceConfigurationViewSet`
+
+*** Database Migration
+- Created migration `0002_alter_sourceconfiguration_xpath_selector.py`
+- Applied migration successfully to update database schema
+
+** Rationale
+The original implementation had two UX issues:
+1. **Form validation was too strict** - The `xpath_selector` field was required at the Django form level, even when the source type was "Static Text" or "Special Function"
+2. **Poor UX for related object creation** - Users had to manually select parent relationships when creating child objects
+
+The fixes address both issues:
+- **Conditional validation** now works properly - XPath is only required for XPath source types, validated in the model's `clean()` method
+- **Pre-filled relationships** improve UX by automatically selecting the correct parent when users click "Add" buttons from related tables
+
+** Testing Performed
+- Django system checks: ✅ No issues
+- Migration creation: ✅ Successful
+- Migration application: ✅ Successful
+
+** Next Steps Identified
+User should test the admin interface to verify:
+1. Creating Source Configurations with different source types (XPath should be optional for non-XPath types)
+2. Clicking "Add Field Configuration" and "Add Source Configuration" buttons to verify parent pre-filling
+3. Validation behavior for each source type
+
+** Cross-References
+- Previous work: Phase 1 Step 2 implementation by Wrathful Skateboard
+- Architecture: `triad_project_architecture.org`
+- Active work tracking: `.project_management/active_work_tracking.org` 
