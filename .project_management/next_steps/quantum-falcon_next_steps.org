@@ -1,0 +1,189 @@
+#+TITLE: Next Steps - Quantum Falcon
+#+AUTHOR: Quantum Falcon  
+#+DATE: 2025-01-22
+#+FILETAGS: :next:steps:quantum-falcon:xpath:
+
+* Immediate Priorities
+
+** CRITICAL: Implement Step 6.5 - Multiple Sources Extension Support
+The next model must address the critical architectural gap where the Chrome extension only supports single source per field while the backend fully supports multiple sources.
+
+*** Why This Is Critical
+- **Data Integrity Risk**: Extension may overwrite existing sources
+- **User Experience**: Confusing inconsistency between admin and extension
+- **Step 7 Dependency**: Sub-model system requires multiple sources capability
+- **Technical Debt**: Extension assumes single source throughout codebase
+
+*** Success Criteria
+- Extension displays all sources for each field
+- Users can add/edit/delete/reorder sources
+- Source type selection works (xpath, text, special, sub-model)
+- API properly handles multiple sources without data loss
+- Source activation/deactivation functional
+
+* Approach Strategy
+
+** Phase 1: Analysis and Planning
+1. **Review Current Extension Code**: Understand single-source assumptions
+2. **API Analysis**: Determine what API changes are needed for multiple sources
+3. **UI Design**: Plan source management interface within existing control panel
+4. **Data Flow**: Map how multiple sources should load/save
+
+** Phase 2: Backend API Enhancement  
+1. **Source Management Endpoints**: Ensure API supports full CRUD for sources
+2. **Bulk Operations**: API should handle multiple source updates efficiently
+3. **Data Validation**: Prevent conflicts and ensure data integrity
+4. **Error Handling**: Proper responses for source management operations
+
+** Phase 3: Extension UI Enhancement
+1. **Source List Interface**: Display all sources for selected field
+2. **Source Type Selection**: Dropdown for xpath/text/special/sub-model
+3. **Add/Edit/Delete**: Full CRUD operations within extension
+4. **Ordering Controls**: Drag-and-drop or up/down buttons for source priority
+5. **Activation Toggles**: Enable/disable individual sources
+
+** Phase 4: Integration and Testing
+1. **End-to-End Testing**: Complete source management workflow
+2. **Data Integrity**: Verify no data loss during source operations
+3. **Cross-Interface**: Ensure admin and extension stay synchronized
+4. **Performance**: Multiple sources don't slow down extension
+
+* Key Files to Modify
+
+** Extension Files (Primary Focus)
+*** apps/xpath_content_extraction/extension/content/content-script.js
+- Current: Lines 254-290 handle single field configuration
+- Needs: Enhanced field overview to show multiple sources
+- Needs: Source management panel integration
+
+*** apps/xpath_content_extraction/extension/popup/popup.js  
+- Current: Lines 200-300 handle field selection
+- Needs: Multiple source display and management
+- Needs: Source type selection interface
+
+** API Files (Secondary)
+*** apps/xpath_content_extraction/views.py
+- Review: Ensure source CRUD endpoints are complete
+- Enhance: Bulk source operations if needed
+- Add: Source ordering endpoints
+
+*** apps/xpath_content_extraction/urls.py
+- Review: Source management URL patterns
+- Add: Any missing source operation endpoints
+
+** Documentation
+*** apps/xpath_content_extraction/docs/06_implementation_roadmap.org
+- Update: Step 6.5 status when complete
+- Note: Any implementation decisions or changes
+
+* Technical Considerations
+
+** Data Structure Changes
+The extension currently expects single source per field:
+```javascript
+// Current assumption
+field.xpath_selector = "//some/xpath"
+
+// Needs to handle
+field.sources = [
+  {id: 1, type: 'xpath', selector: '//xpath1', order: 1, active: true},
+  {id: 2, type: 'text', content: 'fallback', order: 2, active: true}
+]
+```
+
+** UI Integration Points
+- **Field Selection Panel**: Show source count and primary source
+- **Field Detail View**: Expandable source list with management controls
+- **XPath Selection Mode**: Choose which source to edit when selecting elements
+- **Save Operations**: Batch save all source changes
+
+** API Integration
+- **Load Sources**: GET /api/xpath/fields/{id}/sources/
+- **Create Source**: POST /api/xpath/fields/{id}/sources/
+- **Update Source**: PUT /api/xpath/sources/{id}/
+- **Delete Source**: DELETE /api/xpath/sources/{id}/
+- **Reorder Sources**: PUT /api/xpath/fields/{id}/sources/reorder/
+
+* Testing Strategy
+
+** Unit Testing
+- Source management functions work correctly
+- API calls handle multiple sources properly
+- UI components render source lists correctly
+- Data validation prevents invalid configurations
+
+** Integration Testing  
+- Extension and admin interface stay synchronized
+- Source changes persist correctly
+- No data loss during source operations
+- Performance acceptable with multiple sources
+
+** User Acceptance Testing
+- Source management is intuitive
+- Users can successfully configure multiple sources
+- Extension behavior matches admin interface
+- Error messages are helpful and clear
+
+* Potential Challenges
+
+** UI Complexity
+- **Challenge**: Limited space in extension panel for multiple sources
+- **Solution**: Collapsible/expandable source lists, modal dialogs for editing
+
+** Data Migration
+- **Challenge**: Existing single XPath configurations need to become sources
+- **Solution**: Migration script or automatic conversion on first load
+
+** Performance
+- **Challenge**: Loading multiple sources might slow down extension
+- **Solution**: Lazy loading, caching, efficient API calls
+
+** User Experience
+- **Challenge**: Multiple sources might confuse users
+- **Solution**: Clear UI indicators, help text, progressive disclosure
+
+* Success Validation
+
+** Functional Tests
+- [ ] Extension displays all sources for each field
+- [ ] Users can add new sources of different types
+- [ ] Source editing works for xpath, text, and special types
+- [ ] Source deletion removes sources without affecting others
+- [ ] Source reordering changes priority correctly
+- [ ] Source activation/deactivation toggles work
+- [ ] Changes persist between extension sessions
+
+** Data Integrity Tests
+- [ ] No existing sources are lost during extension use
+- [ ] Multiple source updates don't conflict
+- [ ] Admin interface shows changes made in extension
+- [ ] Extension shows changes made in admin interface
+
+** User Experience Tests
+- [ ] Source management is discoverable and intuitive
+- [ ] Error messages guide users to correct issues
+- [ ] Performance is acceptable with 5+ sources per field
+- [ ] UI scales well on different screen sizes
+
+* Context for Next Model
+
+** Current State
+- **Step 6**: Extension-Backend Integration COMPLETE and tested
+- **Backend**: Fully supports multiple sources (database + admin)
+- **Extension**: Only supports single source per field (critical gap)
+- **API**: Core endpoints working, may need source management enhancements
+
+** Technical Foundation
+- Chrome extension: 1013 lines, fully functional for single sources
+- Django API: Authentication working, endpoints tested
+- Database: SourceConfiguration model complete with relationships
+- Admin Interface: Full CRUD for multiple sources per field
+
+** Priority Level: CRITICAL
+This gap must be resolved before Step 7 (Sub-Model Configuration) because:
+- Sub-models will create multiple sources per field by design
+- Current extension would overwrite sub-model configurations
+- User experience would be severely compromised
+- Data integrity risks are unacceptable
+
+Ready for seamless handoff to implement this critical enhancement! 🚀 

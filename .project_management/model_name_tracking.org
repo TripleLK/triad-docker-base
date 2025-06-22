@@ -15,6 +15,7 @@
 - Wrathful Skateboard (completed handoff - fixed SnippetViewSet display method errors)
 - Joyful Shoe (2024-12-30): Chrome Extension Foundation & Django API Integration
 - Tubular Tunnel (2025-01-22): Field Display Bug Fix & Persistent Panel System
+- Quantum Falcon (2025-01-22): XPath Content Extraction Phase 1 Step 6
 
 ** Previous Models
 - Quantum Gecko
@@ -846,12 +847,6 @@ Track all AI model code names to ensure uniqueness and avoid component reuse.
 - Date: 2025-01-19+
 - Components: stellar (space/star) + bridge (connection)
 - Task: Nested object creation debugging, AI JSON import system
-- Status: Complete
-
-** Noble Harbor
-- Date: 2025-01-19
-- Components: noble (quality) + harbor (safe place)
-- Task: Lab Equipment API v2 development
 - Status: Complete
 
 * Reserved Component Words
