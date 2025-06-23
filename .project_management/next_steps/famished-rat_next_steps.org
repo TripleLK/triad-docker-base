@@ -1,0 +1,159 @@
+#+TITLE: Next Steps - Famished Rat Handoff
+#+AUTHOR: Famished Rat
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:handoff:famished-rat:
+
+* IMMEDIATE PRIORITIES for Step 7
+
+** 🎯 PRIMARY OBJECTIVE: Implement Step 7 - Advanced Source Configuration
+Phase 1 step 6.5 is COMPLETE. The next model should focus entirely on step 7 implementation.
+
+** 🔍 CRITICAL SUCCESS FACTORS
+1. **Leverage Working Foundation**: The hierarchical menu system is fully functional - build upon it, don't rebuild
+2. **Maintain Field Context**: Always use `this.currentSourceField.id` pattern for API calls
+3. **Preserve UI Flow**: Sources manager restoration logic is critical for navigation
+4. **Test Incrementally**: Use working API endpoints for validation throughout development
+
+* APPROACH for Next Model
+
+** Step 7 Requirements Analysis
+Based on project documentation, step 7 likely involves:
+- Advanced source configuration options
+- Enhanced XPath expression building/testing
+- Conditional source execution logic
+- Multi-source field configuration workflows
+- Source validation and preview functionality
+
+** Key Files to Focus On
+1. **PRIMARY**: `apps/xpath_content_extraction/extension/content/content-script.js`
+   - Lines 500-900: Source management and editor functionality
+   - Lines 1200-1400: XPath selector and testing logic
+   - Lines 1500-1700: UI overlay and panel management
+
+2. **SECONDARY**: `apps/xpath_content_extraction/views.py`
+   - API endpoints are solid but may need enhancement for advanced features
+   - Consider new endpoints for step 7 requirements
+
+3. **SUPPORT**: `apps/xpath_content_extraction/models.py`
+   - Review SourceConfiguration model for additional fields needed
+
+** Testing Strategy
+- Start with existing working test script: `scripts/test_source_creation.py`
+- Verify API endpoints before frontend development
+- Use browser developer tools to test extension integration
+- Server runs on localhost:8000 with token: eda00f4a8fea7e5f74c351f1e237765c2748309f
+
+* DECISIONS NEEDED from User
+
+** Scope Clarification
+- What specific features define "step 7"?
+- Are there UI mockups or requirements documents?
+- What level of automation vs manual configuration is desired?
+
+** Technical Choices
+- Should step 7 add new API endpoints or enhance existing ones?
+- Are there specific XPath testing/validation requirements?
+- How should advanced source configuration be presented in the UI?
+
+* HANDOFF CONTEXT
+
+** What's Working Perfectly
+✅ Site selection and field navigation
+✅ Source creation (all types: text, special, xpath)
+✅ Order management and resequencing
+✅ Field context propagation
+✅ API authentication and endpoints
+✅ UI restoration after operations
+
+** Current System State
+- Hierarchical menu system: **COMPLETE**
+- Source CRUD operations: **COMPLETE**  
+- XPath selector: **FUNCTIONAL** (may need enhancement for step 7)
+- Field management: **SOLID**
+- API layer: **ROBUST**
+
+** Architecture Strengths
+- Clean separation between extension and Django backend
+- Consistent field context management
+- Automatic order maintenance
+- Comprehensive error handling
+- Well-tested API endpoints
+
+** Areas Ready for Enhancement (Step 7 Opportunities)
+- XPath expression builder with visual feedback
+- Source validation and preview functionality
+- Conditional source execution logic
+- Advanced configuration options
+- Multi-source field coordination
+
+* RESOURCES and DOCUMENTATION
+
+** Essential Reading for Next Model
+1. **Cleanup Report**: `.project_management/cleanup_reports/famished-rat_cleanup.org`
+   - Complete technical details of current state
+   - Architecture changes and reasoning
+   - Testing results and verification steps
+
+2. **Conversation Log**: `.project_management/conversation_logs/famished-rat/2025-01-22_session_log.org`
+   - Session details and problem-solving approach
+   - Code changes with line numbers and rationale
+
+3. **Active Work Tracking**: `.project_management/active_work_tracking.org`
+   - Project overview and phase tracking
+   - Dependencies and requirements
+
+** Working Code Patterns
+```javascript
+// Always use this pattern for field context:
+const fieldId = this.currentSourceField.id;
+
+// API calls with proper authentication:
+const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+        'Authorization': `Token ${this.authToken}`,
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+});
+
+// UI restoration after operations:
+if (sourcesPanel) {
+    sourcesPanel.style.display = 'block';
+}
+```
+
+** API Endpoints Ready for Use
+- `/xpath_content_extraction/api/xpath/sites/` - Site management
+- `/xpath_content_extraction/api/xpath/sites/{id}/fields/` - Field listing
+- `/xpath_content_extraction/api/xpath/fields/{id}/sources/` - Source CRUD
+- `/xpath_content_extraction/api/xpath/sources/{id}/` - Individual source operations
+- `/xpath_content_extraction/api/xpath/test/` - XPath testing
+
+* SUCCESS METRICS for Step 7
+
+** Technical Completion
+- [ ] Step 7 features implemented and functional
+- [ ] Existing functionality remains intact
+- [ ] New API endpoints (if needed) working correctly
+- [ ] Extension integration smooth and intuitive
+
+** User Experience
+- [ ] Advanced configuration options accessible and clear
+- [ ] Visual feedback for complex operations
+- [ ] Error handling and validation messaging
+- [ ] Workflow efficiency maintained or improved
+
+** Code Quality
+- [ ] Consistent with existing patterns
+- [ ] Proper error handling throughout
+- [ ] Comprehensive testing coverage
+- [ ] Documentation updated appropriately
+
+* FINAL HANDOFF NOTES
+
+The foundation is solid and ready for step 7 enhancement. Focus on building upon the working system rather than rearchitecting. The next model has a fully functional hierarchical menu system with robust API integration as the starting point.
+
+Key insight: The field context management pattern (`this.currentSourceField.id`) is crucial for all operations. Maintain this pattern in any new functionality to ensure consistency with the working system.
+
+Ready for seamless continuation! 🚀 

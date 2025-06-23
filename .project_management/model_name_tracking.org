@@ -17,6 +17,8 @@
 - Tubular Tunnel (2025-01-22): Field Display Bug Fix & Persistent Panel System
 - Quantum Falcon (2025-01-22): XPath Content Extraction Phase 1 Step 6
 - Telescopic Bridge (2025-01-22): XPath Content Extraction Phase 1 Step 6.5 - Multiple Sources Extension Support
+- Famished Rat (2025-01-22): Phase 1 Step 6.5 - Fixed critical null field ID bug, completed order resequencing, restored UI flow navigation
+- Tired Barstool (current session - Phase 1 Step 7 - Sub-Model Configuration System)
 
 ** Previous Models
 - Quantum Gecko
