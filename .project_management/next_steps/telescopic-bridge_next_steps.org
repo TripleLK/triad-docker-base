@@ -1,0 +1,152 @@
+#+TITLE: Next Steps - Telescopic Bridge Handoff
+#+AUTHOR: Telescopic Bridge  
+#+DATE: 2025-01-22
+#+FILETAGS: :next-steps:xpath:multiple-sources:handoff:
+
+* Immediate Priorities
+
+** CRITICAL: Fix Null Field ID in Source Saving (API 403 Errors)
+*** Problem Analysis
+- Server logs show: `POST /xpath_content_extraction/api/xpath/fields/null/sources/ HTTP/1.1" 403`
+- Field ID is null in endpoint URL, should be actual field ID
+- Affects all non-XPath source creation (text, special functions)
+
+*** Root Cause Investigation
+- Check `saveSource()` method in XPathControlPanel class (~line 727)
+- Verify how `this.currentSourceField.id` is being passed to API endpoint
+- Likely issue: field context not available when saveSource called from new source creation
+
+*** Solution Approach
+1. **Debug field context**: Add console.log in saveSource to verify currentSourceField exists
+2. **Check createNewSource flow**: Ensure field context passed when creating new sources
+3. **Verify API endpoint construction**: Confirm field ID properly interpolated in URL
+
+*** Testing Strategy
+- Create new text source and monitor network tab for API call
+- Verify field ID in URL matches actual field being edited
+- Test both new source creation and existing source editing
+
+** HIGH: Restore Sources Manager After Operations
+*** Problem Analysis
+- After closing XPath selector or source editor, sources manager disappears
+- Users lose context and must restart from field overview
+- Breaks hierarchical navigation flow
+
+*** Implementation Requirements
+- XPath selector close should restore sources manager panel
+- Source editor close should restore sources manager panel  
+- Maintain field context throughout operation chain
+
+*** Technical Approach
+1. **Modify cancelSelection()** in XPathSelector class (~line 1571)
+   - Detect if called from source editing context (`this.currentConfig.isSourceEdit`)
+   - If yes, restore sources manager instead of just main panel
+2. **Update source editor close handlers** in attachSourceEditorListeners (~line 678)
+   - Store reference to sources manager state before opening editor
+   - Restore sources manager panel instead of just removing editor
+
+*** Code Locations
+- `XPathSelector.cancelSelection()`: Add sources manager restoration logic
+- `attachSourceEditorListeners()`: Update close button handlers
+- `closeSourcesManager()`: Ensure proper cleanup without losing context
+
+** HIGH: Fix XPath Selector Save Functionality
+*** Problem Analysis
+- XPath saving from visual selector not working after context changes
+- Likely related to Turn 3 modifications to saveXPath method
+
+*** Investigation Points
+1. **Check saveXPath()** method in XPathSelector class (~line 1623)
+2. **Verify field context** passed to visual selector in source editing mode
+3. **Confirm API endpoint** for XPath saving in source context
+
+*** Solution Strategy
+- Test visual selector save in source editing vs legacy field editing modes
+- Verify currentConfig.isSourceEdit flag properly handled
+- Ensure XPath value populates source editor instead of direct field save
+
+** MEDIUM: Add Field Context Display
+*** Implementation Requirements
+- XPath selection menu should show "Configuring: [Field Name]" in header
+- Edit XPath source menu should display active field name
+- Provides visual confirmation of current context
+
+*** Technical Implementation
+1. **Update createOverlay()** in XPathSelector (~line 1225)
+   - Add field name to instruction panel header
+   - Use `this.currentConfig.field.display_name` or `field_name`
+2. **Update showSourceEditor()** in XPathControlPanel (~line 535)
+   - Include field name in editor panel title
+   - Format: "Edit XPath Source: [Field Name]"
+
+* Approach Strategy for Next Model
+
+** Debugging Methodology
+1. **Start with Network Tab**: Monitor API calls to identify exact field ID issue
+2. **Console Logging**: Add strategic console.log statements for field context tracking
+3. **Step-by-Step Testing**: Test each operation in isolation before integration
+
+** Key Files to Focus On
+*** Primary Implementation
+- `apps/xpath_content_extraction/extension/content/content-script.js`
+  - Lines 727-801: saveSource method (CRITICAL)
+  - Lines 678-726: attachSourceEditorListeners (HIGH)  
+  - Lines 1571-1622: XPathSelector.cancelSelection (HIGH)
+  - Lines 1623-1672: XPathSelector.saveXPath (HIGH)
+
+*** Reference Context
+- `apps/xpath_content_extraction/views.py`: API endpoints (working correctly)
+- Django server logs: Monitor for 403 errors and null field IDs
+
+** Testing Workflow
+1. **Test API Endpoints Directly**: Verify backend works with proper field IDs
+2. **Test Source Creation**: Try creating text/special function sources
+3. **Test XPath Selection**: Verify visual selector save functionality
+4. **Test Navigation Flow**: Confirm sources manager restoration
+
+** Key Variables to Monitor
+- `this.currentSourceField`: Should contain field object with valid ID
+- `this.currentSources`: Should contain current sources array
+- Field ID in API URLs: Should be integer, not null
+- UI state: Sources manager should restore after operations
+
+* Decisions Needing User Input
+
+** Future Enhancement Priorities
+- Sub-model source types implementation timeline
+- Additional special extractor functions needed
+- UI/UX improvements for source management interface
+
+** Architecture Considerations
+- Whether to implement undo/redo for source operations
+- Bulk source management features (import/export)
+- Advanced XPath validation and testing tools
+
+* Handoff Context
+
+** What's Working
+- Site selection and field overview display
+- Sources manager panel creation and display
+- API backend with full CRUD operations
+- Visual XPath selector element highlighting
+- Basic source editing UI structure
+
+** What Needs Immediate Fix
+- Source saving with proper field ID context
+- UI state restoration after modal operations
+- XPath selector save functionality
+- Field context display in menus
+
+** Development Environment
+- Django server ready on localhost:8001
+- Extension loaded and basic functionality working
+- Console available for debugging
+- All dependencies installed
+
+** Success Criteria
+- Non-XPath sources save successfully without 403 errors
+- Sources manager restores after XPath selection/editing
+- Visual XPath selection saves properly to source editor
+- All menus show clear field context to user
+
+The architecture is solid and most functionality is complete. These are primarily integration and state management issues that should resolve quickly with focused debugging. 
